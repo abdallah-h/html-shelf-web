@@ -553,7 +553,8 @@ window.ShelfHost={
     meta.dataT[pid]=t;saveMeta();if(viewing&&viewing.id===pid)openProject(pid);},
   stampData(pid,t){meta.dataT[pid]=t;saveMeta();},
   title(pid){const it=proj(pid)||BUILTIN.find(x=>x.id===pid);return it?(meta.names[pid]||it.title):pid;},
-  userFiles:async()=>(await allFiles()).filter(f=>f.id.startsWith("u:")),
+  userFiles:async()=>(await allFiles()).filter(f=>f.id.startsWith("u:")||f.id.startsWith("b:")),   // b: = newer version of a built-in
+  async dropFile(id){await delFile(id);await load();},
   async addUserFile(rec){await putFile(rec);await load();},
   wasRemoved:pid=>!!(window.ShelfCloud&&ShelfCloud._state().pendingDel.includes(pid)),
   hasProject:pid=>!!proj(pid),

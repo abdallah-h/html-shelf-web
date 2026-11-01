@@ -155,7 +155,9 @@
     }
     st.pendingDel = []; save();
 
-    // added projects (their HTML)
+    // project HTML: projects the user added (u:…) + newer versions of built-in projects (b:… — an update or a restored
+    // old version replaces the copy shipped in the app). One here that is gone in Drive after we had it there was
+    // reset to the original on another device; one in Drive we never had comes down.
     var userFiles = await host.userFiles();
     var local = {};
     userFiles.forEach(function (u) { local[u.id] = u; });
@@ -164,16 +166,25 @@
       if (rt > t) {
         var html = await drive(API + "/files/" + rf.id + "?alt=media", { as: "text" });
         if (html != null) await host.addUserFile({ id: u.id, title: u.title, html: html, size: html.length, added: u.added || rt, updatedAt: rt });
+        st.up["html:" + u.id] = 1;
+      } else if (!rf && st.up["html:" + u.id] && u.id.indexOf("b:") === 0) {
+        await host.dropFile(u.id); // built-in reset to its original on another device
+        delete st.up["html:" + u.id];
       } else if (!rf || t > rt) {
         await upload(rf && rf.id, rf ? { name: safeName(u.title) + ".html", appProperties: { app: APP, kind: "html", pid: u.id, t: String(t) } }
           : { name: safeName(u.title) + ".html", parents: [fid], appProperties: { app: APP, kind: "html", pid: u.id, t: String(t) } }, u.html, "text/html");
+        st.up["html:" + u.id] = 1;
       }
     }
     for (var k in by) {
       var f2 = by[k], a = f2.appProperties;
       if (a.kind !== "html" || local[a.pid] || host.wasRemoved(a.pid)) continue;
+      if (a.pid.indexOf("b:") === 0) {
+        if (st.up[k]) { await drive(API + "/files/" + f2.id, { method: "DELETE", as: "none" }); delete st.up[k]; continue; } // reset here
+        if (!host.hasProject(a.pid)) continue;
+      }
       var html2 = await drive(API + "/files/" + f2.id + "?alt=media", { as: "text" }); // a project added on another phone / before a reinstall
-      if (html2 != null) await host.addUserFile({ id: a.pid, title: f2.name.replace(/\.html?$/i, ""), html: html2, size: html2.length, added: +a.t || Date.now() });
+      if (html2 != null) { await host.addUserFile({ id: a.pid, title: f2.name.replace(/\.html?$/i, ""), html: html2, size: html2.length, added: +a.t || Date.now() }); st.up[k] = 1; }
     }
 
     // shelf settings (lists, favourites, archive, names, icons, categories, sort/view) — one file, newer wins
