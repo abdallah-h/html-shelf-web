@@ -557,7 +557,11 @@ window.ShelfHost={
   async addUserFile(rec){await putFile(rec);await load();},
   wasRemoved:pid=>!!(window.ShelfCloud&&ShelfCloud._state().pendingDel.includes(pid)),
   hasProject:pid=>!!proj(pid),
-  settings:()=>({t:meta.setT||0,data:settingsOf(meta)}),
+  settings(){
+    // settings made before backups covered them (or before signing in) have no time yet: date them now, unless this
+    // shelf is still untouched — a fresh install / new computer must take the account's settings, not overwrite them
+    if(!meta.setT&&JSON.stringify(settingsOf(meta))!==JSON.stringify(settingsOf(META0()))){meta.setT=Date.now();saveMeta();}
+    return {t:meta.setT||0,data:settingsOf(meta)};},
   async applySettings(data,t){SETTINGS_KEYS.forEach(k=>{if(data[k]!==undefined)meta[k]=data[k];});meta.setT=t;
     settingsSig=JSON.stringify(settingsOf(meta));try{localStorage.setItem(LS,JSON.stringify(meta));}catch(e){}await load();},
   versionList:async()=>(await allFiles()).filter(f=>f.id.startsWith("v:")).map(f=>({id:f.id,pid:f.pid,title:f.title,added:f.added,html:f.html})),
