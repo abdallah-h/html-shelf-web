@@ -1,2 +1,5 @@
-# html-shelf-web
-HTML Shelf web version (generated from the app repo)
+# رفّ المشاريع — HTML Shelf (web)
+
+https://abdallah-h.github.io/html-shelf-web/
+
+Generated from the private app repo (`npm run deploy:web`) — don't edit here.

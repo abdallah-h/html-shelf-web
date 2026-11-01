@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل شامل: الكسل والإدمان والعادات المدمرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="shelf-vendor:/fonts/468adc11c613.css" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12141a;
+    --bg-panel:#1b1e27;
+    --bg-panel-2:#20232e;
+    --border: rgba(255,255,255,.08);
+    --border-strong: rgba(255,255,255,.14);
+    --amber:#cc8b3c;
+    --amber-soft: rgba(204,139,60,.14);
+    --teal:#5e8c76;
+    --teal-soft: rgba(94,140,118,.14);
+    --warn:#b05c52;
+    --warn-soft: rgba(176,92,82,.14);
+    --text:#ece8e0;
+    --text-muted:#9ca0ae;
+    --text-dim:#6e7280;
+    --font-display:'Reem Kufi', sans-serif;
+    --font-body:'Tajawal', sans-serif;
+    --nav-h: 76px;
+  }
+
+  [data-theme="light"]{
+    --bg:#f4f1ea;
+    --bg-panel:#ffffff;
+    --bg-panel-2:#efebe2;
+    --border: rgba(20,18,12,.10);
+    --border-strong: rgba(20,18,12,.18);
+    --amber:#b06f1f;
+    --amber-soft: rgba(176,111,31,.12);
+    --teal:#3f7a5f;
+    --teal-soft: rgba(63,122,95,.12);
+    --warn:#a8463b;
+    --warn-soft: rgba(168,70,59,.10);
+    --text:#211f1a;
+    --text-muted:#5c5950;
+    --text-dim:#8a877d;
+  }
+
+  body, .card, .mech-box, .deep-box, nav, .urge-panel, .id-level, .found-card,
+  .myth-card, .check-panel, .builder-output, .day-badge{ transition:background .3s ease, color .3s ease, border-color .3s ease; }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  ul{list-style:none;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001s !important; transition-duration:.001s !important;}
+  }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+  section{scroll-margin-top: var(--nav-h);}
+  .section{padding:90px 0;}
+  .section + .section{border-top:1px solid var(--border);}
+  .eyebrow{
+    display:inline-block; font-size:.8rem; letter-spacing:.04em; color:var(--amber);
+    font-weight:700; margin-bottom:14px;
+  }
+  .section-title{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(1.7rem, 3.2vw, 2.5rem); margin-bottom:18px; line-height:1.35;
+  }
+  .section-lede{ color:var(--text-muted); max-width:680px; font-size:1.02rem; margin-bottom:46px;}
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed; top:0; right:0; left:0; z-index:100;
+    background:rgba(18,20,26,.86); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    height:var(--nav-h);
+  }
+  .nav-inner{
+    max-width:980px; margin:0 auto; padding:0 24px; height:100%;
+    display:flex; align-items:center; justify-content:space-between; gap:18px;
+  }
+  .theme-toggle{
+    flex:none; width:38px; height:38px; border-radius:10px; border:1px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center; color:var(--text-muted); transition:.2s;
+  }
+  .theme-toggle:hover{ color:var(--amber); border-color:var(--amber); }
+  .theme-toggle svg{ width:18px; height:18px; }
+  .theme-toggle .t-sun{ display:none; }
+  [data-theme="light"] .theme-toggle .t-sun{ display:block; }
+  [data-theme="light"] .theme-toggle .t-moon{ display:none; }
+  .brand{ font-family:var(--font-display); font-weight:600; font-size:1.15rem; color:var(--amber); white-space:nowrap;}
+  .nav-right{ display:flex; align-items:center; gap:14px; }
+  .menu-btn{
+    flex:none; width:40px; height:40px; border-radius:10px; border:1px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center; color:var(--text); transition:.2s;
+  }
+  .menu-btn:hover{ color:var(--amber); border-color:var(--amber); }
+  .menu-btn svg{ width:20px; height:20px; }
+
+  /* ---------- sidebar drawer ---------- */
+  .sidebar-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:110;
+    opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease;
+  }
+  .sidebar-overlay.open{ opacity:1; visibility:visible; }
+  .sidebar{
+    position:fixed; top:0; right:0; height:100%; width:290px; max-width:82vw; z-index:120;
+    background:var(--bg-panel); border-left:1px solid var(--border-strong);
+    transform:translateX(100%); transition:transform .32s cubic-bezier(.4,0,.2,1);
+    display:flex; flex-direction:column; overflow-y:auto;
+  }
+  .sidebar.open{ transform:translateX(0); }
+  .sidebar-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 24px; border-bottom:1px solid var(--border); position:sticky; top:0;
+    background:var(--bg-panel);
+  }
+  .sidebar-title{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; color:var(--amber);}
+  .sidebar-close{ width:32px; height:32px; border-radius:8px; color:var(--text-muted); font-size:1rem; transition:.2s;}
+  .sidebar-close:hover{ background:var(--bg-panel-2); color:var(--text); }
+  .sidebar-nav{ padding:14px 16px 40px; }
+  .sb-group{ margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border);}
+  .sb-group:last-child{ border-bottom:none; }
+  .sb-label{ display:block; font-size:.72rem; color:var(--text-dim); font-weight:700; letter-spacing:.03em; padding:10px 12px 6px;}
+  .sidebar-nav a{
+    display:block; padding:10px 14px; border-radius:9px; font-size:.94rem; color:var(--text-muted);
+    transition:.15s; position:relative;
+  }
+  .sidebar-nav a:hover{ background:var(--bg-panel-2); color:var(--text); }
+  .sidebar-nav a.active{ background:var(--amber-soft); color:var(--amber); font-weight:700; }
+  .sidebar-nav a.active::before{ content:""; position:absolute; right:0; top:20%; bottom:20%; width:3px; border-radius:3px; background:var(--amber); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-top: calc(var(--nav-h) + 60px); padding-bottom:70px;
+    display:grid; grid-template-columns: 1.1fr .9fr; gap:50px; align-items:center;
+  }
+  .hero-eyebrow{ color:var(--amber); font-weight:700; font-size:.85rem; letter-spacing:.05em; margin-bottom:18px; display:block;}
+  .hero h1{
+    font-family:var(--font-display); font-weight:600; line-height:1.3;
+    font-size:clamp(2rem, 4.4vw, 3.2rem); margin-bottom:24px;
+  }
+  .hero h1 span{ color:var(--amber);}
+  .hero p{ color:var(--text-muted); font-size:1.08rem; max-width:520px; margin-bottom:32px;}
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:10px;
+    font-weight:700; font-size:.95rem; transition:transform .2s, background .2s, border-color .2s;
+  }
+  .btn-primary{ background:var(--amber); color:#15140f; }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border:1px solid var(--border-strong); color:var(--text); }
+  .btn-ghost:hover{ background:var(--bg-panel-2); }
+
+  .loop-card{ background:var(--bg-panel); border:1px solid var(--border); border-radius:18px; padding:18px; }
+  .loop-caption{ text-align:center; color:var(--text-dim); font-size:.8rem; margin-top:6px;}
+
+  /* ---------- cards / accordion ---------- */
+  .card-group{ display:flex; flex-direction:column; gap:12px; }
+  .card{
+    background:var(--bg-panel); border:1px solid var(--border); border-radius:14px;
+    overflow:hidden; transition:border-color .25s;
+  }
+  .card.open{ border-color:var(--border-strong); }
+  .card-header{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:19px 22px; text-align:right;
+  }
+  .card-header-text{ display:flex; align-items:baseline; gap:12px; }
+  .card-num{ font-family:var(--font-display); color:var(--amber); font-size:.85rem; opacity:.75; min-width:26px;}
+  .card-title{ font-weight:700; font-size:1.03rem; }
+  .card-sub{ color:var(--text-dim); font-size:.84rem; margin-top:3px; }
+  .chevron{
+    flex:none; width:20px; height:20px; transition:transform .3s ease; color:var(--text-muted);
+  }
+  .card.open .chevron{ transform:rotate(180deg); }
+  .card-body{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease; }
+  .card.open .card-body{ grid-template-rows:1fr; }
+  .card-body-inner{ overflow:hidden; }
+  .card-body-pad{ padding:0 22px 22px; }
+  .status-badge{ display:inline-block; font-size:.76rem; font-weight:700; padding:5px 12px; border-radius:8px; margin-bottom:12px; line-height:1.6;}
+  .status-badge.official{ color:var(--warn); background:var(--warn-soft);}
+  .status-badge.partial{ color:var(--amber); background:var(--amber-soft);}
+  .status-badge.pattern{ color:var(--text-muted); background:var(--bg-panel-2); border:1px solid var(--border);}
+  .card-desc{ color:var(--text-muted); font-size:.96rem; margin-bottom:14px;}
+  .root-box{ background:var(--amber-soft); border-radius:10px; padding:13px 16px; margin-bottom:16px;}
+  .root-label{ display:block; font-size:.72rem; color:var(--amber); font-weight:700; letter-spacing:.03em; margin-bottom:5px;}
+  .root-box p{ color:var(--text); font-size:.91rem; line-height:1.7;}
+  .signs-label{ font-size:.78rem; color:var(--text-dim); font-weight:700; margin-bottom:8px;}
+  .signs-list li{ position:relative; padding-right:18px; color:var(--text-muted); font-size:.92rem; margin-bottom:6px; }
+  .signs-list li::before{ content:""; position:absolute; right:0; top:.55em; width:6px; height:6px; border-radius:50%; background:var(--amber); }
+  .tip{
+    margin-top:14px; background:var(--teal-soft); border-right:3px solid var(--teal);
+    border-radius:8px; padding:12px 16px; font-size:.9rem; color:var(--text);
+  }
+  .scenario{ margin-top:14px; padding:14px 16px; border:1px dashed var(--border-strong); border-radius:8px;}
+  .scenario-label{ display:block; font-size:.72rem; color:var(--text-dim); font-weight:700; margin-bottom:6px;}
+  .scenario p{ color:var(--text-muted); font-size:.9rem; line-height:1.8; font-style:italic;}
+  .tip b{ color:var(--teal); }
+
+  /* ---------- tabs ---------- */
+  .tabs{ display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; }
+  .tab-btn{
+    padding:10px 20px; border-radius:999px; border:1px solid var(--border-strong);
+    font-size:.9rem; font-weight:700; color:var(--text-muted); transition:.2s;
+  }
+  .tab-btn.active{ background:var(--amber); border-color:var(--amber); color:#15140f; }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:flex; flex-direction:column; gap:12px; }
+
+  /* ---------- mechanism flow ---------- */
+  .flow{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:36px 0; }
+  .flow-pill{
+    background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:999px;
+    padding:10px 18px; font-size:.88rem; font-weight:700;
+  }
+  .flow-pill.warn{ border-color:var(--warn); color:var(--warn); background:var(--warn-soft); }
+  .flow-arrow{ color:var(--text-dim); font-size:1.1rem; }
+  .mech-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:34px;}
+  .mech-box{ background:var(--bg-panel); border:1px solid var(--border); border-radius:14px; padding:24px;}
+  .mech-box h3{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin-bottom:10px; color:var(--amber);}
+  .mech-box p{ color:var(--text-muted); font-size:.93rem; }
+
+  .deep-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px;}
+  .deep-box{ background:var(--bg-panel-2); border:1px solid var(--border-strong); border-radius:14px; padding:24px;}
+  .deep-tag{ display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.03em; color:var(--teal); background:var(--teal-soft); padding:4px 12px; border-radius:999px; margin-bottom:12px;}
+  .deep-tag.warn{ color:var(--warn); background:var(--warn-soft); }
+  .deep-box h3{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin-bottom:10px;}
+  .deep-box p{ color:var(--text-muted); font-size:.92rem; line-height:1.85;}
+
+  /* ---------- plan steps ---------- */
+  .steps{ display:flex; flex-direction:column; }
+  .step{ display:flex; gap:22px; padding:26px 0; border-top:1px solid var(--border); }
+  .step:first-child{ border-top:none; }
+  .step-num{ font-family:var(--font-display); font-size:2rem; color:var(--amber); opacity:.6; flex:none; width:54px;}
+  .step h3{ font-weight:700; font-size:1.08rem; margin-bottom:6px;}
+  .step p{ color:var(--text-muted); font-size:.95rem; max-width:620px;}
+
+  /* ---------- self check ---------- */
+  .check-panel{ background:var(--bg-panel); border:1px solid var(--border); border-radius:18px; padding:34px; }
+  .check-list{ display:flex; flex-direction:column; gap:4px; margin-bottom:26px; }
+  .check-item{ display:flex; align-items:center; gap:14px; padding:13px 6px; border-bottom:1px solid var(--border); cursor:pointer; }
+  .check-item:last-child{ border-bottom:none; }
+  .check-item input{ position:absolute; opacity:0; width:0; height:0; }
+  .box{
+    flex:none; width:22px; height:22px; border-radius:6px; border:1.5px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center; transition:.2s;
+  }
+  .check-item input:checked + .box{ background:var(--amber); border-color:var(--amber); }
+  .box svg{ width:13px; height:13px; opacity:0; transition:.2s; color:#15140f; }
+  .check-item input:checked + .box svg{ opacity:1; }
+  .check-item span.label{ font-size:.94rem; color:var(--text); }
+
+  .check-result{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .check-count{ font-family:var(--font-display); font-size:2.6rem; color:var(--amber); min-width:60px; }
+  .check-msg{ color:var(--text-muted); font-size:.92rem; flex:1; min-width:220px; }
+  .reset-btn{ font-size:.82rem; color:var(--text-dim); text-decoration:underline; }
+  .check-disclaimer{ margin-top:20px; font-size:.8rem; color:var(--text-dim); border-top:1px solid var(--border); padding-top:16px; }
+
+  /* ---------- help section ---------- */
+  .help-section{ background:var(--bg-panel-2); }
+  .help-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .help-grid h3{ font-family:var(--font-display); font-weight:600; font-size:1.1rem; margin-bottom:16px; color:var(--text);}
+  .help-list li{ position:relative; padding-right:20px; color:var(--text-muted); font-size:.94rem; margin-bottom:10px;}
+  .help-list li::before{ content:"–"; position:absolute; right:0; color:var(--warn); }
+  .help-note{ background:var(--warn-soft); border:1px solid var(--warn); border-radius:12px; padding:20px; font-size:.92rem; color:var(--text); }
+  .help-note b{ color:var(--warn); }
+
+  /* ---------- foundations ---------- */
+  .found-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:26px;}
+  .found-card{ background:var(--bg-panel); border:1px solid var(--border); border-radius:14px; padding:24px 20px; text-align:center;}
+  .found-icon{ font-size:1.7rem; margin-bottom:12px;}
+  .found-card h3{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin-bottom:10px; color:var(--amber);}
+  .found-card p{ color:var(--text-muted); font-size:.88rem; line-height:1.75;}
+  .found-note{ background:var(--teal-soft); border-right:3px solid var(--teal); border-radius:10px; padding:18px 22px; color:var(--text); font-size:.95rem; line-height:1.9;}
+
+  /* ---------- identity ---------- */
+  .identity-grid{ display:flex; flex-direction:column; align-items:center; gap:14px; margin-bottom:46px;}
+  .id-level{ width:100%; max-width:640px; background:var(--bg-panel); border:1px solid var(--border); border-radius:14px; padding:22px 26px; text-align:center;}
+  .id-level.strong{ border-color:var(--teal); background:var(--teal-soft); }
+  .id-num{ display:block; font-size:.74rem; color:var(--text-dim); font-weight:700; margin-bottom:8px; letter-spacing:.03em;}
+  .id-level.strong .id-num{ color:var(--teal); }
+  .id-level h3{ font-family:var(--font-display); font-weight:600; font-size:1.15rem; margin-bottom:8px;}
+  .id-level p{ color:var(--text-muted); font-size:.93rem; max-width:480px; margin:0 auto;}
+  .id-arrow{ color:var(--text-dim); font-size:1.4rem; line-height:1;}
+  .id-shift{ background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:18px; padding:30px;}
+  .id-shift-row{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:12px 0; border-bottom:1px solid var(--border); }
+  .id-shift-row:last-of-type{ border-bottom:none; }
+  .id-bad{ color:var(--text-dim); font-size:.97rem; text-decoration:line-through; flex:1; min-width:140px; text-align:left;}
+  .id-vs{ color:var(--amber); font-weight:700; flex:none;}
+  .id-good{ color:var(--teal); font-weight:700; font-size:1.02rem; flex:1; min-width:140px;}
+  .id-note{ margin-top:20px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-muted); font-size:.93rem; line-height:1.9;}
+
+  /* ---------- scroll progress ---------- */
+  .progress-bar{
+    position:fixed; top:var(--nav-h); right:0; left:0; height:3px; z-index:99;
+    background:linear-gradient(90deg, var(--amber), var(--teal));
+    transform-origin:right; transform:scaleX(0);
+  }
+
+  /* ---------- urge tool ---------- */
+  .urge-panel{
+    background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:20px;
+    padding:40px; text-align:center; position:relative; overflow:hidden;
+  }
+  .urge-stage{ min-height:230px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .urge-step-label{ font-size:.78rem; color:var(--amber); font-weight:700; letter-spacing:.04em; margin-bottom:18px;}
+  .urge-title{ font-family:var(--font-display); font-weight:600; font-size:clamp(1.3rem,3vw,1.8rem); margin-bottom:14px; }
+  .urge-text{ color:var(--text-muted); max-width:480px; margin:0 auto 8px; font-size:1rem; }
+  .breath-ring{
+    width:120px; height:120px; border-radius:50%; margin:8px auto 20px;
+    border:2px solid var(--teal); display:flex; align-items:center; justify-content:center;
+    color:var(--teal); font-weight:700; font-size:.9rem;
+    animation:breathe 8s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%,100%{ transform:scale(.8); opacity:.6; }
+    50%{ transform:scale(1.15); opacity:1; }
+  }
+  .urge-dots{ display:flex; gap:8px; justify-content:center; margin-bottom:26px; }
+  .urge-dot{ width:8px; height:8px; border-radius:50%; background:var(--border-strong); transition:.3s; }
+  .urge-dot.active{ background:var(--amber); width:22px; border-radius:4px; }
+  .urge-controls{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+  /* ---------- replacement builder ---------- */
+  .builder{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .builder-col h3{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin-bottom:14px; color:var(--text);}
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+  .chip{
+    padding:8px 15px; border-radius:999px; border:1px solid var(--border-strong);
+    font-size:.86rem; color:var(--text-muted); transition:.2s; font-weight:500;
+  }
+  .chip:hover{ border-color:var(--amber); color:var(--text); }
+  .chip.selected{ background:var(--amber); border-color:var(--amber); color:#15140f; font-weight:700;}
+  .builder-output{
+    grid-column:1 / -1; margin-top:8px; background:var(--bg-panel-2);
+    border:1px solid var(--border); border-radius:14px; padding:24px; text-align:center;
+    min-height:90px; display:flex; align-items:center; justify-content:center;
+  }
+  .builder-output p{ font-size:1.05rem; line-height:2; color:var(--text); }
+  .builder-output b{ color:var(--amber); }
+  .builder-output .teal{ color:var(--teal); }
+  .builder-empty{ color:var(--text-dim); font-size:.92rem; }
+
+  /* ---------- myths ---------- */
+  .myth-group{ display:flex; flex-direction:column; gap:14px;}
+  .myth-card{ background:var(--bg-panel); border:1px solid var(--border); border-radius:14px; overflow:hidden;}
+  .myth-q{ display:flex; align-items:flex-start; gap:14px; padding:20px 22px; width:100%; text-align:right;}
+  .myth-x{ flex:none; width:26px; height:26px; border-radius:50%; background:var(--warn-soft); color:var(--warn);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.9rem; }
+  .myth-q-text{ font-weight:700; font-size:1rem; }
+  .myth-a{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease;}
+  .myth-card.open .myth-a{ grid-template-rows:1fr;}
+  .myth-a-inner{ overflow:hidden;}
+  .myth-a-pad{ padding:0 22px 22px 22px; }
+  .myth-a-pad .tick{ display:inline-flex; align-items:center; gap:8px; color:var(--teal); font-weight:700; font-size:.82rem; margin-bottom:8px;}
+  .myth-a-pad p{ color:var(--text-muted); font-size:.95rem;}
+
+  /* ---------- 7 day challenge ---------- */
+  .challenge-track{ display:flex; flex-direction:column; gap:0; }
+  .day-row{ display:flex; gap:20px; padding:20px 4px; border-top:1px solid var(--border); align-items:flex-start; }
+  .day-row:first-child{ border-top:none; }
+  .day-badge{
+    flex:none; width:48px; height:48px; border-radius:12px; background:var(--bg-panel-2);
+    border:1px solid var(--border-strong); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:.25s;
+  }
+  .day-badge .d-num{ font-family:var(--font-display); font-size:1.1rem; color:var(--amber); line-height:1; }
+  .day-badge .d-lbl{ font-size:.6rem; color:var(--text-dim); }
+  .day-row.done .day-badge{ background:var(--teal-soft); border-color:var(--teal); }
+  .day-row.done .day-badge .d-num{ color:var(--teal); }
+  .day-content{ flex:1; }
+  .day-content h4{ font-weight:700; font-size:1rem; margin-bottom:4px; transition:.2s;}
+  .day-row.done .day-content h4{ text-decoration:line-through; color:var(--text-dim); }
+  .day-content p{ color:var(--text-muted); font-size:.9rem; }
+  .day-check{
+    flex:none; width:26px; height:26px; border-radius:8px; border:1.5px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.2s; margin-top:10px;
+  }
+  .day-row.done .day-check{ background:var(--teal); border-color:var(--teal); }
+  .day-check svg{ width:14px; height:14px; opacity:0; color:#15140f; transition:.2s;}
+  .day-row.done .day-check svg{ opacity:1; }
+  .challenge-progress{ margin-top:24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .cp-track{ flex:1; min-width:200px; height:8px; border-radius:999px; background:var(--bg-panel-2); overflow:hidden;}
+  .cp-fill{ height:100%; width:0; background:linear-gradient(90deg, var(--teal), var(--amber)); border-radius:999px; transition:width .4s ease;}
+  .cp-label{ font-size:.85rem; color:var(--text-muted); font-weight:700; white-space:nowrap;}
+
+  footer{ padding:50px 0 70px; }
+  footer p{ color:var(--text-dim); font-size:.82rem; max-width:560px; line-height:1.9;}
+
+  /* ---------- reading badge ---------- */
+  .read-badge{ display:inline-flex; align-items:center; gap:8px; margin-top:22px; color:var(--text-dim); font-size:.86rem; font-weight:500;}
+  .read-badge svg{ width:16px; height:16px; }
+
+  /* ---------- quiz ---------- */
+  .quiz-panel{ background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:20px; padding:36px; }
+  .quiz-stage{ min-height:200px; }
+  .quiz-q{ font-family:var(--font-display); font-weight:600; font-size:1.3rem; margin-bottom:8px; text-align:center;}
+  .quiz-progress{ text-align:center; color:var(--text-dim); font-size:.8rem; margin-bottom:24px;}
+  .quiz-options{ display:flex; flex-direction:column; gap:12px; max-width:560px; margin:0 auto;}
+  .quiz-opt{
+    padding:16px 22px; border-radius:12px; border:1px solid var(--border-strong); background:var(--bg-panel-2);
+    text-align:right; font-size:.98rem; font-weight:500; transition:.2s; color:var(--text);
+  }
+  .quiz-opt:hover{ border-color:var(--amber); transform:translateX(-4px); }
+  .quiz-result{ text-align:center; }
+  .quiz-result .qr-label{ color:var(--teal); font-weight:700; font-size:.82rem; margin-bottom:10px; display:block;}
+  .quiz-result h3{ font-family:var(--font-display); font-weight:600; font-size:1.5rem; margin-bottom:12px;}
+  .quiz-result p{ color:var(--text-muted); max-width:480px; margin:0 auto 24px; }
+  .quiz-feel{ background:var(--teal-soft); border-radius:12px; padding:16px 20px; max-width:520px; margin:0 auto 24px; text-align:right;}
+  .quiz-feel span{ display:block; font-size:.78rem; font-weight:700; color:var(--teal); margin-bottom:6px;}
+  .quiz-feel p{ margin:0 !important; font-size:.92rem; color:var(--text) !important;}
+  .quiz-feel a{ color:var(--teal); font-weight:700; white-space:nowrap;}
+  .quiz-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+
+  /* ---------- distinction ---------- */
+  .dist-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:28px;}
+  .dist-card{ background:var(--bg-panel); border:1px solid var(--border); border-radius:16px; padding:26px; display:flex; flex-direction:column;}
+  .dist-head{ display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .dist-dot{ width:12px; height:12px; border-radius:50%; flex:none;}
+  .dist-dot.teal{ background:var(--teal);} .dist-dot.amber{ background:var(--amber);} .dist-dot.warn{ background:var(--warn);}
+  .dist-head h3{ font-family:var(--font-display); font-weight:600; font-size:1.2rem;}
+  .dist-def{ color:var(--text); font-size:.95rem; margin-bottom:16px; line-height:1.8;}
+  .dist-list{ margin-bottom:18px; flex:1;}
+  .dist-list li{ position:relative; padding-right:18px; color:var(--text-muted); font-size:.9rem; margin-bottom:9px;}
+  .dist-list li::before{ content:""; position:absolute; right:0; top:.55em; width:5px; height:5px; border-radius:50%; background:var(--text-dim);}
+  .dist-foot{ border-top:1px solid var(--border); padding-top:14px; font-size:.86rem; font-weight:700; color:var(--amber);}
+  .dist-note{ background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:12px; padding:20px 24px; color:var(--text-muted); font-size:.95rem; line-height:1.9;}
+  .dist-note b{ color:var(--text); }
+
+  /* ---------- journal & myplan ---------- */
+  .journal-panel, .myplan-card{ background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:18px; padding:30px;}
+  .journal-form{ display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;}
+  .j-input{
+    flex:1; min-width:160px; padding:13px 16px; border-radius:10px; background:var(--bg-panel-2);
+    border:1px solid var(--border-strong); color:var(--text); font-family:inherit; font-size:.95rem;
+  }
+  .j-input:focus{ outline:none; border-color:var(--amber); }
+  .j-input::placeholder{ color:var(--text-dim); }
+  .journal-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:16px;}
+  .journal-empty{ color:var(--text-dim); font-size:.9rem; text-align:center; padding:14px;}
+  .j-entry{ display:flex; align-items:center; gap:14px; background:var(--bg-panel-2); border-radius:10px; padding:13px 16px;}
+  .j-entry .j-sit{ font-weight:700; font-size:.92rem; }
+  .j-entry .j-feel{ color:var(--amber); font-size:.85rem; background:var(--amber-soft); padding:3px 10px; border-radius:999px;}
+  .j-entry .j-del{ margin-right:auto; color:var(--text-dim); font-size:1.1rem; line-height:1;}
+  .j-entry .j-del:hover{ color:var(--warn); }
+  .journal-hint, .mp-hint{ color:var(--text-dim); font-size:.82rem; line-height:1.7;}
+
+  .mp-field{ margin-bottom:16px;}
+  .mp-field label{ display:block; font-size:.85rem; color:var(--text-muted); font-weight:700; margin-bottom:7px;}
+  .mp-field .j-input{ width:100%; }
+  .mp-preview{ background:var(--bg-panel-2); border-right:3px solid var(--teal); border-radius:10px; padding:22px; margin:22px 0; line-height:2.1; font-size:1rem; min-height:60px;}
+  .mp-preview b{ color:var(--amber); } .mp-preview .teal{ color:var(--teal); }
+  .mp-empty{ color:var(--text-dim); font-size:.9rem;}
+  .mp-actions{ display:flex; gap:12px; flex-wrap:wrap;}
+
+  /* ---------- print ---------- */
+  @media print{
+    nav, .progress-bar, .theme-toggle, footer, .mp-actions, .read-badge, .sidebar, .sidebar-overlay, .menu-btn{ display:none !important; }
+    body{ background:#fff; color:#000; }
+    section:not(#myplan){ display:none !important; }
+    #myplan{ padding:0; }
+    .myplan-card{ border:none; padding:0; }
+    .mp-field .j-input{ border:1px solid #999; color:#000; background:#fff;}
+    .mp-preview{ background:#f3f3f3; color:#000; border-color:#666;}
+    .mp-preview b, .mp-preview .teal{ color:#000; font-weight:700;}
+  }
+
+  /* ---------- brain recovery ---------- */
+  .brain-timeline{ position:relative; padding-right:34px; margin-bottom:30px;}
+  .brain-timeline::before{ content:""; position:absolute; right:15px; top:12px; bottom:12px; width:2px; background:var(--border-strong);}
+  .bt-item{ display:flex; gap:20px; padding:16px 0; position:relative;}
+  .bt-marker{
+    position:absolute; right:-34px; width:32px; height:32px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--amber); color:var(--amber);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; font-family:var(--font-display);
+  }
+  .bt-marker.done{ border-color:var(--teal); color:var(--teal); }
+  .bt-body h3{ font-family:var(--font-display); font-weight:600; font-size:1.08rem; margin-bottom:7px;}
+  .bt-body p{ color:var(--text-muted); font-size:.94rem; line-height:1.85; max-width:640px;}
+  .brain-note{ background:var(--teal-soft); border-right:3px solid var(--teal); border-radius:10px; padding:20px 24px; color:var(--text); font-size:.95rem; line-height:1.9;}
+  .brain-note b{ color:var(--teal); }
+
+  /* ---------- deep why ---------- */
+  .why-chain{ background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:16px; padding:26px; margin-bottom:26px;}
+  .why-step{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:13px 0; border-bottom:1px solid var(--border);}
+  .why-step:last-child{ border-bottom:none; }
+  .why-q{ font-size:.98rem; color:var(--text); flex:1; min-width:200px;}
+  .why-why{ font-size:.8rem; color:var(--amber); font-weight:700; background:var(--amber-soft); padding:4px 12px; border-radius:999px;}
+  .why-step.final .why-q{ color:var(--teal); font-weight:700; font-size:1.05rem;}
+  .why-tag{ font-size:.8rem; color:var(--teal); font-weight:700;}
+  .why-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:26px;}
+  .why-box{ background:var(--bg-panel); border:1px solid var(--border); border-radius:14px; padding:24px;}
+  .why-box.strong{ border-color:var(--teal); background:var(--teal-soft);}
+  .why-box h3{ font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin-bottom:10px; color:var(--amber);}
+  .why-box.strong h3{ color:var(--teal); }
+  .why-box p{ color:var(--text-muted); font-size:.93rem; line-height:1.85;}
+  .why-action{ background:var(--bg-panel-2); border:1px dashed var(--border-strong); border-radius:14px; padding:24px;}
+  .why-action-label{ display:inline-block; font-size:.75rem; font-weight:700; color:var(--amber); background:var(--amber-soft); padding:4px 12px; border-radius:999px; margin-bottom:12px;}
+  .why-action p{ color:var(--text-muted); font-size:.95rem; line-height:1.9;}
+
+  /* ---------- relapse map ---------- */
+  .relapse-stages{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:26px;}
+  .rl-stage{ background:var(--bg-panel); border:1px solid var(--border); border-radius:16px; padding:26px; display:flex; flex-direction:column;}
+  .rl-head{ display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap;}
+  .rl-badge{ font-size:.72rem; font-weight:700; padding:4px 11px; border-radius:999px;}
+  .rl-badge.teal{ color:var(--teal); background:var(--teal-soft);}
+  .rl-badge.amber{ color:var(--amber); background:var(--amber-soft);}
+  .rl-badge.warn{ color:var(--warn); background:var(--warn-soft);}
+  .rl-head h3{ font-family:var(--font-display); font-weight:600; font-size:1.12rem;}
+  .rl-desc{ color:var(--text); font-size:.93rem; margin-bottom:14px; line-height:1.8;}
+  .rl-signs{ margin-bottom:16px; flex:1;}
+  .rl-signs li{ position:relative; padding-right:17px; color:var(--text-muted); font-size:.89rem; margin-bottom:8px; line-height:1.7;}
+  .rl-signs li::before{ content:""; position:absolute; right:0; top:.6em; width:5px; height:5px; border-radius:50%; background:var(--text-dim);}
+  .rl-action{ border-top:1px solid var(--border); padding-top:14px; font-size:.87rem; color:var(--teal); font-weight:500; line-height:1.7;}
+  .rl-note{ background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:12px; padding:20px 24px; color:var(--text-muted); font-size:.95rem; line-height:1.9;}
+  .rl-note b{ color:var(--amber); }
+
+  /* ---------- hotlines & not-lazy ---------- */
+  .hotlines{ margin-top:18px; background:var(--bg-panel); border:1px solid var(--border-strong); border-radius:12px; padding:18px;}
+  .hl-title{ display:block; font-size:.8rem; font-weight:700; color:var(--text-dim); margin-bottom:12px;}
+  .hl-item{ display:flex; gap:14px; align-items:flex-start; padding:12px; border-radius:10px; transition:.2s; margin-bottom:6px;}
+  .hl-item:hover{ background:var(--bg-panel-2);}
+  .hl-num{ flex:none; font-family:var(--font-display); font-size:1.35rem; font-weight:600; color:var(--teal); direction:ltr; min-width:70px;}
+  .hl-desc{ color:var(--text-muted); font-size:.88rem; line-height:1.7;}
+  .hl-note{ margin-top:10px; font-size:.82rem; color:var(--text-dim); line-height:1.8;}
+  .not-lazy{ margin-top:30px; background:var(--bg-panel); border:1px solid var(--amber); border-radius:16px; padding:28px;}
+  .nl-tag{ display:inline-block; font-size:.74rem; font-weight:700; color:var(--amber); background:var(--amber-soft); padding:4px 12px; border-radius:999px; margin-bottom:12px;}
+  .not-lazy h3{ font-family:var(--font-display); font-weight:600; font-size:1.25rem; margin-bottom:10px;}
+  .not-lazy > p{ color:var(--text-muted); font-size:.95rem; margin-bottom:18px; line-height:1.85;}
+  .nl-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;}
+  .nl-item{ background:var(--bg-panel-2); border-radius:10px; padding:16px;}
+  .nl-item b{ display:block; color:var(--text); font-size:.98rem; margin-bottom:6px;}
+  .nl-item span{ color:var(--text-muted); font-size:.88rem; line-height:1.75;}
+  .nl-foot{ color:var(--teal) !important; font-weight:500; margin-bottom:0 !important;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .hero{ grid-template-columns:1fr; padding-top:calc(var(--nav-h) + 36px); }
+    .mech-grid{ grid-template-columns:1fr; }
+    .deep-row{ grid-template-columns:1fr; }
+    .found-grid{ grid-template-columns:1fr 1fr; }
+    .dist-grid{ grid-template-columns:1fr; }
+    .relapse-stages{ grid-template-columns:1fr; }
+    .nl-grid{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr; }
+    .quiz-panel{ padding:24px; }
+    .help-grid{ grid-template-columns:1fr; }
+    .builder{ grid-template-columns:1fr; }
+    .brand{ font-size:1rem; }
+  }
+  @media (max-width:520px){
+    .section{ padding:60px 0; }
+    .check-panel{ padding:22px; }
+    .urge-panel{ padding:26px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-right">
+      <button class="menu-btn" id="menuBtn" aria-label="القائمة" title="القائمة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <span class="brand">دليل التحرر من العادة</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="تبديل المظهر" title="تبديل المظهر">
+      <svg class="t-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="t-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <span class="sidebar-title">محتويات الدليل</span>
+    <button class="sidebar-close" id="sidebarClose" aria-label="إغلاق">✕</button>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sb-group">
+      <span class="sb-label">ابدأ من هنا</span>
+      <a href="#quiz">اعرف نوعك</a>
+    </div>
+    <div class="sb-group">
+      <span class="sb-label">أنواع المشكلة</span>
+      <a href="#laziness">الكسل</a>
+      <a href="#addiction">الإدمان</a>
+      <a href="#habits">عادات أخرى</a>
+    </div>
+    <div class="sb-group">
+      <span class="sb-label">الفهم</span>
+      <a href="#mechanism">الآلية النفسية</a>
+      <a href="#brain">المخ بيتعافى</a>
+      <a href="#urge">لحظة الرغبة</a>
+      <a href="#identity">الهوية</a>
+      <a href="#why">الـ"ليه" العميق</a>
+      <a href="#distinction">المفاهيم الثلاثة</a>
+    </div>
+    <div class="sb-group">
+      <span class="sb-label">العلاج والأدوات</span>
+      <a href="#plan">خطة التعافي</a>
+      <a href="#builder">ابنِ بديلك</a>
+      <a href="#challenge">تحدي ٧ أيام</a>
+      <a href="#journal">مذكرة المحفّزات</a>
+      <a href="#myplan">خطتي الشخصية</a>
+      <a href="#relapse">خريطة الانتكاسة</a>
+      <a href="#foundations">أساس التغيير</a>
+    </div>
+    <div class="sb-group">
+      <span class="sb-label">مراجع ودعم</span>
+      <a href="#myths">خرافات وحقائق</a>
+      <a href="#faq">أسئلة شائعة</a>
+      <a href="#selfcheck">تحقق من نفسك</a>
+      <a href="#help">طلب المساعدة</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- ========== HERO ========== -->
+<header class="wrap hero">
+  <div>
+    <span class="hero-eyebrow">دليل شامل ومنظم</span>
+    <h1>كل كسل وكل إدمان<br>بيمشي في <span>نفس الحلقة</span></h1>
+    <p>دليل عملي يرتب أنواع الكسل والإدمان والعادات السيئة اللي بتأخر الإنسان، ويوريك الآلية النفسية الواحدة اللي بتحركهم كلهم، وطريقة عملية لكسرها خطوة بخطوة.</p>
+    <div class="cta-row">
+      <a href="#quiz" class="btn btn-primary">اعرف نوعك أولاً</a>
+      <a href="#mechanism" class="btn btn-ghost">افهم الآلية</a>
+    </div>
+    <div class="read-badge" id="readBadge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span id="readTime">وقت القراءة التقديري</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="loop-card">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="210" cy="210" r="150" fill="none" stroke="var(--border-strong)" stroke-width="1.5" stroke-dasharray="2 8"/>
+        <!-- nodes -->
+        <g font-family="Tajawal, sans-serif" font-size="13" font-weight="700">
+          <!-- N1 top: محفز -->
+          <circle cx="210" cy="60" r="9" fill="var(--amber)"/>
+          <text x="210" y="36" text-anchor="middle" fill="var(--text)">محفّز</text>
+          <text x="210" y="20" text-anchor="middle" fill="var(--text-dim)" font-size="10" font-weight="400">(ملل / توتر / ألم)</text>
+
+          <!-- N2 right: رغبة -->
+          <circle cx="352.7" cy="163.6" r="9" fill="var(--amber)"/>
+          <text x="362" y="160" text-anchor="start" fill="var(--text)">رغبة وتوق</text>
+
+          <!-- N3 bottom-right: سلوك هروبي -->
+          <circle cx="298.2" cy="331.4" r="9" fill="var(--amber)"/>
+          <text x="298.2" y="358" text-anchor="middle" fill="var(--text)">سلوك هروبي</text>
+
+          <!-- N4 bottom-left: راحة مؤقتة -->
+          <circle cx="121.8" cy="331.4" r="9" fill="var(--teal)"/>
+          <text x="121.8" y="358" text-anchor="middle" fill="var(--text)">راحة مؤقتة</text>
+
+          <!-- N5 left: ذنب وفراغ -->
+          <circle cx="67.3" cy="163.6" r="9" fill="var(--warn)"/>
+          <text x="58" y="160" text-anchor="end" fill="var(--text)">ذنب وفراغ</text>
+        </g>
+        <!-- direction arrows along the circle -->
+        <g fill="var(--text-dim)">
+          <polygon points="289,98 298,113 280,114" />
+          <polygon points="334,259 320,266 322,247" />
+          <polygon points="200,355 213,367 188,368" />
+          <polygon points="100,259 88,251 105,243" />
+          <polygon points="131,98 119,90 138,84" />
+        </g>
+        <text x="210" y="215" text-anchor="middle" fill="var(--text-dim)" font-family="Reem Kufi" font-size="15">حلقة الهروب</text>
+      </svg>
+    </div>
+    <p class="loop-caption">نفس الحلقة، خمس محطات، آلاف الأشكال</p>
+  </div>
+</header>
+
+<!-- ========== QUIZ ========== -->
+<section class="section" id="quiz">
+  <div class="wrap">
+    <span class="eyebrow">ابدأ من هنا</span>
+    <h2 class="section-title reveal">اعرف نوعك في دقيقة</h2>
+    <p class="section-lede reveal">بدل ما تقرا كل حاجة، جاوب على سؤالين وهنوجّهك للقسم الأنسب لحالتك. مفيش إجابة صح أو غلط.</p>
+
+    <div class="quiz-panel reveal" id="quizPanel">
+      <div class="quiz-stage" id="quizStage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LAZINESS ========== -->
+<section class="section" id="laziness">
+  <div class="wrap">
+    <span class="eyebrow">النوع الأول</span>
+    <h2 class="section-title reveal">أنواع الكسل</h2>
+    <p class="section-lede reveal">الكسل مش حاجة واحدة. هو ست عادات مختلفة، كل واحدة بتأخر جزء مختلف من حياتك. اضغط على أي نوع عشان تعرف علاماته ونصيحة عملية للتعامل معاه.</p>
+
+    <div class="card-group" id="laziness-cards"></div>
+
+    <div class="not-lazy reveal">
+      <span class="nl-tag">تنبيه مهم قبل ما تحكم على نفسك</span>
+      <h3>لما الكسل مش كسل</h3>
+      <p>أحيانًا اللي شكله كسل بيكون عرض لحاجة تانية محتاجة اهتمام مختلف تمامًا. لو لاحظت أي حاجة من دول، الإرادة لوحدها مش الحل:</p>
+      <div class="nl-grid">
+        <div class="nl-item"><b>الاكتئاب</b><span>لو فقدان الطاقة مصحوب بحزن أو فراغ مستمر، وفقدان الاستمتاع بحاجات كنت بتحبها، لفترة أكتر من أسبوعين.</span></div>
+        <div class="nl-item"><b>تشتّت الانتباه (ADHD)</b><span>لو التأجيل وصعوبة البدء والتركيز مرافقينك من زمان، حتى في الحاجات اللي بتهمك فعلاً، مش في فترة معينة بس.</span></div>
+        <div class="nl-item"><b>أسباب جسدية</b><span>الأنيميا، مشاكل الغدة الدرقية، نقص بعض الفيتامينات، أو اضطرابات النوم ممكن تعمل إرهاق مستمر شبه الكسل تمامًا.</span></div>
+        <div class="nl-item"><b>الاحتراق النفسي</b><span>لو كنت شغال فوق طاقتك لفترة طويلة وبعدين فجأة فقدت أي قدرة أو رغبة، ده استنزاف مش كسل.</span></div>
+      </div>
+      <p class="nl-foot">في الحالات دي، زيارة طبيب (وتحاليل بسيطة للأسباب الجسدية) أو مختص نفسي أذكى بكتير من إنك تلوم نفسك.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ADDICTION ========== -->
+<section class="section" id="addiction">
+  <div class="wrap">
+    <span class="eyebrow">النوع الثاني</span>
+    <h2 class="section-title reveal">أنواع الإدمان</h2>
+    <p class="section-lede reveal">الإدمان نوعين رئيسيين: إدمان مواد بتدخل الجسم، وإدمان سلوكي بيعتمد على فعل بيكرر نفسه. الاتنين بيشتغلوا بنفس مبدأ الدوبامين، بس بدرجات خطورة مختلفة.</p>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" data-tab="substance">إدمان المواد</button>
+      <button class="tab-btn" data-tab="behavioral">إدمان سلوكي</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-substance"></div>
+    <div class="tab-panel" id="tab-behavioral"></div>
+  </div>
+</section>
+
+<!-- ========== OTHER HABITS ========== -->
+<section class="section" id="habits">
+  <div class="wrap">
+    <span class="eyebrow">النوع الثالث</span>
+    <h2 class="section-title reveal">عادات سيئة بتهدم البنية النفسية</h2>
+    <p class="section-lede reveal">مش كل حاجة مدمرة لازم تكون "إدمان" بالمعنى التقليدي. في عادات يومية بتآكل قدرتك على التطور بهدوء وبشكل تراكمي.</p>
+
+    <div class="card-group" id="habits-cards"></div>
+  </div>
+</section>
+
+<!-- ========== MECHANISM ========== -->
+<section class="section" id="mechanism">
+  <div class="wrap">
+    <span class="eyebrow">جذر المشكلة</span>
+    <h2 class="section-title reveal">الآلية النفسية المشتركة</h2>
+    <p class="section-lede reveal">السر إن الكسل والإدمان والعادة السيئة مش معارك منفصلة. هم كلهم نسخة من نفس الحلقة، وفهمها هو اللي بيخلي المواجهة ممكنة.</p>
+
+    <div class="flow reveal">
+      <span class="flow-pill warn">محفّز (ملل / توتر / ألم)</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">رغبة وتوق</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">سلوك هروبي</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">راحة مؤقتة (دوبامين)</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill warn">ذنب وفراغ</span>
+      <span class="flow-arrow">↻</span>
+    </div>
+
+    <div class="mech-grid">
+      <div class="mech-box reveal">
+        <h3>ليه السلوك بيتكرر؟</h3>
+        <p>كل سلوك في الحلقة بيدي مكافأة فورية وسريعة، حتى لو صغيرة. المخ بيتعلم إن السلوك ده "بيحل" المشكلة، فبيكرره تلقائيًا في المرة الجاية اللي يحس فيها بنفس الشعور المزعج، حتى لو السلوك في الحقيقة بيزود المشكلة على المدى الطويل.</p>
+      </div>
+      <div class="mech-box reveal">
+        <h3>ليه قوة الإرادة لوحدها مش كفاية؟</h3>
+        <p>الإرادة بتقاوم في لحظة المحفز، لكنها بتتعب بسرعة. المعركة الحقيقية مش "تقاوم أكتر"، لكن "تقصّر الحلقة" من جذرها: تقلل المحفزات، وتدوّر على راحة بديلة أسرع وأرخص من السلوك المدمر.</p>
+      </div>
+    </div>
+
+    <div class="deep-row">
+      <div class="deep-box reveal">
+        <span class="deep-tag">حقيقة الوقت</span>
+        <h3>التغيير بطيء وده طبيعي</h3>
+        <p>المخ بيبني المسارات العصبية بالتكرار، مش بقرار لحظي. العادة الجديدة محتاجة أسابيع من التكرار عشان تبقى تلقائية. لو استعجلت النتيجة وحكمت على نفسك بدري، هتستسلم قبل ما المخ يخلص شغله. الملل والبطء جزء من النجاح مش علامة فشل.</p>
+      </div>
+      <div class="deep-box reveal">
+        <span class="deep-tag warn">نقطة فاصلة</span>
+        <h3>زلّة مش انتكاسة</h3>
+        <p>في فرق ضخم بين "وقعت مرة" و"رجعت تاني خالص". الزلة موقف واحد، والانتكاسة بتحصل لما الزلة تتبعها موجة ذنب وجلد ذات بتقول "خلاص خربت كل حاجة" فترجع للسلوك بالكامل. الزلة مش بتلغي تقدّمك، اللي بيلغيه هو ردة فعلك القاسية عليها. ارجع كمّل من نفس النقطة بهدوء.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BRAIN RECOVERY ========== -->
+<section class="section" id="brain">
+  <div class="wrap">
+    <span class="eyebrow">أمل مبني على علم</span>
+    <h2 class="section-title reveal">المخ بيتعافى فعلاً</h2>
+    <p class="section-lede reveal">أكبر خوف عند أي حد: "هل أنا خرّبت نفسي للأبد؟" الإجابة العلمية لأ. المخ عنده خاصية اسمها المرونة العصبية — يعني بيقدر يعيد بناء مساراته. نفس الآلية اللي كوّنت العادة هي اللي بتقدر تفكّها.</p>
+
+    <div class="brain-timeline">
+      <div class="bt-item reveal">
+        <div class="bt-marker"><span>١</span></div>
+        <div class="bt-body">
+          <h3>الأيام الأولى — الأصعب</h3>
+          <p>المخ بيدوّر على المكافأة المعتادة وما بيلاقيهاش، فبتحس بتوتر وتقلب مزاج ورغبة قوية. ده مش دليل فشل، ده دليل إن التغيير بدأ فعلاً والمخ بيحتج.</p>
+        </div>
+      </div>
+      <div class="bt-item reveal">
+        <div class="bt-marker"><span>٢</span></div>
+        <div class="bt-body">
+          <h3>الأسابيع الأولى — الرغبة بتقل</h3>
+          <p>الرغبة بتفضل بتيجي، بس بتبقى أقصر وأضعف كل مرة تعدّيها من غير استجابة. المخ بيتعلّم إن السلوك ده مش هييجي، فبيبطّل يطلبه بنفس الإلحاح.</p>
+        </div>
+      </div>
+      <div class="bt-item reveal">
+        <div class="bt-marker"><span>٣</span></div>
+        <div class="bt-body">
+          <h3>الشهور الأولى — البديل بيثبت</h3>
+          <p>السلوك الجديد بيبدأ يبقى تلقائي ومش محتاج مجهود كبير. نظام المكافأة بيرجع يستجيب للمتع الطبيعية البسيطة اللي كانت بقت باهتة (أكلة حلوة، مشي، قعدة مع صحاب).</p>
+        </div>
+      </div>
+      <div class="bt-item reveal">
+        <div class="bt-marker done"><span>✓</span></div>
+        <div class="bt-body">
+          <h3>بعد كده — مسار جديد</h3>
+          <p>المسار القديم ما بيتمسحش تمامًا، عشان كده المحفّز القديم ممكن يصحّى الرغبة حتى بعد فترة طويلة. بس المسار الجديد بيبقى أقوى وأسهل، والسيطرة بترجع لك.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="brain-note reveal">
+      <b>ليه ده مهم تعرفه؟</b> لأن أغلب الناس بتستسلم في المرحلة الأولى وهي فاكرة إن الصعوبة دي هتفضل للأبد. الحقيقة إن الصعوبة نفسها مؤقتة وبتقل بالتدريج — بس بشرط إنك تعدّي المرحلة دي من غير ما ترجع تغذّي الحلقة.
+    </div>
+  </div>
+</section>
+
+<!-- ========== URGE TOOL ========== -->
+<section class="section" id="urge">
+  <div class="wrap">
+    <span class="eyebrow">أداة فورية</span>
+    <h2 class="section-title reveal">في لحظة الرغبة</h2>
+    <p class="section-lede reveal">لما الرغبة في السلوك تيجي، مش لازم تقاومها بقوة. الموجة دي بتعلى وبتنزل لوحدها خلال دقايق لو ما طعمتهاش. اتبع الخطوات دي وانت حاسس بالرغبة فعليًا.</p>
+
+    <div class="urge-panel reveal">
+      <div class="urge-stage" id="urgeStage"></div>
+      <div class="urge-dots" id="urgeDots"></div>
+      <div class="urge-controls">
+        <button class="btn btn-ghost" id="urgePrev">السابق</button>
+        <button class="btn btn-primary" id="urgeNext">التالي</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== IDENTITY ========== -->
+<section class="section" id="identity">
+  <div class="wrap">
+    <span class="eyebrow">أعمق مستوى للتغيير</span>
+    <h2 class="section-title reveal">الهوية قبل العادة</h2>
+    <p class="section-lede reveal">أغلب الناس بتحاول تغيّر السلوك مباشرة، وده أصعب طريق. التغيير الحقيقي والدائم بيبدأ من سؤال أعمق: مين عايز تبقى؟ لما الهوية تتغير، السلوك بيتبعها لوحده.</p>
+
+    <div class="identity-grid">
+      <div class="id-level reveal">
+        <span class="id-num">المستوى الأضعف</span>
+        <h3>تغيير النتيجة</h3>
+        <p>"عايز أخس ١٠ كيلو" — هدف مرتبط بنتيجة. بمجرد ما توصلها أو تفشل فيها، الدافع بيختفي، فبترجع تاني.</p>
+      </div>
+      <div class="id-arrow reveal">↓</div>
+      <div class="id-level reveal">
+        <span class="id-num">المستوى الأوسط</span>
+        <h3>تغيير العملية</h3>
+        <p>"هتمرّن ٣ مرات في الأسبوع" — أحسن، لأنه نظام مش هدف. بس لسه ممكن يتسحب منك في أول ضغط لو مش مربوط بحاجة أعمق.</p>
+      </div>
+      <div class="id-arrow reveal">↓</div>
+      <div class="id-level strong reveal">
+        <span class="id-num">المستوى الأقوى والأبقى</span>
+        <h3>تغيير الهوية</h3>
+        <p>"أنا شخص بيهتم بصحته" — هنا السلوك بيبقى تعبير عن مين انت، مش مجهود ضد رغبتك. كل فعل صغير بيثبت لنفسك الهوية الجديدة دي.</p>
+      </div>
+    </div>
+
+    <div class="id-shift reveal">
+      <div class="id-shift-row">
+        <span class="id-bad">"بحاول أبطّل تدخين"</span>
+        <span class="id-vs">→</span>
+        <span class="id-good">"أنا مش مدخّن"</span>
+      </div>
+      <div class="id-shift-row">
+        <span class="id-bad">"لازم أذاكر"</span>
+        <span class="id-vs">→</span>
+        <span class="id-good">"أنا شخص بيتعلّم كل يوم"</span>
+      </div>
+      <div class="id-shift-row">
+        <span class="id-bad">"نفسي أبطّل تأجيل"</span>
+        <span class="id-vs">→</span>
+        <span class="id-good">"أنا شخص بينفّذ اللي بيقرره"</span>
+      </div>
+      <p class="id-note">كل مرة تعمل فيها فعل صغير يتماشى مع الهوية اللي عايزها، انت بتصوّت لنفسك إنك بقيت الشخص ده. التغيير مجموع أصوات صغيرة متراكمة، مش قرار واحد كبير.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEEP WHY ========== -->
+<section class="section" id="why">
+  <div class="wrap">
+    <span class="eyebrow">وقود التغيير</span>
+    <h2 class="section-title reveal">الـ"ليه" العميق بتاعك</h2>
+    <p class="section-lede reveal">الأدوات من غير سبب حقيقي بتنهار عند أول ضغط. الحماس بيخلص في أيام، لكن السبب العميق بيفضل. الطريقة إنك تنزل لتحت الإجابة السطحية بسؤال "وليه؟" خمس مرات لحد ما توصل للجذر.</p>
+
+    <div class="why-chain reveal">
+      <div class="why-step"><span class="why-q">عايز أبطّل السهر</span><span class="why-why">ليه؟</span></div>
+      <div class="why-step"><span class="why-q">عشان بصحى تعبان</span><span class="why-why">ليه ده مهم؟</span></div>
+      <div class="why-step"><span class="why-q">عشان يومي بيضيع وأنا مش مركّز</span><span class="why-why">وليه؟</span></div>
+      <div class="why-step"><span class="why-q">عشان مش بحقق حاجة وبحس بإحباط من نفسي</span><span class="why-why">وليه؟</span></div>
+      <div class="why-step final"><span class="why-q">عايز أحترم نفسي وأحس إني مسيطر على حياتي</span><span class="why-tag">← الجذر الحقيقي</span></div>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-box reveal">
+        <h3>دافع الهروب من الألم</h3>
+        <p>"عايز أبطّل عشان مش قادر على الإحساس ده". قوي في البداية، لكنه بيضعف بمجرد ما الألم يقل شوية، فبترجع تاني.</p>
+      </div>
+      <div class="why-box strong reveal">
+        <h3>دافع السعي لقيمة</h3>
+        <p>"عايز أبقى الشخص اللي أولادي فخورين بيه". ده بيفضل شغال حتى بعد ما الألم يروح، لأنه مربوط بمعنى مش بمزاج.</p>
+      </div>
+    </div>
+
+    <div class="why-action reveal">
+      <span class="why-action-label">جرّب دلوقتي</span>
+      <p>اسأل نفسك "ليه عايز أغيّر ده؟" وكل ما تجاوب، اسأل "وليه ده مهم؟" تاني. كرر لحد ما توصل لإجابة تلمسك فعلاً. الإجابة دي هي اللي هتصحيك في اليوم اللي مش لاقي فيه أي حماس — فاكتبها في "خطتي الشخصية" تحت.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DISTINCTION ========== -->
+<section class="section" id="distinction">
+  <div class="wrap">
+    <span class="eyebrow">صحّح المفهوم</span>
+    <h2 class="section-title reveal">عادة ولا إدمان ولا اضطراب؟</h2>
+    <p class="section-lede reveal">الناس بتخلط بين التلاتة، والخلط ده بيأثر على نوع المساعدة المطلوبة. الفرق مش في السلوك نفسه، لكن في درجة السيطرة والأثر والحاجة للتدخل.</p>
+
+    <div class="dist-grid">
+      <div class="dist-card reveal">
+        <div class="dist-head"><span class="dist-dot teal"></span><h3>عادة سيئة</h3></div>
+        <p class="dist-def">سلوك متكرر تلقائي، لكنك لسه قادر توقفه بقرار وجهد معقول.</p>
+        <ul class="dist-list">
+          <li>السيطرة لسه في إيدك إلى حد كبير</li>
+          <li>الأثر محدود وتراكمي بطيء</li>
+          <li>غالبًا بيتحل بتغيير البيئة والوعي</li>
+        </ul>
+        <div class="dist-foot">المطلوب: انضباط ذاتي وتعديل روتين</div>
+      </div>
+
+      <div class="dist-card reveal">
+        <div class="dist-head"><span class="dist-dot amber"></span><h3>إدمان</h3></div>
+        <p class="dist-def">اعتماد قهري على سلوك أو مادة، مع فقدان السيطرة رغم معرفتك بالضرر.</p>
+        <ul class="dist-list">
+          <li>محاولات توقف متكررة بتفشل</li>
+          <li>أثر واضح على الحياة والعلاقات</li>
+          <li>ممكن يكون فيه أعراض انسحاب</li>
+        </ul>
+        <div class="dist-foot">المطلوب: دعم منظّم وغالبًا متخصص</div>
+      </div>
+
+      <div class="dist-card reveal">
+        <div class="dist-head"><span class="dist-dot warn"></span><h3>اضطراب نفسي</h3></div>
+        <p class="dist-def">حالة طبية ليها معايير تشخيصية، السلوك فيها عرض لمشكلة أعمق مش المشكلة نفسها.</p>
+        <ul class="dist-list">
+          <li>بيأثر على الأداء اليومي بشكل كبير</li>
+          <li>مش بيستجيب للإرادة أو النصيحة وحدها</li>
+          <li>محتاج تقييم وتشخيص مهني</li>
+        </ul>
+        <div class="dist-foot">المطلوب: تشخيص وعلاج من مختص</div>
+      </div>
+    </div>
+    <p class="dist-note reveal">القاعدة البسيطة: <b>كل ما قلّت سيطرتك وزاد الأثر، كل ما الحاجة للمساعدة المتخصصة زادت.</b> مفيش عيب في إنك تطلب تقييم — ده أذكى من إنك تخمّن لوحدك.</p>
+  </div>
+</section>
+
+<!-- ========== PLAN ========== -->
+<section class="section" id="plan">
+  <div class="wrap">
+    <span class="eyebrow">الطريق العملي</span>
+    <h2 class="section-title reveal">خطة عملية للتعافي</h2>
+    <p class="section-lede reveal">الخطوات دي مرتبة عمدًا بالتسلسل ده، كل خطوة بتجهز اللي بعدها.</p>
+
+    <div class="steps" id="plan-steps"></div>
+  </div>
+</section>
+
+<!-- ========== REPLACEMENT BUILDER ========== -->
+<section class="section" id="builder">
+  <div class="wrap">
+    <span class="eyebrow">أداة تفاعلية</span>
+    <h2 class="section-title reveal">ابنِ بديلك الصحي</h2>
+    <p class="section-lede reveal">المنع وحده بيسيب فراغ بيرجع يتملى بنفس السلوك. الحيلة إنك تربط نفس المحفز بسلوك بديل يدّيك جزء من نفس الراحة. اختر محفّزك والبديل اللي يناسبك.</p>
+
+    <div class="builder reveal">
+      <div class="builder-col">
+        <h3>١ — المحفّز اللي بيبدأ الحلقة</h3>
+        <div class="chip-row" id="cueChips"></div>
+      </div>
+      <div class="builder-col">
+        <h3>٢ — البديل الصحي البسيط</h3>
+        <div class="chip-row" id="altChips"></div>
+      </div>
+      <div class="builder-output" id="builderOut">
+        <span class="builder-empty">اختر محفّز وبديل عشان تتكوّن خطتك الشخصية.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7 DAY CHALLENGE ========== -->
+<section class="section" id="challenge">
+  <div class="wrap">
+    <span class="eyebrow">ابدأ النهارده</span>
+    <h2 class="section-title reveal">تحدي الـ ٧ أيام للبداية</h2>
+    <p class="section-lede reveal">مش هدفه تغيير حياتك في أسبوع، هدفه إنك تكسر الجمود وتثبت لنفسك إن التغيير ممكن. علّم على كل يوم لما تخلصه.</p>
+
+    <div class="challenge-track reveal" id="challengeTrack"></div>
+
+    <div class="challenge-progress reveal">
+      <span class="cp-label" id="cpLabel">0 من 7</span>
+      <div class="cp-track"><div class="cp-fill" id="cpFill"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== JOURNAL ========== -->
+<section class="section" id="journal">
+  <div class="wrap">
+    <span class="eyebrow">اعرف نمطك</span>
+    <h2 class="section-title reveal">مذكرة المحفّزات</h2>
+    <p class="section-lede reveal">أقوى طريقة تكسر بيها السلوك التلقائي إنك تشوف نمطه بعينك. سجّل كل مرة بيحصل فيها السلوك: امتى، وإيه الشعور اللي كان وراه. مع الوقت هتكتشف المحفّز الحقيقي بنفسك.</p>
+
+    <div class="journal-panel reveal">
+      <div class="journal-form">
+        <input type="text" id="jSituation" placeholder="الموقف (مثلاً: قعدت لوحدي بالليل)" class="j-input">
+        <input type="text" id="jFeeling" placeholder="الشعور (مثلاً: ملل / توتر / وحدة)" class="j-input">
+        <button class="btn btn-primary" id="jAdd">أضف</button>
+      </div>
+      <div class="journal-list" id="journalList">
+        <p class="journal-empty">لسه مفيش تسجيلات. أول ما تحس بالرغبة، سجّلها هنا.</p>
+      </div>
+      <p class="journal-hint">تسجيلاتك بتتحفظ تلقائيًا على المتصفح ده بس، ومحدش غيرك بيشوفها.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MY PLAN ========== -->
+<section class="section" id="myplan">
+  <div class="wrap">
+    <span class="eyebrow">اجمع كل حاجة</span>
+    <h2 class="section-title reveal">خطتي الشخصية</h2>
+    <p class="section-lede reveal">دي صفحة بتجمّع اختياراتك في مكان واحد عشان تطبعها أو تحفظها قدامك. املأ الفراغات، والخطة بتتحدث تلقائيًا.</p>
+
+    <div class="myplan-card reveal" id="myplanCard">
+      <div class="mp-field">
+        <label>العادة اللي بحاربها:</label>
+        <input type="text" id="mpHabit" class="j-input" placeholder="مثلاً: تصفّح الموبايل قبل النوم">
+      </div>
+      <div class="mp-field">
+        <label>الهوية اللي عايز أبقاها:</label>
+        <input type="text" id="mpIdentity" class="j-input" placeholder="مثلاً: أنا شخص بينام كويس ويصحى بطاقة">
+      </div>
+      <div class="mp-field">
+        <label>الـ"ليه" العميق بتاعي:</label>
+        <input type="text" id="mpWhy" class="j-input" placeholder="مثلاً: عايز أحترم نفسي وأحس إني مسيطر على حياتي">
+      </div>
+      <div class="mp-field">
+        <label>خطوتي الصغيرة النهارده:</label>
+        <input type="text" id="mpStep" class="j-input" placeholder="مثلاً: أسيب الموبايل بره الأوضة">
+      </div>
+
+      <div class="mp-preview" id="mpPreview"></div>
+      <div class="mp-actions">
+        <button class="btn btn-primary" id="mpPrint">🖨️ اطبع / احفظ PDF</button>
+        <button class="btn btn-ghost" id="mpFill">املأ من اختياراتي فوق</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RELAPSE MAP ========== -->
+<section class="section" id="relapse">
+  <div class="wrap">
+    <span class="eyebrow">وقاية مبكرة</span>
+    <h2 class="section-title reveal">خريطة الانتكاسة</h2>
+    <p class="section-lede reveal">الانتكاسة مش بتحصل فجأة. بتبدأ في دماغك بأسابيع قبل ما تحصل في سلوكك. لو عرفت العلامات المبكرة، تقدر توقفها وهي لسه فكرة، مش بعد ما تتحول لفعل.</p>
+
+    <div class="relapse-stages">
+      <div class="rl-stage reveal">
+        <div class="rl-head"><span class="rl-badge teal">مرحلة ١</span><h3>انتكاسة عاطفية</h3></div>
+        <p class="rl-desc">لسه مفيش أي تفكير في السلوك، بس أساسك بيتهد بهدوء.</p>
+        <ul class="rl-signs">
+          <li>إهمال النوم أو الأكل أو الرياضة</li>
+          <li>انسحاب تدريجي من الناس والعزلة</li>
+          <li>كتم التوتر وعدم التعبير عن أي مشاعر</li>
+          <li>إهمال الروتين اللي كنت ماشي عليه</li>
+        </ul>
+        <div class="rl-action">التصرف: ارجع للأساسيات فورًا — نوم، حركة، تواصل. أسهل مرحلة للإنقاذ.</div>
+      </div>
+
+      <div class="rl-stage reveal">
+        <div class="rl-head"><span class="rl-badge amber">مرحلة ٢</span><h3>انتكاسة ذهنية</h3></div>
+        <p class="rl-desc">صراع داخلي بدأ: جزء منك عايز يرجع وجزء مقاوم.</p>
+        <ul class="rl-signs">
+          <li>تذكّر السلوك بحنين وتجميل للذكريات</li>
+          <li>التقليل من خطورته ("مرة واحدة مش هتأذي")</li>
+          <li>التخطيط لمواقف بتقرّبك منه من غير اعتراف</li>
+          <li>الكذب أو إخفاء أفكارك عن الناس المقربة</li>
+        </ul>
+        <div class="rl-action">التصرف: اتكلم مع حد فورًا. الأفكار دي بتقوى في السر وبتضعف لما تتقال بصوت عالي.</div>
+      </div>
+
+      <div class="rl-stage reveal">
+        <div class="rl-head"><span class="rl-badge warn">مرحلة ٣</span><h3>انتكاسة فعلية</h3></div>
+        <p class="rl-desc">رجعت للسلوك. المهم دلوقتي مش اللي حصل، لكن رد فعلك عليه.</p>
+        <ul class="rl-signs">
+          <li>موجة ذنب وجلد ذات قوية</li>
+          <li>فكرة "خلاص خربت كل حاجة" (وهي غلط)</li>
+          <li>خطر إن الزلة تتحول لرجوع كامل</li>
+        </ul>
+        <div class="rl-action">التصرف: متزوّدش القسوة. اكتب إيه اللي سبقها من المرحلة ١ و٢، وارجع كمّل من نفس النقطة.</div>
+      </div>
+    </div>
+
+    <div class="rl-note reveal">
+      <b>القاعدة الذهبية:</b> كل انتكاسة فعلية سبقها علامات في المرحلة الأولى والتانية. لو راجعت نفسك أسبوعيًا على العلامات دي، هتمسك الموضوع بدري وهتوفّر على نفسك دورة كاملة من الألم.
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOUNDATIONS ========== -->
+<section class="section" id="foundations">
+  <div class="wrap">
+    <span class="eyebrow">قبل أي خطة</span>
+    <h2 class="section-title reveal">أساس كل تغيير</h2>
+    <p class="section-lede reveal">قوة الإرادة مش مصدر لا نهائي، دي طاقة بتشحن وبتفضى. لو الأساس ده مهدوم، أي خطة هتنهار مهما كانت قوية. الأربع حاجات دول التربة اللي بيكبر فيها أي تغيير.</p>
+
+    <div class="found-grid">
+      <div class="found-card reveal">
+        <div class="found-icon">🌙</div>
+        <h3>النوم</h3>
+        <p>قلة النوم بتضعّف الجزء المسؤول عن ضبط النفس في المخ، وبتزوّد الاندفاع للسلوك المدمر. النوم الكافي مش رفاهية، ده شرط لأي قرار سليم.</p>
+      </div>
+      <div class="found-card reveal">
+        <div class="found-icon">🚶</div>
+        <h3>الحركة</h3>
+        <p>المجهود البدني المنتظم بيرفع المزاج ويقلل التوتر طبيعيًا، فبيقلل احتياجك للسلوك الهروبي أصلاً. مش لازم رياضة شاقة، مشي يومي بيفرق.</p>
+      </div>
+      <div class="found-card reveal">
+        <div class="found-icon">🤝</div>
+        <h3>العلاقات</h3>
+        <p>العزلة وقود لكل إدمان وكسل. التواصل الحقيقي مع ناس بتثق فيها بيدّي إحساس بالأمان بيقلل الحاجة للهروب في سلوك بديل.</p>
+      </div>
+      <div class="found-card reveal">
+        <div class="found-icon">🍎</div>
+        <h3>التغذية</h3>
+        <p>الأكل غير المنتظم بيخلّي طاقتك ومزاجك متقلبين، وده بيزوّد لحظات الضعف. أكل متوازن بيدّي استقرار بيسهّل أي قرار صعب.</p>
+      </div>
+    </div>
+    <div class="found-note reveal">لو حاسس إنك بتفشل في كل محاولة تغيير رغم نيتك الصادقة، ابدأ من هنا مش من قمة الجبل. صلّح الأساس الأول، والباقي بيبقى أسهل بمراحل.</div>
+  </div>
+</section>
+
+<!-- ========== MYTHS ========== -->
+<section class="section" id="myths">
+  <div class="wrap">
+    <span class="eyebrow">صحّح فهمك</span>
+    <h2 class="section-title reveal">خرافات وحقائق</h2>
+    <p class="section-lede reveal">جزء كبير من الفشل في التغيير سببه أفكار غلط عن الكسل والإدمان نفسهم. اضغط على كل خرافة عشان تشوف الحقيقة.</p>
+
+    <div class="myth-group" id="mythGroup"></div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">أسئلة شائعة</span>
+    <h2 class="section-title reveal">أسئلة بتتكرر كتير</h2>
+    <p class="section-lede reveal">إجابات مباشرة على أكتر الأسئلة اللي بتشغل بال أي حد بيحاول يتغيّر.</p>
+
+    <div class="myth-group" id="faqGroup"></div>
+  </div>
+</section>
+
+<!-- ========== SELF CHECK ========== -->
+<section class="section" id="selfcheck">
+  <div class="wrap">
+    <span class="eyebrow">مراجعة ذاتية</span>
+    <h2 class="section-title reveal">تحقق من نفسك</h2>
+    <p class="section-lede reveal">اختر العبارات اللي حاسس إنها بتنطبق عليك دلوقتي. مفيش إجابة صح أو غلط، الهدف إنك تكون صادق مع نفسك بس.</p>
+
+    <div class="check-panel reveal">
+      <div class="check-list" id="check-list"></div>
+      <div class="check-result">
+        <div class="check-count" id="check-count">0</div>
+        <div class="check-msg" id="check-msg">اختر العبارات اللي تنطبق عليك عشان تشوف رسالة مناسبة.</div>
+        <button class="reset-btn" id="reset-btn">إعادة تعيين</button>
+      </div>
+      <p class="check-disclaimer">القائمة دي أداة وعي بسيطة، مش أداة تشخيص. القرار الحقيقي بياخده مختص متخصص لو الموضوع محتاج كده.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HELP ========== -->
+<section class="section help-section" id="help">
+  <div class="wrap">
+    <span class="eyebrow">الدعم</span>
+    <h2 class="section-title reveal">امتى تحتاج مساعدة متخصصة؟</h2>
+    <p class="section-lede reveal">في حدود لو اتعدّت، المجهود الفردي بيبقى مش كفاية، وده طبيعي تمامًا.</p>
+
+    <div class="help-grid">
+      <div class="reveal">
+        <h3>علامات تستدعي طلب مساعدة</h3>
+        <ul class="help-list">
+          <li>السلوك بدأ يأثر على شغلك أو دراستك أو علاقاتك بشكل واضح</li>
+          <li>حاولت توقف أكتر من مرة وفشلت رغم نيتك الصادقة</li>
+          <li>في أعراض جسدية عند المحاولة (خصوصًا مع المواد) زي رعشة أو قلق شديد</li>
+          <li>بتلجأ للسلوك حتى لو عارف إنه بيدمرك، من غير ما تقدر توقف</li>
+          <li>السلوك بقى الطريقة الوحيدة اللي بتحس فيها بأي راحة</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <h3>الخطوة التالية</h3>
+        <div class="help-note">
+          <p style="margin-bottom:12px;"><b>تنبيه طبي مهم:</b> التوقف المفاجئ عن الكحول أو المهدئات (زي بعض أدوية القلق والنوم) بعد استخدام منتظم ممكن يسبب أعراض انسحاب خطيرة على الصحة. في الحالات دي التوقف لازم يكون تحت إشراف طبيب، مش بقرار فردي مفاجئ.</p>
+          <p><b>طلب المساعدة مش علامة ضعف.</b> التحدث مع طبيب نفسي أو معالج متخصص في الإدمان خطوة شجاعة، مش استسلام. لو حاسس إن في أفكار تؤذي بيها نفسك، ده موقف محتاج تدخل فوري من مختص أو جهة طوارئ، مش حاجة تستنى فيها.</p>
+        </div>
+        <div class="hotlines">
+          <span class="hl-title">أرقام دعم رسمية في مصر</span>
+          <a class="hl-item" href="tel:16023"><span class="hl-num">16023</span><span class="hl-desc">الخط الساخن لصندوق مكافحة وعلاج الإدمان — شغال ٢٤ ساعة، والعلاج مجاني بحسب الصندوق، وبيقدّم مشورة للأسر كمان</span></a>
+          <a class="hl-item" href="tel:16328"><span class="hl-num">16328</span><span class="hl-desc">الخط الساخن للأمانة العامة للصحة النفسية (وزارة الصحة) — استشارات ودعم نفسي على مدار اليوم</span></a>
+          <p class="hl-note">لو انت برّه مصر، دوّر على خط الدعم النفسي أو علاج الإدمان المحلي في بلدك. وفي أي موقف فيه خطر فوري على حياتك أو حياة حد، كلّم الإسعاف أو الطوارئ مباشرة.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:42px; border-top:1px solid var(--border); padding-top:42px;">
+      <h3 style="font-family:var(--font-display); font-weight:600; font-size:1.1rem; margin-bottom:16px;">لو الشخص ده حد بتحبه مش انت</h3>
+      <ul class="help-list" style="columns:2; column-gap:40px;">
+        <li>اتكلم من مكان القلق مش اللوم؛ الاتهام بيزود الإنكار</li>
+        <li>متحطّش شروط مستحيلة، وخليك واقعي في توقعاتك</li>
+        <li>افهم إن الانتكاسة جزء من الطريق، مش دليل فشلكم</li>
+        <li>اهتم بنفسك انت كمان؛ مينفعش تساعد وانت منهار</li>
+        <li>شجّعه يلجأ لمختص بدل ما تحاول تبقى المعالج بنفسك</li>
+        <li>متغطّيش على نتائج سلوكه بشكل بيحميه من إدراك المشكلة</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin-bottom:14px;">تقدّمك (المذكرة، الخطة، التحدي، التحقق) محفوظ على جهازك فقط. <button id="clearData" class="reset-btn">امسح بياناتي</button></p>
+    <p>هذا الدليل لأغراض توعوية وتنظيمية، ولا يُغني عن استشارة طبيب نفسي أو معالج متخصص في الإدمان عند الحاجة. كل حالة ليها سياقها الخاص.</p>
+  </div>
+</footer>
+
+<script>
+// ---------------- DATA ----------------
+const lazinessData = [
+  {
+    title: "الكسل الجسدي",
+    sub: "خمول الحركة",
+    desc: "الإحجام عن أي مجهود بدني، حتى لو كان بسيط زي المشي أو ترتيب الغرفة، وتفضيل السكون في كل وقت متاح.",
+    root: "مش دايمًا خمول حقيقي. غالبًا الجسم بيوفّر طاقته لأنه مرهق فعليًا، أو لأن المخ شايف إن مفيش هدف يستاهل الحركة، فبيدخل في وضع توفير.",
+    scenario: "أحمد بيقعد قدام التليفزيون ٦ ساعات، وكل ما يفكر يتحرك يقول 'دلوقتي تعبان، بكره'. وبكره بييجي بنفس الإحساس.",
+    signs: ["تفضيل الجلوس أو الاستلقاء دايمًا", "تأجيل أي نشاط رياضي بشكل متكرر", "الشعور بتعب غير مبرر من أبسط الحركات"],
+    tip: "ابدأ بـ <b>٥ دقايق حركة</b> بس في اليوم. الجسم بيتبع العادة مش الحافز، والحافز بييجي بعد ما تبدأ مش قبلها."
+  },
+  {
+    title: "الكسل الذهني",
+    sub: "تجنب التفكير العميق",
+    desc: "الاكتفاء بالمعلومة السطحية، وتجنب أي مجهود فكري حقيقي زي القراءة أو حل مشكلة معقدة أو التعلم الجاد.",
+    root: "المخ بيستهلك طاقة عالية في التفكير العميق، فبيفضّل المعلومة الجاهزة لتوفير المجهود. ومع كتر المحتوى السريع، التركيز الطويل بقى عادة منقرضة محتاجة إعادة تدريب.",
+    scenario: "سارة فتحت الكتاب ٣ مرات، وكل مرة بعد دقيقتين تلاقي إيدها فتحت السوشيال ميديا تلقائيًا من غير ما تحس.",
+    signs: ["تأجيل القراءة أو التعلم باستمرار", "البحث عن إجابات جاهزة بدل الفهم الحقيقي", "الانسحاب من أي نقاش يحتاج تركيز"],
+    tip: "خصص <b>١٥ دقيقة يوميًا</b> لشيء يحتاج تركيز فعلي، مش استهلاك سريع. التركيز عضلة، وبتقوى بالاستخدام."
+  },
+  {
+    title: "كسل المماطلة",
+    sub: "التسويف المزمن",
+    desc: "تأجيل المهام المهمة لصالح أنشطة أسهل وأقل قيمة، حتى لو كانت العواقب واضحة وسلبية.",
+    root: "التسويف مش كسل، ده هروب من مشاعر مرتبطة بالمهمة: خوف من الفشل، أو الكمالية (إن الحاجة لازم تطلع مثالية)، أو غموض في الخطوة الأولى. المخ بيأجّل المهمة عشان يأجّل الإحساس المزعج المرتبط بيها.",
+    scenario: "محمد عنده مشروع تسليمه بعد أسبوع، فجأة لقى نفسه بينضّف الأوضة ويرتّب الإيميلات — أي حاجة غير المشروع.",
+    signs: ["ترك المهام الكبيرة لآخر لحظة دايمًا", "الانشغال بأمور تافهة لتجنب مهمة مهمة", "إحساس دائم بالقلق من المهام المؤجلة"],
+    tip: "متفكرش في المهمة كلها. قسّمها لخطوة أولى تاخد <b>دقيقتين بس</b>. الصعوبة في البداية مش في الاستمرار."
+  },
+  {
+    title: "الكسل العاطفي",
+    sub: "تجنب مواجهة المشاعر",
+    desc: "الهروب من معالجة المشاعر الصعبة بدل التعامل معاها، فبتتكبت أو تتجاهل لحد ما تتراكم.",
+    root: "مواجهة المشاعر الصعبة بتكلّف طاقة وألم مؤقت، فالمخ بيختار التجنّب كحل أرخص على المدى القصير، حتى لو المشاعر بتتراكم وتكبر مع التجاهل.",
+    scenario: "ليلى زعلانة من صاحبتها بس بدل ما تتكلم معاها، فضلت تتفرّج على مسلسلات ٣ أيام عشان متفكرش في الموضوع.",
+    signs: ["تجنب أي محادثة صعبة أو مواجهة", "كبت الحزن أو الغضب بدل التعبير عنه", "اللجوء للتشتيت بدل مواجهة الشعور"],
+    tip: "اكتب <b>سطرين بصدق</b> كل يوم عن شعورك الحقيقي. مفيش حاجة لازم تتحل، بس لازم تتسمى الأول."
+  },
+  {
+    title: "الكسل الاجتماعي",
+    sub: "الانسحاب من العلاقات",
+    desc: "تجنب بذل أي مجهود في بناء علاقات حقيقية أو الحفاظ عليها، وتفضيل العزلة على التواصل ولو كان صعب.",
+    root: "ورا الانسحاب غالبًا خوف من الرفض أو الحكم، أو طاقة اجتماعية مستهلكة. العزلة بتبقى منطقة أمان مؤقتة بتحمي من المخاطرة، لكنها بتعمّق الوحدة.",
+    scenario: "كريم بيشوف رسايل أصحابه وبيقول 'هرد بعدين'، وبعدين بيعدّي أسبوع، وبيحس بوحدة بس مش عارف يبادر.",
+    signs: ["عدم الرد على الأصدقاء لفترات طويلة", "تفضيل البقاء وحيد حتى لما تحتاج ناس", "تجنب أي مبادرة اجتماعية بشكل دائم"],
+    tip: "ابدأ بتواصل بسيط مع <b>شخص واحد</b> أسبوعيًا. مش لازم يكون عميق، بس يكون حقيقي."
+  },
+  {
+    title: "كسل الهدف",
+    sub: "فقدان المعنى",
+    desc: "غياب أي هدف أو اتجاه واضح، فبيتحول الوقت لاستهلاك بلا قيمة، وكل يوم بيشبه اللي قبله.",
+    root: "غياب الهدف بيخلّي المخ مش لاقي سبب يبذل مجهود. وده غالبًا مرتبط بفقدان المعنى أو اكتئاب خفيف، مش بكسل في الشخصية.",
+    scenario: "يوسف بيصحى، بيشتغل، بينام، وبيكرر — وبيحس إن الأيام بتعدّي من غير ما يفتكر منها حاجة، ومش عارف هو رايح فين.",
+    signs: ["الشعور إن الأيام كلها متشابهة", "عدم وجود أي شيء بتتحمس له فعليًا", "صعوبة في تخيل نفسك بعد سنة من دلوقتي"],
+    tip: "اكتب <b>٣ أشياء صغيرة</b> عايز تحققها الشهر ده. الهدف الصغير بيرجّع الإحساس بالاتجاه."
+  }
+];
+
+const substanceData = [
+  {
+    title: "الكحول والمخدرات",
+    status: "official", statusText: "تشخيص طبي معتمد (اضطراب تعاطي المواد)",
+    sub: "إدمان مواد",
+    desc: "اعتماد جسدي ونفسي على مواد بتغيّر كيمياء المخ مباشرة، وبتزيد الجرعة المطلوبة مع الوقت للوصول لنفس التأثير.",
+    root: "المادة بتختطف نظام المكافأة في المخ وبتدّي راحة أو هروب فوري من ألم نفسي أو جسدي. ومع الوقت المخ بيعيد ضبط نفسه ليحتاج المادة عشان يحس بالطبيعي بس.",
+    scenario: "حسام بدأ 'مرة في المناسبات بس'، ودلوقتي بيلاقي نفسه محتاجها عشان يعدّي يومه العادي، وكل محاولة يبطّل بترجعه.",
+    signs: ["زيادة الكمية أو التكرار باستمرار", "محاولات توقف فاشلة متكررة", "إنكار وجود مشكلة رغم وضوحها للمحيطين"],
+    tip: "ده النوع اللي <b>محتاج دعم متخصص</b> غالبًا، مش بس إرادة شخصية. التوقف المفاجئ من بعض المواد ممكن يكون خطير جسديًا، فلازم إشراف طبي."
+  },
+  {
+    title: "التدخين والنيكوتين",
+    status: "official", statusText: "تشخيص طبي معتمد (اضطراب تعاطي التبغ)",
+    sub: "إدمان مقبول اجتماعيًا",
+    desc: "إدمان مادة بتدخل الدورة الدموية بسرعة، ومقبول اجتماعيًا أكتر من غيره، وده بالظبط اللي بيخليه أصعب في الاعتراف بيه كمشكلة.",
+    root: "النيكوتين بيرتبط بطقوس ولحظات (القهوة، التوتر، البريك)، فالإدمان مش بس كيميائي، ده ارتباط نفسي بمواقف بتطلب 'الراحة' المعتادة.",
+    scenario: "منى بتقول 'أنا مش مدمنة، ببطّل ساعة ما أحب'، بس كل ما تحاول، أول موقف توتر بيرجّعها للسيجارة.",
+    signs: ["الحاجة للتدخين في مواقف توتر متكررة", "الشعور بالقلق لما السجائر مش متوفرة", "محاولات إقلاع متكررة من غير استمرارية"],
+    tip: "حدد <b>المواقف المحفزة</b> (القهوة، التوتر، الاجتماعات) وغيّر الروتين حواليها. واعرف إن فرص النجاح بتزيد بشكل كبير لما تجمع بين الدعم السلوكي و<b>بدائل النيكوتين أو علاج دوائي بإشراف طبيب</b>، بدل الاعتماد على الإرادة لوحدها."
+  },
+  {
+    title: "الكافيين والمنبهات المفرطة",
+    status: "partial", statusText: "أعراض الانسحاب معترف بيها طبيًا، والإدمان نفسه لسه تحت الدراسة",
+    sub: "إدمان يخفي الإرهاق",
+    desc: "الاعتماد المفرط على المنبهات لتعويض نقص النوم أو الطاقة الحقيقية، بدل علاج السبب الأساسي.",
+    root: "غالبًا مش حب للمنبه، ده تغطية على إرهاق مزمن ونوم ناقص. المخ بيستعير طاقة من بكره عشان يعدّي النهارده، والدين بيتراكم.",
+    scenario: "طارق بيشرب ٥ فناجين قهوة، مش عشان بيحبها، لكن عشان نايم ٤ ساعات ومحتاج يفضل صاحي بأي طريقة.",
+    signs: ["الحاجة لمنبه قوي عشان تبدأ يومك", "صداع أو تعب شديد لو فات يوم بدونه", "استخدامه كبديل دائم للنوم الكافي"],
+    tip: "قلل الكمية <b>تدريجيًا</b> مش دفعة واحدة، وركّز على السبب الحقيقي وهو غالبًا قلة النوم."
+  }
+];
+
+const behavioralData = [
+  {
+    title: "إدمان الموبايل والسوشيال ميديا",
+    status: "pattern", statusText: "مش تشخيص رسمي حاليًا، لكنه نمط قهري موثّق بأبحاث كتير",
+    sub: "إدمان سلوكي",
+    desc: "التحقق القهري من الإشعارات والتطبيقات، وفقدان ساعات من الوقت بلا وعي حقيقي بمرورها.",
+    root: "التطبيقات مصمّمة عمدًا لتدّي مكافآت عشوائية سريعة (لايك، إشعار، فيديو جديد)، وده بالظبط نفس آلية ماكينة القمار. المخ بيتعلّق بالتوقع، مش بالمحتوى نفسه.",
+    scenario: "نور قالت 'هبص بصة سريعة'، ورفعت عينها لقت ساعة عدّت وهي بتتنطط من فيديو لفيديو من غير سبب.",
+    signs: ["فتح الموبايل تلقائيًا من غير سبب", "فقدان الإحساس بالوقت أثناء التصفح", "قلق لو الموبايل مش في إيدك"],
+    tip: "شيل التطبيق من <b>الشاشة الرئيسية</b> أو حط حد زمني يومي. البيئة أقوى من الإرادة هنا."
+  },
+  {
+    title: "إدمان الألعاب الإلكترونية",
+    status: "official", statusText: "معترف بيه في تصنيف منظمة الصحة العالمية (اضطراب الألعاب)",
+    sub: "إدمان سلوكي",
+    desc: "الهروب لعالم بديل بدل مواجهة الواقع، خصوصًا في فترات الضغط أو الفراغ أو الإحساس بالعجز.",
+    root: "اللعبة بتدّي إحساس بالإنجاز والسيطرة والتقدّم الواضح، وهو غالبًا اللي ناقص في الواقع. فبتبقى هروب من إحساس بالعجز، مش مجرد تسلية.",
+    scenario: "عمر بيلعب لحد الفجر، مش عشان اللعبة حلوة، لكن عشان جواها بيحس بإنجاز وسيطرة مش لاقيهم في يومه.",
+    signs: ["لعب ساعات طويلة على حساب التزامات أساسية", "استخدام اللعب كهروب من مشكلة حقيقية", "صعوبة في تحديد وقت للتوقف"],
+    tip: "حدد <b>وقت ثابت</b> للعب مسبقًا بدل ما تقرر وانت جوه اللعبة. القرار قبل الدخول أقوى من القرار جواها."
+  },
+  {
+    title: "إدمان المحتوى الإباحي",
+    status: "partial", statusText: "بيتصنّف طبيًا تحت 'السلوك الجنسي القهري'، والمصطلح 'إدمان' نفسه محل نقاش علمي",
+    sub: "إدمان سلوكي",
+    desc: "استهلاك متكرر بيشوّه الإدراك الطبيعي للعلاقات والمتعة، وبيحتاج تحفيز أقوى مع الوقت للوصول لنفس الإحساس.",
+    root: "بيشتغل كمهرب سريع من التوتر أو الوحدة أو الملل، وبيدّي جرعة دوبامين عالية بمجهود صفر. ومع التكرار، المخ بيحتاج تحفيز أقوى للوصول لنفس الإحساس.",
+    scenario: "شخص بيلجأ ليه كل ما يحس بضغط أو وحدة، وبيلاحظ إنه محتاج وقت أطول كل مرة، وبيأثر على علاقته الواقعية.",
+    signs: ["زيادة الوقت أو التكرار باستمرار", "تأثير ملحوظ على العلاقات الواقعية", "محاولات توقف متكررة وفاشلة"],
+    tip: "ده من الأنواع اللي بتستفيد كتير من <b>الدعم المتخصص</b> أو مجموعات الدعم، مش بس قرار فردي."
+  },
+  {
+    title: "الأكل العاطفي (إدمان الطعام)",
+    status: "pattern", statusText: "مش تشخيص رسمي؛ الأقرب طبيًا 'الأكل العاطفي' أو 'اضطراب نهم الطعام' في الحالات الشديدة",
+    sub: "إدمان سلوكي",
+    desc: "الأكل العاطفي كآلية للتعامل مع التوتر أو الفراغ، بدل ما يكون الأكل استجابة لجوع حقيقي.",
+    root: "الأكل بيرتبط من الطفولة بالأمان والراحة العاطفية. فلما ييجي توتر أو فراغ، المخ بيدوّر على نفس الراحة القديمة، حتى من غير جوع حقيقي.",
+    scenario: "دينا مش جعانة، بس بعد يوم متوتر بتلاقي نفسها بتاكل من غير وعي، وبعدها بيجيلها إحساس بالذنب.",
+    signs: ["الأكل في لحظات توتر أو ملل أكتر من الجوع", "إحساس بالذنب بعد الأكل بشكل متكرر", "صعوبة في التوقف رغم الشبع"],
+    tip: "قبل ما تاكل، اسأل نفسك: <b>'أنا جعان فعلاً ولا حاسس بحاجة تانية؟'</b> السؤال ده بس بيكسر نص العادة."
+  },
+  {
+    title: "إدمان التسوق",
+    status: "pattern", statusText: "مش تشخيص رسمي، لكنه نمط شراء قهري موثّق",
+    sub: "إدمان سلوكي",
+    desc: "شراء قهري بيدي راحة مؤقتة فورية، وبيتبعه إحساس بالذنب أو ندم على المصاريف.",
+    root: "لحظة الشراء بتدّي إحساس بالسيطرة والتجديد والمكافأة الفورية، وغالبًا بيعوّض إحساس بالنقص أو الملل. المتعة في الشراء نفسه، مش في المنتج.",
+    scenario: "رامي بيحس بمزاج وحش، فبيفتح التطبيقات ويشتري، بيحس بنشوة لحظية، وبعدها بيتكدّس عنده كراتين مش بيفتحها.",
+    signs: ["شراء أشياء مش محتاجها بشكل متكرر", "الشراء كرد فعل على مزاج سيء", "تراكم مشتريات غير مستخدمة"],
+    tip: "اعمل قاعدة <b>'٢٤ ساعة قبل الشراء'</b> لأي حاجة مش أساسية. الرغبة بتقل كتير بعد يوم."
+  },
+  {
+    title: "إدمان العمل",
+    status: "pattern", statusText: "مش تشخيص رسمي، لكنه نمط سلوكي له آثار صحية موثّقة",
+    sub: "Workaholism — إدمان سلوكي",
+    desc: "الهروب من الحياة الشخصية بالغرق الدائم في العمل، وبيبان إيجابي من بره لكنه مدمر للصحة والعلاقات على المدى الطويل.",
+    root: "الشغل المستمر بيدّي إحساس بالقيمة والهروب من مشاعر أو علاقات صعبة في الحياة الشخصية. ولأنه مقبول ومُمتدح اجتماعيًا، بيبقى أصعب في الاعتراف بيه كمشكلة.",
+    scenario: "هبة بتشتغل في الإجازة وبتحس بالذنب لو قعدت ترتاح، والكل بيمدحها، بس صحتها وعلاقاتها بتدفع الفاتورة بصمت.",
+    signs: ["صعوبة في الفصل بين العمل والراحة", "إحساس بالذنب لما مش بتشتغل", "إهمال العلاقات والصحة لصالح الشغل"],
+    tip: "حدد <b>وقت ثابت لإيقاف العمل</b> يوميًا، وعامله بنفس جدية أي اجتماع مهم."
+  },
+  {
+    title: "إدمان القمار والمراهنات",
+    status: "official", statusText: "تشخيص طبي معتمد — أول إدمان سلوكي اتعترف بيه رسميًا",
+    sub: "إدمان سلوكي",
+    desc: "البحث عن إثارة المكسب السريع، مع تجاهل متكرر للخسارة المتراكمة على المدى الطويل.",
+    root: "المكسب غير المتوقع بيطلّق دوبامين أعلى من المكسب المضمون، فالمخ بيتعلّق بـ'احتمال' المكسب نفسه. والخسارة بتدفع لمراهنة أكبر في محاولة يائسة للتعويض.",
+    scenario: "شخص خسر مبلغ، فراهن أكبر عشان يعوّض، وخسر تاني، ودخل في حلقة بيخبّي حجمها عن أقرب الناس ليه.",
+    signs: ["المراهنة بمبالغ أكبر من اللي تقدر تخسره", "محاولة تعويض الخسارة بمراهنة جديدة", "إخفاء حجم المراهنات عن المقربين"],
+    tip: "ده من أخطر الأنواع ماليًا ونفسيًا، وغالبًا <b>محتاج تدخل متخصص</b> مبكرًا قبل ما يكبر."
+  },
+  {
+    title: "إدمان الإثارة والمخاطرة",
+    status: "pattern", statusText: "مش تشخيص رسمي؛ مرتبط بسمة 'البحث عن الإثارة' في الشخصية",
+    sub: "إدمان سلوكي",
+    desc: "اللجوء لسلوكيات خطرة كمصدر وحيد للشعور بالحياة أو كسر الملل، حتى مع وجود مخاطر حقيقية.",
+    root: "بعض الناس محتاجة تحفيز أعلى عشان تحس بالحياة، فبتدوّر على الخطر ككسر للملل أو الخدر. وراها غالبًا فراغ داخلي بتحاول تملاه بالأدرينالين.",
+    scenario: "زياد بيحس بالملل بسرعة، فبيدوّر دايمًا على مواقف فيها خطر عشان يحس إنه عايش، حتى لو بيأذي نفسه.",
+    signs: ["البحث المستمر عن مواقف خطرة أو متطرفة", "الملل الشديد من الروتين العادي", "تقليل من حجم الخطر الفعلي للموقف"],
+    tip: "دوّر على مصادر إثارة <b>منظمة وآمنة</b> (رياضة قوية، تحديات جسدية) تدي نفس الإحساس بدون نفس الخطر."
+  }
+];
+
+const habitsData = [
+  {
+    title: "السهر وقلة النوم المزمنة",
+    sub: "عادة تراكمية",
+    desc: "تأجيل النوم بشكل دائم بيدمر التركيز والمزاج والصحة الجسدية تدريجيًا، حتى لو الأثر مش حاسس بيه يوم بيوم.",
+    root: "السهر غالبًا 'انتقام' على يوم حاسس إنك ما عشتهوش لنفسك، فبتحاول تسرق وقت خاص بيك بالليل. لكنه بيسرق من طاقة بكرة وبيدخّلك في حلقة إرهاق.",
+    scenario: "فادي يومه كله مشغول، فبيحس إن الليل هو وقته الوحيد، فبيسهر 'انتقامًا'، وبيصحى مكسور وبيكرر.",
+    signs: ["النوم بعد منتصف الليل بانتظام", "تعب دائم رغم عدد ساعات كافي ظاهريًا", "صعوبة في التركيز خلال النهار"],
+    tip: "ثبّت <b>وقت استيقاظ</b> واحد كل يوم (حتى الإجازات). الجسم بيظبط نفسه على الاستيقاظ مش على النوم."
+  },
+  {
+    title: "الحديث الذاتي السلبي",
+    sub: "جلد الذات المستمر",
+    desc: "النقد القاسي للنفس بشكل دائم، وده بيكرّس الفشل بدل ما يدفع للتحسن، لأن المخ بيستجيب للتهديد بانسحاب مش بمجهود.",
+    root: "غالبًا صوت متعلّم من نقد قديم (أهل، مدرسة، تجارب)، اتحوّل لعادة داخلية. المخ بيفتكر إن القسوة بتحمي من الفشل، لكنها بتشلّ الدافع فعليًا.",
+    scenario: "رانيا بتعمل غلطة صغيرة فتقول لنفسها 'أنا فاشلة دايمًا'، والصوت ده بيشلّها أكتر بدل ما يصلّحها.",
+    signs: ["وصف نفسك بصفات سلبية قاسية باستمرار", "التركيز على الأخطاء فقط وتجاهل أي تقدم", "صعوبة في قبول أي مجاملة أو إنجاز"],
+    tip: "كلم نفسك زي ما هتكلم <b>صديق</b> غلط. القسوة بتقلل الدافع، مش بتزوده."
+  },
+  {
+    title: "المقارنة المستمرة بالآخرين",
+    sub: "خصوصًا عبر السوشيال ميديا",
+    desc: "مقارنة حياتك الكاملة بصور مختارة ومُجمّلة من حياة الآخرين، وده بيولّد إحساس دائم بالنقص مش له أساس واقعي.",
+    root: "المخ بيقيّم نفسه بالمقارنة بطبيعته. المشكلة إنك بتقارن واقعك الكامل بنسخة مفلترة ومجمّلة من حياة غيرك، فالمعادلة ظالمة من الأساس.",
+    scenario: "خالد بيفتح إنستجرام يشوف نجاحات الناس، فيحس إن حياته متأخرة، وهو بيقارن كواليسه ببروفة غيره الجاهزة.",
+    signs: ["تصفح حسابات الآخرين بانتظام بإحساس سيء", "الشعور بالإحباط بعد فتح السوشيال ميديا", "تقييم إنجازاتك بناءً على إنجازات غيرك بس"],
+    tip: "قارن نفسك بـ <b>نسخة منك من سنة</b> فاتت، مش بأي حد تاني. ده المعيار الوحيد العادل."
+  },
+  {
+    title: "تجنب المسؤولية ولوم الظروف",
+    sub: "عادة فكرية",
+    desc: "إلقاء سبب أي فشل أو تأخر على الظروف أو الآخرين بشكل دائم، وده بيمنع أي تطور حقيقي لأنك بتشيل نفسك من المعادلة.",
+    root: "إلقاء اللوم بره بيحمي من ألم الاعتراف بالخطأ، وبيدّي راحة مؤقتة. لكن ثمنها إنك بتسلّم تحكّمك في حياتك لظروف برّانية، فالتغيير بيبقى مستحيل.",
+    scenario: "سمير دايمًا السبب بره: الشغل، الناس، الوقت، الظروف. وكل ما يلوم بره، كل ما يفقد قدرته إنه يغيّر.",
+    signs: ["تبرير كل نتيجة سلبية بسبب خارجي", "صعوبة في الاعتراف بخطأ شخصي", "إحساس دائم بإنك 'ضحية' للظروف"],
+    tip: "اسأل نفسك في كل موقف: <b>'إيه اللي كان في إيدي أعمله مختلف؟'</b> ولو الإجابة 'مفيش'، انتقل للسبب اللي بعده."
+  },
+  {
+    title: "إنكار وجود مشكلة",
+    sub: "العقبة الأولى لأي تغيير",
+    desc: "رفض الاعتراف بوجود سلوك مدمر أصلاً، وده بيمنع أي خطوة تالية لأنك مش هتحارب حاجة انت مقتنع إنها مش موجودة.",
+    root: "الإنكار آلية دفاع بتحمي من مواجهة حقيقة مؤلمة أو من الإحساس بالعجز. وكل ما المشكلة أكبر، كل ما الإنكار بيبقى أقوى، عشان المواجهة بتبقى أصعب.",
+    scenario: "شخص الكل حواليه شايف إن عنده مشكلة، بس هو بيقول 'أنا تمام، في ناس أسوأ مني'، فالمشكلة بتكبر في صمت.",
+    signs: ["تقليل من حجم المشكلة باستمرار ('مش كده')", "الدفاع التلقائي لما حد يلاحظ السلوك", "مقارنة نفسك بمن هو أسوأ عشان تبرر لنفسك"],
+    tip: "اسأل حد <b>تثق فيه فعلاً</b> رأيه بصراحة. الإنكار بيقوى في العزلة وبيضعف قدام شخص صادق."
+  }
+];
+
+const planSteps = [
+  { title:"لاحظ بصدق", desc:"سجّل امتى وفين بيحصل السلوك، من غير حكم على نفسك. مجرد الملاحظة بتقلل قوة السلوك التلقائي." },
+  { title:"افهم المحفّز الحقيقي", desc:"اسأل نفسك: إيه الشعور اللي بهرب منه فعليًا بالسلوك ده؟ ملل، توتر، وحدة، خوف من فشل؟" },
+  { title:"صغّر الهدف", desc:"ابدأ بأصغر خطوة ممكنة بدل التغيير الجذري المفاجئ. التغيير الكبير بيفشل أسرع من الصغير." },
+  { title:"غيّر البيئة", desc:"شيل المحفزات اللي بتسهّل السلوك، أو خليها صعبة الوصول. البيئة أقوى من الإرادة على المدى الطويل." },
+  { title:"استبدل بدل ما تمنع", desc:"دوّر على بديل صحي يدّيك جزء من نفس الإحساس بالراحة. المنع وحده بيخلق فراغ بيرجع يتملى بنفس السلوك." },
+  { title:"ابنِ نظام دعم", desc:"شارك المعركة مع حد تثق فيه. العزلة بتقوّي كل أنواع الإدمان والكسل، والمشاركة بتضعفهم." },
+  { title:"استمر رغم الانتكاسة", desc:"الانتكاسة جزء طبيعي من الطريق مش نهايته. يوم وقعت فيه، كمّل تاني من غير لوم زايد لنفسك." }
+];
+
+const checkItems = [
+  "بأجّل مهام مهمة باستمرار رغم معرفتي بالعواقب",
+  "بألاقي نفسي بفتح الموبايل من غير قرار واعي",
+  "بستخدم سلوك معين (أكل، شراء، لعب) عشان أهرب من شعور سيء",
+  "حاولت أوقف عادة معينة وفشلت أكتر من مرة",
+  "بحس إن الأيام بتتشابه ومفيش حاجة بتحمسني",
+  "بقسى على نفسي في كلامي الداخلي باستمرار",
+  "بقارن نفسي بالآخرين على السوشيال ميديا بشكل متكرر",
+  "بسهر لوقت متأخر رغم معرفتي إني محتاج أنام",
+  "بميل ألوم الظروف بدل ما أراجع دوري في المشكلة",
+  "بحس إن في سلوك عندي بيأثر على علاقاتي أو شغلي"
+];
+
+// ---------------- RENDER ----------------
+function renderCards(container, data){
+  container.innerHTML = data.map((item, i) => `
+    <div class="card">
+      <button class="card-header" type="button" aria-expanded="false">
+        <div class="card-header-text">
+          <span class="card-num">${String(i+1).padStart(2,'0')}</span>
+          <div>
+            <div class="card-title">${item.title}</div>
+            <div class="card-sub">${item.sub}</div>
+          </div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <div class="card-body-pad">
+            ${item.status ? `<span class="status-badge ${item.status}">${item.status==='official'?'✓ ':item.status==='partial'?'◐ ':'○ '}${item.statusText}</span>` : ''}
+            <p class="card-desc">${item.desc}</p>
+            ${item.root ? `<div class="root-box"><span class="root-label">الجذر النفسي</span><p>${item.root}</p></div>` : ''}
+            <div class="signs-label">علامات شائعة</div>
+            <ul class="signs-list">${item.signs.map(s=>`<li>${s}</li>`).join('')}</ul>
+            ${item.scenario ? `<div class="scenario"><span class="scenario-label">مثال واقعي</span><p>${item.scenario}</p></div>` : ''}
+            <div class="tip">${item.tip}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.card-header').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const open = btn.closest('.card').classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+}
+
+renderCards(document.getElementById('laziness-cards'), lazinessData);
+renderCards(document.getElementById('habits-cards'), habitsData);
+renderCards(document.getElementById('tab-substance'), substanceData);
+renderCards(document.getElementById('tab-behavioral'), behavioralData);
+
+// tabs
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// plan steps
+document.getElementById('plan-steps').innerHTML = planSteps.map((s,i)=>`
+  <div class="step reveal">
+    <div class="step-num">${String(i+1).padStart(2,'0')}</div>
+    <div>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+    </div>
+  </div>
+`).join('');
+
+// self check
+const checkList = document.getElementById('check-list');
+checkList.innerHTML = checkItems.map((text, i)=>`
+  <label class="check-item">
+    <input type="checkbox" data-idx="${i}">
+    <span class="box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+        <path d="M5 13l4 4L19 7"/>
+      </svg>
+    </span>
+    <span class="label">${text}</span>
+  </label>
+`).join('');
+
+const countEl = document.getElementById('check-count');
+const msgEl = document.getElementById('check-msg');
+
+function messageFor(n){
+  if(n === 0) return "اختر العبارات اللي تنطبق عليك عشان تشوف رسالة مناسبة.";
+  if(n <= 2) return "مؤشرات قليلة. حافظ على وعيك بيها قبل ما تكبر.";
+  if(n <= 5) return "في حاجة محتاجة انتباه. جرب تطبّق خطوة واحدة من خطة التعافي فوق على أكتر عبارة بتأثر عليك.";
+  return "العدد ده يستاهل وقت واهتمام جدي. ممكن تفيدك مساعدة متخصصة جنب جهدك الشخصي — شوف قسم 'طلب المساعدة' تحت.";
+}
+
+function updateCheck(){
+  const checked = checkList.querySelectorAll('input:checked').length;
+  countEl.textContent = checked;
+  msgEl.textContent = messageFor(checked);
+}
+
+checkList.addEventListener('change', updateCheck);
+document.getElementById('reset-btn').addEventListener('click', ()=>{
+  checkList.querySelectorAll('input').forEach(i=>i.checked=false);
+  updateCheck();
+});
+
+// scroll reveal
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); }
+  });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ---------------- SCROLL PROGRESS ----------------
+const progressBar = document.getElementById('progressBar');
+function updateProgress(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = h > 0 ? window.scrollY / h : 0;
+  progressBar.style.transform = 'scaleX(' + p + ')';
+}
+window.addEventListener('scroll', updateProgress, { passive:true });
+updateProgress();
+
+// ---------------- URGE TOOL ----------------
+const urgeSteps = [
+  { label:"الخطوة ١ — توقّف", title:"لاحظ إن دي مجرد موجة", html:"<p class='urge-text'>اللي حاسس بيه دلوقتي رغبة، مش أمر. الرغبة بتعلى لأقصاها وبعدين بتنزل لوحدها خلال ٥ لـ ٢٠ دقيقة لو ما طعمتهاش. انت مش محتاج تقاومها، محتاج بس تستناها تعدّي.</p>" },
+  { label:"الخطوة ٢ — تنفّس", title:"اهدّي جسمك الأول", html:"<div class='breath-ring'>شهيق… زفير</div><p class='urge-text'>خد شهيق بطيء من الأنف لمدة ٤ ثواني، احبسه ٤، وازفر ٤. كرر مع الدايرة دي شوية. ده بيقلل التوتر اللي بيغذّي الرغبة.</p>" },
+  { label:"الخطوة ٣ — اسأل", title:"إيه اللي محتاجه فعلاً؟", html:"<p class='urge-text'>الرغبة دي بتحاول تغطّي على شعور تاني. اسأل نفسك بصدق: أنا زهقان؟ متوتر؟ وحيد؟ تعبان؟ تسمية الشعور الحقيقي بيضعّف سيطرة السلوك عليك.</p>" },
+  { label:"الخطوة ٤ — أجّل", title:"اتفّق مع نفسك على ١٠ دقايق", html:"<p class='urge-text'>متقولش 'مش هعملها أبدًا'. قول 'مش دلوقتي، بعد ١٠ دقايق'. اعمل أي حاجة بديلة في الوقت ده. غالبًا الموجة هتكون عدّت قبل ما الوقت يخلص.</p>" },
+  { label:"خلصت", title:"انت عدّيت الموجة", html:"<p class='urge-text'>كل مرة تعدّي فيها الموجة من غير ما تستجيب، بتضعّف العادة شوية. مش مهم تكون مثالي، المهم تكرر. لو وقعت مرة، ارجع للخطوة الأولى من غير لوم.</p>" }
+];
+let urgeIdx = 0;
+const urgeStage = document.getElementById('urgeStage');
+const urgeDots = document.getElementById('urgeDots');
+const urgePrev = document.getElementById('urgePrev');
+const urgeNext = document.getElementById('urgeNext');
+urgeDots.innerHTML = urgeSteps.map(()=>'<span class="urge-dot"></span>').join('');
+function renderUrge(){
+  const s = urgeSteps[urgeIdx];
+  urgeStage.innerHTML = `<div class="urge-step-label">${s.label}</div><div class="urge-title">${s.title}</div>${s.html}`;
+  urgeDots.querySelectorAll('.urge-dot').forEach((d,i)=>d.classList.toggle('active', i===urgeIdx));
+  urgePrev.style.visibility = urgeIdx===0 ? 'hidden' : 'visible';
+  urgeNext.textContent = urgeIdx===urgeSteps.length-1 ? 'ابدأ من جديد' : 'التالي';
+}
+urgeNext.addEventListener('click', ()=>{
+  urgeIdx = urgeIdx===urgeSteps.length-1 ? 0 : urgeIdx+1;
+  renderUrge();
+});
+urgePrev.addEventListener('click', ()=>{ if(urgeIdx>0){ urgeIdx--; renderUrge(); } });
+renderUrge();
+
+// ---------------- REPLACEMENT BUILDER ----------------
+const cues = ["الملل","التوتر","الوحدة","التعب","القلق قبل مهمة","بعد خناقة"];
+const alts = ["مشي ٥ دقايق","اتصال بصديق","كتابة اللي حاسس بيه","تمرين تنفّس","كوباية مية وحركة","مهمة صغيرة دقيقتين"];
+let selCue = null, selAlt = null;
+const cueChips = document.getElementById('cueChips');
+const altChips = document.getElementById('altChips');
+const builderOut = document.getElementById('builderOut');
+cueChips.innerHTML = cues.map(c=>`<button class="chip" type="button">${c}</button>`).join('');
+altChips.innerHTML = alts.map(a=>`<button class="chip" type="button">${a}</button>`).join('');
+function bindChips(container, onPick){
+  container.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      container.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+      chip.classList.add('selected');
+      onPick(chip.textContent);
+    });
+  });
+}
+function renderBuilderOut(){
+  if(selCue && selAlt){
+    builderOut.innerHTML = `<p>لما أحس بـ <b>${selCue}</b>، هعمل <span class="teal">${selAlt}</span> بدل السلوك القديم.</p>`;
+  } else {
+    builderOut.innerHTML = `<span class="builder-empty">اختر محفّز وبديل عشان تتكوّن خطتك الشخصية.</span>`;
+  }
+}
+bindChips(cueChips, v=>{ selCue=v; renderBuilderOut(); });
+bindChips(altChips, v=>{ selAlt=v; renderBuilderOut(); });
+
+// ---------------- 7 DAY CHALLENGE ----------------
+const days = [
+  { t:"حدد عدوّك الواحد", d:"اختر عادة واحدة بس تركّز عليها الأسبوع ده، مش كل حاجة مرة واحدة." },
+  { t:"راقب من غير تغيير", d:"النهارده بس لاحظ امتى وفين بتحصل، واكتبها. مفيش ضغط على نفسك." },
+  { t:"غيّر بيئة واحدة", d:"شيل محفّز واحد من طريقك (التطبيق، الأكل، أي trigger) وخليه صعب الوصول." },
+  { t:"جرّب البديل", d:"طبّق الخطة اللي بنيتها فوق مرة واحدة على الأقل النهارده." },
+  { t:"خطوة الدقيقتين", d:"على المهمة اللي بتأجّلها، اعمل أول دقيقتين بس منها، وبعدها انت حر." },
+  { t:"كلّم حد", d:"شارك اللي بتحاول تعمله مع شخص واحد تثق فيه. العزلة بتقوّي العادة." },
+  { t:"راجع وكمّل", d:"بصّ على أسبوعك من غير حكم قاسي. اختر خطوة واحدة تكمّلها الأسبوع الجاي." }
+];
+const track = document.getElementById('challengeTrack');
+const cpFill = document.getElementById('cpFill');
+const cpLabel = document.getElementById('cpLabel');
+const doneDays = new Set();
+track.innerHTML = days.map((day,i)=>`
+  <div class="day-row" data-day="${i}">
+    <div class="day-badge"><span class="d-num">${i+1}</span><span class="d-lbl">يوم</span></div>
+    <div class="day-content"><h4>${day.t}</h4><p>${day.d}</p></div>
+    <div class="day-check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+  </div>
+`).join('');
+function updateChallenge(){
+  const n = doneDays.size;
+  cpFill.style.width = (n/days.length*100) + '%';
+  cpLabel.textContent = n + ' من 7';
+}
+track.querySelectorAll('.day-row').forEach(row=>{
+  row.querySelector('.day-check').addEventListener('click', ()=>{
+    const idx = row.dataset.day;
+    if(doneDays.has(idx)){ doneDays.delete(idx); row.classList.remove('done'); }
+    else { doneDays.add(idx); row.classList.add('done'); }
+    updateChallenge();
+  });
+});
+
+// ---------------- MYTHS ----------------
+const myths = [
+  { q:"الكسل معناه إنك شخص فاشل أو ضعيف", a:"الكسل غالبًا عرض مش عيب أخلاقي. وراه أسباب زي الإرهاق، الاكتئاب الخفيف، أو الخوف من الفشل. لما تعالج السبب، السلوك بيتغير من نفسه." },
+  { q:"لو عندك إرادة قوية كفاية، هتقدر توقف أي إدمان", a:"الإدمان بيغيّر كيمياء المخ نفسها، فالموضوع مش مجرد إرادة. ده زي ما تطلب من حد كسر رجله إنه يجري بإرادته. البيئة والدعم والوقت أهم من الإرادة لوحدها." },
+  { q:"الانتكاسة معناها إنك رجعت لنقطة الصفر", a:"الانتكاسة جزء طبيعي من التعافي مش نهايته. كل يوم نجحت فيه قبلها مش بيتمسح. المهم إنك ترجع تكمّل بدل ما تستسلم." },
+  { q:"لازم تغيّر حياتك كلها مرة واحدة عشان التغيير يبان", a:"التغيير الكبير المفاجئ بيفشل أسرع. المخ بيقاوم القفزات الكبيرة لكنه بيقبل الخطوات الصغيرة المتكررة. التغيير الحقيقي تراكمي وممل، مش درامي." },
+  { q:"المكافأة الفورية عدوّك ولازم تحرم نفسك منها", a:"المخ محتاج مكافأة عشان يكرر السلوك الجيد. الحل مش الحرمان، الحل إنك تربط المكافأة بالسلوك المفيد بدل المدمر." },
+  { q:"العادة بتتكوّن في ٢١ يوم", a:"الرقم ده مالوش أساس علمي، أصله ملاحظة قديمة اتنشرت. دراسة مشهورة لقت إن متوسط الوقت عشان السلوك يبقى تلقائي حوالي ٦٦ يوم، ومتفاوت جدًا من شخص للتاني ومن عادة للتانية (من أقل من ٣ أسابيع لأكتر من ٨ شهور). فلو عدّى شهر ولسه صعب، ده طبيعي جدًا مش فشل." },
+  { q:"الدوبامين هو هرمون المتعة", a:"الدوبامين أقرب لمادة 'الرغبة والتوقّع' مش المتعة نفسها. هو اللي بيدفعك تدوّر على المكافأة، وعشان كده الإدمان بيحسّسك بإلحاح شديد حتى لو المتعة نفسها بقت باهتة. فهم ده بيفسّر ليه بتكرر حاجة مش مستمتع بيها." },
+  { q:"'ديتوكس الدوبامين' بيعيد ضبط المخ في يوم", a:"مفيش حاجة اسمها تفريغ المخ من الدوبامين. الفكرة المفيدة الحقيقية وراها إنك تقلل المحفّزات السريعة المتكررة لفترة عشان المتع البسيطة ترجع تبان. ده بيشتغل بالتدريج والاستمرارية، مش بيوم حرمان واحد." }
+];
+const mythGroup = document.getElementById('mythGroup');
+mythGroup.innerHTML = myths.map(m=>`
+  <div class="myth-card">
+    <button class="myth-q" type="button">
+      <span class="myth-x">✕</span>
+      <span class="myth-q-text">${m.q}</span>
+    </button>
+    <div class="myth-a"><div class="myth-a-inner"><div class="myth-a-pad">
+      <span class="tick">✓ الحقيقة</span>
+      <p>${m.a}</p>
+    </div></div></div>
+  </div>
+`).join('');
+mythGroup.querySelectorAll('.myth-q').forEach(btn=>{
+  btn.addEventListener('click', ()=> btn.closest('.myth-card').classList.toggle('open'));
+});
+
+// ---------------- THEME TOGGLE ----------------
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', ()=>{
+  const root = document.documentElement;
+  root.setAttribute('data-theme', root.getAttribute('data-theme')==='light' ? '' : 'light');
+});
+
+// ---------------- SIDEBAR ----------------
+const sidebar = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+function openSidebar(){ sidebar.classList.add('open'); sidebarOverlay.classList.add('open'); }
+function closeSidebar(){ sidebar.classList.remove('open'); sidebarOverlay.classList.remove('open'); }
+document.getElementById('menuBtn').addEventListener('click', openSidebar);
+document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSidebar(); });
+const sidebarLinks = sidebar.querySelectorAll('a[href^="#"]');
+sidebarLinks.forEach(a=> a.addEventListener('click', ()=> closeSidebar()));
+
+// scroll-spy: highlight active section in sidebar
+const spySections = [...sidebarLinks].map(a=> document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const spyObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = e.target.id;
+      sidebarLinks.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+spySections.forEach(s=> spyObserver.observe(s));
+
+// ---------------- READING TIME ----------------
+(function(){
+  const text = document.body.innerText || '';
+  const words = text.trim().split(/\s+/).length;
+  const mins = Math.max(1, Math.round(words / 200));
+  const el = document.getElementById('readTime');
+  if(el) el.textContent = 'وقت القراءة التقديري: ' + mins + ' دقيقة تقريبًا';
+})();
+
+// ---------------- QUIZ ----------------
+const quizQuestions = [
+  { q:"إيه أكتر حاجة بتلاحظها في نفسك؟", progress:"سؤال ١ من ٢", opts:[
+    { t:"بأجّل ومش بتحرّك حتى في الحاجات البسيطة", key:"laziness" },
+    { t:"في سلوك معيّن مش قادر أوقفه (موبايل، أكل، إلخ)", key:"addiction" },
+    { t:"عندي عادات يومية حاسس إنها بتأخرني", key:"habits" },
+    { t:"مش عارف بالظبط، عايز أفهم الموضوع الأول", key:"mechanism" }
+  ]},
+  { q:"وإيه اللي بتحس إنه بيحركك ناحية السلوك ده؟", progress:"سؤال ٢ من ٢", opts:[
+    { t:"الملل وفقدان الهدف", key:"a" },
+    { t:"التوتر والضغط", key:"b" },
+    { t:"الوحدة أو مشاعر صعبة", key:"c" },
+    { t:"عادة تلقائية من غير سبب واضح", key:"d" }
+  ]}
+];
+const quizResults = {
+  laziness:{ target:"#laziness", title:"يبدو إن تحديك الأساسي هو الكسل", desc:"ابدأ من قسم 'أنواع الكسل' عشان تحدد نوعك بالظبط، وبعدها روح لـ'الهوية' و'الخطة'." },
+  addiction:{ target:"#addiction", title:"تحديك أقرب لنمط إدماني", desc:"شوف قسم 'أنواع الإدمان' و'الفرق بين المفاهيم' عشان تعرف درجة المشكلة ونوع المساعدة المناسبة." },
+  habits:{ target:"#habits", title:"المشكلة في عادات يومية تراكمية", desc:"ابدأ من قسم 'عادات سيئة'، وركّز بعدها على 'الأساس' لأن العادات دي بتتأثر بالنوم والحركة جدًا." },
+  mechanism:{ target:"#mechanism", title:"أحسن بداية ليك هي الفهم", desc:"ابدأ من 'الآلية النفسية المشتركة' عشان تفهم الحلقة، وبعدها استخدم أداة 'لحظة الرغبة'." }
+};
+let quizIdx = 0, quizPick = null, quizFeel = null;
+const feelTips = {
+  a:{ label:"محفّزك: الملل وفقدان الهدف", tip:"ركّز كمان على قسم 'الـ\"ليه\" العميق' — الملل غالبًا علامة إن مفيش معنى واضح، والسبب العميق هو علاجه.", link:"#why" },
+  b:{ label:"محفّزك: التوتر والضغط", tip:"أداة 'لحظة الرغبة' هتفيدك جدًا، لأن السلوك عندك غالبًا وسيلة لتهدئة الجهاز العصبي.", link:"#urge" },
+  c:{ label:"محفّزك: الوحدة أو المشاعر الصعبة", tip:"العزلة وقود الحلقة. ركّز على 'أساس التغيير' (العلاقات تحديدًا)، ولو المشاعر تقيلة متترددش تكلّم مختص.", link:"#foundations" },
+  d:{ label:"محفّزك: عادة تلقائية", tip:"ابدأ بـ'مذكرة المحفّزات' — العادة التلقائية بتضعف بمجرد ما تبقى واعي بيها وبتسجّلها.", link:"#journal" }
+};
+const quizStage = document.getElementById('quizStage');
+function renderQuiz(){
+  if(quizIdx < quizQuestions.length){
+    const Q = quizQuestions[quizIdx];
+    quizStage.innerHTML = `
+      <div class="quiz-progress">${Q.progress}</div>
+      <div class="quiz-q">${Q.q}</div>
+      <div class="quiz-options">
+        ${Q.opts.map((o,i)=>`<button class="quiz-opt" data-key="${o.key}" data-i="${i}">${o.t}</button>`).join('')}
+      </div>`;
+    quizStage.querySelectorAll('.quiz-opt').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        if(quizIdx===0) quizPick = b.dataset.key; else quizFeel = b.dataset.key;
+        quizIdx++;
+        renderQuiz();
+      });
+    });
+  } else {
+    const r = quizResults[quizPick] || quizResults.mechanism;
+    quizStage.innerHTML = `
+      <div class="quiz-result">
+        <span class="qr-label">✓ بناءً على إجابتك</span>
+        <h3>${r.title}</h3>
+        <p>${r.desc}</p>
+        ${quizFeel && feelTips[quizFeel] ? `<div class="quiz-feel"><span>${feelTips[quizFeel].label}</span><p>${feelTips[quizFeel].tip} <a href="${feelTips[quizFeel].link}">روح للقسم ←</a></p></div>` : ''}
+        <div class="quiz-actions">
+          <a href="${r.target}" class="btn btn-primary">روح للقسم المناسب</a>
+          <button class="btn btn-ghost" id="quizRestart">ابدأ من جديد</button>
+        </div>
+      </div>`;
+    document.getElementById('quizRestart').addEventListener('click', ()=>{ quizIdx=0; quizPick=null; quizFeel=null; renderQuiz(); });
+  }
+}
+renderQuiz();
+
+// ---------------- TRIGGER JOURNAL ----------------
+const journalEntries = [];
+const journalList = document.getElementById('journalList');
+const jSit = document.getElementById('jSituation');
+const jFeel = document.getElementById('jFeeling');
+function renderJournal(){
+  if(journalEntries.length===0){
+    journalList.innerHTML = '<p class="journal-empty">لسه مفيش تسجيلات. أول ما تحس بالرغبة، سجّلها هنا.</p>';
+    return;
+  }
+  journalList.innerHTML = journalEntries.map((e,i)=>`
+    <div class="j-entry">
+      <span class="j-sit">${e.sit}</span>
+      ${e.feel ? `<span class="j-feel">${e.feel}</span>` : ''}
+      <button class="j-del" data-i="${i}" title="حذف">✕</button>
+    </div>`).join('');
+  journalList.querySelectorAll('.j-del').forEach(b=>{
+    b.addEventListener('click', ()=>{ journalEntries.splice(+b.dataset.i,1); renderJournal(); });
+  });
+}
+document.getElementById('jAdd').addEventListener('click', ()=>{
+  const sit = jSit.value.trim();
+  if(!sit) return;
+  journalEntries.push({ sit, feel: jFeel.value.trim() });
+  jSit.value=''; jFeel.value='';
+  renderJournal();
+});
+[jSit, jFeel].forEach(inp=> inp.addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('jAdd').click(); }));
+
+// ---------------- MY PLAN ----------------
+const mpHabit = document.getElementById('mpHabit');
+const mpIdentity = document.getElementById('mpIdentity');
+const mpWhy = document.getElementById('mpWhy');
+const mpStep = document.getElementById('mpStep');
+const mpPreview = document.getElementById('mpPreview');
+function renderMyPlan(){
+  const h = mpHabit.value.trim(), id = mpIdentity.value.trim(), wy = mpWhy.value.trim(), st = mpStep.value.trim();
+  if(!h && !id && !wy && !st){
+    mpPreview.innerHTML = '<span class="mp-empty">املأ الفراغات فوق وخطتك هتظهر هنا جاهزة للطباعة.</span>';
+    return;
+  }
+  let out = '';
+  if(h) out += `العادة اللي بحاربها: <b>${h}</b>.<br>`;
+  if(id) out += `الشخص اللي عايز أبقاه: <span class="teal">${id}</span>.<br>`;
+  if(wy) out += `الـ"ليه" العميق: <span class="teal">${wy}</span>.<br>`;
+  if(st) out += `خطوتي النهارده: <b>${st}</b>.`;
+  if(selCue && selAlt) out += `<br>خطة لحظة الرغبة: لما أحس بـ <b>${selCue}</b>، هعمل <span class="teal">${selAlt}</span>.`;
+  if(journalEntries.length) out += `<br>محفّزاتي المسجّلة: ${journalEntries.map(e=>e.sit).join('، ')}.`;
+  mpPreview.innerHTML = out;
+}
+[mpHabit, mpIdentity, mpWhy, mpStep].forEach(inp=> inp.addEventListener('input', renderMyPlan));
+renderMyPlan();
+document.getElementById('mpPrint').addEventListener('click', ()=>{ renderMyPlan(); window.print(); });
+document.getElementById('mpFill').addEventListener('click', ()=>{
+  if(selCue && !mpHabit.value) mpHabit.value = 'سلوك مرتبط بـ' + selCue;
+  renderMyPlan();
+  mpPreview.scrollIntoView({ behavior:'smooth', block:'center' });
+});
+
+// ---------------- FAQ ----------------
+const faqs = [
+  { q:"قد إيه بياخد وقت عشان أتغيّر فعلاً؟", a:"مفيش رقم سحري. الأبحاث بتقول إن متوسط تثبيت عادة جديدة حوالي شهرين، ومدى التفاوت كبير جدًا بين الناس. والإدمان القوي ممكن ياخد شهور أطول مع انتكاسات. المهم مش السرعة، المهم إنك تكمّل رغم البطء، وإن فوت يوم واحد مش بيبوّظ التقدّم." },
+  { q:"وقعت ورجعت للسلوك، يعني فشلت؟", a:"لأ. الزلة جزء طبيعي من الطريق. الفشل الوحيد هو إنك تستسلم خالص. ارجع كمّل من نفس النقطة من غير جلد ذات." },
+  { q:"أبدأ بكام عادة في نفس الوقت؟", a:"واحدة بس. محاولة تغيير كل حاجة مرة واحدة بتستهلك إرادتك بسرعة وبتفشل. ركّز على عدو واحد لحد ما يثبت، وبعدها انتقل للي بعده." },
+  { q:"إمتى أعرف إني محتاج دكتور أو مختص؟", a:"لو حاولت توقف أكتر من مرة وفشلت، أو السلوك بيأثر على شغلك وعلاقاتك، أو فيه أعراض جسدية عند التوقف — دي إشارات إن المساعدة المتخصصة هتفرق معاك." },
+  { q:"الإرادة عندي ضعيفة، يعني مفيش أمل؟", a:"الإرادة مش صفة ثابتة، دي طاقة بتتأثر بالنوم والتوتر والبيئة. لما تظبط الأساس وتسهّل السلوك الصح وتصعّب الغلط، مش هتحتاج إرادة خارقة أصلاً." },
+  { q:"ليه بحس بذنب بعد السلوك ومع ذلك بكرره؟", a:"الذنب نفسه بيبقى شعور مزعج، والمخ بيهرب منه بنفس السلوك المريح — فتدخل في حلقة. كسر الحلقة بيبدأ بإنك تستبدل الجلد بالتفهّم، مش بإنك تزوّد القسوة." }
+];
+const faqGroup = document.getElementById('faqGroup');
+faqGroup.innerHTML = faqs.map(f=>`
+  <div class="myth-card">
+    <button class="myth-q" type="button">
+      <span class="myth-x" style="background:var(--amber-soft);color:var(--amber);">؟</span>
+      <span class="myth-q-text">${f.q}</span>
+    </button>
+    <div class="myth-a"><div class="myth-a-inner"><div class="myth-a-pad">
+      <span class="tick">✓ الإجابة</span>
+      <p>${f.a}</p>
+    </div></div></div>
+  </div>
+`).join('');
+faqGroup.querySelectorAll('.myth-q').forEach(btn=>{
+  btn.addEventListener('click', ()=> btn.closest('.myth-card').classList.toggle('open'));
+});
+
+// ---------------- PERSISTENCE (saved in this browser only) ----------------
+(function(){
+  const KEY = 'selfMasteryGuide_v1';
+  function readStore(){ try{ return JSON.parse(localStorage.getItem(KEY)) || null; }catch(e){ return null; } }
+  function save(){
+    try{
+      const checks = [...checkList.querySelectorAll('input')].map((i,idx)=> i.checked ? idx : -1).filter(i=>i>=0);
+      localStorage.setItem(KEY, JSON.stringify({
+        journal: journalEntries,
+        plan: { h: mpHabit.value, id: mpIdentity.value, wy: mpWhy.value, st: mpStep.value },
+        days: [...doneDays],
+        checks,
+        theme: document.documentElement.getAttribute('data-theme') || ''
+      }));
+    }catch(e){}
+  }
+  // restore
+  const s = readStore();
+  if(s){
+    if(s.theme) document.documentElement.setAttribute('data-theme', s.theme);
+    if(Array.isArray(s.journal)) s.journal.forEach(e=> journalEntries.push(e));
+    if(s.plan){ mpHabit.value=s.plan.h||''; mpIdentity.value=s.plan.id||''; mpWhy.value=s.plan.wy||''; mpStep.value=s.plan.st||''; }
+    if(Array.isArray(s.days)) s.days.forEach(d=>{
+      doneDays.add(String(d));
+      const row = track.querySelector('.day-row[data-day="'+d+'"]'); if(row) row.classList.add('done');
+    });
+    if(Array.isArray(s.checks)){ const inputs = checkList.querySelectorAll('input'); s.checks.forEach(i=>{ if(inputs[i]) inputs[i].checked = true; }); }
+  }
+  // wrap existing updaters so every change is saved
+  const _rj = renderJournal; renderJournal = function(){ _rj(); save(); };
+  const _rp = renderMyPlan;  renderMyPlan  = function(){ _rp(); save(); };
+  const _uc = updateChallenge; updateChallenge = function(){ _uc(); save(); };
+  const _uk = updateCheck; updateCheck = function(){ _uk(); save(); };
+  [mpHabit, mpIdentity, mpWhy, mpStep].forEach(inp=> inp.addEventListener('input', save));
+  checkList.addEventListener('change', save);
+  themeToggle.addEventListener('click', save);
+  _rj(); _rp(); _uc(); _uk();
+
+  // clear-all button
+  const clearBtn = document.getElementById('clearData');
+  if(clearBtn) clearBtn.addEventListener('click', ()=>{
+    if(!confirm('هتتمسح كل بياناتك المحفوظة (المذكرة، الخطة، التحدي، التحقق). متأكد؟')) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    location.reload();
+  });
+})();
+</script>
+</body>
+</html>

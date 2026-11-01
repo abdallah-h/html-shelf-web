@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل العلاقات الزوجية الناجحة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="shelf-vendor:/fonts/26274fb5e783.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f1e3; --bg2:#efe6cf; --card:#fffaf0; --card2:#fdf6e8; --row-alt:#fdf7ea;
+  --ink:#2c2620; --muted:#7a6f5d; --dua-ink:#6e521a;
+  --green:#1c6e51; --green-deep:#0f4030; --green-soft:#e7f0ea;
+  --teal:#1d5f74; --teal-soft:#e6eef2;
+  --gold:#b5882c; --gold-soft:#f3e6c4; --line:#e2d6ba;
+  --shadow:0 10px 30px -12px rgba(48,38,16,.28);
+}
+body.dark{
+  --bg:#15140f; --bg2:#1d1b15; --card:#201d17; --card2:#262219; --row-alt:#23201a;
+  --ink:#ece4d3; --muted:#a99e88; --dua-ink:#e6c878;
+  --green:#52b58f; --green-deep:#a6ddc4; --green-soft:#1d3a30;
+  --teal:#73bcd6; --teal-soft:#193139;
+  --gold:#d8b25a; --gold-soft:#372d16; --line:#39342a;
+  --shadow:0 10px 30px -12px rgba(0,0,0,.65);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',-apple-system,'Segoe UI',Tahoma,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.95; font-size:17px;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(181,136,44,.06), transparent 40%),
+    radial-gradient(circle at 88% 92%, rgba(28,110,81,.06), transparent 42%);
+  background-attachment:fixed;transition:background .3s,color .3s;
+}
+/* faint geometric texture */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1; opacity:.4; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23b5882c' stroke-opacity='0.05' stroke-width='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3Ccircle cx='30' cy='30' r='12'/%3E%3C/g%3E%3C/svg%3E");
+}
+.progress{position:fixed;top:0;right:0;height:4px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--green));transition:width .1s}
+
+/* Header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(15,64,48,.97);
+  color:#f7f1e3;backdrop-filter:blur(6px);box-shadow:0 4px 20px -8px rgba(0,0,0,.4)}
+.bar{display:flex;align-items:center;gap:12px;padding:12px 16px;max-width:1100px;margin:0 auto}
+.bar h1{font-family:'Amiri',serif;font-size:21px;font-weight:700;flex:1;letter-spacing:.3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon-btn{background:rgba(247,241,227,.12);border:none;color:#f7f1e3;width:42px;height:42px;
+  border-radius:12px;cursor:pointer;font-size:20px;display:grid;place-items:center;transition:.2s}
+.icon-btn:hover{background:rgba(247,241,227,.25)}
+.searchwrap{max-width:1100px;margin:0 auto;padding:0 16px 12px;display:none}
+.searchwrap.open{display:block;animation:drop .25s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+#search{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(247,241,227,.3);
+  background:rgba(247,241,227,.1);color:#fff;font-family:inherit;font-size:16px;outline:none}
+#search::placeholder{color:rgba(247,241,227,.6)}
+#searchInfo{color:rgba(247,241,227,.75);font-size:13px;margin-top:6px;min-height:16px}
+
+/* Hero */
+.hero{max-width:1100px;margin:0 auto;padding:46px 22px 30px;text-align:center}
+.hero .kicker{color:var(--gold);font-weight:500;letter-spacing:4px;font-size:13px;margin-bottom:10px}
+.hero h2{font-family:'Amiri',serif;font-size:clamp(30px,7vw,52px);color:var(--green-deep);
+  line-height:1.3;font-weight:700}
+.hero .sub{color:var(--muted);font-size:18px;margin-top:8px}
+.verse-hero{font-family:'Amiri',serif;font-size:clamp(20px,4.5vw,28px);color:var(--green);
+  margin:26px auto 0;max-width:620px;font-style:italic}
+.ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin:24px auto;color:var(--gold)}
+.ornament::before,.ornament::after{content:"";height:1px;width:90px;
+  background:linear-gradient(90deg,transparent,var(--gold))}
+.ornament span{font-size:18px}
+
+/* Layout */
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 80px;display:grid;
+  grid-template-columns:1fr;gap:0}
+@media(min-width:920px){
+  .wrap{grid-template-columns:270px 1fr;gap:34px;align-items:start}
+  .toolbar{grid-column:1 / -1}
+}
+
+/* Side nav (desktop) */
+aside.nav{display:none}
+@media(min-width:920px){
+  aside.nav{display:block;position:sticky;top:88px;max-height:calc(100vh - 110px);overflow:auto;
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+  aside.nav .navttl{font-family:'Amiri',serif;color:var(--green-deep);font-weight:700;font-size:18px;
+    padding:6px 10px 12px;border-bottom:1px solid var(--line);margin-bottom:8px}
+}
+.navlink{display:block;padding:9px 12px;border-radius:10px;color:var(--ink);text-decoration:none;
+  font-size:14.5px;cursor:pointer;transition:.18s;border-right:3px solid transparent}
+.navlink:hover{background:var(--green-soft)}
+.navlink.active{background:var(--green-soft);border-right-color:var(--green);color:var(--green-deep);font-weight:500}
+
+/* Drawer (mobile) */
+.scrim{position:fixed;inset:0;background:rgba(15,40,30,.5);z-index:55;opacity:0;visibility:hidden;transition:.25s}
+.scrim.open{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(82vw,330px);background:var(--card);z-index:56;
+  transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow:auto;
+  box-shadow:-12px 0 40px -10px rgba(0,0,0,.4);padding:18px 14px}
+.drawer.open{transform:none}
+.drawer .dhead{font-family:'Amiri',serif;color:var(--green-deep);font-weight:700;font-size:20px;
+  padding:6px 8px 14px;border-bottom:2px solid var(--gold-soft);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+@media(min-width:920px){.drawer,.scrim,.menu-toggle{display:none!important}}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;padding:18px 2px 14px}
+.tbtn{background:var(--card);border:1px solid var(--line);color:var(--green-deep);
+  padding:8px 14px;border-radius:10px;font-family:inherit;font-size:14px;cursor:pointer;transition:.18s}
+.tbtn:hover{background:var(--green-soft);border-color:var(--green)}
+
+/* Chapter cards */
+main{min-width:0}
+.chapter{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:16px;
+  box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:80px}
+.chapter.hidden{display:none}
+.ch-head{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;
+  background:linear-gradient(180deg,var(--card),var(--card2));transition:.2s}
+.ch-head:hover{background:var(--card2)}
+.ch-num{flex:none;width:42px;height:42px;border-radius:12px;background:var(--green-soft);
+  color:var(--green-deep);display:grid;place-items:center;font-family:'Amiri',serif;font-weight:700;font-size:18px}
+.ch-title{flex:1;font-family:'Amiri',serif;font-size:20px;font-weight:700;color:var(--green-deep);line-height:1.4}
+.chev{flex:none;color:var(--gold);font-size:16px;transition:transform .3s}
+.chapter.open .chev{transform:rotate(180deg)}
+.ch-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.chapter.open .ch-body{grid-template-rows:1fr}
+.ch-inner{overflow:hidden}
+.ch-pad{padding:6px 22px 24px}
+
+.ch-pad p{margin:0 0 14px;text-align:justify}
+.ch-pad h3{font-family:'Amiri',serif;color:var(--gold);font-size:19px;font-weight:700;margin:20px 0 8px}
+.ch-pad h4{font-family:'Tajawal',sans-serif;color:var(--green-deep);font-size:17px;font-weight:700;margin:14px 0 6px}
+.ch-pad ul,.ch-pad ol{margin:0 14px 16px 0;padding-right:20px}
+.ch-pad li{margin-bottom:9px;padding-right:4px}
+.ch-pad ol li::marker{color:var(--green);font-weight:700}
+.ch-pad ul li::marker{color:var(--gold)}
+.ch-pad li strong{color:var(--green-deep)}
+
+/* Verse + hadith boxes */
+.ayah,.hadith{border-radius:12px;padding:18px 22px;margin:16px 0;text-align:center;position:relative}
+.ayah{background:var(--green-soft);border-top:3px solid var(--green);border-bottom:3px solid var(--green)}
+.hadith{background:var(--teal-soft);border-top:3px solid var(--teal);border-bottom:3px solid var(--teal)}
+.ayah .qt{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--green-deep);line-height:1.7}
+.hadith .qt{font-family:'Amiri',serif;font-size:21px;font-weight:700;color:var(--teal);line-height:1.7}
+.ref{display:block;margin-top:8px;font-size:13.5px;color:var(--muted);font-style:italic}
+.dua{background:var(--gold-soft);border-right:4px solid var(--gold);border-radius:10px;padding:14px 18px;margin:14px 0;
+  font-family:'Amiri',serif;font-size:19px;color:var(--dua-ink);text-align:center}
+
+/* Analysis table */
+.tablewrap{margin:16px 0;overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;min-width:520px;font-size:15px}
+thead th{background:var(--green);color:#fff;padding:11px 14px;font-weight:700;text-align:right;font-size:15px}
+tbody td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;text-align:right}
+tbody tr:nth-child(even){background:var(--row-alt)}
+tbody td:first-child{font-weight:700;color:var(--green-deep);background:var(--green-soft)}
+@media(max-width:600px){
+  table,thead,tbody,tr,td{display:block;min-width:0}
+  thead{display:none}
+  tbody tr{border:1px solid var(--line);border-radius:10px;margin:10px;padding:6px;background:var(--card)!important}
+  tbody td{border:none;border-bottom:1px dashed var(--line);padding:9px 8px}
+  tbody td:last-child{border-bottom:none}
+  tbody td:first-child{background:transparent;font-size:17px}
+  tbody td::before{content:attr(data-label);display:block;font-size:12px;color:var(--gold);font-weight:700;margin-bottom:2px}
+  tbody td:first-child::before{content:none}
+}
+mark{background:var(--gold-soft);color:var(--dua-ink);padding:0 2px;border-radius:3px}
+
+/* closing + footer */
+.closing{background:linear-gradient(160deg,#0f4030,#1c6e51);color:#f7f1e3;
+  border-radius:16px;padding:30px 24px;text-align:center;margin-top:10px;box-shadow:var(--shadow)}
+.closing .du{font-family:'Amiri',serif;font-size:clamp(19px,4vw,25px);line-height:1.7}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:26px 16px 10px;max-width:1100px;margin:0 auto}
+.totop{position:fixed;bottom:20px;left:20px;width:48px;height:48px;border-radius:50%;border:none;
+  background:var(--green);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transition:.25s;z-index:40}
+.totop.show{opacity:1;visibility:visible}
+.totop:hover{background:var(--green-deep)}
+.fadein{opacity:0;transform:translateY(14px);animation:fade .6s ease forwards}
+@keyframes fade{to{opacity:1;transform:none}}
+
+/* favorite star */
+.fav{flex:none;background:none;border:none;color:var(--line);font-size:22px;cursor:pointer;
+  line-height:1;padding:2px 4px;transition:.2s;margin-inline-start:2px}
+.fav:hover{transform:scale(1.15)}
+.chapter.faved .fav{color:var(--gold)}
+
+/* interactive self-assessment */
+.quiz{background:var(--green-soft);border-radius:12px;padding:16px 18px;margin:14px 0}
+.qz-item{display:flex;align-items:center;gap:12px;padding:10px 8px;border-bottom:1px solid var(--line);
+  cursor:pointer;font-size:16px}
+.qz-item:last-of-type{border-bottom:none}
+.qz-item input{width:20px;height:20px;accent-color:var(--green);cursor:pointer;flex:none}
+.qz-item.checked span{color:var(--green-deep);font-weight:500}
+.qz-result{margin-top:14px;text-align:center}
+.qz-bar{height:12px;border-radius:8px;background:var(--card2);overflow:hidden;border:1px solid var(--line)}
+.qz-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--green));transition:width .4s}
+.qz-msg{margin-top:10px;font-family:'Amiri',serif;font-size:19px;color:var(--green-deep);font-weight:700}
+
+/* copy button on quotes */
+.qbox{position:relative}
+.copy{position:absolute;top:8px;left:8px;background:var(--card);border:1px solid var(--line);
+  color:var(--muted);border-radius:8px;font-size:12px;padding:3px 8px;cursor:pointer;opacity:.55;transition:.2s;font-family:'Tajawal',sans-serif}
+.copy:hover{opacity:1;color:var(--green-deep);border-color:var(--green)}
+.copy.done{color:var(--green);border-color:var(--green);opacity:1}
+
+/* chapter footer: actions, notes, prev/next */
+.ch-foot{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line)}
+.ch-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.mini{background:var(--card2);border:1px solid var(--line);color:var(--green-deep);
+  padding:7px 12px;border-radius:9px;font-family:inherit;font-size:13.5px;cursor:pointer;transition:.18s}
+.mini:hover{background:var(--green-soft);border-color:var(--green)}
+.mini.on{background:var(--green);color:#fff;border-color:var(--green)}
+.notes{width:100%;min-height:64px;resize:vertical;border:1px solid var(--line);border-radius:10px;
+  background:var(--card2);color:var(--ink);font-family:inherit;font-size:14.5px;padding:10px 12px;outline:none;line-height:1.7}
+.notes:focus{border-color:var(--gold)}
+.ch-nav{display:flex;justify-content:space-between;gap:8px;margin-top:12px}
+.chapter.read .ch-num{background:var(--green);color:#fff}
+.chapter.read .ch-num::after{content:" ✓";font-size:12px}
+
+/* reading font-size control */
+.ch-pad p,.ch-pad li{font-size:var(--rfs,17px)}
+.ayah .qt{font-size:calc(var(--rfs,17px) + 5px)}
+.hadith .qt{font-size:calc(var(--rfs,17px) + 4px)}
+.dua{font-size:calc(var(--rfs,17px) + 2px)}
+.fsctl{display:inline-flex;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.fsctl button{background:var(--card);border:none;color:var(--green-deep);padding:7px 12px;cursor:pointer;font-family:'Amiri',serif;font-weight:700}
+.fsctl button:hover{background:var(--green-soft)}
+.fsctl button:first-child{border-inline-end:1px solid var(--line)}
+
+/* progress badge in toolbar */
+.readprog{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+  border-radius:9px;padding:6px 12px;font-size:13.5px;color:var(--green-deep)}
+.readprog b{font-family:'Amiri',serif}
+
+/* daily card */
+#daily{max-width:1100px;margin:0 auto;padding:0 16px 8px}
+.daycard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);position:relative}
+.daycard .dctop{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.daycard .dctitle{font-family:'Amiri',serif;color:var(--gold);font-weight:700;font-size:18px}
+.daycard .dcq{font-family:'Amiri',serif;text-align:center;line-height:1.7;margin:8px 0 2px}
+.daycard .dcq.a{color:var(--green-deep);font-size:21px;font-weight:700}
+.daycard .dcq.h{color:var(--teal);font-size:19px;font-weight:700}
+.daycard .dcref{text-align:center;font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:8px}
+.daycard hr{border:none;border-top:1px dashed var(--line);margin:12px 0}
+
+/* tools: start-here + problem finder */
+#tools{max-width:1100px;margin:0 auto;padding:6px 16px}
+.toolcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:14px}
+.toolcard>h3{font-family:'Amiri',serif;color:var(--green-deep);font-size:20px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+.toolcard p{margin-bottom:10px}
+.start-list{margin:0 16px 0 0;padding-right:6px}
+.start-list li{margin-bottom:7px}
+.start-list li b{color:var(--green-deep)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{background:var(--green-soft);color:var(--green-deep);border:1px solid var(--line);
+  border-radius:20px;padding:8px 14px;cursor:pointer;font-size:14px;font-family:inherit;transition:.18s}
+.chip:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+.finder-result{margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--green-soft);
+  border:1px solid var(--line);display:none}
+.finder-result.show{display:block;animation:fade .35s ease}
+.frtip{margin-bottom:10px;font-weight:500}
+.gobtn{background:var(--gold);color:#3a2c08;border:none;border-radius:9px;padding:8px 14px;
+  margin:4px 6px 0 0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:500;transition:.18s}
+.gobtn:hover{background:var(--green);color:#fff}
+.dismiss{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;font-size:12px;
+  padding:4px 10px;cursor:pointer;font-family:inherit;font-weight:400}
+.dismiss:hover{border-color:var(--green);color:var(--green-deep)}
+body.focus #tools{display:none}
+
+/* example + scenario callouts */
+.ex{background:var(--gold-soft);border-radius:10px;padding:12px 16px;margin:14px 0;border-inline-start:3px solid var(--gold)}
+.exlbl{display:block;font-weight:700;color:var(--dua-ink);font-size:13px;margin-bottom:4px;font-family:'Tajawal',sans-serif}
+.scen{background:var(--teal-soft);border-radius:10px;padding:12px 16px;margin:14px 0;border-inline-start:3px solid var(--teal)}
+.scenq{font-weight:700;color:var(--teal);margin-bottom:6px}
+.scen ul{margin:0 14px 0 0;padding-right:18px}
+.scen li{margin-bottom:5px}
+
+/* sources page */
+#sources{margin-top:6px}
+.srccard h4{font-family:'Amiri',serif;color:var(--gold);font-size:19px;font-weight:700;margin:16px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.srclist{margin:0;padding:0;list-style:none;counter-reset:src}
+.srclist li{counter-increment:src;padding:9px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:flex-start}
+.srclist li::before{content:counter(src);flex:none;width:26px;height:26px;border-radius:50%;background:var(--green-soft);
+  color:var(--green-deep);display:grid;place-items:center;font-size:12px;font-weight:700;font-family:'Tajawal',sans-serif}
+.srclist .sref{flex:none;color:var(--green-deep);font-weight:700;font-size:14px;min-width:135px}
+.srclist .stext{font-family:'Amiri',serif;color:var(--ink);font-size:16px;line-height:1.6}
+.srcnote{margin-top:14px;font-size:13.5px;color:var(--muted);background:var(--card2);border-radius:10px;padding:10px 14px}
+body.focus #sources{display:none}
+@media(max-width:600px){.srclist li{flex-direction:column;gap:3px}.srclist .sref{min-width:0}}
+
+/* focus mode */
+body.focus .hero,body.focus #daily,body.focus aside.nav,body.focus .toolbar{display:none}
+body.focus .wrap{grid-template-columns:1fr;max-width:780px}
+
+/* search highlight current */
+.chapter.searchhit{outline:2px solid var(--gold);outline-offset:2px}
+
+/* print */
+@media print{
+  header.top,.drawer,.scrim,.totop,.progress,aside.nav,.toolbar,.fav,.chev,.hero .ornament,
+  .ch-foot,.copy,#daily,#tools,.fsctl,.readprog{display:none!important}
+  body{background:#fff;color:#000;font-size:12pt}
+  body::before{display:none}
+  .wrap{display:block;padding:0;max-width:none}
+  .chapter{box-shadow:none;border:none;border-bottom:2px solid #1c6e51;border-radius:0;page-break-inside:avoid;margin:0 0 12px}
+  .chapter .ch-body{grid-template-rows:1fr!important}
+  .ch-head{background:none!important;padding:8px 0}
+  .ayah,.hadith,.quiz{break-inside:avoid}
+  .closing{background:none;color:#000;border:1px solid #1c6e51}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="top">
+  <div class="bar">
+    <button class="icon-btn menu-toggle" id="menuBtn" aria-label="القائمة">☰</button>
+    <h1>دليل العلاقات الزوجية الناجحة</h1>
+    <button class="icon-btn" id="darkBtn" aria-label="الوضع الليلي">🌙</button>
+    <button class="icon-btn" id="searchBtn" aria-label="بحث">🔍</button>
+  </div>
+  <div class="searchwrap" id="searchWrap">
+    <input id="search" type="search" placeholder="ابحث في الدليل… (مثال: الغضب، الاعتذار، أذكار)" autocomplete="off">
+    <div id="searchInfo"></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="kicker">في ضوء الإسلام والقيم الأسرية</div>
+  <h2>بيتٌ من مودة ورحمة</h2>
+  <div class="sub">مرجع عملي لبناء بيت سعيد، وفهم الحقوق، وحلّ الخلافات بحكمة</div>
+  <div class="verse-hero">﴿ وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</div>
+  <div class="ornament"><span>﴾﴿</span></div>
+</section>
+
+<section id="daily"></section>
+<section id="tools"></section>
+
+<div class="wrap">
+  <aside class="nav">
+    <div class="navttl">المحتويات</div>
+    <nav id="navDesktop"></nav>
+  </aside>
+
+  <main>
+    <div class="toolbar">
+      <button class="tbtn" id="expandAll">توسيع الكل</button>
+      <button class="tbtn" id="collapseAll">طيّ الكل</button>
+      <button class="tbtn" id="favToggle">☆ المفضلة فقط</button>
+      <button class="tbtn" id="focusToggle">وضع التركيز</button>
+      <button class="tbtn" id="printBtn">طباعة / PDF</button>
+      <span class="fsctl"><button id="fsDown" aria-label="تصغير الخط">أ−</button><button id="fsUp" aria-label="تكبير الخط">أ+</button></span>
+      <span class="readprog" id="readProg">قرأت <b>0</b> / <b>37</b></span>
+    </div>
+    <div id="content"></div>
+
+    <div class="closing fadein">
+      <div class="ornament" style="color:var(--gold)"><span>﴾﴿</span></div>
+      <p class="du">اللهم ألّف بين قلوبنا، وأصلح ذات بيننا،<br>واجعل بيوتنا سكناً ومودة ورحمة.</p>
+    </div>
+    <footer>دليل العلاقات الزوجية الناجحة — كل الآيات والأحاديث موثّقة من مصادرها · يُقرأ ويُطبّق بالحكمة والصبر</footer>
+  </main>
+</div>
+
+<!-- Mobile drawer -->
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer">
+  <div class="dhead">المحتويات <button class="icon-btn" id="closeDrawer" style="background:var(--green-soft);color:var(--green-deep);width:36px;height:36px;font-size:18px">✕</button></div>
+  <nav id="navMobile"></nav>
+</div>
+
+<button class="totop" id="toTop" aria-label="أعلى">↑</button>
+
+<script>
+const ARN = ["","١","٢","٣","٤","٥","٦","٧","٨","٩","١٠","١١","١٢","١٣","١٤","١٥","١٦","١٧","١٨","١٩","٢٠","٢١","٢٢","٢٣","٢٤","٢٥","٢٦","٢٧","٢٨","٢٩","٣٠","٣١","٣٢","٣٣","٣٤","٣٥","٣٦","٣٧"];
+// ===== بيانات الدليل =====
+const CH = [
+{id:"intro", num:"", label:"مقدمة", title:"مقدمة", blocks:[
+  {t:"p",x:"الزواج في الإسلام ليس مجرد عقدٍ بين رجل وامرأة، بل هو ميثاق غليظ وسكنٌ للروح ومودة ورحمة. والبيت الناجح لا يُبنى بالصدفة، وإنما بالعلم والوعي والصبر والمجاهدة. هذا الدليل وُضع ليكون مرجعاً عملياً تعود إليه كلما واجهتك مشكلة أو أردت أن تطوّر علاقتك بزوجتك، يجمع بين هدي القرآن والسنة وبين الفهم العملي لطبيعة النفس البشرية والعلاقات."},
+  {t:"p",x:"ستجد فيه أسس البيت السعيد، والحقوق والواجبات المتبادلة، ومهارات التواصل، ومنهج الإسلام في حل الخلاف، ثم أكثر المشاكل الزوجية شيوعاً مع حلول عملية لكل منها، ولغات الحب، وفن المصالحة، وتحليل التصرفات، والعلاقة الحميمة، ونماذج من السيرة، وأذكار البيت."},
+  {t:"p",x:"والقاعدة الذهبية التي يقوم عليها كل ما بعدها: أن الكمال لله وحده، وأن أي زوجين يخطئان ويصيبان، وأن نجاح البيت يقوم على التغافل عن الهفوات، والاحتفاظ بالاحترام حتى وقت الخلاف."}
+]},
+
+{id:"c1", num:1, label:"مكانة الزواج وأسسه", title:"مكانة الزواج وأسسه في الإسلام", blocks:[
+  {t:"h3",x:"أولاً: الزواج سكنٌ ومودة ورحمة"},
+  {t:"p",x:"جعل الله الغاية من الزواج هي السكينة النفسية والمحبة والرحمة بين الزوجين، فقال سبحانه:"},
+  {t:"ayah",x:"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",r:"سورة الروم: 21"},
+  {t:"p",x:"فلاحظ الترتيب: السكن أولاً، ثم المودة (المحبة)، ثم الرحمة (العطف عند ضعف المحبة أحياناً). فحين تفتر المشاعر تبقى الرحمة تحفظ البيت. وهذا يعلّمنا أن العلاقة لا تقوم على العاطفة وحدها، بل على رحمة دائمة لا تتوقف عند أول خلاف."},
+  {t:"h3",x:"ثانياً: مقاصد الزواج"},
+  {t:"ol",x:["تحقيق السكينة النفسية: أن يجد كلٌّ منهما راحته وأمانه عند الآخر.","إعفاف النفس وغضّ البصر: صون الزوجين عن الحرام.","امتداد النسل وتربية ذرية صالحة.","التكامل والتعاون في مواجهة مسؤوليات الحياة.","نيل الأجر: فالنفقة على الأهل وحسن معاملتهم عبادة يُؤجر عليها."]},
+  {t:"h3",x:"ثالثاً: الأسس الأربعة لبيتٍ ناجح"},
+  {t:"h4",x:"١) المودة والرحمة"},
+  {t:"p",x:"هما رأس مال البيت. تُغذّى المودة بالكلمة الطيبة والاهتمام والمبادرة، وتُحفظ الرحمة بالعفو والتغافل عند الزلل."},
+  {t:"h4",x:"٢) حسن العشرة بالمعروف"},
+  {t:"p",x:"أمر الله الأزواج بالإحسان في المعاملة:"},
+  {t:"ayah",x:"وَعَاشِرُوهُنَّ بِالْمَعْرُوفِ",r:"سورة النساء: 19"},
+  {t:"p",x:"و«المعروف» كل ما تعارف الناس على أنه إحسان وأدب: طِيب الكلام، الرفق، والصبر. وقد كان النبي ﷺ خير الناس لأهله:"},
+  {t:"hadith",x:"خيركم خيركم لأهله، وأنا خيركم لأهلي",r:"رواه الترمذي (3895) عن عائشة رضي الله عنها، وصححه الألباني"},
+  {t:"h4",x:"٣) الاحترام المتبادل والشراكة"},
+  {t:"p",x:"جعل الإسلام العلاقة شراكة لا تَسلُّطاً، فلكلٍّ حقوق في مقابل واجبات:"},
+  {t:"ayah",x:"وَلَهُنَّ مِثْلُ الَّذِي عَلَيْهِنَّ بِالْمَعْرُوفِ",r:"سورة البقرة: 228"},
+  {t:"p",x:"والاحترام لا يسقط وقت الخلاف؛ فمن أصول البيت الناجح أن يبقى الكلام محترماً حتى أثناء الغضب، فلا سبّ ولا تجريح ولا تقليل من شأن الطرف الآخر."},
+  {t:"h4",x:"٤) الستر والتكامل"},
+  {t:"p",x:"وصف الله كلّاً من الزوجين بأنه لباس للآخر، واللباس يستر ويزيّن ويحفظ:"},
+  {t:"ayah",x:"هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ",r:"سورة البقرة: 187"},
+  {t:"p",x:"فمن الستر: حفظ أسرار البيت، وعدم ذكر عيوب الطرف الآخر أمام الناس، والدفاع عنه في غيبته."}
+]},
+
+{id:"c2", num:2, label:"الحقوق والواجبات والأدوار", title:"الحقوق والواجبات والأدوار في الإسلام", blocks:[
+  {t:"p",x:"جعل الإسلام العلاقة قائمة على العدل والتكامل: لكلٍّ حقوق في مقابل واجبات، وحقُّ كلِّ طرفٍ هو في الأصل واجبٌ على الآخر. والعدل أن تبدأ بأداء ما عليك قبل أن تطالب بما لك. والقاعدة الجامعة قوله تعالى:"},
+  {t:"ayah",x:"وَلَهُنَّ مِثْلُ الَّذِي عَلَيْهِنَّ بِالْمَعْرُوفِ ۚ وَلِلرِّجَالِ عَلَيْهِنَّ دَرَجَةٌ",r:"سورة البقرة: 228"},
+  {t:"h3",x:"أولاً: حقوق الزوجة على زوجها (واجبات الزوج)"},
+  {t:"h4",x:"١) المهر"},
+  {t:"p",x:"حقٌّ خالص للزوجة فرضه الله إكراماً لها، لا يحلّ أخذه إلا بطيب نفسها:"},
+  {t:"ayah",x:"وَآتُوا النِّسَاءَ صَدُقَاتِهِنَّ نِحْلَةً",r:"سورة النساء: 4"},
+  {t:"h4",x:"٢) النفقة والكسوة والسكن"},
+  {t:"p",x:"واجبة على الزوج بحسب استطاعته، أوصى بها النبي ﷺ في حجة الوداع:"},
+  {t:"hadith",x:"ولهنّ عليكم رزقهنّ وكسوتهنّ بالمعروف",r:"رواه مسلم، من حديث جابر رضي الله عنه"},
+  {t:"p",x:"وبيّن ﷺ أن الزوج لا يخصّ نفسه دونها، فهي شريكته:"},
+  {t:"hadith",x:"أن تُطعمها إذا طعمت، وتكسوها إذا اكتسيت، ولا تضرب الوجه، ولا تُقبّح",r:"رواه أبو داود (2142) عن معاوية بن حيدة، حسن صحيح"},
+  {t:"h4",x:"٣) حسن المعاشرة وطيب الكلام"},
+  {t:"p",x:"أمر الله الزوج بالإحسان: ﴿وَعَاشِرُوهُنَّ بِالْمَعْرُوفِ﴾، فمن حقّها لين الجانب والبشاشة والرفق والصبر."},
+  {t:"h4",x:"٤) صون كرامتها وعدم إهانتها"},
+  {t:"ul",x:["عدم سبّها أو الانتقاص منها ولو وقت الخلاف؛ فقد نهى ﷺ عن تقبيح الوجه.","عدم ضربها؛ وهديه ﷺ الرحمة، فما ضرب امرأةً ولا خادماً قط.","حفظ أسرارها، خاصة أسرار الفراش."]},
+  {t:"h4",x:"٥) العدل والإعفاف والاهتمام"},
+  {t:"ul",x:["العدل بينها وبين غيرها إن كان له أكثر من زوجة.","إعفافها وإشباعها عاطفياً وجسدياً، فهو حقٌّ لها كما هو حقٌّ له.","تعليمها أمور دينها وتذكيرها بالخير برفق."]},
+  {t:"h3",x:"ثانياً: حقوق الزوج على زوجته (واجبات الزوجة)"},
+  {t:"h4",x:"١) الطاعة بالمعروف"},
+  {t:"p",x:"فيما ليس فيه معصية لله وفي حدود المقدور؛ فلا طاعة لمخلوق في معصية الخالق، وهي طاعة تعاون ومودة لا إذلال."},
+  {t:"h4",x:"٢) حفظه في غيبته"},
+  {t:"p",x:"أن تحفظ نفسها وعرضه وماله وبيته وسرّه في غيبته، فهي موضع أمانته."},
+  {t:"h4",x:"٣) رعاية البيت والأولاد"},
+  {t:"p",x:"القيام على بيت زوجها وتربية أولادها مسؤولية عظيمة أثنى عليها النبي ﷺ:"},
+  {t:"hadith",x:"والمرأة راعية في بيت زوجها ومسؤولة عن رعيتها",r:"متفق عليه (البخاري ومسلم) عن ابن عمر رضي الله عنهما"},
+  {t:"h4",x:"٤) حسن التبعّل وعِظَم حق الزوج"},
+  {t:"ul",x:["حسن التبعّل والتزيّن له والاهتمام بما يسعده.","تقدير جهده وعدم جحود معروفه، فكفران العشير مما حذّر منه النبي ﷺ."]},
+  {t:"p",x:"وقد عظّم الإسلام حقّ الزوج حتى قال ﷺ: «لو كنت آمراً أحداً أن يسجد لأحد لأمرت المرأة أن تسجد لزوجها» (الترمذي، حسن صحيح). وهو تعظيمٌ لحقه يوازيه عِظَمُ ما عليه من واجبات؛ فالعلاقة تكامل لا تسلّط."},
+  {t:"h3",x:"ثالثاً: الحقوق المشتركة بينهما"},
+  {t:"ul",x:["حسن العشرة وطيب المعاملة من الطرفين: ﴿وعاشروهن بالمعروف﴾.","الاستمتاع المتبادل وإعفاف كلٍّ منهما للآخر.","التوارث بينهما إذا مات أحدهما.","ثبوت النسب وحفظ كيان الأسرة.","التعاون على البر والتقوى والتشاور في أمور البيت والأبناء.","حفظ الأسرار والوفاء وعدم الخيانة في الفعل ولا في القلب.","الرحمة والعفو والتغافل عن الهفوات."]},
+  {t:"h3",x:"رابعاً: الأدوار والمسؤوليات (القوامة والشراكة)"},
+  {t:"h4",x:"قوامة الرجل: مسؤولية رعاية لا تسلّط"},
+  {t:"p",x:"معنى القوامة المسؤولية والرعاية والإنفاق والقيام على مصالح الأسرة، لا التسلّط والاستبداد:"},
+  {t:"ayah",x:"الرِّجَالُ قَوَّامُونَ عَلَى النِّسَاءِ بِمَا فَضَّلَ اللَّهُ بَعْضَهُمْ عَلَىٰ بَعْضٍ وَبِمَا أَنفَقُوا مِنْ أَمْوَالِهِمْ",r:"سورة النساء: 34"},
+  {t:"p",x:"فالقوامة تكليف ومسؤولية قبل أن تكون تشريفاً؛ يقودها الرجل بالعدل والمشاورة والرحمة، وهو راعٍ مسؤول عن أهله: «الرجل راعٍ في أهله ومسؤول عن رعيته» (متفق عليه)."},
+  {t:"h4",x:"دور الزوجة: شريكة وربّة بيت ومربّية"},
+  {t:"p",x:"دورها في إدارة البيت وتربية الأجيال لا يقلّ أهمية، بل هو أساس صلاح الأسرة كلها. وهي شريكة في القرار بالتشاور، لا تابعة بلا رأي."},
+  {t:"h4",x:"التكامل لا التنافس"},
+  {t:"p",x:"الأدوار مختلفة متكاملة لا متنافسة؛ كلٌّ يكمل الآخر بما يحسنه، والأصل بينهما التشاور والتراحم. وتبقى القاعدة الجامعة: ﴿ولهن مثل الذي عليهن بالمعروف﴾ — فما من حقٍّ لطرفٍ إلا وفي مقابله واجبٌ عليه."}
+]},
+
+{id:"c3", num:3, label:"فن التواصل", title:"فنّ التواصل بين الزوجين", blocks:[
+  {t:"p",x:"أغلب المشاكل الزوجية في جوهرها مشاكل تواصل لا مشاكل حب. فقد يحب الزوجان بعضهما ومع ذلك يتعذّبان لأنهما لا يحسنان الكلام والاستماع."},
+  {t:"h3",x:"١) الإنصات قبل الردّ"},
+  {t:"p",x:"أكثر الناس يستمع ليردّ لا ليفهم. درّب نفسك أن تنصت حتى تنتهي زوجتك، ثم تتأكد أنك فهمت مقصدها قبل أن تجيب. كثير من الخلافات يحلّها شعور الطرف بأنه «سُمِع فعلاً»."},
+  {t:"h3",x:"٢) الكلمة الطيبة"},
+  {t:"p",x:"الكلمة الطيبة صدقة وأثرها عظيم. كلمات مثل «شكراً»، «أنا مقدّر تعبك»، «اشتقت لك» تبني جسوراً لا تهدمها الخلافات بسهولة. واحذر الكلمات الجارحة، فجرح اللسان لا يندمل كجرح اليد."},
+  {t:"h3",x:"٣) تكلّم عن شعورك لا عن أخطاء الطرف الآخر"},
+  {t:"p",x:"فرق كبير بين «أنتِ دائماً تتكلمين معي باستخفاف» (اتهام يدفع للدفاع) وبين «أنا أشعر بالضيق حين يكون الكلام حاداً، وأحب أن نتكلم باحترام». الكلام عن شعورك يصعب الردّ عليه بالعناد، أما الاتهام فيُشعل المواجهة."},
+  {t:"h3",x:"٤) اختر الوقت المناسب"},
+  {t:"ul",x:["لا تفتح موضوعاً خلافياً وأحدكما متعب أو جائع أو غاضب.","لا تناقش القضايا الكبيرة قبل النوم مباشرة.","اختر وقتاً هادئاً، وابدأ بمقدمة لطيفة تطمئنها أن هدفك الإصلاح لا اللوم."]},
+  {t:"h3",x:"٥) لغة الجسد ونبرة الصوت"},
+  {t:"p",x:"قد تكون كلماتك سليمة لكن نبرتك أو نظرتك جارحة. حافظ على نبرة هادئة وتواصل بصري لطيف وابتسامة تذيب التوتر؛ فالرسالة تُفهم من الطريقة لا من الكلمات وحدها."},
+  {t:"h3",x:"٦) لا تكسب النقاش وتخسر الزوجة"},
+  {t:"p",x:"في البيت لا منتصر ومهزوم؛ إما أن تنتصرا معاً بالتفاهم أو تخسرا معاً بالعناد. أحياناً يكون التنازل عن «إثبات أنك على حق» عين الذكاء، فالعلاقة أغلى من نقطة في نقاش."}
+]},
+
+{id:"c4", num:4, label:"حل الخلافات", title:"منهج الإسلام في حلّ الخلافات", blocks:[
+  {t:"p",x:"الخلاف بين الزوجين أمر طبيعي في كل بيت، والعبرة ليست في وجوده بل في طريقة إدارته. وقد رسم الإسلام منهجاً يقوم على الإصلاح والرحمة لا على الانتصار للنفس."},
+  {t:"h3",x:"أولاً: ضبط الغضب"},
+  {t:"p",x:"الغضب وقود أغلب المشاكل، والقوة الحقيقية في ضبط النفس:"},
+  {t:"hadith",x:"ليس الشديد بالصُّرَعة، إنما الشديد الذي يملك نفسه عند الغضب",r:"متفق عليه، عن أبي هريرة رضي الله عنه"},
+  {t:"p",x:"ومن وسائل إطفاء الغضب التي علّمنا إياها النبي ﷺ:"},
+  {t:"ul",x:["الاستعاذة بالله من الشيطان الرجيم.","تغيير الوضع: إن كنت قائماً فاجلس، وإن كنت جالساً فاضطجع.","السكوت في لحظة الغضب، فأكثر ما يُقال فيه يُندَم عليه.","الوضوء والابتعاد عن مكان الخلاف حتى تهدأ النفس."]},
+  {t:"h3",x:"ثانياً: التغافل والنظر إلى المحاسن"},
+  {t:"p",x:"من أعظم قواعد دوام العشرة ألا تتوقف عند العيب وتنسى الفضل:"},
+  {t:"hadith",x:"لا يَفرَكْ مؤمن مؤمنة، إن كره منها خلقاً رضي منها آخر",r:"رواه مسلم (1469) عن أبي هريرة رضي الله عنه"},
+  {t:"p",x:"أي: لا يبغضها لخصلة يكرهها، فإن فيها خصالاً أخرى يحبها. فإذا غلب عليك الانزعاج، استحضر محاسنها وما تقدّمه لبيتك، يخفّ الغضب ويعود الإنصاف."},
+  {t:"h3",x:"ثالثاً: الاعتذار والعفو والتسامح"},
+  {t:"p",x:"الاعتذار شجاعة لا ضعف، والمبادرة به تطفئ الخلاف في لحظة. تدرّب أن تقول «أنا آسف» حين تخطئ، وأن تقبل اعتذارها بصدر رحب دون تذكيرها بالخطأ كل مرة."},
+  {t:"h3",x:"رابعاً: الإصلاح والتحكيم بطرفٍ موثوق"},
+  {t:"p",x:"إذا تعذّر الإصلاح بينكما مباشرة، شرع الله الاستعانة بطرفٍ حكيم:"},
+  {t:"ayah",x:"وَإِنْ خِفْتُمْ شِقَاقَ بَيْنِهِمَا فَابْعَثُوا حَكَمًا مِّنْ أَهْلِهِ وَحَكَمًا مِّنْ أَهْلِهَا إِن يُرِيدَا إِصْلَاحًا يُوَفِّقِ اللَّهُ بَيْنَهُمَا",r:"سورة النساء: 35"},
+  {t:"p",x:"والشرط أن يكون عاقلاً عادلاً يريد الإصلاح. وفي زماننا قد يكون مستشاراً أسرياً مؤهلاً؛ واللجوء إليه دليل حرص على البيت لا فشل."},
+  {t:"h3",x:"خامساً: قواعد ذهبية أثناء الخلاف"},
+  {t:"ul",x:["لا تتخاصما أمام الأبناء أو الأهل.","اقصر الخلاف على موضوعه ولا تستدعِ أخطاء قديمة.","لا تهدّد بالطلاق أو الهجر في كل خلاف.","لا تُشرك أهلك وأصدقاءك في كل مشكلة.","اتفقا على إشارة لإيقاف النقاش حين يحتدّ، على أن تعودا إليه بعد الهدوء."]}
+]},
+
+{id:"c5", num:5, label:"مشاكل شائعة وحلولها", title:"مشاكل زوجية شائعة وحلولها", blocks:[
+  {t:"p",x:"هذه أكثر المشاكل الزوجية تكراراً، ولكلٍّ منها حلّ عملي. والقاعدة الجامعة أن تعالج السبب لا العَرَض، وأن تبدأ بما تملك تغييره في نفسك قبل أن تنتظر تغيّر الطرف الآخر."},
+  {t:"ayah",x:"فَإِن كَرِهْتُمُوهُنَّ فَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَيَجْعَلَ اللَّهُ فِيهِ خَيْرًا كَثِيرًا",r:"سورة النساء: 19"},
+  {t:"h4",x:"١) قلة الاحترام في الكلام"},
+  {t:"ul",x:["ابدأ بنفسك: تأكد أن كلامك أنت محترم دائماً.","صارح الطرف الآخر بهدوء بأثر الكلام عليك، لا بأسلوب اتهامي.","ابحث عمّا تحت السطح، فالتكرار كثيراً ما يكون عَرَضاً لغضبٍ مكتوم.","اتفقا على «ميثاق كلام»: لا سبّ، لا سخرية، لا رفع صوت حتى وقت الخلاف."]},
+  {t:"h4",x:"٢) الخلافات المالية"},
+  {t:"ul",x:["الشفافية في الدخل والمصروفات تقطع الشك.","ضعا ميزانية متفقاً عليها وحدّدا الأولويات معاً.","نفقة بالمعروف: لا تقتير ولا إسراف.","اجعلا للطوارئ والادخار نصيباً ثابتاً قدر المستطاع."]},
+  {t:"h4",x:"٣) التعامل مع الأهل"},
+  {t:"ul",x:["برّ الوالدين من الطرفين مع استقلالية قرار البيت الصغير.","اجعل خلافاتكما تُحلّ بينكما، ولا تُنقل إلى بيت أهلك أو أهلها.","وازن بين برّ والديك وحقّ زوجتك؛ فلكلٍّ حقّ لا يُلغي الآخر."]},
+  {t:"h4",x:"٤) الغيرة الزائدة والشك"},
+  {t:"ul",x:["الغيرة المعتدلة حب، والزائدة تخنق العلاقة.","عالج جذر الشك بالحوار والطمأنة لا بالتجسّس.","ابنِ الثقة بالأفعال المطمئنة والوضوح."]},
+  {t:"h4",x:"٥) فتور المشاعر"},
+  {t:"ul",x:["الفتور طبيعي، وعلاجه التجديد لا الاستسلام.","خصّصا وقتاً منتظماً لكما بعيداً عن الهواتف.","جدّدا بالكلمات والهدايا والخروجات البسيطة.","استرجعا ذكريات البدايات وما جمعكما."]},
+  {t:"h4",x:"٦) الخلاف في تربية الأبناء"},
+  {t:"ul",x:["اتفقا على الخطوط الكبرى بعيداً عن الأبناء، ثم اظهرا موحَّدين.","لا يناقض أحدكما الآخر أمام الأطفال.","اجعلا القدوة الحسنة أولاً، فالأبناء يقلّدون ما يرونه."]},
+  {t:"h4",x:"٧) قلة الوقت والانشغال"},
+  {t:"ul",x:["حضورك الذهني أهم من مجرد وجودك الجسدي.","ضع حدوداً للعمل والهاتف داخل أوقات البيت.","ولو دقائق يومية من الحديث الصافي تصنع فرقاً."]},
+  {t:"h4",x:"٨) العناد وكثرة اللوم"},
+  {t:"ul",x:["اجعل مدحك أكثر من نقدك بكثير.","انتقد الفعل لا الشخص: «هذا التصرف ضايقني» لا «أنتِ مهملة».","تنازل في الأمور الصغيرة؛ ليس كل خلاف يستحق معركة."]}
+]},
+
+{id:"c6", num:6, label:"لغات الحب الخمس", title:"لغات الحب الخمس", blocks:[
+  {t:"p",x:"كثير من الأزواج يحبّ بعضهم بصدق، ومع ذلك يشعر أحدهما أنه غير محبوب. السبب أن كل إنسان يعبّر عن حبه ويستقبله بطريقة مختلفة. هذه خمس «لغات» للحب، مهمتك أن تعرف أيّها أقرب لقلب زوجتك وتتكلم بها هي لا باللغة التي تريحك أنت."},
+  {t:"ol",x:["كلمات التقدير والثناء: المدح والشكر والكلمة الحانية والتعبير الصريح عن الإعجاب.","الوقت المخصَّص: الحضور الكامل والإنصات دون انشغال بالهاتف، وقضاء وقت نوعي معاً.","الهدايا: الرمز الملموس الذي يقول «أنتِ في بالي»، وقيمته في معناه لا ثمنه.","أعمال الخدمة: المساعدة في البيت وتسهيل الأمور عنها.","اللمسة والحنان: القرب والاحتضان ولمسة الطمأنينة."]},
+  {t:"h3",x:"كيف تكتشف لغة زوجتك؟"},
+  {t:"ul",x:["لاحظ بماذا تطلب منك أكثر وبماذا تعاتبك أكثر؛ فالشكوى تكشف اللغة الناقصة.","راقب كيف تعبّر هي عن حبها لك؛ فالناس يعطون باللغة التي يحبون أن يأخذوا بها.","أو ببساطة اسألها: ما الذي يُشعرك بحبي أكثر؟"]},
+  {t:"p",x:"ولا تكتفِ بلغة واحدة؛ اجعل لها نصيباً من اللغات كلها مع تركيز أكبر على الأقرب لقلبها."}
+]},
+
+{id:"c7", num:7, label:"الاعتذار والمصالحة", title:"فن الاعتذار والمصالحة بعد الخصام", blocks:[
+  {t:"p",x:"الخصام لا يفسد البيوت، وإنما يفسدها سوء المصالحة بعده. والاعتذار شجاعة وكرم، وخير الناس من بدأ بالصلح."},
+  {t:"h3",x:"مكوّنات الاعتذار الصادق"},
+  {t:"ol",x:["الاعتراف الواضح: «أخطأت في كذا» دون لفّ ودوران.","عدم التبرير: لا تُتبعه بـ«ولكن أنتِ السبب»، فهذا يُلغي الاعتذار.","التعبير عن الندم على أثر فعلك فيها لا على مجرد الخصام.","التصحيح والوعد: ماذا ستفعل حتى لا يتكرر."]},
+  {t:"h3",x:"جُمل جاهزة وقت المصالحة"},
+  {t:"ul",x:["«أنا آسف، كلامي كان جارحاً وما كان يصحّ، وأنتِ تستحقين أحسن من كده.»","«اللي حصل ضايقك وأنا مسؤول عن جزء منه، تعالي نتكلم بهدوء.»","«علاقتنا أهم عندي من أي خلاف، ومش عايز نفضل زعلانين.»","«اعذريني لو زعّلتك، نيتي ما كانتش كده، وأنا بحبك.»"]},
+  {t:"h3",x:"ما يُفسد المصالحة"},
+  {t:"ul",x:["الاعتذار المشروط: «أنا آسف بس انتي اللي بدأتي» — لوم متنكّر لا اعتذار.","استدعاء الماضي وفتح ملفات قديمة أثناء المصالحة.","الصمت الطويل والهجر الممتد كعقاب."]},
+  {t:"h3",x:"بعد المصالحة"},
+  {t:"ul",x:["اطوِ صفحة الخلاف فعلاً ولا تذكّرها به في كل مرة.","ادعموا المصالحة بلمسة حانية أو هدية صغيرة.","استخلصوا الدرس معاً: ما الذي أشعل الخلاف وكيف نتجنّبه."]}
+]},
+
+{id:"c8", num:8, label:"تحليل التصرفات", title:"تحليل التصرفات والمواقف وكيفية التعامل معها", blocks:[
+  {t:"p",x:"ردّ الفعل السريع هو أكثر ما يكبّر المشاكل. والذكي لا يتعامل مع ظاهر التصرف فقط، بل يقرأ ما تحته من دافع، ثم يختار ردّه بوعي. هذا الباب يعطيك إطاراً عملياً لتحليل أي تصرف، ومعرفة خياراتك، واختيار الرد الأنسب."},
+  {t:"h3",x:"إطار من أربع خطوات لتحليل أي موقف"},
+  {t:"ol",x:["لاحِظ التصرف كما هو: صِف ما حدث بموضوعية دون تفسير مسبق («رفعت صوتها» لا «هي بتستخفّ بيا»).","افهم الدافع المحتمل: لماذا تصرّفت هكذا؟ تعب؟ ضغط؟ حاجة لم تُلبَّ؟ جرح سابق؟","استعرض خياراتك: ترد بالمثل (يصعّد)، أو تنسحب بصمت (يراكم)، أو تحتوي بهدوء (يفتح باب الحل).","اختر الرد الذي يقرّب لا يُبعد: قِس ردك بميزان واحد — هل سيقرّبنا أم يزيد الفجوة؟"]},
+  {t:"h3",x:"جدول عملي: تصرفات شائعة وكيفية التعامل معها"},
+  {t:"table",head:["التصرف","الدافع المحتمل","كيف تتعامل"],rows:[
+    ["ترد بحدّة أو ترفع صوتها","تعب أو ضغط، شعور بعدم التقدير، أو عادة تواصل متراكمة","احتوِ الموقف الآن بهدوء، وأجّل النقاش لوقت صافٍ، وتكلّم عن شعورك لا عن خطئها"],
+    ["تنتقدك أمام الناس","رغبة في لفت الانتباه، غضب مكتوم، أو قلة وعي بأثر الكلام","لا تردّ أمامهم؛ ناقشها على انفراد لاحقاً، وأخبرها أنك تحب أن يبقى الخلاف بينكما"],
+    ["تصمت وتنطوي ولا تتكلم","تشعر أنها غير مسموعة، أو تنتظر مبادرة منك","اقترب برفق، طمئنها أنك مهتم، واسألها بلطف دون ضغط أو إلحاح"],
+    ["تكثر العتاب والشكوى","حاجة عاطفية غير ملبّاة، أو شعور بالإهمال","اسمعها دون مقاطعة، اعترف بشعورها، ثم عالِجا السبب الجذري معاً"],
+    ["غيرة زائدة أو شك","خوف على العلاقة، أو جرح سابق لم يلتئم","طمئنها بالأفعال والوضوح، وابنِ الثقة بالصبر لا بالمواجهة"],
+    ["تطلب ما يصعب تنفيذه","حاجة حقيقية، أو اختبار لمدى اهتمامك","لا ترفض مباشرة؛ اشرح ظرفك بصدق، واقترح بديلاً ممكناً"]
+  ]},
+  {t:"h3",x:"ثلاثة أسئلة قبل أن تردّ"},
+  {t:"ol",x:["ما الذي حدث فعلاً، بعيداً عن تفسيري وظنوني؟","ما الدافع المحتمل وراء هذا التصرف؟","أيّ ردّ سيقرّبنا، وأيّه سيُبعدنا؟"]},
+  {t:"h3",x:"قاعدتان ذهبيتان"},
+  {t:"ul",x:["افصل بين التصرف والشخص: «التصرف ده ضايقني» لا «انتي إنسانة وحشة».","احمل التصرف على أحسن المحامل: افترض تعباً أو سوء فهم قبل أن تفترض سوء النية؛ فحسن الظن يطفئ نصف المشاكل."]}
+]},
+
+{id:"c9", num:9, label:"تجديد المودة", title:"تجديد المودة والرومانسية في الإطار الإسلامي", blocks:[
+  {t:"p",x:"الرومانسية واللطف بين الزوجين سنّة وعبادة لا ترف ولا عيب. وقد كان النبي ﷺ ألطف الناس بأهله، يلاطف ويمازح ويعين في البيت."},
+  {t:"h3",x:"١) اللمسة والكلمة والاهتمام"},
+  {t:"ul",x:["الكلمة الحانية والثناء الصادق يملآن قلب الزوجة.","الاهتمام بالتفاصيل الصغيرة أبلغ من الهدايا الكبيرة المتباعدة."]},
+  {t:"h3",x:"٢) الهدية تزرع المحبة"},
+  {t:"hadith",x:"تهادوا تحابوا",r:"رواه البخاري في الأدب المفرد، وحسّنه الألباني"},
+  {t:"p",x:"الهدية لا تُقاس بثمنها بل بمعناها؛ فهي رسالة تقول: «أنتِ في بالي»."},
+  {t:"h3",x:"٣) المرح والمشاركة في البيت"},
+  {t:"p",x:"كان النبي ﷺ يمازح أهله ويعينهم، فعن عائشة رضي الله عنها أنه كان يكون في مهنة أهله (في خدمة بيته). فالمشاركة في الأعباء والمرح الخفيف من أقوى ما يقرّب القلوب."},
+  {t:"h3",x:"٤) خصّصا أوقاتاً ممتعة معاً"},
+  {t:"ul",x:["نزهة أو وجبة خاصة أو حديث هادئ دون مقاطعة.","اجعلا لكما طقساً ثابتاً (قهوة الصباح، مشية المساء)."]}
+]},
+
+{id:"c10", num:10, label:"العلاقة الحميمة", title:"العلاقة الحميمة بأدبٍ شرعي", blocks:[
+  {t:"p",x:"العلاقة الحميمة جزء أصيل من حسن العشرة، وحقّ متبادل، وفيها أجر إذا احتسبها المسلم. وهي من أقوى ما يثبّت المودة، فينبغي أن تُعطى حقها من الرفق والتفاهم بعيداً عن الإهمال أو الإكراه."},
+  {t:"h3",x:"أسس تجعلها سكناً للطرفين"},
+  {t:"ul",x:["الرفق والتمهيد: المداعبة والكلمة الحانية وعدم الاستعجال.","مراعاة مشاعر الطرفين وحرص كلٍّ على راحة الآخر ورضاه.","النظافة والتزيّن المتبادل، فالحقّ مشترك.","التفاهم عند اختلاف الرغبة بالحوار والرفق لا بالضغط أو الحرمان كعقاب.","اجتناب ما حرّم الله كإتيانها في الحيض أو في غير الموضع المباح."]},
+  {t:"h3",x:"حفظ السرّ.. أمانة"},
+  {t:"p",x:"من أعظم الأدب كتمان ما يجري بين الزوجين، فإفشاء أسرار الفراش من قبيح الفعل الذي حذّر منه النبي ﷺ. فاحفظ خصوصيتكما ولا تتحدث بها مع أحد."},
+  {t:"h3",x:"دعاء ما قبل القرب"},
+  {t:"p",x:"علّمنا النبي ﷺ أن يقول المسلم قبل إتيان أهله:"},
+  {t:"hadith",x:"بسم الله، اللهم جنّبنا الشيطان وجنّب الشيطان ما رزقتنا",r:"متفق عليه، عن ابن عباس رضي الله عنهما"},
+  {t:"p",x:"ففيه بركة وحفظ للذرية بإذن الله."}
+]},
+
+{id:"c11", num:11, label:"من السيرة النبوية", title:"نماذج من السيرة النبوية في معاملة الأزواج", blocks:[
+  {t:"p",x:"خير قدوة للزوج هو النبي ﷺ، الذي جمع بين القيام بحق الله والإحسان إلى أهله. وهذه لمحات عملية من هديه:"},
+  {t:"h3",x:"الرفق والمداعبة"},
+  {t:"p",x:"كان ﷺ يلاطف أهله ويمازحهم، حتى إنه سابق عائشة رضي الله عنها على قدميه أكثر من مرة. فالمرح والملاطفة سُنّة تقرّب القلوب لا عيب يُستحى منه."},
+  {t:"h3",x:"الإعانة في البيت"},
+  {t:"p",x:"سُئلت عائشة رضي الله عنها: ما كان النبي ﷺ يصنع في بيته؟ فأخبرت أنه كان في خدمة أهله وعونهم. فمشاركة الزوجة أعباء البيت من كمال الرجولة لا نقصها."},
+  {t:"h3",x:"الرحمة وكفّ الأذى"},
+  {t:"p",x:"قالت عائشة رضي الله عنها: ما ضرب رسول الله ﷺ شيئاً قط بيده، ولا امرأةً ولا خادماً. فهديه الرحمة واللين، وأن يبقى البيت آمناً من كل أذى في القول والفعل."},
+  {t:"h3",x:"العدل وحُسن العشرة"},
+  {t:"p",x:"كان ﷺ يعدل بين أزواجه في النفقة والمبيت والمعاملة، ويتعامل مع غيرتهنّ برفق وحكمة دون إهانة."},
+  {t:"h3",x:"وصيته الجامعة"},
+  {t:"p",x:"أوصى النبي ﷺ بالنساء خيراً، حتى يوم حجة الوداع:"},
+  {t:"hadith",x:"استوصوا بالنساء خيراً",r:"متفق عليه، عن أبي هريرة رضي الله عنه"}
+]},
+
+{id:"c12", num:12, label:"أذكار وأدعية البيت", title:"أذكار وأدعية البيت", blocks:[
+  {t:"p",x:"البيت العامر بذكر الله تسكنه السكينة وتغشاه الرحمة. ومن أعظم أسباب صلاح العلاقة الإكثار من الدعاء، فالقلوب بين أصبعين من أصابع الرحمن يقلّبها كيف يشاء."},
+  {t:"h3",x:"دعاء جامع لصلاح الأسرة"},
+  {t:"ayah",x:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",r:"سورة الفرقان: 74"},
+  {t:"h3",x:"دعاء عند الخلاف وفتور القلوب"},
+  {t:"dua",x:"اللهم ألّف بين قلوبنا، وأصلح ذات بيننا، واهدنا سُبل السلام."},
+  {t:"h3",x:"أذكار تحفظ البيت"},
+  {t:"ul",x:["المداومة على أذكار الصباح والمساء، فهي حصن للنفس والبيت.","ذكر الله عند دخول البيت والتسمية عند الطعام تطرد الشيطان من المنزل.","كثرة الاستغفار، فهو يجلب الرزق ويصفّي القلوب.","قراءة القرآن في البيت، خاصة سورة البقرة، فالبيت الذي لا يُذكر فيه الله كالقبر."]},
+  {t:"h3",x:"اجعلا الدعاء عادة بينكما"},
+  {t:"p",x:"ادعُ لزوجتك بظهر الغيب، وادعوا معاً لبيتكما وذريتكما. واجعلا من العبادة المشتركة — كالصلاة معاً وقراءة وردٍ من القرآن — رباطاً روحياً يجمعكما فوق رباط المودة."}
+]},
+
+{id:"c13", num:13, label:"قواعد ذهبية يومية", title:"قواعد ذهبية يومية", blocks:[
+  {t:"p",x:"قائمة عملية موجزة، اجعلها نصب عينيك واعمل بواحدةٍ منها كل يوم:"},
+  {t:"ol",x:["ابدأ يومك ويومها بكلمة طيبة وابتسامة.","قدّم الاعتذار سريعاً إذا أخطأت ولا تنتظر أن تبدأ هي.","اشكرها على ما تقوم به ولو كان «من واجبها».","لا ترفع صوتك، فالحق لا يحتاج إلى صياح.","تغافل عن الهفوات الصغيرة.","لا تقارنها بأحد أبداً.","استشرها في أمور البيت وقدّر رأيها.","احفظ أسرار بيتك ولا تشكُها للناس.","ادعُ الله أن يصلح بينكما ويبارك في بيتكما.","ذكّر نفسك: العلاقة أغلى من أن أربح فيها نقاشاً وأخسر فيها قلباً."]}
+]},
+
+{id:"c14", num:14, label:"تكرار قلة الاحترام", title:"حين تتكرر قلة الاحترام في الكلام", blocks:[
+  {t:"p",x:"إذا شعرت أن الكلام معك يتكرر بأسلوب فيه استخفاف أو حدّة، فالمشكلة لم تعد موقفاً عابراً بل صارت نمطاً يحتاج معالجة هادئة وحازمة معاً. إليك خطوات عملية متدرّجة:"},
+  {t:"h4",x:"الخطوة ١: لا تعالج النمط في لحظة الغضب"},
+  {t:"p",x:"لا تفتح الموضوع وأنت أو هي في ذروة الانفعال؛ انتظر حتى تهدأ النفوس."},
+  {t:"h4",x:"الخطوة ٢: تكلّم عن النمط لا عن الموقف الأخير وحده"},
+  {t:"p",x:"لكن دون أن تعدّد كل المواقف القديمة دفعة واحدة، فإن سرد القائمة يجعل أي إنسان يتحوّل للدفاع. قل بهدوء: «أشعر أن هناك طريقة في الكلام تتكرر بيننا تضايقني، وأحب أن نتكلم فيها لأني حريص على علاقتنا»."},
+  {t:"h4",x:"الخطوة ٣: ابحث عن السبب تحت السطح"},
+  {t:"p",x:"النمط المتكرر نادراً ما يكون من طرف واحد. اسأل نفسك: هل هناك أمر تزعجها منه ولا تقوله فيظهر في نبرتها؟ هل توجد دائرة بينكما تتصاعد شيئاً فشيئاً؟ فهم السبب أنفع من معالجة العَرَض."},
+  {t:"h4",x:"الخطوة ٤: ضع حدّاً واضحاً بهدوء وحزم"},
+  {t:"p",x:"من حقك أن تُعامَل باحترام، وهذا طلب مشروع. اجعله واضحاً غير مهدِّد: «أنا أحترمك وأحب أن نتكلم معاً بنفس الاحترام حتى لو اختلفنا»."},
+  {t:"h4",x:"الخطوة ٥: استعن بطرفٍ ثالث عند الحاجة"},
+  {t:"p",x:"إذا تكرّر الأمر رغم المحاولات، فلا حرج في اللجوء إلى مستشار أو متخصص في العلاقات الأسرية، أو طرف عاقل موثوق. وهذا دليل اهتمام بإصلاح البيت لا فشل."},
+  {t:"h4",x:"سؤال يساعدك على التشخيص"},
+  {t:"p",x:"هل يحدث هذا الأسلوب في لحظات الغضب فقط، أم صار أسلوباً معتاداً في الكلام اليومي؟ الأول يُعالَج بضبط لحظات الغضب، والثاني يحتاج إعادة بناء طريقة التواصل من الأساس."}
+]},
+
+{id:"c15", num:15, label:"مراحل الزواج", title:"مراحل الزواج وتحدياتها", blocks:[
+  {t:"p",x:"العلاقة الزوجية كائن حيّ يمرّ بمراحل، ولكل مرحلة طبيعتها وتحدياتها. ومن يعرف طبيعة المرحلة يتعامل معها بوعي بدل أن يظن أن الخلل في الزواج نفسه."},
+  {t:"h3",x:"١) السنوات الأولى: التعارف وضبط التوقعات"},
+  {t:"p",x:"تتكشّف الطباع الحقيقية وتظهر الفروق. التحدي هو ضبط التوقعات المثالية، وتعلّم لغة كلٍّ منكما، وبناء قواعد البيت. الانسجام يُصنع ولا يولد جاهزاً."},
+  {t:"h3",x:"٢) ما بعد قدوم الأطفال"},
+  {t:"p",x:"يتحوّل الاهتمام للأبناء، فتشعر الزوجة بالإرهاق ويشعر الزوج بالإهمال. التحدي ألا تبتلع الأبوّة العلاقة الزوجية. خصّصا وقتاً لكما، وتقاسما الأعباء، وتذكّرا أن أعظم هدية للأبناء أن يروا أبويهم متحابّين."},
+  {t:"h3",x:"٣) منتصف العمر: الرتابة وإعادة الاكتشاف"},
+  {t:"p",x:"قد يدبّ الروتين والفتور. التحدي تجديد العلاقة وإعادة اكتشاف الطرف الآخر، فالناس تتغيّر مع الزمن. استثمرا الاستقرار في بناء صداقة أعمق."},
+  {t:"h3",x:"٤) المرحلة المتأخرة: الرفقة والسكينة"},
+  {t:"p",x:"بعد رحيل الأبناء يعود الزوجان وجهاً لوجه. من بنى صداقة ومودة طوال الطريق يجد رفيق عمر، ومن أهملها يجد غريباً. وهنا تظهر ثمرة الرحمة التي زرعها الله بين الزوجين."}
+]},
+
+{id:"c16", num:16, label:"الأزمات الكبرى", title:"التعامل مع الأزمات الكبرى", blocks:[
+  {t:"p",x:"تمرّ كل أسرة بابتلاءات: مرض، ضيق مالي، فقد، تأخر إنجاب. والأزمة إما أن تقرّب الزوجين إذا واجهاها يداً بيد، أو تفرّقهما إذا تبادلا اللوم. والمؤمن يرى في الابتلاء امتحاناً وأجراً:"},
+  {t:"ayah",x:"وَبَشِّرِ الصَّابِرِينَ ۝ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",r:"سورة البقرة: 155-156"},
+  {t:"h3",x:"قاعدة عامة في كل أزمة"},
+  {t:"ul",x:["لا تحوّل الأزمة إلى ساحة لوم؛ قفا في صفٍّ واحد ضد المشكلة لا ضد بعضكما.","اجمعا بين الأخذ بالأسباب (العلاج، التخطيط) والتوكل على الله والدعاء.","خفّفا عن بعضكما بالكلمة الطيبة، فالأزمة تُحتمل حين تجد كتفاً تتكئ عليه."]},
+  {t:"h3",x:"الضيق المالي"},
+  {t:"p",x:"واجهاه بالشفافية وإعادة ترتيب الأولويات والقناعة، وثقا بوعد الله:"},
+  {t:"ayah",x:"وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا ۝ وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",r:"سورة الطلاق: 2-3"},
+  {t:"h3",x:"المرض والفقد"},
+  {t:"p",x:"في المرض يكون التمريض والصبر والدعاء أعظم تعبير عن الوفاء. وفي الفقد، احتضنا حزن بعضكما دون استعجال، فالصبر الجميل مفتاح الفرج."},
+  {t:"h3",x:"تأخّر الإنجاب"},
+  {t:"ul",x:["لا تجعلاه سبباً للوم أحدكما؛ فهو تقدير من الله، والذرية بيده وحده.","خذا بالأسباب الطبية المباحة، وأكثرا من الدعاء: ﴿رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً﴾ (آل عمران: 38).","لا تسمحا لكلام الناس أن يفسد بيتكما، فالسعادة لا تتوقف على الإنجاب وحده."]}
+]},
+
+{id:"c17", num:17, label:"تحديات العصر الرقمي", title:"تحديات العصر الرقمي", blocks:[
+  {t:"p",x:"صار الهاتف ووسائل التواصل من أكثر أسباب الجفاء في البيوت الحديثة. والوعي بهذه التحديات نصف الحل."},
+  {t:"h3",x:"١) حضور الجسد وغياب القلب"},
+  {t:"p",x:"أن تجلسا معاً وكلٌّ غارق في هاتفه أسوأ من الغياب. اتفقا على أوقات «بلا هواتف»: الطعام، الحوار، وقبل النوم. الحضور الحقيقي أغلى هدية."},
+  {t:"h3",x:"٢) الخصوصية والثقة"},
+  {t:"ul",x:["الثقة أساس البيت؛ والتجسّس على الهاتف يهدمها حتى لو لم يجد شيئاً.","عالج الريبة بالحوار الصريح والطمأنة، لا بالمراقبة الخفية."]},
+  {t:"h3",x:"٣) الغيرة الإلكترونية والمقارنة"},
+  {t:"ul",x:["احذرا من علاقات أو محادثات تتجاوز الحدود، فالباب الصغير قد يفتح فتنة كبيرة.","لا تقارنا حياتكما بالصور المثالية على وسائل التواصل؛ فأكثرها واجهة لا حقيقة."]},
+  {t:"h3",x:"٤) ستر البيت"},
+  {t:"p",x:"احفظا خصوصية بيتكما؛ فلا تُنشر الخلافات ولا تفاصيل الحياة الزوجية على المنصات. ما يُكتب يبقى، وستر البيت من المودة."}
+]},
+
+{id:"c18", num:18, label:"اختلاف مستوى التدين", title:"اختلاف مستوى التدين بين الزوجين", blocks:[
+  {t:"p",x:"قد يكون أحد الزوجين أكثر التزاماً من الآخر، فيصير الدين سبب خلاف بدل أن يكون سبب تقارب. والمنهج الصحيح الرفق والقدوة، لا الإكراه والتعيير."},
+  {t:"ayah",x:"ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ",r:"سورة النحل: 125"},
+  {t:"h3",x:"كيف تتعامل مع الفرق برفق"},
+  {t:"ul",x:["كن قدوة عملية صامتة؛ فالأثر الحسن أبلغ من ألف موعظة.","ادعُ بالحكمة والتدرّج ولا تستعجل التغيير، فالقلوب تتغيّر على مهل.","لا تعيّر ولا تتكبّر بدينك، فالتعيير ينفّر والكِبر يفسد حتى الطاعة.","فرّق بين الثوابت التي لا تُهان والاجتهادات التي تحتمل الاختلاف.","ادعُ الله أن يهدي قلب شريكك، فالهداية بيده سبحانه وحده."]}
+]},
+
+{id:"c19", num:19, label:"إعادة بناء الثقة", title:"إعادة بناء الثقة بعد الخيانة أو الكذب", blocks:[
+  {t:"p",x:"كسر الثقة جرح عميق، لكنه ليس دائماً نهاية الطريق. وإعادة البناء ممكنة إذا توفّر الصدق والإرادة من الطرفين، وهي رحلة تحتاج وقتاً وصبراً."},
+  {t:"h3",x:"خطوات للطرف المخطئ"},
+  {t:"ul",x:["التوبة الصادقة إلى الله أولاً، والندم الحقيقي لا مجرد الأسف على الافتضاح.","القطع التام لسبب الخيانة أو الكذب دون أنصاف حلول.","الشفافية الكاملة وإعادة الطمأنة بالأفعال الصبورة، فالكلام وحده لا يكفي."]},
+  {t:"h3",x:"خطوات للطرف المجروح"},
+  {t:"ul",x:["من حقك أن تتألم وأن تأخذ وقتك؛ لا تُجبر نفسك على ثقة فورية.","إن اخترت الاستمرار، فقرار العفو يحتاج أن يُكمَّل بطيّ الصفحة لا بجلد الطرف الآخر كل يوم."]},
+  {t:"p",x:"والعفو عند المقدرة خلق رفيع أثنى الله عليه:"},
+  {t:"ayah",x:"وَلْيَعْفُوا وَلْيَصْفَحُوا ۗ أَلَا تُحِبُّونَ أَن يَغْفِرَ اللَّهُ لَكُمْ",r:"سورة النور: 22"},
+  {t:"p",x:"وباب التوبة مفتوح: ﴿إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ﴾ (البقرة: 222). وقرار الاستمرار أو الانفصال شخصيٌّ يُتّخذ بحكمة ومشورة أهل العقل، وعند الحاجة بمساعدة متخصص."}
+]},
+
+{id:"c20", num:20, label:"علامات الخطر", title:"علامات الخطر ومتى تطلب مساعدة متخصصة", blocks:[
+  {t:"p",x:"أغلب الخلافات طبيعية وقابلة للحل بالحوار والصبر. لكن هناك علامات تدلّ على أن المشكلة تجاوزت «الخلاف العادي» وصارت تحتاج عوناً من خارج البيت. والوعي بها حماية لك ولأسرتك."},
+  {t:"h3",x:"متى يكون الخلاف طبيعياً؟"},
+  {t:"p",x:"حين يكون حول مواقف محددة، ويُحلّ بالحوار والاعتذار، ويبقى الاحترام الأساسي قائماً، ولا يترك جرحاً دائماً. هذا جزء من أي علاقة سليمة."},
+  {t:"h3",x:"علامات تستدعي طلب المساعدة"},
+  {t:"ul",x:["الإيذاء الجسدي بأي صورة، أو التهديد به.","الإهانة والتحقير المستمر، أو الترهيب الذي يسلب الطرف الآخر كرامته.","السيطرة المطلقة وعزل الطرف الآخر عن أهله ومنعه من حقوقه.","الخيانة المتكررة، أو الإدمان، أو تبديد مال الأسرة.","استمرار الكراهية أو الاحتقار دون أي محاولة للإصلاح."]},
+  {t:"h3",x:"ماذا تفعل عند وجود هذه العلامات؟"},
+  {t:"ul",x:["سلامتك وسلامة أبنائك أولاً؛ ولا أحد يستحق أن يُؤذى أو يُهان. وهدي النبي ﷺ الرحمة، فما ضرب امرأةً ولا خادماً قط.","اطلب العون ولا تكتمه؛ من أهلٍ عقلاء موثوقين، أو مستشار/متخصص أسري، أو جهةٍ مختصة عند الخطر.","طلب المساعدة قوة لا ضعف، وحرصٌ على حماية ما يجب حمايته."]}
+]},
+
+{id:"c21", num:21, label:"خطة الصيانة والتقييم", title:"خطة الصيانة الدورية والتقييم الذاتي", blocks:[
+  {t:"p",x:"العلاقة كالبيت تحتاج صيانة دورية قبل أن تتراكم الأعطال. هذه خطة عملية بسيطة، اجعلها عادة مستمرة."},
+  {t:"h3",x:"خطة الصيانة الدورية"},
+  {t:"h4",x:"يومياً"},
+  {t:"ul",x:["كلمة طيبة وابتسامة وسؤال صادق عن يومها، ودقائق حديث دون هاتف."]},
+  {t:"h4",x:"أسبوعياً"},
+  {t:"ul",x:["وقت خاص لكما (خروجة أو نشاط مشترك)، ومراجعة هادئة لأي توتر تراكم."]},
+  {t:"h4",x:"شهرياً"},
+  {t:"ul",x:["حديث صريح: ما الذي يسعدك؟ وما الذي تتمنى تغييره؟ مع مراجعة الميزانية والأهداف."]},
+  {t:"h4",x:"سنوياً"},
+  {t:"ul",x:["وقفة لتجديد العهد ومراجعة الأهداف الكبيرة، والاحتفال بما أنجزتماه معاً."]},
+  {t:"h3",x:"نموذج التقييم الذاتي التفاعلي"},
+  {t:"p",x:"أجب بصدق عن هذه الأسئلة؛ علّم ما تحقّقه فعلاً، وسيظهر لك مؤشّر صحة علاقتك:"},
+  {t:"quiz",items:[
+    "أعبّر لزوجتي عن تقديري وحبي بانتظام.",
+    "أنصت إليها فعلاً، لا لأردّ فقط.",
+    "نحلّ خلافاتنا باحترام دون سبٍّ أو رفع صوت.",
+    "أعطيها وقتاً نوعياً بعيداً عن المشغوليات.",
+    "أبادر بالاعتذار حين أخطئ.",
+    "أحفظ سرّها وأصونها أمام الناس.",
+    "ما زلنا نضحك ونمرح معاً.",
+    "أدعو لها ولبيتي وأسعى لرضا الله في معاملتي."
+  ]}
+]},
+
+{id:"c22", num:22, label:"أسئلة شائعة", title:"أسئلة شائعة", blocks:[
+  {t:"h4",x:"زوجتي عصبية وكثيرة الانفعال، ماذا أفعل؟"},
+  {t:"p",x:"لا تواجه النار بالنار. اهدأ أنت أولاً، واحتوِ الموقف، وأجّل الحوار لوقت صافٍ. وابحث عن سبب العصبية (ضغط، تعب، حاجة لم تُلبَّ)، فمعالجة السبب أنفع من معالجة الانفعال."},
+  {t:"h4",x:"أهلي أو أهلها يتدخّلون في حياتنا، كيف أتصرف؟"},
+  {t:"p",x:"احفظ برّ والديك مع استقلالية قرار بيتكما. ضعا حدوداً لطيفة وواضحة معاً، ولا تجعل أحداً يتحكّم في تفاصيل علاقتكما، وادفع عن زوجتك أي أذى برفق."},
+  {t:"h4",x:"لم نعد نتكلم ونضحك كما في البداية، هل انتهى الحب؟"},
+  {t:"p",x:"لا، هذا فتور طبيعي وليس نهاية. الحب يُسقى لينمو؛ جدّدا بالاهتمام والوقت والكلمات والخروجات، واسترجعا ما جمعكما في البداية."},
+  {t:"h4",x:"هل أحكي مشاكلي الزوجية لأهلي وأصدقائي؟"},
+  {t:"p",x:"الأصل ستر البيت وعدم نشر خلافاته، فأكثر الناس يزيد النار اشتعالاً. إن احتجت مشورة فاخترْ شخصاً واحداً عاقلاً أميناً يريد الإصلاح، أو متخصصاً، لا كل من تلقاه."},
+  {t:"h4",x:"اختلفنا في طريقة تربية الأبناء، ماذا نفعل؟"},
+  {t:"p",x:"اتفقا على الخطوط الكبرى بعيداً عن الأطفال، ثم اظهرا أمامهم موحَّدين. لا يناقض أحدكما الآخر أمام الأبناء، فذلك يهدم هيبة الوالدين معاً."},
+  {t:"h4",x:"كيف أبدأ التغيير وزوجتي لا تتعاون؟"},
+  {t:"p",x:"ابدأ بنفسك دون انتظار. أنت لا تملك تغيير الطرف الآخر بالقوة، لكنك تملك أن تكون أفضل ما تستطيع، وغالباً ما يلين القريب حين يرى الإحسان يتكرر بصدق."}
+]},
+
+{id:"c23", num:23, label:"تربية الأبناء", title:"تربية الأبناء وحماية الأطفال من أثر الخلافات", blocks:[
+  {t:"p",x:"الأبناء أمانة، وأعظم ما تقدّمه لهم بيتٌ يسوده الحب والاستقرار. والخلاف الزوجي إن لم يُدَر بحكمة ترك آثاره على نفوسهم، فهم يلتقطون أكثر مما نظن."},
+  {t:"h3",x:"كونا فريقاً تربوياً واحداً"},
+  {t:"ul",x:["اتفقا على الخطوط الكبرى للتربية على انفراد، ثم اظهرا أمام الأبناء موحَّدين.","لا يناقض أحدكما الآخر أمام الطفل، فذلك يهدم هيبة الوالدين ويربك الطفل.","وحّدا القواعد بين البيتين إن كان هناك انفصال، حفاظاً على توازن الطفل."]},
+  {t:"h3",x:"احموا الأطفال من الخلافات"},
+  {t:"ul",x:["لا تتخاصما أمامهم ولا ترفعا الصوت، فالطفل يشعر بالذنب ويظن نفسه السبب.","لا تجعلا الطفل ساعي رسائل بينكما، ولا تستخدماه ورقة ضغط على الطرف الآخر.","لا تشكُ أحدكما الآخر للطفل، فهو يحب والديه معاً ولا تُحمّله ما لا يطيق."]},
+  {t:"h3",x:"القدوة قبل الكلام"},
+  {t:"p",x:"الأبناء يقلّدون ما يرونه لا ما يُقال لهم. حين يرون أبويهم يتحابّان ويحترمان بعضهما ويعتذران عند الخطأ، يتعلّمون كيف تكون العلاقة السوية. أعظم تربية أن يروكما قدوة."},
+  {t:"h3",x:"بعد الخلاف"},
+  {t:"p",x:"إن حدث خلاف أمامهم بغير قصد، فأصلحا أمامهم أيضاً؛ ليتعلّموا أن الخلاف يُتبَع بالمصالحة، وأن البيت آمن رغم اللحظات الصعبة."}
+]},
+
+{id:"c24", num:24, label:"الأهل والأقارب", title:"التعامل مع الأهل والأقارب وحدود العلاقة", blocks:[
+  {t:"p",x:"الأهل نعمة وسند، لكن غياب الحدود الواضحة يحوّلهم إلى مصدر توتر. والمطلوب توازن: برٌّ بالوالدين، واستقلالٌ لقرار البيت الصغير."},
+  {t:"h3",x:"وازِن بين البرّ والاستقلال"},
+  {t:"ul",x:["برّ الوالدين واجب من الطرفين، لا يسقط بالزواج.","قرار بيتكما يخصّكما؛ استشيرا من تحبّان، لكن لا تسلّما زمام بيتكما لأحد.","لا تجعل أحداً يتدخّل في خصوصياتكما أو يفرض رأيه في تفاصيل حياتكما."]},
+  {t:"h3",x:"احمِ شريكك"},
+  {t:"ul",x:["ادفع عن زوجتك أي إهانة من أهلك برفق وحكمة، وكذلك تفعل هي معك.","لا تنقل شكاوى زوجتك لأهلك، ولا تجعلها تنقل خلافاتكما لأهلها.","قف بجانب شريكك في العلن، وعالِجا أي خلاف بينكما على انفراد."]},
+  {t:"h3",x:"حين يشتدّ التدخّل"},
+  {t:"p",x:"ضعا حدوداً لطيفة وثابتة معاً، وعبّرا عنها بأدب لا بقطيعة. الحزم مع الاحترام يحفظ صلة الرحم ويحمي بيتكما في آنٍ واحد."}
+]},
+
+{id:"c25", num:25, label:"إدارة المال", title:"إدارة المال والميزانية", blocks:[
+  {t:"p",x:"المال من أكثر أسباب الخلاف الزوجي، وأغلبه يُحلّ بالشفافية والتخطيط والقناعة. والنفقة على الأهل عبادة يُؤجر عليها المسلم."},
+  {t:"h3",x:"الشفافية أولاً"},
+  {t:"ul",x:["وضوح الدخل والالتزامات بينكما يقطع الشك والريبة.","قرّرا معاً مَن يتحمّل ماذا، وكيف تُدار النفقات المشتركة.","لا أسرار مالية كبيرة تهدم الثقة لو انكشفت لاحقاً."]},
+  {t:"h3",x:"ضعا ميزانية بسيطة"},
+  {t:"ul",x:["قاعدة عملية: أساسيات (سكن، طعام، فواتير) ← ادخار وطوارئ ← باقي الرغبات.","حدّدا سقفاً للمصروف الترفيهي يتّفق مع دخلكما دون حرمان ولا إسراف.","راجعا الميزانية شهرياً وعدّلا حسب المتغيّرات."]},
+  {t:"h3",x:"الادخار والطوارئ"},
+  {t:"p",x:"اجعلا نصيباً ثابتاً للادخار وصندوق طوارئ قدر المستطاع، فهو صمام أمان وقت الأزمات ويقلّل توتر المال."},
+  {t:"h3",x:"بين التقتير والإسراف"},
+  {t:"p",x:"النفقة بالمعروف وسط بين بخلٍ يُشعر الأهل بالحرمان، وإسرافٍ يُرهق البيت. والقناعة كنز لا يفنى، والرضا يصنع سعادة لا يصنعها المال وحده."}
+]},
+
+{id:"c26", num:26, label:"الذكاء العاطفي", title:"الذكاء العاطفي: فهم مشاعر الطرف الآخر", blocks:[
+  {t:"p",x:"الذكاء العاطفي هو قدرتك على فهم مشاعرك ومشاعر شريكك وإدارتها بحكمة. وهو غالباً أهمّ من «من على حق» في نجاح العلاقة."},
+  {t:"h3",x:"١) اقرأ ما وراء الكلمات"},
+  {t:"p",x:"كثيراً ما يكون الكلام الظاهر غطاءً لشعور أعمق: الغضب قد يخفي خوفاً، والصمت قد يخفي جرحاً، والعتاب قد يخفي حاجة للاهتمام. اسأل نفسك: ما الشعور الحقيقي وراء هذا الكلام؟"},
+  {t:"h3",x:"٢) سمِّ الشعور واعترف به"},
+  {t:"p",x:"حين تقول لها «أنا حاسس إنك زعلانة وده مضايقني»، فأنت تعترف بشعورها، وهذا وحده يهدّئ نصف الانفعال. الإنسان يهدأ حين يشعر أنه مفهوم."},
+  {t:"h3",x:"٣) أدِر انفعالك أنت أولاً"},
+  {t:"ul",x:["لاحظ علامات غضبك مبكراً، وتوقّف قبل أن ينفجر.","افصل بين الشعور والتصرف: من حقك أن تغضب، وليس من حقك أن تجرح.","خذ وقتاً للتهدئة قبل الردّ في المواقف الحادة."]},
+  {t:"h3",x:"٤) التعاطف لا الحلول الفورية"},
+  {t:"p",x:"أحياناً لا تريد زوجتك حلاً، بل تريد من يسمعها ويشعر بها. لا تستعجل تقديم النصيحة؛ أنصت أولاً، وتعاطف، ثم اسأل: تحبّيني أساعدك أم تحبّي أسمعك بس؟"}
+]},
+
+{id:"c27", num:27, label:"سيناريوهات تطبيقية", title:"سيناريوهات تطبيقية", blocks:[
+  {t:"p",x:"مواقف واقعية متكررة، وطريقة عملية للتصرف فيها بهدوء وحكمة:"},
+  {t:"h4",x:"الموقف: رجعت من العمل متعباً فاستقبلتك بشكوى وعتاب"},
+  {t:"ul",x:["لا تردّ بحدّة ولا تقل «سيبيني في حالي».","قل: «أنا تعبان شوية، إديني نص ساعة أرتاح وبعدين نتكلم في كل حاجة».","بعد الراحة، استمع لها فعلاً؛ فغالباً تحتاج اهتمامك بعد يومٍ طويل مثلك."]},
+  {t:"h4",x:"الموقف: انتقدتك أمام الأهل أو الأصدقاء"},
+  {t:"ul",x:["لا تردّ الإهانة بمثلها أمام الناس، فهذا يكبّر الموقف.","غيّر الموضوع بهدوء في اللحظة.","على انفراد لاحقاً: «ضايقني إنك قلتي كده قدام الناس، تحبي أي حاجة نتكلم فيها نتكلم لوحدنا»."]},
+  {t:"h4",x:"الموقف: نسيتَ مناسبة مهمة بالنسبة لها"},
+  {t:"ul",x:["لا تبرّر بـ«كنت مشغول»، فالتبرير يزيد الجرح.","اعتذر بصدق فوراً: «أنا غلطت ونسيت، وأنا آسف، ده مكانش يصحّ».","عوّضها بلفتة صادقة، فالفعل بعد الاعتذار يُصلح أكثر من الكلام."]},
+  {t:"h4",x:"الموقف: تطلب منك شراء شيء لا تتحمّله الميزانية الآن"},
+  {t:"ul",x:["لا ترفض رفضاً جافاً.","اشرح بصدق وشفافية وضع الميزانية الحالي.","اقترح بديلاً أو موعداً: «نأجّله شهرين ونحطّ له خطة»، حتى تشعر أنك معها لا ضدّها."]},
+  {t:"h4",x:"الموقف: دخلتما في نقاش حاد بدأ يتصاعد"},
+  {t:"ul",x:["استخدما إشارة الإيقاف المتّفق عليها بينكما.","قل: «خلينا نوقف دقايق ونكمّل بهدوء، أنا مش عايز أجرحك».","ارجعا للنقاش بعد الهدوء، فالحلول لا تُولد وسط الغضب."]}
+]},
+
+{id:"c28", num:28, label:"الصحة النفسية", title:"الصحة النفسية في الزواج", blocks:[
+  {t:"p",x:"نفسية شريكك جزء لا يتجزّأ من علاقتكما. والضغوط والقلق والحزن أمور تمرّ بكل إنسان، ودورك وقتها أن تكون سنداً لا قاضياً. والقلب يطمئن بذكر الله وبوجود من يحتويه."},
+  {t:"ayah",x:"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",r:"سورة الرعد: 28"},
+  {t:"h3",x:"كن سنداً لا قاضياً"},
+  {t:"ul",x:["اسمع دون استهزاء أو تقليل من شأن ما يشعر به («ده مش مستاهل كل ده» تجرح ولا تساعد).","الوجود الصامت والاحتواء أحياناً أبلغ من ألف نصيحة.","شجّعه على الراحة والاعتناء بنفسه دون ضغط أو لوم."]},
+  {t:"h3",x:"علامات تستدعي الانتباه"},
+  {t:"p",x:"إن لاحظت تغيّراً مستمراً في المزاج، أو انسحاباً وعزلة، أو فقدان اهتمام بما كان يحبّه، أو اضطراب نوم أو أكل ممتداً — فهذه إشارات تستحق العناية. لست طبيباً لتشخّص، لكنك تستطيع أن تشجّعه برفق على استشارة مختص، فطلب المساعدة قوة لا ضعف."},
+  {t:"h3",x:"اعتنِ بنفسك أيضاً"},
+  {t:"p",x:"دعم شريك يمرّ بضائقة نفسية أمرٌ مرهق. لا تهمل راحتك وصحتك النفسية أنت، فلا تستطيع أن تسند غيرك وأنت منهَك. واطلب الدعم لنفسك عند الحاجة دون شعور بالذنب."}
+]},
+
+{id:"c29", num:29, label:"القرارات الكبرى", title:"القرارات الكبرى المشتركة", blocks:[
+  {t:"p",x:"القرارات المصيرية — كالسكن، والسفر، وتغيير المهنة، والهجرة، والإنجاب — تخصّ الطرفين معاً، فلا ينفرد بها أحدهما. والشورى منهج قرآني في إدارة شؤون البيت:"},
+  {t:"ayah",x:"وَأَمْرُهُمْ شُورَىٰ بَيْنَهُمْ",r:"سورة الشورى: 38"},
+  {t:"h3",x:"خطوات لقرار مشترك ناجح"},
+  {t:"ol",x:["اطرحا كل المعطيات بوضوح وصدق دون إخفاء.","استمع كلٌّ لمخاوف الآخر وطموحاته، فالقرار يمسّكما معاً.","وازنا المكاسب والتكاليف على المدى القريب والبعيد.","قرّرا معاً، ثم تحمّلا النتيجة معاً دون لوم لاحق."]},
+  {t:"h3",x:"عند الاختلاف"},
+  {t:"ul",x:["ابحثا عن حلٍّ وسط يرضي الجوهر إن تعذّر الاتفاق الكامل.","أجّلا القرار غير العاجل حتى ينضج الرأي وتهدأ النفوس.","استخيرا الله واستشيرا أهل الخبرة والثقة قبل الحسم."]},
+  {t:"p",x:"ولا تفرض قراراً ثم تطالب شريكك بالرضا به؛ فالمشاركة في صنع القرار هي التي تصنع المشاركة في تحمّل نتيجته."}
+]},
+
+{id:"c30", num:30, label:"الأسرة المدمجة", title:"الأسرة المدمجة: زواج سابق وأطفال منه", blocks:[
+  {t:"p",x:"الزواج الذي فيه أطفال من زواج سابق، أو طليق/ة في الصورة، يحتاج حكمة خاصة وصبراً أطول. والمفتاح هو العدل والرحمة وعدم استعجال المشاعر."},
+  {t:"h3",x:"مع أبناء الشريك"},
+  {t:"ul",x:["عاملهم بالرحمة والعدل، فهم أطفال لا ذنب لهم في ظروفهم.","لا تفرض نفسك بديلاً عن والدهم/والدتهم، بل كن إضافة طيبة لحياتهم.","اكسب قلوبهم بالوقت والصبر والاحترام، لا بالقوة والفرض."]},
+  {t:"h3",x:"مع الطليق/ة"},
+  {t:"ul",x:["تعامل بأدب واحترام لمصلحة الأبناء، فهو/هي يبقى والداً لهم.","لا تجعل الأبناء ساحة صراع أو أداة ضغط.","لا تتكلّم بسوء عن الطرف الآخر أمام الأبناء، فذلك يجرحهم في أنفسهم."]},
+  {t:"h3",x:"العدل بين الأبناء"},
+  {t:"p",x:"اجتهد في العدل بين أبنائك وأبناء شريكك في المعاملة والاهتمام قدر استطاعتك؛ فالميل الظاهر يزرع الغيرة ويهدم البيت. والترابط يُبنى ببطء، فتوقّع بعض المقاومة في البداية وكن صبوراً رحيماً."}
+]},
+
+{id:"c31", num:31, label:"الزواج عن بُعد", title:"الزواج عن بُعد (السفر والاغتراب)", blocks:[
+  {t:"p",x:"السفر للعمل أو الاغتراب يفرض مسافة تختبر العلاقة، لكنها لا تقتلها إذا أحسنتما إدارتها. الغاية من الغربة سعادة البيت، فلا تتحوّل إلى سببٍ لخرابه."},
+  {t:"h3",x:"حافظا على التواصل الحيّ"},
+  {t:"ul",x:["اجعلا للتواصل مواعيد ثابتة بقدر ما تسمح الظروف.","شاركا تفاصيل اليوم والمشاعر، لا الأمور العملية فقط.","لفتات بسيطة (رسالة، صورة، دعاء بظهر الغيب) تُبقي القرب رغم البُعد."]},
+  {t:"h3",x:"الثقة والطمأنة"},
+  {t:"p",x:"المسافة تضخّم الشكوك والوساوس. عالجاها بالوضوح والطمأنة المستمرة، لا بالمراقبة والاستجواب؛ فالثقة هي ما يجعل البُعد محتمَلاً."},
+  {t:"h3",x:"خفّفا أثر الغياب"},
+  {t:"ul",x:["خطّطا للقاءات وعُدّا الأيام معاً، فالانتظار يخفّ حين يكون له موعد.","اجعلا للعودة طقساً مميزاً يجدّد الفرح.","أشركا الأبناء في التواصل مع الغائب حتى يبقى حاضراً في قلوبهم."]},
+  {t:"p",x:"والصبر والدعاء زادكما في هذه المرحلة، وثقا أن الفرج قريب."}
+]},
+
+{id:"c32", num:32, label:"الفراق بإحسان", title:"الفراق بإحسان (إن وصل الأمر للطلاق)", blocks:[
+  {t:"p",x:"هذا بابٌ يتمنى المرء ألا يحتاجه، لكنه مرجع مهم. فإن استُنفدت المحاولات ولم يبقَ إلا الفراق، فقد جعل الإسلام للفراق أدباً كما جعل للزواج، وأمر بأن يكون بإحسان:"},
+  {t:"ayah",x:"الطَّلَاقُ مَرَّتَانِ ۖ فَإِمْسَاكٌ بِمَعْرُوفٍ أَوْ تَسْرِيحٌ بِإِحْسَانٍ",r:"سورة البقرة: 229"},
+  {t:"h3",x:"افترقا بكرامة"},
+  {t:"ul",x:["لا سبّ ولا تشهير ولا انتقام، فما جمعكما يستحق أن يُختم باحترام.","احفظ ما كان بينكما من جميل ولا تجحده: ﴿وَلَا تَنسَوُا الْفَضْلَ بَيْنَكُمْ﴾ (البقرة: 237).","استرا بعضكما؛ فإفشاء الأسرار بعد الفراق دناءة لا يفعلها كريم."]},
+  {t:"h3",x:"أدّيا الحقوق ولا تُضارّا"},
+  {t:"p",x:"أداء الحقوق المالية (المؤخّر والنفقة في العدة ونفقة الأبناء) واجب، ونهى الله عن الإمساك أو المضارّة بقصد الإيذاء: ﴿وَلَا تُمْسِكُوهُنَّ ضِرَارًا لِّتَعْتَدُوا﴾ (البقرة: 231)."},
+  {t:"h3",x:"الأبناء أولاً"},
+  {t:"ul",x:["تعاونا على تربيتهم رغم الفراق، فهم أمانة لا تسقط.","لا تجعلا الأبناء أداة ضغط أو ساحة انتقام.","لا تشوّه صورة الطرف الآخر في أعينهم، فهم يحبّونكما معاً."]},
+  {t:"p",x:"والفراق ليس فشلاً دائماً؛ فأحياناً يكون أرحم من بقاءٍ يؤذي الجميع. والمهم أن يتمّ بإحسان يحفظ الكرامة ويصون الأبناء."}
+]}
+];
+
+// ===== العرض =====
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function olItem(s){
+  const i=s.indexOf("：")>=0?s.indexOf("："):s.indexOf(":");
+  if(i>0){return "<strong>"+esc(s.slice(0,i+1))+"</strong> "+esc(s.slice(i+1).trim());}
+  return esc(s);
+}
+function renderBlock(b){
+  switch(b.t){
+    case"p":return "<p>"+esc(b.x)+"</p>";
+    case"h3":return "<h3>"+esc(b.x)+"</h3>";
+    case"h4":return "<h4>"+esc(b.x)+"</h4>";
+    case"ul":return "<ul>"+b.x.map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>";
+    case"ol":return "<ol>"+b.x.map(i=>"<li>"+olItem(i)+"</li>").join("")+"</ol>";
+    case"ayah":return '<div class="ayah qbox"><button class="copy" data-copy="'+esc("﴿ "+b.x+" ﴾ ["+(b.r||"")+"]")+'">نسخ</button><span class="qt">﴿ '+esc(b.x)+' ﴾</span><span class="ref">'+esc(b.r)+'</span></div>';
+    case"hadith":return '<div class="hadith qbox"><button class="copy" data-copy="'+esc("«"+b.x+"» ["+(b.r||"")+"]")+'">نسخ</button><span class="qt">«'+esc(b.x)+'»</span><span class="ref">'+esc(b.r)+'</span></div>';
+    case"dua":return '<div class="dua">'+esc(b.x)+'</div>';
+    case"table":
+      let h="<thead><tr>"+b.head.map(x=>"<th>"+esc(x)+"</th>").join("")+"</tr></thead>";
+      let r="<tbody>"+b.rows.map(row=>"<tr>"+row.map((c,i)=>'<td data-label="'+esc(b.head[i])+'">'+esc(c)+"</td>").join("")+"</tr>").join("")+"</tbody>";
+      return '<div class="tablewrap"><table>'+h+r+"</table></div>";
+    case"quiz":
+      return '<div class="quiz" data-quiz><div class="quiz-items">'+
+        b.items.map(it=>'<label class="qz-item"><input type="checkbox"><span>'+esc(it)+'</span></label>').join("")+
+        '</div><div class="qz-result"><div class="qz-bar"><div class="qz-fill"></div></div>'+
+        '<div class="qz-msg">علّم ما تحقّقه لمعرفة مؤشّر علاقتك</div></div></div>';
+    case"ex":return '<div class="ex"><span class="exlbl">💡 مثال تطبيقي</span>'+esc(b.x)+'</div>';
+    case"scen":return '<div class="scen"><div class="scenq">📌 '+esc(b.s)+'</div><ul>'+b.steps.map(st=>'<li>'+esc(st)+'</li>').join("")+'</ul></div>';
+  }
+  return "";
+}
+function chapterText(c){
+  let t=c.title;
+  c.blocks.forEach(b=>{
+    if(b.x){t+=" "+(Array.isArray(b.x)?b.x.join(" "):b.x);}
+    if(b.r)t+=" "+b.r;
+    if(b.s)t+=" "+b.s;
+    if(b.steps)t+=" "+b.steps.join(" ");
+    if(b.head)t+=" "+b.head.join(" ");
+    if(b.rows)t+=" "+b.rows.map(r=>r.join(" ")).join(" ");
+    if(b.items)t+=" "+b.items.join(" ");
+  });
+  return t;
+}
+
+const DEEP={
+intro:[
+  {t:"p",x:"وقد رُوعي في هذا الدليل أن يجمع بين ثلاثة أمور: نصٍّ شرعيٍّ موثّق من القرآن والسنة، وفهمٍ عمليٍّ لطبيعة النفس والعلاقات، وتطبيقٍ ملموس عبر أمثلة وسيناريوهات واقعية. فليس الغرض أن تقرأه فقط، بل أن تعمل به."}
+],
+c3:[
+  {t:"h3",x:"من هدي القرآن في الكلام"},
+  {t:"p",x:"جعل الله حسن القول أصلاً في التعامل مع الناس جميعاً، فكيف بأقرب الناس إليك؟"},
+  {t:"ayah",x:"وَقُولُوا لِلنَّاسِ حُسْنًا",r:"سورة البقرة: 83"},
+  {t:"h3",x:"٧) أنصت بجسدك لا بأذنك فقط"},
+  {t:"p",x:"ضع الهاتف جانباً، واستدر بجسدك نحوها، وانظر في عينيها. هذه الإشارات تقول «أنتِ أهمّ شيء الآن» قبل أن تنطق بكلمة، وغيابها يُفقد أصدق الكلمات أثرها."},
+  {t:"h3",x:"٨) اسأل قبل أن تفترض"},
+  {t:"p",x:"أكثر الخلافات تبدأ بافتراض خاطئ لم يُراجَع. بدل أن تبني موقفاً على ظنّك، اسأل ببساطة: «قصدك إيه بالظبط؟» — سؤال واحد يوفّر ساعات من الخصام."}
+],
+c5:[
+  {t:"h4",x:"٩) الاختلاف في الأولويات ونمط الحياة"},
+  {t:"ul",x:["اقبل أن الاختلاف طبيعي؛ فأنتما شخصان لا نسخة واحدة.","ابحثا عن أرضية مشتركة بدل أن يفرض أحدكما نمطه.","تنازلا بالتبادل: مرة على هواك ومرة على هواها."]},
+  {t:"h4",x:"١٠) تراكم الصمت وعدم البوح"},
+  {t:"ul",x:["الصمت الطويل يراكم الجراح حتى تنفجر دفعة واحدة.","خصّصا وقتاً أسبوعياً للمصارحة الهادئة قبل أن تتراكم الأمور.","عبّر عن انزعاجك أولاً بأول وبلطف، فالتنفيس المبكّر يمنع الانفجار."]}
+],
+c6:[
+  {t:"h3",x:"الشكر لغة يفهمها كل قلب"},
+  {t:"p",x:"مهما اختلفت لغة الحب، يبقى الشكر والتقدير قاسماً مشتركاً بين كل الناس، وقد ربط النبي ﷺ بين شكر الخلق وشكر الخالق:"},
+  {t:"hadith",x:"من لا يشكر الناس لا يشكر الله",r:"رواه أبو داود (4811) والترمذي (1954) عن أبي هريرة، حسن صحيح"},
+  {t:"p",x:"فاجعل الشكر عادة يومية: اشكرها على الصغير قبل الكبير، وعلى ما تظنّه «واجبها»، فالقلوب تلين بالتقدير."}
+],
+c7:[
+  {t:"h3",x:"العفو خلق المحسنين"},
+  {t:"p",x:"كما تحتاج أن يُعفى عنك، تحتاج أن تعفو. وقد جعل الله العفو من صفات المتقين:"},
+  {t:"ayah",x:"وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ ۗ وَاللَّهُ يُحِبُّ الْمُحْسِنِينَ",r:"سورة آل عمران: 134"},
+  {t:"h3",x:"متى يكون الاعتذار غير كافٍ؟"},
+  {t:"p",x:"حين يتكرّر الخطأ نفسه بعد كل اعتذار. الاعتذار الحقيقي يُتبع بتغيير ملموس، وإلا صار كلمة تُقال لإنهاء الموقف لا لإصلاحه."}
+],
+c8:[
+  {t:"h3",x:"احذر سوء الظن"},
+  {t:"p",x:"أخطر ما في تحليل التصرفات أن تبني على ظنٍّ لا على حقيقة، وقد حذّر الله من ذلك:"},
+  {t:"ayah",x:"يَا أَيُّهَا الَّذِينَ آمَنُوا اجْتَنِبُوا كَثِيرًا مِّنَ الظَّنِّ إِنَّ بَعْضَ الظَّنِّ إِثْمٌ",r:"سورة الحجرات: 12"},
+  {t:"h3",x:"أخطاء شائعة في قراءة التصرفات"},
+  {t:"ul",x:["التعميم: «هي دايماً كده» — الغالب أنها ليست دائماً، وهذا التعميم يظلمها ويغلق باب الحل.","قراءة الأفكار: أن تفترض أنك تعرف ما في قلبها دون أن تسأل.","إسقاط ماضٍ قديم على موقف جديد لا علاقة له به."]}
+],
+c9:[
+  {t:"h3",x:"٥) كونا صديقين قبل أن تكونا زوجين"},
+  {t:"p",x:"أعمق ما يُبقي الزواج بعد ذهاب حماس البدايات هو الصداقة: أن تكون هي أوّل من تحكي له خبراً، وأن تجد عندها الأمان بلا تكلّف. الصداقة تُبنى بالحديث اليومي البسيط والاهتمام بتفاصيلها الصغيرة."},
+  {t:"h3",x:"٦) اجعلا لكما هواية أو مشروعاً مشتركاً"},
+  {t:"ul",x:["نشاط تشتركان فيه (رياضة، قراءة، طبخ، مشروع صغير) يخلق ذكريات ولغة خاصة بينكما.","المشاركة في الإنجاز تصنع فخراً متبادلاً يقوّي الرابط.","لا يشترط أن يكون كبيراً؛ المهم أن يكون منتظماً ومحبَّباً لكليكما."]}
+],
+c13:[
+  {t:"h3",x:"عادة الامتنان اليومية"},
+  {t:"p",x:"جرّب أن تذكر لها كل يوم شيئاً واحداً تشكرها عليه تحديداً — لا مجاملة عامة، بل تفصيلاً حقيقياً لاحظته. الامتنان المحدّد يُشعر الطرف الآخر أنه مرئيّ فعلاً، وهو من أرخص وسائل السعادة وأعمقها أثراً."},
+  {t:"h3",x:"قاعدة الرصيد العاطفي"},
+  {t:"p",x:"تخيّل بينكما رصيداً: كل كلمة طيبة ولفتة تزيده، وكل جفوة تنقصه. من يحافظ على رصيد مرتفع، تمرّ خلافاته بسلام لأن الرصيد يحتملها. فلا تنتظر الخلاف لتُصلح، بل أودِع كل يوم."},
+  {t:"h3",x:"ابدأ بواحدة لا بالكل"},
+  {t:"p",x:"لا تحاول تطبيق القواعد العشر دفعة واحدة، فالحماس المؤقت ينطفئ. اختر قاعدة واحدة والتزم بها أسبوعاً كاملاً حتى تصير عادة، ثم انتقل لغيرها؛ فالقليل الدائم خير من الكثير المنقطع."}
+],
+c15:[
+  {t:"h3",x:"مرحلة الحمل والولادة والنفاس"},
+  {t:"p",x:"من أشدّ المراحل على الزوجة جسدياً ونفسياً، وقد ذكر الله عظم ما تتحمّله الأم:"},
+  {t:"ayah",x:"وَحَمَلَتْهُ أُمُّهُ وَهْنًا عَلَىٰ وَهْنٍ",r:"سورة لقمان: 14"},
+  {t:"ul",x:["تحمّل تقلّب مزاجها وتعبها، فهو أثر طبيعي للحمل لا افتعال منها.","شاركها المتابعة الطبية والاستعداد للمولود، فحضورك يطمئنها.","بعد الولادة قد تمرّ بإرهاق شديد أو حزن مؤقت؛ ساندها ولا تتركها وحدها، وإن استمر الأمر فشجّعها برفق على استشارة مختص.","خفّف عنها أعباء البيت في هذه الفترة، فهي أحوج ما تكون لراحتك لها."]},
+  {t:"h3",x:"قاعدة عامة عبر المراحل"},
+  {t:"p",x:"لا تقارن مرحلتكما الحالية بمرحلة سابقة أو ببيت آخر. كل مرحلة لها ما يناسبها، وما نجح بالأمس قد يحتاج تعديلاً اليوم؛ فالمرونة سرّ الاستمرار."}
+],
+c14:[
+  {t:"h3",x:"أدب القول الذي أمر الله به"},
+  {t:"ayah",x:"وَقُل لِّعِبَادِي يَقُولُوا الَّتِي هِيَ أَحْسَنُ ۚ إِنَّ الشَّيْطَانَ يَنزَغُ بَيْنَهُمْ",r:"سورة الإسراء: 53"},
+  {t:"p",x:"لاحظ التعليل: الشيطان ينزغ بين المتحابّين بالكلمة السيئة. فحفظ اللسان ليس تكلّفاً، بل حماية للبيت من نزغه."}
+],
+c17:[
+  {t:"h3",x:"٥) لا تتجسّس"},
+  {t:"p",x:"مراقبة الهاتف والبحث في الخصوصيات نهى الله عن جنسها:"},
+  {t:"ayah",x:"وَلَا تَجَسَّسُوا وَلَا يَغْتَب بَّعْضُكُم بَعْضًا",r:"سورة الحجرات: 12"},
+  {t:"p",x:"ومن وجد ريبة فليصارح بها، فالمصارحة تبني والتجسّس يهدم حتى لو لم يجد شيئاً."},
+  {t:"h3",x:"٦) نظّما الوقت الرقمي"},
+  {t:"ul",x:["حدّدا ساعة يومية «بلا شاشات» يجلس فيها كلٌّ مع الآخر فعلاً.","لا هواتف على السرير؛ فآخر ما تراه قبل النوم ينبغي أن يكون شريكك لا شاشة.","انتبه لأثر ذلك على الأبناء، فهم يقلّدون ما يرونه منكما."]}
+],
+c18:[
+  {t:"h3",x:"لا إكراه في التديّن"},
+  {t:"p",x:"الدين يُحبَّب إلى النفوس ولا يُفرض فرضاً، والقلوب لا تُقاد بالقهر:"},
+  {t:"ayah",x:"لَا إِكْرَاهَ فِي الدِّينِ ۖ قَد تَّبَيَّنَ الرُّشْدُ مِنَ الْغَيِّ",r:"سورة البقرة: 256"},
+  {t:"h3",x:"أخطاء شائعة تنفّر"},
+  {t:"ul",x:["الوعظ الدائم في كل موقف حتى يصير الدين مرتبطاً في ذهنها بالضغط.","المقارنة بزوجات أو أزواج آخرين في الالتزام.","ربط الرضا والمحبة بمستوى التديّن، فتصير العلاقة مشروطة.","الحدّة في المستحبّات كالحدّة في الواجبات، دون تفريق بينهما."]},
+  {t:"h3",x:"ما يقرّب القلوب"},
+  {t:"ul",x:["اجعلا للعبادة المشتركة نصيباً: صلاة معاً، أو ورد قرآن قصير، أو دعاء.","اربط الدين بالجمال والرحمة لا بالتخويف فقط.","احتفِ بأي خطوة صغيرة نحو الخير ولا تستهن بها."]},
+  {t:"h3",x:"واصبر واحتسب"},
+  {t:"p",x:"قد يطول الطريق، فاجعل نيّتك الأجر لا الانتصار، وأكثر من الدعاء؛ فالهداية بيد الله وحده، وأنت مطالب بالبلاغ الحسن لا بالنتيجة."}
+],
+c20:[
+  {t:"h3",x:"النهي عن الإضرار"},
+  {t:"p",x:"حرّم الله أن يُتّخذ الزواج وسيلة للإيذاء أو الإمساك بقصد الضرر:"},
+  {t:"ayah",x:"وَلَا تُمْسِكُوهُنَّ ضِرَارًا لِّتَعْتَدُوا ۚ وَمَن يَفْعَلْ ذَٰلِكَ فَقَدْ ظَلَمَ نَفْسَهُ",r:"سورة البقرة: 231"},
+  {t:"h3",x:"كيف تطلب المساعدة عملياً؟"},
+  {t:"ul",x:["ابدأ بشخص عاقل موثوق من الطرفين يريد الإصلاح لا التأجيج.","إن لم يُجدِ، فاستشر متخصصاً في العلاقات الأسرية أو الصحة النفسية.","عند وجود خطر على السلامة، لا تتردّد في اللجوء للجهات المختصة فوراً.","دوّن ما يحدث بهدوء لتتذكّر الوقائع بدقة عند الحاجة للمشورة."]}
+],
+c21:[
+  {t:"h3",x:"جسدك ونومك جزء من العلاقة"},
+  {t:"p",x:"الإرهاق وقلة النوم وسوء الصحة من أخفى أسباب التوتر الزوجي؛ فالمنهَك سريع الانفعال قليل الصبر. وقد جعل النبي ﷺ للبدن وللزوجة حقوقاً في ميزان واحد:"},
+  {t:"hadith",x:"إن لجسدك عليك حقاً، وإن لعينك عليك حقاً، وإن لزوجك عليك حقاً",r:"رواه البخاري، عن عبد الله بن عمرو بن العاص رضي الله عنهما"},
+  {t:"ul",x:["نوم كافٍ ومنتظم يقلّل الانفعال أكثر مما تتصوّر.","حركة يومية بسيطة ولو مشي، ويفضَّل أن تكون معاً.","لا تهملا الفحوصات والعلاج، فصحة البدن سندٌ لصحة العلاقة."]},
+  {t:"h3",x:"القليل الدائم خير من الكثير المنقطع"},
+  {t:"p",x:"لا تشترط الظروف المثالية لتبدأ الصيانة؛ ابدأ بأصغر عادة يمكنك الالتزام بها فعلاً."},
+  {t:"hadith",x:"أحبّ الأعمال إلى الله أدومها وإن قلّ",r:"متفق عليه، عن عائشة رضي الله عنها"}
+],
+c22:[
+  {t:"h4",x:"زوجتي مشغولة عني بالأطفال طوال الوقت"},
+  {t:"p",x:"هذا طبيعي في سنوات الطفولة الأولى، وليس إهمالاً مقصوداً. أعِنها في الأعباء ليتوفّر لكما وقت، واطلب وقتكما بلطف لا بعتاب: «وحشتيني، تعالي ناخد ساعة لينا»."},
+  {t:"h4",x:"هل الاعتذار أولاً يقلّل من قدري؟"},
+  {t:"p",x:"بالعكس، المبادرة بالصلح شجاعة وكرم، وخير الناس من بدأ بها. القدر الحقيقي في إصلاح البيت لا في الانتصار للنفس."},
+  {t:"h4",x:"متى أعرف أن المشكلة تحتاج متخصصاً؟"},
+  {t:"p",x:"حين تتكرّر رغم محاولاتكما الصادقة، أو حين يغيب الاحترام الأساسي، أو تظهر علامات الخطر المذكورة في بابها. طلب المساعدة حينها حرصٌ لا فشل."}
+],
+c23:[
+  {t:"h3",x:"مسؤولية الأمانة"},
+  {t:"p",x:"جعل الله وقاية الأهل والأبناء من النار مسؤولية على عاتق الوالدين:"},
+  {t:"ayah",x:"يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا",r:"سورة التحريم: 6"},
+  {t:"h3",x:"العدل بين الأبناء"},
+  {t:"p",x:"التمييز بين الأولاد في العطاء أو الاهتمام يزرع الحسد بينهم والبغض في قلوبهم، وقد أمر النبي ﷺ بالعدل بينهم في العطية. فسوِّ بينهم قدر استطاعتك حتى في القبلة والكلمة."},
+  {t:"h3",x:"احتياجات الطفل الأساسية"},
+  {t:"ul",x:["الأمان: بيت هادئ يعرف فيه أن والديه بخير.","القبول: أن يُحَبّ لذاته لا لدرجاته أو إنجازه.","الوقت: حضورك معه أثمن عنده من أي هدية."]}
+],
+c24:[
+  {t:"h3",x:"برّ الوالدين لا يسقط بالزواج"},
+  {t:"ayah",x:"وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا",r:"سورة الإسراء: 23"},
+  {t:"p",x:"فلا يجوز أن يُتّخذ الزواج ذريعة لقطيعة الوالدين، كما لا يجوز أن يُتّخذ برّ الوالدين ذريعة لظلم الزوجة. والموازنة بينهما من علامات العقل والدين."},
+  {t:"h3",x:"كيف تضع حدّاً دون قطيعة؟"},
+  {t:"ol",x:["اتفقا أولاً بينكما على الحدّ المطلوب حتى لا تتناقضا.","عبّر عنه بلطف وبصيغة الجمع: «إحنا قرّرنا…» لا «هي عايزة…».","كن ثابتاً في التطبيق، فالتردّد يفتح باب التجاوز من جديد.","حافظ على الصلة والزيارة والإحسان رغم الحدّ، فالحدّ تنظيم لا قطيعة."]},
+  {t:"h3",x:"الضيوف والحياة الاجتماعية"},
+  {t:"ul",x:["اتفقا على أعراف الاستضافة: كم وكيف ومتى، حتى لا يتفاجأ أحدكما.","راعِ طاقة زوجتك ولا تُحمّلها فوق وسعها إكراماً للضيوف.","الجيران لهم حقّ عظيم في الإسلام، فأحسِنا إليهم واحفظا حدود الخصوصية معهم."]}
+],
+c25:[
+  {t:"h3",x:"الوسطية في الإنفاق"},
+  {t:"p",x:"رسم القرآن قاعدة الإنفاق بين البخل والإسراف بصورة بليغة:"},
+  {t:"ayah",x:"وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ",r:"سورة الإسراء: 29"},
+  {t:"h3",x:"مال الزوجة مالها"},
+  {t:"p",x:"ذمّتها المالية مستقلة؛ فمهرها ومالها وميراثها ملكٌ لها، والنفقة واجبة عليك لا عليها. وإن أنفقت من مالها على البيت فذلك تبرّع منها وفضل يُشكر، لا واجب يُطالَب به."},
+  {t:"h3",x:"الديون والالتزامات"},
+  {t:"ul",x:["لا تُخفِ ديناً عن شريكك، فانكشافه لاحقاً يهدم الثقة.","تجنّب الاستدانة للكماليات والمظاهر، فهي أثقل ما يُرهق البيوت.","ضعا خطة سداد واضحة وواقعية والتزما بها معاً."]},
+  {t:"h3",x:"القناعة وأثرها"},
+  {t:"p",x:"كثير من ضيق البيوت ليس قلّة رزق بل قلّة رضا. والقناعة لا تعني ترك السعي، بل تعني ألا تُفسد حاضرك بمقارنة نفسك بغيرك."}
+],
+c26:[
+  {t:"h3",x:"اللين خُلُق النبوة"},
+  {t:"p",x:"بيّن الله أن اللين هو ما جمع الناس حول نبيّه ﷺ، وأن الغلظة تفرّق:"},
+  {t:"ayah",x:"فَبِمَا رَحْمَةٍ مِّنَ اللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ الْقَلْبِ لَانفَضُّوا مِنْ حَوْلِكَ",r:"سورة آل عمران: 159"},
+  {t:"h3",x:"٥) لا تصحّح المشاعر"},
+  {t:"p",x:"لا تقل «مش المفروض تزعلي من ده». المشاعر لا تُناقَش بالمنطق، بل تُحتوى أولاً. اعترف بالشعور ثم ناقشا الموقف بعد أن يهدأ."},
+  {t:"h3",x:"٦) انتبه لتوقيت الكلام"},
+  {t:"p",x:"أذكى الكلام في الوقت الخطأ يفشل. راقب حالتها: التعب والجوع والانشغال تُغلق أبواب الحوار مهما كانت نيّتك حسنة."}
+],
+c29:[
+  {t:"h3",x:"الاستخارة قبل القرار"},
+  {t:"p",x:"لا يستغني المسلم عن ردّ الأمر إلى الله قبل الإقدام، وكان النبي ﷺ يعلّم أصحابه الاستخارة في الأمور كلها كما يعلّمهم السورة من القرآن:"},
+  {t:"hadith",x:"إذا همّ أحدكم بالأمر فليركع ركعتين من غير الفريضة، ثم ليقل: اللهم إني أستخيرك بعلمك…",r:"رواه البخاري، عن جابر بن عبد الله رضي الله عنهما"},
+  {t:"p",x:"والسنة أن تستخير الله ثم تستشير أهل العقل والخبرة، ثم تمضي فيما ينشرح له صدرك متوكّلاً على الله."},
+  {t:"h3",x:"الشورى ثم العزم ثم التوكل"},
+  {t:"ayah",x:"وَشَاوِرْهُمْ فِي الْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ",r:"سورة آل عمران: 159"},
+  {t:"h3",x:"أخطاء تُفسد القرار المشترك"},
+  {t:"ul",x:["الاستفراد بالقرار ثم إبلاغ الطرف الآخر به كأمر واقع.","الضغط بالعاطفة أو الإلحاح بدل الإقناع بالحجة.","استعجال قرار مصيري وقت الغضب أو الحماس.","لوم الطرف الآخر عند أول عقبة بعد قرارٍ اتُّخذ معاً."]},
+  {t:"h3",x:"بعد اتخاذ القرار"},
+  {t:"p",x:"راجعا النتائج بعد فترة بروح التعلّم لا المحاسبة: ما الذي نجح؟ وما الذي نعدّله؟ فالقرارات الكبرى تحتاج متابعة لا مجرد حسم."}
+],
+c30:[
+  {t:"h3",x:"توقّعات واقعية من البداية"},
+  {t:"p",x:"لا تتوقّع اندماجاً فورياً ولا مشاعر جاهزة. الأسرة المدمجة تُبنى على مراحل، وقد تحتاج سنوات؛ والصبر هنا ليس فضيلة فحسب بل ضرورة."},
+  {t:"h3",x:"احفظ مكانة كل طرف"},
+  {t:"ul",x:["لا تُجبر الطفل على لقب معيّن لك، ودعه يختار بوتيرته.","اترك الانضباط الأساسي لوالده/والدتها في البداية، وكن أنت مصدر الدعم.","لا تنافس الوالد الغائب في قلب الطفل، فالقلب يتّسع لأكثر من محبّة."]},
+  {t:"h3",x:"وحّدا القواعد"},
+  {t:"p",x:"اتفقا على قواعد البيت وطبّقاها على الجميع بلا استثناء؛ فالتمييز في القواعد أسرع ما يهدم الثقة داخل الأسرة المدمجة."},
+  {t:"h3",x:"احمِ علاقتكما الزوجية"},
+  {t:"p",x:"الضغوط هنا مضاعفة، فخصّصا وقتاً لكما وحدكما بانتظام. علاقتكما هي أساس البيت، وإن اهتزّت اهتزّ كل ما فوقها."}
+],
+c31:[
+  {t:"h3",x:"اتفقا على قواعد الغياب"},
+  {t:"ul",x:["حدّدا مدة الغربة وهدفها، فالغياب بلا أفق يُنهك الطرفين.","اتفقا على من يتولّى مسؤوليات البيت في غيابك حتى لا تُترك حائرة.","رتّبا الأمور المالية بوضوح قبل السفر."]},
+  {t:"h3",x:"نوعية التواصل لا كثرته"},
+  {t:"p",x:"مكالمة قصيرة حاضرة القلب خير من ساعة وأنت مشغول. واحذر أن تتحوّل مكالماتكما إلى تقارير ومهام فقط؛ اترك مساحة للمشاعر والحكايات."},
+  {t:"h3",x:"احذر عزلة الغربة"},
+  {t:"p",x:"الوحدة والفراغ من أخطر ما يواجه المغترب، وقد تفتح أبواباً لا تُحمد. احفظ نفسك بصحبة صالحة وانشغال نافع وتواصل دائم بأهلك."},
+  {t:"h3",x:"لحظة اللقاء وما بعدها"},
+  {t:"p",x:"توقّع أن يحتاج كلٌّ منكما وقتاً لإعادة التآلف بعد فترة بُعد، فلا تُحمّل أول أيام اللقاء أكثر مما تحتمل، وامنحا نفسيكما مساحة للعودة التدريجية."}
+]
+};
+CH.forEach(c=>{ if(DEEP[c.id]) c.blocks = c.blocks.concat(DEEP[c.id]); });
+
+const DEEP2={
+c3:[
+  {t:"h3",x:"٩) استجب لنداءات الاهتمام الصغيرة"},
+  {t:"p",x:"تقول وهي تنظر من النافذة: «شوف العصفورة دي». هذه ليست معلومة عن عصفورة، بل نداء صغير معناه «شاركني لحظة». وأمامك ثلاثة ردود: أن تلتفت وتتفاعل (الاقتراب)، أو تتجاهل وتكمل ما بيدك (الإعراض)، أو تردّ بضيق «مش شايف إني مشغول؟» (المواجهة). وتُظهر أبحاث جوتمان أن الأزواج المستقرين يلتفتون لهذه النداءات في أغلب الأحيان، بينما يتجاهلها المتعثّرون كثيراً — والحبّ يُبنى أو يتآكل في هذه اللحظات الصغيرة أكثر مما يُبنى في المناسبات الكبيرة."}
+],
+c4:[
+  {t:"h3",x:"سادساً: انتبه لبداية النقاش"},
+  {t:"p",x:"كيف يبدأ الحوار يحدّد غالباً كيف ينتهي؛ فالبداية الحادّة تنتهي بحدّة في أكثر الأحوال. ابدأ بشعورك وحاجتك لا باتهامها، وارجع إلى باب «الأنماط الأربعة التي تهدم الزواج» لتعرف أخطر أساليب الخلاف وترياق كلٍّ منها."}
+],
+c13:[
+  {t:"p",x:"وهذه القاعدة لها أصل في أبحاث الزواج: الأزواج المستقرون يحافظون على نحو خمسة مواقف إيجابية — اهتمام، ودعابة، وتقدير، ولمسة — مقابل كل موقف سلبي، حتى في أوقات الخلاف. فإن شعرت أن العلاقة مثقلة، فلا تبدأ بمحو السلبيات فقط، بل بمضاعفة الإيجابيات."}
+],
+c14:[
+  {t:"h3",x:"لفهم أعمق"},
+  {t:"p",x:"الاستخفاف المتكرّر في الكلام هو ما تسمّيه أبحاث الزواج «الازدراء»، وهو أخطر أنماط الخلاف. فاقرأ باب «الأنماط الأربعة التي تهدم الزواج» لتعرف ترياقه، وباب «الدورة السلبية» لتعرف هل أنتما عالقان في دائرة يغذّيها كلاكما، وباب «انظر بعينيها» لترى ما قد يكون خلف الحدّة من جهتها."}
+]
+};
+CH.forEach(c=>{ if(DEEP2[c.id]) c.blocks = c.blocks.concat(DEEP2[c.id]); });
+
+const EXTRA={
+c1:[
+  {t:"ex",x:"المودة تُغذّى بالصغائر: رسالة في نصّ اليوم «بفكّر فيكي»، أو كوب شاي تقدّمه دون أن يُطلب — لمسات صغيرة تبني رصيداً كبيراً من الحب."},
+  {t:"ex",x:"الرحمة تظهر وقت الضعف: حين تكون متعبة ومقصّرة في البيت، الرحمة أن تقول «ارتاحي وأنا هكمّل»، لا «إنتي عملتي إيه النهارده؟»."}
+],
+c2:[
+  {t:"ex",x:"تطبيق «ابدأ بواجبك»: بدل أن تطالبها بالاحترام، اسألها «أنا بعاملك كويس؟ نفسك أحسّن في إيه؟» — حين تبدأ بنفسك يلين الطرف الآخر."},
+  {t:"scen",s:"الموقف: تشعر أنك تعطي أكثر مما تأخذ.",steps:["اكتب لنفسك ما تؤدّيه فعلاً من واجبات.","اسأل بصدق: هل أدّيتها بإحسان أم بمنّ؟","عبّر عن احتياجك دون لهجة محاسبة: «محتاج أحسّ بتقديرك»."]}
+],
+c3:[
+  {t:"ex",x:"الفرق في جملة: «إنتي مش بتسمعيني» (اتهام يغلق القلب) مقابل «أنا محتاج أحسّ إنك معايا وأنا بتكلم» (شعور يفتح القلب)."},
+  {t:"scen",s:"الموقف: تريد أن تفتح موضوعاً حسّاساً.",steps:["اختر وقتاً هادئاً بعيداً عن التوتر.","ابدأ بطمأنة: «أنا مش بعاتب، عايز نتفاهم».","تكلّم عن شعورك، ثم اسمع ردّها كاملاً قبل أن تجيب."]}
+],
+c4:[
+  {t:"ex",x:"تقنية الإيقاف: اتفقا على كلمة محايدة مثل «وقفة» — من يقولها، تتوقّفان فوراً وتكمّلان بعد عشرين دقيقة على الأقل؛ فالجسد المنفعل يحتاج هذا الوقت ليهدأ فعلاً، والعودة قبله تُعيد الشجار من حيث توقّف."},
+  {t:"ex",x:"بدل «إنتي دايماً بتعملي كده» قل «النهارده حسّيت بكذا» — تعميم الخطأ يُشعل، وتحديد الموقف يهدّئ."}
+],
+c5:[
+  {t:"scen",s:"الموقف: تتكرّر نفس المشكلة كل أسبوع.",steps:["اسألا: هل نعالج العَرَض أم السبب الجذري؟","اكتبا معاً السبب الحقيقي تحت المشكلة.","اتفقا على خطوة واحدة صغيرة قابلة للتنفيذ هذا الأسبوع."]}
+],
+c6:[
+  {t:"ex",x:"مثال عملي: لو لغتها «الوقت المخصّص»، فساعة حديث دون هاتف أثمن عندها من هدية غالية. ولو لغتها «الكلمات»، فجملة «أنا فخور بيكي» تساوي الكثير."},
+  {t:"scen",s:"الموقف: تعطيها هدايا لكنها ما زالت تشعر بنقص.",steps:["غالباً لغتها مختلفة عن الهدايا.","جرّب الوقت أو الخدمة أو الكلمة الحانية.","اسألها مباشرة: «إيه اللي بيحسّسك إني بحبّك أكتر؟»"]}
+],
+c7:[
+  {t:"ex",x:"اعتذار يُصلح: «غلطت، وكلامي جرحك، ومش هيتكرر» (اعتراف + إقرار بالأثر + وعد). اعتذار يُفسد: «آسف بس إنتي كمان غلطتي»."}
+],
+c8:[
+  {t:"ex",x:"طبّق الإطار: رفعت صوتها (التصرف) ← يومها كان مرهقاً (الدافع المحتمل) ← خياراتك: تردّ بصوت أعلى / تنسحب / تحتويها ← الأفضل: «باين إنك متضايقة، تعالي نتكلم»."}
+],
+c9:[
+  {t:"ex",x:"موعد أسبوعي ثابت: خصّصا ليلة كل أسبوع «لكما وحدكما»، ولو في البيت بعد نوم الأطفال، بلا هواتف ولا انشغال."},
+  {t:"scen",s:"الموقف: الروتين قتل الحماس.",steps:["غيّرا شيئاً صغيراً: مطعم جديد، طريق مختلف للمشي.","استرجعا صور البدايات وما جمعكما.","فاجئها بشيء يخصّ اهتمامها هي تحديداً."]}
+],
+c10:[
+  {t:"ex",x:"التواصل قبلها وبعدها: سؤال لطيف عمّا يريحها، وكلمة حانية بعدها، يحوّلان العلاقة من أداء واجب إلى مودة حقيقية."}
+],
+c11:[
+  {t:"ex",x:"اقتدِ عملياً: ساعدها في البيت ولو بشيء بسيط كما كان ﷺ في مهنة أهله، ومازحها بلطف كما سابق عائشة رضي الله عنها — المرح سُنّة لا عيب."}
+],
+c12:[
+  {t:"ex",x:"اجعلا ورداً مشتركاً: دقيقتان دعاء معاً بعد الصلاة، أو آية تقرآنها سوياً قبل النوم — رباط روحي يقرّب القلوب أكثر من أي كلام."}
+],
+c13:[
+  {t:"ex",x:"قاعدة اليوم: اختر قاعدة واحدة كل صباح وطبّقها بوعي طوال اليوم — التغيير الصغير المستمر أبقى أثراً من الحماس المؤقت."}
+],
+c14:[
+  {t:"scen",s:"الموقف: تتكرّر السخرية أو الاستخفاف في كلامها.",steps:["لا تعالج النمط وقت الغضب.","صف النمط بهدوء لا الموقف الأخير وحده.","اسأل عن السبب الخفيّ، ثم ضع حدّاً واضحاً غير مهدِّد."]}
+],
+c15:[
+  {t:"ex",x:"مثال مرحلي: مع أول طفل، اتفقا على «مناوبات» ليلية كي يرتاح كلاكما؛ فالتعب الجسدي سبب خفيّ لكثير من خلافات هذه المرحلة."}
+],
+c16:[
+  {t:"scen",s:"الموقف: ضائقة مالية مفاجئة.",steps:["اجلسا واكتبا الأرقام بصدق دون لوم.","رتّبا الأولويات ووزّعا المهام معاً.","ذكّرا بعضكما أن الأزمة مؤقتة وأنكما فريق واحد."]}
+],
+c17:[
+  {t:"ex",x:"قاعدة «سلّة الهواتف»: عند العشاء أو وقت الحوار، ضعا الهاتفين معاً في مكان واحد — حضور كامل لساعة يصنع فرقاً كبيراً."}
+],
+c18:[
+  {t:"ex",x:"القدوة الصامتة: بدل أن تقول «صلّي»، صلِّ أنت بخشوع وادعها برفق مرة واحدة، واترك الأثر يعمل. الإلحاح ينفّر، والقدوة تجذب."}
+],
+c19:[
+  {t:"scen",s:"الموقف: انكشف كذب وتريد أن تبني الثقة من جديد.",steps:["اطلب شفافية لا تجسّساً.","راقب الأفعال لا الأقوال على مدى وقتٍ كافٍ.","إن قرّرت الاستمرار، فلا تذكّره بالخطأ كل يوم."]}
+],
+c20:[
+  {t:"ex",x:"فرّق بوضوح: خلاف ينتهي بمصالحة واحترام = طبيعي. إهانة أو ترهيب أو سيطرة متكرّرة تسلب كرامتك = علامة خطر تستدعي طلب مساعدة."}
+],
+c21:[
+  {t:"ex",x:"ابدأ بسيطاً بـ«سؤال المساء»: كل ليلة اسألها «أحلى وأصعب حاجة في يومك إيه؟» — عادة دقيقتين تبني تواصلاً عميقاً مع الوقت."}
+],
+c22:[
+  {t:"ex",x:"قاعدة جامعة لأي موقف: قبل أن تردّ، اسأل نفسك «الردّ ده هيقرّبنا ولا هيبعّدنا؟» وغيّر ردّك على أساس الإجابة."}
+],
+c23:[
+  {t:"scen",s:"الموقف: اختلفتما أمام الطفل في قرار يخصّه.",steps:["لا تُكملا الخلاف أمامه.","قولا له: «هنتفق مع بعض ونرجعلك».","اتفقا على انفراد، ثم بلّغاه القرار الموحّد."]}
+],
+c24:[
+  {t:"ex",x:"حدّ لطيف وحازم: «بنحبّكم وبنقدّر رأيكم، وفي نفس الوقت بنحبّ ناخد قرارات بيتنا بنفسنا» — حزمٌ مغلّف بالاحترام يحفظ الصلة والبيت معاً."}
+],
+c25:[
+  {t:"ex",x:"قاعدة الترتيب: قسّم الدخل ذهنياً — أساسيات، ثم ادخار وطوارئ، ثم الرغبات. هذا الترتيب وحده يمنع نصف خلافات المال."}
+],
+c26:[
+  {t:"ex",x:"اسأل قبل أن تحلّ: «تحبّيني أساعدك في الحل، ولا تحبّي بس أسمعك؟» — أحياناً تريد الإنصات والاحتواء لا الحلول."},
+  {t:"scen",s:"الموقف: صامتة وزعلانة وتقول «معنديش حاجة».",steps:["لا تأخذ كلامها حرفياً.","اقترب بحنان: «حاسس إن في حاجة، وأنا موجود لما تحبّي تتكلمي».","لا تضغط، واترك باباً مفتوحاً."]}
+],
+c27:[
+  {t:"scen",s:"الموقف: نسيتَ تنفيذ شيءٍ وعدتها به.",steps:["لا تتهرّب ولا تبرّر.","اعترف واعتذر فوراً.","نفّذه حالاً إن أمكن، أو حدّد له موعداً واضحاً."]},
+  {t:"scen",s:"الموقف: اختلفتما وكلٌّ متمسّك برأيه.",steps:["ابحثا عن الهدف المشترك تحت الخلاف.","اقترح حلاً وسطاً يرضي الجوهر.","إن تعذّر الاتفاق، أجّلا القرار غير العاجل حتى تهدأ النفوس."]}
+],
+c28:[
+  {t:"ex",x:"جملة تسند: «أنا معاكي، ومش لازم تكوني تمام عشان أحبّك». الاحتواء وقت الضائقة النفسية أهمّ من تقديم الحلول."}
+],
+c29:[
+  {t:"scen",s:"الموقف: فرصة عمل في مدينة أخرى.",steps:["اكتبا المكاسب والتكاليف لكلٍّ منكما.","استمعا لمخاوف الطرف الآخر بجدّية.","قرّرا معاً، وتحمّلا النتيجة معاً دون لوم لاحق."]}
+],
+c30:[
+  {t:"ex",x:"مع أبناء الشريك: لا تتعجّل لقب «بابا/ماما»؛ ابدأ صديقاً داعماً، فالقرب يأتي بالوقت والرحمة لا بالفرض."}
+],
+c31:[
+  {t:"ex",x:"طقس العودة: اجعل لعودتك من السفر عادة ثابتة (هدية صغيرة، وجبة يحبّونها) — تحوّل لحظة اللقاء إلى فرح متجدّد يخفّف وحشة البُعد."}
+],
+c32:[
+  {t:"ex",x:"حتى في الفراق: لا تتكلّم بسوء عن الطرف الآخر أمام الأبناء أبداً؛ فهم نصفه ونصفك، وجرحه في نظرهم جرحٌ لهم."}
+]
+};
+CH.forEach(c=>{ if(EXTRA[c.id]) c.blocks = c.blocks.concat(EXTRA[c.id]); });
+
+const NEWCH=[
+{id:"c33", num:0, label:"الأنماط الأربعة الهدّامة", title:"الأنماط الأربعة التي تهدم الزواج وترياقها", blocks:[
+  {t:"p",x:"تابع عالم النفس الأمريكي جون جوتمان آلاف الأزواج لعقود في جامعة واشنطن، فوجد أن طريقة الخلاف — لا وجوده — هي ما يحدّد مصير الزواج. وحدّد أربعة أنماط إذا سيطرت على خلافات الزوجين أمكن التنبّؤ بالطلاق بدقة تجاوزت 90%. وهي تتسلسل عادةً: نقدٌ يستدعي ازدراءً، فدفاعيةً، فانسحاباً. والخبر الطيب أن لكلٍّ منها ترياقاً يمكن تعلّمه."},
+  {t:"h3",x:"١) النقد: مهاجمة الشخص بدل السلوك"},
+  {t:"p",x:"الشكوى من موقف حقّ مشروع، لكن النقد يحوّلها إلى حكم على الشخصية: «إنتي أنانية ومبتفكريش غير في نفسك» بدل «زعلت إنك ما سألتيش عليّ وأنا تعبان». الأولى تهاجم الإنسان فيدافع، والثانية تصف موقفاً فيُسمع."},
+  {t:"p",x:"الترياق — البداية اللطيفة: «أنا حاسس بـ(الشعور) لما حصل (الموقف المحدد)، ومحتاج (طلب إيجابي واضح)». والأبحاث تبيّن أن نهاية النقاش يمكن توقّعها إلى حدّ كبير من دقائقه الثلاث الأولى؛ فمن بدأ بحدّة انتهى غالباً بحدّة."},
+  {t:"h3",x:"٢) الازدراء: أخطرها على الإطلاق"},
+  {t:"p",x:"السخرية، والتهكّم، ونظرة التعالي، وتقليد الطرف الآخر استهزاءً، والتنابز بالألقاب. هذا هو أقوى مؤشّر منفرد على الطلاق في أبحاث جوتمان، لأنه لا يقول «أنا متضايق منك» بل «أنا فوقك وأنت أقلّ مني». ولهذا يجرح الكلام المستخِفّ أكثر من الكلام الغاضب: ليست الكلمة ذاتها ما يؤلم، بل رسالة الاحتقار التي تحملها."},
+  {t:"ayah",x:"يَا أَيُّهَا الَّذِينَ آمَنُوا لَا يَسْخَرْ قَوْمٌ مِّن قَوْمٍ عَسَىٰ أَن يَكُونُوا خَيْرًا مِّنْهُمْ",r:"سورة الحجرات: 11"},
+  {t:"hadith",x:"بحسب امرئ من الشر أن يحقر أخاه المسلم",r:"رواه مسلم (2564) عن أبي هريرة رضي الله عنه"},
+  {t:"p",x:"الترياق — ثقافة التقدير: الازدراء ينمو حين تتراكم الأفكار السلبية عن الشريك دون أن تُقال بطريقة صحية. فعالجه من جذره: ابحث يومياً عمّا يُحسنه شريكك وقُله، وعبّر عن ضيقك كحاجة لا كاحتقار. ويحافظ الأزواج المستقرون على خمسة مواقف إيجابية مقابل كل موقف سلبي حتى أثناء الخلاف نفسه."},
+  {t:"h3",x:"٣) الدفاعية: «أنا مش غلطان»"},
+  {t:"p",x:"الردّ على الشكوى بالتبرير، أو بالهجوم المضاد («وإنتي كمان…»)، أو بدور الضحية. قد تبدو دفاعاً عن النفس، لكنها تقول للطرف الآخر: «مشكلتك مش مهمّة، والغلط عندك»."},
+  {t:"p",x:"الترياق — تحمّل ولو جزءاً من المسؤولية: «عندك حق في الجزء ده، أنا فعلاً ما انتبهتش». جملة واحدة كهذه تُطفئ نصف الخلاف، فالاعتراف بالخطأ قوة لا ضعف:"},
+  {t:"hadith",x:"كل ابن آدم خطّاء، وخير الخطّائين التوّابون",r:"رواه الترمذي وابن ماجه، وحسّنه الألباني"},
+  {t:"h3",x:"٤) الانسحاب: الجدار الصامت"},
+  {t:"p",x:"أن يتوقف أحدهما عن التفاعل تماماً: صمتٌ ثقيل، وإشاحة بالوجه، أو خروج من الغرفة دون كلمة. وغالباً لا يكون تجاهلاً متعمّداً، بل «فيضاناً عاطفياً»: حين يتسارع النبض ويغمر التوتر الجسد، يتعطّل التفكير الهادئ فينغلق الإنسان ليحمي نفسه."},
+  {t:"p",x:"الترياق — استراحة متّفق عليها: قل «أنا متضايق ومش قادر أفكر صح دلوقتي، محتاج عشرين دقيقة وهرجع نكمّل». الفرق بين الانسحاب والاستراحة هو الوعد بالعودة. وفي الاستراحة لا تجترّ الغضب، بل اهدأ فعلاً: وضوء، مشي، ذكر، تنفّس بطيء."},
+  {t:"h3",x:"جدول مرجعي سريع"},
+  {t:"table",head:["النمط","كيف يبدو","الترياق","جملة بديلة"],rows:[
+    ["النقد","«إنتي دايماً…» / «إنت عمرك ما…»","البداية اللطيفة","«زعلت لما حصل كذا، ومحتاج كذا»"],
+    ["الازدراء","سخرية، تهكّم، نظرة تعالٍ، استهزاء","ثقافة التقدير","«أنا متضايق، وده مش معناه إني مش مقدّرك»"],
+    ["الدفاعية","تبرير، «وإنتي كمان»، دور الضحية","تحمّل جزء من المسؤولية","«عندك حق في الجزء ده»"],
+    ["الانسحاب","صمت تام، إشاحة، خروج بلا كلمة","استراحة بوعد بالعودة","«محتاج عشرين دقيقة وهرجع نكمّل»"]
+  ]},
+  {t:"h3",x:"ابدأ بنفسك أولاً"},
+  {t:"p",x:"أسهل شيء أن ترى هذه الأنماط في شريكك، وأنفع شيء أن تراها في نفسك. اسأل بصدق: أيّ الأربعة أستخدمه أنا أكثر حين أغضب؟ فأنت لا تملك إلا نصيبك من الحوار، وتغيير نصيبك وحده يغيّر شكل الخلاف كله."},
+  {t:"ex",x:"نفس الموقف بأربع طرق خاطئة: نسيت أن تشتري ما طلبته. النقد: «إنت مش بتهتم بأي حاجة تخصّني». الازدراء: «طبعاً، هو إنت بتفتكر حاجة؟» مع ضحكة ساخرة. الدفاعية: «ما أنا كنت مشغول، وإنتي كمان بتنسي». الانسحاب: صمت وانصراف. والطريقة الصحية: «زعلت إني لقيته مش موجود، كنت محتاجاه النهارده» ← «عندك حق، نسيت، هنزل أجيبه دلوقتي»."},
+  {t:"scen",s:"الموقف: لاحظت أن كلامها معك يحمل سخرية متكرّرة.",steps:["لا تردّ بسخرية مماثلة، فالازدراء معدٍ ويتصاعد.","في وقت هادئ صِف أثره لا نيّتها: «لما الكلام بيطلع بسخرية بحسّ إني صغير قدامك، وده بيوجعني».","اسألها بصدق: «هل في حاجة مزعّلاكي منّي ومش بتقوليها؟» — فالازدراء كثيراً ما يكون غضباً قديماً لم يُعبَّر عنه.","وابدأ أنت بزيادة التقدير الصريح لها، فذلك يجفّف منابع الازدراء من الطرفين."]}
+]},
+
+{id:"c34", num:0, label:"الدورة السلبية", title:"الدورة السلبية: حين يصير النمط هو العدو", blocks:[
+  {t:"p",x:"من أكثر ما يلاحظه المعالجون الأسريون أن الزوجين لا يتشاجران حول الموضوع بقدر ما يعلقان في «رقصة» متكرّرة: طرفٌ يُلاحِق وطرفٌ ينسحب. وكلٌّ منهما يرى أن الآخر هو من بدأ، بينما الحقيقة أن كليهما يغذّي الدائرة."},
+  {t:"h3",x:"كيف تعمل الدائرة؟"},
+  {t:"ul",x:["الطرف المُلاحِق: حين يشعر بالبعد يرفع صوته، ويُلحّ، وينتقد، ويلاحق بالأسئلة — لأنه يريد القرب والاهتمام.","الطرف المنسحب: حين يشعر بالضغط يصمت، ويتهرّب، ويغلق الحوار — لأنه يريد الهدوء وتجنّب الصدام.","وكلما زاد الإلحاح زاد الانسحاب، وكلما زاد الانسحاب زاد الإلحاح… حتى تبدو المشكلة بلا حلّ."]},
+  {t:"h3",x:"ما تحت السطح"},
+  {t:"p",x:"تحت حدّة المُلاحِق غالباً سؤال موجِع: «هل أنا مهمّ عندك؟ هل تراني؟». وتحت صمت المنسحب غالباً خوف آخر: «مهما فعلت لن أكون كافياً، فالأسلم أن أبتعد». فما يبدو هجوماً قد يكون نداءً، وما يبدو برودة قد يكون حماية للنفس."},
+  {t:"h3",x:"ارسم دائرتكما"},
+  {t:"p",x:"أكمل هذه الجملة بصدق: «لما هي ____، أنا بحسّ بـ____، فبعمل ____، فهي غالباً بتحسّ بـ____، فتعمل ____». حين ترى الدائرة مكتوبة، تتحوّل من «هي المشكلة» إلى «الدائرة هي المشكلة»."},
+  {t:"ex",x:"مثال لدائرة شائعة: تشعر بأنها مُهمَلة فتعلو نبرتها ← يشعر هو بالإهانة فيردّ بحدّة أو يصمت ← تشعر أنه لا يبالي بها فتزيد الحدّة ← يشعر أنه مُهاجَم دائماً فيبتعد أكثر. كلاهما يتألّم، وكلاهما يظنّ نفسه الضحية."},
+  {t:"h3",x:"أخرِجا المشكلة من بينكما"},
+  {t:"p",x:"أقوى خطوة أن تقول: «إحنا الاتنين واقعين في دايرة بتوجعنا، تعالي نقف إحنا الاتنين ضدها، مش ضد بعض». بهذا يتحوّل الخصم من شريك الحياة إلى النمط نفسه."},
+  {t:"h3",x:"كيف تُكسر الدائرة؟"},
+  {t:"ul",x:["إن كنت المنسحب: بادِر بالاقتراب قبل أن تُلاحَق، وعبّر عن حاجتك للهدوء بكلمات بدل الصمت: «أنا معاكي، بس محتاج أهدى شوية ونكمّل».","إن كنت المُلاحِق: ليّن البداية، واطلب القرب صراحةً بدل الهجوم: «وحشتني، محتاجة نقعد مع بعض».","ومن يكسر الدائرة؟ من يراها أولاً. ولست تحتاج أن يتغيّر الطرف الآخر لتبدأ؛ فتغيّر خطوة واحدة في الرقصة يغيّرها كلها."]},
+  {t:"ayah",x:"ادْفَعْ بِالَّتِي هِيَ أَحْسَنُ فَإِذَا الَّذِي بَيْنَكَ وَبَيْنَهُ عَدَاوَةٌ كَأَنَّهُ وَلِيٌّ حَمِيمٌ",r:"سورة فصلت: 34"}
+]},
+
+{id:"c35", num:0, label:"المشكلات الدائمة", title:"المشكلات الدائمة والمشكلات القابلة للحل", blocks:[
+  {t:"p",x:"من أكثر نتائج أبحاث الزواج إراحةً للنفس: نحو 69% من خلافات الأزواج — حتى السعداء منهم — مشكلات «دائمة» تنبع من اختلاف الطباع والاحتياجات، ولن تُحسم نهائياً أبداً. فالأزواج الناجحون ليسوا من حلّوا كل خلافاتهم، بل من تعلّموا التعايش مع الدائم منها بلطف."},
+  {t:"h3",x:"كيف تفرّق بينهما؟"},
+  {t:"ul",x:["القابلة للحل: مرتبطة بموقف أو ظرف محدّد (مَن يوصل الأولاد اليوم؟ أين نقضي العيد هذا العام؟) — وتُحلّ بالتفاوض والاتفاق.","الدائمة: تنبع من فرق أصيل في الشخصية أو القيم (اجتماعي مقابل منطوٍ، منظّم مقابل عفوي، مدّخر مقابل منفق، درجة القرب من الأهل) — وتعود بأشكال مختلفة مهما «حُلّت»."]},
+  {t:"h3",x:"لا تحاول «حلّ» ما لا يُحلّ"},
+  {t:"p",x:"محاولة تغيير الطبع الأصيل في شريكك تحوّل الخلاف إلى معركة على هويّته، فيشعر أنه مرفوض في جوهره. والبديل أن تدير المشكلة الدائمة: تتحاوران حولها بلطف ودعابة، وتصلان لحلول مؤقتة تُجدَّد كلما لزم."},
+  {t:"p",x:"وهذا عين ما أرشد إليه النبي ﷺ حين نهى المؤمن أن يُبغض زوجته لخُلُقٍ يكرهه، لأنه سيرضى منها خُلُقاً آخر؛ فالقبول بالاختلاف جزءٌ من حسن العشرة لا هزيمة فيها."},
+  {t:"h3",x:"ابحث عن الحلم خلف الموقف"},
+  {t:"p",x:"خلف كل موقف عنيد في مشكلة دائمة قصةٌ أو معنى عميق. حين تُصرّ على الادّخار قد يكون خلفه خوفٌ من فقرٍ عاشه أهلك، وحين تُصرّ هي على زيارة أهلها قد يكون خلفه حاجتها للانتماء. اسأل: «ليه الموضوع ده مهم عندك بالذات؟» واسمع القصة دون أن تحاول إقناعها."},
+  {t:"h3",x:"علامات الجمود"},
+  {t:"ul",x:["كل حوار حول الموضوع ينتهي بنفس الجرح ونفس الجمل.","يشعر كلٌّ منكما أن الآخر يرفضه شخصياً لا يرفض رأيه.","تتجنّبان الموضوع تماماً، أو يتحوّل إلى سخرية متبادلة."]},
+  {t:"p",x:"والخروج من الجمود لا يبدأ بالاتفاق، بل بأن يفهم كلٌّ منكما معنى الأمر عند الآخر؛ فالفهم يُليّن المواقف قبل أن تتغيّر."},
+  {t:"scen",s:"الموقف: هو يحب السهر مع الأصدقاء، وهي تحب البقاء في البيت — والخلاف يتكرّر كل أسبوع منذ سنوات.",steps:["اعترفا بأنه فرق طباع دائم، لا خطأ يجب أن يُصحَّح.","ليسأل كلٌّ منكما: ماذا يعني هذا الأمر للآخر؟ (هو: الانتعاش والانتماء — هي: الأمان والقرب منه).","اتفقا على حلّ مؤقت: ليلة للأصدقاء وليلة لكما، أو تقصير السهرة، مع مراجعته كل فترة.","استبدلا العتاب بالدعابة: «طيب يا سيد السهرات، الخميس الجاي ليّا أنا»."]}
+]},
+
+{id:"c36", num:0, label:"الإصلاح وما بعد الخلاف", title:"محاولات الإصلاح وما بعد الخلاف", blocks:[
+  {t:"p",x:"لا يوجد زوجان لا يتشاجران. لكن الفرق الحاسم بين الأزواج الناجحين والمتعثّرين — كما تُظهر أبحاث جوتمان — هو القدرة على «محاولات الإصلاح»: كلمة أو حركة صغيرة توقف التصعيد قبل أن يخرج الخلاف عن السيطرة، ثم قبول الطرف الآخر لهذه المحاولة. وقد قرّر القرآن هذا المبدأ في سياق الخلاف الزوجي تحديداً:"},
+  {t:"ayah",x:"فَلَا جُنَاحَ عَلَيْهِمَا أَن يُصْلِحَا بَيْنَهُمَا صُلْحًا ۚ وَالصُّلْحُ خَيْرٌ",r:"سورة النساء: 128"},
+  {t:"h3",x:"جُمل إصلاح وقت الخلاف"},
+  {t:"ul",x:["«استنّى، أنا بدأت أتعصّب، خلّيني أقولها تاني بهدوء».","«عندك حق في دي».","«أنا مش عايز نتخانق، أنا عايز نفهم بعض».","«خلّينا نرجع للموضوع الأساسي».","«أنا آسف، الجملة دي طلعت أوحش مما كنت أقصد».","لمسة يد، أو ابتسامة، أو دعابة خفيفة لا تحمل سخرية."]},
+  {t:"h3",x:"اقبل اليد الممدودة"},
+  {t:"p",x:"نصف الإصلاح أن تُبادر، ونصفه الآخر أن تقبل. حين تمدّ هي يد الصلح وأنت ما زلت غاضباً، لا ترفضها لتثبت أنك على حق؛ فرفض محاولة الإصلاح يعلّم الطرف الآخر ألا يحاول مرة أخرى."},
+  {t:"h3",x:"افهم الفيضان العاطفي"},
+  {t:"p",x:"حين يتسارع نبضك ويشتدّ توترك أثناء الخلاف، يدخل جسدك في حالة «الطوارئ»: يضيق تفكيرك، وتسمع الهجوم في كل كلمة، وتفقد القدرة على الإنصات. وفي هذه الحالة لا فائدة من الإكمال. والأبحاث تشير إلى أن الجسد يحتاج عشرين دقيقة على الأقل ليعود إلى هدوئه — بشرط ألّا تقضيها في تكرار الحوار في رأسك."},
+  {t:"h3",x:"مراجعة ما بعد الخلاف"},
+  {t:"p",x:"بعد أن تهدأ النفوس تماماً — ولو في اليوم التالي — عودا للخلاف لا لإعادة الشجار، بل لفهم ما حدث:"},
+  {t:"ol",x:["ليصف كلٌّ منكما ما شعر به أثناء الخلاف، دون مقاطعة أو تصحيح.","ليقل كلٌّ للآخر: «رؤيتك مفهومة من مكانك»، حتى لو لم يتّفق معها.","ابحثا: ما الذي أثار الحساسية؟ هل لمس الموقف جرحاً قديماً عند أحدكما؟","ليتحمّل كلٌّ منكما نصيبه: «الجزء اللي عليّا كان…».","اتفقا: ماذا نفعل بشكل مختلف المرة القادمة؟"]},
+  {t:"h3",x:"تصفية التراكمات القديمة"},
+  {t:"p",x:"كثير من البيوت لا تعاني من خلاف اليوم بل من رصيد سنوات من الجراح غير المُعالَجة، فينفجر الموقف الصغير بحجم الماضي كله. والحلّ «جلسة تصفية» هادئة: يكتب كلٌّ منكما ما تراكم في نفسه، ثم تتناولان أمراً واحداً في كل جلسة، يُسمع ويُعتذر عنه ويُطوى. والمسامحة هنا لا تعني النسيان، بل تعني التوقف عن المحاسبة عليه في كل خلاف قادم."},
+  {t:"scen",s:"الموقف: تشاجرتما بحدّة ليلة أمس، والجو بارد بينكما اليوم.",steps:["لا تنتظر أن يبدأ الطرف الآخر، فالمبادر هو الأكرم.","ابدأ بمحاولة إصلاح بسيطة: كوب شاي، أو «صباح الخير» دافئة.","حين يلين الجو، اقترح: «تعالي نتكلم عن امبارح بهدوء، مش عشان نتخانق تاني، عشان نفهم».","طبّقا خطوات المراجعة الخمس، واختما بشيء يعيد الدفء."]}
+]},
+
+{id:"c37", num:0, label:"انظر بعينيها", title:"انظر بعينيها: فهم منظور زوجتك", blocks:[
+  {t:"p",x:"هذا الدليل مكتوب لك أنت، وهذا مناسب لأنك من يقرؤه. لكن أي خبير علاقات سيقول لك: لن تفهم الموقف كاملاً حتى تراه من مكانها. فكثير مما يبدو لك حدّةً أو تقصيراً أو «تكبيراً للموضوع» يكون من جهتها نداءً لحاجةٍ لم يُلتفت إليها. وهذا ليس افتراضاً عنها، بل دعوة لأن تسألها وتسمعها."},
+  {t:"h3",x:"احتياجات كثيراً ما تبقى غير منطوقة"},
+  {t:"ul",x:["أن تُسمَع لا أن تُصلَح: حين تحكي همّها، قد تحتاج من يشعر بها قبل من يقدّم لها حلاً.","أن تشعر بأنها أولوية: أن يكون لها مكان واضح في يومك ووقتك واهتمامك.","أن يُرى جهدها: كثير من عملها في البيت والأولاد لا يُرى إلا إذا لم يُنجَز.","الأمان العاطفي: أن تستطيع التعبير عن ضيقها دون أن تخاف من السخرية أو الغضب."]},
+  {t:"h3",x:"العبء الذهني: الجهد الذي لا يُرى"},
+  {t:"p",x:"تذكّر مواعيد الطبيب، ومتابعة احتياجات الأولاد ودراستهم، ومعرفة ما نفد من البيت، والتخطيط للزيارات والمناسبات… هذا «العبء الذهني» جهد مستمر لا يُرى ولا ينتهي، وقد يكون من أكبر أسباب الإرهاق والحدّة دون أن يُسمّى. والمشاركة الحقيقية لا تكون في التنفيذ حين يُطلب منك فقط، بل في حمل التفكير والتخطيط معها."},
+  {t:"ex",x:"سؤال يغيّر الكثير: «إيه الحاجات اللي شايلاها في دماغك الأسبوع ده؟ وإيه منها أقدر أشيله عنك بالكامل؟» — والمفتاح كلمة «بالكامل»: أن تتولّى الأمر من أوله لآخره دون أن تحتاج تذكيرها."},
+  {t:"h3",x:"نفس الموقف من زاويتين"},
+  {t:"p",x:"حين تراه أنت «تكبيراً لموضوع صغير»، قد تراه هي «القشّة الأخيرة في أمرٍ يتكرّر ولا يُلتفت إليه». وحين تراه أنت «حدّة بلا سبب»، قد تراه هي «محاولتي الأخيرة لأُسمَع بعد أن جرّبت الهدوء فلم ينفع». لا يعني هذا أنها محقّة دائماً، ولا أن الحدّة مقبولة، لكنه يعني أن الحوار يبدأ حين يفهم كلٌّ منكما ما يراه الآخر."},
+  {t:"h3",x:"ارسم خريطة عالمها الداخلي"},
+  {t:"p",x:"يسمّي جوتمان معرفة تفاصيل عالم الشريك «خرائط الحب»، ويعدّها أساس الصداقة الزوجية. اختبر نفسك: هل تعرف…"},
+  {t:"ul",x:["ما أكبر همٍّ يشغلها هذه الأيام؟","من أقرب صديقاتها، وما آخر ما حدث بينهما؟","ما حلمٌ لم يتحقّق لها بعد؟","ما الذي يُشعرها بالتقدير أكثر من أي شيء؟","ما الذي يوتّرها في يومها المعتاد؟"]},
+  {t:"p",x:"إن لم تعرف الإجابة عن بعضها، فهذه ليست إدانة، بل خريطة لأسئلة تسألها بفضول صادق."},
+  {t:"h3",x:"تمرين المحامي"},
+  {t:"p",x:"في خلافٍ متكرّر، حاول أن تشرح موقفها بصوت مسموع كأنك محاميها المدافع عنها، واستمر حتى تقول هي: «أيوه، كده بالظبط». لن يكون سهلاً، لكنه من أقوى ما يذيب الجمود؛ فالإنسان يلين حين يشعر أنه مفهوم، حتى قبل أن يُتّفق معه."}
+]}
+];
+(function(){
+  const at=CH.findIndex(c=>c.id==="c8");
+  CH.splice(at+1,0,...NEWCH);
+  let k=0; CH.forEach(c=>{ if(c.id!=="intro"){ k++; c.num=k; } });
+})();
+
+const contentEl=document.getElementById("content");
+const navD=document.getElementById("navDesktop");
+const navM=document.getElementById("navMobile");
+
+CH.forEach((c,idx)=>{
+  const numTxt = c.num===""? "•" : ARN[c.num];
+  // chapter card
+  const sec=document.createElement("section");
+  sec.className="chapter fadein";
+  sec.id=c.id;
+  sec.style.animationDelay=(Math.min(idx,8)*0.04)+"s";
+  sec.dataset.text=chapterText(c);
+  sec.innerHTML=
+    '<div class="ch-head"><div class="ch-num">'+numTxt+'</div>'+
+    '<div class="ch-title">'+(c.num===""?"":"الباب "+ordinal(c.num)+": ")+esc(c.title)+'</div>'+
+    '<button class="fav" data-fav="'+c.id+'" aria-label="مفضلة">★</button>'+
+    '<div class="chev">▼</div></div>'+
+    '<div class="ch-body"><div class="ch-inner"><div class="ch-pad">'+
+    c.blocks.map(renderBlock).join("")+
+    '<div class="ch-foot">'+
+      '<div class="ch-actions">'+
+        '<button class="mini readbtn" data-read="'+c.id+'">تمّت قراءته</button>'+
+        '<button class="mini copychap" data-chap="'+c.id+'">نسخ الباب</button>'+
+        '<button class="mini sharechap" data-chap="'+c.id+'">مشاركة</button>'+
+      '</div>'+
+      '<textarea class="notes" data-notes="'+c.id+'" placeholder="ملاحظاتي على هذا الباب…"></textarea>'+
+      '<div class="ch-nav"><button class="mini prevch">‹ الباب السابق</button><button class="mini nextch">الباب التالي ›</button></div>'+
+    '</div>'+
+    '</div></div></div>';
+  contentEl.appendChild(sec);
+  // nav links
+  const mk=()=>{const a=document.createElement("a");a.className="navlink";a.dataset.target=c.id;
+    a.textContent=(c.num===""?"":numTxt+". ")+c.label;return a;};
+  navD.appendChild(mk());
+  navM.appendChild(mk());
+});
+
+function ordinal(n){
+  const o=["","الأول","الثاني","الثالث","الرابع","الخامس","السادس","السابع","الثامن","التاسع","العاشر","الحادي عشر","الثاني عشر","الثالث عشر","الرابع عشر","الخامس عشر","السادس عشر","السابع عشر","الثامن عشر","التاسع عشر","العشرون","الحادي والعشرون","الثاني والعشرون","الثالث والعشرون","الرابع والعشرون","الخامس والعشرون","السادس والعشرون","السابع والعشرون","الثامن والعشرون","التاسع والعشرون","الثلاثون","الحادي والثلاثون","الثاني والثلاثون","الثالث والثلاثون","الرابع والثلاثون","الخامس والثلاثون","السادس والثلاثون","السابع والثلاثون"];
+  return o[n]||n;
+}
+
+// accordion
+document.querySelectorAll(".ch-head").forEach(h=>{
+  h.addEventListener("click",()=>h.parentElement.classList.toggle("open"));
+});
+// open first content chapter by default
+document.getElementById("intro").classList.add("open");
+
+// nav behaviour
+function goTo(id){
+  const sec=document.getElementById(id);
+  if(!sec)return;
+  sec.classList.add("open");
+  sec.scrollIntoView({behavior:"smooth",block:"start"});
+  closeDrawer();
+}
+document.querySelectorAll(".navlink").forEach(a=>{
+  a.addEventListener("click",e=>{e.preventDefault();goTo(a.dataset.target);});
+});
+
+// expand / collapse all
+document.getElementById("expandAll").onclick=()=>document.querySelectorAll(".chapter").forEach(c=>c.classList.add("open"));
+document.getElementById("collapseAll").onclick=()=>document.querySelectorAll(".chapter").forEach(c=>c.classList.remove("open"));
+
+// search
+const search=document.getElementById("search"), info=document.getElementById("searchInfo");
+const searchBtn=document.getElementById("searchBtn"), searchWrap=document.getElementById("searchWrap");
+searchBtn.onclick=()=>{searchWrap.classList.toggle("open");if(searchWrap.classList.contains("open"))search.focus();};
+function clearMarks(el){el.querySelectorAll("mark").forEach(m=>{m.replaceWith(document.createTextNode(m.textContent));});el.normalize&&el.normalize();}
+search.addEventListener("input",()=>{
+  const q=search.value.trim();
+  const chapters=document.querySelectorAll(".chapter");
+  if(!q){chapters.forEach(c=>{c.classList.remove("hidden");c.classList.remove("open");});
+    document.getElementById("intro").classList.add("open");info.textContent="";return;}
+  let count=0;
+  chapters.forEach(c=>{
+    const hit=c.dataset.text.includes(q);
+    c.classList.toggle("hidden",!hit);
+    if(hit){count++;c.classList.add("open");}
+  });
+  info.textContent=count?("عُثر على "+count+" باب"):"لا توجد نتائج لِـ «"+q+"»";
+});
+
+// drawer
+const drawer=document.getElementById("drawer"),scrim=document.getElementById("scrim");
+document.getElementById("menuBtn").onclick=()=>{drawer.classList.add("open");scrim.classList.add("open");};
+function closeDrawer(){drawer.classList.remove("open");scrim.classList.remove("open");}
+document.getElementById("closeDrawer").onclick=closeDrawer;
+scrim.onclick=closeDrawer;
+
+// progress + scrollspy + totop
+const prog=document.getElementById("progress"),toTop=document.getElementById("toTop");
+const links=[...document.querySelectorAll(".navlink")];
+window.addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  const sc=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  prog.style.width=(sc*100)+"%";
+  toTop.classList.toggle("show",h.scrollTop>500);
+  // scrollspy
+  let cur="";
+  document.querySelectorAll(".chapter").forEach(c=>{
+    if(c.getBoundingClientRect().top<140)cur=c.id;
+  });
+  links.forEach(l=>l.classList.toggle("active",l.dataset.target===cur));
+});
+toTop.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+// ===== ميزات إضافية =====
+// تخزين آمن
+const store={
+  get(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+};
+
+// 1) الوضع الليلي
+const darkBtn=document.getElementById("darkBtn");
+function applyDark(on){document.body.classList.toggle("dark",on);darkBtn.textContent=on?"☀️":"🌙";}
+let darkPref=store.get("mg_dark");
+if(darkPref===null)darkPref=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;
+applyDark(!!darkPref);
+darkBtn.onclick=()=>{const on=!document.body.classList.contains("dark");applyDark(on);store.set("mg_dark",on);};
+
+// 2) التقييم الذاتي التفاعلي
+document.querySelectorAll("[data-quiz]").forEach(q=>{
+  const boxes=[...q.querySelectorAll('input[type=checkbox]')];
+  const fill=q.querySelector(".qz-fill"), msg=q.querySelector(".qz-msg");
+  q.addEventListener("change",()=>{
+    const n=boxes.filter(b=>b.checked).length, total=boxes.length;
+    boxes.forEach(b=>b.closest(".qz-item").classList.toggle("checked",b.checked));
+    const pct=Math.round(n/total*100);
+    fill.style.width=pct+"%";
+    let m;
+    if(n===0)m="علّم ما تحقّقه لمعرفة مؤشّر علاقتك";
+    else if(pct>=85)m="ما شاء الله، علاقة قوية — حافظ عليها بالاستمرار ("+n+"/"+total+")";
+    else if(pct>=60)m="علاقة جيدة وفيها مجال للتحسين ("+n+"/"+total+")";
+    else if(pct>=35)m="هناك جوانب مهمة تحتاج عناية ("+n+"/"+total+")";
+    else m="علاقتك تحتاج وقفة واهتماماً جاداً ("+n+"/"+total+")";
+    msg.textContent=m;
+  });
+});
+
+// 3) المفضلة
+let favs=store.get("mg_favs")||[];
+function applyFavs(){document.querySelectorAll(".chapter").forEach(c=>c.classList.toggle("faved",favs.includes(c.id)));}
+applyFavs();
+document.querySelectorAll(".fav").forEach(btn=>{
+  btn.addEventListener("click",e=>{
+    e.stopPropagation();
+    const id=btn.dataset.fav;
+    if(favs.includes(id))favs=favs.filter(x=>x!==id);else favs.push(id);
+    store.set("mg_favs",favs);applyFavs();
+  });
+});
+let favOnly=false;
+const favToggle=document.getElementById("favToggle");
+favToggle.onclick=()=>{
+  favOnly=!favOnly;
+  favToggle.textContent=(favOnly?"★ عرض الكل":"☆ المفضلة فقط");
+  document.querySelectorAll(".chapter").forEach(c=>{
+    c.classList.toggle("hidden",favOnly&&!favs.includes(c.id));
+  });
+};
+
+// 4) حفظ مكان القراءة (الأبواب المفتوحة + موضع التمرير)
+function saveState(){
+  const open=[...document.querySelectorAll(".chapter.open")].map(c=>c.id);
+  store.set("mg_open",open);store.set("mg_scroll",window.scrollY);
+}
+let saveTimer;
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveState,400);}
+document.querySelectorAll(".ch-head").forEach(h=>h.addEventListener("click",scheduleSave));
+// استعادة الحالة المحفوظة
+(function restore(){
+  const open=store.get("mg_open");
+  if(open&&open.length){
+    document.querySelectorAll(".chapter").forEach(c=>c.classList.toggle("open",open.includes(c.id)));
+  }
+  const y=store.get("mg_scroll");
+  if(y&&y>100){setTimeout(()=>window.scrollTo(0,y),250);}
+})();
+
+// 5) طباعة / PDF
+document.getElementById("printBtn").onclick=()=>{
+  document.querySelectorAll(".chapter").forEach(c=>{c.classList.remove("hidden");c.classList.add("open");});
+  setTimeout(()=>window.print(),200);
+};
+window.addEventListener("scroll",scheduleSave,{passive:true});
+
+// ===== الحزمة الإضافية الثانية =====
+const CHMAP={};CH.forEach(c=>CHMAP[c.id]=c);
+function chapterPlain(c){
+  let out=(c.num===""?"":"الباب "+ordinal(c.num)+": ")+c.title+"\n";
+  c.blocks.forEach(b=>{
+    if(b.t==="h3"||b.t==="h4")out+="\n"+b.x+"\n";
+    else if(b.t==="p")out+=b.x+"\n";
+    else if(b.t==="ul"||b.t==="ol")out+=b.x.map(i=>"• "+i).join("\n")+"\n";
+    else if(b.t==="ayah")out+="﴿ "+b.x+" ﴾ ["+(b.r||"")+"]\n";
+    else if(b.t==="hadith")out+="«"+b.x+"» ["+(b.r||"")+"]\n";
+    else if(b.t==="dua")out+=b.x+"\n";
+    else if(b.t==="ex")out+="مثال: "+b.x+"\n";
+    else if(b.t==="scen")out+="سيناريو — "+b.s+"\n"+b.steps.map(s=>"  • "+s).join("\n")+"\n";
+    else if(b.t==="quiz")out+=b.items.map(i=>"- "+i).join("\n")+"\n";
+    else if(b.t==="table"){out+=b.head.join(" | ")+"\n"+b.rows.map(r=>r.join(" | ")).join("\n")+"\n";}
+  });
+  return out.trim();
+}
+function copyText(t,btn){
+  const ok=()=>{if(btn){const o=btn.textContent;btn.classList.add("done");btn.textContent="تم النسخ ✓";setTimeout(()=>{btn.classList.remove("done");btn.textContent=o;},1400);}};
+  const fb=()=>{try{const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);ok();}catch(e){}};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok).catch(fb);else fb();
+}
+
+// بطاقة آية وحديث اليوم
+const allAyat=[],allHad=[];
+CH.forEach(c=>c.blocks.forEach(b=>{if(b.t==="ayah")allAyat.push(b);if(b.t==="hadith")allHad.push(b);}));
+function dayIndex(len){const n=new Date();const s=new Date(n.getFullYear(),0,0);return Math.floor((n-s)/86400000)%len;}
+function renderDaily(rand){
+  const a=allAyat[rand?Math.floor(Math.random()*allAyat.length):dayIndex(allAyat.length)];
+  const h=allHad[rand?Math.floor(Math.random()*allHad.length):dayIndex(allHad.length)];
+  document.getElementById("daily").innerHTML=
+    '<div class="daycard"><div class="dctop"><span class="dctitle">آية وحديث اليوم</span>'+
+    '<button class="mini" id="dayShuffle">🔄 غيّر</button></div>'+
+    '<div class="dcq a">﴿ '+esc(a.x)+' ﴾</div><div class="dcref">'+esc(a.r||"")+
+    ' <button class="copy" style="position:static;opacity:1;margin-inline-start:6px" data-copy="'+esc("﴿ "+a.x+" ﴾ ["+(a.r||"")+"]")+'">نسخ</button></div><hr>'+
+    '<div class="dcq h">«'+esc(h.x)+'»</div><div class="dcref">'+esc(h.r||"")+
+    ' <button class="copy" style="position:static;opacity:1;margin-inline-start:6px" data-copy="'+esc("«"+h.x+"» ["+(h.r||"")+"]")+'">نسخ</button></div></div>';
+  document.getElementById("dayShuffle").onclick=()=>renderDaily(true);
+}
+renderDaily(false);
+
+// تتبّع القراءة
+let reads=store.get("mg_reads")||[];
+function applyReads(){
+  document.querySelectorAll(".chapter").forEach(c=>c.classList.toggle("read",reads.includes(c.id)));
+  const total=CH.filter(c=>c.num!=="").length;
+  const cnt=reads.filter(id=>CHMAP[id]&&CHMAP[id].num!=="").length;
+  const rp=document.getElementById("readProg");if(rp)rp.innerHTML="قرأت <b>"+cnt+"</b> / <b>"+total+"</b>";
+  document.querySelectorAll(".readbtn").forEach(b=>{const on=reads.includes(b.dataset.read);b.classList.toggle("on",on);b.textContent=on?"✓ تمّت قراءته":"تمّت قراءته";});
+}
+applyReads();
+
+// الملاحظات الشخصية
+document.querySelectorAll(".notes").forEach(t=>{const v=store.get("mg_note_"+t.dataset.notes);if(v)t.value=v;});
+document.addEventListener("input",e=>{const t=e.target.closest&&e.target.closest(".notes");if(t)store.set("mg_note_"+t.dataset.notes,t.value);});
+
+// حجم الخط
+let rfs=store.get("mg_rfs")||17;
+function applyRfs(){document.documentElement.style.setProperty("--rfs",rfs+"px");}
+applyRfs();
+document.getElementById("fsUp").onclick=()=>{rfs=Math.min(rfs+1,23);store.set("mg_rfs",rfs);applyRfs();};
+document.getElementById("fsDown").onclick=()=>{rfs=Math.max(rfs-1,14);store.set("mg_rfs",rfs);applyRfs();};
+
+// وضع التركيز
+const focusBtn=document.getElementById("focusToggle");
+focusBtn.onclick=()=>{const on=document.body.classList.toggle("focus");focusBtn.classList.toggle("on",on);focusBtn.textContent=on?"إنهاء التركيز":"وضع التركيز";};
+
+// نسخ/مشاركة/قراءة/تنقّل (تفويض)
+const chArr=()=>[...document.querySelectorAll(".chapter")];
+document.addEventListener("click",e=>{
+  const cp=e.target.closest(".copy");
+  if(cp){copyText(cp.dataset.copy,cp);return;}
+  const rb=e.target.closest(".readbtn");
+  if(rb){const id=rb.dataset.read;if(reads.includes(id))reads=reads.filter(x=>x!==id);else reads.push(id);store.set("mg_reads",reads);applyReads();return;}
+  const cc=e.target.closest(".copychap");
+  if(cc){copyText(chapterPlain(CHMAP[cc.dataset.chap]),cc);return;}
+  const sc=e.target.closest(".sharechap");
+  if(sc){const c=CHMAP[sc.dataset.chap];const txt=chapterPlain(c);
+    if(navigator.share){navigator.share({title:c.title,text:txt}).catch(()=>{});}else copyText(txt,sc);return;}
+  const pv=e.target.closest(".prevch"), nx=e.target.closest(".nextch");
+  if(pv||nx){const cur=e.target.closest(".chapter");const arr=chArr();const i=arr.indexOf(cur);
+    const tgt=pv?arr[i-1]:arr[i+1];
+    if(tgt){tgt.classList.add("open");tgt.scrollIntoView({behavior:"smooth",block:"start"});scheduleSave();}
+    return;}
+});
+
+// تمييز نتائج البحث
+function unmark(el){el.querySelectorAll("mark").forEach(m=>m.replaceWith(document.createTextNode(m.textContent)));el.normalize();}
+function markIn(el,q){
+  const pad=el.querySelector(".ch-pad");if(!pad)return false;let found=false;
+  const walker=document.createTreeWalker(pad,NodeFilter.SHOW_TEXT,{acceptNode(n){
+    const p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+    const tag=p.nodeName;
+    if(["MARK","BUTTON","TEXTAREA","INPUT","SCRIPT","STYLE"].includes(tag))return NodeFilter.FILTER_REJECT;
+    return n.nodeValue.includes(q)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+  }});
+  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(n=>{
+    const parts=n.nodeValue.split(q);if(parts.length<2)return;
+    const frag=document.createDocumentFragment();
+    parts.forEach((part,i)=>{
+      if(part)frag.appendChild(document.createTextNode(part));
+      if(i<parts.length-1){const m=document.createElement("mark");m.textContent=q;frag.appendChild(m);found=true;}
+    });
+    n.replaceWith(frag);
+  });
+  return found;
+}
+search.addEventListener("input",()=>{
+  const q=search.value.trim();
+  document.querySelectorAll(".chapter").forEach(c=>{c.classList.remove("searchhit");unmark(c);});
+  if(!q)return;
+  let first=null;
+  document.querySelectorAll(".chapter:not(.hidden)").forEach(c=>{if(markIn(c,q)&&!first)first=c;});
+  if(first)first.classList.add("searchhit");
+});
+
+// ===== ابدأ من هنا + موجّه المشكلة =====
+const PROBLEMS=[
+ {label:"بنتخانق كتير",tip:"الخلاف طبيعي، والمهم إدارته بهدوء واحترام. ابدأ بضبط الغضب وحسن التواصل.",t:[["c4","منهج حل الخلافات"],["c33","الأنماط الأربعة الهدّامة"],["c36","الإصلاح وما بعد الخلاف"]]},
+ {label:"بتكلّمني بقلة احترام",tip:"تكلّم عن شعورك لا عن خطئها، وعالج النمط في وقتٍ هادئ بحزمٍ ولطف.",t:[["c14","تكرار قلة الاحترام"],["c33","الأنماط الأربعة (الازدراء)"],["c37","انظر بعينيها"]]},
+ {label:"مشاعرنا بردت",tip:"الفتور طبيعي وعلاجه التجديد. اعرف لغة حبها وجدّد المودة بالاهتمام والوقت.",t:[["c9","تجديد المودة"],["c6","لغات الحب"]]},
+ {label:"مشاكل في الفلوس",tip:"الشفافية والميزانية والقناعة تحلّ أغلب خلافات المال.",t:[["c25","إدارة المال"]]},
+ {label:"تدخّل الأهل",tip:"وازِن بين برّ الوالدين واستقلال قرار بيتكما، وضعا حدوداً لطيفة وثابتة.",t:[["c24","الأهل والأقارب"]]},
+ {label:"خلاف في تربية الأطفال",tip:"اتفقا على الخطوط الكبرى بعيداً عنهم، واظهرا أمامهم موحَّدين.",t:[["c23","تربية الأبناء"]]},
+ {label:"غيرة وشك ومشاكل ثقة",tip:"عالج الشك بالحوار والطمأنة لا بالمراقبة، وابنِ الثقة بالصبر.",t:[["c19","إعادة بناء الثقة"],["c17","تحديات العصر الرقمي"]]},
+ {label:"عايز أعتذر وأصالح",tip:"الاعتذار الصادق بلا تبرير، والمبادرة بالصلح كرم لا ضعف.",t:[["c7","الاعتذار والمصالحة"]]},
+ {label:"بمرّ بأزمة كبيرة",tip:"قفا في صفٍّ واحد ضد المشكلة، واجمعا بين الأخذ بالأسباب والدعاء.",t:[["c16","الأزمات الكبرى"]]},
+ {label:"نفسية شريكي تعبانة",tip:"كن سنداً لا قاضياً، وشجّعه برفق على المساعدة المتخصصة عند الحاجة.",t:[["c28","الصحة النفسية"]]},
+ {label:"محتار في قرار كبير",tip:"الشورى منهج؛ اطرحا المعطيات وقرّرا معاً وتحمّلا النتيجة معاً.",t:[["c29","القرارات الكبرى"]]},
+ {label:"مش فاهم حقوقي وواجباتي",tip:"ابدأ بأداء ما عليك قبل أن تطالب بما لك، فهذا أساس العدل.",t:[["c2","الحقوق والواجبات والأدوار"]]},
+ {label:"بنتكلم بس مش بنتفاهم",tip:"أنصت لتفهم لا لتردّ، واقرأ الشعور الحقيقي وراء الكلام.",t:[["c3","فن التواصل"],["c26","الذكاء العاطفي"]]},
+ {label:"نفس الخلاف بيتكرر من سنين",tip:"أغلب خلافات الأزواج دائمة تنبع من اختلاف الطباع؛ لا تحاول حسمها بل تعلّم إدارتها بلطف.",t:[["c35","المشكلات الدائمة"]]},
+ {label:"واحد بيلحّ والتاني بينسحب",tip:"أنتما غالباً في دائرة يغذّيها كلاكما؛ أخرجا المشكلة من بينكما وقفا معاً ضد النمط.",t:[["c34","الدورة السلبية"]]},
+ {label:"مش فاهم هي زعلانة ليه",tip:"حاول أن ترى الموقف من مكانها؛ فكثير من الحدّة نداءٌ لحاجة لم يُلتفت إليها.",t:[["c37","انظر بعينيها"],["c26","الذكاء العاطفي"]]},
+ {label:"اتخانقنا والجو لسه بارد",tip:"بادر بمحاولة إصلاح صغيرة، ثم راجعا الخلاف بهدوء لفهمه لا لإعادته.",t:[["c36","الإصلاح وما بعد الخلاف"],["c7","الاعتذار والمصالحة"]]},
+ {label:"المشكلة بتتكرر ومش بتتحل",tip:"راجع علامات الخطر، وفكّر في مساعدة متخصصة قبل أي قرار مصيري.",t:[["c20","علامات الخطر"],["c21","خطة الصيانة والتقييم"]]}
+];
+
+function startCardHTML(){
+  return '<div class="toolcard" id="startCard">'+
+    '<h3>ابدأ من هنا <button class="dismiss" id="dismissStart">إخفاء</button></h3>'+
+    '<p>هذا مرجع، ولست مضطراً لقراءته كله مرة واحدة. إليك أفضل طريقة للاستفادة منه:</p>'+
+    '<ul class="start-list">'+
+    '<li>عندك مشكلة محددة الآن؟ استخدم <b>موجّه المشكلة</b> بالأسفل ليوصّلك للباب المناسب فوراً.</li>'+
+    '<li>للقراءة الهادئة: ابدأ بالأبواب الأولى (الأسس، الحقوق، التواصل) فهي أساس ما بعدها.</li>'+
+    '<li>استخدم 🔍 للبحث عن أي موضوع بسرعة، وعلّم الأبواب بـ«تمّت قراءته» لتتابع تقدّمك.</li>'+
+    '<li>ضع نجمة ⭐ على الأبواب المهمة لك، ودوّن ملاحظاتك أسفل كل باب.</li>'+
+    '<li>جرّب «التقييم الذاتي» في باب خطة الصيانة لتعرف نقاط قوتك ومواضع التحسين.</li>'+
+    '</ul></div>';
+}
+function finderCardHTML(){
+  return '<div class="toolcard" id="finderCard">'+
+    '<h3>موجّه المشكلة</h3>'+
+    '<p>عندك مشكلة الآن؟ اختر نوعها لنوصّلك للباب المناسب:</p>'+
+    '<div class="chips" id="chips">'+
+    PROBLEMS.map((p,i)=>'<button class="chip" data-prob="'+i+'">'+esc(p.label)+'</button>').join("")+
+    '</div><div class="finder-result" id="finderResult"></div></div>';
+}
+function buildTools(){
+  const hide=store.get("mg_starthide");
+  document.getElementById("tools").innerHTML=(hide?"":startCardHTML())+finderCardHTML();
+}
+buildTools();
+
+document.addEventListener("click",e=>{
+  const ds=e.target.closest("#dismissStart");
+  if(ds){store.set("mg_starthide",true);const sc=document.getElementById("startCard");if(sc)sc.remove();return;}
+  const chip=e.target.closest(".chip");
+  if(chip&&chip.dataset.prob!==undefined){
+    const i=+chip.dataset.prob, p=PROBLEMS[i], res=document.getElementById("finderResult");
+    res.innerHTML='<div class="frtip">'+esc(p.tip)+'</div>'+
+      p.t.map(t=>'<button class="gobtn" data-go="'+t[0]+'">افتح: '+esc(t[1])+'</button>').join("");
+    res.classList.add("show");
+    document.querySelectorAll("#chips .chip").forEach(c=>c.classList.toggle("active",c===chip));
+    return;
+  }
+  const go=e.target.closest(".gobtn");
+  if(go){goTo(go.dataset.go);return;}
+});
+
+// ===== صفحة المصادر والمراجع =====
+(function(){
+  const extraAyat=[
+    {x:"رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً",r:"سورة آل عمران: 38"},
+    {x:"إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ",r:"سورة البقرة: 222"},
+    {x:"وَلَا تُمْسِكُوهُنَّ ضِرَارًا لِّتَعْتَدُوا",r:"سورة البقرة: 231"},
+    {x:"وَلَا تَنسَوُا الْفَضْلَ بَيْنَكُمْ",r:"سورة البقرة: 237"}
+  ];
+  const extraHadith=[
+    {x:"لو كنت آمراً أحداً أن يسجد لأحد لأمرت المرأة أن تسجد لزوجها",r:"رواه الترمذي، حسن صحيح"},
+    {x:"الرجل راعٍ في أهله ومسؤول عن رعيته",r:"متفق عليه، عن ابن عمر رضي الله عنهما"},
+    {x:"ما ضرب رسول الله ﷺ شيئاً قط بيده، ولا امرأةً ولا خادماً",r:"رواه مسلم، عن عائشة رضي الله عنها"}
+  ];
+  const ayat=[],had=[],sa=new Set(),sh=new Set();
+  const pushA=b=>{const k=b.x.slice(0,28);if(!sa.has(k)){sa.add(k);ayat.push(b);}};
+  const pushH=b=>{const k=b.x.slice(0,28);if(!sh.has(k)){sh.add(k);had.push(b);}};
+  CH.forEach(c=>c.blocks.forEach(b=>{if(b.t==="ayah")pushA(b);if(b.t==="hadith")pushH(b);}));
+  extraAyat.forEach(pushA);extraHadith.forEach(pushH);
+  const sec=document.createElement("section");sec.id="sources";
+  sec.innerHTML='<div class="toolcard srccard">'+
+    '<h3>📖 المصادر والمراجع</h3>'+
+    '<p>كل الآيات والأحاديث الواردة في الدليل موثّقة من مصادرها، والأحاديث صحيحة أو حسنة. وهذه قائمة جامعة بها:</p>'+
+    '<h4>القرآن الكريم ('+ayat.length+' آية)</h4>'+
+    '<ol class="srclist">'+ayat.map(a=>'<li><span class="sref">'+esc(a.r||"")+'</span><span class="stext">﴿ '+esc(a.x)+' ﴾</span></li>').join("")+'</ol>'+
+    '<h4>السنة النبوية ('+had.length+' حديث)</h4>'+
+    '<ol class="srclist">'+had.map(h=>'<li><span class="sref">'+esc(h.r||"")+'</span><span class="stext">«'+esc(h.x)+'»</span></li>').join("")+'</ol>'+
+    '<p class="srcnote">المصادر الرئيسية: صحيح البخاري، صحيح مسلم، سنن الترمذي، سنن أبي داود، والأدب المفرد للبخاري. والآيات من القرآن الكريم برواية حفص عن عاصم.</p>'+
+    '</div>';
+  const closing=document.querySelector(".closing");
+  closing.parentNode.insertBefore(sec,closing);
+  ["navDesktop","navMobile"].forEach(navId=>{
+    const a=document.createElement("a");a.className="navlink";a.dataset.target="sources";
+    a.textContent="📖 المصادر والمراجع";
+    a.addEventListener("click",ev=>{ev.preventDefault();goTo("sources");});
+    document.getElementById(navId).appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>

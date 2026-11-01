@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التربية بالوحيين — شرحٌ تفاعليّ واختبار</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="shelf-vendor:/fonts/999e6b3c63d9.css" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EFE3;
+    --paper-2:#EFE8D8;
+    --ink:#1B2A26;
+    --ink-soft:#3C4A45;
+    --emerald:#134E48;
+    --emerald-deep:#0D3A35;
+    --emerald-bright:#1C6B62;
+    --gold:#B0843A;
+    --gold-soft:#CBA660;
+    --clay:#97543E;
+    --line:rgba(27,42,38,.14);
+    --line-strong:rgba(27,42,38,.28);
+    --ok:#1f7a54;
+    --no:#a2402f;
+    --shadow:0 10px 30px -12px rgba(13,58,53,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Tajawal',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.85;
+    font-size:17px;
+    overflow-x:hidden;
+  }
+  .quran,.hadith{font-family:'Amiri',serif}
+  h1,h2,h3,.display{font-family:'Aref Ruqaa',serif;font-weight:700;line-height:1.5}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 120% at 50% -20%, var(--emerald-bright) 0%, var(--emerald) 42%, var(--emerald-deep) 100%);
+    color:var(--paper);
+    padding:64px 22px 54px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:3px solid var(--gold);
+  }
+  .hero .pattern{
+    position:absolute;inset:0;opacity:.12;pointer-events:none;
+  }
+  .hero-frame{
+    position:relative;z-index:2;
+    max-width:820px;margin:0 auto;
+    border:1px solid rgba(203,166,96,.55);
+    padding:34px 26px;
+    border-radius:4px;
+  }
+  .hero-frame::before,.hero-frame::after{
+    content:"۞";color:var(--gold-soft);font-size:26px;
+    position:absolute;left:50%;transform:translateX(-50%);
+  }
+  .hero-frame::before{top:-16px}
+  .hero-frame::after{bottom:-18px}
+  .eyebrow{
+    font-family:'Tajawal';font-weight:500;letter-spacing:2px;
+    color:var(--gold-soft);font-size:13px;margin-bottom:14px;
+  }
+  .hero h1{font-size:clamp(30px,6vw,54px);color:#fff;margin-bottom:8px}
+  .hero .sub{font-family:'Amiri';font-size:clamp(16px,3vw,21px);color:#EAD9AE;font-style:italic}
+  .hero .by{margin-top:18px;font-size:15px;color:#D9E6E1;font-weight:300}
+  .hero .by b{color:#fff;font-weight:700}
+
+  /* ===== CONTENT ===== */
+  main{max-width:860px;margin:0 auto;padding:34px 20px 90px}
+  .view{display:none;animation:fade .4s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  .sec-head{margin:6px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
+  .sec-head .k{font-size:13px;color:var(--gold);font-weight:700;letter-spacing:1px;font-family:'Tajawal'}
+  .sec-head h2{font-size:clamp(24px,4.6vw,34px);color:var(--emerald-deep);margin-top:2px}
+
+  .card{
+    background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:22px 22px;margin-bottom:18px;
+    box-shadow:0 4px 14px -10px rgba(13,58,53,.2);
+  }
+  .card h3{color:var(--emerald);font-size:20px;margin-bottom:8px;display:flex;gap:9px;align-items:baseline}
+  .card h3 .n{
+    font-family:'Tajawal';font-weight:800;font-size:13px;color:#fff;
+    background:var(--emerald);border-radius:6px;padding:2px 8px;flex:0 0 auto;
+  }
+  .card p{margin-bottom:9px;color:var(--ink-soft)}
+  .card p:last-child{margin-bottom:0}
+  .card ul{margin:6px 22px 6px 0;color:var(--ink-soft)}
+  .card li{margin-bottom:5px}
+  b,strong{color:var(--ink)}
+
+  .verse{
+    font-family:'Amiri';font-size:20px;color:var(--emerald-deep);
+    background:var(--paper-2);border-right:3px solid var(--gold);
+    padding:12px 16px;border-radius:8px;margin:10px 0;line-height:2;
+  }
+  .verse .ref{display:block;font-family:'Tajawal';font-size:13px;color:var(--gold);margin-top:4px;font-weight:700}
+  .hadith-box{
+    font-family:'Amiri';font-size:19px;color:var(--clay);
+    background:#fbf6ef;border-right:3px solid var(--clay);
+    padding:12px 16px;border-radius:8px;margin:10px 0;line-height:2;
+  }
+  .hadith-box .ref{display:block;font-family:'Tajawal';font-size:13px;color:#b07a5f;margin-top:4px;font-weight:700}
+
+  .note{
+    background:#fff8e9;border:1px solid #e8d59a;border-right:4px solid var(--gold);
+    padding:12px 15px;border-radius:8px;font-size:14.5px;color:#6d5a2a;margin:10px 0;
+  }
+  .note.crit{background:#fbeeea;border-color:#e0b3a6;border-right-color:var(--clay);color:#7a3f2e}
+
+  /* intro card */
+  .intro-callout{
+    background:linear-gradient(135deg,var(--emerald) 0%,var(--emerald-deep) 100%);
+    color:#EAD9AE;border-radius:14px;padding:24px;margin-bottom:22px;box-shadow:var(--shadow)
+  }
+  .intro-callout .quran{color:#fff;font-size:19px}
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:16px 0}
+  .meta-grid div{background:#fff;padding:11px 14px;font-size:14.5px}
+  .meta-grid .lab{color:var(--gold);font-weight:700;font-size:12.5px}
+  @media(max-width:520px){.meta-grid{grid-template-columns:1fr}}
+
+  /* tables */
+  .tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:#fff}
+  th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:right;vertical-align:top}
+  thead th{background:var(--emerald);color:#fff;font-weight:700;position:sticky;top:0}
+  tbody tr:nth-child(even){background:var(--paper)}
+  td b{color:var(--emerald-deep)}
+
+  .chk{list-style:none;margin:0!important}
+  .chk li{padding:8px 0;border-bottom:1px dashed var(--line);padding-right:30px;position:relative}
+  .chk li::before{content:"✔";position:absolute;right:0;color:var(--gold);font-weight:700}
+
+  /* ===== QUIZ ===== */
+  .quiz-intro{text-align:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 22px;box-shadow:var(--shadow)}
+  .quiz-intro h2{color:var(--clay);font-size:30px}
+  .quiz-intro p{color:var(--ink-soft);max-width:560px;margin:8px auto 0}
+  .cat-title{font-weight:700;color:var(--emerald);margin:20px 0 10px;font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px}
+  .chip{
+    font-family:'Tajawal';font-weight:700;font-size:13.5px;cursor:pointer;
+    border:1.5px solid var(--emerald);color:var(--emerald);background:#fff;
+    padding:7px 14px;border-radius:999px;transition:.15s;
+  }
+  .chip:hover{background:var(--paper-2)}
+  .chip.on{background:var(--emerald);color:#fff}
+  .chip .c{opacity:.7;font-size:12px}
+  .qcount{margin:16px 0;color:var(--ink-soft);font-size:14px}
+  .btn{
+    font-family:'Tajawal';font-weight:800;font-size:16px;cursor:pointer;border:none;
+    background:var(--clay);color:#fff;padding:13px 34px;border-radius:999px;
+    transition:.18s;box-shadow:var(--shadow);
+  }
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .btn.ghost{background:#fff;color:var(--emerald);border:1.5px solid var(--emerald);box-shadow:none}
+  .btn.sm{padding:9px 20px;font-size:14px}
+
+  .progress-wrap{margin:2px 0 18px}
+  .progress-top{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-soft);margin-bottom:6px;font-weight:700}
+  .bar{height:9px;background:var(--paper-2);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+  .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--emerald));width:0;transition:width .4s}
+
+  .qcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:var(--shadow)}
+  .qcat{display:inline-block;font-size:12px;font-weight:700;color:var(--gold);background:var(--paper-2);padding:3px 12px;border-radius:999px;margin-bottom:12px}
+  .qtext{font-size:20px;font-weight:700;color:var(--ink);line-height:1.7;margin-bottom:18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    font-family:'Tajawal';font-size:16px;text-align:right;cursor:pointer;
+    background:var(--paper);border:1.5px solid var(--line-strong);color:var(--ink);
+    padding:13px 16px;border-radius:11px;transition:.15s;display:flex;gap:10px;align-items:center;
+  }
+  .opt:hover:not(:disabled){border-color:var(--emerald);background:#fff}
+  .opt:disabled{cursor:default}
+  .opt .mk{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line-strong);flex:0 0 auto;display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--ink-soft)}
+  .opt.correct{border-color:var(--ok);background:#eaf6ef}
+  .opt.correct .mk{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .opt.wrong{border-color:var(--no);background:#faece9}
+  .opt.wrong .mk{background:var(--no);color:#fff;border-color:var(--no)}
+
+  .why{margin-top:16px;padding:14px 16px;border-radius:11px;background:var(--paper-2);border-right:4px solid var(--gold);font-size:15px;color:var(--ink-soft);display:none}
+  .why.show{display:block;animation:fade .3s}
+  .why b{color:var(--emerald-deep)}
+  .qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;flex-wrap:wrap}
+  .live-score{font-size:14px;font-weight:700;color:var(--ink-soft)}
+  .live-score b{color:var(--ok)}
+
+  /* result */
+  .result{text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 22px;box-shadow:var(--shadow)}
+  .scorecircle{width:150px;height:150px;border-radius:50%;margin:6px auto 14px;display:grid;place-items:center;background:conic-gradient(var(--emerald) var(--pct,0%),var(--paper-2) 0);position:relative}
+  .scorecircle::before{content:"";position:absolute;inset:12px;background:#fff;border-radius:50%}
+  .scorecircle .val{position:relative;z-index:2;font-family:'Aref Ruqaa';font-size:34px;color:var(--emerald-deep)}
+  .result h2{color:var(--emerald-deep);font-size:28px}
+  .verdict{font-size:17px;color:var(--clay);font-weight:700;margin:6px 0 4px}
+  .rev{text-align:right;margin-top:22px}
+  .rev h3{color:var(--emerald);font-size:17px;margin-bottom:10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .rev-item{padding:11px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+  .rev-item .q{font-weight:700;color:var(--ink)}
+  .rev-item .a{color:var(--ok);font-size:13.5px}
+  .rev-item .yr{color:var(--no);font-size:13.5px}
+  .result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+
+  footer{background:var(--emerald-deep);color:#c9d6d1;text-align:center;padding:26px 20px;font-size:13.5px}
+  footer .quran{color:#EAD9AE;font-size:16px;display:block;margin-bottom:8px}
+  .hidden{display:none!important}
+
+  /* ===== Accessibility focus ===== */
+  a:focus-visible,button:focus-visible,.opt:focus-visible,.tab:focus-visible,.chip:focus-visible{
+    outline:3px solid var(--gold);outline-offset:2px;border-radius:8px;
+  }
+
+  /* ===== keyboard hint ===== */
+  .kbd-hint{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:12px;opacity:.85}
+  .kbd-hint kbd{background:var(--paper-2);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:5px;padding:1px 7px;font-family:inherit;font-size:12px;margin:0 2px}
+  .opt .mk{transition:.15s}
+
+  /* ===== print button ===== */
+  .print-btn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Tajawal';font-weight:700;font-size:14px;cursor:pointer;background:transparent;border:1.5px solid var(--emerald);color:var(--emerald);padding:8px 18px;border-radius:999px;transition:.15s}
+  .print-btn:hover{background:var(--emerald);color:#fff}
+
+  /* ===== per-category performance ===== */
+  .catperf{margin:22px 0 4px;text-align:right}
+  .catperf h3{color:var(--emerald);font-size:16px;margin-bottom:12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .cp-row{margin-bottom:11px}
+  .cp-top{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;color:var(--ink-soft);margin-bottom:4px}
+  .cp-bar{height:8px;border-radius:999px;background:var(--paper-2);overflow:hidden;border:1px solid var(--line)}
+  .cp-bar span{display:block;height:100%;border-radius:999px;transition:width .5s}
+
+  /* ===== back to top ===== */
+  #toTop{
+    position:fixed;bottom:22px;left:22px;z-index:60;width:46px;height:46px;border-radius:50%;
+    border:none;cursor:pointer;background:var(--emerald);color:#fff;font-size:20px;
+    box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s;
+  }
+  #toTop.show{opacity:1;pointer-events:auto;transform:none}
+  #toTop:hover{background:var(--emerald-deep)}
+
+  /* ===== PRINT ===== */
+  @media print{
+    nav,#toTop,#themeBtn,footer,.print-btn,.quiz-tab,#readbar,.search-box,#searchCount,.tip{display:none!important}
+    #quiz,#flash{display:none!important}
+    .view{display:block!important;animation:none}
+    details.faq{break-inside:avoid}
+    details.faq .fa{display:block!important}
+    .hero{padding:24px;border:none;color:#000;background:none}
+    .hero h1,.hero .sub,.hero .by,.hero .by b,.eyebrow{color:#000}
+    .hero .pattern{display:none}
+    body{background:#fff;color:#000;font-size:12pt}
+    .card,.verse,.hadith-box,.intro-callout{break-inside:avoid;box-shadow:none}
+    .intro-callout{background:#eee;color:#000}
+    .intro-callout .quran{color:#000}
+    main{max-width:100%}
+  }
+
+  /* ===== reading progress ===== */
+  #readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--emerald-bright));z-index:100;transition:width .1s}
+
+  mark{background:var(--gold-soft);color:var(--ink);border-radius:3px;padding:0 2px}
+
+  /* ===== timeline ===== */
+  .timeline{display:flex;gap:0;overflow-x:auto;padding:8px 2px 14px;margin:6px 0 4px;scrollbar-width:thin}
+  .tl-step{flex:0 0 auto;min-width:120px;text-align:center;position:relative;padding:0 8px}
+  .tl-step::before{content:"";position:absolute;top:22px;right:-50%;width:100%;height:2px;background:var(--line-strong);z-index:0}
+  .tl-step:first-child::before{display:none}
+  .tl-dot{width:46px;height:46px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;font-size:20px;background:var(--emerald);color:#fff;position:relative;z-index:1;box-shadow:var(--shadow)}
+  .tl-step:nth-child(2) .tl-dot{background:var(--emerald-bright)}
+  .tl-step:nth-child(3) .tl-dot{background:var(--gold)}
+  .tl-step:nth-child(4) .tl-dot{background:var(--clay)}
+  .tl-step:nth-child(5) .tl-dot{background:var(--emerald-deep)}
+  .tl-lab{font-weight:700;font-size:14px;color:var(--ink)}
+  .tl-sub{font-size:12px;color:var(--ink-soft)}
+
+  /* ===== apply-today tip ===== */
+  .tip{background:linear-gradient(135deg,#fff8e9,#fdf1e3);border:1px solid #e8d59a;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:14.5px;color:#6d5a2a;display:flex;gap:10px;align-items:flex-start}
+  .tip .ic{font-size:20px;flex:0 0 auto}
+  .tip b{color:#5a4a1f}
+
+  /* ===== FAQ ===== */
+  details.faq{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+  details.faq summary{padding:16px 18px;cursor:pointer;font-weight:700;color:var(--emerald);font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+";font-size:22px;color:var(--gold);transition:.2s;flex:0 0 auto}
+  details.faq[open] summary::after{transform:rotate(45deg)}
+  details.faq .fa{padding:0 18px 16px;color:var(--ink-soft);font-size:15px;line-height:1.85}
+
+  /* ===== Flashcards ===== */
+  .fc-wrap{text-align:center}
+  .fc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:14px;font-weight:700;color:var(--ink-soft)}
+  .flashcard{perspective:1400px;height:300px;margin:0 auto;max-width:560px;cursor:pointer}
+  .fc-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+  .flashcard.flipped .fc-inner{transform:rotateY(180deg)}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .fc-front{background:linear-gradient(145deg,var(--emerald),var(--emerald-deep));color:#fff}
+  .fc-back{background:#fff;transform:rotateY(180deg);color:var(--ink)}
+  .fc-face .cat{font-size:12px;font-weight:700;letter-spacing:1px;opacity:.85;margin-bottom:12px;color:var(--gold-soft)}
+  .fc-front .q{font-family:'Aref Ruqaa';font-size:24px;line-height:1.6}
+  .fc-back .a{font-family:'Amiri';font-size:20px;color:var(--emerald-deep);line-height:1.9}
+  .fc-hint{font-size:12.5px;color:var(--ink-soft);margin-top:14px}
+  .fc-nav{display:flex;gap:10px;justify-content:center;margin-top:18px}
+
+  /* ===== timer ===== */
+  .timer-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0}
+  .switch{position:relative;display:inline-block;width:48px;height:26px}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;cursor:pointer;inset:0;background:var(--line-strong);border-radius:999px;transition:.2s}
+  .slider::before{content:"";position:absolute;height:20px;width:20px;right:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+  .switch input:checked+.slider{background:var(--emerald)}
+  .switch input:checked+.slider::before{transform:translateX(-22px)}
+  #timerDisplay{font-weight:800;font-size:15px;color:var(--clay);min-width:44px;text-align:center}
+  #timerDisplay.low{color:var(--no);animation:pulse .6s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+
+  .export-note{font-size:12.5px;color:var(--ink-soft);margin-top:10px}
+
+  /* =========================================================
+     LAYOUT: side navigation + top bar (responsive)
+     ========================================================= */
+  :root{--side-w:272px;--top-h:58px}
+  .shell{min-height:100vh;display:flex;flex-direction:column}
+  .shell main{flex:1;width:100%}
+
+  .sidebar{
+    position:fixed;top:0;bottom:0;right:0;z-index:70;
+    width:var(--side-w);
+    background:var(--surface);
+    border-left:1px solid var(--line);
+    display:flex;flex-direction:column;
+    transition:transform .28s ease;
+  }
+  .side-brand{
+    padding:20px 20px 16px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:12px;
+  }
+  .side-brand .logo{
+    width:42px;height:42px;border-radius:12px;flex:0 0 auto;
+    display:grid;place-items:center;font-size:22px;color:#fff;
+    background:linear-gradient(145deg,var(--emerald-bright),var(--emerald-deep));
+  }
+  .side-brand .t{font-family:'Aref Ruqaa';font-weight:700;font-size:19px;color:var(--ink);line-height:1.3}
+  .side-brand .s{font-size:12px;color:var(--ink-soft)}
+  .icon-btn.side-close{display:none;margin-inline-start:auto}
+
+  .nav-inner{flex:1;overflow-y:auto;padding:12px 10px 20px;display:flex;flex-direction:column;gap:3px}
+  .nav-group{font-size:11.5px;font-weight:700;letter-spacing:1px;color:var(--gold);padding:14px 12px 6px}
+  .tab{
+    display:flex;align-items:center;gap:12px;width:100%;
+    font-family:'Tajawal';font-weight:500;font-size:15px;text-align:right;
+    color:var(--ink-soft);background:transparent;border:none;
+    padding:10px 12px;border-radius:10px;cursor:pointer;transition:background .15s,color .15s;
+    position:relative;
+  }
+  .tab .ic{width:22px;text-align:center;font-size:16px;flex:0 0 auto;opacity:.9}
+  .tab:hover{background:var(--paper-2);color:var(--ink)}
+  .tab.active{background:var(--accent-soft);color:var(--emerald-deep);font-weight:700}
+  .tab.active::before{
+    content:"";position:absolute;right:0;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--emerald);
+  }
+  .tab.quiz-tab.active{background:var(--clay-soft);color:var(--clay)}
+  .tab.quiz-tab.active::before{background:var(--clay)}
+  .side-foot{padding:14px 18px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-soft)}
+
+  .backdrop{
+    position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.45);
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+
+  .topbar{
+    position:sticky;top:0;z-index:50;height:var(--top-h);
+    display:flex;align-items:center;gap:10px;padding:0 16px;
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .cur{font-weight:700;font-size:15.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+  .icon-btn.menu-btn{display:none}
+  .icon-btn{
+    flex:0 0 auto;width:40px;height:40px;border-radius:10px;cursor:pointer;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    font-size:17px;display:grid;place-items:center;transition:.15s;
+  }
+  .icon-btn:hover{background:var(--paper-2);border-color:var(--line-strong)}
+
+  .search-box{position:relative;flex:0 1 240px;min-width:0}
+  #searchInput{
+    width:100%;font-family:'Tajawal';font-size:14px;
+    padding:9px 36px 9px 12px;border-radius:10px;
+    border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);transition:border-color .15s;
+  }
+  #searchInput:focus{outline:none;border-color:var(--emerald)}
+  #searchInput::placeholder{color:var(--ink-soft)}
+  .search-box::before{content:"🔍";position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.55;pointer-events:none}
+  #searchCount{
+    position:absolute;top:calc(100% + 4px);right:0;font-size:12px;font-weight:700;color:var(--gold);
+    background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:2px 8px;white-space:nowrap
+  }
+  #searchCount:empty{display:none}
+
+  /* desktop: sidebar always visible */
+  @media (min-width:1024px){
+    .shell{margin-right:var(--side-w)}
+  }
+  /* tablet & mobile: off-canvas drawer */
+  @media (max-width:1023px){
+    .sidebar{transform:translateX(100%);box-shadow:none;width:min(84vw,var(--side-w))}
+    body.nav-open .sidebar{transform:none;box-shadow:-12px 0 40px rgba(0,0,0,.25)}
+    body.nav-open .backdrop{opacity:1;pointer-events:auto}
+    body.nav-open{overflow:hidden}
+    .icon-btn.menu-btn{display:grid}
+    .icon-btn.side-close{display:grid}
+  }
+
+  /* =========================================================
+     RESPONSIVE SIZING
+     ========================================================= */
+  @media (min-width:1400px){ main{max-width:920px} }
+  @media (max-width:640px){
+    body{font-size:16px;line-height:1.8}
+    .hero{padding:40px 14px 36px}
+    .hero-frame{padding:24px 14px}
+    main{padding:22px 14px 80px}
+    .card{padding:17px 15px;border-radius:11px}
+    .card h3{font-size:18px}
+    .verse{font-size:18px;padding:10px 12px}
+    .hadith-box{font-size:17px;padding:10px 12px}
+    .sec-head h2{font-size:24px}
+    .qcard{padding:18px 14px}
+    .qtext{font-size:17.5px}
+    .opt{font-size:15px;padding:11px 12px}
+    .flashcard{height:auto;min-height:280px}
+    .fc-inner{min-height:280px}
+    .fc-front .q{font-size:20px}
+    .fc-back .a{font-size:17px}
+    .fc-face{padding:20px}
+    .btn{padding:12px 24px;font-size:15px}
+    .result-actions .btn{flex:1 1 calc(50% - 10px);padding:11px 10px;font-size:14px}
+    .topbar{padding:0 10px;gap:8px}
+    .topbar .cur{font-size:14.5px}
+    .search-box{flex:1 1 auto}
+    #toTop{bottom:16px;left:16px;width:42px;height:42px}
+    .kbd-hint{display:none}
+    .timeline{gap:0}
+    .tl-step{min-width:96px}
+  }
+  @media (max-width:640px){
+    .topbar .cur{display:none}
+  }
+  /* touch targets */
+  @media (pointer:coarse){
+    .tab{padding:12px 12px}
+    .opt{min-height:48px}
+  }
+
+  /* =========================================================
+     THEME TOKENS (light defaults)
+     ========================================================= */
+  :root{
+    --surface:#FFFFFF;
+    --accent-soft:rgba(19,78,72,.09);
+    --clay-soft:rgba(151,84,62,.10);
+    --on-accent:#FFFFFF;
+  }
+
+  /* =========================================================
+     DARK MODE — neutral graphite (Windows 11 style), easy on the eyes
+     ========================================================= */
+  body.dark{
+    --paper:#202020;        /* app background  */
+    --paper-2:#2C2C2C;      /* subtle fills    */
+    --surface:#2A2A2A;      /* cards / panels  */
+    --ink:#E6E6E6;          /* primary text    */
+    --ink-soft:#ABABAB;     /* secondary text  */
+    --emerald:#5DB8AB;      /* accent          */
+    --emerald-deep:#A9DCD3; /* headings accent */
+    --emerald-bright:#72C7BB;
+    --gold:#D4B37E;
+    --gold-soft:#E0C695;
+    --clay:#E2A68A;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(255,255,255,.16);
+    --ok:#6CCB9A;
+    --no:#EE8B78;
+    --accent-soft:rgba(93,184,171,.14);
+    --clay-soft:rgba(226,166,138,.14);
+    --on-accent:#14211F;
+    --shadow:0 8px 24px -14px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+  body.dark .sidebar{background:#1B1B1B;border-left-color:rgba(255,255,255,.06)}
+  body.dark .topbar{background:rgba(32,32,32,.88)}
+  body.dark .hero{background:linear-gradient(160deg,#2B2B2B 0%,#1E1E1E 100%);border-bottom-color:#4a4134}
+  body.dark .hero h1{color:#F0F0F0}
+  body.dark .hero .sub{color:var(--gold-soft)}
+  body.dark .hero .pattern{opacity:.07}
+  body.dark footer{background:#181818;color:#9A9A9A;border-top:1px solid var(--line)}
+  body.dark footer .quran{color:var(--gold-soft)}
+
+  body.dark .card,body.dark .qcard,body.dark .quiz-intro,body.dark .result,
+  body.dark table,body.dark .meta-grid div,body.dark details.faq,body.dark .fc-back{background:var(--surface);color:var(--ink)}
+  body.dark .meta-grid{background:var(--line)}
+  body.dark thead th{background:#333;color:var(--ink);border-bottom:1px solid var(--line-strong)}
+  body.dark tbody tr:nth-child(even){background:#262626}
+  body.dark th,body.dark td{border-bottom-color:var(--line)}
+
+  body.dark .intro-callout{background:#2A2A2A;border:1px solid var(--line-strong);color:var(--ink-soft)}
+  body.dark .intro-callout .quran,body.dark .intro-callout b{color:var(--gold-soft)!important}
+
+  body.dark .verse{background:#262626;color:#CFE6E1;border-right-color:var(--gold)}
+  body.dark .hadith-box{background:#2A2624;color:#E9C2AE;border-right-color:var(--clay)}
+  body.dark .verse .ref{color:var(--gold)}
+  body.dark .hadith-box .ref{color:#C79A84}
+
+  body.dark .note{background:#2C2A24;color:#DCCB9F;border-color:#4A4434;border-right-color:var(--gold)}
+  body.dark .note.crit{background:#2D2624;color:#E3B5A3;border-color:#4C3A33;border-right-color:var(--clay)}
+  body.dark .tip{background:#2B2924;border-color:#48422F;color:#D8C9A0}
+  body.dark .tip b{color:#EAD9AE}
+
+  body.dark .card h3 .n,body.dark .chip.on,body.dark #toTop,body.dark .tl-dot{color:var(--on-accent)}
+  body.dark .chip{background:transparent}
+  body.dark .btn{background:var(--clay);color:#231711}
+  body.dark .btn.ghost{background:transparent;color:var(--emerald);border-color:var(--emerald)}
+  body.dark .print-btn{border-color:var(--gold-soft);color:var(--gold-soft)}
+  body.dark .print-btn:hover{background:var(--gold-soft);color:#211B10}
+
+  body.dark .opt{background:#242424;border-color:var(--line-strong);color:var(--ink)}
+  body.dark .opt:hover:not(:disabled){background:#2F2F2F;border-color:var(--emerald)}
+  body.dark .opt.correct{background:rgba(108,203,154,.13);border-color:var(--ok)}
+  body.dark .opt.wrong{background:rgba(238,139,120,.13);border-color:var(--no)}
+  body.dark .opt.correct .mk,body.dark .opt.wrong .mk{color:#1A1A1A}
+  body.dark .why,body.dark .qcat{background:#262626}
+  body.dark .bar,body.dark .cp-bar{background:#2E2E2E}
+  body.dark .scorecircle{background:conic-gradient(var(--emerald) var(--pct,0%),#333 0)}
+  body.dark .scorecircle::before{background:var(--surface)}
+  body.dark .scorecircle .val{color:var(--ink)}
+
+  body.dark .fc-front{background:linear-gradient(145deg,#2F4A46,#22302E)}
+  body.dark .fc-back .a{color:#CFE6E1}
+  body.dark .tl-step:nth-child(1) .tl-dot{background:#4F9E93}
+  body.dark .tl-step:nth-child(2) .tl-dot{background:#5DB8AB}
+  body.dark .tl-step:nth-child(5) .tl-dot{background:#8BC9BF}
+  body.dark mark{background:#6B5A33;color:#FFF}
+  body.dark .kbd-hint kbd{background:#333;border-color:#555;color:var(--ink)}
+  body.dark .slider::before{background:#E6E6E6}
+  body.dark ::-webkit-scrollbar{width:10px;height:10px}
+  body.dark ::-webkit-scrollbar-thumb{background:#444;border-radius:10px;border:2px solid #202020}
+  body.dark ::-webkit-scrollbar-track{background:transparent}
+
+  /* print: drop chrome */
+  @media print{
+    .sidebar,.backdrop,.topbar{display:none!important}
+    .shell{margin:0!important}
+  }
+
+  /* ===== expanded content ===== */
+  .card h4{font-family:'Tajawal';font-weight:800;font-size:15.5px;color:var(--gold);margin:16px 0 6px}
+  .card h4:first-of-type{margin-top:10px}
+  .card ol li{margin-bottom:5px}
+  h3.part{
+    font-family:'Aref Ruqaa';font-size:22px;color:var(--clay);
+    margin:30px 0 14px;padding:6px 14px;border-right:4px solid var(--clay);
+    background:var(--clay-soft);border-radius:8px;
+  }
+  h3.part:first-of-type{margin-top:6px}
+  .card .tw{margin:10px 0}
+  @media (max-width:640px){ h3.part{font-size:19px} .card h4{font-size:15px} }
+
+  /* small tables fit the screen; wide ones scroll */
+  table:not(:has(th:nth-child(3))){min-width:0}
+  @media (max-width:640px){ th,td{padding:8px 9px;font-size:13.5px} }
+</style>
+</head>
+<body>
+<div id="readbar"></div>
+
+<aside class="sidebar" id="sidebar" aria-label="قائمة الأقسام">
+  <div class="side-brand">
+    <div class="logo">۞</div>
+    <div><div class="t">التربية بالوحيين</div><div class="s">شرحٌ تفاعليّ واختبار</div></div>
+    <button class="icon-btn side-close" id="sideClose" aria-label="إغلاق القائمة">✕</button>
+  </div>
+  <div class="nav-inner" id="tabs" role="navigation">
+    <div class="nav-group">الكتاب</div>
+    <button class="tab active" data-view="intro"><span class="ic">📖</span>المقدمة</button>
+    <button class="tab" data-view="foundation"><span class="ic">🧭</span>التأصيل · جواز مرور</button>
+    <div class="nav-group">الأبواب التطبيقية</div>
+    <button class="tab" data-view="prep"><span class="ic">🌱</span>الإعداد والحمل</button>
+    <button class="tab" data-view="birth"><span class="ic">👶</span>الولادة وأحكامها</button>
+    <button class="tab" data-view="needs"><span class="ic">🤲</span>الاحتياجات والحقوق</button>
+    <button class="tab" data-view="problems"><span class="ic">💎</span>المشكلات والكنوز</button>
+    <div class="nav-group">مراجع</div>
+    <button class="tab" data-view="appendix"><span class="ic">📎</span>الملاحق</button>
+    <button class="tab" data-view="faq"><span class="ic">❓</span>أسئلة شائعة</button>
+    <div class="nav-group">ثبّت معلوماتك</div>
+    <button class="tab" data-view="flash"><span class="ic">🃏</span>البطاقات التعليمية</button>
+    <button class="tab quiz-tab" data-view="quiz"><span class="ic">🎯</span>الاختبار الشامل</button>
+  </div>
+  <div class="side-foot">أسماء محمد لبيب · الجزء الأول</div>
+</aside>
+<div class="backdrop" id="backdrop"></div>
+
+<div class="shell">
+<header class="hero">
+  <svg class="pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <pattern id="star" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
+        <path d="M30 6 L36 24 L54 24 L39 35 L45 54 L30 42 L15 54 L21 35 L6 24 L24 24 Z" fill="none" stroke="#CBA660" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#star)"/>
+  </svg>
+  <div class="hero-frame">
+    <div class="eyebrow">تلخيصٌ وشرحٌ تفاعليّ</div>
+    <h1>التربية بالوحيين</h1>
+    <div class="sub">للمراحل العمرية · من النطفة إلى ثلاث سنوات</div>
+    <div class="by">تأليف: <b>أسماء محمد لبيب</b></div>
+  </div>
+</header>
+
+<div class="topbar">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-controls="sidebar" aria-expanded="false">☰</button>
+  <div class="cur" id="curTitle">المقدمة</div>
+  <div class="search-box"><input id="searchInput" type="search" placeholder="ابحث في الكتاب…" aria-label="بحث في المحتوى"><div id="searchCount"></div></div>
+  <button id="themeBtn" class="icon-btn" aria-label="تبديل الوضع الليلي" title="الوضع الليلي">🌙</button>
+</div>
+
+
+<main>
+
+  <!-- INTRO -->
+  <section class="view active" id="intro">
+    <div class="sec-head"><div class="k">تعريف الكتاب</div><h2>مقدمة وفكرة مركزية</h2></div>
+
+    <div class="intro-callout">
+      <p class="quran">الوحيان — القرآن والسنّة الصحيحة بفهم السلف — هما المرجعية العليا للمسلم، وعلى رأسها تربية الأولاد.</p>
+      <p style="margin-top:10px">فالتربية عند الكاتبة <b style="color:#fff">منهجٌ</b> مصدرُه الوحي، وغايتُه إعداد جيلٍ ربّانيٍّ قويٍّ نافع — في مقابل استيراد مناهج قائمة على مرجعياتٍ تُغاير تصوّر المسلم عن الإنسان وغايته.</p>
+      <button class="print-btn" id="printBtn" style="border-color:#CBA660;color:#EAD9AE">🖨 طباعة الملخّص كاملًا</button>
+    </div>
+
+    <div class="note crit"><b>طبيعة هذا التطبيق:</b> تلخيصٌ وشرحٌ منهجيّ موسّع مبنيّ على بنية الكتاب ومحاوره الموثّقة، لا نسخٌ حرفيّ لصفحاته. الآيات والأحاديث هي مصدر الكتاب الأصيل، والشروح والتطبيقات صياغةٌ خاصّة تعرض منهجه، وما ورد من أحكامٍ فقهية مُلخَّصٌ يُرجَع في تحقيقه لأهل العلم.</div>
+
+    <div class="meta-grid">
+      <div><div class="lab">المؤلِّفة</div>أسماء محمد لبيب</div>
+      <div><div class="lab">الفئة</div>من النطفة إلى ٣ سنوات</div>
+      <div><div class="lab">الحجم</div>نحو ٧٢٧ صفحة</div>
+      <div><div class="lab">السلسلة</div>الجزء الأول</div>
+      <div><div class="lab">راجعه</div>د. شوقي عبد الصادق وآخرون</div>
+      <div><div class="lab">كتابٌ آخر لها</div>«ربّيهم بآية وحديث»</div>
+    </div>
+
+    <div class="card">
+      <h3>لماذا كُتب هذا الكتاب؟</h3>
+      <p>تنطلق الكاتبة من ملاحظةٍ واقعية: كثيرٌ من الآباء والأمهات المسلمين يربّون أبناءهم بأحد طريقين — إمّا <b>بالاجتهاد الفرديّ والموروث العائليّ</b> بما فيه من صوابٍ وخطأ، وإمّا <b>بنقل مناهج تربوية وافدة</b> قائمة على تصوّراتٍ لا تنطلق من الإيمان بالله واليوم الآخر. وفي الحالين تغيب «البوصلة» التي تحدّد: لماذا نربّي؟ وإلى أين؟</p>
+      <p>والكتاب محاولةٌ لإعادة الوالدين إلى المصدر الأصليّ: أن تكون الآيةُ والحديثُ نقطةَ الانطلاق، ثم يُبنى عليهما الفهمُ والتطبيق، لا أن يُؤتى بالنصّ شاهدًا على فكرةٍ جاهزة.</p>
+      <div class="verse">﴿يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا﴾<span class="ref">التحريم ٦ — أصلٌ جامع في مسؤولية الوالدين</span></div>
+    </div>
+
+    <div class="card">
+      <h3>منهج الكتاب في العرض</h3>
+      <ul>
+        <li><b>التأصيل قبل التطبيق:</b> يبدأ بـ«لماذا» ثم «متى» ثم «كيف»، فلا يدخل في الأحكام والوسائل حتى يرسّخ المفاهيم.</li>
+        <li><b>النصّ أوّلًا:</b> تُعرض الآية أو الحديث، ثم يُستنبط منه المعنى التربويّ، ثم يُنزَّل على واقع الطفل.</li>
+        <li><b>التقسيم بالمراحل العمرية:</b> لكل مرحلةٍ سماتها وحقوقها واحتياجاتها، وهذا الجزء خاصٌّ بأوّل مرحلة: من النطفة إلى ثلاث سنوات.</li>
+        <li><b>الشمول:</b> لا يقتصر على الجانب الدينيّ الشعائريّ، بل يتناول النفس والجسد والعقل والمجتمع والمال.</li>
+        <li><b>الرجوع للمختصّين:</b> رُوجع الكتاب شرعيًّا وطبيًّا، فجمع بين الدليل الشرعيّ والمعلومة الصحية.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>الخريطة العامة للكتاب</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الجزء</th><th>مضمونه</th><th>سؤاله المحوريّ</th></tr></thead>
+        <tbody>
+          <tr><td><b>المقدمات</b></td><td>تأصيلٌ وتمهيد ومسؤولية الوالدين</td><td>لماذا نحتاج منهجًا؟</td></tr>
+          <tr><td><b>الباب الأول «جواز مرور»</b></td><td>عشرة فصولٍ تأسيسية تنتهي بالخطة السداسية</td><td>ما التربية بالوحيين وما مقاصدها؟</td></tr>
+          <tr><td><b>الإعداد وما قبل الحمل</b></td><td>اختيار الشريك، إصلاح النفس، النيّة، الدعاء</td><td>متى تبدأ التربية؟</td></tr>
+          <tr><td><b>النطفة والحمل</b></td><td>أطوار الخلق، رعاية الحامل</td><td>كيف نستقبل الخلق الجديد؟</td></tr>
+          <tr><td><b>الولادة وأحكامها</b></td><td>سنن المولود من البشارة إلى الختان</td><td>ماذا نفعل في الأيام الأولى؟</td></tr>
+          <tr><td><b>الاحتياجات والحقوق</b></td><td>خمسة محاور حتى الثالثة</td><td>ماذا يحتاج الطفل؟</td></tr>
+          <tr><td><b>المشكلات والكنوز</b></td><td>علاج السلوك واستثمار المرحلة</td><td>كيف نتعامل مع التحدّيات؟</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h3>رحلة الطفل في هذا الجزء</h3>
+      <div class="timeline">
+        <div class="tl-step"><div class="tl-dot">🌱</div><div class="tl-lab">النطفة</div><div class="tl-sub">الإعداد والنيّة</div></div>
+        <div class="tl-step"><div class="tl-dot">🤰</div><div class="tl-lab">الحمل</div><div class="tl-sub">أطوار الخلق</div></div>
+        <div class="tl-step"><div class="tl-dot">👶</div><div class="tl-lab">الولادة</div><div class="tl-sub">سنن المولود</div></div>
+        <div class="tl-step"><div class="tl-dot">🍼</div><div class="tl-lab">الرضاعة</div><div class="tl-sub">حولان كاملان</div></div>
+        <div class="tl-step"><div class="tl-dot">🧒</div><div class="tl-lab">الثالثة</div><div class="tl-sub">تأسيس الفطرة</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>كيف تستفيد من هذا التطبيق؟</h3>
+      <ul>
+        <li>اقرأ <b>التأصيل</b> أوّلًا ولو كنت مستعجلًا؛ فكل ما بعده مبنيّ عليه.</li>
+        <li>انتقل إلى الباب الذي يوافق مرحلتك الحالية: مقبلٌ على الزواج، أو حاملٌ، أو لديك رضيعٌ أو طفلٌ صغير.</li>
+        <li>نفّذ بطاقة <b>«طبّقها اليوم»</b> في آخر كل باب؛ فالمعلومة التي لا تُطبَّق تُنسى.</li>
+        <li>راجع بالبطاقات التعليمية، ثم ثبّت بالاختبار، ثم أعد اختبار أخطائك فقط.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOUNDATION -->
+  <section class="view" id="foundation">
+    <div class="sec-head"><div class="k">الباب الأول</div><h2>«جواز مرور» — الفصول العشرة</h2></div>
+    <p style="margin-bottom:16px;color:var(--ink-soft)">بوّابةٌ لا يُنتقل منها إلى العمل إلا بعد استيعاب مفاهيمها التأسيسية. سُمّي «جواز مرور» لأن من يدخل التطبيق دون هذه المفاهيم يتعامل مع الأحكام والوسائل كقطعٍ متناثرة بلا رابط.</p>
+
+    <div class="card"><h3><span class="n">١</span> معنى التربية بالوحيين</h3>
+      <p><b>التربية لغةً</b> تدور على معاني النماء والزيادة والإصلاح والرعاية؛ ومنه «ربّ» الشيءَ إذا أصلحه وقام عليه. و<b>اصطلاحًا</b> في منهج الكتاب: تنشئة الطفل تنشئةً شاملةً متدرّجةً — روحيًّا ونفسيًّا وعقليًّا وجسديًّا واجتماعيًّا — وفق القرآن والسنّة الصحيحة بفهم السلف، حتى يبلغ كماله الممكن عبدًا لله.</p>
+      <h4>أركان المفهوم</h4>
+      <ul>
+        <li><b>المصدر:</b> الوحي المعصوم، لا الهوى ولا مجرّد الموروث ولا الوافد.</li>
+        <li><b>المربّي:</b> الوالدان أوّلًا، ثم من يعاونهما.</li>
+        <li><b>الأداة:</b> القدوة أوّلًا، ثم البيئة، ثم الكلمة والموقف.</li>
+        <li><b>الغاية:</b> عبدٌ لله صالحٌ نافعٌ لنفسه وأمّته.</li>
+        <li><b>الصفة:</b> تدرّجٌ يواكب نموّ الطفل، فلا يُطلب من الرضيع ما يُطلب من المميّز.</li>
+      </ul>
+      <h4>الفرق بين التربية والتعليم</h4>
+      <p>التعليم ينقل المعلومة إلى العقل، والتربية تبني الإنسان كلّه: عقيدته وخلقه وعاداته ومشاعره. قد يكون الطفل كثير المعلومات قليل التربية، والعكس.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٢</span> لماذا الوحيان لا المناهج الوافدة؟</h3>
+      <p>كل منهجٍ تربويّ يجيب — صراحةً أو ضمنًا — عن ثلاثة أسئلة: <b>من الإنسان؟ ولماذا خُلق؟ وما الخير والشرّ؟</b> وإجاباتُها تحدّد الوسائل والأهداف. فمن رأى الإنسان كائنًا مادّيًّا غايته اللذّة والنجاح الدنيويّ ربّاه لذلك، ومن رآه عبدًا مخلوقًا لغايةٍ ربّاه على العبودية.</p>
+      <div class="verse">﴿وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ﴾<span class="ref">الذاريات ٥٦ — الغاية التي تُبنى عليها التربية</span></div>
+      <h4>حجج الكاتبة</h4>
+      <ul>
+        <li>الوحي من عند الخالق العليم بما يُصلح خلقه: ﴿أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ﴾ (الملك ١٤).</li>
+        <li>المناهج الوافدة تتغيّر بتغيّر النظريات، والأخلاق فيها نسبيّة، بينما ثوابت الوحي لا تتبدّل.</li>
+        <li>نقل الوسيلة دون وعيٍ بمرجعيّتها قد يغرس قيمًا تصادم دين الطفل من حيث لا يشعر الوالدان.</li>
+      </ul>
+      <div class="note"><b>تحريرٌ مهمّ:</b> هذا لا يعني رفض كل ما في علوم التربية ونموّ الطفل؛ فما وافق الوحي ولم يصادمه من الوسائل النافعة يُستفاد منه، و«الحكمة ضالّة المؤمن» معنًى صحيح. والعبرة بالمرجعية والغاية.</div>
+      <div class="note crit"><b>نقد:</b> يؤخذ على الكاتبة الإكثار من التقليل من المناهج الأخرى دون دراسةٍ متعمّقة موثّقة لها.</div>
+    </div>
+
+    <div class="card"><h3><span class="n">٣</span> مقاصد التربية بالوحيين</h3>
+      <ol style="margin:6px 22px 6px 0;color:var(--ink-soft)">
+        <li><b>تحقيق العبودية لله</b> — أمّ المقاصد، وإليها ترجع البقية.</li>
+        <li><b>حفظ الفطرة</b> السليمة التي وُلد عليها الطفل من التلوّث.</li>
+        <li><b>بناء شخصيةٍ متوازنة</b> قويّةٍ في دينها وبدنها ونفسها.</li>
+        <li><b>إعداد لبنةٍ صالحةٍ للأمّة</b> نافعةٍ لغيرها لا منغلقةٍ على ذاتها.</li>
+        <li><b>سعادة الدارين</b> للطفل ولوالديه.</li>
+      </ol>
+      <div class="hadith-box">«إذا مات الإنسانُ انقطع عنه عملُه إلا من ثلاث: صدقةٍ جارية، أو علمٍ يُنتفَع به، أو ولدٍ صالحٍ يدعو له»<span class="ref">رواه مسلم</span></div>
+      <p>فالولد الصالح من العمل الذي لا ينقطع، وفي هذا أقوى دافعٍ للوالدين على الصبر في التربية.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٤</span> متى نستعد؟</h3>
+      <p>تقرّر الكاتبة أن التربية تبدأ <b>قبل الولادة بزمنٍ طويل</b>، وترتّب البدايات هكذا:</p>
+      <ul>
+        <li><b>قبل الزواج:</b> بإصلاح النفس وحسن اختيار الشريك.</li>
+        <li><b>بعد الزواج وقبل الحمل:</b> باستقرار العلاقة الزوجية، وتصحيح النيّة، والدعاء.</li>
+        <li><b>أثناء الحمل:</b> برعاية الأمّ صحيًّا ونفسيًّا وروحيًّا.</li>
+        <li><b>منذ الولادة:</b> بالسنن والأحكام ثم الرعاية اليومية.</li>
+      </ul>
+      <div class="hadith-box">«تُنكَح المرأة لأربع: لمالها ولحسبها ولجمالها ولدينها، فاظفَر بذات الدِّين تربت يداك»<span class="ref">متفق عليه</span></div>
+    </div>
+
+    <div class="card"><h3><span class="n">٥</span> كيف نستعد؟</h3>
+      <h4>١) العلم</h4>
+      <p>لا يُربّي أحدٌ على ما لا يعلم. فيحتاج الوالدان إلى علمٍ شرعيّ بما يخصّ الطفل من أحكام، وعلمٍ بمراحل نموّه وحاجاته.</p>
+      <h4>٢) القدوة</h4>
+      <div class="verse">﴿لَّقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ﴾<span class="ref">الأحزاب ٢١</span></div>
+      <div class="verse">﴿يَا أَيُّهَا الَّذِينَ آمَنُوا لِمَ تَقُولُونَ مَا لَا تَفْعَلُونَ﴾<span class="ref">الصف ٢</span></div>
+      <p>الطفل يرى قبل أن يسمع، ويقلّد قبل أن يفهم؛ فالتناقض بين قول المربّي وفعله يهدم أثر كلامه.</p>
+      <h4>٣) الدعاء</h4>
+      <div class="verse">﴿رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ الدُّعَاءِ﴾<span class="ref">آل عمران ٣٨ — دعاء زكريا</span></div>
+      <div class="verse">﴿رَبِّ هَبْ لِي مِنَ الصَّالِحِينَ﴾<span class="ref">الصافات ١٠٠ — دعاء إبراهيم</span></div>
+      <div class="hadith-box">«لا تدعوا على أنفسكم، ولا تدعوا على أولادكم، ولا تدعوا على أموالكم، لا توافقوا من الله ساعةً يُسأل فيها عطاءٌ فيستجيب لكم»<span class="ref">رواه مسلم — فالدعاء للطفل لا عليه</span></div>
+      <h4>٤) الصبر والاستعانة بالله</h4>
+      <div class="verse">﴿وَأْمُرْ أَهْلَكَ بِالصَّلَاةِ وَاصْطَبِرْ عَلَيْهَا﴾<span class="ref">طه ١٣٢ — «اصطبر» صيغة مبالغة في الصبر</span></div>
+    </div>
+
+    <div class="card"><h3><span class="n">٦</span> لماذا الطفولة المبكّرة؟</h3>
+      <ul>
+        <li><b>مرحلة التشكّل:</b> تتكوّن فيها الثقة بالعالم، والتعلّق بالوالدين، وأولى العادات.</li>
+        <li><b>البصمة الأعمق:</b> ما يُغرَس فيها يرسخ رسوخًا يصعب تغييره لاحقًا.</li>
+        <li><b>عناية الشرع بها:</b> أفردها بأحكامٍ تبدأ من لحظة الولادة: التحنيك والتسمية والعقيقة والرضاعة والحضانة.</li>
+        <li><b>الحواسّ أبواب التعلّم الأولى:</b></li>
+      </ul>
+      <div class="verse">﴿وَاللَّهُ أَخْرَجَكُم مِّن بُطُونِ أُمَّهَاتِكُمْ لَا تَعْلَمُونَ شَيْئًا وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ لَعَلَّكُمْ تَشْكُرُونَ﴾<span class="ref">النحل ٧٨ — قُدّم السمع لأنه أسبق الحواسّ عملًا</span></div>
+      <p>فالطفل يولد لا يعلم شيئًا، ثم تمتلئ حواسّه بما حوله؛ ومن هنا أهمية ما يسمعه ويراه منذ أيامه الأولى.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٧</span> الطفل نعمةٌ وأمانةٌ وابتلاء</h3>
+      <div class="verse">﴿الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا﴾<span class="ref">الكهف ٤٦ — نعمةٌ وزينة</span></div>
+      <div class="verse">﴿إِنَّمَا أَمْوَالُكُمْ وَأَوْلَادُكُمْ فِتْنَةٌ ۚ وَاللَّهُ عِندَهُ أَجْرٌ عَظِيمٌ﴾<span class="ref">التغابن ١٥ — ابتلاءٌ واختبار</span></div>
+      <div class="hadith-box">«كلُّكم راعٍ وكلُّكم مسؤولٌ عن رعيّته ... والرجل راعٍ في أهله وهو مسؤولٌ عن رعيّته، والمرأة راعيةٌ في بيت زوجها ومسؤولةٌ عن رعيّتها»<span class="ref">متفق عليه — أمانةٌ يُسأل عنها</span></div>
+      <p>فالطفل يُشكر الله عليه، ويُحفظ كأمانة، ويُتعامل معه كاختبارٍ يرجو الوالدان فيه الأجر.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٨</span> الفطرة: نقطة الانطلاق</h3>
+      <div class="verse">﴿فَأَقِمْ وَجْهَكَ لِلدِّينِ حَنِيفًا ۚ فِطْرَتَ اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا ۚ لَا تَبْدِيلَ لِخَلْقِ اللَّهِ﴾<span class="ref">الروم ٣٠</span></div>
+      <div class="hadith-box">«ما من مولودٍ إلا يولد على الفطرة، فأبواه يُهوِّدانه أو يُنصِّرانه أو يُمجِّسانه»<span class="ref">متفق عليه</span></div>
+      <h4>ما يُستفاد</h4>
+      <ul>
+        <li>الأصل في الطفل الخير والاستعداد للتوحيد، فالتربية <b>حفظٌ وتعهّد</b> لا صناعةٌ من فراغ.</li>
+        <li>البيئة — وأوّلها الوالدان — هي العامل الأقوى في انحراف الفطرة أو استقامتها.</li>
+        <li>التربية الموافقة للفطرة سهلةٌ مقبولة، والمصادمة لها متعبةٌ قليلة الثمرة.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3><span class="n">٩</span> شمولية التربية</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الجانب</th><th>مثالٌ في هذه المرحلة</th></tr></thead>
+        <tbody>
+          <tr><td><b>الإيمانيّ</b></td><td>أجواء الذكر والقرآن والقدوة في الصلاة</td></tr>
+          <tr><td><b>النفسيّ</b></td><td>الأمان والحنان والاستقرار</td></tr>
+          <tr><td><b>العقليّ</b></td><td>تسمية الأشياء، الحوار، اللعب الذي يُنمّي الإدراك</td></tr>
+          <tr><td><b>الاجتماعيّ</b></td><td>الرابطة بالوالدين، العدل بين الإخوة، آداب السلام</td></tr>
+          <tr><td><b>الجسديّ</b></td><td>الرضاعة والتغذية والنوم والنظافة والحركة</td></tr>
+          <tr><td><b>الماليّ</b></td><td>النفقة بالمعروف والقدوة في الاعتدال</td></tr>
+        </tbody>
+      </table></div>
+      <p>والخلل الشائع: الاهتمام بالجسد والتعليم وإهمال النفس والإيمان، أو الاهتمام بالشعائر الظاهرة وإهمال الحنان والأمان.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">١٠</span> الخطة السداسية</h3>
+      <p>خلاصة الباب الأول: إطارٌ من ستة محاور يحوّل التربية من ردود أفعال إلى عملٍ منظّم:</p>
+      <div class="tw"><table>
+        <thead><tr><th>المحور</th><th>سؤاله</th><th>تطبيقه في الطفولة المبكّرة</th></tr></thead>
+        <tbody>
+          <tr><td><b>١. غايةٌ واضحة</b></td><td>لماذا نربّي؟</td><td>العبودية لله وحفظ الفطرة</td></tr>
+          <tr><td><b>٢. وسائل منضبطة</b></td><td>بماذا نربّي؟</td><td>القدوة والبيئة والحنان والتكرار</td></tr>
+          <tr><td><b>٣. مراحل متدرّجة</b></td><td>متى وبأيّ قدر؟</td><td>لا تلقينٌ مجرّد، بل تعويدٌ وأجواء</td></tr>
+          <tr><td><b>٤. شمولية</b></td><td>أيّ جوانب؟</td><td>الجوانب الستة معًا</td></tr>
+          <tr><td><b>٥. قدوة ومتابعة وتقويم</b></td><td>هل ننجح؟</td><td>مراجعةٌ أسبوعية بين الوالدين</td></tr>
+          <tr><td><b>٦. استعانة ودعاء</b></td><td>بمن نستعين؟</td><td>الدعاء للطفل يوميًّا والتوكّل</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="note"><b>خلاصة الباب:</b> التربية عبادةٌ وأمانة، مصدرها الوحيان، غايتها العبودية لله، تبدأ قبل الولادة، أداتها الأولى القدوة، وتشمل الإنسان كلّه، وتنتظم في الخطة السداسية.</div>
+
+    <div class="tip"><span class="ic">💡</span><div><b>طبّقها اليوم:</b> اكتب في جملةٍ واحدةٍ «لماذا أربّي؟»، وعلّقها حيث تراها كل صباح — فوضوح الغاية يضبط قراراتك اليومية.</div></div>
+  </section>
+
+  <!-- PREP -->
+  <section class="view" id="prep">
+    <div class="sec-head"><div class="k">الأبواب التطبيقية</div><h2>الإعداد وما قبل الحمل · النطفة والحمل</h2></div>
+
+    <h3 class="part">أوّلًا: مرحلة الإعداد وما قبل الحمل</h3>
+    <p style="margin-bottom:14px;color:var(--ink-soft)">أوّل حلقات التربية وأكثرها إغفالًا؛ لأن أكثر الناس يظنّون أن التربية تبدأ حين يكبر الطفل ويفهم.</p>
+
+    <div class="card"><h3>١) اختيار شريك الحياة</h3>
+      <div class="hadith-box">«تُنكَح المرأة لأربع: لمالها ولحسبها ولجمالها ولدينها، فاظفَر بذات الدِّين تربت يداك»<span class="ref">متفق عليه</span></div>
+      <div class="hadith-box">«إذا خطب إليكم من ترضون دِينه وخُلُقه فزوّجوه»<span class="ref">رواه الترمذي وحسّنه</span></div>
+      <h4>لماذا الدين والخلق؟</h4>
+      <p>لأن الأمّ والأب هما المدرسة الأولى؛ والطفل يأخذ من دين والديه وأخلاقهما بالمعايشة اليومية أكثر مما يأخذ بالتعليم. فاختيار الشريك هو في حقيقته <b>اختيارٌ لأمّ أولادك أو أبيهم</b>.</p>
+      <h4>معايير مكمّلة</h4>
+      <ul>
+        <li><b>التقارب في التصوّر التربويّ:</b> الاتفاق المبدئيّ على المرجعية يقلّل التنازع لاحقًا.</li>
+        <li><b>الاستقرار النفسيّ والقدرة على تحمّل المسؤولية.</b></li>
+        <li><b>الاستخارة والاستشارة:</b> الاستخارة لله، والاستشارة لأهل الخبرة.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٢) إصلاح الوالدين أنفسهما</h3>
+      <p>«فاقد الشيء لا يعطيه»: من أراد ولدًا يصلّي فليُصلِّ، ومن أراد ولدًا صادقًا فليصدق. ويذكر الكتاب أثر صلاح الوالدين في حفظ الذرية:</p>
+      <div class="verse">﴿وَأَمَّا الْجِدَارُ فَكَانَ لِغُلَامَيْنِ يَتِيمَيْنِ فِي الْمَدِينَةِ وَكَانَ تَحْتَهُ كَنزٌ لَّهُمَا وَكَانَ أَبُوهُمَا صَالِحًا﴾<span class="ref">الكهف ٨٢ — حُفظ الكنز لصلاح الأب</span></div>
+      <div class="verse">﴿وَلْيَخْشَ الَّذِينَ لَوْ تَرَكُوا مِنْ خَلْفِهِمْ ذُرِّيَّةً ضِعَافًا خَافُوا عَلَيْهِمْ فَلْيَتَّقُوا اللَّهَ وَلْيَقُولُوا قَوْلًا سَدِيدًا﴾<span class="ref">النساء ٩ — التقوى سببٌ لحفظ الذرية</span></div>
+      <h4>الكسب الحلال</h4>
+      <p>الغذاء الطيّب من المال الحلال من أسباب الصلاح وقبول الدعاء، والإنفاق على الأهل من أعظم الصدقات:</p>
+      <div class="hadith-box">«دينارٌ أنفقتَه في سبيل الله، ودينارٌ أنفقتَه في رقبة، ودينارٌ تصدّقتَ به على مسكين، ودينارٌ أنفقتَه على أهلك؛ أعظمُها أجرًا الذي أنفقتَه على أهلك»<span class="ref">رواه مسلم</span></div>
+    </div>
+
+    <div class="card"><h3>٣) تصحيح نيّة الإنجاب</h3>
+      <p>يطلب المسلم الولد لا للمباهاة ولا لمجرّد العادة الاجتماعية، بل ليكون عبدًا لله نافعًا وامتدادًا للخير. وأوضح نموذجٍ لذلك امرأة عمران:</p>
+      <div class="verse">﴿إِذْ قَالَتِ امْرَأَتُ عِمْرَانَ رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي مُحَرَّرًا فَتَقَبَّلْ مِنِّي ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ﴾<span class="ref">آل عمران ٣٥</span></div>
+      <p>نذرت جنينها لله قبل أن تعرف جنسه، فجاءت الثمرة: ﴿فَتَقَبَّلَهَا رَبُّهَا بِقَبُولٍ حَسَنٍ وَأَنبَتَهَا نَبَاتًا حَسَنًا﴾ (آل عمران ٣٧).</p>
+    </div>
+
+    <div class="card"><h3>٤) الدعاء بالذرية الصالحة</h3>
+      <div class="verse">﴿رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا﴾<span class="ref">الفرقان ٧٤</span></div>
+      <div class="verse">﴿رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ﴾<span class="ref">إبراهيم ٤٠</span></div>
+      <p>لاحظ أن الأنبياء طلبوا <b>الصلاح</b> لا مجرّد الولد: «طيّبة»، «من الصالحين»، «قرّة أعين».</p>
+    </div>
+
+    <div class="card"><h3>٥) أدب طلب الولد</h3>
+      <div class="hadith-box">«لو أنّ أحدهم إذا أراد أن يأتي أهله قال: بسم الله، اللهمّ جنّبنا الشيطان وجنّب الشيطان ما رزقتنا؛ فإنه إن يُقدَّر بينهما ولدٌ في ذلك لم يضرّه شيطانٌ أبدًا»<span class="ref">متفق عليه</span></div>
+      <p>فأوّل لحظةٍ في وجود الطفل تبدأ بذكر الله والاستعاذة له.</p>
+    </div>
+
+    <div class="card"><h3>٦) تهيئة البيت والبيئة</h3>
+      <ul>
+        <li><b>استقرار العلاقة الزوجية:</b> المودّة والرحمة بين الزوجين أوّل ما يتنفّسه الطفل: ﴿وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً﴾ (الروم ٢١).</li>
+        <li><b>بيتٌ عامرٌ بالذكر:</b> قراءة القرآن والصلاة فيه.</li>
+        <li><b>الاتفاق المسبق</b> بين الزوجين على الخطوط الكبرى للتربية.</li>
+        <li><b>الاستعداد العمليّ</b> للمولود: المكان والحاجات والنفقة.</li>
+      </ul>
+    </div>
+
+    <h3 class="part">ثانيًا: النطفة والحمل — رحلة الخلق</h3>
+
+    <div class="card"><h3>١) أطوار الخلق في القرآن</h3>
+      <div class="verse">﴿وَلَقَدْ خَلَقْنَا الْإِنسَانَ مِن سُلَالَةٍ مِّن طِينٍ ۝ ثُمَّ جَعَلْنَاهُ نُطْفَةً فِي قَرَارٍ مَّكِينٍ ۝ ثُمَّ خَلَقْنَا النُّطْفَةَ عَلَقَةً فَخَلَقْنَا الْعَلَقَةَ مُضْغَةً فَخَلَقْنَا الْمُضْغَةَ عِظَامًا فَكَسَوْنَا الْعِظَامَ لَحْمًا ثُمَّ أَنشَأْنَاهُ خَلْقًا آخَرَ ۚ فَتَبَارَكَ اللَّهُ أَحْسَنُ الْخَالِقِينَ﴾<span class="ref">المؤمنون ١٢–١٤</span></div>
+      <div class="verse">﴿يَخْلُقُكُمْ فِي بُطُونِ أُمَّهَاتِكُمْ خَلْقًا مِّن بَعْدِ خَلْقٍ فِي ظُلُمَاتٍ ثَلَاثٍ﴾<span class="ref">الزمر ٦</span></div>
+      <div class="tw"><table>
+        <thead><tr><th>الطور</th><th>المعنى المختصر</th></tr></thead>
+        <tbody>
+          <tr><td><b>النطفة</b></td><td>الماء القليل، بداية التكوين</td></tr>
+          <tr><td><b>العلقة</b></td><td>ما يعلق بجدار الرحم</td></tr>
+          <tr><td><b>المضغة</b></td><td>قطعةٌ صغيرة كقدر ما يُمضغ</td></tr>
+          <tr><td><b>العظام ثم اللحم</b></td><td>تكوّن الهيكل ثم كسوته</td></tr>
+          <tr><td><b>خلقًا آخر</b></td><td>نفخ الروح وتمام الخلقة</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card"><h3>٢) حديث التقدير ونفخ الروح</h3>
+      <div class="hadith-box">«إنّ أحدكم يُجمَع خلقُه في بطن أمّه أربعين يومًا نطفة، ثم يكون علقةً مثل ذلك، ثم يكون مضغةً مثل ذلك، ثم يُرسَل الملَك فينفخ فيه الروح، ويُؤمر بأربع كلمات: بكَتْب رزقه وأجله وعمله وشقيٌّ أو سعيد»<span class="ref">متفق عليه — من حديث ابن مسعود</span></div>
+      <h4>دروسٌ تربوية للوالدين</h4>
+      <ul>
+        <li><b>الطمأنينة:</b> الرزق والأجل مكتوبان، فلا مكان للقلق المفرط على مستقبل الجنين.</li>
+        <li><b>التوازن بين القدر والعمل:</b> الكتابة لا تلغي الأخذ بالأسباب، بل هي دافعٌ للعمل مع التوكّل.</li>
+        <li><b>حرمة الجنين:</b> هو خلقٌ يدبّره الله، فالاعتداء عليه محرّم، وما يتعلّق بحالات الضرورة الطبية يُرجع فيه لأهل العلم.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٣) الحمل «وهنٌ على وهن»</h3>
+      <div class="verse">﴿حَمَلَتْهُ أُمُّهُ وَهْنًا عَلَىٰ وَهْنٍ وَفِصَالُهُ فِي عَامَيْنِ﴾<span class="ref">لقمان ١٤</span></div>
+      <div class="verse">﴿حَمَلَتْهُ أُمُّهُ كُرْهًا وَوَضَعَتْهُ كُرْهًا ۖ وَحَمْلُهُ وَفِصَالُهُ ثَلَاثُونَ شَهْرًا﴾<span class="ref">الأحقاف ١٥</span></div>
+      <p>اعترف القرآن بمشقّة الحمل والولادة، وجعلها سببًا لعظيم حقّ الأمّ. ومن جمع الآيتين استنبط العلماء أن <b>أقلّ الحمل ستة أشهر</b> (ثلاثون شهرًا ناقص حولين).</p>
+    </div>
+
+    <div class="card"><h3>٤) رعاية الأمّ الحامل</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الجانب</th><th>ما يُراعى</th></tr></thead>
+        <tbody>
+          <tr><td><b>الصحيّ</b></td><td>تغذيةٌ متوازنة، راحة، متابعةٌ طبية منتظمة، اجتناب الدخان والضارّ</td></tr>
+          <tr><td><b>النفسيّ</b></td><td>تخفيف الضغوط، والاستماع لمخاوفها، والطمأنة</td></tr>
+          <tr><td><b>الروحيّ</b></td><td>ذكرٌ وتلاوةٌ ودعاء، واستحضار النيّة الصالحة</td></tr>
+          <tr><td><b>الاجتماعيّ</b></td><td>مساندة الزوج والأهل، وتقاسم الأعباء</td></tr>
+        </tbody>
+      </table></div>
+      <h4>دور الأب أثناء الحمل</h4>
+      <p>ليس متفرّجًا: يخفّف الأعباء، ويرفق بالزوجة، ويشاركها الاستعداد، ويدعو معها. واستقرار الأمّ النفسيّ بدعم الزوج ينعكس على الجنين.</p>
+    </div>
+
+    <div class="card"><h3>٥) من رحمة الشريعة بالحامل</h3>
+      <ul>
+        <li><b>الصيام:</b> يجوز لها الفطر إن خافت على نفسها أو جنينها، وفي القضاء والفدية تفصيلٌ بين الفقهاء.</li>
+        <li><b>الرفق في العبادات:</b> الصلاة بحسب الاستطاعة جالسةً إن شقّ القيام.</li>
+        <li><b>النفقة:</b> للحامل حقّ النفقة: ﴿وَإِن كُنَّ أُولَاتِ حَمْلٍ فَأَنفِقُوا عَلَيْهِنَّ حَتَّىٰ يَضَعْنَ حَمْلَهُنَّ﴾ (الطلاق ٦).</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٦) الاستعداد للولادة</h3>
+      <ul>
+        <li>تجهيز ما يحتاجه المولود والأمّ في النفاس.</li>
+        <li>الاتفاق على من يحنّك المولود، وعلى الاسم، وترتيب العقيقة.</li>
+        <li>تهيئة الإخوة الكبار لقدوم المولود الجديد تقليلًا للغيرة.</li>
+        <li>الدعاء بتيسير الولادة وسلامة الأمّ والجنين.</li>
+      </ul>
+    </div>
+
+    <div class="note"><b>خلاصة الباب:</b> التربية تبدأ باختيار الشريك وإصلاح النفس وتصحيح النيّة، ثم تمرّ بالحمل حيث الرحم أوّل بيئات الطفل، وعناية الأمّ صحيًّا ونفسيًّا وروحيًّا — بمساندة الأب — جزءٌ من التربية.</div>
+
+    <div class="tip"><span class="ic">💡</span><div><b>طبّقها اليوم:</b> خصّص للأمّ الحامل وقتًا يوميًّا هادئًا مع تلاوةٍ أو ذكر — الطمأنينة التي تعيشها الأمّ تصل إلى جنينها.</div></div>
+  </section>
+
+  <!-- BIRTH -->
+  <section class="view" id="birth">
+    <div class="sec-head"><div class="k">أحكام السنّة</div><h2>الولادة وأحكامها</h2></div>
+    <p style="margin-bottom:16px;color:var(--ink-soft)">يستقبل الإسلام المولود بمنظومةٍ من السنن، كلٌّ منها يحمل معنًى تربويًّا: الشكر، والتوحيد، والبركة، والهوية، والتكافل، والطهارة.</p>
+
+    <div class="tw" style="margin-bottom:18px"><table>
+      <thead><tr><th>التوقيت</th><th>السنن</th></tr></thead>
+      <tbody>
+        <tr><td><b>لحظة الولادة</b></td><td>الحمد والشكر، البشارة، الدعاء للمولود، (التأذين على خلاف)</td></tr>
+        <tr><td><b>اليوم الأول</b></td><td>التحنيك، الرضاعة المبكّرة، التسمية (جائزة)</td></tr>
+        <tr><td><b>اليوم السابع</b></td><td>العقيقة، حلق الرأس والتصدّق بوزنه، التسمية</td></tr>
+        <tr><td><b>بعد ذلك</b></td><td>الختان (يُستحبّ التبكير)، تسجيل النسب</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="card"><h3>١) البشارة والفرح والتهنئة</h3>
+      <p>البشارة بالمولود سنّةٌ قرآنية؛ فقد بشّرت الملائكة إبراهيم وزكريا:</p>
+      <div class="verse">﴿يَا زَكَرِيَّا إِنَّا نُبَشِّرُكَ بِغُلَامٍ اسْمُهُ يَحْيَىٰ﴾<span class="ref">مريم ٧</span></div>
+      <h4>المساواة في الفرح بين الذكر والأنثى</h4>
+      <div class="verse">﴿وَإِذَا بُشِّرَ أَحَدُهُم بِالْأُنثَىٰ ظَلَّ وَجْهُهُ مُسْوَدًّا وَهُوَ كَظِيمٌ﴾<span class="ref">النحل ٥٨ — ذمّ عادة الجاهلية</span></div>
+      <div class="verse">﴿يَهَبُ لِمَن يَشَاءُ إِنَاثًا وَيَهَبُ لِمَن يَشَاءُ الذُّكُورَ﴾<span class="ref">الشورى ٤٩ — قُدّم ذكر الإناث</span></div>
+      <div class="hadith-box">«من عال جاريتين حتى تبلغا جاء يوم القيامة أنا وهو» وضمّ أصابعه<span class="ref">رواه مسلم — فضل تربية البنات</span></div>
+      <h4>صيغ التهنئة</h4>
+      <p>يُدعى للمولود ولوالديه بالبركة. ومما أُثر عن السلف: «بارك الله لك في الموهوب لك، وشكرتَ الواهب، وبلغ أشدّه، ورُزقتَ برّه».</p>
+    </div>
+
+    <div class="card"><h3>٢) التأذين في أذن المولود</h3>
+      <p>المقصد المذكور: أن يكون أوّل ما يقرع سمعه كلمات التوحيد.</p>
+      <div class="note"><b>تنبيه حديثيّ:</b> حديث التأذين (من رواية أبي رافع عند أبي داود والترمذي) <b>مختلَفٌ في ثبوته</b>؛ حسّنه بعضهم وضعّفه كثيرٌ من المحدّثين، وأما زيادة الإقامة في اليسرى فأضعف. فمن فعله فعلى استحسانٍ واتّباعٍ لمن قوّاه، ومن تركه فلضعف الدليل عنده، والأمر واسع.</div>
+    </div>
+
+    <div class="card"><h3>٣) التحنيك</h3>
+      <p><b>صفته:</b> أن يُمضغ تمرٌ حتى يلين، ثم يُدلك به حنك المولود (داخل الفم أعلاه).</p>
+      <div class="hadith-box">«وُلد لي غلامٌ فأتيتُ به النبيَّ ﷺ فسمّاه إبراهيم، فحنّكه بتمرةٍ ودعا له بالبركة، ودفعه إليّ»<span class="ref">متفق عليه — من حديث أبي موسى</span></div>
+      <h4>ما يُستفاد</h4>
+      <ul>
+        <li>استحباب حمل المولود إلى رجلٍ صالحٍ يحنّكه ويدعو له.</li>
+        <li>اقتران التحنيك بالتسمية والدعاء بالبركة.</li>
+        <li>البدء بالحلو والطيّب.</li>
+      </ul>
+      <div class="note"><b>تنبيهٌ صحيّ:</b> يُراعى في التحنيك اليوم النظافة التامة، والكمية اليسيرة جدًّا، واستشارة الطبيب في الحالات الخاصة (كالخدّج أو مشكلات السكر).</div>
+    </div>
+
+    <div class="card"><h3>٤) التسمية بالاسم الحسن</h3>
+      <div class="hadith-box">«إنّ أحبَّ أسمائكم إلى الله عبدُ الله وعبدُ الرحمن»<span class="ref">رواه مسلم</span></div>
+      <div class="hadith-box">«وُلد لي الليلةَ غلامٌ فسمّيته باسم أبي إبراهيم»<span class="ref">رواه مسلم — التسمية يوم الولادة</span></div>
+      <div class="tw"><table>
+        <thead><tr><th>الدرجة</th><th>أمثلة وضوابط</th></tr></thead>
+        <tbody>
+          <tr><td><b>الأحبّ</b></td><td>عبد الله، عبد الرحمن، وما عُبّد لأسماء الله</td></tr>
+          <tr><td><b>المستحسن</b></td><td>أسماء الأنبياء والصالحين، والأسماء ذات المعنى الطيّب</td></tr>
+          <tr><td><b>المكروه</b></td><td>ما فيه تزكيةٌ مفرطة أو معنًى منفّر أو ثقيل على السمع</td></tr>
+          <tr><td><b>المحرّم</b></td><td>المعبَّد لغير الله (كعبد النبيّ وعبد الكعبة)، وأسماء الله الخاصة به</td></tr>
+        </tbody>
+      </table></div>
+      <p>وقد <b>غيّر النبيُّ ﷺ أسماءً</b> لقبح معناها، فغيّر «عاصية» إلى «جميلة» (رواه مسلم).</p>
+      <h4>لماذا يهتمّ الإسلام بالاسم؟</h4>
+      <p>الاسم أوّل هديةٍ للطفل وأوّل هويةٍ له، يُنادى به طول عمره، وقد يكون سببًا لعزّته أو لسخرية الناس منه.</p>
+    </div>
+
+    <div class="card"><h3>٥) العقيقة</h3>
+      <div class="hadith-box">«كلُّ غلامٍ رهينةٌ بعقيقته، تُذبح عنه يوم سابعه، ويُحلَق، ويُسمّى»<span class="ref">رواه أبو داود والترمذي وصحّحه</span></div>
+      <div class="hadith-box">«مع الغلام عقيقة، فأهريقوا عنه دمًا، وأميطوا عنه الأذى»<span class="ref">رواه البخاري</span></div>
+      <div class="hadith-box">«عن الغلام شاتان مكافئتان، وعن الجارية شاة»<span class="ref">رواه أبو داود وغيره — حديث أمّ كُرز</span></div>
+      <div class="tw"><table>
+        <thead><tr><th>المسألة</th><th>الخلاصة</th></tr></thead>
+        <tbody>
+          <tr><td><b>الحكم</b></td><td>سنّةٌ مؤكّدة عند الجمهور</td></tr>
+          <tr><td><b>العدد</b></td><td>للذكر شاتان، وللأنثى شاة (وعند المالكية شاةٌ لكلٍّ منهما)</td></tr>
+          <tr><td><b>الوقت</b></td><td>اليوم السابع، فإن فات فالرابع عشر ثم الحادي والعشرون، وتُجزئ بعده عند كثيرين</td></tr>
+          <tr><td><b>الشروط</b></td><td>شروط الأضحية في السنّ والسلامة من العيوب</td></tr>
+          <tr><td><b>اللحم</b></td><td>يُؤكل ويُهدى ويُتصدّق منه، ويجوز طبخه ودعوة الناس إليه</td></tr>
+        </tbody>
+      </table></div>
+      <h4>معاني «رهينةٌ بعقيقته»</h4>
+      <p>ذكر العلماء فيها أقوالًا، منها: أن العقيقة سببٌ لانطلاق الطفل في الخير وتمام البركة، وأنها كالدين المتعلّق بالوالد حتى يؤدّيه. والقدر المتّفق عليه: تأكيد شأنها.</p>
+    </div>
+
+    <div class="card"><h3>٦) حلق الرأس والتصدّق بوزنه</h3>
+      <p>يُحلق رأس المولود يوم السابع إماطةً للأذى، ويُتصدّق بوزن الشعر فضّةً (أو ما يعادل قيمتها). وقد ورد أن فاطمة رضي الله عنها وزنت شعر الحسن والحسين وتصدّقت بوزنه.</p>
+      <div class="note">في أسانيد أحاديث الوزن كلامٌ، لكن العمل بها مشهورٌ عند أهل العلم، وهو بابُ صدقةٍ وخير.</div>
+      <p><b>المعنى التربويّ:</b> أن يُستقبل الطفل بالعطاء، فيرتبط قدومه بنفع الفقراء منذ أسبوعه الأول.</p>
+    </div>
+
+    <div class="card"><h3>٧) الختان</h3>
+      <div class="hadith-box">«الفطرة خمس: الختان، والاستحداد، ونتف الإبط، وتقليم الأظفار، وقصّ الشارب»<span class="ref">متفق عليه</span></div>
+      <ul>
+        <li><b>حكمه للذكور:</b> واجبٌ عند الشافعية والحنابلة، وسنّةٌ مؤكّدة عند الحنفية والمالكية.</li>
+        <li><b>وقته:</b> يُستحبّ التبكير به لأنه أيسر على الطفل وأسرع في الشفاء، ويجب قبل البلوغ عند من أوجبه.</li>
+        <li><b>حكمته:</b> الطهارة والنظافة، وموافقة ملّة إبراهيم عليه السلام.</li>
+        <li>يُجرى على يد مختصٍّ مع مراعاة السلامة الطبية.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٨) رعاية الأمّ في النفاس</h3>
+      <p>لا تكتمل سنن المولود بإهمال أمّه. فالنفاس مرحلة ضعفٍ جسديّ ونفسيّ، وقد تمرّ الأمّ فيه بتقلّباتٍ مزاجية أو حزنٍ ما بعد الولادة.</p>
+      <ul>
+        <li>الراحة والتغذية الجيّدة ومساندة الأهل.</li>
+        <li>تفهّم مشاعرها وعدم الاستهانة بشكواها، ومراجعة الطبيب إن طال الحزن أو اشتدّ.</li>
+        <li>إعفاؤها من الصلاة والصيام حتى تطهر، رحمةً من الله.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٩) أخطاءٌ شائعة عند الولادة</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الخطأ</th><th>البديل</th></tr></thead>
+        <tbody>
+          <tr><td>التشاؤم بالأنثى أو بوقت الولادة</td><td>الفرح والشكر؛ فالتطيّر منهيٌّ عنه</td></tr>
+          <tr><td>تعليق التمائم والخرز لدفع العين</td><td>التعويذ بالأذكار المشروعة؛ و«من علّق تميمةً فقد أشرك» (رواه أحمد)</td></tr>
+          <tr><td>الإسراف والتفاخر في الاحتفالات</td><td>العقيقة المشروعة بلا تكلّف</td></tr>
+          <tr><td>تأخير العقيقة والتسمية بلا سبب</td><td>المبادرة في السابع إن تيسّر</td></tr>
+          <tr><td>إهمال حال الأمّ النفسية</td><td>المساندة والرفق والمتابعة</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="note"><b>خلاصة الباب:</b> سنن الولادة منظومةٌ تربوية: الشكر بالبشارة، والتوحيد بالذكر، والبركة بالتحنيك، والهوية بالاسم، والتكافل بالعقيقة والصدقة، والطهارة بالختان — مع رعاية الأمّ.</div>
+
+    <div class="tip"><span class="ic">💡</span><div><b>طبّقها اليوم:</b> جهّز «بطاقة سنن المولود» (في الملاحق) قبل الولادة، ووزّع مهامّها بين الأب والأمّ حتى لا تُنسى في زحمة الأيام الأولى.</div></div>
+  </section>
+
+  <!-- NEEDS -->
+  <section class="view" id="needs">
+    <div class="sec-head"><div class="k">من الولادة إلى الثالثة</div><h2>الاحتياجات الخمسة وحقوق الطفل</h2></div>
+    <p style="margin-bottom:16px;color:var(--ink-soft)">يفصّل الكتاب حاجات الطفل في خمسة محاور متكاملة، لا يغني أحدها عن الآخر. ولكلّ محورٍ دليلُه، وطريقة تطبيقه، وما يُتجنَّب فيه.</p>
+
+    <div class="card"><h3>سمات المرحلة باختصار</h3>
+      <div class="tw"><table>
+        <thead><tr><th>المرحلة</th><th>أبرز سماتها</th><th>أهمّ ما يحتاجه</th></tr></thead>
+        <tbody>
+          <tr><td><b>٠–٦ أشهر</b></td><td>اعتمادٌ كامل، تعلّقٌ بالأم، تواصلٌ بالبكاء والنظر</td><td>الأمان، الرضاعة، الاستجابة السريعة</td></tr>
+          <tr><td><b>٦–١٨ شهرًا</b></td><td>جلوسٌ وحبوٌ ومشي، قلق الانفصال، أولى الكلمات</td><td>الثقة، الاستكشاف الآمن، تسمية الأشياء</td></tr>
+          <tr><td><b>١٨–٣٦ شهرًا</b></td><td>رغبةٌ في الاستقلال، عنادٌ ونوبات غضب، لغةٌ متسارعة</td><td>حدودٌ واضحة برفق، اختياراتٌ صغيرة، آدابٌ أولى</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card"><h3>١) الاحتياجات الإيمانية</h3>
+      <div class="verse">﴿وَإِذْ قَالَ لُقْمَانُ لِابْنِهِ وَهُوَ يَعِظُهُ يَا بُنَيَّ لَا تُشْرِكْ بِاللَّهِ ۖ إِنَّ الشِّرْكَ لَظُلْمٌ عَظِيمٌ﴾<span class="ref">لقمان ١٣ — البدء بالتوحيد، والنداء الرفيق «يا بنيّ»</span></div>
+      <div class="verse">﴿وَوَصَّىٰ بِهَا إِبْرَاهِيمُ بَنِيهِ وَيَعْقُوبُ يَا بَنِيَّ إِنَّ اللَّهَ اصْطَفَىٰ لَكُمُ الدِّينَ فَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُّسْلِمُونَ﴾<span class="ref">البقرة ١٣٢ — همّ الأنبياء الأكبر: دين أبنائهم</span></div>
+      <h4>كيف تطبّق في هذه السنّ؟</h4>
+      <ul>
+        <li><b>الأجواء قبل الأوامر:</b> قرآنٌ يُتلى في البيت، ذكرٌ مسموع، صلاةٌ يراها الطفل.</li>
+        <li><b>الأذكار اليومية بصوتٍ مسموع:</b> «بسم الله» عند الأكل واللبس، «الحمد لله» بعد الطعام، أذكار النوم والاستيقاظ — يحفظها الطفل بالتكرار قبل أن يفهمها.</li>
+        <li><b>ربط النِّعم بالله:</b> «الله خلق هذه الوردة»، «الله أعطانا الماء» بكلماتٍ قصيرة محبّبة.</li>
+        <li><b>التعويذ:</b> كان النبيّ ﷺ يعوّذ الحسن والحسين: «أُعيذكما بكلمات الله التامّة من كلّ شيطانٍ وهامّة، ومن كلّ عينٍ لامّة» (رواه البخاري).</li>
+        <li><b>حفظه عند المساء:</b> «إذا كان جُنح الليل فكُفّوا صبيانكم؛ فإنّ الشياطين تنتشر حينئذ» (متفق عليه).</li>
+      </ul>
+      <div class="note crit"><b>يُتجنّب:</b> ربط الله بالتخويف والعقاب وحده («الله سيحرقك»)؛ فالطفل في هذه السنّ يُعرَّف بالله الرحيم الكريم أوّلًا.</div>
+    </div>
+
+    <div class="card"><h3>٢) الاحتياجات النفسية</h3>
+      <div class="hadith-box">قبّل النبيُّ ﷺ الحسنَ بن عليّ، فقال الأقرع بن حابس: إنّ لي عشرةً من الولد ما قبّلتُ منهم أحدًا، فقال ﷺ: «مَن لا يَرحم لا يُرحَم»<span class="ref">متفق عليه</span></div>
+      <div class="hadith-box">«ما رأيتُ أحدًا كان أرحم بالعيال من رسول الله ﷺ»<span class="ref">رواه مسلم — من قول أنس</span></div>
+      <div class="hadith-box">«إنّي لأقوم في الصلاة أريد أن أطوّل فيها، فأسمع بكاء الصبيّ فأتجوّز في صلاتي كراهية أن أشقّ على أمّه»<span class="ref">رواه البخاري</span></div>
+      <h4>مشاهد من الرحمة النبوية</h4>
+      <ul>
+        <li>كان ﷺ <b>يحمل أمامة</b> بنت زينب وهو يصلّي، يضعها إذا سجد ويحملها إذا قام (متفق عليه).</li>
+        <li><b>أطال السجود</b> لأن الحسن أو الحسين ارتحله، وقال: «إنّ ابني ارتحلني فكرهتُ أن أُعجله» (رواه النسائي).</li>
+        <li>كان يُقعد أسامة على فخذه والحسن على الأخرى ثم يضمّهما ويقول: «اللهمّ ارحمهما فإنّي أرحمهما» (رواه البخاري).</li>
+      </ul>
+      <h4>كيف تطبّق؟</h4>
+      <ul>
+        <li><b>الاستجابة لبكاء الرضيع</b> لا تُفسده، بل تبني ثقته بأن العالم آمن.</li>
+        <li><b>الاحتضان والتلامس والقُبلة</b> يوميًّا وبلا مناسبة.</li>
+        <li><b>الثبات والروتين:</b> مواعيد متقاربة للنوم والأكل تمنح الطفل شعورًا بالأمان.</li>
+        <li><b>الحضور لا مجرّد الوجود:</b> وقتٌ قصيرٌ بانتباهٍ كامل خيرٌ من ساعاتٍ والهاتف في اليد.</li>
+      </ul>
+      <div class="note crit"><b>يُتجنّب:</b> التخويف (بالغول والطبيب والشرطيّ)، والسخرية، والمقارنة، وتركه يبكي طويلًا دون استجابة في شهوره الأولى.</div>
+    </div>
+
+    <div class="card"><h3>٣) الاحتياجات العقلية واللغوية</h3>
+      <p>وإن لم يكن محورًا منفصلًا في كل التقسيمات، فإن الكتاب يعتني بنموّ الإدراك ضمن الشمولية، وأصله آية الحواسّ:</p>
+      <div class="verse">﴿وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ لَعَلَّكُمْ تَشْكُرُونَ﴾<span class="ref">النحل ٧٨</span></div>
+      <ul>
+        <li><b>الحديث الكثير مع الطفل</b> منذ الولادة، ووصف ما تفعله أمامه.</li>
+        <li><b>تسمية الأشياء</b> وتكرارها، والإصغاء لمحاولاته الكلامية.</li>
+        <li><b>القصص والأناشيد</b> البسيطة.</li>
+        <li><b>ملاطفة الصغير بلغته:</b> كان النبيّ ﷺ يمازح أخًا صغيرًا لأنس: «يا أبا عُمير، ما فعل النُّغَير؟» (متفق عليه) — يسأله عن طائره الصغير.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٤) الاحتياجات الاجتماعية</h3>
+      <div class="hadith-box">«اتّقوا الله واعدلوا بين أولادكم»<span class="ref">متفق عليه — من حديث النعمان بن بشير</span></div>
+      <div class="hadith-box">«ليس منّا من لم يرحم صغيرنا ويعرف شرف كبيرنا»<span class="ref">رواه الترمذي وأبو داود</span></div>
+      <ul>
+        <li><b>الرابطة الأولى</b> مع الأمّ والأب هي نموذج كل علاقاته القادمة.</li>
+        <li><b>توسيع الدائرة تدريجيًّا:</b> الإخوة، الأجداد، الأقارب.</li>
+        <li><b>آداب أوّلية بالقدوة:</b> السلام، الشكر، الاستئذان، المشاركة (مع تفهّم أن المشاركة صعبة قبل الثالثة).</li>
+        <li><b>العدل بين الأولاد</b> في العطاء والاهتمام والقُبلة.</li>
+        <li><b>اللعب</b> حاجةٌ لا ترف: كانت عائشة رضي الله عنها تلعب بالبنات (الدُّمى) في بيت النبيّ ﷺ (رواه البخاري).</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٥) الاحتياجات الصحية والجسدية</h3>
+      <div class="verse">﴿وَالْوَالِدَاتُ يُرْضِعْنَ أَوْلَادَهُنَّ حَوْلَيْنِ كَامِلَيْنِ ۖ لِمَنْ أَرَادَ أَن يُتِمَّ الرَّضَاعَةَ ... فَإِنْ أَرَادَا فِصَالًا عَن تَرَاضٍ مِّنْهُمَا وَتَشَاوُرٍ فَلَا جُنَاحَ عَلَيْهِمَا ۗ وَإِنْ أَرَدتُّمْ أَن تَسْتَرْضِعُوا أَوْلَادَكُمْ فَلَا جُنَاحَ عَلَيْكُمْ﴾<span class="ref">البقرة ٢٣٣</span></div>
+      <h4>دروس آية الرضاعة</h4>
+      <ul>
+        <li><b>الحولان</b> تمام الرضاعة، لا حدٌّ أدنى واجب.</li>
+        <li><b>الفطام قرارٌ مشترك</b> بالتراضي والتشاور بين الأبوين.</li>
+        <li><b>البدائل مشروعة</b> عند الحاجة (المرضع أو غيرها) بلا حرج.</li>
+      </ul>
+      <div class="verse">﴿وَأَوْحَيْنَا إِلَىٰ أُمِّ مُوسَىٰ أَنْ أَرْضِعِيهِ﴾ ... ﴿فَرَدَدْنَاهُ إِلَىٰ أُمِّهِ كَيْ تَقَرَّ عَيْنُهَا وَلَا تَحْزَنَ﴾<span class="ref">القصص ٧، ١٣ — مكانة الرضاعة من الأم</span></div>
+      <h4>بقية الجوانب</h4>
+      <ul>
+        <li><b>التغذية:</b> إدخال الطعام تدريجيًّا بإرشاد الطبيب، وتعليم آداب الأكل بالقدوة: «يا غلام، سمِّ الله، وكُل بيمينك، وكُل مما يليك» (متفق عليه).</li>
+        <li><b>النوم:</b> روتينٌ ثابت، وأذكار النوم، وبيئة هادئة.</li>
+        <li><b>النظافة والطهارة:</b> وتعويده التدريجيّ على استعمال الحمّام حين يستعدّ (غالبًا بين السنتين والثلاث).</li>
+        <li><b>الحركة واللعب الآمن</b> لتقوية البدن: «المؤمن القويّ خيرٌ وأحبّ إلى الله من المؤمن الضعيف» (رواه مسلم).</li>
+        <li><b>الوقاية:</b> التطعيمات والمتابعة الدورية والأخذ بالأسباب مع التوكّل.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>٦) الاحتياجات المالية</h3>
+      <div class="verse">﴿وَعَلَى الْمَوْلُودِ لَهُ رِزْقُهُنَّ وَكِسْوَتُهُنَّ بِالْمَعْرُوفِ ۚ لَا تُكَلَّفُ نَفْسٌ إِلَّا وُسْعَهَا﴾<span class="ref">البقرة ٢٣٣</span></div>
+      <div class="hadith-box">«كفى بالمرء إثمًا أن يضيّع من يقوت»<span class="ref">رواه أبو داود</span></div>
+      <ul>
+        <li><b>النفقة واجبةٌ على الأب</b> بقدر استطاعته، وتشمل الطعام والكسوة والسكن والعلاج.</li>
+        <li><b>الاعتدال:</b> لا إسرافٌ في الألعاب والملابس يُفسد، ولا تقتيرٌ يُحرِم.</li>
+        <li><b>القدوة الاقتصادية:</b> الطفل يلتقط علاقة والديه بالمال (الشكر، القناعة، الصدقة) قبل أن يفهمها.</li>
+        <li><b>إشراكه في الصدقة:</b> أن يناول الفقير بيده ولو كان صغيرًا.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>حقوق الطفل في الإسلام (إطارٌ جامع)</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الحقّ</th><th>دليله أو مأخذه</th></tr></thead>
+        <tbody>
+          <tr><td><b>الحياة</b></td><td>﴿وَلَا تَقْتُلُوا أَوْلَادَكُم مِّنْ إِمْلَاقٍ﴾ (الأنعام ١٥١)</td></tr>
+          <tr><td><b>النسب</b></td><td>﴿ادْعُوهُمْ لِآبَائِهِمْ هُوَ أَقْسَطُ عِندَ اللَّهِ﴾ (الأحزاب ٥)</td></tr>
+          <tr><td><b>الاسم الحسن</b></td><td>تغيير النبيّ ﷺ الأسماء القبيحة</td></tr>
+          <tr><td><b>الرضاعة</b></td><td>آية الحولين (البقرة ٢٣٣)</td></tr>
+          <tr><td><b>النفقة</b></td><td>«وعلى المولود له رزقهنّ وكسوتهنّ»</td></tr>
+          <tr><td><b>الحضانة</b></td><td>الأمّ أحقّ بحضانة الصغير عند الفرقة بشروطها</td></tr>
+          <tr><td><b>العدل</b></td><td>«اتّقوا الله واعدلوا بين أولادكم»</td></tr>
+          <tr><td><b>التربية والتعليم</b></td><td>﴿قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا﴾</td></tr>
+          <tr><td><b>الرحمة</b></td><td>«مَن لا يَرحم لا يُرحَم»</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="note"><b>خلاصة الباب:</b> الطفل يحتاج إيمانًا يُغرس بالأجواء، وأمانًا نفسيًّا بالحنان والثبات، ونموًّا عقليًّا بالحديث واللعب، وروابط اجتماعية بالعدل والقدوة، وجسدًا سليمًا بالرضاعة والتغذية والنوم، ونفقةً بالمعروف — وكلّها حقوقٌ له لا مِنّة.</div>
+
+    <div class="tip"><span class="ic">💡</span><div><b>طبّقها اليوم:</b> اختر «كلمةً طيبةً» أو ذكرًا قصيرًا يسمعه طفلك يوميًّا في وقتٍ ثابت (كوقت النوم)؛ التكرار في هذه السنّ يرسخ.</div></div>
+  </section>
+
+  <!-- PROBLEMS -->
+  <section class="view" id="problems">
+    <div class="sec-head"><div class="k">الختام العملي</div><h2>معالجة المشكلات · كنوز المرحلة</h2></div>
+
+    <h3 class="part">أوّلًا: قواعد التعامل مع المشكلات</h3>
+
+    <div class="card"><h3><span class="n">١</span> افهم الدافع قبل الحكم</h3>
+      <p>كثيرٌ مما نسمّيه «مشكلة» في هذه السنّ هو <b>حاجةٌ غير مُلبّاة</b> أو <b>مرحلةُ نموٍّ طبيعية</b>. اسأل قبل أن تردّ: هل هو جائع؟ متعب؟ يحتاج انتباهًا؟ خائف؟ يتألّم من التسنين أو المغص؟ ملّ من المكان؟</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٢</span> الرفق أساس التعامل</h3>
+      <div class="hadith-box">«إنّ الرفق لا يكون في شيءٍ إلا زانه، ولا يُنزَع من شيءٍ إلا شانه»<span class="ref">رواه مسلم</span></div>
+      <div class="hadith-box">«إنّ الله رفيقٌ يحبّ الرفق في الأمر كلّه»<span class="ref">متفق عليه</span></div>
+    </div>
+
+    <div class="card"><h3><span class="n">٣</span> القدوة والتدرّج والثبات</h3>
+      <p>التغيير بالنموذج العمليّ أبلغ من الأوامر، والتدرّج سنّةٌ في التشريع نفسه. والثبات على القاعدة نفسها كل مرة أهمّ من شدّتها؛ فالطفل يتعلّم من التكرار المتّسق.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٤</span> التصحيح الرفيق المباشر</h3>
+      <div class="hadith-box">أخذ الحسن بن عليّ تمرةً من تمر الصدقة فجعلها في فيه، فقال النبيّ ﷺ: «كِخْ كِخْ» ليطرحها، ثم قال: «أما شعرتَ أنّا لا نأكل الصدقة؟»<span class="ref">متفق عليه</span></div>
+      <p>درسٌ في تصحيح الطفل الصغير جدًّا: <b>منعٌ واضح</b> بكلمةٍ يفهمها، ثم <b>تعليلٌ قصير</b>، بلا ضربٍ ولا صراخ ولا تأجيل.</p>
+    </div>
+
+    <div class="card"><h3><span class="n">٥</span> الصدق مع الطفل</h3>
+      <div class="hadith-box">دعت أمٌّ ابنها الصغير: تعالَ أُعطِك، فقال ﷺ: «ما أردتِ أن تعطيه؟» قالت: تمرًا، فقال: «أما إنّكِ لو لم تعطيه شيئًا كُتبت عليكِ كذبة»<span class="ref">رواه أبو داود</span></div>
+      <p>فالوعود الكاذبة لإسكات الطفل («سأشتري لك…» ثم لا يحدث) تهدم ثقته وتعلّمه الكذب.</p>
+    </div>
+
+    <h3 class="part">ثانيًا: مشكلاتٌ شائعة ومقاربتها</h3>
+
+    <div class="card"><h3>البكاء الكثير</h3>
+      <p><b>الفهم:</b> البكاء لغة الرضيع الوحيدة للتعبير. <b>المقاربة:</b> فحص الحاجات الأساسية (جوع، حفاض، حرارة، مغص، تسنين)، ثم الحمل والتهدئة والصوت الهادئ. <b>متى تقلق:</b> بكاءٌ غير معتاد مع حرارة أو رفض رضاعة أو خمول يستدعي الطبيب.</p>
+    </div>
+
+    <div class="card"><h3>اضطراب النوم</h3>
+      <p><b>المقاربة:</b> روتينٌ ثابت قبل النوم (حمّام، رضاعة، أذكار، إضاءة خافتة)، ومواعيد متقاربة يوميًّا، وتقليل الإثارة والشاشات قبل النوم. <b>من السنّة:</b> كفّ الصبيان عند دخول الليل، وأذكار النوم بصوتٍ مسموع.</p>
+    </div>
+
+    <div class="card"><h3>رفض الطعام والانتقائية</h3>
+      <p>شائعةٌ بعد السنة الأولى مع تباطؤ النموّ. <b>المقاربة:</b> عرض الطعام دون إجبار، وتكرار تقديم الصنف الجديد مرّاتٍ عدّة، والأكل معه على مائدة واحدة، وتعليمه «بسم الله» واليمين. <b>يُتجنّب:</b> الإكراه، والرشوة بالحلوى، وجعل المائدة ساحة صراع.</p>
+    </div>
+
+    <div class="card"><h3>العناد ونوبات الغضب</h3>
+      <p><b>الفهم:</b> علامة نموّ الإرادة والاستقلال، وتبلغ ذروتها بين السنتين والثلاث. <b>المقاربة:</b></p>
+      <ul>
+        <li>الهدوء أثناء النوبة، وضمان سلامته، دون استسلامٍ لطلبٍ مرفوض.</li>
+        <li>تسمية شعوره: «أنت غاضب لأنك تريد اللعبة».</li>
+        <li>إعطاؤه اختياراتٍ صغيرة: «تلبس الأزرق أم الأحمر؟» بدل «البس».</li>
+        <li>تقليل الأوامر غير الضرورية، والتركيز على ما يهمّ.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>العضّ والضرب</h3>
+      <p>غالبًا وسيلةٌ للتعبير قبل اكتمال اللغة. <b>المقاربة:</b> منعٌ هادئٌ حازم («لا نعضّ، العضّ يؤلم»)، وإبعاده لحظةً عن الموقف، وتعليمه كلماتٍ بديلة. <b>يُتجنّب:</b> عضّه أو ضربه «ليعرف الألم» — فهذا يعلّمه أن العنف وسيلة.</p>
+    </div>
+
+    <div class="card"><h3>الغيرة عند قدوم مولودٍ جديد</h3>
+      <ul>
+        <li>تهيئته قبل الولادة، وإشراكه في الاستعداد.</li>
+        <li>تخصيص وقتٍ له وحده يوميًّا.</li>
+        <li>عدم لومه على النكوص المؤقّت (كالعودة للرضّاعة أو التبوّل).</li>
+        <li>العدل الظاهر: «اتّقوا الله واعدلوا بين أولادكم».</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>قلق الانفصال</h3>
+      <p>طبيعيٌّ بين ٨ و١٨ شهرًا تقريبًا. <b>المقاربة:</b> وداعٌ قصيرٌ واضح بدل التسلّل خفيةً، والعودة في الموعد الموعود، وبدء الانفصالات بفتراتٍ قصيرة مع شخصٍ يألفه.</p>
+    </div>
+
+    <div class="card"><h3>الشاشات والأجهزة</h3>
+      <p>من أبرز تحدّيات هذا الزمان. وتوصيات الهيئات الطبية في الغالب: <b>تجنّب الشاشات قبل نحو ١٨–٢٤ شهرًا</b> إلا مكالمات الفيديو، ثم وقتٌ قصيرٌ محدود بمحتوى مناسب وبمشاركة الوالدين.</p>
+      <ul>
+        <li>الشاشة ليست مُهدّئًا ولا جليسة أطفال؛ فهي تزاحم اللغة والحركة والتعلّق.</li>
+        <li>قدوة الوالدين: تقليل انشغالهما بالهاتف أمام الطفل.</li>
+        <li>بدائل: لعبٌ حرّ، كتبٌ مصوّرة، أناشيد، مشاركة في أعمال البيت البسيطة.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>الفطام</h3>
+      <p>قرارٌ مشترك بين الأبوين «عن تراضٍ منهما وتشاور»، ويُفضَّل أن يكون <b>تدريجيًّا</b> بتقليل الرضعات واحدةً تلو أخرى، مع تعويض الطفل بالاحتضان والقرب، وتجنّب الوسائل المنفّرة القاسية.</p>
+    </div>
+
+    <div class="card"><h3>غضب المربّي نفسه</h3>
+      <p>كثيرٌ من «مشكلات الطفل» تتضخّم بانفعال الكبار. والهدي النبويّ واضح:</p>
+      <div class="hadith-box">«ليس الشديدُ بالصُّرَعة، إنما الشديد الذي يملك نفسه عند الغضب»<span class="ref">متفق عليه</span></div>
+      <ul>
+        <li>الاستعاذة من الشيطان، وتغيير الوضع، والسكوت لحظة.</li>
+        <li>التعاون بين الأبوين: من كان أهدأ يتولّى الموقف.</li>
+        <li>الاعتذار للطفل إن أخطأ المربّي؛ فهذه قدوةٌ في الرجوع إلى الحقّ.</li>
+      </ul>
+    </div>
+
+    <div class="note crit"><b>يُتجنَّب في هذه السنّ:</b> العقاب الجسديّ، والصراخ، والتخويف، والسخرية، والمقارنات، والوعود الكاذبة — فكلّها تهدم الثقة والأمان اللذين هما أساس المرحلة.</div>
+
+    <h3 class="part">ثالثًا: كنوز المرحلة وكيفية استثمارها</h3>
+
+    <div class="card"><h3>كنوزٌ لا تتكرّر</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الكنز</th><th>كيف يُستثمر</th></tr></thead>
+        <tbody>
+          <tr><td><b>صفاء الفطرة</b></td><td>غرس محبّة الله والتوحيد بكلماتٍ بسيطة قبل أن تزاحمها المؤثّرات</td></tr>
+          <tr><td><b>قوّة التقليد</b></td><td>أن يرى الصلاة والذكر والصدق والرحمة أمامه يوميًّا</td></tr>
+          <tr><td><b>سهولة التطبّع</b></td><td>تأسيس عادات النوم والأكل والنظافة والأذكار الآن</td></tr>
+          <tr><td><b>مرونة الذاكرة والحواسّ</b></td><td>إسماعه القرآن والأذكار والأناشيد الطيبة</td></tr>
+          <tr><td><b>شدّة التعلّق بالوالدين</b></td><td>بناء رصيدٍ من الحبّ والثقة يُثمر طاعةً وبرًّا لاحقًا</td></tr>
+          <tr><td><b>الفضول والاستكشاف</b></td><td>إجابة أسئلته الأولى بصدق، وربط ما يكتشفه بالخالق</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>الخلاصة:</b> «العلم في الصِّغر كالنقش في الحجر»؛ والاستثمار المبكّر في وقته أنفعُ وأبقى من الإصلاح بعد ترسّخ العادات.</p>
+    </div>
+
+    <div class="note"><b>خلاصة الباب:</b> اقرأ السلوك كحاجة، وقابله بالرفق والثبات والتصحيح الواضح القصير، واصدق مع طفلك، وتحكّم في غضبك، واغتنم كنوز المرحلة قبل أن تمضي.</div>
+
+    <div class="tip"><span class="ic">💡</span><div><b>طبّقها اليوم:</b> عند أوّل سلوكٍ مزعج، اسأل نفسك «ما الحاجة خلفه؟» (جوع/تعب/انتباه) قبل أن تردّ — ثم قابِلها بالرفق لا العقاب.</div></div>
+  </section>
+
+  <!-- APPENDIX -->
+  <section class="view" id="appendix">
+    <div class="sec-head"><div class="k">مراجع إثرائية</div><h2>الملاحق</h2></div>
+
+    <div class="card"><h3>أحكام الولادة في المذاهب الأربعة</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الحكم</th><th>الحنفية</th><th>المالكية</th><th>الشافعية</th><th>الحنابلة</th></tr></thead>
+        <tbody>
+          <tr><td><b>العقيقة</b></td><td>مباحة</td><td>سنّة</td><td>سنّة مؤكَّدة</td><td>سنّة مؤكَّدة</td></tr>
+          <tr><td><b>عددها</b></td><td>—</td><td>شاة للذكر والأنثى</td><td>ذكر: شاتان / أنثى: شاة</td><td>ذكر: شاتان / أنثى: شاة</td></tr>
+          <tr><td><b>الأذان في الأذن</b></td><td>مستحبّ</td><td>خلاف</td><td>مستحبّ</td><td>مستحبّ</td></tr>
+          <tr><td><b>التحنيك</b></td><td>مستحبّ</td><td>مستحبّ</td><td>مستحبّ</td><td>مستحبّ</td></tr>
+          <tr><td><b>الختان</b></td><td>سنّة</td><td>سنّة</td><td><b>واجب</b></td><td><b>واجب</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">الخلاف غالبًا في <b>درجة الاستحباب</b> لا أصل المشروعية، عدا الختان (سنّة/واجب) والأذان (استحباب/ترك).</div>
+    </div>
+
+    <div class="card"><h3>بطاقة سنن المولود</h3>
+      <ul class="chk">
+        <li>البشارة والفرح والدعاء للمولود بالبركة.</li>
+        <li>التحنيك بتمرةٍ مليَّنة.</li>
+        <li>الرضاعة المبكّرة (اللبأ/السرسوب).</li>
+        <li>اختيار الاسم الحسن.</li>
+        <li>يوم السابع: العقيقة (شاتان للذكر، شاة للأنثى).</li>
+        <li>يوم السابع: حلق الرأس والتصدّق بوزنه فضّةً.</li>
+        <li>الختان (يُستحبّ التبكير).</li>
+        <li>تسجيل النسب رسميًّا، ونبذ التطيّر.</li>
+      </ul>
+    </div>
+
+    <div class="card"><h3>خريطة تطوّر الطفل (٠–٣ سنوات)</h3>
+      <div class="tw"><table>
+        <thead><tr><th>العمر</th><th>حركيًّا</th><th>لغويًّا/اجتماعيًّا</th><th>ما يُغرَس</th></tr></thead>
+        <tbody>
+          <tr><td>٠–٣ أشهر</td><td>يتابع بالنظر، يبتسم</td><td>يستجيب للصوت</td><td>الاحتضان، إسماع القرآن</td></tr>
+          <tr><td>٣–٦ أشهر</td><td>يتقلّب، يمسك</td><td>يميّز أصوات أهله</td><td>ثبات الروتين والطمأنينة</td></tr>
+          <tr><td>٦–٩ أشهر</td><td>يجلس، يحبو</td><td>يبدأ قلق الانفصال</td><td>بناء الثقة، اللعب الآمن</td></tr>
+          <tr><td>٩–١٢ شهرًا</td><td>يقف، أولى الخطوات</td><td>أولى الكلمات، يشير</td><td>«بسم الله» بالقدوة</td></tr>
+          <tr><td>١٢–١٨ شهرًا</td><td>يمشي، يتسلّق</td><td>مفردات بسيطة</td><td>الكلمة الطيبة، رؤية الصلاة</td></tr>
+          <tr><td>٢–٣ سنوات</td><td>استقلالية، يبدأ التحكّم</td><td>جملٌ أطول، نوبات غضب</td><td>أذكار قصيرة، العدل والمشاركة</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card"><h3>مجموعة أدعية الذرية</h3>
+      <div class="verse">﴿رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ﴾<span class="ref">إبراهيم ٤٠</span></div>
+      <div class="verse">﴿رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا﴾<span class="ref">الفرقان ٧٤</span></div>
+      <div class="hadith-box">«أُعيذكما بكلمات الله التامّة من كلِّ شيطانٍ وهامّة، ومن كلّ عينٍ لامّة»<span class="ref">رواه البخاري — عوّذ بها الحسن والحسين</span></div>
+    </div>
+
+    <div class="card"><h3>أخطاء شائعة وتصحيحها</h3>
+      <div class="tw"><table>
+        <thead><tr><th>الخطأ</th><th>التصحيح</th></tr></thead>
+        <tbody>
+          <tr><td>تأجيل التربية لما بعد التمييز</td><td>البصمة الأعمق في السنوات الأولى</td></tr>
+          <tr><td>الأوامر بلا قدوة</td><td>الطفل يقلّد ما يرى</td></tr>
+          <tr><td>العقاب الجسديّ والصراخ</td><td>الرفق أساس المرحلة</td></tr>
+          <tr><td>التمييز بين الإخوة</td><td>العدل واجب</td></tr>
+          <tr><td>قراءة كل سلوكٍ كمشكلة</td><td>افهم الدافع أوّلًا</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card"><h3>دور الأب مقابل دور الأم</h3>
+      <p><b>الأمّ:</b> المصدر الأوّل للأمان والحنان والرضاعة، والبيئة الأولى (الرَّحِم ثم الحضن)، والتعهّد اليوميّ المباشر.</p>
+      <p><b>الأب:</b> النفقة والحماية، والحضور العاطفيّ لا مجرّد التمويل، والشراكة مع الأمّ في خطٍّ واحد.</p>
+      <p><b>القاعدة:</b> التكامل لا التنافس؛ غياب أحد الدورين يترك أثرًا يصعب تعويضه.</p>
+    </div>
+
+    <div class="card"><h3>فهرس الأدلة (مختصر)</h3>
+      <p style="font-weight:700;color:var(--emerald);margin-bottom:4px">آياتٌ وردت:</p>
+      <div class="tw"><table>
+        <thead><tr><th>الآية (طرفها)</th><th>الموضع</th><th>البابُ</th></tr></thead>
+        <tbody>
+          <tr><td>﴿رَبِّ هَبْ لِي ... ذُرِّيَّةً طَيِّبَةً﴾</td><td>آل عمران ٣٨</td><td>الاستعداد والدعاء</td></tr>
+          <tr><td>﴿ثُمَّ خَلَقْنَا النُّطْفَةَ عَلَقَةً...﴾</td><td>المؤمنون ١٤</td><td>النطفة والحمل</td></tr>
+          <tr><td>﴿وَكَانَ أَبُوهُمَا صَالِحًا﴾</td><td>الكهف ٨٢</td><td>أثر صلاح الوالدين</td></tr>
+          <tr><td>﴿وَالْوَالِدَاتُ يُرْضِعْنَ ... حَوْلَيْنِ﴾</td><td>البقرة ٢٣٣</td><td>الرضاعة</td></tr>
+          <tr><td>﴿يَا بُنَيَّ لَا تُشْرِكْ بِاللَّهِ﴾</td><td>لقمان ١٣</td><td>الاحتياجات الإيمانية</td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-weight:700;color:var(--clay);margin:10px 0 4px">أحاديثُ وردت:</p>
+      <div class="tw"><table>
+        <thead><tr><th>الحديث (طرفه)</th><th>التخريج</th><th>الدرجة</th></tr></thead>
+        <tbody>
+          <tr><td>«ما من مولودٍ إلا يولد على الفطرة»</td><td>متفق عليه</td><td>صحيح</td></tr>
+          <tr><td>«كلُّ غلامٍ رهينةٌ بعقيقته»</td><td>أبو داود والترمذي</td><td>صحيح</td></tr>
+          <tr><td>التأذين في أذن المولود</td><td>أبو داود</td><td><b>ضعيف/مختلف فيه</b></td></tr>
+          <tr><td>«اتّقوا الله واعدلوا بين أولادكم»</td><td>متفق عليه</td><td>صحيح</td></tr>
+          <tr><td>«مَن لا يَرحم لا يُرحَم»</td><td>متفق عليه</td><td>صحيح</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">الدرجات على سبيل التقريب المشهور، ويُرجَع في التحقيق إلى كتب التخريج.</div>
+    </div>
+
+    <div class="card"><h3>مسرد المصطلحات</h3>
+      <div class="tw"><table>
+        <thead><tr><th>المصطلح</th><th>المعنى المختصر</th></tr></thead>
+        <tbody>
+          <tr><td><b>الوحيان</b></td><td>القرآن الكريم والسنّة النبوية الصحيحة</td></tr>
+          <tr><td><b>الفطرة</b></td><td>الحالة السليمة التي يُولد عليها الإنسان مستعِدًّا للتوحيد</td></tr>
+          <tr><td><b>التحنيك</b></td><td>دلك حَنَك المولود بشيءٍ حلوٍ كالتمر عند ولادته</td></tr>
+          <tr><td><b>العقيقة</b></td><td>ما يُذبح عن المولود شكرًا لله يوم سابعه</td></tr>
+          <tr><td><b>التطيُّر</b></td><td>التشاؤم بشيءٍ (كجنس المولود)، وهو منهيٌّ عنه</td></tr>
+          <tr><td><b>اللبأ (السرسوب)</b></td><td>أوّل حليب الأمّ، غنيٌّ بالمناعة</td></tr>
+          <tr><td><b>القدوة</b></td><td>النموذج العمليّ الذي يقلّده الطفل، أبلغ أدوات التربية</td></tr>
+          <tr><td><b>الخطة السداسية</b></td><td>إطار الكتاب المنظِّم للتربية في ستة محاور</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card"><h3>قراءة نقدية</h3>
+      <p><b>نقاط القوة:</b> ربطٌ محكمٌ بالمرجعية الشرعية، والبدء بالتأصيل، وطرحٌ شامل، ولغةٌ محفِّزة.</p>
+      <p><b>مآخذ:</b> طابعٌ نظريّ غالب، وتكرارٌ ملحوظ، وكثرة الإحالة، والتقليل من المناهج الأخرى دون دراسة، وبعض الأدلة لأطفالٍ أكبر.</p>
+    </div>
+
+    <div class="card"><h3>أين تجد الكتاب؟</h3>
+      <p>الكتاب متوفّرٌ ورقيًّا لدى دور النشر والمكتبات ومنصّات بيع الكتب العربية. ابحث باسمه الكامل: <b>«التربية بالوحيين للمراحل العمرية — أسماء محمد لبيب»</b>. وللمؤلِّفة كتابٌ تطبيقيٌّ مكمّل: <b>«ربّيهم بآية وحديث»</b>.</p>
+      <div class="note">هذا التطبيق تلخيصٌ تعريفيّ لا يُغني عن اقتناء الكتاب وقراءته كاملًا.</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="view" id="faq">
+    <div class="sec-head"><div class="k">للوالدين</div><h2>أسئلة شائعة</h2></div>
+    <p style="margin-bottom:16px;color:var(--ink-soft)">إجاباتٌ مختصرة مستخلَصة من روح منهج الكتاب.</p>
+
+    <details class="faq"><summary>متى تبدأ تربية الطفل فعلًا؟</summary><div class="fa">قبل الولادة، بل قبل الزواج — بحسن اختيار الشريك، وإصلاح الوالدَين أنفسهما، وتصحيح النيّة، والدعاء. فالبيئة الأولى للطفل تبدأ من الرَّحِم.</div></details>
+    <details class="faq"><summary>هل الطفل الرضيع «يفهم» حتى نربّيه مبكّرًا؟</summary><div class="fa">التربية في هذه السنّ ليست تلقينًا، بل <b>بيئةٌ وقدوةٌ وأمانٌ وتكرار</b>. الطفل يلتقط النبرة والمشاعر والعادات قبل أن يفهم الكلمات، وهذه أعمق بصمة.</div></details>
+    <details class="faq"><summary>ابني كثير البكاء والعناد، فهل هذه مشكلة سلوكية؟</summary><div class="fa">غالبًا لا. كثيرٌ مما نسمّيه «مشكلة» هو <b>حاجةٌ غير مُلبّاة</b> (جوع/تعب/طلب انتباه/خوف)، والعناد جزءٌ طبيعيّ من نموّ الإرادة. افهم الدافع أوّلًا، وقابِله بالاحتواء والرفق.</div></details>
+    <details class="faq"><summary>هل العقاب الجسديّ مناسبٌ في هذه السنّ؟</summary><div class="fa">لا. المرحلة مرحلة تأسيسٍ للثقة والأمان، والعقاب الجسديّ والصراخ يهدمانهما. البديل: القدوة، والتدرّج، والاحتواء، وتعديل البيئة.</div></details>
+    <details class="faq"><summary>كيف أغرس الإيمان في طفلٍ لا يتكلّم بعد؟</summary><div class="fa">بالأجواء لا بالمحاضرات: إسماعه القرآن والذكر، ورؤيته إيّاك تصلّي، وربطه بالله بكلماتٍ محبَّبة قصيرة، والقدوة العملية. تأمّل رفق لقمان في «يا بنيّ».</div></details>
+    <details class="faq"><summary>هل التأذين في أذن المولود سنّة ثابتة؟</summary><div class="fa">حديثه <b>مختلَفٌ في ثبوته</b> وضعّفه كثيرٌ من المحدّثين؛ فمن فعله فعلى استحسان، ومن تركه فلضعف الدليل. أما التحنيك والتسمية الحسنة والعقيقة فثابتة.</div></details>
+    <details class="faq"><summary>عندي أكثر من طفل، كيف أتجنّب الغيرة؟</summary><div class="fa">بالعدل الظاهر والباطن: «اتّقوا الله واعدلوا بين أولادكم». امنح كلّ طفلٍ وقتًا واحتضانًا خاصًّا، وتجنّب المقارنات الجارحة.</div></details>
+    <details class="faq"><summary>ما أهمّ أداةٍ تربوية في هذه المرحلة؟</summary><div class="fa">القدوة، ثم الدعاء. الطفل يقلّد ما يرى أضعاف ما يسمع، فإصلاحك لنفسك هو أوّل التربية؛ ويبقى الدعاء ركنًا كما في دعوات الأنبياء.</div></details>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section class="view" id="flash">
+    <div class="sec-head"><div class="k">مراجعة سريعة</div><h2>البطاقات التعليمية</h2></div>
+    <div class="fc-wrap">
+      <div class="fc-top"><span id="fcPos"></span><button class="btn ghost sm" id="fcShuffle">🔀 خلط</button></div>
+      <div class="flashcard" id="flashcard">
+        <div class="fc-inner">
+          <div class="fc-face fc-front"><span class="cat" id="fcCat"></span><div class="q" id="fcQ"></div></div>
+          <div class="fc-face fc-back"><span class="cat">الدليل / الجواب</span><div class="a" id="fcA"></div></div>
+        </div>
+      </div>
+      <div class="fc-hint">اضغط البطاقة لقلبها 👆</div>
+      <div class="fc-nav">
+        <button class="btn ghost sm" id="fcPrev">→ السابق</button>
+        <button class="btn sm" id="fcNext">التالي ←</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="view" id="quiz">
+    <div class="sec-head"><div class="k">ثبّت معلوماتك</div><h2>الاختبار الشامل</h2></div>
+
+    <!-- start screen -->
+    <div id="quizStart">
+      <div class="quiz-intro">
+        <h2>🎯 بنك أسئلة الكتاب</h2>
+        <p>١٣٩ سؤالًا تغطّي كل محتوى الكتاب، بتصحيحٍ فوريّ وتعليلٍ يثبّت المعلومة. اختر محورًا أو «كل المحاور»، ثم ابدأ.</p>
+        <div class="cat-title">اختر المحور:</div>
+        <div class="chips" id="catChips"></div>
+        <div class="qcount" id="qCount"></div>
+        <div class="timer-row">
+          <span style="font-size:14px;font-weight:700;color:var(--ink-soft)">مؤقّت لكل سؤال (٣٠ث)</span>
+          <label class="switch"><input type="checkbox" id="timerToggle"><span class="slider"></span></label>
+        </div>
+        <button class="btn" id="startBtn">ابدأ الاختبار</button>
+      </div>
+    </div>
+
+    <!-- quiz screen -->
+    <div id="quizPlay" class="hidden">
+      <div class="progress-wrap">
+        <div class="progress-top"><span id="qPos"></span><span class="live-score">الصحيح: <b id="qScore">0</b> <span id="timerDisplay"></span></span></div>
+        <div class="bar"><span id="qBar"></span></div>
+      </div>
+      <div class="qcard">
+        <span class="qcat" id="qCatLbl"></span>
+        <div class="qtext" id="qText"></div>
+        <div class="opts" id="qOpts" role="group" aria-label="خيارات الإجابة"></div>
+        <div class="why" id="qWhy" aria-live="polite"></div>
+        <div class="qfoot">
+          <button class="btn ghost sm" id="quitBtn">إنهاء</button>
+          <button class="btn sm" id="nextBtn" disabled>التالي ←</button>
+        </div>
+        <div class="kbd-hint">اختصارات: <kbd>١</kbd>-<kbd>٤</kbd> للإجابة · <kbd>Enter</kbd> أو <kbd>←</kbd> للتالي</div>
+      </div>
+    </div>
+
+    <!-- result screen -->
+    <div id="quizResult" class="hidden">
+      <div class="result">
+        <div class="scorecircle" id="scoreCircle"><span class="val" id="scoreVal">0%</span></div>
+        <h2>انتهى الاختبار</h2>
+        <div class="verdict" id="verdict"></div>
+        <p id="scoreLine" style="color:var(--ink-soft)"></p>
+        <div class="catperf" id="catPerf"></div>
+        <div class="result-actions">
+          <button class="btn" id="retryBtn">إعادة الاختبار</button>
+          <button class="btn ghost" id="wrongBtn">اختبار الأخطاء فقط</button>
+          <button class="btn ghost" id="reviewBtn">مراجعة الأخطاء</button>
+          <button class="btn ghost" id="exportBtn">📷 تصدير النتيجة</button>
+        </div>
+        <div class="export-note">«اختبار الأخطاء فقط» يعيد عليك الأسئلة التي أخطأت فيها لترسيخها.</div>
+        <div class="rev hidden" id="reviewBox"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="quran">﴿رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ﴾</span>
+  تلخيصٌ وشرحٌ تفاعليّ لكتاب «التربية بالوحيين» — لا يُغني عن قراءة الكتاب الأصل · والله أعلم
+</footer>
+</div><!-- /shell -->
+
+<button id="toTop" aria-label="العودة للأعلى" title="العودة للأعلى">↑</button>
+
+<script>
+/* ===== Navigation ===== */
+const tabs=document.getElementById('tabs');
+const menuBtn=document.getElementById('menuBtn');
+const isDrawer=()=>window.matchMedia('(max-width:1023px)').matches;
+function openNav(){document.body.classList.add('nav-open');menuBtn.setAttribute('aria-expanded','true');}
+function closeNav(){document.body.classList.remove('nav-open');menuBtn.setAttribute('aria-expanded','false');}
+menuBtn.onclick=()=>document.body.classList.contains('nav-open')?closeNav():openNav();
+document.getElementById('sideClose').onclick=closeNav;
+document.getElementById('backdrop').onclick=closeNav;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNav()});
+window.addEventListener('resize',()=>{if(!isDrawer())closeNav()});
+
+function showView(id,scroll=true){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+  const tb=document.querySelector(`.tab[data-view="${id}"]`);
+  if(tb){const c=tb.cloneNode(true);c.querySelector('.ic')?.remove();document.getElementById('curTitle').textContent=c.textContent.trim();}
+  if(isDrawer())closeNav();
+  if(scroll){
+    const top=document.querySelector('.topbar').offsetTop;
+    window.scrollTo({top:window.scrollY>top?top:0,behavior:'smooth'});
+  }
+}
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('.tab'); if(!b)return;
+  showView(b.dataset.view);
+});
+
+/* ===== Question Bank (70) ===== */
+const BANK=[
+ // التأصيل
+ {c:'التأصيل',q:'ما المرجعية العليا للتربية في منهج الكتاب؟',o:['العقل والتجربة','العادات الموروثة','الوحيان: القرآن والسنّة','المناهج التربوية الحديثة'],a:2,w:'أساس الكتاب أن الوحيين هما المرجعية العليا في كل شؤون المسلم وعلى رأسها التربية.'},
+ {c:'التأصيل',q:'لماذا سُمّي الباب الأول «جواز مرور»؟',o:['لأنه أطول الأبواب','لأنه يؤسّس المفاهيم قبل الانتقال للتطبيق','لأنه يتحدث عن السفر','لأنه اختياريّ'],a:1,w:'هو بوّابةٌ لا يُنتقل منها إلى العمل إلا بعد استيعاب مفاهيمه التأسيسية.'},
+ {c:'التأصيل',q:'كم فصلًا يضمّ باب «جواز مرور»؟',o:['خمسة','سبعة','عشرة','اثنا عشر'],a:2,w:'باب جواز مرور يضمّ عشرة فصولٍ تأسيسية.'},
+ {c:'التأصيل',q:'ما الفرق الذي يقرّره الكتاب بين التربية والتعليم؟',o:['لا فرق بينهما','التربية تبني الإنسان والتعليم يملأ العقل','التعليم أهمّ من التربية','التربية للصغار والتعليم للكبار'],a:1,w:'التربية تبني الإنسان كلَّه، بينما التعليم يملأ العقل بالمعلومات.'},
+ {c:'التأصيل',q:'ما أمّ مقاصد التربية بالوحيين؟',o:['التفوّق الدراسيّ','تحقيق العبودية لله','الوجاهة الاجتماعية','الاستقلال المبكّر'],a:1,w:'أمّ المقاصد تحقيق العبودية لله وغرس التوحيد في الفطرة قبل أن تُلوَّث.'},
+ {c:'التأصيل',q:'كم محورًا في «الخطة السداسية»؟',o:['أربعة','ستة','ثمانية','عشرة'],a:1,w:'الخطة السداسية إطارٌ من ستة محاور تنتظم بها العملية التربوية.'},
+ {c:'التأصيل',q:'التربية الصالحة تبقى صدقةً جاريةً للوالدين بعد موتهما.',o:['صحيح','خطأ'],a:0,w:'لحديث: «... أو ولدٍ صالحٍ يدعو له» (رواه مسلم).'},
+ {c:'التأصيل',q:'متى تبدأ التربية فعليًّا عند الكاتبة؟',o:['عند دخول المدرسة','بعد سنّ التمييز','قبل الزواج والحمل','عند بدء الكلام'],a:2,w:'تبدأ قبل الولادة بل قبل الزواج، بحسن اختيار الشريك وإصلاح الوالدَين.'},
+ {c:'التأصيل',q:'التربية بالوحيين تصادم فطرة الطفل.',o:['صحيح','خطأ'],a:1,w:'بل هي موافِقةٌ للفطرة تتعهّدها ولا تصادمها.'},
+ {c:'التأصيل',q:'حديث «ما من مولودٍ إلا يولد على الفطرة» يدلّ على أن دور الأبوين:',o:['لا أثر له','تعهّد الفطرة أو الانحراف بها','يقتصر على النفقة','يبدأ بعد البلوغ'],a:1,w:'الأبوان إمّا يتعهّدان الفطرة السليمة أو ينحرفان بها (يهوّدانه أو ينصّرانه أو يمجّسانه).'},
+
+ // الإعداد والحمل
+ {c:'الإعداد والحمل',q:'ما المعيار الأعلى في اختيار الزوجة كما في الحديث؟',o:['المال','الجمال','الحسب','الدِّين'],a:3,w:'«فاظفَر بذات الدِّين تربت يداك» (متفق عليه).'},
+ {c:'الإعداد والحمل',q:'أكمل الحديث: «إذا خطب إليكم من ترضون ... فزوّجوه».',o:['ماله ونسبه','دِينه وخُلُقه','جماله وقوّته','علمه وعمله'],a:1,w:'«إذا خطب إليكم من ترضون دِينه وخُلُقه فزوّجوه» (الترمذي وحسّنه).'},
+ {c:'الإعداد والحمل',q:'ما الدعاء المسنون قبل إتيان الأهل؟',o:['«بسم الله، اللهمّ جنّبنا الشيطان وجنّب الشيطان ما رزقتنا»','«اللهم بارك لنا»','«الحمد لله ربّ العالمين»','«اللهم إني أعوذ بك»'],a:0,w:'وفيه: «فإن قُدِّر بينهما ولدٌ لم يضرّه الشيطان» (متفق عليه).'},
+ {c:'الإعداد والحمل',q:'أيّ آيةٍ تشير إلى أثر صلاح الأب في حفظ الذرية؟',o:['﴿وكان أبوهما صالحًا﴾','﴿المال والبنون زينة﴾','﴿إنما أموالكم فتنة﴾','﴿يا بنيّ لا تشرك﴾'],a:0,w:'في قصّة الجدار (الكهف ٨٢): حُفظ كنزُ الغلامَين لصلاح أبيهما.'},
+ {c:'الإعداد والحمل',q:'ما ترتيب أطوار الخلق في آية سورة المؤمنون؟',o:['علقة ثم نطفة ثم مضغة','نطفة ثم علقة ثم مضغة ثم عظام ثم لحم','مضغة ثم لحم ثم عظام','لحم ثم عظام ثم نطفة'],a:1,w:'﴿النطفة علقة... المضغة عظامًا... العظام لحمًا﴾ (المؤمنون ١٤).'},
+ {c:'الإعداد والحمل',q:'متى يُنفخ في الجنين الروح بحسب حديث ابن مسعود؟',o:['بعد ٤٠ يومًا','بعد ٦٠ يومًا','بعد ١٢٠ يومًا','عند الولادة'],a:2,w:'ثلاثة أطوارٍ كلٌّ أربعون يومًا (نطفة، علقة، مضغة) = ١٢٠ يومًا، ثم يُنفخ الروح.'},
+ {c:'الإعداد والحمل',q:'ما الكلمات الأربع التي يُؤمر بها الملَك في حديث ابن مسعود؟',o:['اسمه ولونه وطوله ووزنه','رزقه وأجله وعمله وشقيٌّ أو سعيد','أبوه وأمّه وبلده وقبيلته','صحته ومرضه وقوّته وضعفه'],a:1,w:'يُؤمر بكَتْب: رزقه وأجله وعمله وشقيٌّ أو سعيد.'},
+ {c:'الإعداد والحمل',q:'عناية الأمّ الحامل ثلاثية الأبعاد؛ فما هي؟',o:['بدنيًّا فقط','صحيًّا ونفسيًّا وروحيًّا','ماليًّا واجتماعيًّا وتعليميًّا','عقليًّا فقط'],a:1,w:'الرَّحِم أوّل بيئات الطفل، فتُعنى الأمّ صحيًّا ونفسيًّا وروحيًّا.'},
+
+ // الولادة
+ {c:'الولادة وأحكامها',q:'ما درجة حديث التأذين في أذن المولود؟',o:['متفق عليه','صحيح لا خلاف فيه','ضعيف/مختلف في ثبوته','موضوع'],a:2,w:'ضعّفه كثيرٌ من المحدّثين، فيُذكر مع التنبيه على الخلاف.'},
+ {c:'الولادة وأحكامها',q:'التحنيك ثبت من فعله ﷺ مع مواليد الصحابة.',o:['صحيح','خطأ'],a:0,w:'كتحنيكه ابنَ أبي موسى بتمرةٍ ودعائه له بالبركة (متفق عليه).'},
+ {c:'الولادة وأحكامها',q:'بماذا يكون التحنيك؟',o:['بماءٍ وعسل','بتمرةٍ مليَّنة','بلبنٍ دافئ','بزيت زيتون'],a:1,w:'يُدلك حَنَك المولود بتمرةٍ مليَّنة ونحوها.'},
+ {c:'الولادة وأحكامها',q:'أيّ الأسماء أحبّ إلى الله؟',o:['محمد وأحمد','عبد الله وعبد الرحمن','خالد ووليد','آدم ونوح'],a:1,w:'«أحبُّ الأسماء إلى الله عبدُ الله وعبد الرحمن» (مسلم).'},
+ {c:'الولادة وأحكامها',q:'إلى أيّ اسمٍ غيّر النبيُّ ﷺ اسم «عاصية»؟',o:['فاطمة','جميلة','خديجة','عائشة'],a:1,w:'غيّرها إلى «جميلة» لقبح معنى الأول (رواه مسلم).'},
+ {c:'الولادة وأحكامها',q:'كم شاةً في العقيقة عن الغلام؟',o:['شاة واحدة','شاتان','ثلاث شياه','لا شيء'],a:1,w:'عن الغلام شاتان متكافئتان، وعن الجارية شاة.'},
+ {c:'الولادة وأحكامها',q:'ما الوقت المستحبّ للعقيقة؟',o:['يوم الولادة','اليوم الثالث','اليوم السابع','بعد شهر'],a:2,w:'«تُذبح عنه يوم سابعه، ويُحلَق، ويُسمّى» (أبو داود والترمذي).'},
+ {c:'الولادة وأحكامها',q:'بماذا يُتصدَّق بوزن شعر المولود بعد الحلق؟',o:['ذهبًا','فضّةً','طعامًا','ثيابًا'],a:1,w:'يُحلق رأسه يوم السابع ويُتصدَّق بوزن الشعر فضّةً.'},
+ {c:'الولادة وأحكامها',q:'الختان من خصال الفطرة الخمس.',o:['صحيح','خطأ'],a:0,w:'«الفطرة خمسٌ: الختان، والاستحداد، ونتف الإبط، وتقليم الأظفار، وقصّ الشارب» (متفق عليه).'},
+ {c:'الولادة وأحكامها',q:'متى تجوز تسمية المولود؟',o:['يوم الولادة أو اليوم السابع','بعد أربعين يومًا فقط','عند الفطام','في اليوم الأربعين حصرًا'],a:0,w:'الأمر واسع: تجوز يوم الولادة، ويوم السابع.'},
+
+ // الاحتياجات والحقوق
+ {c:'الاحتياجات والحقوق',q:'ما الاحتياجات الخمسة للطفل في هذه المرحلة؟',o:['إيمانية ونفسية واجتماعية وصحية ومالية','تعليمية ورياضية وفنية','لغوية وحركية فقط','مادّية فقط'],a:0,w:'يفصّل الكتاب خمسة محاور متكاملة كلٌّ مربوطٌ بالوحيين.'},
+ {c:'الاحتياجات والحقوق',q:'ما الذي يُبرزه نداء لقمان لابنه «يا بنيّ»؟',o:['الشدّة','الرفق في الربط بالله','التهديد','اللامبالاة'],a:1,w:'منهج لقمان يجمع بين التوحيد والرفق: ﴿يا بنيّ لا تشرك بالله﴾.'},
+ {c:'الاحتياجات والحقوق',q:'لمن قال النبيُّ ﷺ «مَن لا يَرحم لا يُرحَم»؟',o:['لأبي هريرة','للأقرع بن حابس','لعمر بن الخطاب','لأبي بكر'],a:1,w:'قالها لمّا عجب الأقرع من تقبيله ﷺ للحسن، وقال: إن لي عشرةً ما قبّلتُ منهم أحدًا.'},
+ {c:'الاحتياجات والحقوق',q:'من التي كان النبيُّ ﷺ يحملها وهو يصلّي؟',o:['فاطمة بنته','أمامة بنت زينب','عائشة','أمّ كلثوم'],a:1,w:'كان يحمل أمامة بنت زينب، رحمةً وحنوًّا، فيضعها إذا سجد ويحملها إذا قام (متفق عليه).'},
+ {c:'الاحتياجات والحقوق',q:'من راوي حديث «اتّقوا الله واعدلوا بين أولادكم»؟',o:['أنس بن مالك','النعمان بن بشير','ابن عباس','جابر'],a:1,w:'حين أراد أبوه أن يخصّه بعطيّةٍ دون إخوته (متفق عليه).'},
+ {c:'الاحتياجات والحقوق',q:'كم مدّة الرضاعة الكاملة في القرآن؟',o:['حولٌ واحد','حولان كاملان','ستة أشهر','ثلاثة أحوال'],a:1,w:'﴿والوالدات يُرضعن أولادهنّ حولين كاملين﴾ (البقرة ٢٣٣).'},
+ {c:'الاحتياجات والحقوق',q:'الرضاعة حاجةٌ نفسية (احتضانٌ وأمان) قبل أن تكون غذائية.',o:['صحيح','خطأ'],a:0,w:'يؤكّد الكتاب أن الرضاعة أمانٌ واحتضانٌ قبل أن تكون غذاء.'},
+ {c:'الاحتياجات والحقوق',q:'على من تجب نفقة الطفل؟',o:['على الأمّ','على الأب','على الجدّ حصرًا','على الدولة'],a:1,w:'﴿وعلى المولود له رزقهنّ وكسوتهنّ بالمعروف﴾ (البقرة ٢٣٣).'},
+ {c:'الاحتياجات والحقوق',q:'أيّ ممّا يلي من حقوق الطفل الجامعة؟',o:['ثبوت النسب والاسم الحسن والعدل','الميراث فقط','التعليم الجامعيّ','السفر'],a:0,w:'من حقوقه: الحياة، النسب، الاسم الحسن، النفقة، العدل، التربية، الحبّ.'},
+
+ // المشكلات والكنوز
+ {c:'المشكلات والكنوز',q:'ما القاعدة الأولى في علاج مشكلات هذه السنّ؟',o:['العقاب الفوريّ','فهم الدافع قبل الحكم','التجاهل التام','المقارنة بالآخرين'],a:1,w:'كثيرٌ مما نسمّيه مشكلة هو حاجةٌ غير مُلبّاة، فتشخيص الحاجة نصف العلاج.'},
+ {c:'المشكلات والكنوز',q:'أكمل الحديث: «إنّ الرفق لا يكون في شيءٍ إلا ...».',o:['نفعه','زانه','قوّاه','أتمّه'],a:1,w:'«... إلا زانه، ولا يُنزَع من شيءٍ إلا شانه» (رواه مسلم).'},
+ {c:'المشكلات والكنوز',q:'العقاب الجسديّ أسلوبٌ مناسبٌ في سنّ الطفولة المبكّرة.',o:['صحيح','خطأ'],a:1,w:'بل يُتجنَّب؛ فهو يهدم الثقة والأمان الذي هو أساس المرحلة.'},
+ {c:'المشكلات والكنوز',q:'كيف تُعالَج الغيرة بين الإخوة؟',o:['بالعقاب','بالعدل والاحتضان','بالتجاهل','بالمقارنة'],a:1,w:'بالعدل بين الأولاد وإشعار كلٍّ منهم بمكانته.'},
+ {c:'المشكلات والكنوز',q:'نوبات الغضب والعناد المبكّر في هذه السنّ:',o:['علامة مرض','طبيعية في نموّ الإرادة','دليل سوء تربية','يجب كبتها بالقوّة'],a:1,w:'طبيعيةٌ في نموّ الإرادة، تُقابَل بالهدوء والاحتواء لا بالعقاب.'},
+ {c:'المشكلات والكنوز',q:'أيّ ممّا يلي من «كنوز» الطفولة المبكّرة؟',o:['صفاء الفطرة وقوّة التقليد','ضعف الذاكرة','صعوبة التطبّع','قلّة الاستجابة'],a:0,w:'من كنوزها: صفاء الفطرة، وقوّة التقليد، وسهولة التطبّع، ومرونة الذاكرة.'},
+ {c:'المشكلات والكنوز',q:'ما دلالة «العلم في الصِّغر كالنقش في الحجر»؟',o:['صعوبة تعليم الصغار','رسوخ ما يُغرَس مبكّرًا','أن التعليم للكبار','عدم جدوى التبكير'],a:1,w:'ما يُغرَس في الصِّغر يرسخ ويثبت، فتُغتنم المرحلة.'},
+
+ // المذاهب
+ {c:'المذاهب والأدعية',q:'ما حكم الختان عند الشافعية والحنابلة؟',o:['مباح','مكروه','واجب','سنّة غير مؤكّدة'],a:2,w:'الختان واجبٌ عند الشافعية والحنابلة (المشهور)، وسنّةٌ عند الحنفية والمالكية.'},
+ {c:'المذاهب والأدعية',q:'ما حكم العقيقة عند الحنفية؟',o:['واجبة','مباحة','محرّمة','فرض عين'],a:1,w:'عند الحنفية مباحة (وقيل مستحبّة)، بينما هي سنّة مؤكّدة عند الشافعية والحنابلة.'},
+ {c:'المذاهب والأدعية',q:'كم شاةً في العقيقة عند المالكية؟',o:['شاة عن الذكر والأنثى على السواء','شاتان للذكر','ثلاث للأنثى','لا عقيقة عندهم'],a:0,w:'المالكية: شاةٌ واحدة عن الذكر والأنثى، بخلاف الشافعية والحنابلة (شاتان للذكر).'},
+ {c:'المذاهب والأدعية',q:'حكم العقيقة عند الشافعية والحنابلة:',o:['مكروهة','مباحة','سنّة مؤكّدة','واجبة'],a:2,w:'سنّة مؤكّدة عندهما، وهي مباحة عند الحنفية وسنّة عند المالكية.'},
+
+ // الأدعية
+ {c:'المذاهب والأدعية',q:'دعاء «رب هب لي من لدنك ذرية طيبة» دعاء أيّ نبيّ؟',o:['إبراهيم','زكريا','نوح','يعقوب'],a:1,w:'دعاء زكريا عليه السلام (آل عمران ٣٨).'},
+ {c:'المذاهب والأدعية',q:'دعاء «واجعلنا للمتقين إمامًا» من أيّ سورة؟',o:['البقرة','الفرقان','إبراهيم','الصافات'],a:1,w:'﴿ربّنا هب لنا من أزواجنا وذرياتنا قرّة أعين واجعلنا للمتقين إمامًا﴾ (الفرقان ٧٤).'},
+ {c:'المذاهب والأدعية',q:'بماذا عوّذ النبيُّ ﷺ الحسنَ والحسين؟',o:['«أعيذكما بكلمات الله التامّة...»','«بسم الله الرحمن الرحيم»','«اللهم احفظهما»','«توكّلت على الله»'],a:0,w:'«أُعيذكما بكلمات الله التامّة من كلِّ شيطانٍ وهامّة، ومن كلّ عينٍ لامّة» (البخاري).'},
+
+ // التطور والمصطلحات وعن الكتاب
+ {c:'تطوّر ومصطلحات',q:'متى يبدأ «قلق الانفصال» عادةً؟',o:['من الولادة','٦–٩ أشهر','بعد عامين','عند ٣ سنوات'],a:1,w:'يبدأ عادةً في مرحلة ٦–٩ أشهر مع بدء الحبو والجلوس.'},
+ {c:'تطوّر ومصطلحات',q:'أولى الكلمات عند الطفل تظهر عادةً حوالي:',o:['٣ أشهر','٦ أشهر','٩–١٢ شهرًا','سنتين'],a:2,w:'غالبًا بين ٩–١٢ شهرًا مع القيام وأولى الخطوات، مع تفاوتٍ بين طفلٍ وآخر.'},
+ {c:'تطوّر ومصطلحات',q:'ما معنى «التطيُّر»؟',o:['التفاؤل','التشاؤم بشيءٍ (منهيٌّ عنه)','الدعاء','الصدقة'],a:1,w:'التطيّر هو التشاؤم (كالتشاؤم بجنس المولود)، وهو منهيٌّ عنه.'},
+ {c:'تطوّر ومصطلحات',q:'ما المقصود بـ«اللبأ» (السرسوب)؟',o:['نوع تمر','أوّل حليب الأمّ الغنيّ بالمناعة','دواء','عسل'],a:1,w:'اللبأ هو أوّل حليب الأمّ، غنيٌّ بالمناعة، يُستحبّ تبكير الرضاعة به.'},
+ {c:'تطوّر ومصطلحات',q:'المقصود بـ«الوحيين»:',o:['القرآن فقط','السنّة فقط','القرآن والسنّة الصحيحة','الإجماع والقياس'],a:2,w:'الوحيان: القرآن الكريم والسنّة النبوية الصحيحة بفهم السلف.'},
+ {c:'تطوّر ومصطلحات',q:'ما البيئة الأولى للطفل؟',o:['المدرسة','الحضانة','الرَّحِم ثم حضن الأم','الحيّ'],a:2,w:'أوّل بيئات الطفل الرَّحِم، ثم حضن الأمّ.'},
+ {c:'تطوّر ومصطلحات',q:'القاعدة في العلاقة بين دور الأب والأم:',o:['التنافس','التكامل لا التنافس','استقلال تامّ','دور الأب فقط'],a:1,w:'التكامل لا التنافس؛ غياب أحد الدورين يترك أثرًا يصعب تعويضه.'},
+ {c:'تطوّر ومصطلحات',q:'حنان الأب حاجةٌ للطفل لا كماليّة.',o:['صحيح','خطأ'],a:0,w:'دور الأب حضورٌ عاطفيّ لا مجرّد تمويل؛ فحنانه حاجةٌ للطفل.'},
+
+ // عن الكتاب
+ {c:'عن الكتاب',q:'كم يبلغ حجم الكتاب تقريبًا؟',o:['نحو ٢٠٠ صفحة','نحو ٤٠٠ صفحة','نحو ٧٢٧ صفحة','نحو ١٥٠٠ صفحة'],a:2,w:'يقع في نحو ٧٢٧ صفحة، وهو الجزء الأول من السلسلة.'},
+ {c:'عن الكتاب',q:'ما الفئة العمرية التي يغطّيها هذا الجزء؟',o:['من ٣ إلى ٦ سنوات','من النطفة إلى ٣ سنوات','المراهقة','من ٦ إلى ١٢ سنة'],a:1,w:'يغطّي الطفولة الأولى: من عمر النطفة إلى ثلاث سنوات.'},
+ {c:'عن الكتاب',q:'من مؤلِّفة الكتاب؟',o:['أسماء محمد لبيب','د. سبوك','خولة درويش','فردوس عبد الرحمن'],a:0,w:'الكتاب من تأليف أسماء محمد لبيب.'},
+ {c:'عن الكتاب',q:'أيّ كتابٍ آخر للمؤلِّفة أقرب للتطبيق؟',o:['«ربّيهم بآية وحديث»','«فنّ التربية»','«أولادنا»','«كيف تربّي طفلك»'],a:0,w:'لها «ربّيهم بآية وحديث» وهو أقرب إلى الجانب التطبيقيّ.'},
+ {c:'عن الكتاب',q:'من مآخذ بعض القرّاء على الكتاب:',o:['قصره الشديد','الطابع النظريّ والتكرار','خلوّه من الأدلة','صعوبة لغته العلمية'],a:1,w:'أُخذ عليه الطابع النظريّ الغالب والتكرار وكثرة الإحالة.'},
+ {c:'عن الكتاب',q:'الكتاب يقدّم وصفاتٍ عمليةً مختصرةً خطوةً بخطوة أكثر من التأصيل.',o:['صحيح','خطأ'],a:1,w:'بالعكس؛ طابعه تأصيليّ نظريّ، ومن يريد التطبيق المختصر قد يجده مُطوّلًا.'},
+ {c:'عن الكتاب',q:'اعترض بعضهم على مصطلح «الوحيين» من الناحية اللغوية.',o:['صحيح','خطأ'],a:0,w:'وهو خلافٌ اصطلاحيّ لا يقدح في مضمون الكتاب.'},
+ {c:'عن الكتاب',q:'ما موقف الكتاب من المناهج التربوية الوافدة؟',o:['يتبنّاها بالكامل','يقلّل منها ويُنبّه لمرجعيّتها','يتجاهلها','يعتبرها المرجع الأول'],a:1,w:'ينبّه إلى مغايرة مرجعيّتها، وإن أُخذ عليه التعميم في التقليل منها دون دراسةٍ متعمّقة.'},
+ {c:'الإعداد والحمل',q:'ما أوّل حلقات التربية وأكثرها إغفالًا؟',o:['مرحلة المدرسة','مرحلة الإعداد وما قبل الحمل','مرحلة المراهقة','مرحلة الفطام'],a:1,w:'مرحلة الإعداد وما قبل الحمل أوّل الحلقات وأكثرها إغفالًا، وفيها اختيار الشريك وإصلاح النفس.'},
+ {c:'المشكلات والكنوز',q:'ما البديل الأنسب للعقاب في توجيه سلوك الطفل بهذه السنّ؟',o:['الصراخ','القدوة والاحتواء والرفق','التخويف','الحرمان الطويل'],a:1,w:'التغيير يكون بالنموذج العمليّ والاحتواء والرفق لا بالعقاب الذي يهدم الثقة.'},
+ {c:'المذاهب والأدعية',q:'دعاء «ربِّ هب لي من الصالحين» دعاء أيّ نبيّ؟',o:['زكريا','إبراهيم','يعقوب','يوسف'],a:1,w:'دعاء إبراهيم عليه السلام (الصافات ١٠٠) طلبًا للذرية الصالحة.'},
+
+ /* ===== دفعة إضافية ===== */
+ {c:'التأصيل',q:'أكمل: «كلُّكم راعٍ وكلُّكم مسؤولٌ عن ...».',o:['ماله','رعيّته','أهله','عمله'],a:1,w:'«كلُّكم راعٍ وكلُّكم مسؤولٌ عن رعيّته» (متفق عليه) — أصل المسؤولية التربوية.'},
+ {c:'التأصيل',q:'أيّ الأدوات الأربع ليست من أدوات الاستعداد للتربية في الفصل الخامس؟',o:['العلم','القدوة','الدعاء','الثروة'],a:3,w:'أدوات الإعداد: العلم، والقدوة، والدعاء، والصبر والاستعانة بالله.'},
+ {c:'التأصيل',q:'ما أوّل أدوات التربية وأقواها؟',o:['العقاب','القدوة','المكافأة','التلقين'],a:1,w:'الطفل يقلّد أضعاف ما يسمع؛ فإصلاح المربّي لنفسه أوّل الأدوات.'},
+ {c:'التأصيل',q:'شمولية التربية تعني الاقتصار على الجانب الشعائريّ.',o:['صحيح','خطأ'],a:1,w:'بل تشمل الجوانب الإيمانية والنفسية والعقلية والاجتماعية والصحية والمالية.'},
+ {c:'التأصيل',q:'من محاور الخطة السداسية:',o:['غايةٌ واضحة ووسائلُ منضبطة','التشدّد والعزلة','الحفظ والتلقين فقط','الاعتماد على المدرسة'],a:0,w:'محاورها: غاية واضحة، وسائل منضبطة، مراحل متدرّجة، شمولية، قدوة ومتابعة، استعانة بالله.'},
+ {c:'التأصيل',q:'ما الغاية النهائية للتربية في الكتاب؟',o:['التفوّق المهنيّ','عبدٌ لله صالحٌ نافع','الاستقلال المادّي','الشهرة'],a:1,w:'غاية التربية بالوحيين: عبدٌ لله صالحٌ نافعٌ لنفسه وأمّته.'},
+
+ {c:'الإعداد والحمل',q:'ما الأثر التربويّ للكسب الحلال على الذرية؟',o:['لا أثر له','من أسباب صلاحها','يضرّها','يقتصر أثره على الأب'],a:1,w:'الغذاء الطيّب والمال الحلال من أسباب الصلاح، والحرام مَظِنّة عدم القبول.'},
+ {c:'الإعداد والحمل',q:'في حديث «تُنكح المرأة لأربع» ما الخصال المذكورة؟',o:['مالها وحسبها وجمالها ودينها','علمها وعملها ونسبها ومالها','صحتها وقوّتها وجمالها ودينها','سنّها وبلدها ومالها ودينها'],a:0,w:'«تُنكح المرأة لأربعٍ: لمالها ولحسبها ولجمالها ولدينها، فاظفَر بذات الدِّين».'},
+ {c:'الإعداد والحمل',q:'ماذا يترتّب على قول «بسم الله، اللهمّ جنّبنا الشيطان...» بحسب الحديث؟',o:['يُرزق الولد مالًا','لم يضرّه الشيطان إن قُدِّر بينهما ولد','يولد الولد ذكرًا','يُشفى المريض'],a:1,w:'«فإن قُدِّر بينهما ولدٌ لم يضرّه الشيطان» (متفق عليه).'},
+ {c:'الإعداد والحمل',q:'كم طورًا مدّة كلٍّ منها أربعون يومًا قبل نفخ الروح؟',o:['طوران','ثلاثة أطوار','أربعة أطوار','خمسة أطوار'],a:1,w:'نطفة ثم علقة ثم مضغة، كلٌّ أربعون يومًا = ١٢٠ يومًا.'},
+ {c:'الإعداد والحمل',q:'من رُخص الشريعة للحامل:',o:['ترك الصلاة','الفطر في رمضان عند الحاجة','ترك الزكاة','ترك الحجّ مطلقًا'],a:1,w:'يجوز لها الفطر عند الحاجة مع القضاء أو الفدية على تفصيلٍ بين الفقهاء.'},
+ {c:'الإعداد والحمل',q:'أوّل مدرسةٍ للطفل هي:',o:['الحضانة','البيت','المسجد','الحيّ'],a:1,w:'البيت أوّل مدرسةٍ للطفل، ولذا يُهيّأ إيمانيًّا ونفسيًّا قبل قدوم المولود.'},
+
+ {c:'الولادة وأحكامها',q:'ماذا يُفعل يوم السابع بحسب حديث «كلُّ غلامٍ رهينةٌ بعقيقته»؟',o:['يُذبح ويُحلق ويُسمّى','يُختن ويُسافر به','يُعطى مالًا','يُترك حتى الفطام'],a:0,w:'«تُذبح عنه يوم سابعه، ويُحلَق، ويُسمّى».'},
+ {c:'الولادة وأحكامها',q:'من الذي حنّكه النبيُّ ﷺ وسمّاه إبراهيم في حديث أبي موسى؟',o:['ابن أبي طلحة','ابن أبي موسى','ابن الزبير','ابن عمر'],a:1,w:'قال أبو موسى: وُلد لي غلامٌ فأتيتُ به النبيَّ ﷺ فسمّاه إبراهيم وحنّكه بتمرة.'},
+ {c:'الولادة وأحكامها',q:'ما الحكمة من التحنيك؟',o:['الزينة','تليين الفم وبركةُ دعاء الصالح','إسكات البكاء','التطهير'],a:1,w:'فيه تليينٌ للفم، وتبرّكٌ بدعاء الصالح الذي يفعله كما فعل ﷺ.'},
+ {c:'الولادة وأحكامها',q:'أيّ اسمٍ يُتجنّب في التسمية؟',o:['ذو المعنى الحسن','المعبَّد لغير الله','أسماء الأنبياء','أسماء الصالحين'],a:1,w:'يُتجنّب المعبَّد لغير الله وذو المعاني القبيحة؛ وقد غيّر النبيُّ ﷺ أسماءً لذلك.'},
+ {c:'الولادة وأحكامها',q:'كيف يُتصرّف في لحم العقيقة؟',o:['يُتصدّق به كلّه','يُؤكل ويُهدى ويُتصدَّق منه','يُدفن','يُباع'],a:1,w:'كالأضحية: يُؤكل ويُهدى ويُتصدَّق منه.'},
+ {c:'الولادة وأحكامها',q:'إن فات اليوم السابع للعقيقة فمتى تُستحبّ؟',o:['تسقط نهائيًّا','الرابع عشر ثم الحادي والعشرون','بعد سنة فقط','يوم الولادة'],a:1,w:'المستحبّ السابع، فإن فات فالرابع عشر فالحادي والعشرون، وتُجزئ متى تيسّرت على قول.'},
+ {c:'الولادة وأحكامها',q:'حلق رأس المولود يوم السابع فيه:',o:['إماطة الأذى والصدقة بوزنه','زينة فقط','عادة جاهلية','لا أصل له'],a:0,w:'إماطةٌ للأذى وتنشيطٌ للبدن، ويُتصدَّق بوزن الشعر فضّةً.'},
+ {c:'الولادة وأحكامها',q:'التطيّر بجنس المولود أو وقت ولادته:',o:['مستحبّ','منهيٌّ عنه','واجب','مباح'],a:1,w:'التطيّر (التشاؤم) منهيٌّ عنه، ويُنبذ في استقبال المولود.'},
+
+ {c:'الاحتياجات والحقوق',q:'ماذا كان يفعل النبيُّ ﷺ بأمامة حين يسجد؟',o:['يتركها تبكي','يضعها ثم يحملها إذا قام','يعطيها لغيره','ينهي الصلاة'],a:1,w:'كان يضعها إذا سجد ويحملها إذا قام، رحمةً وحنوًّا (متفق عليه).'},
+ {c:'الاحتياجات والحقوق',q:'من الأمثلة على الاحتياجات الاجتماعية المبكّرة:',o:['بناء الرابطة مع الوالدَين ثم توسيعها','تعليم القراءة','السفر','الرياضة التنافسية'],a:0,w:'تبدأ بالرابطة الأولى مع الأم والأب ثم تتوسّع نحو الأسرة والإخوة.'},
+ {c:'الاحتياجات والحقوق',q:'موقف الشرع من الاعتدال في الإنفاق على الطفل:',o:['الإسراف محمود','القصد والاعتدال','التقتير مطلوب','لا ضابط'],a:1,w:'القصد والاعتدال؛ لا إسرافٌ يُفسد ولا تقتيرٌ يُحرِم.'},
+ {c:'الاحتياجات والحقوق',q:'أيّ حقٍّ يتعلّق بحفظ هوية الطفل؟',o:['اللعب','ثبوت النسب','السفر','الرياضة'],a:1,w:'من حقوقه: ثبوت النسب والاسم الحسن، حفظًا لهويّته.'},
+ {c:'الاحتياجات والحقوق',q:'غرس العلاقة الصحيّة بالمال في هذه السنّ يكون أساسًا:',o:['بالمحاضرات','بالقدوة والبيئة','بالحرمان','بإعطائه مالًا كثيرًا'],a:1,w:'بذور العلاقة بالمال تُغرَس بالقدوة والبيئة قبل الكلام.'},
+ {c:'الاحتياجات والحقوق',q:'أفضل غذاءٍ للرضيع في شهوره الأولى:',o:['الحليب الصناعيّ','لبن الأمّ','العصائر','الأعشاب'],a:1,w:'الرضاعة الطبيعية، وقد بيّن القرآن مدّتها المثلى: حولان كاملان.'},
+
+ {c:'المشكلات والكنوز',q:'أكمل: «ولا يُنزَع الرفق من شيءٍ إلا ...».',o:['زانه','شانه','نفعه','أتمّه'],a:1,w:'«إنّ الرفق لا يكون في شيءٍ إلا زانه، ولا يُنزَع من شيءٍ إلا شانه» (مسلم).'},
+ {c:'المشكلات والكنوز',q:'ما الذي يهدم الثقة والأمان في هذه السنّ؟',o:['الاحتضان','الصراخ والتخويف والمقارنات','اللعب','القصص'],a:1,w:'العقاب الجسديّ والصراخ والتخويف والمقارنات كلّها تهدم بناء الثقة.'},
+ {c:'المشكلات والكنوز',q:'«مرونة الذاكرة والحواس» في الطفولة المبكّرة تُستثمر في:',o:['غرس القرآن والأذكار والكلمة الطيبة','تحفيظ الرياضيات','التدريب العسكريّ','حفظ الأرقام'],a:0,w:'تُغرَس فيها آياتٌ وأذكارٌ وكلماتٌ طيبة تألفها الأذن ويحفظها القلب.'},
+ {c:'المشكلات والكنوز',q:'ما الأنسب حين يبكي الطفل كثيرًا؟',o:['تجاهله تمامًا','البحث عن سبب البكاء','معاقبته','تركه حتى يتعب'],a:1,w:'البكاء لغةٌ للتعبير عن حاجة؛ فيُبحث عن سببه قبل الانزعاج منه.'},
+
+ {c:'تطوّر ومصطلحات',q:'متى يبدأ الطفل الجلوس والحبو عادةً؟',o:['٠–٣ أشهر','٣–٦ أشهر','٦–٩ أشهر','بعد السنة'],a:2,w:'غالبًا في مرحلة ٦–٩ أشهر، مع تفاوتٍ طبيعيّ بين الأطفال.'},
+ {c:'تطوّر ومصطلحات',q:'«جملة من كلمتين» و«اللعب التخيّلي» يظهران غالبًا في:',o:['٦ أشهر','١٨–٢٤ شهرًا','٣ أشهر','٤ سنوات'],a:1,w:'في مرحلة ١٨–٢٤ شهرًا تظهر جملة من كلمتين واللعب التخيّلي.'},
+ {c:'تطوّر ومصطلحات',q:'ما المقصود بـ«القدوة» في مصطلحات الكتاب؟',o:['الكتاب المدرسيّ','النموذج العمليّ الذي يقلّده الطفل','العقاب','المكافأة'],a:1,w:'القدوة هي النموذج العمليّ، وهي أبلغ أدوات التربية.'},
+ {c:'تطوّر ومصطلحات',q:'معالم النموّ المذكورة في الخريطة هي:',o:['قواعد ثابتة لا تتخلّف','تقريبية تتفاوت بين طفلٍ وآخر','خاصة بالذكور','طبّية إلزامية'],a:1,w:'هي معالم تقريبية؛ الأهمّ الاتجاه العامّ لا التوقيت الحرفيّ.'},
+ /* ===== أسئلة المحتوى الموسّع ===== */
+ {c:'التأصيل',q:'أيّ آيةٍ تُعدّ أصلًا جامعًا في مسؤولية الوالدين عن أهليهم؟',o:['﴿قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا﴾','﴿الْمَالُ وَالْبَنُونَ زِينَةُ﴾','﴿وَكَانَ أَبُوهُمَا صَالِحًا﴾','﴿يَهَبُ لِمَن يَشَاءُ إِنَاثًا﴾'],a:0,w:'آية التحريم ٦ أصلٌ في وجوب وقاية النفس والأهل، ومنه مسؤولية التربية.'},
+ {c:'التأصيل',q:'ما الأسئلة الثلاثة التي يجيب عنها كل منهجٍ تربويّ بحسب الكتاب؟',o:['من الإنسان؟ ولماذا خُلق؟ وما الخير والشرّ؟','كم يكلّف؟ ومن يدرّسه؟ وأين؟','ما الدرجة؟ وما الشهادة؟ وما الوظيفة؟','متى ينام؟ وماذا يأكل؟ ومتى يلعب؟'],a:0,w:'إجابات هذه الأسئلة تحدّد وسائل المنهج وغاياته.'},
+ {c:'التأصيل',q:'لماذا قُدّم السمع في قوله تعالى ﴿وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ﴾؟',o:['لأنه أسبق الحواسّ عملًا','لأنه أضعفها','للسجع فقط','لأنه آخرها نموًّا'],a:0,w:'السمع يعمل مبكّرًا جدًّا، ومن هنا أهمية ما يسمعه الطفل في أيامه الأولى.'},
+ {c:'التأصيل',q:'ما دلالة كلمة «اصطبر» في ﴿وَأْمُرْ أَهْلَكَ بِالصَّلَاةِ وَاصْطَبِرْ عَلَيْهَا﴾؟',o:['المبالغة في الصبر','الاستعجال','ترك الأمر','الاكتفاء بمرة واحدة'],a:0,w:'صيغة «اصطبر» تدلّ على شدّة الصبر وطول النَّفَس في التربية.'},
+ {c:'التأصيل',q:'ما الحكم الصحيح في الاستفادة من علوم التربية الحديثة وفق تحرير الكتاب؟',o:['تُرفض كلّها','يُستفاد مما وافق الوحي ولم يصادمه','تُقدَّم على الوحي','لا علاقة لها بالتربية'],a:1,w:'العبرة بالمرجعية والغاية؛ فالوسيلة النافعة الموافقة للوحي يُستفاد منها.'},
+ {c:'الإعداد والحمل',q:'ماذا نذرت امرأة عمران لله؟',o:['مالها','ما في بطنها محرّرًا','بيتها','صيام سنة'],a:1,w:'﴿رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي مُحَرَّرًا﴾ — نموذجٌ في تصحيح نيّة الإنجاب.'},
+ {c:'الإعداد والحمل',q:'أيّ آيةٍ تجعل التقوى سببًا لحفظ الذرية الضعيفة؟',o:['﴿وَلْيَخْشَ الَّذِينَ لَوْ تَرَكُوا مِنْ خَلْفِهِمْ ذُرِّيَّةً ضِعَافًا﴾','﴿وَالْوَالِدَاتُ يُرْضِعْنَ﴾','﴿يَا زَكَرِيَّا إِنَّا نُبَشِّرُكَ﴾','﴿وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ﴾'],a:0,w:'آية النساء ٩: ﴿فَلْيَتَّقُوا اللَّهَ وَلْيَقُولُوا قَوْلًا سَدِيدًا﴾.'},
+ {c:'الإعداد والحمل',q:'أيّ الدنانير أعظم أجرًا بحسب حديث مسلم؟',o:['المنفَق في رقبة','المتصدَّق به على مسكين','المنفَق على الأهل','المنفَق في سفر'],a:2,w:'«أعظمها أجرًا الذي أنفقته على أهلك» (رواه مسلم).'},
+ {c:'الإعداد والحمل',q:'ما أقلّ مدة الحمل المستنبطة من الجمع بين آيتي لقمان والأحقاف؟',o:['أربعة أشهر','ستة أشهر','سبعة أشهر','تسعة أشهر'],a:1,w:'ثلاثون شهرًا للحمل والفصال، ناقص حولين للفصال = ستة أشهر.'},
+ {c:'الإعداد والحمل',q:'وصف القرآن الحمل بأنه:',o:['يسيرٌ هيّن','وهنٌ على وهن','لا مشقّة فيه','أمرٌ عاديّ'],a:1,w:'﴿حَمَلَتْهُ أُمُّهُ وَهْنًا عَلَىٰ وَهْنٍ﴾ (لقمان ١٤).'},
+ {c:'الإعداد والحمل',q:'ما دليل وجوب النفقة على الحامل؟',o:['﴿وَإِن كُنَّ أُولَاتِ حَمْلٍ فَأَنفِقُوا عَلَيْهِنَّ﴾','﴿الْمَالُ وَالْبَنُونَ﴾','﴿وَكَانَ أَبُوهُمَا صَالِحًا﴾','﴿يَا بُنَيَّ لَا تُشْرِكْ﴾'],a:0,w:'سورة الطلاق ٦: ﴿فَأَنفِقُوا عَلَيْهِنَّ حَتَّىٰ يَضَعْنَ حَمْلَهُنَّ﴾.'},
+ {c:'الولادة وأحكامها',q:'في قوله تعالى ﴿يَهَبُ لِمَن يَشَاءُ إِنَاثًا وَيَهَبُ لِمَن يَشَاءُ الذُّكُورَ﴾ ما الملحظ؟',o:['قُدّم ذكر الإناث','قُدّم ذكر الذكور','لم يُذكر إلا الذكور','لا ملحظ'],a:0,w:'تقديم الإناث فيه ردٌّ على كراهية الجاهلية للبنات.'},
+ {c:'الولادة وأحكامها',q:'ما جزاء من عال جاريتين حتى تبلغا؟',o:['يُغفر له','يأتي يوم القيامة مع النبيّ ﷺ كهاتين','يُرزق مالًا','لا شيء'],a:1,w:'«جاء يوم القيامة أنا وهو» وضمّ أصابعه (رواه مسلم).'},
+ {c:'الولادة وأحكامها',q:'متى سمّى النبيّ ﷺ ابنه إبراهيم؟',o:['ليلة ولادته','يوم السابع','بعد أربعين يومًا','بعد الفطام'],a:0,w:'«وُلد لي الليلة غلامٌ فسمّيته باسم أبي إبراهيم» (رواه مسلم).'},
+ {c:'الولادة وأحكامها',q:'ما حكم التسمية بـ«عبد النبيّ» أو «عبد الكعبة»؟',o:['مستحبّة','محرّمة لأنها تعبيدٌ لغير الله','مكروهة فقط','واجبة'],a:1,w:'التعبيد لا يكون إلا لله وأسمائه.'},
+ {c:'الولادة وأحكامها',q:'ما حكم تعليق التمائم على المولود لدفع العين؟',o:['سنّة','منهيٌّ عنه، والمشروع الأذكار','مستحبّ للبنات','واجب'],a:1,w:'«من علّق تميمةً فقد أشرك» (رواه أحمد)، والبديل التعويذ المشروع.'},
+ {c:'الولادة وأحكامها',q:'أكمل: «مع الغلام عقيقة، فأهريقوا عنه دمًا و...»',o:['أميطوا عنه الأذى','ألبسوه جديدًا','سافروا به','اكتموا خبره'],a:0,w:'«فأهريقوا عنه دمًا، وأميطوا عنه الأذى» (رواه البخاري).'},
+ {c:'الولادة وأحكامها',q:'ما الذي يُراعى صحيًّا في التحنيك اليوم؟',o:['كميةٌ كبيرة','النظافة والكمية اليسيرة واستشارة الطبيب في الحالات الخاصة','تركه مطلقًا','استعمال العسل للرضيع'],a:1,w:'يُجمع بين السنّة والسلامة الطبية، خاصةً للخُدّج.'},
+ {c:'الاحتياجات والحقوق',q:'لماذا أطال النبيّ ﷺ السجود مرّةً؟',o:['لطول الدعاء','لأن ابنه ارتحله فكره أن يُعجله','لمرضٍ أصابه','لنزول الوحي'],a:1,w:'«إنّ ابني ارتحلني فكرهتُ أن أُعجله» (رواه النسائي).'},
+ {c:'الاحتياجات والحقوق',q:'لماذا كان النبيّ ﷺ يخفّف الصلاة أحيانًا؟',o:['لسماعه بكاء الصبيّ رحمةً بأمّه','للسفر','للبرد','للمطر'],a:0,w:'«فأسمع بكاء الصبيّ فأتجوّز في صلاتي كراهية أن أشقّ على أمّه» (البخاري).'},
+ {c:'الاحتياجات والحقوق',q:'ما الذي يدلّ عليه قول النبيّ ﷺ «يا أبا عُمير، ما فعل النُّغير؟»',o:['ملاطفة الطفل الصغير والحديث معه بلغته','النهي عن تربية الطيور','تعليم الحساب','العقاب'],a:0,w:'كان يمازح أخًا صغيرًا لأنس ويسأله عن طائره (متفق عليه).'},
+ {c:'الاحتياجات والحقوق',q:'ماذا قال النبيّ ﷺ لعمر بن أبي سلمة وهو غلام على الطعام؟',o:['«سمِّ الله، وكُل بيمينك، وكُل مما يليك»','«لا تأكل»','«أسرع»','«كُل وحدك»'],a:0,w:'تعليم آداب الأكل بكلماتٍ قصيرة واضحة (متفق عليه).'},
+ {c:'الاحتياجات والحقوق',q:'بحسب آية الرضاعة، كيف يكون قرار الفطام قبل الحولين؟',o:['بقرار الأب وحده','عن تراضٍ من الأبوين وتشاور','بقرار الطبيب فقط','لا يجوز مطلقًا'],a:1,w:'﴿فَإِنْ أَرَادَا فِصَالًا عَن تَرَاضٍ مِّنْهُمَا وَتَشَاوُرٍ فَلَا جُنَاحَ عَلَيْهِمَا﴾.'},
+ {c:'الاحتياجات والحقوق',q:'ما السنّة عند دخول الليل في شأن الصبيان؟',o:['كفّهم وحفظهم','إخراجهم للعب','تركهم يسهرون خارج البيت','لا شيء'],a:0,w:'«إذا كان جُنح الليل فكُفّوا صبيانكم؛ فإنّ الشياطين تنتشر حينئذ» (متفق عليه).'},
+ {c:'الاحتياجات والحقوق',q:'ما دليل أن اللعب حاجةٌ مشروعة للطفل؟',o:['لعب عائشة بالبنات في بيت النبيّ ﷺ','لا دليل','النهي عن اللعب','حديث الفطرة'],a:0,w:'كانت عائشة تلعب بالدّمى في بيت النبيّ ﷺ (رواه البخاري).'},
+ {c:'الاحتياجات والحقوق',q:'حديث «كفى بالمرء إثمًا أن يضيّع من يقوت» يتعلّق بـ:',o:['النفقة','الصلاة','التسمية','الختان'],a:0,w:'تضييع النفقة على من تلزمه نفقتهم إثمٌ كبير (رواه أبو داود).'},
+ {c:'الاحتياجات والحقوق',q:'ما الدليل على حقّ الطفل في النسب؟',o:['﴿ادْعُوهُمْ لِآبَائِهِمْ هُوَ أَقْسَطُ عِندَ اللَّهِ﴾','﴿وَالْوَالِدَاتُ يُرْضِعْنَ﴾','﴿يَا بُنَيَّ﴾','﴿وَإِذَا بُشِّرَ﴾'],a:0,w:'آية الأحزاب ٥ أصلٌ في حفظ النسب.'},
+ {c:'المشكلات والكنوز',q:'ماذا قال النبيّ ﷺ للحسن حين وضع تمرة الصدقة في فمه؟',o:['«كِخْ كِخْ» ثم علّل: أما شعرت أنّا لا نأكل الصدقة','ضربه','تجاهله','أعطاه غيرها'],a:0,w:'منعٌ واضح بكلمةٍ يفهمها ثم تعليلٌ قصير (متفق عليه).'},
+ {c:'المشكلات والكنوز',q:'وعد الطفل بشيءٍ لإسكاته ثم عدم الوفاء به:',o:['جائز للتربية','يُكتب كذبة','مستحبّ','لا بأس به للصغير'],a:1,w:'«أما إنكِ لو لم تعطيه شيئًا كُتبت عليكِ كذبة» (رواه أبو داود).'},
+ {c:'المشكلات والكنوز',q:'من الشديد بحسب الحديث؟',o:['الذي يصرع الناس','الذي يملك نفسه عند الغضب','الذي يرفع صوته','الذي يعاقب فورًا'],a:1,w:'«ليس الشديد بالصُّرَعة، إنما الشديد الذي يملك نفسه عند الغضب» (متفق عليه).'},
+ {c:'المشكلات والكنوز',q:'ما التوصية الغالبة بشأن الشاشات قبل نحو ١٨–٢٤ شهرًا؟',o:['ساعاتٌ مفتوحة','تجنّبها إلا مكالمات الفيديو','استعمالها كمهدّئ','لا توصية'],a:1,w:'ثم وقتٌ قصيرٌ محدود بمحتوى مناسب وبمشاركة الوالدين.'},
+ {c:'المشكلات والكنوز',q:'كيف يُتعامل مع طفلٍ يعضّ غيره؟',o:['عضّه ليعرف الألم','منعٌ هادئٌ حازم وتعليمه بدائل','ضربه','الضحك'],a:1,w:'معاملته بالعنف تعلّمه أن العنف وسيلة.'},
+ {c:'المشكلات والكنوز',q:'ما الأنسب عند مغادرة طفلٍ يعاني قلق الانفصال؟',o:['التسلّل خفيةً','وداعٌ قصيرٌ واضح والعودة في الموعد','الكذب عليه','تأخير العودة'],a:1,w:'الوضوح والوفاء بالموعد يبنيان الثقة.'},
+ {c:'المشكلات والكنوز',q:'ما الطريقة المفضّلة للفطام؟',o:['المفاجئة بوسائل منفّرة','التدريجية مع التعويض بالاحتضان','قبل الشهر السادس دائمًا','بلا تشاور'],a:1,w:'تقليل الرضعات تدريجيًّا مع القرب والحنان.'},
+ {c:'المشكلات والكنوز',q:'ما الأنسب في نوبة غضب طفل في الثانية؟',o:['الاستسلام لطلبه المرفوض','الهدوء وضمان سلامته وتسمية شعوره دون استسلام','الصراخ عليه','حبسه'],a:1,w:'الهدوء والثبات مع تسمية الشعور: «أنت غاضب لأنك تريد...».'}
+];
+
+/* ===== Quiz Engine ===== */
+const cats=[...new Set(BANK.map(x=>x.c))];
+let selectedCat='الكل', quizSet=[], idx=0, score=0, answered=false, wrongs=[];
+let timerOn=false, timerId=null, timeLeft=30, wrongOnlyMode=false;
+
+const chipsWrap=document.getElementById('catChips');
+function buildChips(){
+  const all=[{c:'الكل',n:BANK.length},...cats.map(c=>({c,n:BANK.filter(x=>x.c===c).length}))];
+  chipsWrap.innerHTML=all.map(o=>`<button class="chip${o.c==='الكل'?' on':''}" data-cat="${o.c}">${o.c} <span class="c">(${o.n})</span></button>`).join('');
+  updateCount();
+}
+chipsWrap.addEventListener('click',e=>{
+  const ch=e.target.closest('.chip'); if(!ch)return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  ch.classList.add('on'); selectedCat=ch.dataset.cat; updateCount();
+});
+function pool(){return selectedCat==='الكل'?BANK:BANK.filter(x=>x.c===selectedCat)}
+function updateCount(){document.getElementById('qCount').textContent=`عدد الأسئلة في هذا المحور: ${pool().length}`}
+
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+document.getElementById('startBtn').onclick=()=>{
+  wrongOnlyMode=false;
+  timerOn=document.getElementById('timerToggle').checked;
+  quizSet=shuffle(pool()); idx=0; score=0; wrongs=[];
+  document.getElementById('quizStart').classList.add('hidden');
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizPlay').classList.remove('hidden');
+  renderQ();
+};
+
+/* timer */
+function stopTimer(){if(timerId){clearInterval(timerId);timerId=null}}
+function startTimer(){
+  stopTimer();
+  const d=document.getElementById('timerDisplay');
+  if(!timerOn){d.textContent='';return}
+  timeLeft=30; d.textContent=`⏱ ${timeLeft}`; d.classList.remove('low');
+  timerId=setInterval(()=>{
+    timeLeft--;
+    d.textContent=`⏱ ${timeLeft}`;
+    if(timeLeft<=5)d.classList.add('low');
+    if(timeLeft<=0){
+      stopTimer();
+      if(!answered){
+        answered=true;
+        const q=quizSet[idx];
+        document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(+b.dataset.i===q.a)b.classList.add('correct')});
+        wrongs.push({q:q.q,correct:q.o[q.a],yours:'(انتهى الوقت)',cat:q.c});
+        const why=document.getElementById('qWhy');
+        why.innerHTML=`<b>⏱ انتهى الوقت — الإجابة الصحيحة:</b> ${q.o[q.a]}<br>${q.w}`;
+        why.classList.add('show');
+        document.getElementById('nextBtn').disabled=false;
+      }
+    }
+  },1000);
+}
+function renderQ(){
+  answered=false;
+  const q=quizSet[idx];
+  document.getElementById('qCatLbl').textContent=q.c;
+  document.getElementById('qText').textContent=`${idx+1}. ${q.q}`;
+  document.getElementById('qPos').textContent=`سؤال ${idx+1} من ${quizSet.length}`;
+  document.getElementById('qScore').textContent=score;
+  document.getElementById('qBar').style.width=`${(idx/quizSet.length)*100}%`;
+  const opts=document.getElementById('qOpts');
+  const labels=['أ','ب','ج','د'];
+  opts.innerHTML=q.o.map((t,i)=>`<button class="opt" data-i="${i}" aria-label="${labels[i]||i+1}. ${t}"><span class="mk">${labels[i]||i+1}</span><span>${t}</span></button>`).join('');
+  const why=document.getElementById('qWhy'); why.className='why'; why.innerHTML='';
+  document.getElementById('nextBtn').disabled=true;
+  document.getElementById('nextBtn').textContent=(idx===quizSet.length-1)?'عرض النتيجة':'التالي ←';
+  opts.querySelectorAll('.opt').forEach(b=>b.onclick=()=>pick(b));
+  startTimer();
+}
+function pick(btn){
+  if(answered)return; answered=true;
+  stopTimer();
+  const q=quizSet[idx], chosen=+btn.dataset.i;
+  const all=document.querySelectorAll('.opt');
+  all.forEach(b=>{b.disabled=true; const i=+b.dataset.i; if(i===q.a)b.classList.add('correct')});
+  if(chosen===q.a){score++;document.getElementById('qScore').textContent=score}
+  else{btn.classList.add('wrong');wrongs.push({q:q.q,correct:q.o[q.a],yours:q.o[chosen],cat:q.c})}
+  const why=document.getElementById('qWhy');
+  why.innerHTML=`<b>${chosen===q.a?'✔ إجابة صحيحة':'✘ الإجابة الصحيحة'}:</b> ${q.o[q.a]}<br>${q.w}`;
+  why.classList.add('show');
+  const nb=document.getElementById('nextBtn'); nb.disabled=false; nb.focus();
+}
+document.getElementById('nextBtn').onclick=()=>{
+  if(idx<quizSet.length-1){idx++;renderQ();window.scrollTo({top:120,behavior:'smooth'})}
+  else showResult();
+};
+document.getElementById('quitBtn').onclick=()=>{
+  stopTimer();
+  const done=idx+(answered?1:0);
+  if(done===0){
+    document.getElementById('quizPlay').classList.add('hidden');
+    document.getElementById('quizStart').classList.remove('hidden');
+    return;
+  }
+  quizSet=quizSet.slice(0,done);
+  showResult();
+};
+
+function showResult(){
+  stopTimer();
+  document.getElementById('quizPlay').classList.add('hidden');
+  document.getElementById('quizResult').classList.remove('hidden');
+  const total=quizSet.length, pct=Math.round((score/total)*100);
+  document.getElementById('scoreVal').textContent=`${pct}%`;
+  document.getElementById('scoreCircle').style.setProperty('--pct',`${pct}%`);
+  document.getElementById('scoreLine').textContent=`الإجابات الصحيحة: ${score} من أصل ${total}.`;
+  let v;
+  if(pct===100)v='ماشاء الله! إتقانٌ كامل 🌟';
+  else if(pct>=80)v='ممتاز! فهمٌ راسخٌ لمحتوى الكتاب';
+  else if(pct>=60)v='جيد جدًّا، ومراجعةٌ يسيرةٌ تُكمل الصورة';
+  else if(pct>=40)v='بدايةٌ طيبة؛ راجِع الأبواب ثم أعِد المحاولة';
+  else v='الخير في المراجعة؛ اقرأ الأبواب مرةً أخرى ثم جرّب';
+  document.getElementById('verdict').textContent=v;
+
+  // per-category performance
+  const perCat={};
+  quizSet.forEach(q=>{perCat[q.c]=perCat[q.c]||{t:0,c:0}; perCat[q.c].t++; perCat[q.c].c++;});
+  wrongs.forEach(w=>{if(perCat[w.cat])perCat[w.cat].c--;});
+  const cp=document.getElementById('catPerf');
+  const rows=Object.entries(perCat).map(([name,o])=>{
+    const p=Math.round((o.c/o.t)*100);
+    const col=p>=80?'var(--ok)':p>=50?'var(--gold)':'var(--no)';
+    return `<div class="cp-row"><div class="cp-top"><span>${name}</span><span>${o.c}/${o.t} · ${p}%</span></div><div class="cp-bar"><span style="width:${p}%;background:${col}"></span></div></div>`;
+  }).join('');
+  cp.innerHTML=`<h3>أداؤك حسب المحور</h3>${rows}`;
+
+  const box=document.getElementById('reviewBox'); box.classList.add('hidden');
+  document.getElementById('wrongBtn').style.display=wrongs.length?'':'none';
+  if(wrongs.length){
+    box.innerHTML=`<h3>مراجعة الأخطاء (${wrongs.length})</h3>`+wrongs.map(w=>
+      `<div class="rev-item"><div class="q">• ${w.q}</div><div class="a">✔ الصحيح: ${w.correct}</div><div class="yr">✘ إجابتك: ${w.yours}</div></div>`).join('');
+  }else{
+    box.innerHTML=`<h3>مراجعة الأخطاء</h3><div class="rev-item">لا أخطاء — إجاباتٌ كاملة، أحسنت!</div>`;
+  }
+}
+document.getElementById('retryBtn').onclick=()=>{
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizStart').classList.remove('hidden');
+  window.scrollTo({top:120,behavior:'smooth'});
+};
+document.getElementById('reviewBtn').onclick=()=>{
+  document.getElementById('reviewBox').classList.toggle('hidden');
+};
+
+buildChips();
+
+/* ===== Keyboard support for quiz ===== */
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('quiz').classList.contains('active') &&
+     !document.getElementById('quizPlay').classList.contains('hidden')){
+    const map={'1':0,'2':1,'3':2,'4':3,'١':0,'٢':1,'٣':2,'٤':3};
+    if(!answered && e.key in map){
+      const b=document.querySelector(`.opt[data-i="${map[e.key]}"]`);
+      if(b){e.preventDefault();pick(b);}
+    } else if(answered && (e.key==='Enter'||e.key==='ArrowLeft')){
+      e.preventDefault();document.getElementById('nextBtn').click();
+    }
+  }
+});
+
+/* ===== Dark mode ===== */
+const themeBtn=document.getElementById('themeBtn');
+function setTheme(dark){
+  document.body.classList.toggle('dark',dark);
+  themeBtn.textContent=dark?'☀️':'🌙';
+  themeBtn.title=dark?'الوضع النهاري':'الوضع الليلي';
+}
+try{setTheme(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);}catch(e){}
+themeBtn.onclick=()=>setTheme(!document.body.classList.contains('dark'));
+
+/* ===== Back to top ===== */
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{toTop.classList.toggle('show',window.scrollY>420)});
+toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+/* ===== Print ===== */
+document.getElementById('printBtn').onclick=()=>window.print();
+
+/* ===== Retry wrong-only ===== */
+document.getElementById('wrongBtn').onclick=()=>{
+  const texts=new Set(wrongs.map(w=>w.q));
+  const set=BANK.filter(q=>texts.has(q.q));
+  if(!set.length)return;
+  wrongOnlyMode=true;
+  quizSet=shuffle(set); idx=0; score=0; wrongs=[];
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizPlay').classList.remove('hidden');
+  renderQ(); window.scrollTo({top:120,behavior:'smooth'});
+};
+
+/* ===== Export result as image ===== */
+document.getElementById('exportBtn').onclick=()=>{
+  const total=quizSet.length,pct=Math.round((score/total)*100);
+  const W=900,H=560,c=document.createElement('canvas');
+  c.width=W;c.height=H;const x=c.getContext('2d');
+  const g=x.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#1C6B62');g.addColorStop(1,'#0D3A35');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.strokeStyle='#CBA660';x.lineWidth=2;x.strokeRect(28,28,W-56,H-56);
+  x.textAlign='center';x.direction='rtl';
+  x.fillStyle='#EAD9AE';x.font='bold 26px Tajawal, sans-serif';
+  x.fillText('نتيجة اختبار «التربية بالوحيين»',W/2,110);
+  // circle
+  const cx=W/2,cy=280,r=88;
+  x.lineWidth=18;x.strokeStyle='rgba(255,255,255,.18)';
+  x.beginPath();x.arc(cx,cy,r,0,Math.PI*2);x.stroke();
+  x.strokeStyle='#CBA660';x.lineCap='round';
+  x.beginPath();x.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+(Math.PI*2*pct/100));x.stroke();
+  x.fillStyle='#fff';x.font='bold 52px Tajawal, sans-serif';
+  x.fillText(pct+'%',cx,cy+18);
+  x.fillStyle='#EAD9AE';x.font='500 22px Tajawal, sans-serif';
+  x.fillText(`${score} إجابة صحيحة من ${total}`,W/2,420);
+  x.fillStyle='#9FC4BC';x.font='400 16px Tajawal, sans-serif';
+  x.fillText(document.getElementById('verdict').textContent,W/2,458);
+  x.fillText('تلخيصٌ تفاعليّ لكتاب أسماء محمد لبيب',W/2,500);
+  try{
+    const a=document.createElement('a');
+    a.download='نتيجة-اختبار-التربية-بالوحيين.png';
+    a.href=c.toDataURL('image/png');a.click();
+  }catch(e){alert('تعذّر التصدير في هذا المتصفّح.')}
+};
+
+/* ===== FLASHCARDS ===== */
+const CARDS=BANK.map(q=>({c:q.c,q:q.q,a:q.o[q.a]+' — '+q.w}));
+let fcSet=shuffle(CARDS), fcIdx=0;
+const fcEl=document.getElementById('flashcard');
+function renderFC(){
+  const c=fcSet[fcIdx];
+  fcEl.classList.remove('flipped');
+  document.getElementById('fcCat').textContent=c.c;
+  document.getElementById('fcQ').textContent=c.q;
+  document.getElementById('fcA').textContent=c.a;
+  document.getElementById('fcPos').textContent=`بطاقة ${fcIdx+1} من ${fcSet.length}`;
+}
+fcEl.onclick=()=>fcEl.classList.toggle('flipped');
+document.getElementById('fcNext').onclick=()=>{fcIdx=(fcIdx+1)%fcSet.length;renderFC()};
+document.getElementById('fcPrev').onclick=()=>{fcIdx=(fcIdx-1+fcSet.length)%fcSet.length;renderFC()};
+document.getElementById('fcShuffle').onclick=()=>{fcSet=shuffle(CARDS);fcIdx=0;renderFC()};
+renderFC();
+
+/* ===== SEARCH ===== */
+const searchInput=document.getElementById('searchInput');
+const searchCount=document.getElementById('searchCount');
+function clearMarks(){
+  document.querySelectorAll('main mark').forEach(m=>{
+    const p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize();
+  });
+}
+function doSearch(term){
+  clearMarks();
+  if(!term||term.length<2){searchCount.textContent='';return}
+  const rx=new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+  let hits=0, firstEl=null;
+  document.querySelectorAll('#intro,#foundation,#prep,#birth,#needs,#problems,#appendix,#faq').forEach(sec=>{
+    const walker=document.createTreeWalker(sec,NodeFilter.SHOW_TEXT,{
+      acceptNode:n=>(n.parentNode.closest('script,style,mark'))?NodeFilter.FILTER_REJECT
+        :(rx.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT)
+    });
+    const nodes=[];let n;while(n=walker.nextNode())nodes.push(n);
+    nodes.forEach(node=>{
+      const frag=document.createDocumentFragment();
+      let last=0;const s=node.nodeValue;rx.lastIndex=0;let m2;
+      while((m2=rx.exec(s))!==null){
+        frag.appendChild(document.createTextNode(s.slice(last,m2.index)));
+        const mk=document.createElement('mark');mk.textContent=m2[0];
+        frag.appendChild(mk);last=m2.index+m2[0].length;hits++;
+        if(!firstEl)firstEl=mk;
+        if(m2.index===rx.lastIndex)rx.lastIndex++;
+      }
+      frag.appendChild(document.createTextNode(s.slice(last)));
+      node.parentNode.replaceChild(frag,node);
+    });
+  });
+  searchCount.textContent=hits?`${hits} نتيجة`:'لا نتائج';
+  if(firstEl){
+    const sec=firstEl.closest('.view');
+    if(sec&&!sec.classList.contains('active'))showView(sec.id,false);
+    firstEl.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+let sTimer;
+searchInput.addEventListener('input',e=>{
+  clearTimeout(sTimer);
+  const v=e.target.value.trim();
+  sTimer=setTimeout(()=>doSearch(v),300);
+});
+
+/* ===== Reading progress ===== */
+const readbar=document.getElementById('readbar');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  readbar.style.width=h>0?`${(window.scrollY/h)*100}%`:'0';
+});
+</script>
+</body>
+</html>

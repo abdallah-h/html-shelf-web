@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل التخطيط الاستراتيجي للحياة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="shelf-vendor:/fonts/c2e0a97eb546.css" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFF3EE;
+  --ink:#1E2A24;
+  --teal:#0E7C66;
+  --teal-deep:#0A5748;
+  --teal-soft:rgba(14,124,102,.06);
+  --amber:#C7861A;
+  --amber-soft:rgba(199,134,26,.12);
+  --mist:#DCE5DD;
+  --card:#FFFFFF;
+  --muted:#4A5A50;
+  --faint:#7C8C81;
+  --radius:14px;
+}
+body.dark{
+  --paper:#141B18;
+  --ink:#E4EDE6;
+  --teal:#3BB89C;
+  --teal-deep:#7FDCC4;
+  --teal-soft:rgba(59,184,156,.10);
+  --amber:#E0A03C;
+  --amber-soft:rgba(224,160,60,.14);
+  --mist:#2A3630;
+  --card:#1C2620;
+  --muted:#A7B8AC;
+  --faint:#7C8C81;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans Arabic',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.9;
+  font-size:16.5px;
+  transition:background .3s,color .3s;
+}
+h1,h2,h3,h4{font-family:'Alexandria',sans-serif;line-height:1.5}
+
+/* ===== الغلاف ===== */
+.hero{
+  position:relative;
+  background:#1E2A24;
+  color:#EFF3EE;
+  padding:56px 24px 80px;
+  overflow:hidden;
+}
+.hero svg.contours{position:absolute;inset:0;width:100%;height:100%;opacity:.14;pointer-events:none}
+.hero-inner{position:relative;max-width:860px;margin:0 auto}
+.hero .kicker{
+  display:inline-block;
+  font-size:.8rem;letter-spacing:.12em;
+  color:#E0A03C;
+  border:1px solid rgba(224,160,60,.5);
+  border-radius:999px;padding:4px 14px;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(1.9rem,5.5vw,3.1rem);font-weight:800;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:#6FD0B8}
+.hero p{max-width:560px;color:#C9D6CC;font-weight:300}
+.path-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;font-size:.82rem;color:#9FB3A4}
+.path-legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#E0A03C;margin-left:7px;vertical-align:middle}
+.hero-tools{position:absolute;top:18px;left:18px;display:flex;gap:8px;z-index:2}
+.tool-btn{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);
+  color:#EFF3EE;cursor:pointer;border-radius:999px;
+  padding:7px 14px;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:.8rem;
+  transition:background .2s;
+}
+.tool-btn:hover{background:rgba(255,255,255,.22)}
+.tool-btn:focus-visible{outline:2px solid #6FD0B8;outline-offset:2px}
+
+/* ===== شريط الأبواب والبحث ===== */
+.tabs{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--mist);
+}
+.tabs-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabs-inner{display:flex;gap:4px;max-width:960px;margin:0 auto;padding:10px 16px 6px;white-space:nowrap}
+.tab{
+  position:relative;
+  border:none;background:transparent;cursor:pointer;
+  font-family:'IBM Plex Sans Arabic',sans-serif;
+  font-size:.88rem;font-weight:500;color:var(--ink);
+  padding:8px 14px;border-radius:999px;
+  transition:background .2s,color .2s;
+}
+.tab:hover{background:var(--mist)}
+.tab.active{background:var(--teal);color:#fff}
+.tab.visited:not(.active)::after{
+  content:"";position:absolute;bottom:2px;right:50%;transform:translateX(50%);
+  width:5px;height:5px;border-radius:50%;background:var(--amber);
+}
+.tab:focus-visible{outline:2px solid var(--teal-deep);outline-offset:2px}
+.search-row{max-width:960px;margin:0 auto;padding:0 16px 10px;position:relative}
+#searchBox{
+  width:100%;max-width:420px;
+  border:1px solid var(--mist);border-radius:999px;
+  background:var(--card);color:var(--ink);
+  padding:8px 16px;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:.88rem;
+}
+#searchBox:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+#searchResults{
+  position:absolute;top:100%;right:16px;z-index:60;
+  width:min(420px,calc(100% - 32px));
+  background:var(--card);border:1px solid var(--mist);border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  max-height:300px;overflow-y:auto;display:none;
+}
+#searchResults.open{display:block}
+.sr-item{
+  display:block;width:100%;text-align:right;border:none;background:none;cursor:pointer;
+  padding:10px 16px;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:.86rem;color:var(--ink);
+  border-bottom:1px dashed var(--mist);
+}
+.sr-item:last-child{border-bottom:none}
+.sr-item:hover{background:var(--teal-soft)}
+.sr-item small{display:block;color:var(--teal);font-size:.72rem;font-weight:700}
+.sr-empty{padding:12px 16px;color:var(--faint);font-size:.84rem}
+
+/* ===== الأقسام ===== */
+main{max-width:860px;margin:0 auto;padding:36px 20px 90px}
+section.chapter{display:none;animation:fade .35s ease}
+section.chapter.visible{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  section.chapter.visible{animation:none}
+  html{scroll-behavior:auto}
+}
+.chapter-label{font-size:.78rem;color:var(--teal);letter-spacing:.1em;font-weight:700;margin-bottom:6px}
+.chapter h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;margin-bottom:8px}
+.chapter .lede{color:var(--muted);margin-bottom:28px;max-width:640px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--mist);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  margin-bottom:16px;
+}
+.card h3{font-size:1.08rem;font-weight:700;color:var(--teal-deep);margin-bottom:8px}
+.card h4{font-size:.98rem;font-weight:600;margin:14px 0 4px}
+.card p{margin-bottom:10px}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{padding-right:22px;margin-bottom:10px}
+.card li{margin-bottom:7px}
+.tag{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  color:var(--amber);background:var(--amber-soft);
+  border-radius:6px;padding:2px 10px;margin-bottom:10px;
+}
+.quotebox{
+  border-right:3px solid var(--teal);
+  background:var(--teal-soft);
+  border-radius:8px;padding:14px 18px;margin:14px 0;
+  font-weight:500;color:var(--teal-deep);
+}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.two-col{grid-template-columns:1fr}}
+
+/* أكورديون */
+details{
+  background:var(--card);border:1px solid var(--mist);
+  border-radius:var(--radius);margin-bottom:12px;overflow:hidden;
+}
+details summary{
+  cursor:pointer;list-style:none;
+  padding:16px 20px;font-weight:700;
+  font-family:'Alexandria',sans-serif;font-size:1rem;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  color:var(--ink);
+}
+details summary::-webkit-details-marker{display:none}
+details summary .chev{color:var(--teal);transition:transform .2s;flex-shrink:0}
+details[open] summary .chev{transform:rotate(90deg)}
+details .body{padding:0 20px 18px;border-top:1px dashed var(--mist)}
+details .body p{margin:12px 0 0}
+details .body ul{padding-right:22px;margin-top:10px}
+details .body li{margin-bottom:6px}
+
+/* مسار الرجوع بالعكس */
+.path{position:relative;margin:26px 0;padding-right:26px}
+.path::before{
+  content:"";position:absolute;right:8px;top:6px;bottom:6px;
+  width:2px;background:repeating-linear-gradient(var(--teal) 0 8px,transparent 8px 16px);
+}
+.milestone{position:relative;margin-bottom:22px}
+.milestone::before{
+  content:"";position:absolute;right:-24px;top:8px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--amber);border:2.5px solid var(--paper);
+  box-shadow:0 0 0 2px var(--amber);
+}
+.milestone h4{font-size:1rem;font-weight:700;color:var(--teal-deep)}
+.milestone p{color:var(--muted);font-size:.95rem}
+
+/* قائمة التحقق */
+.check{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px dashed var(--mist);cursor:pointer}
+.check:last-child{border-bottom:none}
+.check input{margin-top:7px;accent-color:var(--teal);width:17px;height:17px;flex-shrink:0}
+.check span{flex:1}
+.check input:checked + span{color:var(--faint);text-decoration:line-through}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+th{background:var(--teal);color:#fff;padding:9px 12px;text-align:right;font-weight:600}
+td{padding:9px 12px;border-bottom:1px solid var(--mist);vertical-align:top}
+tr:nth-child(even) td{background:var(--teal-soft)}
+
+/* عجلة الحياة */
+.wheel-row{display:grid;grid-template-columns:110px 1fr 34px;align-items:center;gap:12px;margin-bottom:14px}
+.wheel-row label{font-weight:600;font-size:.9rem}
+.wheel-row input[type=range]{width:100%;accent-color:var(--teal)}
+.wheel-row output{font-family:'Alexandria',sans-serif;font-weight:800;color:var(--teal-deep);text-align:center}
+.wheel-bars{display:flex;align-items:flex-end;gap:14px;height:150px;margin:22px 4px 6px}
+.wbar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}
+.wbar .fill{width:100%;max-width:52px;border-radius:8px 8px 3px 3px;background:var(--teal);transition:height .25s ease,background .25s}
+.wbar .fill.low{background:var(--amber)}
+.wbar small{font-size:.72rem;color:var(--faint);text-align:center}
+#wheelMsg{margin-top:14px;font-size:.92rem}
+
+/* أزرار التنقل */
+.nav-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.next-btn,.prev-btn{
+  display:inline-block;border:none;cursor:pointer;
+  font-family:'Alexandria',sans-serif;font-weight:600;font-size:.92rem;
+  padding:11px 26px;border-radius:999px;transition:background .2s;
+}
+.next-btn{background:var(--teal);color:#fff}
+.next-btn:hover{background:var(--teal-deep)}
+.prev-btn{background:transparent;color:var(--teal-deep);border:1.5px solid var(--teal)}
+.prev-btn:hover{background:var(--teal-soft)}
+.kbd-hint{font-size:.78rem;color:var(--faint);margin-top:14px}
+.kbd-hint kbd{border:1px solid var(--mist);border-radius:5px;padding:1px 7px;background:var(--card);font-family:inherit}
+
+#topBtn{
+  position:fixed;bottom:22px;left:22px;z-index:40;
+  width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--teal);color:#fff;font-size:1.1rem;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+#topBtn.show{opacity:1;pointer-events:auto}
+
+.src{font-size:.8rem;color:var(--faint);margin-top:10px;border-top:1px dashed var(--mist);padding-top:8px}
+.ev-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+@media(max-width:700px){.ev-wrap{grid-template-columns:1fr}}
+.ev-opt{border:1px solid var(--mist);border-radius:12px;padding:14px;background:var(--teal-soft)}
+.ev-opt input{font-family:'IBM Plex Sans Arabic',sans-serif;color:var(--ink);background:var(--card);border:1px solid var(--mist);border-radius:8px;padding:6px 8px;font-size:.86rem;min-width:0}
+.ev-opt input:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+.ev-name{width:100%;font-weight:700;margin-bottom:10px}
+.ev-head,.ev-row{display:grid;grid-template-columns:1fr 64px 14px 64px;gap:6px;align-items:center;margin-bottom:6px}
+.ev-head span{font-size:.72rem;color:var(--faint);font-weight:600}
+.ev-unit{font-size:.8rem;color:var(--faint)}
+.ev-out{margin-top:10px;font-size:.9rem}
+#evVerdict{margin-top:14px;font-weight:500}
+.wb-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--mist);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;position:sticky;top:104px;z-index:30}
+.wb-actions{display:flex;gap:8px;flex-wrap:wrap}
+.wb-actions .next-btn,.wb-actions .prev-btn{padding:8px 18px;font-size:.84rem}
+.wb-status{font-size:.82rem;color:var(--teal-deep);font-weight:600}
+.wb-field{margin-bottom:14px}
+.wb-field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+.wb-field input,.wb-field textarea{width:100%;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:.92rem;line-height:1.8;color:var(--ink);background:var(--paper);border:1px solid var(--mist);border-radius:10px;padding:9px 12px;resize:vertical}
+.wb-field input:focus,.wb-field textarea:focus{outline:2px solid var(--teal);border-color:var(--teal);background:var(--card)}
+.wb-field ::placeholder{color:var(--faint);opacity:.85}
+.wb-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-bottom:6px;border-bottom:1px dashed var(--mist);margin-bottom:12px}
+@media(max-width:640px){.wb-pair{grid-template-columns:1fr}.wb-bar{position:static}}
+.wb-hint{font-size:.82rem;color:var(--faint)}
+.val-grid{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+.val-chip{cursor:pointer}
+.val-chip input{position:absolute;opacity:0;pointer-events:none}
+.val-chip span{display:inline-block;border:1.5px solid var(--mist);border-radius:999px;padding:5px 14px;font-size:.86rem;background:var(--paper);transition:all .15s}
+.val-chip input:checked + span{background:var(--teal);border-color:var(--teal);color:#fff}
+.val-chip input:disabled + span{opacity:.4;cursor:not-allowed}
+.val-chip input:focus-visible + span{outline:2px solid var(--teal-deep);outline-offset:2px}
+footer{
+  text-align:center;color:var(--faint);font-size:.82rem;
+  padding:26px 20px 40px;border-top:1px solid var(--mist);
+}
+
+/* ===== الطباعة: الدليل كله كمستند واحد ===== */
+@media print{
+  .hero-tools,.tabs,.nav-row,#topBtn,.kbd-hint,.wb-actions{display:none !important}
+  .wb-bar{position:static}
+  .val-chip input:not(:checked) + span{display:none}
+  section.chapter{display:block !important;page-break-before:always}
+  section.chapter:first-of-type{page-break-before:avoid}
+  details{border:none}
+  details .body{display:block !important;border-top:none}
+  details:not([open]) .body{display:block !important}
+  body{background:#fff;color:#000;font-size:12pt}
+  .card,details{break-inside:avoid}
+  .hero{padding:30px 24px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-tools">
+    <button class="tool-btn" id="darkToggle" aria-label="تبديل الوضع الليلي">🌙 وضع ليلي</button>
+    <button class="tool-btn" onclick="printAll()" aria-label="طباعة الدليل كاملاً">🖨️ طباعة / PDF</button>
+  </div>
+  <svg class="contours" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,320 C150,260 250,340 400,290 C550,240 650,320 800,270" fill="none" stroke="#6FD0B8" stroke-width="1.5"/>
+    <path d="M0,270 C150,210 260,290 410,240 C560,190 660,270 800,220" fill="none" stroke="#6FD0B8" stroke-width="1.2"/>
+    <path d="M0,220 C150,160 270,240 420,190 C570,140 670,220 800,170" fill="none" stroke="#6FD0B8" stroke-width="1"/>
+    <path d="M0,170 C150,110 280,190 430,140 C580,90 680,170 800,120" fill="none" stroke="#6FD0B8" stroke-width=".8"/>
+    <path d="M0,120 C150,60 290,140 440,90 C590,40 690,120 800,70" fill="none" stroke="#6FD0B8" stroke-width=".6"/>
+  </svg>
+  <div class="hero-inner">
+    <span class="kicker">دليل مرجعي شامل · النسخة المحدثة</span>
+    <h1>خريطة الطريق: <em>التفكير والتخطيط الاستراتيجي</em> لحياتك</h1>
+    <p>دليل واحد يغنيك عن التنقل بين الكتب: المبادئ الذهنية، أدوات التفكير لخطوات لقدام، منهجية التخطيط لسنوات قدام، تفصيل المجالات الخمسة، إدارة السيناريوهات والتعثر، وخلاصة أفكار عشرة كتب — كل باب مستقل بذاته.</p>
+    <div class="path-legend">
+      <span>11 باب</span>
+      <span>10 خلاصات كتب</span>
+      <span>عجلة حياة تفاعلية</span>
+      <span>دفتر خطة تفاعلي بيتحفظ</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="أبواب الدليل">
+  <div class="tabs-scroll"><div class="tabs-inner" id="tabsBar" role="tablist"></div></div>
+  <div class="search-row">
+    <input type="search" id="searchBox" placeholder="🔍 ابحث في الدليل كله… (مثلاً: رافعة، عادات، سيناريو)" aria-label="بحث في الدليل">
+    <div id="searchResults" role="listbox"></div>
+  </div>
+</nav>
+
+<main id="content">
+
+<!-- الباب 1 -->
+<section class="chapter" data-title="الأساس" id="ch-1">
+  <div class="chapter-label">الباب الأول</div>
+  <h2>إيه هو التفكير الاستراتيجي أصلاً؟</h2>
+  <p class="lede">قبل ما نخطط، لازم نفهم الفرق بين إنك "تشتغل صح" وإنك "تشتغل على الحاجة الصح".</p>
+
+  <div class="card">
+    <h3>التعريف العملي</h3>
+    <p>التفكير الاستراتيجي هو قدرتك على إنك تشوف الصورة الكبيرة وتربط بين قراراتك النهارده ونتايجها بعد سنين، بدل ما تعيش في رد فعل مستمر. الشخص التكتيكي بيسأل "أعمل إيه دلوقتي؟" — الاستراتيجي بيسأل "أنا رايح فين، وإيه أقصر وأذكى طريق؟"</p>
+    <div class="quotebox">الاستراتيجية مش خطة طموحة، الاستراتيجية هي تشخيص دقيق للمشكلة + سياسة موجهة + أفعال متناسقة. أي حاجة غير كده اسمها "أمنيات".</div>
+  </div>
+
+  <div class="card">
+    <h3>الأخطاء الثلاثة اللي بتقتل أي تخطيط</h3>
+    <ul>
+      <li><strong>الخلط بين الهدف والاستراتيجية:</strong> "عايز أبقى غني" ده هدف مش استراتيجية. الاستراتيجية بتقول إزاي وبأنهي ميزة تنافسية.</li>
+      <li><strong>عدم قول "لأ":</strong> اللي بيخطط لعشر أولويات في نفس الوقت، عنده صفر أولويات. جوهر الاستراتيجية هو الاختيار والتضحية.</li>
+      <li><strong>تجاهل عدم اليقين:</strong> خطة واحدة صلبة لمستقبل غير مؤكد = خطة هتنكسر. الحل: سيناريوهات + مرونة (باب السيناريوهات).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>مستويات التفكير في الزمن</h3>
+    <table>
+      <tr><th>المستوى</th><th>المدى</th><th>السؤال المحوري</th></tr>
+      <tr><td>الرؤية</td><td>10 سنين</td><td>عايز حياتي تبقى شكلها إيه؟</td></tr>
+      <tr><td>الاستراتيجية</td><td>3–5 سنين</td><td>إيه المسار والميزة اللي هتوصلني؟</td></tr>
+      <tr><td>الأهداف</td><td>سنة</td><td>إيه اللي لازم يتحقق السنة دي؟</td></tr>
+      <tr><td>الخطة</td><td>90 يوم</td><td>إيه أهم 2–3 نتائج الربع ده؟</td></tr>
+      <tr><td>التنفيذ</td><td>أسبوع/يوم</td><td>إيه العادات والمهام اللي بتخدم كل ده؟</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>حدود التخطيط: إمتى الخطة بتبقى ضارة؟</h3>
+    <p>مهم تعرف إن التخطيط نفسه له سقف، وتجاوزه بيأذي:</p>
+    <ul>
+      <li><strong>التخطيط كوسيلة تأجيل:</strong> ساعات بنخطط ونعيد ترتيب الملفات عشان دي حاجة مريحة، بينما التنفيذ مخيف. لو عندك أكتر من نسختين من نفس الخطة ولسه مبدأتش — انت بتهرب مش بتخطط.</li>
+      <li><strong>التخطيط لمعلومات لسه متوفرتش:</strong> فيه أسئلة إجابتها مش موجودة في دماغك، موجودة في التجربة. متقعدش شهرين تحلل مجال انت مجربتوش أسبوع.</li>
+      <li><strong>الجمود على خطة مالهاش لازمة:</strong> الخطة أداة مش عهد. لو الواقع قال إنها غلط، اللي يغيرها مرن مش متقلب.</li>
+    </ul>
+    <div class="quotebox">القاعدة العملية: خطط بما يكفي عشان تتحرك في الاتجاه الصح، وبعدين اتحرك عشان تجمع المعلومات اللي هتحسّن الخطة. الحركة بتولّد معلومات — والتخطيط لوحده لأ.</div>
+  </div>
+
+</section>
+
+<!-- الباب 2 -->
+<section class="chapter" data-title="المبادئ الذهنية" id="ch-2">
+  <div class="chapter-label">الباب الثاني</div>
+  <h2>النماذج الذهنية: أدوات التفكير اللي تذاكرها</h2>
+  <p class="lede">دي العدسات اللي هتبص بيها على أي قرار. اضغط على كل مبدأ عشان تقرا شرحه وتطبيقه.</p>
+
+  <details open>
+    <summary>1. التفكير من الدرجة التانية (Second-Order Thinking) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>أغلب الناس بتقف عند النتيجة المباشرة للقرار. المفكر الاستراتيجي بيسأل: "وبعدين؟ وبعد كده إيه؟" لحد ما يوصل للنتايج البعيدة.</p>
+      <ul>
+        <li><strong>مثال:</strong> "هاخد الوظيفة اللي مرتبها أعلى" — الدرجة الأولى: فلوس أكتر. الدرجة التانية: مجال بيموت، مهارات مش بتتراكم، بعد 5 سنين قيمتك في السوق أقل.</li>
+        <li><strong>التطبيق:</strong> قبل أي قرار كبير اكتب 3 مستويات من النتائج: فوراً / بعد سنة / بعد 5 سنين.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>2. التفكير العكسي (Inversion) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>بدل ما تسأل "أنجح إزاي؟" اسأل "أضمن الفشل إزاي؟" وبعدين تجنب الأسباب دي بشكل منهجي. تجنب الغباء أسهل وأضمن من ملاحقة العبقرية. تشارلي مانجر كان بيعتبرها من أقوى أدواته، مستلهماً عالم الرياضيات كارل ياكوبي: "اقلب، دايماً اقلب".</p>
+      <ul>
+        <li><strong>تمرين Pre-mortem (أداة طورها عالم النفس جاري كلاين):</strong> تخيل إن خطتك فشلت بعد سنة. اكتب "تقرير وفاة" للخطة: مات ليه؟ الأسباب دي هي أهم المخاطر اللي لازم تحصّن نفسك منها من دلوقتي.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>3. الاحتفاظ بالخيارات (Optionality) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>في عالم غير مؤكد، القرار اللي بيفتح أبواب أحسن من القرار اللي بيقفلها — حتى لو عائده الفوري أقل.</p>
+      <ul>
+        <li><strong>السؤال الذهبي:</strong> "القرار ده بيزوّد ولا بيقلّل خياراتي بعد 3 سنين؟"</li>
+        <li>المهارات العامة (بيع، كتابة، برمجة، تفاوض) بتزود خياراتك. الديون والالتزامات الكبيرة بدري بتقللها.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>4. الرهانات غير المتماثلة (Asymmetric Bets) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>دوّر على فرص خسارتها محدودة ومعروفة، لكن مكسبها المحتمل مفتوح: مشروع جانبي، محتوى بتنشره، علاقة مهنية، مهارة جديدة. لو خسرت، خسرت وقت محدود. لو كسبت، ممكن تغير حياتك.</p>
+      <ul><li><strong>القاعدة:</strong> خصص 10–20% من وقتك لرهانات من النوع ده باستمرار.</li></ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>5. التراكم المركّب (Compounding) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>أهم قراراتك هي اللي نتايجها بتتراكم فوق بعضها: مهارات، سمعة، فلوس مستثمرة، صحة، علاقات. تحسن 1% أسبوعياً معناه حسابياً حوالي 13 ضعف بعد 5 سنين (1.01 أُس 260 أسبوع). الحياة طبعاً مش معادلة نظيفة، لكن الفكرة ثابتة: التحسينات الصغيرة المستمرة بتتضاعف، مش بتتجمع بس. عشان كده الاستمرارية في اتجاه واحد أهم من الاندفاعات المتقطعة في عشر اتجاهات.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>6. تكلفة الفرصة البديلة (Opportunity Cost) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>كل "أيوه" لحاجة هي "لأ" لحاجة تانية. السؤال مش "الحاجة دي مفيدة؟" — السؤال: "دي أفضل استخدام لوقتي مقارنة بالبدائل؟" أغلب الوقت الضايع بيروح في حاجات "مفيدة" لكنها مش الأهم.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>7. دائرة الكفاءة (Circle of Competence) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>اعرف بدقة إيه اللي انت فاهمه فعلاً وإيه اللي بتفتكر إنك فاهمه. القرارات الكبيرة تتاخد جوه دايرتك، أو بعد ما توسّعها بالتعلم. حدود الدايرة أهم من حجمها.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>8. النِسَب الأساسية (Base Rates) والتفكير الاحتمالي <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>قبل ما تحكم على فرصة نجاح خطتك، اسأل: "الناس اللي عملت نفس الحاجة، كام % منهم نجح؟" ابدأ من الإحصائية العامة وعدّلها حسب ظروفك — مش العكس. ده بيحميك من الثقة الزايدة.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>9. الرافعة (Leverage) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>مجهودك المباشر محدود بساعات يومك. الرافعة هي اللي بتخلي نفس المجهود ينتج أضعاف: رأس المال، الناس اللي بتشتغل معاك، والأهم في عصرنا — الكود والمحتوى (حاجات بتشتغل وانت نايم وتكلفة نسخها صفر).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>10. فصل القرار عن النتيجة (Resulting) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>قرار كويس ممكن يجيب نتيجة وحشة بسبب الحظ، والعكس. لو حكمت على قراراتك بالنتايج بس، هتتعلم دروس غلط. قيّم جودة عملية اتخاذ القرار وقت اتخاذه بالمعلومات اللي كانت متاحة.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>11. حلاقة هانلون وقانون تشيسترتون <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>نموذجين إضافيين للتعامل مع الناس والأنظمة:</p>
+      <ul>
+        <li><strong>حلاقة هانلون:</strong> متفسرش بسوء النية اللي ممكن يتفسر بالإهمال أو سوء الفهم. بيوفر عليك صراعات وطاقة في العلاقات والشغل.</li>
+        <li><strong>سور تشيسترتون:</strong> قبل ما تشيل قاعدة أو نظام قديم "شكله من غير فايدة"، افهم الأول هو اتحط ليه. لو مش عارف سبب وجود السور، متشيلوش لسه.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>12. عدم التماثل بين المكسب والخسارة (Loss Aversion) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>عقلك بيحس بألم الخسارة أقوى من متعة المكسب المساوي ليها (التقدير الشائع من أبحاث كانيمان وتفيرسكي حوالي الضعف، والرقم الدقيق محل نقاش بحثي — لكن الاتجاه نفسه ثابت). النتيجة: بتتمسك بوظيفة/مشروع/علاقة خاسرة عشان "استثمرت فيها كتير" (مغالطة التكلفة الغارقة). <strong>القاعدة:</strong> اللي دفعته خلاص راح — القرار يتاخد بناءً على المستقبل بس: "لو مكنتش جوه الوضع ده النهارده، كنت هدخله؟"</p>
+    </div>
+  </details>
+  <details>
+    <summary>13. قاعدة 80/20 (باريتو) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>في أغلب المجالات، حوالي 20% من الأسباب بتنتج 80% من النتايج. مش قانون رياضي دقيق — لكنه عدسة بتخليك تدور على "القلة الحيوية" وسط "الكتير التافه".</p>
+      <ul>
+        <li><strong>في شغلك:</strong> أنهي مهام بتنتج أغلب قيمتك؟ وأنهي 80% بتاخد وقتك وبتنتج القليل؟</li>
+        <li><strong>في علاقاتك:</strong> مين الناس اللي بتضيف لحياتك فعلاً؟</li>
+        <li><strong>الاستخدام الأقوى:</strong> مش "اشتغل على الـ 20%" بس — دي كمان "احذف أو فوّض جزء من الـ 80%".</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>14. الطريق السلبي (Via Negativa): التحسين بالحذف <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>(مفهوم نسيم طالب) أغلبنا بيحاول يتحسن بالإضافة: كورس جديد، تطبيق جديد، عادة جديدة. لكن أقوى وأسرع التحسينات بتيجي من الحذف — لأن اللي بتشيله مضمون التأثير، واللي بتضيفه محتمل.</p>
+      <ul>
+        <li>حذف عادة سيئة أقوى من إضافة عادة كويسة.</li>
+        <li>حذف شخص سام من حياتك أقوى من إضافة عشرة أصدقاء.</li>
+        <li>حذف مصروف ثابت أضمن من محاولة زيادة الدخل.</li>
+      </ul>
+      <p><strong>تمرين:</strong> في كل مراجعة ربع سنوية، اسأل مش بس "أضيف إيه؟" — اسأل "أشيل إيه؟" وحدد حاجة واحدة على الأقل.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>15. المضاد للهشاشة (Antifragility) <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>المصطلح صاغه نسيم طالب في كتاب Antifragile. فيه 3 أنواع من الأنظمة أمام الصدمات: <strong>الهش</strong> بيتكسر (مصدر دخل واحد)، <strong>المتين</strong> بيصمد ومبيتغيرش (وظيفة حكومية مستقرة)، و<strong>المضاد للهشاشة</strong> بيستفيد من الصدمة ويطلع أقوى (زي العضلة اللي بتكبر من المقاومة).</p>
+      <ul>
+        <li><strong>ازاي تبني حياة مضادة للهشاشة:</strong> تعدد مصادر الدخل، مهارات قابلة للنقل بين الصناعات، شبكة علاقات واسعة، ومدخرات بتخليك تشتري وقت الأزمة بدل ما تبيع.</li>
+        <li><strong>السؤال:</strong> "لو حصلت أزمة كبيرة في مجالي بكرة، هتكسرني ولا هتخلق لي فرصة؟"</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>16. التحيزات المعرفية الخمسة اللي بتفسد التخطيط <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>دماغك مش أداة محايدة — عندها أخطاء منهجية متكررة. دول أخطرهم على التخطيط:</p>
+      <ul>
+        <li><strong>مغالطة التخطيط (كانيمان وتفيرسكي):</strong> بنقلل تقدير الوقت والتكلفة بشكل منهجي. <em>العلاج:</em> استخدم "فئة المقارنة" — بص على مشاريع مشابهة خدت قد إيه فعلاً، أو على الأقل زوّد تقديرك 50%، واسأل "المرة اللي فاتت خد قد إيه؟"</li>
+        <li><strong>انحياز التأكيد:</strong> بندور على المعلومة اللي بتأكد رأينا وبنتجاهل اللي بتناقضه. <em>العلاج:</em> ابحث بنشاط عن أقوى حجة ضد خطتك.</li>
+        <li><strong>انحياز الناجين:</strong> بنتعلم من قصص الناجحين بس، والفاشلين اللي عملوا نفس الحاجة مش ظاهرين. <em>العلاج:</em> دور على اللي جربوا وفشلوا واسأل ليه.</li>
+        <li><strong>التثبيت (Anchoring):</strong> أول رقم أو فكرة بتسمعها بتحكم تقديرك بعد كده. <em>العلاج:</em> قدّر بنفسك الأول قبل ما تشوف تقدير حد تاني.</li>
+        <li><strong>الإتاحة (Availability):</strong> بنبالغ في احتمال الحاجات اللي بنسمع عنها كتير. <em>العلاج:</em> ارجع للنسب الأساسية (نموذج رقم 8).</li>
+      </ul>
+    </div>
+  </details>
+
+</section>
+
+<!-- باب التفكير لخطوات لقدام -->
+<section class="chapter" data-title="التفكير لخطوات لقدام" id="ch-ahead">
+  <div class="chapter-label">الباب الثالث</div>
+  <h2>التفكير لخطوات لقدام: أدوات لاعب الشطرنج في الحياة</h2>
+  <p class="lede">الباب ده بيجاوب على السؤال الأساسي: إزاي تشوف أبعد من الخطوة الجاية؟ تلات أدوات: شجرة القرار (الاحتمالات)، التفكير في اللاعبين التانيين (ردود الأفعال)، والتفكير المنظومي (الحلقات والاختناقات).</p>
+
+  <div class="card">
+    <h3>ليه الحياة مش شطرنج — وليه لازم تفكر زي لاعب شطرنج برضه</h3>
+    <p>في الشطرنج كل المعلومات قدامك. في الحياة فيه حظ، معلومات ناقصة، وناس تانية بتلعب في نفس الوقت. عشان كده "التفكير لخطوات لقدام" في الحياة مش معناه إنك تتنبأ بالمستقبل — معناه إنك:</p>
+    <ul>
+      <li>ترسم <strong>الاحتمالات</strong> الرئيسية لكل خيار بدل ما تفترض نتيجة واحدة.</li>
+      <li>تتوقع <strong>ردود أفعال</strong> الناس والسوق على خطوتك.</li>
+      <li>تفهم <strong>الحلقات</strong> اللي بتخلي نتيجة صغيرة النهارده تكبر (أو تخرب) مع الوقت.</li>
+      <li>وتجهز <strong>خطوتك التالية</strong> لكل سيناريو قبل ما يحصل.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>الأداة الأولى: شجرة القرار والقيمة المتوقعة</h3>
+    <p>بدل ما تقارن خيارين بالإحساس، ارسم لكل خيار فروعه:</p>
+    <ol>
+      <li><strong>الخيارات:</strong> اكتب الخيارات الحقيقية (وفتش عن خيار تالت — غالباً موجود).</li>
+      <li><strong>النتايج المحتملة:</strong> لكل خيار 2–4 نتايج واقعية (نجاح كبير / متوسط / فشل).</li>
+      <li><strong>الاحتمالات:</strong> قدّر احتمال كل نتيجة (ابدأ من النِسَب الأساسية، ومجموعها لازم 100%).</li>
+      <li><strong>القيمة:</strong> قيّم كل نتيجة على مقياس واحد (مثلاً من −100 لـ +100 بتجمع الفلوس والتعلم والراحة).</li>
+      <li><strong>القيمة المتوقعة:</strong> اضرب كل احتمال × قيمته واجمع.</li>
+    </ol>
+    <h4>مثال محسوب: أفضل في وظيفتي ولا أنضم لشركة ناشئة؟</h4>
+    <table>
+      <tr><th>الخيار</th><th>النتيجة</th><th>الاحتمال</th><th>القيمة</th><th>الحاصل</th></tr>
+      <tr><td rowspan="3">أفضل</td><td>ترقية ونمو</td><td>30%</td><td>60</td><td>18</td></tr>
+      <tr><td>وضع ثابت</td><td>60%</td><td>40</td><td>24</td></tr>
+      <tr><td>تسريح</td><td>10%</td><td>10</td><td>1</td></tr>
+      <tr><td rowspan="3">ناشئة</td><td>نجاح كبير</td><td>25%</td><td>100</td><td>25</td></tr>
+      <tr><td>تعلم سريع ونمو متوسط</td><td>45%</td><td>45</td><td>20.25</td></tr>
+      <tr><td>الشركة تقفل</td><td>30%</td><td>−30</td><td>−9</td></tr>
+    </table>
+    <p>القيمة المتوقعة: أفضل = <strong>43</strong>، ناشئة = <strong>36.25</strong>. لكن الرقم مش الحكم النهائي — شوف الملاحظات التلاتة تحت.</p>
+    <h4>تلات قواعد تمنع إساءة استخدام الأداة</h4>
+    <ul>
+      <li><strong>البقاء قبل القيمة المتوقعة:</strong> لو أسوأ نتيجة في خيار ممكن تخرجك من اللعبة (ديون مش هتقدر تسددها، صحة)، ارفضه مهما كانت قيمته المتوقعة عالية.</li>
+      <li><strong>الفايدة في الرسم مش في الرقم:</strong> لما تقعد تقدّر الاحتمالات، بتكتشف افتراضاتك. ولو الرقم طلع عكس إحساسك — اسأل نفسك ليه، يمكن نسيت قيمة (زي التعلم أو الخيارات المستقبلية).</li>
+      <li><strong>الشجرة ليها فروع تانية:</strong> كل نتيجة بتفتح قرار جديد. "الشركة تقفل" بعد سنتين ومعاك خبرة ناشئة ممكن تكون نقطة انطلاق مش نهاية — وده بيرفع قيمتها الحقيقية.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="tag">تفاعلي</span>
+    <h3>حاسبة القيمة المتوقعة: قارن بين خيارين</h3>
+    <p>عدّل أسماء الخيارات والنتايج والاحتمالات والقيم (من −100 لـ +100) — النتيجة بتتحسب فوراً:</p>
+    <div class="ev-wrap">
+      <div class="ev-opt">
+        <input class="ev-name" value="الخيار أ: أفضل في وظيفتي" aria-label="اسم الخيار الأول">
+        <div class="ev-head"><span>النتيجة</span><span>الاحتمال</span><span></span><span>القيمة</span></div>
+        <div class="ev-row"><input class="ev-label" value="ترقية ونمو" aria-label="النتيجة"><input type="number" class="ev-p" value="30" min="0" max="100" aria-label="الاحتمال"><span class="ev-unit">%</span><input type="number" class="ev-v" value="60" min="-100" max="100" aria-label="القيمة"></div><div class="ev-row"><input class="ev-label" value="وضع ثابت" aria-label="النتيجة"><input type="number" class="ev-p" value="60" min="0" max="100" aria-label="الاحتمال"><span class="ev-unit">%</span><input type="number" class="ev-v" value="40" min="-100" max="100" aria-label="القيمة"></div><div class="ev-row"><input class="ev-label" value="تسريح" aria-label="النتيجة"><input type="number" class="ev-p" value="10" min="0" max="100" aria-label="الاحتمال"><span class="ev-unit">%</span><input type="number" class="ev-v" value="10" min="-100" max="100" aria-label="القيمة"></div>
+        <div class="ev-out"></div>
+      </div>
+      <div class="ev-opt">
+        <input class="ev-name" value="الخيار ب: شركة ناشئة" aria-label="اسم الخيار الثاني">
+        <div class="ev-head"><span>النتيجة</span><span>الاحتمال</span><span></span><span>القيمة</span></div>
+        <div class="ev-row"><input class="ev-label" value="نجاح كبير" aria-label="النتيجة"><input type="number" class="ev-p" value="25" min="0" max="100" aria-label="الاحتمال"><span class="ev-unit">%</span><input type="number" class="ev-v" value="100" min="-100" max="100" aria-label="القيمة"></div><div class="ev-row"><input class="ev-label" value="تعلم ونمو متوسط" aria-label="النتيجة"><input type="number" class="ev-p" value="45" min="0" max="100" aria-label="الاحتمال"><span class="ev-unit">%</span><input type="number" class="ev-v" value="45" min="-100" max="100" aria-label="القيمة"></div><div class="ev-row"><input class="ev-label" value="الشركة تقفل" aria-label="النتيجة"><input type="number" class="ev-p" value="30" min="0" max="100" aria-label="الاحتمال"><span class="ev-unit">%</span><input type="number" class="ev-v" value="-30" min="-100" max="100" aria-label="القيمة"></div>
+        <div class="ev-out"></div>
+      </div>
+    </div>
+    <p id="evVerdict"></p>
+  </div>
+
+  <div class="card">
+    <h3>الأداة التانية: التفكير في اللاعبين التانيين</h3>
+    <p>أغلب قراراتك المهمة فيها ناس تانية: مدير، شريك، عميل، منافس، عيلة. خطوتك بتغيّر خطوتهم، وخطوتهم بتغيّر نتيجتك. مبادئ أساسية مستوحاة من نظرية الألعاب:</p>
+    <ul>
+      <li><strong>اقعد في كرسيهم:</strong> قبل أي خطوة اسأل: هو عايز إيه؟ خايف من إيه؟ إيه قيوده؟ وإيه أفضل خطوة <em>بالنسبة له</em> لما أعمل اللي ناوي عليه؟</li>
+      <li><strong>الحوافز بتتنبأ بالسلوك:</strong> مانجر كان بيقول ما معناه: وريني الحافز أوريك النتيجة. لو حافز الشخص عكس مصلحتك، متعتمدش على نيته الطيبة — غيّر الحافز أو غيّر الترتيب.</li>
+      <li><strong>اللعبة المتكررة مقابل المرة الواحدة:</strong> في التعامل لمرة واحدة، الناس ممكن تستغل. في العلاقات المتكررة (شغل، سوق، عيلة) السمعة بتغلب المكسب السريع. أبحاث روبرت أكسلرود لقت إن استراتيجية بسيطة بتكسب على المدى الطويل: ابدأ متعاون، رد بالمثل، وسامح بسرعة.</li>
+      <li><strong>قوتك = بديلك:</strong> في أي تفاوض (مرتب، شراكة، عرض شغل)، قوتك الحقيقية مش في حججك — في أفضل بديل عندك لو الاتفاق فشل (مفهوم BATNA لفيشر ويوري). عشان كده تحسين بديلك قبل التفاوض أهم من تحضير الكلام.</li>
+      <li><strong>دوّر على المكسب المشترك:</strong> أغلب مواقف الحياة مش مباراة صفرية. الاستراتيجي الشاطر بيسأل: إزاي نكبر الكعكة قبل ما نقسمها؟</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>الأداة التالتة: التفكير المنظومي</h3>
+    <p>حياتك مش سلسلة أحداث منفصلة — هي منظومة من الحلقات بتغذي بعضها.</p>
+    <h4>حلقات التعزيز (الدوائر الحميدة والخبيثة)</h4>
+    <p>نتيجة بتغذي سببها فتكبر: مهارة أكتر ← فرص أحسن ← تعلم أسرع ← مهارة أكتر. والعكس: قلة نوم ← طاقة أقل ← قرارات أسوأ ← ضغط ← قلة نوم. <strong>المهارة الاستراتيجية:</strong> تلاقي الحلقة الحميدة وتدخل فيها بدري، وتكسر الخبيثة من أضعف نقطة فيها.</p>
+    <h4>حلقات التوازن والتأخير</h4>
+    <p>أنظمة بتقاوم التغيير (جسمك بيقاوم فقدان الوزن، الشركة بتقاوم الأفكار الجديدة). وفيه <strong>تأخير</strong> بين الفعل والنتيجة — وده سبب إن الناس بتبطّل قبل ما النتيجة توصل. لو عارف إن التأخير موجود، مش هتفسر الصمت على إنه فشل.</p>
+    <h4>عنق الزجاجة</h4>
+    <p>فكرة إلياهو جولدرات: أي منظومة سرعتها محكومة بأضعف حلقة فيها، وتحسين أي حاجة غير الاختناق ده مجهود ضايع. السؤال الاستراتيجي الأهم في أي فترة: <strong>"إيه الاختناق الوحيد اللي لو اتحل، كل حاجة تانية هتتحرك؟"</strong> (ممكن يكون مهارة إنجليزي، نوم، دين، أو علاقة مع مدير).</p>
+  </div>
+
+  <div class="card">
+    <h3>حلقة OODA: سرعة التكيّف أهم من كمال الخطة</h3>
+    <p>إطار طوّره الطيار الحربي جون بويد: <strong>لاحظ ← افهم ووجّه ← قرر ← نفّذ</strong>، وبعدين ارجع لاحظ تاني. اللي بيكمّل الحلقة دي أسرع بيتفوق على اللي عنده خطة أذكى بس أبطأ.</p>
+    <ul>
+      <li><strong>لاحظ:</strong> اجمع إشارات من الواقع (أرقام، ردود فعل، سوق) مش من افتراضاتك.</li>
+      <li><strong>افهم:</strong> أهم مرحلة — هنا النماذج الذهنية والتحيزات بتأثر على تفسيرك.</li>
+      <li><strong>قرر ونفّذ:</strong> بسرعة وبحجم صغير، وبعدين ارجع للملاحظة.</li>
+    </ul>
+    <p>ده بالظبط منطق المراجعة الأسبوعية والربع سنوية: كل مراجعة هي لفة OODA.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">قالب جاهز</span>
+    <h3>تمرين "تلات خطوات لقدام" لأي قرار مهم</h3>
+    <table>
+      <tr><th>الخطوة</th><th>السؤال</th></tr>
+      <tr><td>1. خطوتي</td><td>هعمل إيه بالظبط؟ وإيه البدائل اللي رفضتها؟</td></tr>
+      <tr><td>2. ردود الأفعال</td><td>مين هيتأثر (ناس، سوق، جسمي، عيلتي)؟ وأرجح رد فعل لكل واحد إيه؟</td></tr>
+      <tr><td>3. خطوتي التالية</td><td>لكل رد فعل محتمل، هرد إزاي؟</td></tr>
+      <tr><td>4. الحلقات</td><td>القرار ده بيدخلني في حلقة حميدة ولا خبيثة؟ وإيه التأخير المتوقع قبل ما أشوف نتيجة؟</td></tr>
+      <tr><td>5. نقطة الرجوع</td><td>إيه الإشارة اللي لو ظهرت هتخليني أغيّر رأيي؟</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- الباب 3 -->
+<section class="chapter" data-title="منهجية التخطيط" id="ch-3">
+  <div class="chapter-label">الباب الرابع</div>
+  <h2>منهجية التخطيط لسنوات قدام: خطوة بخطوة</h2>
+  <p class="lede">النظام الكامل: من رؤية الـ 10 سنين لحد مهام الأسبوع، بطريقة الرجوع بالعكس (Backcasting).</p>
+
+  <div class="card">
+    <h3>ليه بنخطط بالعكس مش لقدام؟</h3>
+    <p>لما تخطط لقدام من مكانك الحالي، بتفضل أسير ظروفك الحالية. لما تبدأ من الوجهة وترجع بالعكس، بتكتشف إن فيه خطوات لازم تبدأ فيها <em>النهارده</em> مكنتش هتشوفها أبداً بالتخطيط العادي.</p>
+  </div>
+
+  <div class="path">
+    <div class="milestone">
+      <h4>الخطوة 1 — رؤية الـ 10 سنين</h4>
+      <p>اكتب صفحة كاملة بتوصف يوم عادي في حياتك بعد 10 سنين: بتشتغل إيه، دخلك منين، صحتك عاملة إزاي، علاقاتك، ساكن فين، بتصحى الصبح تعمل إيه. مش لازم تكون دقيقة — لازم تكون واضحة الاتجاه وصادقة (رؤيتك انت مش رؤية اللي حواليك).</p>
+    </div>
+    <div class="milestone">
+      <h4>الخطوة 2 — تشخيص الواقع الحالي</h4>
+      <p>بصراحة كاملة: نقاط قوتك الحقيقية، فجوات المهارات، وضعك المالي، صحتك، شبكة علاقاتك. استخدم عجلة الحياة التفاعلية في باب التمارين. المسافة بين الخطوة 1 و2 هي "الفجوة الاستراتيجية" اللي كل التخطيط هدفه يقفلها.</p>
+    </div>
+    <div class="milestone">
+      <h4>الخطوة 3 — محطة الـ 5 سنين</h4>
+      <p>عشان رؤية الـ 10 سنين تتحقق، لازم يكون حصل إيه بعد 5 سنين؟ حدد 3–4 إنجازات كبيرة (مثلاً: خبرة قيادية، مصدر دخل تاني شغال، مستوى لياقة معين).</p>
+    </div>
+    <div class="milestone">
+      <h4>الخطوة 4 — أهداف السنة (3 كحد أقصى)</h4>
+      <p>عشان محطة الـ 5 سنين تتحقق، السنة دي لازم تحقق إيه؟ اختار 3 أهداف بس، واكتب لكل هدف "مقياس نجاح" رقمي واضح تقدر تقيسه في آخر السنة.</p>
+    </div>
+    <div class="milestone">
+      <h4>الخطوة 5 — خطة الـ 90 يوم</h4>
+      <p>قسّم السنة 4 أرباع. كل ربع ليه 2–3 نتائج محورية (Key Results). الربع هو وحدة التخطيط المثالية: طويل كفاية تنجز فيه حاجة حقيقية، قصير كفاية متتوهش.</p>
+    </div>
+    <div class="milestone">
+      <h4>الخطوة 6 — نظام الأسبوع واليوم</h4>
+      <p>كل أسبوع: جلسة مراجعة 30 دقيقة (إيه اللي اتعمل، إيه المعطلات، إيه أهم 3 حاجات الأسبوع الجاي). كل يوم: أول ساعة شغل تروح لأهم مهمة بتخدم أهداف الربع — قبل الإيميلات وقبل أي حاجة.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>قاعدة المجالات المتوازنة</h3>
+    <p>خطط في 5 مجالات، لكن ركّز هجومياً في واحد أو اتنين بس كل فترة، والباقي "صيانة":</p>
+    <ul>
+      <li><strong>المهنة والمهارات</strong> — مصدر الرافعة الأساسي.</li>
+      <li><strong>المال</strong> — بناء هامش أمان ثم أصول بتتراكم.</li>
+      <li><strong>الصحة</strong> — الأصل اللي كل حاجة تانية واقفة عليه.</li>
+      <li><strong>العلاقات</strong> — عائلة وأصحاب وشبكة مهنية.</li>
+      <li><strong>الذات</strong> — تعلم، إيمان، معنى، راحة نفسية.</li>
+    </ul>
+    <p>مجال واحد "في وضع النمو" + الباقي "في وضع الحفاظ" = تقدم حقيقي من غير انهيار.</p>
+  </div>
+
+  <div class="card">
+    <h3>مصفوفة الاختيار بين مسارين</h3>
+    <p>لما تكون محتار بين مسارين كبار (وظيفة جديدة ولا الاستمرار؟ ماجستير ولا مشروع؟)، بدل النقاش الدائري في دماغك، استخدم جدول مرجّح:</p>
+    <ol>
+      <li>اكتب 5–6 معايير بتهمك فعلاً (نمو المهارة، الدخل، المرونة، التوافق مع الرؤية، المخاطرة، جودة الحياة).</li>
+      <li>ادّي كل معيار <strong>وزن</strong> من 1 لـ 5 حسب أهميته ليك انت (مش للناس).</li>
+      <li>قيّم كل مسار على كل معيار من 1 لـ 10.</li>
+      <li>اضرب التقييم × الوزن واجمع.</li>
+    </ol>
+    <p><strong>الفايدة الحقيقية مش الرقم النهائي</strong> — الفايدة إنك بتكتشف أوزانك الحقيقية. ولو النتيجة طلعت وحسيت بضيق منها، ده كشف مهم: قلبك مختار حاجة تانية، ارجع راجع الأوزان بصدق.</p>
+  </div>
+
+  <div class="card">
+    <h3>اختبر افتراضاتك قبل ما تلتزم بـ 5 سنين</h3>
+    <p>أخطر حاجة في خطة طويلة إنها مبنية على افتراض مجربتوش. قبل ما تراهن بسنين من عمرك:</p>
+    <ul>
+      <li><strong>حدد الافتراض القاتل:</strong> إيه الحاجة اللي لو طلعت غلط، الخطة كلها تنهار؟ (مثلاً: "أنا هستمتع بالمجال ده" أو "فيه سوق للخدمة دي").</li>
+      <li><strong>صمم أرخص اختبار ممكن:</strong> قبل ما تسيب شغلك عشان تفتح كافيه، اشتغل في كافيه شهر. قبل ما تدرس مجال 4 سنين، اشتغل فيه مشروع صغير.</li>
+      <li><strong>حدد مدة ومعيار واضح:</strong> "هجرب 60 يوم، ولو النتيجة كانت كذا هكمل، ولو لأ هرجع".</li>
+    </ul>
+    <p>القاعدة: كل ما كان الالتزام أكبر وأصعب في الرجوع، كل ما وجب اختبار أرخص قبله.</p>
+  </div>
+
+  <div class="card">
+    <h3>إدارة الطاقة مش الوقت</h3>
+    <p>خطط كتير بتفشل مش لقلة الوقت — لقلة الطاقة في الوقت المتاح. ساعة وانت مرهق مش بتساوي ساعة وانت في قمتك.</p>
+    <ul>
+      <li><strong>اعرف ذروتك:</strong> راقب نفسك أسبوع وحدد الـ 2–4 ساعات اللي دماغك فيهم أصفى. دول ملك أهم مهمة، مش الإيميلات.</li>
+      <li><strong>طابق نوع المهمة بمستوى الطاقة:</strong> التفكير العميق للذروة، المهام الإدارية للهبوط، التعلم الخفيف للمساء.</li>
+      <li><strong>الأربع مصادر:</strong> نوم منتظم، حركة، تغذية، واستشفاء ذهني (وقت من غير شاشة). أي واحد فيهم مكسور بيهد الخطة كلها بغض النظر عن انضباطك.</li>
+      <li><strong>خطط للراحة زي ما بتخطط للشغل:</strong> يوم كامل أوف أسبوعياً وأسبوع كل ربع — مش رفاهية، دي صيانة للأصل اللي بينفذ الخطة.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>إزاي تكتب هدف صح: الأهداف والنتائج المحورية</h3>
+    <p>الأسلوب ده (OKRs) اتنقل من شركة إنتل لجوجل، وبيتطبق ممتاز على الحياة الشخصية:</p>
+    <ul>
+      <li><strong>الهدف (Objective):</strong> جملة نوعية ملهمة بتقول "رايح فين". مثال: "أبقى مرشح قوي لوظائف تحليل البيانات".</li>
+      <li><strong>النتائج المحورية (Key Results):</strong> 2–4 أرقام بتثبت إنك وصلت. مثال: "3 مشاريع منشورة على بورتفوليو"، "10 مقابلات"، "شهادة SQL".</li>
+    </ul>
+    <h4>المقاييس القائدة مقابل المتأخرة</h4>
+    <p>المقياس <strong>المتأخر</strong> هو النتيجة (الوزن، الدخل، عرض الشغل) — مهم لكن مش في إيدك مباشرة. المقياس <strong>القائد</strong> هو السلوك اللي بيسببها (أيام التمرين، ساعات التعلم، عدد التقديمات) — ده اللي تتحكم فيه وتتابعه أسبوعياً.</p>
+    <h4>قاعدة الطموح</h4>
+    <p>في الأهداف الطموحة، تحقيق حوالي 70% يعتبر نجاح (ده المنطق المعروف في ممارسة جوجل للـ OKRs). لو بتحقق 100% دايماً، أهدافك غالباً مريحة زيادة. لكن ده للأهداف الطموحة بس — الالتزامات الأساسية (صندوق الطوارئ، الصحة) لازم 100%.</p>
+  </div>
+
+  <div class="card">
+    <h3>المراجعة: قلب النظام النابض</h3>
+    <table>
+      <tr><th>الإيقاع</th><th>المدة</th><th>بتعمل إيه</th></tr>
+      <tr><td>أسبوعية</td><td>30 دقيقة</td><td>مراجعة المهام + تحديد أهم 3 للأسبوع الجاي</td></tr>
+      <tr><td>ربع سنوية</td><td>نص يوم</td><td>تقييم نتائج الربع + تعديل الخطة + اختيار نتائج الربع الجديد</td></tr>
+      <tr><td>سنوية</td><td>يوم كامل</td><td>مراجعة الرؤية نفسها + تشخيص جديد + أهداف السنة الجديدة</td></tr>
+    </table>
+    <p>من غير المراجعة، أغلب الخطط بتتنسي في خلال أسابيع. المراجعة هي اللي بتخليها كائن حي بيتكيف.</p>
+  </div>
+
+  <details>
+    <summary>📝 أسئلة المراجعة الجاهزة (أسبوعية · ربع سنوية · سنوية) <span class="chev">‹</span></summary>
+    <div class="body">
+      <h4>المراجعة الأسبوعية (30 دقيقة)</h4>
+      <ul>
+        <li>إيه أهم 3 حاجات خلصت الأسبوع ده؟ وإيه اللي متعملش وليه؟</li>
+        <li>المقاييس القائدة بتاعتي عاملة إيه (أيام التمرين، ساعات التعلم...)؟</li>
+        <li>إيه اللي ضيّع وقتي أو طاقتي أكتر حاجة؟</li>
+        <li>إيه أهم 3 حاجات الأسبوع الجاي، وهعملهم إمتى بالظبط؟</li>
+      </ul>
+      <h4>المراجعة الربع سنوية (نص يوم)</h4>
+      <ul>
+        <li>حققت كام % من كل نتيجة محورية؟ وإيه السبب الحقيقي للفجوة؟</li>
+        <li>إيه الافتراض اللي طلع غلط؟ وإيه اللي اتعلمته عن نفسي؟</li>
+        <li>عجلة الحياة اتغيرت إزاي؟ إيه مجال النمو للربع الجاي؟</li>
+        <li>إيه الحاجة الواحدة اللي هبطّلها (الطريق السلبي)؟</li>
+        <li>إيه الاختناق الوحيد اللي لو اتحل كل حاجة هتتحرك؟</li>
+      </ul>
+      <h4>المراجعة السنوية (يوم كامل)</h4>
+      <ul>
+        <li>لو بدأت من الصفر النهارده، كنت هختار نفس الشغل/المسار/الالتزامات؟</li>
+        <li>إيه أفضل وأسوأ 3 قرارات السنة دي — قرارات مش نتايج؟ (راجع دفتر القرارات)</li>
+        <li>رؤية الـ 10 سنين لسه هي اللي عايزها، ولا اتغيرت بتعلم حقيقي؟</li>
+        <li>مين الناس اللي أثرت فيّا أكتر، ومين محتاج أستثمر فيهم أكتر؟</li>
+        <li>لو السنة الجاية كانت آخر سنة بنفس الشكل ده، هغيّر إيه؟</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- باب المجالات -->
+<section class="chapter" data-title="المجالات الخمسة" id="ch-areas">
+  <div class="chapter-label">الباب الخامس</div>
+  <h2>تفصيل المجالات الخمسة: تخطط في كل واحد إزاي</h2>
+  <p class="lede">الأبواب اللي فاتت اداتك المنهجية العامة. الباب ده بينزل للتفاصيل: إيه أسئلة كل مجال، ومقاييسه، وأخطاؤه الشائعة، ومراحل تطوره.</p>
+
+  <div class="card">
+    <h3>قاعدة قبل ما تبدأ: التسلسل مهم</h3>
+    <p>المجالات الخمسة مش متساوية في الترتيب الزمني. فيه تسلسل منطقي بيوفر عليك سنين:</p>
+    <ol>
+      <li><strong>الصحة والطاقة</strong> — الأصل اللي بينفذ كل حاجة تانية. لو مكسور، الباقي بيتعطل.</li>
+      <li><strong>المهارة والمهنة</strong> — مصدر الدخل والرافعة، وأسرع مجال بيدي عائد في العشرينات والثلاثينات.</li>
+      <li><strong>المال</strong> — بيتبني على المهنة، وبيشتري لك خيارات وأمان.</li>
+      <li><strong>العلاقات</strong> — بتتراكم ببطء ومبتتعوضش بعد فوات الأوان، فمينفعش تتأجل تماماً.</li>
+      <li><strong>الذات والمعنى</strong> — بيدي للأربعة دول اتجاه، ومن غيره النجاح بيبقى فاضي.</li>
+    </ol>
+    <p>ده مش يعني تتجاهل الباقي — يعني <em>أولوية الاستثمار الثقيل</em> تمشي بالترتيب ده، والباقي على وضع الصيانة.</p>
+  </div>
+
+  <details open>
+    <summary>💼 المهنة والمهارات <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>السؤال المحوري:</strong> إيه المهارة النادرة والقيّمة اللي هبنيها، ومين اللي محتاجها؟</p>
+      <h4>مراحل المسار المهني</h4>
+      <ul>
+        <li><strong>مرحلة التراكم (أول 3–5 سنين):</strong> هدفك مهارة وخبرة مش مرتب. اقبل شغل صعب مع ناس شاطرة حتى لو العائد المالي أقل.</li>
+        <li><strong>مرحلة التخصص (5–10):</strong> ابنِ ميزة عند تقاطع مجالين — مش الأفضل في مجال، لكن نادر في الجمع بينهم (مثلاً: محاسب بيفهم بيانات، مهندس بيعرف يبيع).</li>
+        <li><strong>مرحلة الرافعة (10+):</strong> حوّل خبرتك لحاجة بتشتغل من غيرك: فريق، منتج، محتوى، حصة ملكية.</li>
+      </ul>
+      <h4>مقاييس تتابعها</h4>
+      <ul>
+        <li>عدد المهارات القابلة للنقل بين الصناعات عندك.</li>
+        <li>هل لو سبت شغلك بكرة، فيه ناس هتتصل بيك من غير ما تقدم CV؟ (ده مقياس السمعة).</li>
+        <li>نسبة وقتك اللي بتروح في شغل بيبني مهارة جديدة مقابل شغل بتكرر فيه اللي بتعرفه.</li>
+      </ul>
+      <h4>أخطاء شائعة</h4>
+      <ul>
+        <li>مطاردة المسمى الوظيفي والمرتب بدل بناء المهارة (شغل الترقيات على حساب القدرة).</li>
+        <li>الاستقرار 5 سنين في دور مش بيعلمك حاجة جديدة — دي سنة خبرة متكررة 5 مرات مش 5 سنين خبرة.</li>
+        <li>انتظار "الشغف" قبل الإتقان — الشغف عادةً بيجي بعد ما تبقى كويس، مش قبل.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>💰 المال <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>السؤال المحوري:</strong> إزاي أوصل لنقطة إن الفلوس متبقاش هي اللي بتحكم قراراتي؟</p>
+      <h4>السلم المالي بالترتيب</h4>
+      <ol>
+        <li><strong>وقف النزيف:</strong> اعرف بالظبط داخلك كام وخارج كام (شهر واحد تتبع كفاية يصدمك).</li>
+        <li><strong>صندوق طوارئ:</strong> 3 شهور مصاريف أساسية أولاً، بعدين 6 شهور. ده أهم منتج مالي هتشتريه في حياتك — بيشتري لك القدرة تقول "لأ".</li>
+        <li><strong>التخلص من الديون عالية الفايدة:</strong> سداد دين بفايدة 20% = استثمار مضمون بعائد 20%.</li>
+        <li><strong>معدل ادخار ثابت:</strong> المقياس مش دخلك — المقياس <em>الفجوة</em> بين دخلك وإنفاقك. حدد نسبة (10–30%) واقتطعها أول الشهر مش آخره.</li>
+        <li><strong>الاستثمار وتنويع الأصول:</strong> بعد الطوارئ والديون، وبأدوات انت فاهمها (دايرة الكفاءة).</li>
+        <li><strong>تعدد مصادر الدخل:</strong> مصدر واحد = هشاشة. حتى لو التاني صغير، وجوده بيغير علاقتك بالمصدر الأول.</li>
+      </ol>
+      <h4>مقاييس تتابعها</h4>
+      <ul>
+        <li><strong>معدل الادخار %</strong> — أهم رقم واحد.</li>
+        <li><strong>عدد شهور الحرية</strong> — لو دخلي وقف بكرة، أعيش كام شهر بمستواي الحالي؟</li>
+        <li><strong>صافي الثروة</strong> (الأصول ناقص الديون) — يتراجع كل 6 شهور، والاتجاه أهم من الرقم.</li>
+      </ul>
+      <h4>أخطاء شائعة</h4>
+      <ul>
+        <li><strong>تضخم نمط الحياة:</strong> كل زيادة في الدخل بتتحول إنفاق، فالفجوة تفضل صفر مهما علا المرتب.</li>
+        <li>الاستثمار في حاجة مش فاهمها لأن حد كسب منها.</li>
+        <li>تأجيل البدء لحد ما "الدخل يبقى كويس" — الوقت أهم عامل في التراكم، والمبلغ الصغير بدري بيغلب الكبير متأخر.</li>
+      </ul>
+      <p style="font-size:.85rem;color:var(--faint)">ملحوظة: ده إطار تفكير عام للتخطيط الشخصي، مش نصيحة استثمارية — القرارات المالية المحددة تتاخد مع مختص وحسب ظروفك.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🫀 الصحة <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>السؤال المحوري:</strong> عايز أكون قادر أعمل إيه وأنا عندي 70 سنة — وبأبني ده من دلوقتي إزاي؟</p>
+      <p>الصحة هي المجال الوحيد اللي إهماله بيبان متأخر جداً ولما يبان بيكون الإصلاح أصعب بكتير. وهي كمان المجال اللي بيرفع أداءك في كل المجالات التانية.</p>
+      <h4>الأعمدة الأربعة</h4>
+      <ul>
+        <li><strong>النوم:</strong> أرخص وأقوى أداة أداء موجودة. مواعيد ثابتة أهم من عدد الساعات نفسه.</li>
+        <li><strong>الحركة:</strong> مقاومة (عشان الكتلة العضلية اللي بتحميك مع التقدم في السن) + قلب وتنفس + مشي يومي.</li>
+        <li><strong>التغذية:</strong> قواعد بسيطة مستدامة أفضل من أنظمة صارمة مؤقتة.</li>
+        <li><strong>الصحة النفسية:</strong> جزء أصيل مش إضافة. الضغط المزمن بياكل من الجسم والقرارات.</li>
+      </ul>
+      <h4>مقاييس تتابعها</h4>
+      <ul>
+        <li>مستوى طاقتك في نص النهار (تقييم من 10 يومياً).</li>
+        <li>انتظام النوم والحركة أسبوعياً (عدد الأيام مش الكثافة).</li>
+        <li>فحص دوري سنوي — التشخيص المبكر أرخص علاج على الإطلاق.</li>
+      </ul>
+      <h4>الاستراتيجية العملية</h4>
+      <p>الحد الأدنى المستدام أفضل من البرنامج المثالي المتقطع. 20 دقيقة حركة 5 أيام أسبوعياً لمدة سنة بتغلب برنامج ساعتين بيقف بعد 3 أسابيع.</p>
+      <p style="font-size:.85rem;color:var(--faint)">ده إطار تخطيط عام؛ أي برنامج غذائي أو رياضي محدد — خصوصاً لو عندك حالة صحية — يترتب مع طبيب أو مختص.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🤝 العلاقات <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>السؤال المحوري:</strong> مين الناس اللي عايز أكون قريب منهم بعد 20 سنة — وبستثمر فيهم إزاي دلوقتي؟</p>
+      <p>العلاقات هي المجال الأكتر تراكمية والأقل قابلية للتعويض. مينفعش تشتغل 15 سنة وترجع تلاقي نفس العلاقات مستنياك.</p>
+      <h4>الدوائر الثلاث</h4>
+      <ul>
+        <li><strong>الدائرة الداخلية (حوالي 5 أشخاص):</strong> العيلة والأصحاب الأقربين. دي بتتغذى بالوقت المنتظم غير المشروط — مش بالمناسبات.</li>
+        <li><strong>الدائرة الوسطى (حوالي 15–50):</strong> أصدقاء وزملاء. بتتغذى بالتواصل الدوري والاهتمام الحقيقي.</li>
+        <li><strong>الشبكة الواسعة (حوالي 150 وأكتر):</strong> معارف مهنية. أغلب الفرص في الحياة بتيجي من هنا (الروابط الضعيفة بتوصلك لعوالم مش موجودة في دايرتك القريبة — اكتشاف عالم الاجتماع مارك جرانوفيتر). والأحجام التقريبية للدوائر مستوحاة من طبقات عالم الأنثروبولوجيا روبن دنبار.</li>
+      </ul>
+      <h4>مبادئ عملية</h4>
+      <ul>
+        <li><strong>ابنِ الشبكة قبل ما تحتاجها.</strong> اللي بيظهر وقت الحاجة بس بيتقرا صح.</li>
+        <li><strong>اِدِّ من غير حساب فوري:</strong> ساعد، وصّل ناس ببعض، شارك معرفتك. العائد بيجي بعد سنين ومن اتجاه متوقعتوش.</li>
+        <li><strong>الجودة على الكمية في الداخلية، والعكس في الواسعة.</strong></li>
+        <li><strong>حدد إيقاع:</strong> مكالمة أسبوعية للأقربين، رسالة شهرية لعشرة من الوسطى — الانتظام أهم من الحماس المتقطع.</li>
+      </ul>
+      <h4>خطأ شائع خطير</h4>
+      <p>تأجيل العلاقات لحد "ما أستقر". العلاقات مش مكافأة بعد النجاح — دي جزء من البنية التحتية اللي النجاح واقف عليها، وأكتر حاجة الناس بتندم عليها في آخر العمر.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🧭 الذات والمعنى <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>السؤال المحوري:</strong> أنا بحقق ده كله ليه؟ وإيه القيم اللي مش هتنازل عنها في الطريق؟</p>
+      <p>ده المجال اللي بيدي للأربعة التانيين اتجاه. من غيره ممكن توصل لقمة السلم وتكتشف إنه كان على الحيطة الغلط.</p>
+      <h4>مكوناته</h4>
+      <ul>
+        <li><strong>القيم المكتوبة:</strong> اكتب 5 قيم أساسية بالترتيب، وحدد لكل واحدة "خط أحمر" مش هتعديه مهما كان العائد. القيم اللي متكتبتش بتتنازل تحت الضغط.</li>
+        <li><strong>التعلم المستمر:</strong> قراءة، كتابة، فضول منظم. أهم رافعة على المدى الطويل هي عقل بيتحدث.</li>
+        <li><strong>الجانب الروحي/الإيماني:</strong> مصدر أساسي للمعنى والصبر والرضا لكتير من الناس، ودوره في الصمود وقت الأزمات مش هامشي.</li>
+        <li><strong>المساهمة:</strong> حاجة بتعملها لغيرك. أبحاث روي باومايستر وزملائه لقت إن الإحساس بالمعنى بيرتبط أكتر بالعطاء للآخرين، بينما السعادة اللحظية بترتبط أكتر بالأخذ.</li>
+        <li><strong>التأمل والمراجعة:</strong> وقت منتظم مع نفسك من غير مدخلات — هنا بتتاخد القرارات الكبيرة فعلاً.</li>
+      </ul>
+      <h4>مقاييس تتابعها</h4>
+      <ul>
+        <li>هل قراراتي الشهر ده كانت متسقة مع قيمي المكتوبة؟</li>
+        <li>كام كتاب/فكرة جديدة غيّرت طريقة تفكيري السنة دي؟</li>
+        <li>لو حد سألني "بتعمل ده ليه؟" — عندي إجابة صادقة ولا محفوظة؟</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="card">
+    <h3>التخطيط حسب مرحلة العمر</h3>
+    <p>نفس المبادئ، لكن الأولويات بتتغير مع المرحلة. ده إطار عام مش قالب — ونقطة البداية المتأخرة مش مشكلة، المشكلة إنك متبدأش:</p>
+    <table>
+      <tr><th>المرحلة</th><th>المنطق الاستراتيجي</th><th>أهم استثمار</th></tr>
+      <tr><td>العشرينات</td><td>استكشاف وبناء رأس مال مهني — الخيارات أهم من العائد</td><td>مهارات نادرة + عادات صحية + أول مدخرات</td></tr>
+      <tr><td>الثلاثينات</td><td>التركيز والتعمق — التراكم بيبدأ يبان</td><td>التخصص + تعدد مصادر الدخل + العلاقات العميقة</td></tr>
+      <tr><td>الأربعينات</td><td>الرافعة — حوّل الخبرة لحاجة بتشتغل من غيرك</td><td>قيادة/ملكية + الصحة الوقائية بجدية</td></tr>
+      <tr><td>الخمسينات وبعدها</td><td>النقل والإرث — من الإنجاز للمعنى</td><td>تعليم ونقل الخبرة + الأمان المالي + المساهمة</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>جدول الصيانة مقابل النمو</h3>
+    <p>في كل ربع، حدد مجال واحد في "وضع النمو" والباقي في "وضع الصيانة" — والصيانة معناها حد أدنى محدد مش إهمال:</p>
+    <table>
+      <tr><th>المجال</th><th>حد الصيانة الأدنى</th><th>شكل وضع النمو</th></tr>
+      <tr><td>المهنة</td><td>أداء الشغل + ساعة تعلم أسبوعياً</td><td>مشروع/شهادة/تغيير دور</td></tr>
+      <tr><td>المال</td><td>الالتزام بمعدل الادخار</td><td>زيادة دخل أو بناء مصدر تاني</td></tr>
+      <tr><td>الصحة</td><td>3 أيام حركة + نوم منتظم</td><td>برنامج مكثف أو تغيير جذري</td></tr>
+      <tr><td>العلاقات</td><td>تواصل أسبوعي مع الدائرة الداخلية</td><td>توسيع الشبكة أو إصلاح علاقة</td></tr>
+      <tr><td>الذات</td><td>مراجعة أسبوعية + قراءة</td><td>مشروع تعلم عميق أو مساهمة</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- الباب 4 -->
+<section class="chapter" data-title="السيناريوهات" id="ch-4">
+  <div class="chapter-label">الباب السادس</div>
+  <h2>التخطيط بالسيناريوهات: خطط لمستقبل مش متأكد منه</h2>
+  <p class="lede">المستقبل مش خط واحد. الخطة القوية هي اللي بتكسب في أكتر من نسخة من المستقبل.</p>
+
+  <div class="card">
+    <h3>منهج السيناريوهات الثلاثة</h3>
+    <p>لكل خطة كبيرة (سنة أو أكتر)، اكتب 3 نسخ من المستقبل:</p>
+    <div class="two-col">
+      <div>
+        <h4>🟢 السيناريو المتفائل</h4>
+        <p>كل حاجة مشيت أحسن من المتوقع. السؤال: مستعد تستغل الفرصة دي إزاي؟ (كتير بيخسروا الفرص لأنهم مخططوش للنجاح!)</p>
+      </div>
+      <div>
+        <h4>🟡 السيناريو الواقعي</h4>
+        <p>تقدم عادي مع عقبات متوقعة. ده الأساس اللي بتبني عليه خطتك الرئيسية.</p>
+      </div>
+    </div>
+    <h4>🔴 السيناريو المتشائم</h4>
+    <p>خسرت شغلك، السوق وقع، مشكلة صحية. السؤال: إيه "خطوط الدفاع" اللي لازم تكون موجودة من دلوقتي؟ (مدخرات 6 شهور، مهارات قابلة للنقل، شبكة علاقات نشطة).</p>
+  </div>
+
+  <div class="card">
+    <h3>نقاط التحفيز (Trigger Points)</h3>
+    <p>أقوى أداة في الباب ده: حدد <em>مسبقاً</em> إشارات لو ظهرت، بتنفذ قرار معين من غير تردد. كده بتاخد القرار الصعب وانت هادي، مش تحت ضغط اللحظة.</p>
+    <ul>
+      <li>"لو المشروع الجانبي وصل دخل X لمدة 6 شهور متتالية → أتفرغ له."</li>
+      <li>"لو قضيت سنتين من غير ترقية أو نمو حقيقي في المهارات → أبدأ بحث جدي عن وظيفة."</li>
+      <li>"لو المدخرات نزلت تحت مستوى 3 شهور مصاريف → أوقف أي إنفاق غير أساسي فوراً."</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>مبدأ الحد الأدنى من الندم</h3>
+    <p>لما تقف قدام قرارين محتار، تخيل نفسك عندك 80 سنة بتبص ورا: أنهي اختيار هتندم عليه أكتر؟ الناس نادراً ما بتندم على المحاولات اللي فشلت — بتندم على المحاولات اللي محصلتش أصلاً. المبدأ ده بيوازن الحسابات المنطقية بالبعد الإنساني.</p>
+    <p class="src">📎 الإطار اشتهر بيه جيف بيزوس لما قرر يسيب وظيفته ويأسس أمازون، وأبحاث توماس جيلوفيتش عن الندم بتدعم إن ندم "اللي معملتوش" بيدوم أطول من ندم "اللي عملته".</p>
+  </div>
+
+  <div class="card">
+    <h3>Barbell Strategy: أقصى أمان + أقصى مغامرة</h3>
+    <p>بدل ما تكون "متوسط المخاطرة" في كل حاجة، خلي 80–90% من حياتك آمنة جداً (وظيفة مستقرة، مدخرات، صحة) و10–20% مغامرات عالية العائد (مشاريع، استثمارات جريئة صغيرة، رهانات مهنية). كده أسوأ سيناريو محتمل مش بيدمرك، وأحسن سيناريو ممكن يغير حياتك.</p>
+    <p class="src">📎 الاستراتيجية مستعارة من نسيم طالب (Antifragile).</p>
+  </div>
+
+  <div class="card">
+    <h3>القرارات القابلة والغير قابلة للرجوع</h3>
+    <p>إضافة مهمة: صنّف قراراتك لنوعين قبل ما تقرر قد إيه تستغرق في التفكير:</p>
+    <ul>
+      <li><strong>باب بيتفتح في الاتجاهين (قابل للرجوع):</strong> تجربة مشروع جانبي، تعلم مهارة، تغيير روتين. اتخذه بسرعة بـ 70% من المعلومات — التأخير هنا أغلى من الغلط.</li>
+      <li><strong>باب بيتفتح في اتجاه واحد (صعب الرجوع):</strong> جواز، هجرة، بيع أصل كبير، الاستقالة بدون بديل. هنا خد وقتك، طبّق الأسئلة العشرة (باب المرجع السريع)، واستشير.</li>
+    </ul>
+    <p>أغلب الناس بتعمل العكس: بتستغرق شهور في القرارات الصغيرة وبتتسرع في الكبيرة.</p>
+    <p class="src">📎 تقسيم "باب الاتجاهين وباب الاتجاه الواحد" من رسائل جيف بيزوس للمساهمين.</p>
+  </div>
+  <div class="card">
+    <h3>المخاطرة مقابل الغموض — وإدارة كل واحد</h3>
+    <p>فرق جوهري بيتلخبط فيه كتير:</p>
+    <ul>
+      <li><strong>المخاطرة (Risk):</strong> احتمالات معروفة أو ممكن تقديرها. بتتدار بالحسابات والتأمين والتنويع.</li>
+      <li><strong>الغموض (Uncertainty):</strong> ما تعرفش الاحتمالات أصلاً ولا حتى كل السيناريوهات الممكنة. مبيتدارش بالحساب — بيتدار بالمرونة وهوامش الأمان.</li>
+    </ul>
+    <p>خطأ التخطيط الشائع: التعامل مع الغموض كأنه مخاطرة — نماذج وحسابات دقيقة لمستقبل مجهول أساساً. <strong>الرد الصح على الغموض:</strong> قلل التعرض للكوارث، وسّع الخيارات، وسيب سعة احتياطية (وقت، فلوس، طاقة) مش محجوزة لحاجة.</p>
+  </div>
+
+  <div class="card">
+    <h3>التخطيط في بيئة غير مستقرة</h3>
+    <p>أغلب أدبيات التخطيط مكتوبة لبيئات مستقرة. لو بتخطط وسط تضخم، تقلب في سعر العملة، أو سوق شغل متذبذب، عدّل المنهج:</p>
+    <ul>
+      <li><strong>قصّر أفق الالتزام مش أفق الرؤية:</strong> خلي رؤيتك 10 سنين، لكن التزاماتك الثقيلة (ديون، عقود طويلة) قصيرة ومرنة قدر الإمكان.</li>
+      <li><strong>استثمر في اللي التضخم مبياكلوش:</strong> المهارات، الصحة، السمعة، والعلاقات — دي أصول بتحتفظ بقيمتها في أي عملة وأي بلد.</li>
+      <li><strong>فكّر بالقدرة الشرائية مش بالأرقام:</strong> "مرتبي زاد 20%" جملة ناقصة من غير معدل التضخم.</li>
+      <li><strong>المهارات القابلة للتصدير:</strong> أي مهارة تقدر تبيعها لعميل بره بلدك بتحوّل عدم الاستقرار المحلي من تهديد لمجرد متغيّر.</li>
+      <li><strong>وسّع صندوق الطوارئ:</strong> 6 شهور في البيئات المستقرة قد تحتاج 9–12 في البيئات المتقلبة.</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- باب التنفيذ -->
+<section class="chapter" data-title="التنفيذ والتعثر" id="ch-exec">
+  <div class="chapter-label">الباب السابع</div>
+  <h2>التنفيذ والتعثر: لما الخطة تقابل الواقع</h2>
+  <p class="lede">أغلب أدلة التخطيط بتفترض إن كل حاجة هتمشي. الباب ده عن الجزء اللي بيحصل فعلاً: التعثر، فقدان الحماس، والرجوع للمسار.</p>
+
+  <div class="card">
+    <h3>الفجوة بين المعرفة والفعل</h3>
+    <p>انت غالباً عارف 80% مما تحتاجه بالفعل. المشكلة نادراً بتكون نقص معلومات — بتكون في التنفيذ. وعشان كده الوقت اللي بتقضيه في تعلم "طرق تخطيط جديدة" بعد نقطة معينة بيبقى هروب مقنّع.</p>
+    <div class="quotebox">اختبار سريع: لو نفذت بس اللي انت عارفه دلوقتي لمدة سنة كاملة، حياتك هتبقى إزاي؟ لو الإجابة "أحسن بكتير" — فمشكلتك مش معرفية.</div>
+  </div>
+
+  <div class="card">
+    <h3>قتلة التنفيذ الخمسة وعلاجهم</h3>
+    <table>
+      <tr><th>القاتل</th><th>بيظهر إزاي</th><th>العلاج</th></tr>
+      <tr><td>الكمالية</td><td>مبتبدأش لحد ما الظروف تكون مثالية</td><td>اشتغل بمعيار "كويس كفاية للنسخة الأولى" وحسّن بعدين</td></tr>
+      <tr><td>الغموض</td><td>المهمة كبيرة ومش واضح تبدأ منين</td><td>قسّمها لحد ما أول خطوة تاخد 15 دقيقة</td></tr>
+      <tr><td>التشتت</td><td>مشاريع كتير مبدوءة ومفيش حاجة خلصت</td><td>قاعدة "واحد في التقدم" — مبتبدأش جديد قبل ما تقفل القديم</td></tr>
+      <tr><td>غياب المساءلة</td><td>محدش هيلاحظ لو وقفت</td><td>شريك مساءلة أسبوعي أو التزام علني محدد</td></tr>
+      <tr><td>الإرهاق</td><td>خطة مصممة لنسخة مثالية منك</td><td>صمم الخطة لأسوأ أسبوع مش لأحسن أسبوع</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>بروتوكول التعافي بعد الانقطاع</h3>
+    <p>هتقع. المهم مش إنك متقعش — المهم زمن الرجوع. اتبع الخطوات دي بدل جلد الذات:</p>
+    <ol>
+      <li><strong>سمّي الانقطاع من غير حكم أخلاقي:</strong> "وقفت 3 أسابيع" — دي معلومة مش دليل على فشلك كشخص. الشعور بالذنب بيطوّل الانقطاع مش بيقصّره.</li>
+      <li><strong>افحص السبب البنيوي:</strong> غالباً الخطة كانت طموحة زيادة، أو الظروف اتغيرت، أو المجال ده مش أولوية حقيقية. الثلاثة قابلين للإصلاح — لكن كل واحد بعلاج مختلف.</li>
+      <li><strong>ارجع بنسخة أصغر جداً:</strong> لو كنت بتتمرن ساعة ووقفت، ارجع بـ 10 دقايق. الهدف استعادة الهوية مش الأداء.</li>
+      <li><strong>عدّل الخطة على الواقع:</strong> لو انقطعت 3 مرات من نفس النقطة، المشكلة في التصميم مش فيك. صمم من جديد.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>الحفاظ على الدافعية على مدى سنين</h3>
+    <ul>
+      <li><strong>متعتمدش على الحماس:</strong> الحماس مورد متقلب. الأنظمة والبيئة والالتزامات المسبقة هي اللي بتشتغل في الأيام العادية.</li>
+      <li><strong>احتفل بالمقاييس القيادية:</strong> النتايج بتتأخر شهور، لكن السلوك بيحصل النهارده. تابع "عدد أيام الالتزام" مش "النتيجة النهائية" — ده بيديك وقود يومي.</li>
+      <li><strong>وثّق نقطة البداية:</strong> صور، أرقام، عينات من شغلك. أكبر مصدر إحباط هو نسيان قد إيه كنت أسوأ.</li>
+      <li><strong>غيّر التكتيك من غير ما تغيّر الاتجاه:</strong> الملل مؤشر على إن الطريقة محتاجة تجديد، مش إن الهدف غلط.</li>
+      <li><strong>ادخل وسط ناس بيعملوا نفس الحاجة:</strong> البيئة الاجتماعية بتحمل الدافعية عنك في الفترات الضعيفة.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>إمتى تكمل وإمتى تسيب؟</h3>
+    <p>الإصرار فضيلة لما تكون في المسار الصح، وتبديد لما تكون في الغلط. الأسئلة اللي بتفرق:</p>
+    <ul>
+      <li><strong>هل بتتحسن؟</strong> صعوبة مع تقدم ملموس = استمر. صعوبة من غير أي تحسن بعد وقت كافٍ = راجع.</li>
+      <li><strong>عايز تسيب ليه؟</strong> بسبب يوم وحش وإحباط مؤقت (متسيبش دلوقتي، قرر بعد أسبوعين) ولا لمعطيات جديدة حقيقية اتغيرت (ده سبب مشروع).</li>
+      <li><strong>لو مكنتش بدأت، كنت هبدأ النهارده؟</strong> لو الإجابة قاطعة "لأ" — ده مؤشر قوي إنك مكمل بسبب التكلفة الغارقة.</li>
+      <li><strong>الترك الاستراتيجي مش فشل:</strong> إنهاء مسار مش مناسب بيحرر أهم مواردك (وقت وطاقة وتركيز) لرهان أحسن. اللي بيسيب في الوقت الصح بيكسب.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- الباب 5 -->
+<section class="chapter" data-title="خلاصات الكتب" id="ch-5">
+  <div class="chapter-label">الباب الثامن</div>
+  <h2>خلاصات الكتب العشرة (بأسلوب مبسط)</h2>
+  <p class="lede">جوهر أفكار كل كتاب في باب مستقل — تقرأه فتفهم الفكرة الأساسية وتقدر تطبقها. (دي خلاصة مفاهيم بصياغتي، والكتاب الأصلي دايماً أغنى لو حبيت تتعمق.)</p>
+
+  <details open>
+    <summary>📗 Good Strategy / Bad Strategy — ريتشارد روملت <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> أغلب اللي بيتسمى "استراتيجية" هو في الحقيقة مجرد أهداف طموحة وشعارات. الاستراتيجية الحقيقية ليها نواة من 3 عناصر:</p>
+      <ul>
+        <li><strong>التشخيص:</strong> فهم دقيق لطبيعة التحدي. مثال شخصي: "مشكلتي مش قلة الوقت، مشكلتي إن مهاراتي عامة ومفيش حاجة بتميزني في السوق."</li>
+        <li><strong>السياسة الموجهة:</strong> النهج العام اللي هتواجه بيه التحدي: "هتخصص في تقاطع مجالين نادر حد بيجمعهم."</li>
+        <li><strong>الأفعال المتناسقة:</strong> مجموعة خطوات بتدعم بعضها: كورس محدد + مشروع بيثبت المهارة + محتوى بيبني السمعة — كلهم في نفس الاتجاه.</li>
+      </ul>
+      <p><strong>علامات الاستراتيجية الفاشلة:</strong> كلام منفوخ من غير مضمون، الخلط بين الهدف والاستراتيجية، قايمة أهداف من غير اختيار، وتجاهل المشكلة الحقيقية.</p>
+      <p><strong>أهم درس:</strong> القوة الاستراتيجية بتيجي من تركيز مواردك المحدودة على نقطة الرافعة الأكبر — مش من توزيعها على كل حاجة.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📘 The Almanack of Naval Ravikant <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> الثراء (والسعادة) مهارات بتتعلم، والطريق ليهم بيمر بمفهومين: المعرفة المتخصصة والرافعة.</p>
+      <ul>
+        <li><strong>المعرفة المتخصصة (Specific Knowledge):</strong> الحاجة اللي بتعملها وكأنها لعب وغيرك شايفها شغل صعب. مش بتتعلم في كورس — بتتبني من فضولك الحقيقي وتقاطع اهتماماتك. دي اللي مش بتتعوض ولا تتأتمت.</li>
+        <li><strong>الرافعة الحديثة:</strong> الكود والمحتوى — منتجات تكلفة نسخها صفر وبتشتغل 24 ساعة. مش محتاج إذن حد عشان تستخدمها، على عكس رافعة الفلوس والموظفين.</li>
+        <li><strong>اشتغل كأنه ملكك:</strong> دور على حاجة تاخد فيها حصة (Equity) — شركة، منتج، علامة شخصية. بيع وقتك بالساعة سقفه محدود مهما علا.</li>
+        <li><strong>ألعاب طويلة المدى مع ناس طويلة المدى:</strong> كل العوائد الضخمة في الحياة (فلوس، علاقات، معرفة) بتيجي من التراكم المركب، والتراكم محتاج ثقة وسنين مع نفس الناس.</li>
+        <li><strong>السعادة قرار ومهارة:</strong> بتتبني بتقليل الرغبات المستوردة من المقارنات، وحضور ذهني، وقبول الواقع — مش بتحقيق الهدف الجاي.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> اسأل نفسك "إيه الحاجة اللي أقدر ألعب فيها 10 سنين وأنا مبسوط؟" — دي اللي هتكسب فيها، لأن غيرك هيزهق وانت لأ.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📙 Thinking in Bets — آني ديوك <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> الحياة زي البوكر مش زي الشطرنج — قرارات بمعلومات ناقصة وحظ له دور. فبدل "أنا متأكد"، فكّر بالاحتمالات: "أنا واثق 70%".</p>
+      <ul>
+        <li><strong>خطأ الحكم بالنتيجة (Resulting):</strong> متحكمش على جودة القرار من نتيجته. سواق سكران وصل بالسلامة ≠ قرار صح. قيّم القرار بالمعلومات اللي كانت متاحة وقته.</li>
+        <li><strong>"عايز تتراهن؟":</strong> لما تتخيل إن فيه فلوس على كلامك، بتكتشف قد إيه انت فعلاً متأكد. استخدم السؤال ده مع نفسك قبل القرارات الكبيرة.</li>
+        <li><strong>مجموعة الحقيقة:</strong> حاوط نفسك بناس متفقين معاهم إن الهدف هو الدقة مش المجاملة — بيراجعوا قراراتك ويقولولك غلطك فين.</li>
+        <li><strong>السفر عبر الزمن الذهني:</strong> قبل القرار، استشير "نسختك المستقبلية": هتحس بإيه تجاه القرار ده بعد 10 دقايق؟ 10 شهور؟ 10 سنين؟ (قاعدة 10-10-10 لسوزي ويلش، وديوك بتستخدمها).</li>
+      </ul>
+      <p><strong>أهم درس:</strong> افصل مصير قراراتك عن تقييمها. مع الوقت، جودة القرارات بتغلب الحظ — زي لاعب البوكر المحترف اللي بيخسر أيام لكن بيكسب السنة.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📕 Atomic Habits — جيمس كلير <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> انت مش بترتقي لمستوى أهدافك — انت بتنزل لمستوى أنظمتك. الأهداف بتحدد الاتجاه، لكن الأنظمة اليومية هي اللي بتحرك.</p>
+      <ul>
+        <li><strong>الهوية قبل السلوك:</strong> أقوى تغيير بيبدأ من "أنا شخص إيه؟" مش "عايز أحقق إيه؟". بدل "عايز أخس" → "أنا شخص رياضي". كل عادة صغيرة هي صوت انتخابي لهويتك الجديدة.</li>
+        <li><strong>القوانين الأربعة لبناء عادة:</strong> اجعلها ظاهرة (حط الكتاب على المخدة)، اجعلها جذابة (اربطها بحاجة بتحبها)، اجعلها سهلة (ابدأ بدقيقتين بس)، اجعلها مُرضية (تتبّع يومي وعلّم عليه).</li>
+        <li><strong>البيئة أقوى من الإرادة:</strong> صمم بيئتك بحيث العادة الكويسة تكون أسهل اختيار والعادة الوحشة تحتاج مجهود. شيل التطبيق من الموبايل أسهل من مقاومته كل يوم.</li>
+        <li><strong>قاعدة عدم الانقطاع مرتين:</strong> الغلطة مرة عادية. الانقطاع مرتين متتاليتين هو بداية عادة جديدة وحشة.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> ده كتاب "التنفيذ" في منظومتنا — الاستراتيجية بتحدد الاتجاه، والعادات الذرية هي المحرك اليومي اللي بيوصلك هناك.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📔 Deep Work — كال نيوبورت <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> في اقتصاد المعرفة، القدرة على التركيز العميق لساعات طويلة على حاجة صعبة بقت نادرة وقيّمة في نفس الوقت — يعني ميزة تنافسية حقيقية لمن يمتلكها.</p>
+      <ul>
+        <li><strong>الشغل العميق ضد الضحل:</strong> العميق هو اللي بيبني مهارة وقيمة (تعلم، إنتاج، حل مشاكل صعبة). الضحل هو الإيميلات والاجتماعات والتنقل بين التطبيقات — بياخد اليوم كله ومبيبنيش حاجة.</li>
+        <li><strong>التركيز عضلة:</strong> بتتمرن بجلسات محددة (ابدأ بساعة يومياً وزوّد تدريجياً) وبتضمر بالتشتت المستمر. كل "بصة سريعة" على الموبايل وسط الشغل بتدفع تمنها تركيز.</li>
+        <li><strong>الطقوس والحدود:</strong> مكان ثابت، وقت ثابت، قواعد واضحة (موبايل في أوضة تانية)، ونهاية يوم عمل حقيقية بيقفل بعدها الدماغ.</li>
+        <li><strong>الملل مهارة:</strong> لو بتمسك الموبايل في كل ثانية فاضية، دماغك بتتعود إنها ترفض العمق. اسمح لنفسك بلحظات ملل من غير شاشة.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> دوره في منظومتنا: هو اللي بيحمي "أول ساعة لأهم مهمة" — من غير عمق، خطة الـ 90 يوم بتبقى حبر على ورق.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📒 The Psychology of Money — مورجان هاوسل <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> النجاح المالي مش علم صواريخ — هو سلوك. شخص عادي بعادات مالية سليمة بيتفوق على عبقري متهور.</p>
+      <ul>
+        <li><strong>الغنى الحقيقي هو اللي مش شايفه:</strong> العربية الفخمة "إنفاق"، الفلوس المستثمرة اللي محدش شايفها هي "الثروة". الثروة هي الفرق بين دخلك وغرورك.</li>
+        <li><strong>أعظم عائد للفلوس هو التحكم في وقتك:</strong> القدرة على إنك تقول "لأ"، تسيب شغل سيء، تاخد إجازة، تستنى الفرصة الصح — دي أعلى أرباح ممكن تجيبها الفلوس.</li>
+        <li><strong>هامش الأمان مش تشاؤم:</strong> مدخرات من غير سبب محدد هي أقوى أداة مالية — بتشتريلك خيارات ومرونة في عالم مفاجآته أكبر من توقعاتنا.</li>
+        <li><strong>الذيل بيحرك كل حاجة:</strong> نسبة صغيرة من قراراتك (واستثماراتك) هي اللي بتعمل أغلب النتايج. عادي تغلط كتير طالما رهاناتك الصح بتتسيب تكبر.</li>
+        <li><strong>البقاء أولاً:</strong> عشان التراكم المركب يشتغل، لازم تفضل في اللعبة عقود. أي مخاطرة ممكن تخرجك خالص من اللعبة — مرفوضة مهما كان عائدها.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> دوره في منظومتنا: بيبني "خطوط الدفاع" في السيناريو المتشائم وبيمول الرهانات غير المتماثلة من غير ما ينام قلقان.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📓 So Good They Can't Ignore You — كال نيوبورت <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> نصيحة "اتبع شغفك" نصيحة سيئة وخطيرة. الشغف بييجي نتيجة للإتقان مش شرط قبله.</p>
+      <ul>
+        <li><strong>عقلية الحرفي مقابل عقلية الشغوف:</strong> الشغوف بيسأل "الشغل ده بيقدملي إيه؟" فيعيش في إحباط دائم. الحرفي بيسأل "أقدم إيه ذو قيمة نادرة؟" فيبني رصيد بيشتري بيه حريته بعدين.</li>
+        <li><strong>رأس المال المهني:</strong> المهارات النادرة والقيّمة هي العملة اللي بتشتري بيها مقومات الوظيفة الحلوة (استقلالية، تأثير، إبداع). عايز الحاجات دي؟ لازم تدفع تمنها مهارة الأول.</li>
+        <li><strong>الممارسة المتعمدة:</strong> مش تكرار اللي بتعرفه — دي ممارسة على حافة قدرتك، بتغذية راجعة فورية، وشعور دائم بعدم الراحة. أغلب الناس بتقضي سنين في "التكرار المريح" وبتسميه خبرة.</li>
+        <li><strong>حذار من فخ الاستقلالية بدري:</strong> طلب الحرية قبل ما تبني رأس مال مهني بيفشل — لأن مفيش حد مستعد يدفع تمنها.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> بيكمل ناڤال — ده بيوضح <em>ازاي</em> تبني المعرفة المتخصصة عملياً، خطوة بخطوة.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📓 Essentialism — جريج ماكيون <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> "الأقل لكن الأفضل". مش إزاي تنجز أكتر — إزاي تنجز الصح بس، وتتخلص من الباقي بلا ذنب.</p>
+      <ul>
+        <li><strong>مفارقة النجاح:</strong> النجاح بيجيب فرص وطلبات كتير، والفرص الكتيرة بتشتت التركيز اللي جاب النجاح أصلاً. عشان كده النجاح ممكن يكون سبب الفشل الجاي لو مقلتش "لأ".</li>
+        <li><strong>قاعدة الـ 90%:</strong> قيّم أي فرصة من 100. لو أقل من 90 — دي "لأ". لأن "أيوه" لفرصة 70 بيخليك مشغول لما تيجي فرصة الـ 95.</li>
+        <li><strong>لو مش "أيوه" قاطعة، فهي "لأ" واضحة.</strong> التردد نفسه إجابة. (القاعدة أصلها لديريك سيفرز، وماكيون بيتبناها.)</li>
+        <li><strong>الحدود بتحرر:</strong> اللي مبيرسمش حدوده، الناس بترسمها له.</li>
+        <li><strong>الحماية بمثابة أولوية:</strong> احجز وقت للتفكير والراحة في الأجندة زي أي اجتماع — لو مش محجوز، هيتاكل.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> ده الجانب التنفيذي لمبدأ "جوهر الاستراتيجية هو قول لأ" — بيديك أدوات عملية للرفض من غير إحساس بالذنب.</p>
+    </div>
+  </details>
+
+    <details>
+    <summary>📗 Playing to Win — إيه. جي. لافلي وروجر مارتن <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> الاستراتيجية مجموعة <em>اختيارات متسلسلة</em> بتجاوب على خمس أسئلة، وكل سؤال لازم يتسق مع اللي قبله. الكتاب عن الشركات (لافلي كان رئيس بروكتر آند جامبل)، لكنه من أوضح الأطر للتطبيق الشخصي:</p>
+      <ol>
+        <li><strong>إيه طموح الفوز؟</strong> يعني إيه "كسبت" بالنسبة لك تحديداً؟ (مش النجاح العام — نجاحك انت).</li>
+        <li><strong>هلعب فين؟</strong> أنهي مجال، أنهي سوق، أنهي نوع عملاء أو أدوار — <em>وأنهي لأ</em>.</li>
+        <li><strong>هكسب إزاي؟</strong> إيه ميزتك هناك: أرخص؟ أعمق تخصص؟ تقاطع نادر؟ علاقات؟</li>
+        <li><strong>إيه القدرات اللازمة؟</strong> المهارات والموارد اللي لازم تبنيها عشان طريقة الفوز دي تشتغل.</li>
+        <li><strong>إيه أنظمة الإدارة؟</strong> العادات والمراجعات والمقاييس اللي بتحافظ على كل ده.</li>
+      </ol>
+      <p><strong>أهم درس:</strong> سؤالي "هلعب فين" و"هكسب إزاي" هما قلب الاستراتيجية. أغلب الناس بتجاوب على الأول ("عايز أشتغل في التسويق") وتنسى التاني ("وإيه اللي هيخلي حد يختارني أنا؟").</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📙 Four Thousand Weeks — أوليفر بيركمان <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>الفكرة المركزية:</strong> متوسط عمر الإنسان حوالي أربعة آلاف أسبوع. الكتاب ده هو "الثقل الموازن" للدليل كله: بيفكرك إن الهدف مش إنك تعمل كل حاجة — مستحيل — الهدف إنك تختار بوعي وتتصالح مع اللي مش هتعمله.</p>
+      <ul>
+        <li><strong>فخ الكفاءة:</strong> كل ما بتبقى أسرع في إنجاز المهام، بيجيلك مهام أكتر. الإنتاجية مبتوصلكش لـ "خلصت كل حاجة" — دي نقطة مش موجودة.</li>
+        <li><strong>اختار تهمل إيه:</strong> طالما مستحيل تعمل كل حاجة، السؤال الحقيقي مش "إزاي أعمل كله؟" — هو "أنهي حاجات هسيبها تفشل بوعي عشان أركز على المهم؟"</li>
+        <li><strong>حدّ المشاريع الجارية:</strong> اشتغل على عدد صغير من المشاريع في نفس الوقت، ومتبدأش جديد قبل ما تخلص واحد.</li>
+        <li><strong>الصبر مهارة:</strong> أغلب الحاجات القيّمة بتاخد وقت أطول من المتوقع، ومحاولة استعجالها بتخربها.</li>
+        <li><strong>الحاضر مش مجرد طريق للمستقبل:</strong> لو عشت كل حياتك كتحضير لـ "بعدين"، هتلاقي "بعدين" عمره ما بيوصل.</li>
+      </ul>
+      <p><strong>أهم درس:</strong> التخطيط الاستراتيجي أداة لحياة أحسن، مش بديل عنها. اقرأه عشان متتحولش لشخص بيدير حياته كمشروع وينسى يعيشها.</p>
+    </div>
+  </details>
+
+  <div class="card">
+    <h3>إزاي الكتب العشرة بيكملوا بعض؟</h3>
+    <table>
+      <tr><th>الكتاب</th><th>دوره في منظومتك</th></tr>
+      <tr><td>Good Strategy Bad Strategy</td><td>بيعلمك تبني الاستراتيجية نفسها (التشخيص والتركيز)</td></tr>
+      <tr><td>The Almanack of Naval</td><td>بيحدد اتجاه الاستراتيجية (المعرفة المتخصصة والرافعة)</td></tr>
+      <tr><td>Thinking in Bets</td><td>بيحسّن جودة قراراتك على الطريق (التفكير الاحتمالي)</td></tr>
+      <tr><td>Atomic Habits</td><td>بيحوّل الاستراتيجية لتنفيذ يومي (الأنظمة والعادات)</td></tr>
+      <tr><td>Deep Work</td><td>بيحمي وقت التنفيذ من التشتت (التركيز كميزة)</td></tr>
+      <tr><td>The Psychology of Money</td><td>بيأمّن الجانب المالي للخطة كلها (السلوك المالي)</td></tr>
+      <tr><td>So Good They Can't Ignore You</td><td>بيوضح إزاي تبني المهارة النادرة عملياً</td></tr>
+      <tr><td>Essentialism</td><td>بيعلمك ترفض وتقلل عشان تركز (فن الـ "لأ")</td></tr>
+      <tr><td>Playing to Win</td><td>بيحوّل الاستراتيجية لخمس اختيارات متسلسلة (هلعب فين وهكسب إزاي)</td></tr>
+      <tr><td>Four Thousand Weeks</td><td>الثقل الموازن: حدود الوقت والتصالح مع اللي مش هتعمله</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- الباب 6 -->
+<section class="chapter" data-title="التمارين والقوالب" id="ch-6">
+  <div class="chapter-label">الباب التاسع</div>
+  <h2>التمارين العملية والقوالب</h2>
+  <p class="lede">التطبيق المباشر. اعمل التمارين دي بالترتيب على مدار أسبوع — متعملهمش كلهم في قعدة واحدة.</p>
+
+  <div class="card">
+    <span class="tag">ابدأ من هنا · أول 30 يوم</span>
+    <h3>خطة الانطلاق: تعمل إيه بالظبط الشهر ده</h3>
+    <p>الدليل كبير، والشلل بيجي من كتر الخيارات. لو مش عارف تبدأ منين، امشي على ده حرفياً:</p>
+    <table>
+      <tr><th>الأسبوع</th><th>المهمة الوحيدة</th><th>الوقت</th></tr>
+      <tr><td>الأول</td><td>عجلة الحياة + التشخيص الصادق للمجالات الخمسة</td><td>ساعة</td></tr>
+      <tr><td>التاني</td><td>كتابة رؤية الـ 10 سنين ومحطة الـ 5 سنين</td><td>ساعتين</td></tr>
+      <tr><td>التالت</td><td>اختيار 3 أهداف للسنة + Pre-mortem ليهم</td><td>ساعة ونص</td></tr>
+      <tr><td>الرابع</td><td>ملء خطة الـ 90 يوم + تثبيت موعد المراجعة الأسبوعية</td><td>ساعة</td></tr>
+    </table>
+    <p>📒 اكتب مخرجات كل أسبوع في باب <strong>"دفتر خطتي"</strong> — بيتحفظ تلقائياً وتقدر تصدّره.</p>
+    <p><strong>قاعدة واحدة:</strong> مهمة واحدة في الأسبوع بس. لو خلصتها بدري، مش هتقدّم اللي بعدها — هتنفّذ. لأن الهدف من الشهر ده إنك تخرج بخطة <em>وعادة مراجعة</em>، مش بورق حلو.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">تفاعلي · ابدأ هنا</span>
+    <h3>عجلة الحياة: قيّم وضعك الحالي</h3>
+    <p>حرّك كل شريط من 1 لـ 10 حسب رضاك الحقيقي عن المجال — والرسم البياني هيتحدث فوراً ويقولك تركز فين:</p>
+    <div id="wheelInputs">
+      <div class="wheel-row"><label for="w1">المهنة</label><input type="range" id="w1" min="1" max="10" value="5"><output>5</output></div>
+      <div class="wheel-row"><label for="w2">المال</label><input type="range" id="w2" min="1" max="10" value="5"><output>5</output></div>
+      <div class="wheel-row"><label for="w3">الصحة</label><input type="range" id="w3" min="1" max="10" value="5"><output>5</output></div>
+      <div class="wheel-row"><label for="w4">العلاقات</label><input type="range" id="w4" min="1" max="10" value="5"><output>5</output></div>
+      <div class="wheel-row"><label for="w5">الذات</label><input type="range" id="w5" min="1" max="10" value="5"><output>5</output></div>
+    </div>
+    <div class="wheel-bars" id="wheelBars" aria-hidden="true"></div>
+    <p id="wheelMsg"></p>
+  </div>
+
+  <div class="card">
+    <span class="tag">تمرين 1 · ساعة واحدة</span>
+    <h3>كتابة رؤية الـ 10 سنين</h3>
+    <p>اقفل الموبايل، وجاوب كتابةً على الأسئلة دي بصيغة المضارع (كأنك عايش اليوم ده فعلاً):</p>
+    <ol>
+      <li>بصحى الساعة كام وأول حاجة بعملها إيه؟</li>
+      <li>شغلي إيه بالظبط ودخلي جاي منين؟ (مصدر واحد ولا أكتر؟)</li>
+      <li>جسمي وصحتي عاملين إزاي؟ بمارس إيه؟</li>
+      <li>مين الناس اللي حواليا يومياً؟ علاقاتي شكلها إيه؟</li>
+      <li>إيه الحاجة اللي فخور إني بنيتها خلال العشر سنين دول؟</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <span class="tag">تمرين 2 · 45 دقيقة</span>
+    <h3>التشخيص الصادق (جرد الواقع)</h3>
+    <p>لكل مجال من الخمسة اكتب: تقييمك من عجلة الحياة فوق، أكبر نقطة قوة، أكبر فجوة، وحاجة واحدة لو اتصلحت هتفرق أكتر حاجة.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">تمرين 3 · 30 دقيقة</span>
+    <h3>الـ Pre-mortem (تقرير وفاة الخطة)</h3>
+    <p>تخيل إننا بعد سنة من دلوقتي وخطتك فشلت فشل ذريع. اكتب قصة الفشل بالتفصيل: بدأ إزاي؟ إيه اللي اتجاهلته؟ بعدين حوّل كل سبب لإجراء وقائي بتعمله من الأسبوع ده.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">تمرين 4 · 30 دقيقة</span>
+    <h3>كتابة نقاط التحفيز</h3>
+    <p>اكتب 5 جمل بصيغة "لو حصل X → هعمل Y" تغطي: الشغل، الفلوس، الصحة، مشروع جانبي، وعلاقة مهمة.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">قالب جاهز</span>
+    <h3>قالب خطة الـ 90 يوم</h3>
+    <table>
+      <tr><th>البند</th><th>املأه بنفسك</th></tr>
+      <tr><td>ثيمة الربع (جملة واحدة)</td><td>مثال: "ربع بناء المهارة الأساسية"</td></tr>
+      <tr><td>النتيجة المحورية 1</td><td>رقمية وقابلة للقياس + موعد</td></tr>
+      <tr><td>النتيجة المحورية 2</td><td>رقمية وقابلة للقياس + موعد</td></tr>
+      <tr><td>النتيجة المحورية 3 (اختياري)</td><td>—</td></tr>
+      <tr><td>حاجة واحدة هبطّل أعملها</td><td>عشان أوفر وقت للنتائج فوق</td></tr>
+      <tr><td>موعد المراجعة الأسبوعية الثابت</td><td>يوم وساعة محددين</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <span class="tag">قالب جاهز · جديد</span>
+    <h3>دفتر القرارات (Decision Journal)</h3>
+    <p>أقوى أداة لتحسين قراراتك مع الوقت. قبل أي قرار مهم، سجّل في دفتر أو ملف:</p>
+    <table>
+      <tr><th>الحقل</th><th>بتكتب فيه إيه</th></tr>
+      <tr><td>التاريخ والقرار</td><td>القرار بجملة واحدة واضحة</td></tr>
+      <tr><td>الوضع الذهني</td><td>حالتك النفسية وقتها (مضغوط؟ متحمس؟ خايف؟)</td></tr>
+      <tr><td>البدائل المتاحة</td><td>إيه الخيارات التانية اللي رفضتها وليه</td></tr>
+      <tr><td>التوقع</td><td>"أتوقع يحصل كذا بنسبة ثقة X%"</td></tr>
+      <tr><td>موعد المراجعة</td><td>بعد 6 شهور: ارجع قارن التوقع بالواقع</td></tr>
+    </table>
+    <p>بعد سنة من الاستخدام، هتكتشف أنماط تحيزاتك الشخصية — دي معلومة متتشريش بفلوس.</p>
+  </div>
+
+  <div class="card">
+    <h3>قائمة انطلاقك — علّم على اللي خلصته</h3>
+    <label class="check"><input type="checkbox"><span>قيّمت مجالاتي الخمسة في عجلة الحياة</span></label>
+    <label class="check"><input type="checkbox"><span>كتبت رؤية الـ 10 سنين (صفحة كاملة)</span></label>
+    <label class="check"><input type="checkbox"><span>عملت التشخيص الصادق للمجالات الخمسة</span></label>
+    <label class="check"><input type="checkbox"><span>حددت محطة الـ 5 سنين (3–4 إنجازات)</span></label>
+    <label class="check"><input type="checkbox"><span>اخترت 3 أهداف للسنة بمقاييس رقمية</span></label>
+    <label class="check"><input type="checkbox"><span>ملأت قالب خطة الـ 90 يوم</span></label>
+    <label class="check"><input type="checkbox"><span>كتبت الـ Pre-mortem وحولته لإجراءات</span></label>
+    <label class="check"><input type="checkbox"><span>كتبت 5 نقاط تحفيز "لو X → هعمل Y"</span></label>
+    <label class="check"><input type="checkbox"><span>بدأت دفتر القرارات بأول قرار</span></label>
+    <label class="check"><input type="checkbox"><span>حجزت موعد ثابت للمراجعة الأسبوعية</span></label>
+    <p id="checkCount" style="font-weight:600;color:var(--teal-deep);margin-top:12px"></p>
+    <p style="font-size:.82rem;color:var(--faint);margin-top:10px">العلامات دي (وتقييمات العجلة والحاسبة وكل اللي بتكتبه في "دفتر خطتي") بتتحفظ تلقائياً في المتصفح ده.</p>
+  </div>
+
+  <details>
+    <summary>📌 حالة دراسية: النظام كامل على شخص واحد <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>مثال مركّب (شخصية افتراضية) عشان تشوف القطع كلها شغالة مع بعض:</p>
+      <p><strong>الوضع:</strong> كريم، 29 سنة، محاسب في شركة متوسطة. مرتبه بيكفي بالعافية، شغله بقى تكرار، وحاسس إن السنين بتعدي.</p>
+      <h4>1) التشخيص (مش الأمنية)</h4>
+      <p>عجلة الحياة طلعت: مهنة 4، مال 3، صحة 6، علاقات 7، ذات 4. التشخيص الصادق: <em>"مشكلتي مش المرتب — مشكلتي إن مهاراتي عامة وأي حد يقدر يعملها، فمفيش عندي أي قوة تفاوضية."</em></p>
+      <h4>2) الرؤية والمحطة</h4>
+      <p>رؤية 10 سنين: مستشار مالي مستقل بعملاء من بره، بيشتغل من أي مكان. محطة 5 سنين: خبرة قوية في تحليل البيانات المالية + 3 عملاء دائمين + مدخرات سنة كاملة.</p>
+      <h4>3) الاستراتيجية (روملت)</h4>
+      <p>السياسة الموجهة: <em>التخصص في تقاطع المحاسبة وتحليل البيانات</em> — نادر إن حد يجمعهم في السوق ده. الأفعال المتناسقة: تعلم SQL وPython للبيانات + تطبيقهم على شغله الحالي + كتابة محتوى عن النتايج.</p>
+      <h4>4) اختبار الافتراض قبل الالتزام</h4>
+      <p>الافتراض القاتل: "هستمتع بالشغل التحليلي ده". الاختبار: 6 أسابيع، كورس أساسيات + مشروع صغير على بيانات شركته. النتيجة حددت هيكمل ولا لأ — قبل ما يراهن بسنين.</p>
+      <h4>5) خطة الـ 90 يوم الأولى</h4>
+      <ul>
+        <li>ثيمة الربع: "إثبات المهارة الأولى".</li>
+        <li>نتيجة 1: إنهاء كورس SQL وتطبيقه على تقرير حقيقي في الشغل.</li>
+        <li>نتيجة 2: نشر 4 منشورات عن اللي اتعلمه (بناء السمعة والشبكة).</li>
+        <li>حاجة هيبطلها: متابعة الأخبار والسوشيال الصبح — والوقت ده يروح للتعلم العميق.</li>
+      </ul>
+      <h4>6) السيناريوهات ونقاط التحفيز</h4>
+      <p>متشائم: الشركة بتقلل عمالة → خط الدفاع: مدخرات 6 شهور + CV محدث. متفائل: عرض شغل أحسن → مستعد بملف أعمال. نقطة تحفيز: <em>"لو وصلت لعميلين مستقلين بدخل يعادل نص مرتبي لمدة 6 شهور → أنقل للعمل المستقل جزئياً."</em></p>
+      <h4>7) التنفيذ والتعثر</h4>
+      <p>الشهر التاني ضغط الشغل زوّد وانقطع أسبوعين. طبّق بروتوكول التعافي: رجع بـ 20 دقيقة يومياً بدل ساعتين، وعدّل الخطة على الواقع بدل ما يعتبر نفسه فشل. ده اللي خلاه يكمل بدل ما يبطّل خالص.</p>
+      <div class="quotebox">اللي فرق مع كريم مكانش الطموح — كان التشخيص الصادق، والتركيز على شيء واحد لمدة ربع، والرجوع السريع بعد التعثر.</div>
+    </div>
+  </details>
+
+</section>
+
+<!-- الباب 7 -->
+<!-- باب دفتر خطتي -->
+<section class="chapter" data-title="دفتر خطتي" id="ch-workbook">
+  <div class="chapter-label">الباب العاشر</div>
+  <h2>دفتر خطتي: اكتب خطتك هنا</h2>
+  <p class="lede">كل اللي قريته في الأبواب اللي فاتت بيتجمع هنا في صفحة واحدة بتملأها بنفسك. اللي بتكتبه بيتحفظ تلقائياً في المتصفح ده، وتقدر تصدّره كملف نصي تحتفظ بيه أو تبعته لنفسك.</p>
+
+  <div class="wb-bar">
+    <span id="wbStatus" class="wb-status">التغييرات بتتحفظ تلقائياً</span>
+    <div class="wb-actions">
+      <button class="next-btn" type="button" id="wbExport">⬇️ صدّر خطتي (ملف نصي)</button>
+      <button class="prev-btn" type="button" id="wbClear">مسح كل البيانات</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 1 · من باب المجالات الخمسة</span>
+    <h3>قيمي الأساسية</h3>
+    <p>اختار 5 قيم بالظبط — الاختيار الصعب هو الهدف من التمرين. لو قيمة مهمة ليك مش موجودة، اكتبها في الخانة تحت.</p>
+    <div class="val-grid"><label class="val-chip"><input type="checkbox" value="الأمانة" data-save="val0"><span>الأمانة</span></label><label class="val-chip"><input type="checkbox" value="العائلة" data-save="val1"><span>العائلة</span></label><label class="val-chip"><input type="checkbox" value="الإيمان" data-save="val2"><span>الإيمان</span></label><label class="val-chip"><input type="checkbox" value="الحرية" data-save="val3"><span>الحرية</span></label><label class="val-chip"><input type="checkbox" value="الصحة" data-save="val4"><span>الصحة</span></label><label class="val-chip"><input type="checkbox" value="التعلم" data-save="val5"><span>التعلم</span></label><label class="val-chip"><input type="checkbox" value="الإنجاز" data-save="val6"><span>الإنجاز</span></label><label class="val-chip"><input type="checkbox" value="الأمان" data-save="val7"><span>الأمان</span></label><label class="val-chip"><input type="checkbox" value="الإبداع" data-save="val8"><span>الإبداع</span></label><label class="val-chip"><input type="checkbox" value="العدل" data-save="val9"><span>العدل</span></label><label class="val-chip"><input type="checkbox" value="الكرم" data-save="val10"><span>الكرم</span></label><label class="val-chip"><input type="checkbox" value="الشجاعة" data-save="val11"><span>الشجاعة</span></label><label class="val-chip"><input type="checkbox" value="الاستقلال" data-save="val12"><span>الاستقلال</span></label><label class="val-chip"><input type="checkbox" value="التأثير" data-save="val13"><span>التأثير</span></label><label class="val-chip"><input type="checkbox" value="الصداقة" data-save="val14"><span>الصداقة</span></label><label class="val-chip"><input type="checkbox" value="المغامرة" data-save="val15"><span>المغامرة</span></label><label class="val-chip"><input type="checkbox" value="الانضباط" data-save="val16"><span>الانضباط</span></label><label class="val-chip"><input type="checkbox" value="التواضع" data-save="val17"><span>التواضع</span></label><label class="val-chip"><input type="checkbox" value="الإتقان" data-save="val18"><span>الإتقان</span></label><label class="val-chip"><input type="checkbox" value="خدمة الناس" data-save="val19"><span>خدمة الناس</span></label></div>
+    <p id="valCount" class="wb-hint"></p>
+    <div class="wb-field"><label for="wb-val-extra">قيمة مش في القائمة</label><input type="text" id="wb-val-extra" data-save="wb-val-extra" data-label="قيمة مش في القائمة" placeholder="اختياري"></div>
+    <div class="wb-field"><label for="wb-redlines">خطوطي الحمرا</label><textarea id="wb-redlines" data-save="wb-redlines" data-label="خطوطي الحمرا" rows="3" placeholder="حاجات مش هعملها مهما كان العائد — مثلاً: مش هشتغل في حاجة تخالف ديني، مش هضحي بصحتي عشان ترقية..."></textarea></div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 2 · من باب منهجية التخطيط</span>
+    <h3>الرؤية والمحطة</h3>
+    <div class="wb-field"><label for="wb-vision">رؤية الـ 10 سنين</label><textarea id="wb-vision" data-save="wb-vision" data-label="رؤية الـ 10 سنين" rows="7" placeholder="اكتب بصيغة المضارع: بصحى الساعة... شغلي... دخلي جاي من... صحتي... الناس اللي حواليا... أكتر حاجة فخور بيها..."></textarea></div>
+    <div class="wb-field"><label for="wb-diagnosis">التشخيص الصادق</label><textarea id="wb-diagnosis" data-save="wb-diagnosis" data-label="التشخيص الصادق" rows="3" placeholder="المشكلة الحقيقية مش... المشكلة إن... (استعين بنتيجة عجلة الحياة في باب التمارين)"></textarea></div>
+    <div class="wb-field"><label for="wb-five">محطة الـ 5 سنين</label><textarea id="wb-five" data-save="wb-five" data-label="محطة الـ 5 سنين" rows="4" placeholder="3–4 إنجازات لازم تكون حصلت عشان الرؤية تتحقق"></textarea></div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 3 · من Playing to Win</span>
+    <h3>استراتيجيتي في صفحة</h3>
+    <div class="wb-field"><label for="wb-ptw1">طموح الفوز</label><input type="text" id="wb-ptw1" data-save="wb-ptw1" data-label="طموح الفوز" placeholder="يعني إيه "كسبت" بالنسبة لي تحديداً؟"></div>
+    <div class="wb-field"><label for="wb-ptw2">هلعب فين</label><input type="text" id="wb-ptw2" data-save="wb-ptw2" data-label="هلعب فين" placeholder="أنهي مجال/سوق/دور — وأنهي لأ"></div>
+    <div class="wb-field"><label for="wb-ptw3">هكسب إزاي</label><input type="text" id="wb-ptw3" data-save="wb-ptw3" data-label="هكسب إزاي" placeholder="إيه ميزتي: تقاطع نادر؟ تخصص أعمق؟ علاقات؟"></div>
+    <div class="wb-field"><label for="wb-ptw4">القدرات اللي لازم أبنيها</label><input type="text" id="wb-ptw4" data-save="wb-ptw4" data-label="القدرات اللي لازم أبنيها" placeholder="المهارات والموارد اللازمة"></div>
+    <div class="wb-field"><label for="wb-ptw5">أنظمة الإدارة</label><input type="text" id="wb-ptw5" data-save="wb-ptw5" data-label="أنظمة الإدارة" placeholder="المراجعات والعادات والمقاييس اللي هتحافظ على ده"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 4 · أهداف السنة (3 كحد أقصى)</span>
+    <h3>أهداف السنة دي</h3>
+    <div class="wb-pair"><div class="wb-field"><label for="wb-y1-o">هدف السنة 1</label><input type="text" id="wb-y1-o" data-save="wb-y1-o" data-label="هدف السنة 1" placeholder="جملة نوعية: رايح فين؟"></div><div class="wb-field"><label for="wb-y1-kr">مقياس نجاح الهدف 1</label><input type="text" id="wb-y1-kr" data-save="wb-y1-kr" data-label="مقياس نجاح الهدف 1" placeholder="رقم قابل للقياس + موعد"></div></div><div class="wb-pair"><div class="wb-field"><label for="wb-y2-o">هدف السنة 2</label><input type="text" id="wb-y2-o" data-save="wb-y2-o" data-label="هدف السنة 2" placeholder="جملة نوعية: رايح فين؟"></div><div class="wb-field"><label for="wb-y2-kr">مقياس نجاح الهدف 2</label><input type="text" id="wb-y2-kr" data-save="wb-y2-kr" data-label="مقياس نجاح الهدف 2" placeholder="رقم قابل للقياس + موعد"></div></div><div class="wb-pair"><div class="wb-field"><label for="wb-y3-o">هدف السنة 3</label><input type="text" id="wb-y3-o" data-save="wb-y3-o" data-label="هدف السنة 3" placeholder="جملة نوعية: رايح فين؟"></div><div class="wb-field"><label for="wb-y3-kr">مقياس نجاح الهدف 3</label><input type="text" id="wb-y3-kr" data-save="wb-y3-kr" data-label="مقياس نجاح الهدف 3" placeholder="رقم قابل للقياس + موعد"></div></div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 5 · خطة الـ 90 يوم</span>
+    <h3>الربع الحالي</h3>
+    <div class="wb-field"><label for="wb-q-theme">ثيمة الربع</label><input type="text" id="wb-q-theme" data-save="wb-q-theme" data-label="ثيمة الربع" placeholder="جملة واحدة — مثلاً: ربع إثبات المهارة الأولى"></div>
+    <div class="wb-field"><label for="wb-q-area">مجال النمو في الربع ده</label><input type="text" id="wb-q-area" data-save="wb-q-area" data-label="مجال النمو في الربع ده" placeholder="واحد بس — والباقي على وضع الصيانة"></div>
+    <div class="wb-field"><label for="wb-q-kr1">النتيجة المحورية 1</label><input type="text" id="wb-q-kr1" data-save="wb-q-kr1" data-label="النتيجة المحورية 1" placeholder="رقمية + موعد"></div>
+    <div class="wb-field"><label for="wb-q-kr2">النتيجة المحورية 2</label><input type="text" id="wb-q-kr2" data-save="wb-q-kr2" data-label="النتيجة المحورية 2" placeholder="رقمية + موعد"></div>
+    <div class="wb-field"><label for="wb-q-kr3">النتيجة المحورية 3 (اختياري)</label><input type="text" id="wb-q-kr3" data-save="wb-q-kr3" data-label="النتيجة المحورية 3 (اختياري)" placeholder=""></div>
+    <div class="wb-field"><label for="wb-q-lead">المقياس القائد اللي هتابعه أسبوعياً</label><input type="text" id="wb-q-lead" data-save="wb-q-lead" data-label="المقياس القائد اللي هتابعه أسبوعياً" placeholder="سلوك في إيدي: ساعات تعلم، أيام تمرين، عدد تقديمات..."></div>
+    <div class="wb-field"><label for="wb-q-stop">حاجة واحدة هبطّلها</label><input type="text" id="wb-q-stop" data-save="wb-q-stop" data-label="حاجة واحدة هبطّلها" placeholder="الطريق السلبي: إيه اللي هشيله عشان أفضّي وقت؟"></div>
+    <div class="wb-field"><label for="wb-q-review">موعد المراجعة الأسبوعية الثابت</label><input type="text" id="wb-q-review" data-save="wb-q-review" data-label="موعد المراجعة الأسبوعية الثابت" placeholder="مثلاً: الجمعة 8 الصبح"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 6 · من باب السيناريوهات</span>
+    <h3>المخاطر ونقاط التحفيز</h3>
+    <div class="wb-field"><label for="wb-premortem">الـ Pre-mortem</label><textarea id="wb-premortem" data-save="wb-premortem" data-label="الـ Pre-mortem" rows="4" placeholder="تخيل إن الخطة فشلت بعد سنة. ليه؟ وإيه الإجراء الوقائي لكل سبب؟"></textarea></div>
+    <div class="wb-field"><label for="wb-defense">خطوط الدفاع للسيناريو المتشائم</label><textarea id="wb-defense" data-save="wb-defense" data-label="خطوط الدفاع للسيناريو المتشائم" rows="3" placeholder="مدخرات، مهارات قابلة للنقل، علاقات..."></textarea></div>
+    <div class="wb-field"><label for="wb-trg1">نقطة تحفيز 1</label><input type="text" id="wb-trg1" data-save="wb-trg1" data-label="نقطة تحفيز 1" placeholder="لو المشروع الجانبي جاب دخل X لـ 6 شهور ← أتفرغ له جزئياً"></div><div class="wb-field"><label for="wb-trg2">نقطة تحفيز 2</label><input type="text" id="wb-trg2" data-save="wb-trg2" data-label="نقطة تحفيز 2" placeholder="لو المدخرات نزلت تحت 3 شهور ← أوقف الإنفاق غير الأساسي"></div><div class="wb-field"><label for="wb-trg3">نقطة تحفيز 3</label><input type="text" id="wb-trg3" data-save="wb-trg3" data-label="نقطة تحفيز 3" placeholder="لو قضيت سنتين من غير نمو في المهارات ← أدور على دور جديد"></div><div class="wb-field"><label for="wb-trg4">نقطة تحفيز 4</label><input type="text" id="wb-trg4" data-save="wb-trg4" data-label="نقطة تحفيز 4" placeholder="لو انقطعت عن الرياضة أسبوعين ← أرجع بـ 10 دقايق يومياً"></div><div class="wb-field"><label for="wb-trg5">نقطة تحفيز 5</label><input type="text" id="wb-trg5" data-save="wb-trg5" data-label="نقطة تحفيز 5" placeholder="لو ...  ← هعمل ..."></div>
+  </div>
+
+  <div class="card">
+    <span class="tag">الخطوة 7 · الالتزام</span>
+    <h3>شريك المساءلة والملاحظات</h3>
+    <div class="wb-field"><label for="wb-partner">شريك المساءلة</label><input type="text" id="wb-partner" data-save="wb-partner" data-label="شريك المساءلة" placeholder="مين هيتابعني، وإمتى هنتكلم؟"></div>
+    <div class="wb-field"><label for="wb-notes">ملاحظات حرة</label><textarea id="wb-notes" data-save="wb-notes" data-label="ملاحظات حرة" rows="4" placeholder="أي أفكار أو قرارات أو دروس عايز تفتكرها"></textarea></div>
+  </div>
+
+  <div class="quotebox">بعد ما تملأ الدفتر: صدّر الخطة واحفظها في مكان تشوفه، وارجع للدفتر ده في كل مراجعة ربع سنوية تعدّله. الخطة المكتوبة مرة واحدة ومتراجعتش هي مجرد مسودة.</div>
+  <p class="wb-hint">🔒 البيانات بتتحفظ على جهازك وفي المتصفح ده بس — محدش غيرك يقدر يشوفها، ومش بتتنقل لجهاز تاني. عشان كده التصدير مهم لو هتغير جهازك أو تمسح بيانات المتصفح.</p>
+</section>
+
+<section class="chapter" data-title="المرجع السريع" id="ch-7">
+  <div class="chapter-label">الباب الحادي عشر</div>
+  <h2>المرجع السريع: كل الدليل في صفحة</h2>
+  <p class="lede">ارجعله قبل أي قرار كبير أو في جلسات المراجعة. ولو عايز نسخة ورقية، زر "طباعة / PDF" فوق بيطبع الدليل كله كمستند واحد.</p>
+
+  <div class="card">
+    <h3>الأسئلة العشرة قبل أي قرار كبير</h3>
+    <ol>
+      <li>إيه نتيجة القرار ده بعد سنة؟ وبعد 5 سنين؟ (درجة تانية)</li>
+      <li>إزاي القرار ده ممكن يفشل فشل ذريع؟ (عكسي)</li>
+      <li>بيزوّد ولا بيقلّل خياراتي المستقبلية؟ (Optionality)</li>
+      <li>أسوأ خسارة محتملة إيه؟ وأحسن مكسب محتمل؟ (تماثل)</li>
+      <li>القرار ده بيبني حاجة بتتراكم ولا بيستهلك بس؟ (تراكم)</li>
+      <li>لما أقول أيوه هنا، بقول لأ لإيه؟ (تكلفة الفرصة)</li>
+      <li>ده جوه دايرة كفاءتي ولا أنا بخمن؟ (الدائرة)</li>
+      <li>الناس اللي عملت كده قبلي، كام % نجح؟ (النسب الأساسية)</li>
+      <li>هحس بإيه بعد 10 دقايق / 10 شهور / 10 سنين؟ (10-10-10)</li>
+      <li>وأنا عندي 80 سنة، هندم أكتر على إني عملته ولا معملتوش؟ (الندم)</li>
+    </ol>
+    <p style="margin-top:8px"><strong>سؤال إضافي (11):</strong> القرار ده قابل للرجوع ولا لأ؟ لو قابل للرجوع — اتخذه بسرعة وبطّل تفكير زيادة.</p>
+    <p><strong>سؤال إضافي (12):</strong> مين الأطراف التانية اللي القرار ده هيأثر عليهم، وهيردوا إزاي؟ وأنا هرد على ردهم بإيه؟ (باب التفكير لخطوات لقدام)</p>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>هيكل النظام</h3>
+      <ul>
+        <li>رؤية 10 سنين → مراجعة سنوية</li>
+        <li>محطة 5 سنين → 3–4 إنجازات</li>
+        <li>أهداف السنة → 3 كحد أقصى</li>
+        <li>خطة 90 يوم → 2–3 نتائج محورية</li>
+        <li>أسبوع → مراجعة 30 دقيقة + أهم 3</li>
+        <li>يوم → أول ساعة عمل عميق لأهم مهمة</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>قواعد لا تُكسر</h3>
+      <ul>
+        <li>3 أهداف سنوية بحد أقصى</li>
+        <li>سيناريوهات 3 قبل أي خطة كبيرة</li>
+        <li>مدخرات 6 شهور قبل أي مغامرة</li>
+        <li>10–20% من الوقت لرهانات غير متماثلة</li>
+        <li>ممنوع الانقطاع عن عادة مرتين متتاليتين</li>
+        <li>قيّم القرار بمعطياته، مش بنتيجته</li>
+        <li>البقاء في اللعبة أهم من أي عائد</li>
+      </ul>
+    </div>
+  </div>
+
+  <details>
+    <summary>📖 قاموس المصطلحات السريع <span class="chev">‹</span></summary>
+    <div class="body">
+      <ul>
+        <li><strong>Backcasting:</strong> التخطيط بالرجوع من الوجهة النهائية للخطوة الأولى.</li>
+        <li><strong>Pre-mortem:</strong> تخيّل فشل الخطة مسبقاً لاستخراج المخاطر.</li>
+        <li><strong>Optionality:</strong> قيمة الاحتفاظ بخيارات مستقبلية مفتوحة.</li>
+        <li><strong>Leverage:</strong> أدوات بتضاعف ناتج مجهودك (فلوس، ناس، كود، محتوى).</li>
+        <li><strong>Key Results:</strong> نتائج رقمية قابلة للقياس بتحدد نجاح الفترة.</li>
+        <li><strong>Trigger Point:</strong> إشارة محددة مسبقاً بتفعّل قرار جاهز.</li>
+        <li><strong>Resulting:</strong> خطأ الحكم على جودة القرار من نتيجته.</li>
+        <li><strong>Barbell:</strong> الجمع بين أقصى أمان في الأغلبية وأقصى مغامرة في أقلية محسوبة.</li>
+        <li><strong>Sunk Cost:</strong> تكلفة اتدفعت خلاص ومينفعش تأثر على قرارات المستقبل.</li>
+        <li><strong>Deep Work:</strong> تركيز متواصل بدون تشتيت على مهمة بتبني قيمة.</li>
+        <li><strong>Expected Value (القيمة المتوقعة):</strong> مجموع (احتمال كل نتيجة × قيمتها).</li>
+        <li><strong>BATNA:</strong> أفضل بديل عندك لو الاتفاق فشل — مصدر قوتك التفاوضية.</li>
+        <li><strong>OODA:</strong> لاحظ ← افهم ← قرر ← نفّذ، حلقة تكيّف سريعة.</li>
+        <li><strong>Bottleneck (عنق الزجاجة):</strong> أضعف حلقة بتحكم سرعة المنظومة كلها.</li>
+        <li><strong>Feedback Loop:</strong> حلقة بتغذي فيها النتيجة سببها (تعزيز) أو بتقاومه (توازن).</li>
+        <li><strong>Leading Indicator:</strong> مقياس سلوك بتتحكم فيه وبيسبق النتيجة.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>📚 المصادر والإسناد: كل فكرة جاية منين <span class="chev">‹</span></summary>
+    <div class="body">
+      <p>الدليل بصياغتي، لكن الأفكار ليها أصحاب. لو حبيت تتعمق في فكرة معينة، ده أصلها:</p>
+      <table>
+        <tr><th>المفهوم</th><th>المصدر</th></tr>
+        <tr><td>التفكير العكسي، دائرة الكفاءة، الحوافز</td><td>تشارلي مانجر (خطاباته وكتاب Poor Charlie's Almanack)</td></tr>
+        <tr><td>التفكير من الدرجة التانية</td><td>هوارد ماركس (The Most Important Thing)</td></tr>
+        <tr><td>Pre-mortem</td><td>جاري كلاين</td></tr>
+        <tr><td>Barbell، المضاد للهشاشة، الطريق السلبي</td><td>نسيم طالب (Antifragile)</td></tr>
+        <tr><td>مغالطة التخطيط، النفور من الخسارة، النسب الأساسية</td><td>دانيال كانيمان وعاموس تفيرسكي (Thinking, Fast and Slow)</td></tr>
+        <tr><td>الحد الأدنى من الندم، أبواب الاتجاه الواحد والاتجاهين</td><td>جيف بيزوس</td></tr>
+        <tr><td>ندم عدم الفعل</td><td>توماس جيلوفيتش</td></tr>
+        <tr><td>قوة الروابط الضعيفة</td><td>مارك جرانوفيتر</td></tr>
+        <tr><td>طبقات العلاقات</td><td>روبن دنبار</td></tr>
+        <tr><td>التعاون في اللعبة المتكررة</td><td>روبرت أكسلرود (The Evolution of Cooperation)</td></tr>
+        <tr><td>BATNA</td><td>روجر فيشر وويليام يوري (Getting to Yes)</td></tr>
+        <tr><td>عنق الزجاجة (نظرية القيود)</td><td>إلياهو جولدرات (The Goal)</td></tr>
+        <tr><td>التفكير المنظومي والحلقات</td><td>دونيلا ميدوز (Thinking in Systems)</td></tr>
+        <tr><td>حلقة OODA</td><td>جون بويد</td></tr>
+        <tr><td>OKRs</td><td>آندي جروف (إنتل)، وجون دور (Measure What Matters)</td></tr>
+        <tr><td>قاعدة 10-10-10</td><td>سوزي ويلش</td></tr>
+        <tr><td>"لو مش أيوه قاطعة فهي لأ"</td><td>ديريك سيفرز</td></tr>
+      </table>
+    </div>
+  </details>
+
+  <details>
+    <summary>❓ أسئلة شائعة وأخطاء تطبيق متكررة <span class="chev">‹</span></summary>
+    <div class="body">
+      <p><strong>ظروفي متقلبة ومش قادر أخطط 10 سنين — أعمل إيه؟</strong><br>ثبّت الاتجاه والقيم (دول بيتغيروا ببطء)، وخلي التفاصيل قصيرة المدى. رؤية الـ 10 سنين مش تنبؤ — دي بوصلة بتساعدك تقرر النهارده.</p>
+      <p><strong>مش عارف عايز إيه أصلاً — أبدأ منين؟</strong><br>ابدأ بالحذف: اعرف اللي مش عايزه بالتأكيد. وبعدين جرّب مشاريع صغيرة محددة المدة (30–60 يوم) — الوضوح بيجي من التجربة مش من التأمل.</p>
+      <p><strong>خططت قبل كده وفشلت كذا مرة.</strong><br>غالباً السبب واحد من تلاتة: الخطة كانت طموحة لدرجة غير واقعية، أو مكانش فيه نظام مراجعة، أو كانت أهداف مستوردة من توقعات الناس مش نابعة منك. حدد أي واحدة فيهم وابدأ من هناك.</p>
+      <p><strong>هل أشارك خططي مع الناس؟</strong><br>شارك الالتزامات (السلوك) مع شريك مساءلة، مش الأحلام الكبيرة مع الجميع. فيه أبحاث (زي أبحاث بيتر جولفيتزر) بتقترح إن إعلان أهداف الهوية قدام الناس ممكن يدّي إحساس مبكر بالإنجاز يقلل الدافع. النتايج مش محسومة، لكن مشاركة الالتزام مع شخص واحد بيتابعك أأمن من الإعلان العام.</p>
+      <p><strong>عندي التزامات عائلية بتاكل وقتي كله.</strong><br>قلل حجم الطموح لكن متلغيش الاتجاه. 30 دقيقة يومياً منتظمة على مدار سنتين بتعمل فرق حقيقي. الخطأ هو إنك تستنى "الوقت المناسب" اللي مش هييجي.</p>
+      <p><strong>الأهداف بتاعتي بتتغير كل شوية.</strong><br>لو الأهداف بتتغير كل شهر فدي مشكلة تركيز — التزم بربع كامل قبل أي تغيير. لكن لو بتتغير كل سنة أو سنتين بناءً على تعلم حقيقي، فده تطور طبيعي وصحي.</p>
+      <p><strong>أخطاء تطبيق متكررة:</strong> نسخ أهداف حد تاني، الاكتفاء بالتخطيط من غير جدول تنفيذ، إهمال المراجعة، قياس الحاجات السهلة بدل المهمة، وتوقع خط تقدم مستقيم بينما التقدم الحقيقي دايماً متعرج.</p>
+    </div>
+  </details>
+
+    <div class="card">
+    <h3>خريطة القراءة لو حبيت تتعمق</h3>
+    <p>الدليل ده مكتفي بذاته، لكن لو حبيت تتوسع، اقرأ بالترتيب ده: <strong>Good Strategy Bad Strategy</strong> (تبني الاستراتيجية) ← <strong>The Almanack of Naval Ravikant</strong> (تحدد الاتجاه) ← <strong>Thinking in Bets</strong> (تحسّن القرارات) ← <strong>Atomic Habits</strong> (تنفّذ يومياً) ← <strong>Deep Work</strong> (تحمي تركيزك) ← <strong>The Psychology of Money</strong> (تأمّن مالياً) ← <strong>So Good They Can't Ignore You</strong> (تبني المهارة) ← <strong>Essentialism</strong> (تتعلم ترفض) ← <strong>Playing to Win</strong> (تحدد هتلعب فين) ← <strong>Four Thousand Weeks</strong> (تفتكر ليه بتخطط أصلاً).</p>
+  </div>
+
+  <div class="quotebox" style="margin-top:24px">
+    الخلاصة في سطر: شخّص واقعك بصدق، اختار اتجاه واحد وقول "لأ" للباقي، خطط بالعكس من الرؤية للأسبوع، جهّز 3 سيناريوهات، وخلّي العادات اليومية والعمل العميق هما المحرك — وراجع كل 90 يوم.
+  </div>
+</section>
+
+</main>
+
+<button id="topBtn" aria-label="العودة لأعلى الصفحة">↑</button>
+
+<footer>دليل التخطيط الاستراتيجي للحياة · النسخة المحدثة · صفحة واحدة تشتغل بدون إنترنت بعد أول تحميل</footer>
+
+<script>
+var chapters=[].slice.call(document.querySelectorAll('section.chapter'));
+var bar=document.getElementById('tabsBar');
+var current=0;
+
+chapters.forEach(function(sec,i){
+  var b=document.createElement('button');
+  b.className='tab';
+  b.textContent=sec.dataset.title;
+  b.setAttribute('role','tab');
+  b.setAttribute('aria-selected','false');
+  b.setAttribute('aria-label','باب '+sec.dataset.title);
+  b.addEventListener('click',function(){goTab(i);});
+  bar.appendChild(b);
+});
+
+function goTab(i,skipHash){
+  if(i<0||i>=chapters.length)return;
+  current=i;
+  chapters.forEach(function(s,j){s.classList.toggle('visible',i===j);});
+  [].slice.call(bar.children).forEach(function(t,j){
+    t.classList.toggle('active',i===j);
+    t.setAttribute('aria-selected',i===j?'true':'false');
+    if(i===j)t.classList.add('visited');
+  });
+  try{bar.children[i].scrollIntoView({inline:'center',block:'nearest'});}catch(e){}
+  if(!skipHash){history.pushState(null,'','#ch-'+(i+1));}
+  var tabsTop=document.querySelector('.tabs').offsetTop;
+  if(window.scrollY>tabsTop)window.scrollTo({top:tabsTop,behavior:'smooth'});
+}
+
+// أزرار سابق/تالي في نهاية كل باب
+chapters.forEach(function(sec,i){
+  var row=document.createElement('div');
+  row.className='nav-row';
+  if(i>0){
+    var p=document.createElement('button');
+    p.className='prev-btn';
+    p.textContent='→ السابق: '+chapters[i-1].dataset.title;
+    p.addEventListener('click',function(){goTab(i-1);});
+    row.appendChild(p);
+  }
+  if(i<chapters.length-1){
+    var n=document.createElement('button');
+    n.className='next-btn';
+    n.textContent='التالي: '+chapters[i+1].dataset.title+' ←';
+    n.addEventListener('click',function(){goTab(i+1);});
+    row.appendChild(n);
+  }
+  sec.appendChild(row);
+  if(i===0){
+    var hint=document.createElement('p');
+    hint.className='kbd-hint';
+    hint.innerHTML='💡 تقدر تتنقل بين الأبواب بأسهم الكيبورد <kbd>→</kbd> <kbd>←</kbd> وزر الرجوع في المتصفح شغال.';
+    sec.appendChild(hint);
+  }
+});
+
+// hash routing: زر الرجوع + روابط مباشرة للأبواب
+function fromHash(){
+  var m=(location.hash||'').match(/ch-(\d+)/);
+  var i=m?parseInt(m[1],10)-1:0;
+  goTab(isNaN(i)?0:Math.min(Math.max(i,0),chapters.length-1),true);
+}
+window.addEventListener('popstate',fromHash);
+fromHash();
+
+// تنقل بالكيبورد (أسهم) — مش وانت جوه حقل كتابة
+document.addEventListener('keydown',function(e){
+  var tag=(e.target.tagName||'').toLowerCase();
+  if(tag==='input'||tag==='textarea')return;
+  if(e.key==='ArrowLeft')goTab(current+1);   /* RTL: يسار = التالي */
+  if(e.key==='ArrowRight')goTab(current-1);
+});
+
+// الوضع الليلي (في الذاكرة فقط)
+var darkBtn=document.getElementById('darkToggle');
+darkBtn.addEventListener('click',function(){
+  var on=document.body.classList.toggle('dark');
+  darkBtn.textContent=on?'☀️ وضع نهاري':'🌙 وضع ليلي';
+});
+
+// الطباعة: فتح كل الأكورديونات وطباعة كل الأبواب
+function printAll(){
+  [].slice.call(document.querySelectorAll('details')).forEach(function(d){d.setAttribute('open','');});
+  window.print();
+}
+window.printAll=printAll;
+
+// البحث
+var searchBox=document.getElementById('searchBox');
+var results=document.getElementById('searchResults');
+var index=[];
+chapters.forEach(function(sec,i){
+  var blocks=[].slice.call(sec.querySelectorAll('.card, details, .milestone'));
+  blocks.forEach(function(bl){
+    var titleEl=bl.querySelector('h3,h4,summary');
+    var title=titleEl?titleEl.textContent.replace(/‹/g,'').trim():sec.dataset.title;
+    index.push({chapter:i,chapterTitle:sec.dataset.title,title:title,text:bl.textContent,el:bl});
+  });
+});
+searchBox.addEventListener('input',function(){
+  var q=searchBox.value.trim();
+  results.innerHTML='';
+  if(q.length<2){results.classList.remove('open');return;}
+  var hits=index.filter(function(it){return it.text.indexOf(q)!==-1;}).slice(0,8);
+  if(!hits.length){
+    var d=document.createElement('div');
+    d.className='sr-empty';
+    d.textContent='مفيش نتائج لـ "'+q+'" — جرّب كلمة تانية';
+    results.appendChild(d);
+  }else{
+    hits.forEach(function(it){
+      var b=document.createElement('button');
+      b.className='sr-item';
+      b.innerHTML='<small>'+it.chapterTitle+'</small>'+it.title;
+      b.addEventListener('click',function(){
+        goTab(it.chapter);
+        if(it.el.tagName==='DETAILS')it.el.setAttribute('open','');
+        setTimeout(function(){try{it.el.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}},120);
+        results.classList.remove('open');
+        searchBox.value='';
+      });
+      results.appendChild(b);
+    });
+  }
+  results.classList.add('open');
+});
+document.addEventListener('click',function(e){
+  if(!results.contains(e.target)&&e.target!==searchBox)results.classList.remove('open');
+});
+
+// زر العودة لأعلى
+var topBtn=document.getElementById('topBtn');
+window.addEventListener('scroll',function(){
+  topBtn.classList.toggle('show',window.scrollY>500);
+});
+topBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+// حاسبة القيمة المتوقعة
+function escHtml(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+var evOpts=[].slice.call(document.querySelectorAll('.ev-opt'));
+var evVerdict=document.getElementById('evVerdict');
+function calcEV(){
+  var res=evOpts.map(function(opt){
+    var ps=[].slice.call(opt.querySelectorAll('.ev-p')), vs=[].slice.call(opt.querySelectorAll('.ev-v'));
+    var sum=0, ev=0, worst=null;
+    ps.forEach(function(p,i){
+      var pp=parseFloat(p.value)||0, vv=parseFloat(vs[i].value)||0;
+      sum+=pp; ev+=pp/100*vv;
+      if(pp>0&&(worst===null||vv<worst))worst=vv;
+    });
+    var out=opt.querySelector('.ev-out');
+    if(Math.abs(sum-100)>0.5){
+      out.innerHTML='⚠️ مجموع الاحتمالات <strong>'+sum+'%</strong> — لازم يبقى 100%';
+      return null;
+    }
+    out.innerHTML='القيمة المتوقعة: <strong>'+ev.toFixed(1)+'</strong> · أسوأ نتيجة: <strong>'+(worst===null?'—':worst)+'</strong>';
+    return {name:opt.querySelector('.ev-name').value, ev:ev, worst:worst};
+  });
+  if(!evVerdict)return;
+  if(!res[0]||!res[1]){evVerdict.textContent='صحّح مجموع الاحتمالات عشان تظهر المقارنة.';return;}
+  var hi=res[0].ev>=res[1].ev?res[0]:res[1], lo=hi===res[0]?res[1]:res[0];
+  var t= Math.abs(hi.ev-lo.ev)<3
+    ? 'الخيارين متقاربين جداً في القيمة المتوقعة — القرار هنا يتحسم بعوامل تانية: أسوأ نتيجة، الخيارات المستقبلية، والندم.'
+    : 'الأعلى في القيمة المتوقعة: <strong>'+escHtml(hi.name)+'</strong> ('+hi.ev.toFixed(1)+' مقابل '+lo.ev.toFixed(1)+').';
+  if(hi.worst!==null&&hi.worst<=-50) t+=' ⚠️ لكن أسوأ نتيجة فيه قاسية ('+hi.worst+') — اسأل: لو حصلت، هقدر أقوم منها؟ لو لأ، البقاء أهم من القيمة المتوقعة.';
+  else if(hi.worst!==null&&lo.worst!==null&&hi.worst<lo.worst) t+=' لاحظ إن أسوأ نتيجة فيه أصعب من البديل — اتأكد إنك مستعد ليها.';
+  evVerdict.innerHTML=t;
+}
+evOpts.forEach(function(opt){
+  [].slice.call(opt.querySelectorAll('input')).forEach(function(inp){inp.addEventListener('input',calcEV);});
+});
+calcEV();
+
+// عداد قائمة الانطلاق
+var checks=[].slice.call(document.querySelectorAll('.check input'));
+var counter=document.getElementById('checkCount');
+function updCount(){
+  if(!counter)return;
+  var d=checks.filter(function(c){return c.checked;}).length;
+  counter.textContent= d===0 ? 'لسه مبدأتش — ابدأ بأول بند 👆'
+    : (d===checks.length ? '🎉 خلصت العشرة! خطتك جاهزة — فاضل المراجعة كل 90 يوم.'
+    : 'خلصت '+d+' من '+checks.length+' — كمّل، انت في الطريق.');
+}
+checks.forEach(function(c){c.addEventListener('change',updCount);});
+updCount();
+
+// عجلة الحياة التفاعلية
+var areas=['المهنة','المال','الصحة','العلاقات','الذات'];
+var sliders=[1,2,3,4,5].map(function(n){return document.getElementById('w'+n);});
+var barsWrap=document.getElementById('wheelBars');
+var msg=document.getElementById('wheelMsg');
+function renderWheel(){
+  barsWrap.innerHTML='';
+  var vals=sliders.map(function(s){return parseInt(s.value,10);});
+  var min=Math.min.apply(null,vals);
+  vals.forEach(function(v,i){
+    var col=document.createElement('div');col.className='wbar';
+    var fill=document.createElement('div');fill.className='fill'+(v===min&&min<7?' low':'');
+    fill.style.height=(v*10)+'%';
+    var lab=document.createElement('small');lab.textContent=areas[i]+' ('+v+')';
+    col.appendChild(fill);col.appendChild(lab);barsWrap.appendChild(col);
+  });
+  var avg=(vals.reduce(function(a,b){return a+b;},0)/5).toFixed(1);
+  var lowest=areas[vals.indexOf(min)];
+  if(min>=7){
+    msg.innerHTML='متوسطك <strong>'+avg+'/10</strong> — توازن كويس! ركّز على رفع أعلى مجال عندك لمستوى استثنائي (استراتيجية القمة الواحدة).';
+  }else{
+    msg.innerHTML='متوسطك <strong>'+avg+'/10</strong>. أضعف مجال عندك: <strong>'+lowest+'</strong> ('+min+'/10) — ده المرشح الأول يكون "مجال النمو" في خطة الـ 90 يوم الجاية، لأن تحسين أضعف حلقة بيرفع الحياة كلها.';
+  }
+}
+sliders.forEach(function(s){
+  s.addEventListener('input',function(){
+    s.parentElement.querySelector('output').textContent=s.value;
+    renderWheel();
+  });
+});
+renderWheel();
+
+// ===== دفتر خطتي + الحفظ التلقائي =====
+var valChips=[].slice.call(document.querySelectorAll('.val-chip input'));
+function updValues(){
+  var n=valChips.filter(function(c){return c.checked;}).length;
+  valChips.forEach(function(c){c.disabled=!c.checked&&n>=5;});
+  var o=document.getElementById('valCount');
+  if(o)o.textContent=n===5?'✓ اخترت 5 قيم — لو عايز تبدّل، شيل واحدة الأول':'اخترت '+n+' من 5';
+}
+valChips.forEach(function(c){c.addEventListener('change',updValues);});
+updValues();
+
+var STORE='strategic-guide-v1', saved={}, storeOK=true;
+try{var raw=window.localStorage.getItem(STORE); saved=raw?JSON.parse(raw):{};}catch(e){storeOK=false; saved={};}
+[['.check input','chk'],['#wheelInputs input','wheel'],['.ev-opt input','ev']].forEach(function(a){
+  [].slice.call(document.querySelectorAll(a[0])).forEach(function(el,i){if(!el.getAttribute('data-save'))el.setAttribute('data-save',a[1]+i);});
+});
+var saveEls=[].slice.call(document.querySelectorAll('[data-save]'));
+function getVal(el){return el.type==='checkbox'?el.checked:el.value;}
+function setVal(el,v){if(el.type==='checkbox')el.checked=!!v; else el.value=v;}
+function refreshAll(){
+  sliders.forEach(function(s){s.parentElement.querySelector('output').textContent=s.value;});
+  renderWheel(); calcEV(); updCount(); updValues();
+}
+saveEls.forEach(function(el){
+  var k=el.getAttribute('data-save');
+  if(saved&&Object.prototype.hasOwnProperty.call(saved,k))setVal(el,saved[k]);
+});
+refreshAll();
+
+var wbStatus=document.getElementById('wbStatus'), saveTimer=null;
+function setStatus(t){if(wbStatus)wbStatus.textContent=t;}
+function persist(){
+  var o={};
+  saveEls.forEach(function(el){o[el.getAttribute('data-save')]=getVal(el);});
+  try{window.localStorage.setItem(STORE,JSON.stringify(o)); storeOK=true;
+    setStatus('✓ اتحفظ تلقائياً '+new Date().toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'}));}
+  catch(e){storeOK=false; setStatus('⚠️ الحفظ التلقائي مش متاح في المتصفح ده — استخدم زر التصدير');}
+}
+saveEls.forEach(function(el){
+  el.addEventListener(el.type==='checkbox'?'change':'input',function(){
+    clearTimeout(saveTimer); saveTimer=setTimeout(persist,400);
+  });
+});
+if(!storeOK)setStatus('⚠️ الحفظ التلقائي مش متاح في المتصفح ده — استخدم زر التصدير');
+else if(saved&&Object.keys(saved).length)setStatus('✓ رجّعت آخر حاجة كتبتها');
+
+function exportPlan(){
+  var L=['خطتي الاستراتيجية','تاريخ التصدير: '+new Date().toLocaleDateString('ar-EG'),'────────────────────',''];
+  var vals=valChips.filter(function(c){return c.checked;}).map(function(c){return c.value;});
+  var extra=document.getElementById('wb-val-extra');
+  if(extra&&extra.value.trim())vals.push(extra.value.trim());
+  if(vals.length)L.push('■ قيمي الأساسية: '+vals.join('، '),'');
+  [].slice.call(document.querySelectorAll('#ch-workbook [data-label]')).forEach(function(el){
+    if(el.id==='wb-val-extra')return;
+    var v=(el.value||'').trim();
+    if(v)L.push('■ '+el.getAttribute('data-label')+':',v,'');
+  });
+  L.push('■ عجلة الحياة: '+areas.map(function(a,i){return a+' '+sliders[i].value+'/10';}).join(' · '),'');
+  var done=checks.filter(function(c){return c.checked;}).length;
+  L.push('■ قائمة الانطلاق: خلصت '+done+' من '+checks.length);
+  var blob=new Blob(['\ufeff'+L.join('\n')],{type:'text/plain;charset=utf-8'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download='خطتي-الاستراتيجية.txt';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},800);
+  setStatus('⬇️ اتصدّرت الخطة');
+}
+var expBtn=document.getElementById('wbExport');
+if(expBtn)expBtn.addEventListener('click',exportPlan);
+var clrBtn=document.getElementById('wbClear');
+if(clrBtn)clrBtn.addEventListener('click',function(){
+  if(!window.confirm('هتمسح كل اللي كتبته في الدفتر وكل التقييمات والعلامات. متأكد؟ (يُفضّل تصدّر الخطة الأول)'))return;
+  saveEls.forEach(function(el){if(el.type==='checkbox')el.checked=el.defaultChecked; else el.value=el.defaultValue;});
+  try{window.localStorage.removeItem(STORE);}catch(e){}
+  refreshAll(); setStatus('اتمسحت البيانات');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دهب تراكر | أسعار الذهب والعملات</title>
+<link href="shelf-vendor:/fonts/75a39d2eb882.css" rel="stylesheet">
+<style>
+:root {
+  --bg:       #080a0d;
+  --bg2:      #0e1117;
+  --bg3:      #141920;
+  --bg4:      #1a2230;
+  --gold:     #d4a84b;
+  --gold2:    #f0c97a;
+  --gold3:    #8b6914;
+  --glow:     rgba(212,168,75,0.18);
+  --green:    #22c55e;
+  --red:      #ef4444;
+  --amber:    #f59e0b;
+  --blue:     #38bdf8;
+  --text:     #e8edf5;
+  --text2:    #8896aa;
+  --text3:    #3d4f65;
+  --border:   rgba(212,168,75,0.12);
+  --border2:  rgba(212,168,75,0.28);
+  --r:        14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── خلفية ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 800px 500px at 70% -10%, rgba(212,168,75,0.07), transparent),
+    radial-gradient(ellipse 600px 600px at -10% 80%, rgba(56,189,248,0.04), transparent);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(212,168,75,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,168,75,0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 18px; position: relative; z-index: 1; }
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,10,13,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 18px;
+}
+
+.header-inner {
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 58px;
+}
+
+.logo-row { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold3), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.logo-text { line-height: 1.2; }
+.logo-name { font-weight: 900; font-size: 17px; color: var(--gold2); }
+.logo-sub  { font-size: 10px; color: var(--text2); }
+
+.status-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 20px; padding: 5px 13px;
+  font-size: 11px; font-weight: 700; color: var(--text2);
+  transition: all .3s;
+}
+.status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--amber);
+  transition: background .3s;
+}
+.status-dot.live { background: var(--green); animation: pulse-dot 2s infinite; }
+
+@keyframes pulse-dot {
+  0%,100%{ opacity:1; } 50%{ opacity:.45; }
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 44px 0 28px;
+  text-align: center;
+}
+
+.hero-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  color: var(--text2); text-transform: uppercase; margin-bottom: 12px;
+}
+
+.hero-price {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(46px, 10vw, 80px);
+  font-weight: 700;
+  color: var(--gold2);
+  line-height: 1;
+  transition: color .4s, transform .25s;
+  display: inline-flex; align-items: baseline; gap: 10px;
+  margin-bottom: 6px;
+}
+.hero-price.up   { color: var(--green); }
+.hero-price.down { color: var(--red);   }
+.hero-price.pop  { transform: scale(1.04); }
+
+.hero-currency { font-size: 22px; color: var(--text2); font-weight: 400; }
+.hero-arrow { font-size: 28px; vertical-align: middle; }
+
+.hero-meta {
+  font-size: 11px; color: var(--text3); margin-top: 8px;
+  font-family: 'Space Mono', monospace;
+}
+
+.hero-warn {
+  display: inline-block; margin-top: 10px;
+  background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+  color: var(--amber); font-size: 11px; padding: 5px 14px; border-radius: 20px;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex; gap: 6px; padding: 0 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display:none; }
+
+.tab {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent; cursor: pointer;
+  color: var(--text2); font-size: 13px; font-weight: 700;
+  font-family: 'Tajawal', sans-serif;
+  white-space: nowrap; transition: all .2s;
+  position: relative;
+}
+.tab:hover { color: var(--text); border-color: var(--border); }
+.tab.active {
+  background: rgba(212,168,75,0.1);
+  border-color: var(--border2);
+  color: var(--gold2);
+}
+
+.tab-badge {
+  background: var(--red); color: #fff;
+  font-size: 9px; font-weight: 900;
+  min-width: 16px; height: 16px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px;
+}
+
+/* ── SECTION ── */
+.section { display: none; animation: fadeUp .35s ease; }
+.section.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 14px;
+  position: relative; overflow: hidden;
+  transition: border-color .2s;
+}
+.card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:100%; height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold3), transparent);
+  opacity:0; transition: opacity .3s;
+}
+.card:hover { border-color: var(--border2); }
+.card:hover::before { opacity:1; }
+
+.card-title {
+  font-size: 13px; font-weight: 900; color: var(--gold2);
+  margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-count { font-size: 10px; color: var(--text3); font-weight: 600; }
+
+/* ── PRICE GRID ── */
+.price-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px; margin-bottom: 14px;
+}
+
+.price-cell {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 14px; text-align: center;
+  transition: all .2s;
+}
+.price-cell.highlight {
+  background: #1a160a; border-color: #4a3a1a;
+}
+.price-cell:hover { border-color: var(--border2); }
+.price-cell-label { font-size: 11px; color: var(--text2); font-weight: 700; margin-bottom: 6px; }
+.price-cell-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 22px; font-weight: 700; margin-bottom: 3px;
+}
+.price-cell-sub { font-size: 9px; color: var(--text3); }
+
+/* ── CHART ── */
+.chart-wrap {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; margin-bottom: 14px;
+}
+.chart-title {
+  font-size: 12px; font-weight: 700; color: var(--text2);
+  margin-bottom: 10px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+#chart-svg { width: 100%; height: auto; display: block; }
+.chart-empty {
+  text-align: center; padding: 30px;
+  color: var(--text3); font-size: 12px;
+}
+
+/* ── INFO ROWS ── */
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13.5px;
+}
+.info-row:last-of-type { border-bottom: none; }
+.info-label { color: var(--text2); }
+.info-value { font-weight: 700; color: var(--text); font-family: 'Space Mono', monospace; font-size: 13px; }
+
+/* ── SOURCE HINT ── */
+.source-hint {
+  font-size: 10.5px; color: var(--text3);
+  margin-top: 10px; line-height: 1.7; padding: 8px 10px;
+  background: var(--bg3); border-radius: 8px;
+}
+
+/* ── CURRENCIES ── */
+.currency-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background .15s; cursor: default;
+}
+.currency-row:last-child { border-bottom: none; }
+.currency-left { display: flex; align-items: center; gap: 10px; }
+.currency-flag { font-size: 22px; }
+.currency-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.currency-code { font-size: 9px; color: var(--text3); margin-top: 1px; font-family: 'Space Mono', monospace; }
+.currency-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px; font-weight: 700; color: var(--gold2);
+}
+.currency-unit { font-size: 9px; color: var(--text3); margin-top: 2px; text-align: left; }
+
+/* ── VERDICT CARD ── */
+.verdict-card {
+  background: radial-gradient(ellipse at top, #1c1710, var(--bg2));
+  border: 2px solid; border-radius: var(--r);
+  padding: 24px 20px; margin-bottom: 14px; text-align: center;
+}
+.verdict-label { font-size: 11px; color: var(--text2); font-weight: 700; margin-bottom: 8px; }
+.verdict-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 28px; font-weight: 700; margin-bottom: 18px;
+}
+.gauge-track {
+  height: 10px; background: var(--bg4); border-radius: 5px;
+  position: relative; overflow: visible; margin-bottom: 8px;
+}
+.gauge-fill {
+  height: 100%; border-radius: 5px;
+  transition: width .7s cubic-bezier(.34,1.56,.64,1);
+}
+.gauge-needle {
+  position: absolute; top: 50%; transform: translate(-50%,-50%);
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,.5);
+  transition: right .7s cubic-bezier(.34,1.56,.64,1);
+}
+.gauge-labels {
+  display: flex; justify-content: space-between;
+  font-size: 9.5px; color: var(--text3); font-weight: 700;
+}
+.verdict-advice {
+  margin-top: 14px; padding: 12px 14px;
+  background: rgba(0,0,0,.3); border-radius: 10px;
+  font-size: 13px; color: #ccc; line-height: 1.7;
+}
+
+/* ── SIGNALS ── */
+.signal {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 12px; background: var(--bg3); border-radius: 9px;
+  margin-bottom: 8px; border-right: 3px solid;
+  font-size: 13px; color: var(--text2); line-height: 1.6;
+}
+.signal-icon { font-size: 13px; font-weight: 900; margin-top: 1px; flex-shrink: 0; }
+
+/* ── DCA ── */
+.dca-grid { display: flex; gap: 10px; margin: 12px 0; }
+.dca-step {
+  flex: 1; background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 12px; padding: 14px 8px; text-align: center;
+}
+.dca-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold); color: var(--bg);
+  font-weight: 900; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+}
+.dca-amount { font-size: 13px; font-weight: 900; color: var(--gold2); margin-bottom: 3px; }
+.dca-when   { font-size: 10px; color: var(--text3); }
+
+/* ── ALERTS ── */
+.alert-notif-row {
+  background: var(--bg3); border: 1px solid;
+  border-radius: 12px; padding: 14px; margin-bottom: 10px;
+}
+
+.alert-section-title {
+  font-size: 12px; font-weight: 900; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 2px;
+  margin: 16px 0 10px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.input-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.inp {
+  flex: 1; background: var(--bg4); border: 1px solid var(--border);
+  border-radius: 9px; padding: 10px 14px;
+  color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 14px;
+  text-align: right; outline: none; transition: border-color .2s;
+}
+.inp:focus { border-color: var(--border2); }
+.inp::placeholder { color: var(--text3); }
+
+.add-btn {
+  padding: 10px 20px; border-radius: 9px; border: none;
+  font-family: 'Tajawal', sans-serif; font-size: 13px; font-weight: 900;
+  cursor: pointer; transition: opacity .2s; white-space: nowrap;
+}
+.add-btn:hover { opacity: .8; }
+.add-btn.green { background: #1a3d2a; color: var(--green); }
+.add-btn.red   { background: #3d1a1a; color: var(--red); }
+
+.alert-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+  font-size: 13px; color: var(--text2);
+}
+.alert-item:last-child { border-bottom: none; }
+.alert-arrow { font-size: 15px; font-weight: 900; }
+.alert-label { flex: 1; }
+.alert-triggered {
+  background: rgba(34,197,94,.12); color: var(--green);
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+}
+.del-btn {
+  background: var(--bg4); border: none; color: var(--text3);
+  width: 24px; height: 24px; border-radius: 6px;
+  cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.del-btn:hover { background: var(--bg3); color: var(--red); }
+
+.notif-item {
+  background: var(--bg3); border-radius: 10px;
+  padding: 12px 14px; margin-bottom: 8px;
+  border-right: 3px solid;
+}
+.notif-title { font-size: 13px; font-weight: 900; color: var(--gold2); margin-bottom: 3px; }
+.notif-body  { font-size: 12px; color: var(--text2); line-height: 1.6; }
+.notif-time  { font-size: 10px; color: var(--text3); margin-top: 5px; font-family: 'Space Mono', monospace; }
+
+.empty { text-align: center; padding: 28px; color: var(--text3); font-size: 12px; }
+
+/* ── GUIDE ── */
+.guide-row {
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.guide-row:last-child { border-bottom: none; }
+.guide-term { font-size: 13px; font-weight: 900; color: var(--gold); margin-bottom: 3px; }
+.guide-def  { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  font-size: 11px; color: var(--text3); line-height: 1.8;
+  padding: 12px 14px; background: var(--bg2);
+  border: 1px solid var(--border); border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+/* ── LOADING ── */
+.loading-bar {
+  height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  animation: scan 1.5s ease-in-out infinite;
+}
+@keyframes scan { 0%{ opacity:0; } 50%{ opacity:1; } 100%{ opacity:0; } }
+
+/* ── PUSH BANNER ── */
+.push-banner {
+  background: rgba(56,189,248,.08); border: 1px solid rgba(56,189,248,.25);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 14px;
+  font-size: 12px; color: #a0d8ef; display: flex; justify-content: space-between; align-items: center;
+}
+.push-btn {
+  background: rgba(56,189,248,.15); border: 1px solid rgba(56,189,248,.3);
+  color: var(--blue); border-radius: 8px; padding: 6px 14px;
+  font-size: 11px; font-weight: 700; cursor: pointer; font-family: 'Tajawal', sans-serif;
+  transition: background .2s;
+}
+.push-btn:hover { background: rgba(56,189,248,.25); }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 28px 18px;
+  font-size: 10px; color: var(--text3); line-height: 1.8;
+  border-top: 1px solid var(--border); margin-top: 30px;
+}
+
+/* ── SLIDER ── */
+.slider-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+input[type=range] {
+  flex: 1; height: 5px; border-radius: 3px;
+  background: var(--bg4); appearance: none;
+  outline: none; cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  appearance: none; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--gold); border: 3px solid var(--bg); cursor: pointer;
+}
+.slider-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px; font-weight: 700; color: var(--gold2);
+  min-width: 60px; text-align: center;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* ── BUY/SELL TABLE ── */
+.bs-table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+.bs-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px; min-width: 320px;
+}
+.bs-table thead { background: var(--bg3); }
+.bs-table th {
+  padding: 10px 12px; text-align: right;
+  font-size: 11px; font-weight: 700; color: var(--text2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.bs-table td {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  white-space: nowrap;
+}
+.bs-table tr:last-child td { border-bottom: none; }
+.bs-table tr.row-hi td { background: rgba(212,168,75,0.04); }
+.bs-table tr:hover td { background: rgba(212,168,75,0.06); }
+.karat-label { color: var(--text); font-weight: 700; }
+.buy-col { color: var(--green) !important; }
+.sell-col { color: var(--red) !important; }
+.buy-val {
+  font-family: 'Space Mono', monospace; font-weight: 700;
+  color: var(--green); font-size: 13px;
+}
+.sell-val {
+  font-family: 'Space Mono', monospace; font-weight: 700;
+  color: var(--red); font-size: 13px;
+}
+.spread-val {
+  font-family: 'Space Mono', monospace;
+  color: var(--text3); font-size: 11px;
+}
+
+/* ── SELECT ── */
+.sel {
+  background: var(--bg4); border: 1px solid var(--border); border-radius: 9px;
+  padding: 10px 12px; color: var(--text); font-family: 'Tajawal', sans-serif;
+  font-size: 13px; outline: none; cursor: pointer;
+}
+.mini-table { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:8px; }
+.mini-table th { color:var(--text2); font-weight:700; text-align:right; padding:7px 6px; border-bottom:1px solid var(--border); font-size:11px; }
+.mini-table td { padding:7px 6px; border-bottom:1px solid rgba(255,255,255,.04); color:var(--text); font-family:'Space Mono',monospace; font-size:12px; }
+
+/* ── WORLD TICKER ── */
+.world-ticker {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 10px 16px;
+  margin-bottom: 4px; overflow-x: auto; scrollbar-width: none;
+  flex-wrap: nowrap; white-space: nowrap;
+}
+.world-ticker::-webkit-scrollbar { display: none; }
+.ticker-item { display: flex; align-items: center; gap: 5px; }
+.ticker-label { font-size: 10.5px; color: var(--text3); font-weight: 600; }
+.ticker-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px; font-weight: 700; color: var(--gold2);
+}
+.ticker-unit { font-size: 9.5px; color: var(--text3); }
+.ticker-sep { color: var(--border2); font-size: 14px; flex-shrink: 0; }
+
+/* ── SAGHA CARD ── */
+.sagha-grid {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+.sagha-box {
+  flex: 1; border-radius: 12px; padding: 14px 12px; text-align: center;
+  border: 1px solid;
+}
+.bank-box { background: rgba(56,189,248,0.07); border-color: rgba(56,189,248,0.22); }
+.gold-box  { background: rgba(212,168,75,0.08); border-color: rgba(212,168,75,0.25); }
+.sagha-box-label { font-size: 11px; font-weight: 700; color: var(--text2); margin-bottom: 6px; }
+.sagha-box-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 22px; font-weight: 700; margin-bottom: 4px;
+}
+.bank-box .sagha-box-val { color: var(--blue); }
+.gold-box  .sagha-box-val { color: var(--gold2); }
+.sagha-box-sub { font-size: 9.5px; color: var(--text3); }
+.sagha-vs {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px; font-weight: 700; color: var(--text3);
+  flex-shrink: 0;
+}
+.sagha-result {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg3); border-radius: 10px; padding: 10px 14px;
+  font-size: 13px; color: var(--text2);
+}
+.sagha-diff-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px; font-weight: 700;
+}
+@media (max-width: 560px) {
+  .price-grid { grid-template-columns: 1fr 1fr; }
+  .dca-grid { gap: 6px; }
+  .dca-amount { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="loading-bar" id="loader"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-row">
+      <div class="logo-icon">🪙</div>
+      <div class="logo-text">
+        <div class="logo-name">دهب تراكر</div>
+        <div class="logo-sub">متتبع الذهب الذكي · السوق المصري</div>
+      </div>
+    </div>
+    <div class="status-pill" id="status-pill">
+      <div class="status-dot" id="status-dot"></div>
+      <span id="status-text">جارٍ الجلب</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- شريط الذهب العالمي -->
+  <div class="world-ticker" id="world-ticker">
+    <div class="ticker-item">
+      <span class="ticker-label">🌍 الأوقية عالمياً</span>
+      <span class="ticker-val" id="wt-ounce">—</span>
+      <span class="ticker-unit">USD</span>
+    </div>
+    <div class="ticker-sep">|</div>
+    <div class="ticker-item">
+      <span class="ticker-label">جرام ع21 عالمي</span>
+      <span class="ticker-val" id="wt-gram">—</span>
+      <span class="ticker-unit">USD</span>
+    </div>
+    <div class="ticker-sep">|</div>
+    <div class="ticker-item">
+      <span class="ticker-label">💵 دولار البنك</span>
+      <span class="ticker-val" id="wt-bank-usd">—</span>
+      <span class="ticker-unit">ج</span>
+    </div>
+    <div class="ticker-sep">|</div>
+    <div class="ticker-item">
+      <span class="ticker-label">⚖️ دولار الصاغة</span>
+      <span class="ticker-val" id="wt-sagha-usd">—</span>
+      <span class="ticker-unit">ج</span>
+    </div>
+    <div class="ticker-sep">|</div>
+    <div class="ticker-item">
+      <span class="ticker-label">فرق الدولار</span>
+      <span class="ticker-val" id="wt-diff" style="color:var(--amber)">—</span>
+      <span class="ticker-unit">ج</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">جرام الذهب عيار 21 — سعر لحظي</div>
+    <div class="hero-price" id="hero-price">
+      <span id="hero-val">—</span>
+      <span class="hero-currency">ج.م</span>
+      <span class="hero-arrow" id="hero-arrow"></span>
+    </div>
+    <div class="hero-meta" id="hero-meta">جارٍ تحميل البيانات...</div>
+    <div id="api-warn" style="display:none;">
+      <span class="hero-warn">⚠️ تعذّر الاتصال بـAPI — يعمل بمحاكاة مؤقتاً</span>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="goTab('live')">📈 الأسعار</button>
+    <button class="tab" onclick="goTab('analysis')">🧠 التحليل</button>
+    <button class="tab" onclick="goTab('tools')">🧮 الأدوات</button>
+    <button class="tab" id="tab-alerts" onclick="goTab('alerts')">🔔 التنبيهات</button>
+    <button class="tab" onclick="goTab('guide')">📚 الدليل</button>
+  </div>
+
+  <!-- ═══ الأسعار ═══ -->
+  <div class="section active" id="sec-live">
+
+    <div class="price-grid">
+      <div class="price-cell">
+        <div class="price-cell-label">عيار 24</div>
+        <div class="price-cell-value" id="p-k24" style="color:#F0C97A">—</div>
+        <div class="price-cell-sub">جنيه مصري</div>
+      </div>
+      <div class="price-cell highlight">
+        <div class="price-cell-label">⭐ عيار 21</div>
+        <div class="price-cell-value" id="p-k21" style="color:#E8C872">—</div>
+        <div class="price-cell-sub">جنيه مصري</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-cell-label">عيار 18</div>
+        <div class="price-cell-value" id="p-k18" style="color:#C9A961">—</div>
+        <div class="price-cell-sub">جنيه مصري</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-cell-label">الجنيه الذهب</div>
+        <div class="price-cell-value" id="p-pound" style="color:#D4AF6A">—</div>
+        <div class="price-cell-sub">8 جرام ع21</div>
+      </div>
+    </div>
+
+    <!-- مصادر السعر المحلي -->
+    <div class="card" style="border-color:rgba(34,197,94,0.25);">
+      <div class="card-title">📡 مصادر السعر المحلي — عيار 21
+        <button id="src-btn" onclick="refreshSources()" style="padding:5px 12px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--gold2);font-family:'Tajawal',sans-serif;font-weight:700;font-size:11px;cursor:pointer;">↻ تحديث المصادر</button>
+      </div>
+      <div class="bs-table-wrap">
+        <table class="bs-table">
+          <thead><tr><th>المصدر</th><th class="sell-col">بيع</th><th class="buy-col">شراء</th><th>الانحراف</th><th style="text-align:center">الحالة</th></tr></thead>
+          <tbody id="src-body"></tbody>
+        </table>
+      </div>
+      <div class="source-hint" id="src-summary">جارٍ قراءة المصادر...</div>
+      <div id="env-warn" style="display:none;margin-top:8px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 12px;font-size:12px;color:#fca5a5;line-height:1.8;"></div>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer;font-size:12px;color:var(--text2);font-weight:700;">🔧 سجل التشخيص — ليه مصدر مش شغال؟</summary>
+        <div id="diag-log" style="margin-top:8px;font-size:11px;line-height:1.9;color:var(--text2);font-family:'Space Mono',monospace;direction:ltr;text-align:left;max-height:320px;overflow:auto;background:var(--bg3);border-radius:8px;padding:10px;"></div>
+      </details>
+      <div class="source-hint" style="margin-top:6px;">
+        السعر المعتمد = الوسيط الحسابي للمصادر الناجحة، مع استبعاد أي مصدر يبعد أكثر من 2%. التحديث كل 5 دقائق.
+        القراءة تتم عبر وسطاء عامة مجانية — لو تعذّرت، يُستخدم السعر اليدوي ثم التقديري تلقائياً.
+      </div>
+    </div>
+
+    <!-- جدول بيع وشراء الذهب -->
+    <div class="card">
+      <div class="card-title">🏷️ أسعار بيع وشراء الذهب — الصاغة اليوم</div>
+      <div class="bs-table-wrap">
+        <table class="bs-table">
+          <thead>
+            <tr>
+              <th>العيار</th>
+              <th class="buy-col">🟢 شراء منك</th>
+              <th class="sell-col">🔴 بيع لك</th>
+              <th>الفرق (Spread)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="karat-label">عيار 24</td>
+              <td class="buy-val" id="bs-k24-buy">—</td>
+              <td class="sell-val" id="bs-k24-sell">—</td>
+              <td class="spread-val" id="bs-k24-sp">—</td>
+            </tr>
+            <tr class="row-hi">
+              <td class="karat-label">⭐ عيار 21</td>
+              <td class="buy-val" id="bs-k21-buy">—</td>
+              <td class="sell-val" id="bs-k21-sell">—</td>
+              <td class="spread-val" id="bs-k21-sp">—</td>
+            </tr>
+            <tr>
+              <td class="karat-label">عيار 18</td>
+              <td class="buy-val" id="bs-k18-buy">—</td>
+              <td class="sell-val" id="bs-k18-sell">—</td>
+              <td class="spread-val" id="bs-k18-sp">—</td>
+            </tr>
+            <tr>
+              <td class="karat-label">جنيه الذهب</td>
+              <td class="buy-val" id="bs-pound-buy">—</td>
+              <td class="sell-val" id="bs-pound-sell">—</td>
+              <td class="spread-val" id="bs-pound-sp">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="source-hint">
+        🟢 <b>شراء منك</b> = التاجر يشتري منك بهذا السعر &nbsp;·&nbsp;
+        🔴 <b>بيع لك</b> = التاجر يبيع لك بهذا السعر &nbsp;·&nbsp;
+        الفرق هو هامش التاجر — محسوب من فرق البيع والشراء الفعلي في المصادر · الأسعار بدون مصنعية أو دمغة
+      </div>
+    </div>
+
+    <!-- جدول بيع وشراء العملات -->
+    <div class="card">
+      <div class="card-title">💱 أسعار بيع وشراء العملات — البنوك اليوم</div>
+      <div class="bs-table-wrap">
+        <table class="bs-table">
+          <thead>
+            <tr>
+              <th>العملة</th>
+              <th class="buy-col">🟢 شراء منك</th>
+              <th class="sell-col">🔴 بيع لك</th>
+              <th>الفرق</th>
+            </tr>
+          </thead>
+          <tbody id="fx-bs-body">
+            <tr><td colspan="4" style="text-align:center;padding:16px;color:var(--text3)">جارٍ جلب الأسعار...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="source-hint">
+        محسوبة من سعر السوق المتوسط مع فروق البنوك المصرية المعتادة · قد تختلف بقروش عن شاشة البنك — للسعر الرسمي راجع موقع البنك المركزي
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">
+        <span>📊 حركة السعر العالمي المحوّل — ع21</span>
+        <span id="chart-count" class="card-count">0 نقطة</span>
+      </div>
+      <div id="chart-container">
+        <div class="chart-empty" id="chart-empty">جارٍ تجميع البيانات...</div>
+        <svg id="chart-svg" viewBox="0 0 400 110" style="display:none;"></svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🌍 بيانات السوق — مصادر حية</div>
+      <div class="info-row">
+        <span class="info-label">سعر الأوقية عالمياً</span>
+        <span class="info-value" id="i-ounce" style="color:var(--amber)">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">سعر الدولار</span>
+        <span class="info-value" id="i-usd" style="color:var(--text)">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">سعر ع21 النظري (العالمي × الدولار)</span>
+        <span class="info-value" id="i-theo" style="color:var(--text)">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">الفجوة المحلية (علاوة/خصم)</span>
+        <span class="info-value" id="i-gap" style="color:var(--text)">—</span>
+      </div>
+      <div class="source-hint" id="source-hint">⏳ جارٍ الاتصال...</div>
+    </div>
+
+    <!-- سعر الصاغة اليدوي -->
+    <div class="card" style="border-color:rgba(212,168,75,0.3);">
+      <div class="card-title">📝 سعر الصاغة اليدوي — أدق مصدر</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.8;">
+        افتح <a href="https://market.isagha.com/prices" target="_blank" style="color:var(--gold)">iSagha</a> أو
+        <a href="https://gold-era.eg/ar/%D8%B3%D8%B9%D8%B1-%D8%A7%D9%84%D8%B0%D9%87%D8%A8/" target="_blank" style="color:var(--gold)">Gold Era</a>
+        واكتب سعر بيع عيار 21. بيُستخدم لما المصادر التلقائية تكون متعذّرة أو أقدم من 30 دقيقة، وبيفضل صالح 24 ساعة.
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="manual-k21" type="number" placeholder="سعر جرام ع21 اليوم — مثال: 6125">
+        <button class="add-btn green" onclick="applyManualPrice()">تطبيق</button>
+        <button class="add-btn red" onclick="clearManualPrice()">إلغاء</button>
+      </div>
+      <div class="source-hint" id="manual-status">—</div>
+    </div>
+
+    <!-- فرق دولار البنك vs دولار الصاغة -->
+    <div class="card" id="sagha-card">
+      <div class="card-title">⚖️ دولار البنك vs دولار الصاغة</div>
+      <div class="sagha-grid">
+        <div class="sagha-box bank-box">
+          <div class="sagha-box-label">🏦 دولار البنك</div>
+          <div class="sagha-box-val" id="sg-bank">—</div>
+          <div class="sagha-box-sub">سعر الشراء الرسمي</div>
+        </div>
+        <div class="sagha-vs">VS</div>
+        <div class="sagha-box gold-box">
+          <div class="sagha-box-label">🏅 دولار الصاغة</div>
+          <div class="sagha-box-val" id="sg-sagha">—</div>
+          <div class="sagha-box-sub">محسوب من سعر الجرام</div>
+        </div>
+      </div>
+      <div class="sagha-result" id="sg-result">
+        <span id="sg-diff-label">—</span>
+        <span class="sagha-diff-val" id="sg-diff-val">—</span>
+      </div>
+      <div class="source-hint" style="margin-top:10px">
+        <b>دولار الصاغة</b> = سعر جرام ع21 في مصر (بالجنيه) ÷ سعر جرام ع21 عالمياً (بالدولار)<br>
+        الفجوة الطبيعية تاريخياً بين 0% و1.5%؛ فوق 4% تعني إن السوق المحلي يسعّر الدولار أعلى بكثير من البنك.<br>
+        <span style="color:var(--red)">دولار الصاغة أعلى</span> = الذهب المصري أغلى من العالمي ·
+        <span style="color:var(--green)">دولار الصاغة أقل</span> = الذهب المصري أرخص من العالمي
+      </div>
+    </div>
+
+    <!-- أسعار العملات -->
+    <div class="card">
+      <div class="card-title">
+        💱 الجنيه المصري مقابل العملات
+        <span class="card-count" id="fx-status">—</span>
+      </div>
+      <div id="currencies-wrap">
+        <div class="empty">جارٍ جلب أسعار الصرف...</div>
+      </div>
+      <div class="source-hint">أسعار صرف حقيقية · تتحدث كل 10 دقائق · القيمة = كم جنيه مقابل وحدة واحدة</div>
+    </div>
+
+    <!-- زر تحديث يدوي -->
+    <div class="card" style="text-align:center;">
+      <div class="card-title" style="justify-content:center;">🔄 تحديث الأسعار</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.7;">
+        الأسعار تتحدث تلقائياً كل 5 دقائق عبر Claude.<br>
+        اضغط للتحديث الفوري.
+      </p>
+      <button onclick="manualRefresh()" id="refresh-btn" style="padding:11px 32px;border-radius:10px;border:1px solid var(--border2);background:var(--bg3);color:var(--gold2);font-family:'Tajawal',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;">
+        ⚡ تحديث الآن
+      </button>
+      <div id="refresh-status" style="font-size:11px;color:var(--text3);margin-top:10px;"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚙️ تعديل سعر الدولار يدوياً</div>
+      <div class="slider-row">
+        <input type="range" id="usd-slider" min="45" max="65" step="0.1" value="52.92"
+          oninput="onSliderChange(this.value)">
+        <div class="slider-val" id="slider-val">52.9 ج</div>
+      </div>
+      <button onclick="resetFx()" style="width:100%;padding:9px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);color:var(--gold2);font-family:'Tajawal',sans-serif;font-weight:700;font-size:12px;cursor:pointer;">
+        ↻ استرجاع سعر الدولار الحي
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ التحليل ═══ -->
+  <div class="section" id="sec-analysis">
+    <div class="verdict-card" id="verdict-card" style="border-color:var(--amber)">
+      <div class="verdict-label">تحليل اللحظة الحالية</div>
+      <div class="verdict-text" id="verdict-text" style="color:var(--amber)">جارٍ التحليل...</div>
+      <div class="gauge-track" style="margin-bottom:8px;">
+        <div class="gauge-fill" id="gauge-fill" style="width:50%;background:var(--amber);"></div>
+        <div class="gauge-needle" id="gauge-needle" style="right:50%;"></div>
+      </div>
+      <div class="gauge-labels">
+        <span>انتظار</span><span>محايد</span><span>شراء</span>
+      </div>
+      <div class="verdict-advice" id="verdict-advice">جارٍ تحليل البيانات...</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔍 الإشارات المرصودة</div>
+      <div id="signals-wrap"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚙️ مراجع التحليل — حدّثها أسبوعياً</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.8;">
+        المتوسطات المتحركة تحتاج سجل أسعار تاريخي. خد متوسط سعر ع21 لآخر 30 و90 يوم من iSagha أو أي موقع أرشيف أسعار واكتبه هنا.
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="ref-ma30" type="number" placeholder="متوسط 30 يوم">
+        <input class="inp" id="ref-ma90" type="number" placeholder="متوسط 90 يوم">
+        <button class="add-btn green" onclick="saveRefs()">حفظ</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🗓️ أحداث تحرّك سعر الذهب — تابعها</div>
+      <div class="guide-row"><div class="guide-term">اجتماعات الفيدرالي الأمريكي (8 مرات سنوياً)</div><div class="guide-def">خفض الفائدة يدعم الذهب، ورفعها أو التلميح بالتشدد يضغط عليه. الأسواق تتحرك على "التوقعات" قبل القرار.</div></div>
+      <div class="guide-row"><div class="guide-term">بيانات التضخم الأمريكي (CPI) والوظائف (NFP)</div><div class="guide-def">تصدر شهرياً. تضخم أعلى من المتوقع = فائدة أعلى لفترة أطول = ضغط على الذهب على المدى القصير.</div></div>
+      <div class="guide-row"><div class="guide-term">اجتماعات البنك المركزي المصري</div><div class="guide-def">الفائدة المحلية تحدد جاذبية الشهادات مقابل الذهب. خفضها يدفع المدخرين نحو الذهب ويرفع الطلب المحلي.</div></div>
+      <div class="guide-row"><div class="guide-term">سعر الصرف ومرونة الجنيه</div><div class="guide-def">أي تحرك في الدولار الرسمي ينعكس فوراً على الذهب المحلي، والتوقعات بتحرك قادم تظهر أولاً في اتساع الفجوة المحلية.</div></div>
+      <div class="guide-row"><div class="guide-term">مشتريات البنوك المركزية والتوترات الجيوسياسية</div><div class="guide-def">من أهم محركات صعود الذهب عالمياً في السنوات الأخيرة — تزيد الطلب على الملاذ الآمن.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💡 قاعدة التدرّج</div>
+      <div class="source-hint">بدل محاولة توقيت القاع، قسّم المبلغ على دفعات متساوية — استخدم <b>مخطط الشراء بالتدرّج</b> في تبويب الأدوات. التدرّج لا يضمن ربحاً، لكنه يقلل أثر الشراء في قمة مؤقتة ويخفّض متوسط تكلفتك عندما يتقلب السعر.</div>
+    </div>
+
+    <div class="disclaimer">
+      ⚠️ تحليل آلي تعليمي مبني على الفجوة المحلية والمتوسطات المرجعية والزخم — وليس توصية استثمارية. لا أحد يتنبأ باتجاه الذهب بدقة. القرار ومسؤوليته عليك.
+    </div>
+  </div>
+
+  <!-- ═══ الأدوات ═══ -->
+  <div class="section" id="sec-tools">
+
+    <!-- حاسبة الشراء -->
+    <div class="card">
+      <div class="card-title">💰 حاسبة الشراء الفعلية — كام جرام بفلوسك؟</div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="calc-budget" type="number" placeholder="المبلغ بالجنيه — مثال: 50000" oninput="calcBuy()">
+        <select id="calc-karat" onchange="calcBuy()" class="sel">
+          <option value="21">عيار 21</option>
+          <option value="24">عيار 24 (سبائك)</option>
+          <option value="18">عيار 18</option>
+          <option value="pound">جنيه ذهب</option>
+        </select>
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="calc-making" type="number" placeholder="المصنعية للجرام (مثال: 80) — اختياري" oninput="calcBuy()">
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);white-space:nowrap;">
+          <input type="checkbox" id="calc-vat" checked onchange="calcBuy()"> ضريبة 14% على المصنعية
+        </label>
+      </div>
+      <div id="calc-buy-result" style="display:none;background:var(--bg3);border-radius:10px;padding:14px;">
+        <div style="text-align:center;">
+          <div style="font-size:12px;color:var(--text2);margin-bottom:4px;">تقدر تشتري تقريباً</div>
+          <div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--gold2);" id="calc-buy-grams">—</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="info-row"><span class="info-label">التكلفة الفعلية للوحدة (شامل المصنعية)</span><span class="info-value" id="calc-unit-cost">—</span></div>
+          <div class="info-row"><span class="info-label">لو بعت فوراً هتستلم</span><span class="info-value" id="calc-sell-now" style="color:var(--red)">—</span></div>
+          <div class="info-row" style="border:none;"><span class="info-label">الارتفاع المطلوب لتعادل التكلفة</span><span class="info-value" id="calc-breakeven" style="color:var(--amber)">—</span></div>
+        </div>
+        <div class="source-hint" style="margin-top:8px;">المصنعية والضريبة لا تُسترد عند البيع — لذلك السبائك والجنيهات أفضل للاستثمار من المشغولات.</div>
+      </div>
+    </div>
+
+    <!-- مخطط الشراء بالتدرج -->
+    <div class="card">
+      <div class="card-title">📅 مخطط الشراء بالتدرّج (DCA)</div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="dca-amount" type="number" placeholder="إجمالي المبلغ — مثال: 50000" oninput="calcDCA()">
+        <select id="dca-n" onchange="calcDCA()" class="sel">
+          <option value="3">3 دفعات</option>
+          <option value="4">4 دفعات</option>
+          <option value="6" selected>6 دفعات</option>
+          <option value="12">12 دفعة</option>
+        </select>
+        <select id="dca-every" onchange="calcDCA()" class="sel">
+          <option value="7">أسبوعياً</option>
+          <option value="14">كل أسبوعين</option>
+          <option value="30" selected>شهرياً</option>
+        </select>
+      </div>
+      <div id="dca-result"></div>
+    </div>
+
+    <!-- حاسبة الزكاة -->
+    <div class="card">
+      <div class="card-title">🕌 حاسبة زكاة الذهب والمدخرات</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.8;">
+        النصاب وفق دار الإفتاء المصرية = قيمة <b>85 جرام ذهب عيار 21</b>، بشرط مرور عام هجري كامل. الزكاة = 2.5%.
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="zakat-g21" type="number" placeholder="جرامات ع21" oninput="calcZakat()">
+        <input class="inp" id="zakat-g24" type="number" placeholder="جرامات ع24" oninput="calcZakat()">
+        <input class="inp" id="zakat-g18" type="number" placeholder="جرامات ع18" oninput="calcZakat()">
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="zakat-cash" type="number" placeholder="مدخرات نقدية/شهادات (اختياري)" oninput="calcZakat()">
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);margin-bottom:10px;">
+        <input type="checkbox" id="zakat-jewelry" onchange="calcZakat()"> الذهب كله حُلي للزينة الشخصية (وليس للادخار)
+      </label>
+      <div id="zakat-result" style="display:none;background:var(--bg3);border-radius:10px;padding:14px;">
+        <div class="info-row"><span class="info-label">الذهب بما يعادل ع21</span><span class="info-value" id="zakat-eq">—</span></div>
+        <div class="info-row"><span class="info-label">إجمالي الوعاء الزكوي</span><span class="info-value" id="zakat-value" style="color:var(--gold2)">—</span></div>
+        <div class="info-row"><span class="info-label">قيمة النصاب الآن</span><span class="info-value" id="zakat-nisab-val">—</span></div>
+        <div class="info-row"><span class="info-label">وصلت للنصاب؟</span><span class="info-value" id="zakat-nisab">—</span></div>
+        <div class="info-row" style="border:none;"><span class="info-label">الزكاة الواجبة (2.5%)</span><span class="info-value" id="zakat-due" style="color:var(--green)">—</span></div>
+        <div class="source-hint" id="zakat-note" style="margin-top:8px;"></div>
+      </div>
+    </div>
+
+    <!-- ذهب أم شهادة -->
+    <div class="card">
+      <div class="card-title">⚖️ ذهب أم شهادة بنكية؟ — مقارنة سيناريوهات</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.7;">
+        أدخل افتراضاتك أنت — النتيجة سيناريو للمقارنة وليست توقعاً.
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="cmp-amount" type="number" placeholder="المبلغ" oninput="calcCompare()">
+        <input class="inp" id="cmp-years" type="number" placeholder="المدة بالسنوات" value="3" oninput="calcCompare()">
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="cmp-cd" type="number" placeholder="عائد الشهادة السنوي %" oninput="calcCompare()">
+        <input class="inp" id="cmp-gold" type="number" placeholder="تغير الذهب السنوي المتوقع %" oninput="calcCompare()">
+      </div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="cmp-infl" type="number" placeholder="التضخم السنوي المتوقع % (اختياري)" oninput="calcCompare()">
+      </div>
+      <div id="cmp-result"></div>
+    </div>
+
+    <!-- محفظة ذهبي -->
+    <div class="card">
+      <div class="card-title">📊 محفظة ذهبي — سجّل مشترياتك وشوف ربحك</div>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input class="inp" id="pf-grams" type="number" placeholder="الجرامات" style="flex:1;">
+        <input class="inp" id="pf-price" type="number" placeholder="سعر الشراء/جرام" style="flex:1.4;">
+        <select id="pf-karat" style="background:var(--bg4);border:1px solid var(--border);border-radius:9px;padding:10px;color:var(--text);font-family:'Tajawal',sans-serif;font-size:13px;outline:none;cursor:pointer;">
+          <option value="21">ع21</option>
+          <option value="24">ع24</option>
+          <option value="18">ع18</option>
+        </select>
+        <button class="add-btn green" onclick="addHolding()">+</button>
+      </div>
+      <div id="pf-list"></div>
+      <div id="pf-summary" style="display:none;background:var(--bg3);border-radius:10px;padding:14px;margin-top:10px;">
+        <div class="info-row">
+          <span class="info-label">إجمالي الاستثمار</span>
+          <span class="info-value" id="pf-invested">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">القيمة الحالية</span>
+          <span class="info-value" id="pf-current" style="color:var(--gold2)">—</span>
+        </div>
+        <div class="info-row" style="border:none;">
+          <span class="info-label">الربح / الخسارة</span>
+          <span class="info-value" id="pf-pl">—</span>
+        </div>
+      </div>
+      <div class="source-hint" style="margin-top:8px;">محفوظة في متصفحك — تفضل موجودة حتى بعد الإغلاق.</div>
+    </div>
+
+    <!-- محوّل العيارات -->
+    <div class="card">
+      <div class="card-title">⚖️ محوّل العيارات</div>
+      <div class="input-row" style="margin-bottom:10px;">
+        <input class="inp" id="conv-grams" type="number" placeholder="عدد الجرامات" oninput="convKarat()">
+        <select id="conv-from" onchange="convKarat()" style="background:var(--bg4);border:1px solid var(--border);border-radius:9px;padding:10px;color:var(--text);font-family:'Tajawal',sans-serif;font-size:13px;outline:none;cursor:pointer;">
+          <option value="24">من ع24</option>
+          <option value="21" selected>من ع21</option>
+          <option value="18">من ع18</option>
+        </select>
+      </div>
+      <div id="conv-result" style="display:none;background:var(--bg3);border-radius:10px;padding:12px;font-size:13px;color:var(--text2);line-height:2;" ></div>
+    </div>
+
+  </div>
+
+  <!-- ═══ التنبيهات ═══ -->
+  <div class="section" id="sec-alerts">
+
+    <div class="push-banner" id="push-banner">
+      <span>🔔 فعّل إشعارات المتصفح حتى تصلك التنبيهات حتى لو أغلقت التبويب</span>
+      <button class="push-btn" onclick="requestPush()">تفعيل</button>
+    </div>
+
+    <!-- تنبيهات الذهب -->
+    <div class="card">
+      <div class="card-title">🥇 تنبيهات سعر الذهب (عيار 21)</div>
+
+      <div class="alert-section-title">📈 نبّهني لو السعر تجاوز</div>
+      <div class="input-row">
+        <input class="inp" id="gold-high" type="number" placeholder="مثال: 7000">
+        <button class="add-btn green" onclick="addGoldAlert('high')">أضف ▲</button>
+      </div>
+
+      <div class="alert-section-title">📉 نبّهني لو السعر نزل تحت</div>
+      <div class="input-row">
+        <input class="inp" id="gold-low" type="number" placeholder="مثال: 6500">
+        <button class="add-btn red" onclick="addGoldAlert('low')">أضف ▼</button>
+      </div>
+      <div class="source-hint">السعر الحالي لعيار 21: <span id="alert-k21-hint">—</span> ج — يُفحص كل 30 ثانية</div>
+    </div>
+
+    <div class="card" id="gold-alerts-card" style="display:none;">
+      <div class="card-title">📋 تنبيهات الذهب النشطة</div>
+      <div id="gold-alerts-list"></div>
+    </div>
+
+    <!-- تنبيهات الدولار -->
+    <div class="card">
+      <div class="card-title">💵 تنبيهات سعر الدولار</div>
+
+      <div class="alert-section-title">📈 نبّهني لو الدولار تجاوز</div>
+      <div class="input-row">
+        <input class="inp" id="usd-high" type="number" placeholder="مثال: 54.00">
+        <button class="add-btn green" onclick="addUsdAlert('high')">أضف ▲</button>
+      </div>
+
+      <div class="alert-section-title">📉 نبّهني لو الدولار نزل تحت</div>
+      <div class="input-row">
+        <input class="inp" id="usd-low" type="number" placeholder="مثال: 51.00">
+        <button class="add-btn red" onclick="addUsdAlert('low')">أضف ▼</button>
+      </div>
+      <div class="source-hint">سعر الدولار الحالي: <span id="alert-usd-hint">—</span> ج — يُفحص كل 10 دقائق</div>
+    </div>
+
+    <div class="card" id="usd-alerts-card" style="display:none;">
+      <div class="card-title">📋 تنبيهات الدولار النشطة</div>
+      <div id="usd-alerts-list"></div>
+    </div>
+
+    <!-- سجل الإشعارات -->
+    <div class="card">
+      <div class="card-title">🗂️ سجل الإشعارات</div>
+      <div id="notif-log"><div class="empty">لا توجد إشعارات بعد</div></div>
+    </div>
+
+  </div>
+
+  <!-- ═══ الدليل ═══ -->
+  <div class="section" id="sec-guide">
+
+    <div class="card">
+      <div class="card-title">🧮 إزاي بيتسعّر الذهب في مصر؟</div>
+      <div class="guide-row"><div class="guide-term">المعادلة الأساسية</div><div class="guide-def">سعر جرام ع21 = (سعر الأوقية بالدولار ÷ 31.1035) × 0.875 × سعر الدولار — ثم تُضاف/تُطرح "الفجوة المحلية" حسب العرض والطلب.</div></div>
+      <div class="guide-row"><div class="guide-term">المكوّنات الثلاثة</div><div class="guide-def">① السعر العالمي للأوقية ② سعر صرف الدولار ③ الفجوة المحلية. أي ارتفاع في واحد منهم يرفع السعر — لذلك ممكن الذهب المحلي يرتفع رغم هبوط الأوقية لو الجنيه ضعف.</div></div>
+      <div class="guide-row"><div class="guide-term">نسب العيارات عند الصاغة</div><div class="guide-def">ع24 = ع21 × 24/21 (≈ 1.143) · ع18 = ع21 × 18/21 (≈ 0.857) · الجنيه الذهب = 8 جرام ع21 + علاوة صغيرة.</div></div>
+      <div class="guide-row"><div class="guide-term">دولار الصاغة</div><div class="guide-def">سعر ع21 المحلي ÷ سعر ع21 العالمي بالدولار. يكشف سعر الدولار "الضمني" اللي السوق بيسعّر بيه الذهب — مقارنته بدولار البنك تعطيك الفجوة.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✨ أدوات الاستثمار في الذهب — مقارنة</div>
+      <div class="guide-row"><div class="guide-term">🥇 السبائك (ع24)</div><div class="guide-def">أقل مصنعية وأعلى نقاء — الأفضل للاستثمار. اختر أوزاناً متوسطة (5–20 جم) لسهولة البيع الجزئي، واحتفظ بالعبوة والشهادة.</div></div>
+      <div class="guide-row"><div class="guide-term">🪙 الجنيهات الذهب (ع21)</div><div class="guide-def">سيولة عالية جداً ومصنعية منخفضة، مناسبة للمبالغ الصغيرة والمتوسطة.</div></div>
+      <div class="guide-row"><div class="guide-term">💍 المشغولات</div><div class="guide-def">مصنعية مرتفعة لا تُسترد عند البيع (غالباً 5–15% من القيمة) — مناسبة للزينة لا للاستثمار.</div></div>
+      <div class="guide-row"><div class="guide-term">📈 صناديق الاستثمار في الذهب</div><div class="guide-def">صناديق مرخصة من الهيئة العامة للرقابة المالية تتابع سعر الذهب. بدون تخزين أو مصنعية، تشتري بمبالغ صغيرة، لكن عليها رسوم إدارة سنوية.</div></div>
+      <div class="guide-row"><div class="guide-term">⚠️ العقود الآجلة والـCFD</div><div class="guide-def">تداول بالرافعة المالية — مخاطرة عالية جداً وقد تخسر أكثر من رأس مالك. غير مناسبة للمدخر العادي.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💸 التكاليف الخفية — اعرفها قبل ما تشتري</div>
+      <div class="guide-row"><div class="guide-term">المصنعية</div><div class="guide-def">تُدفع فوق سعر الجرام ولا تُسترد. تختلف حسب المحل والتصميم — اسأل عنها صراحة وقارن بين أكثر من محل.</div></div>
+      <div class="guide-row"><div class="guide-term">ضريبة القيمة المضافة</div><div class="guide-def">تُحتسب على المصنعية وليس على قيمة الذهب نفسه. تأكد من ظهورها منفصلة في الفاتورة.</div></div>
+      <div class="guide-row"><div class="guide-term">فرق البيع والشراء (Spread)</div><div class="guide-def">التاجر يبيع لك أغلى مما يشتري منك. مع المصنعية، أنت تحتاج ارتفاعاً في السعر لمجرد تعادل التكلفة — استخدم حاسبة الشراء لمعرفة النسبة.</div></div>
+      <div class="guide-row"><div class="guide-term">خصم "الكسر"</div><div class="guide-def">عند بيع المشغولات المستعملة يحاسبك التاجر بسعر الذهب الكسر (أقل من سعر الشراء المعلن) وقد يخصم وزن الأحجار.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🟢 متى يكون الشراء أنسب</div>
+      <div class="guide-row"><div class="guide-term">فجوة محلية منخفضة أو سالبة</div><div class="guide-def">لما دولار الصاغة قريب من دولار البنك أو أقل — بتشتري بالقيمة العادلة بدون علاوة مبالغ فيها.</div></div>
+      <div class="guide-row"><div class="guide-term">توقعات بخفض الفائدة الأمريكية</div><div class="guide-def">تكلفة الفرصة البديلة للاحتفاظ بالذهب تنخفض فيرتفع الطلب عليه.</div></div>
+      <div class="guide-row"><div class="guide-term">ضغوط على الجنيه أو تضخم مرتفع</div><div class="guide-def">الذهب أداة تحوط تقليدية — لكن الشراء بعد اتساع الفجوة بالفعل يعني إنك دفعت ثمن التحوط مقدماً.</div></div>
+      <div class="guide-row"><div class="guide-term">تصحيح عالمي بعد موجة صعود</div><div class="guide-def">التراجعات المؤقتة في الأوقية (5–10%) تاريخياً كانت فرص تجميع لمستثمري الأجل الطويل.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔴 متى يُفضل الانتظار أو جني الأرباح</div>
+      <div class="guide-row"><div class="guide-term">فجوة محلية مرتفعة (فوق 4%)</div><div class="guide-def">السوق المحلي يسعّر سيناريو أسوأ من الواقع — لو الفجوة انكمشت ممكن السعر المحلي ينزل حتى لو الأوقية ثابتة.</div></div>
+      <div class="guide-row"><div class="guide-term">دولار قوي وفائدة أمريكية مرتفعة</div><div class="guide-def">الأصول ذات العائد تصبح أكثر جاذبية من الذهب الذي لا يدر عائداً.</div></div>
+      <div class="guide-row"><div class="guide-term">وزن الذهب تجاوز خطتك</div><div class="guide-def">لو ارتفع الذهب حتى أصبح نسبة أكبر من المخطط في مدخراتك، إعادة التوازن (بيع جزء) تثبّت الأرباح وتقلل المخاطرة.</div></div>
+      <div class="guide-row"><div class="guide-term">الحاجة لسيولة قريبة</div><div class="guide-def">الذهب للأجل المتوسط والطويل (3 سنوات+). المال المطلوب خلال سنة الأفضل يكون في أداة سائلة ومستقرة.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📐 قواعد إدارة المخاطر</div>
+      <div class="guide-row"><div class="guide-term">حدد نسبة الذهب في مدخراتك</div><div class="guide-def">كثير من المخططين الماليين يقترحون 10–20% من المدخرات للذهب، وترتفع النسبة في البيئات ذات التضخم المرتفع — حسب ظروفك وأهدافك.</div></div>
+      <div class="guide-row"><div class="guide-term">صندوق طوارئ أولاً</div><div class="guide-def">احتفظ بمصاريف 3–6 أشهر سيولة قبل أي استثمار، حتى لا تضطر لبيع الذهب في توقيت سيئ.</div></div>
+      <div class="guide-row"><div class="guide-term">لا تقترض لتشتري ذهب</div><div class="guide-def">تكلفة القرض مضمونة والعائد غير مضمون — الذهب ممكن يتراجع 20%+ ويبقى منخفضاً لسنوات.</div></div>
+      <div class="guide-row"><div class="guide-term">التدرّج بدل الدفعة الواحدة</div><div class="guide-def">يقلل خطر الشراء في قمة مؤقتة — راجع مخطط الشراء بالتدرّج في الأدوات.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🛡️ الأمان والتحقق من الذهب</div>
+      <div class="guide-row"><div class="guide-term">الدمغة الرسمية</div><div class="guide-def">تأكد من وجود دمغة مصلحة الدمغة والموازين على المشغولات — تثبت العيار.</div></div>
+      <div class="guide-row"><div class="guide-term">الفاتورة</div><div class="guide-def">يجب أن تتضمن: اسم المحل وسجله، العيار، الوزن، سعر الجرام، المصنعية والضريبة منفصلة، والتاريخ.</div></div>
+      <div class="guide-row"><div class="guide-term">السبائك</div><div class="guide-def">اشترِ من جهات معروفة، واحتفظ بالتغليف الأصلي والرقم التسلسلي — فتح العبوة قد يقلل سعر إعادة البيع.</div></div>
+      <div class="guide-row"><div class="guide-term">التخزين</div><div class="guide-def">لا تحتفظ بمبالغ كبيرة في المنزل — خزائن البنوك خيار آمن مقابل رسوم سنوية.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">❌ أخطاء شائعة</div>
+      <div class="guide-row"><div class="guide-term">شراء المشغولات بنية الاستثمار</div><div class="guide-def">المصنعية وحدها قد تلتهم ربح سنة أو أكثر.</div></div>
+      <div class="guide-row"><div class="guide-term">الشراء في ذروة الذعر</div><div class="guide-def">لما الكل بيشتري والفجوة متسعة، غالباً أنت بتدفع أعلى سعر.</div></div>
+      <div class="guide-row"><div class="guide-term">البيع بعد هبوط مؤقت</div><div class="guide-def">الذهب أداة صبر — تقلبات 5–10% طبيعية حتى في الاتجاه الصاعد.</div></div>
+      <div class="guide-row"><div class="guide-term">تجاهل القوة الشرائية</div><div class="guide-def">ارتفاع الذهب بالجنيه لا يعني ربحاً حقيقياً إلا إذا تفوّق على التضخم — قارنه دائماً بالتضخم وعائد الشهادات.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💵 الدولار والعملات — مفاهيم أساسية</div>
+      <div class="guide-row"><div class="guide-term">السعر الرسمي (البنوك)</div><div class="guide-def">يتحدد في سوق الإنتربنك ويُعلنه البنك المركزي والبنوك. السعر في التطبيق هو سعر السوق المتوسط وقد يختلف بقروش.</div></div>
+      <div class="guide-row"><div class="guide-term">سعر الشراء والبيع في البنك</div><div class="guide-def">البنك يشتري منك بسعر أقل ويبيع لك بسعر أعلى — الفرق صغير في الدولار (قروش) وأكبر في العملات الأقل تداولاً.</div></div>
+      <div class="guide-row"><div class="guide-term">العوامل المؤثرة على الجنيه</div><div class="guide-def">إيرادات قناة السويس والسياحة وتحويلات المصريين بالخارج والاستثمار الأجنبي من جهة، وفاتورة الاستيراد وخدمة الدين من جهة أخرى.</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📚 قاموس المصطلحات</div>
+      <div class="guide-row"><div class="guide-term">العيار (Karat)</div><div class="guide-def">نسبة النقاء من 24 جزءاً — ع24 = 99.9% · ع21 = 87.5% · ع18 = 75%.</div></div>
+      <div class="guide-row"><div class="guide-term">الأوقية (Troy Ounce)</div><div class="guide-def">وحدة القياس العالمية = 31.1035 جرام.</div></div>
+      <div class="guide-row"><div class="guide-term">السعر الفوري (Spot)</div><div class="guide-def">سعر الذهب للتسليم الفوري في الأسواق العالمية — يتغير على مدار الساعة خمسة أيام أسبوعياً.</div></div>
+      <div class="guide-row"><div class="guide-term">Bid / Ask</div><div class="guide-def">Bid = سعر الشراء منك، Ask = سعر البيع لك. الفرق بينهما هو الـSpread.</div></div>
+      <div class="guide-row"><div class="guide-term">الفجوة المحلية (Premium)</div><div class="guide-def">الفرق بين السعر المحلي والسعر العالمي المحوّل بالدولار الرسمي. موجبة = علاوة، سالبة = خصم.</div></div>
+      <div class="guide-row"><div class="guide-term">الملاذ الآمن</div><div class="guide-def">أصل يحتفظ بقيمته وقت الأزمات — الذهب أشهرها تاريخياً.</div></div>
+      <div class="guide-row"><div class="guide-term">العائد الحقيقي</div><div class="guide-def">العائد بعد خصم التضخم. عائد 20% مع تضخم 25% = خسارة حقيقية في القوة الشرائية.</div></div>
+      <div class="guide-row"><div class="guide-term">تكلفة الفرصة البديلة</div><div class="guide-def">العائد الذي تخسره بعدم وضع المال في أداة أخرى — مثل فوائد الشهادات التي لا يدرّها الذهب.</div></div>
+      <div class="guide-row"><div class="guide-term">إعادة التوازن (Rebalancing)</div><div class="guide-def">إرجاع نسب المحفظة لخطتها الأصلية ببيع ما ارتفع وشراء ما انخفض.</div></div>
+      <div class="guide-row"><div class="guide-term">التدرّج (DCA)</div><div class="guide-def">شراء مبالغ ثابتة على فترات منتظمة بغض النظر عن السعر.</div></div>
+      <div class="guide-row"><div class="guide-term">ذهب الكسر</div><div class="guide-def">الذهب المستعمل المباع للتاجر بغرض إعادة الصهر — يُسعّر أقل من الجديد.</div></div>
+      <div class="guide-row"><div class="guide-term">الدمغة</div><div class="guide-def">ختم رسمي من مصلحة الدمغة والموازين يثبت عيار المشغولات.</div></div>
+    </div>
+
+    <div class="disclaimer">
+      ⚠️ هذا الدليل تعليمي وليس استشارة مالية أو فتوى شرعية. الأسعار والنسب المذكورة تقريبية وتتغير مع السوق. للقرارات الكبيرة استشر مستشاراً مالياً مرخصاً، وللزكاة راجع دار الإفتاء.
+    </div>
+
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  دهب تراكر · أسعار الذهب من gold-api.com · أسعار الصرف من open.er-api.com<br>
+  هذا التطبيق تعليمي وليس توصية مالية · القرار ومسؤوليته عليك
+</footer>
+
+<script>
+// تخزين آمن — لو المتصفح منع localStorage التطبيق يكمل شغله بدون حفظ
+const store = (() => {
+  const mem = {};
+  let ls = null;
+  try { ls = window.localStorage; ls.setItem("__t", "1"); ls.removeItem("__t"); } catch(e) { ls = null; }
+  return {
+    getItem: k => { try { return ls ? ls.getItem(k) : (k in mem ? mem[k] : null); } catch(e) { return mem[k] ?? null; } },
+    setItem: (k, v) => { try { ls ? ls.setItem(k, v) : (mem[k] = String(v)); } catch(e) { mem[k] = String(v); } },
+    removeItem: k => { try { ls ? ls.removeItem(k) : delete mem[k]; } catch(e) { delete mem[k]; } },
+  };
+})();
+
+// ════════════════════════════════════════════════════
+//  ١. CONSTANTS — لازم يكونوا الأول
+// ════════════════════════════════════════════════════
+const MARKET = {
+  gramsPerOunce: 31.1035,
+  // النقاء الفعلي: ع24 = 999.9 ، ع21 = 875 ، ع18 = 750
+  k24: 0.999, k21: 0.875, k18: 0.750,
+  // نسب التسعير المحلية: الصاغة تسعّر العيارات بنسبة القيراط إلى ع21
+  r24: 24 / 21, r18: 18 / 21,
+  // قيم مرجعية افتراضية (1 أكتوبر 2026) — تُستخدم فقط لحين وصول البيانات الحية
+  defaultOunce: 4187,
+  defaultUsd:   52.05,
+  defaultK21:   6125,
+  // الفجوة المفترضة لما المصادر كلها تتعذّر — قريبة من الصفر حالياً (أكتوبر 2026)
+  typicalPremium: 0.0,
+  // مستوى تاريخي مرتفع للأوقية يُعتبر منطقة حذر
+  highZoneOunce: 4000,
+  // صلاحية السعر اليدوي (ساعات)
+  manualTTLHours: 24,
+};
+
+// فرق البيع/الشراء الشائع عند الصاغة لعيار 21 (~30 ج على 6,750) ≈ 0.44%
+// السعر المعلن عند الصاغة هو سعر البيع للعميل؛ سعر الشراء منك = البيع × (1 − فرق المصادر الفعلي)
+const GOLD_SPREAD = { get buyDiscPct() { return spreadRatio(); }, sellPremPct: 0 };
+
+// فروق البنوك المصرية المعتادة (نسبة من السعر المتوسط)
+const FX_SPREADS = {
+  USD: { spreadPct: 0.001  },   // ~10 قروش على 52 ج
+  EUR: { spreadPct: 0.0022 },
+  GBP: { spreadPct: 0.0025 },
+  SAR: { spreadPct: 0.002  },
+  AED: { spreadPct: 0.002  },
+  KWD: { spreadPct: 0.003  },
+  CNY: { spreadPct: 0.003  },
+  TRY: { spreadPct: 0.004  },
+};
+
+// ════════════════════════════════════════════════════
+//  ٢. STATE
+// ════════════════════════════════════════════════════
+function loadJSON(k, def) { try { return JSON.parse(store.getItem(k)) ?? def; } catch(e) { return def; } }
+
+let state = {
+  ounce: MARKET.defaultOunce,
+  usd:   MARKET.defaultUsd,
+  ounceLive: false,
+  // السعر المحلي الحقيقي (من Claude) — null لحين وصوله
+  claude: null,            // { k21, k24, k18, ts }
+  multi: null,             // { k21, buy, count, total, ts } — وسيط المصادر الخمسة
+  srcStatus: {},
+  diag: {},
+  netOK: null,
+  manual: loadJSON("gt_manual", null),   // { k21, ts }
+  refs:   loadJSON("gt_refs_v2", { ma30: 6250, ma90: 6100 }),
+  currencies: [],
+  history: [],
+  source: "جارٍ الجلب",
+  fxLive: false,
+  apiError: false,
+  loaded: false,
+  prevUsd: null,
+  goldAlerts: loadJSON("gt_gold", []),
+  usdAlerts:  loadJSON("gt_usd", []),
+  notifLog: [],
+  notifGranted: false,
+  sliderOverride: false,
+};
+
+// ════════════════════════════════════════════════════
+//  COMPUTED
+// ════════════════════════════════════════════════════
+// سعر جرام ع21 "النظري" = الأوقية ÷ 31.1035 × 0.875 × الدولار
+function theoK21() {
+  return (state.ounce / MARKET.gramsPerOunce) * MARKET.k21 * state.usd;
+}
+function manualValid() {
+  const m = state.manual;
+  return !!(m && m.k21 > 0 && (Date.now() - m.ts) < MARKET.manualTTLHours * 3600e3);
+}
+// مصدر السعر المحلي: يدوي ← Claude ← تقديري
+function localInfo() {
+  const m = state.multi;
+  if (m && (Date.now() - m.ts) < 30 * 60e3) return { k21: m.k21, real: true, src: "multi" };
+  if (manualValid()) return { k21: state.manual.k21, real: true,  src: "manual" };
+  if (m)             return { k21: m.k21, real: true, src: "multi" };   // أقدم من 30 دقيقة لكن حقيقي
+  if (state.claude)  return { k21: state.claude.k21, real: true,  src: "claude" };
+  return { k21: theoK21() * (1 + MARKET.typicalPremium), real: false, src: "estimate" };
+}
+function prices() {
+  const L = localInfo();
+  const k21 = L.k21;
+  const useClaude = L.src === "claude" && state.claude;
+  return {
+    k21,
+    k24: useClaude && state.claude.k24 ? state.claude.k24 : k21 * MARKET.r24,
+    k18: useClaude && state.claude.k18 ? state.claude.k18 : k21 * MARKET.r18,
+    pound: k21 * 8,
+    real: L.real, src: L.src,
+  };
+}
+// الفجوة السعرية % بين المحلي والعالمي المحوّل بالدولار الرسمي
+function localGapPct() {
+  const t = theoK21();
+  return t > 0 ? (prices().k21 / t - 1) * 100 : 0;
+}
+// دولار الصاغة = سعر ع21 المحلي ÷ سعر ع21 العالمي بالدولار
+function saghaDollar() {
+  const gramUSD21 = (state.ounce / MARKET.gramsPerOunce) * MARKET.k21;
+  return gramUSD21 > 0 ? prices().k21 / gramUSD21 : 0;
+}
+
+// ════════════════════════════════════════════════════
+//  محرك التحليل — 5 إشارات حقيقية
+// ════════════════════════════════════════════════════
+function analyzeMarket(k21) {
+  let score = 50;
+  const signals = [];
+  const p = prices();
+
+  // 1) الفجوة المحلية — أهم إشارة في السوق المصري
+  if (p.real) {
+    const gap = localGapPct();
+    if (gap > 4)        { score -= 18; signals.push({ t:"neg", txt:`الذهب المحلي أغلى من العالمي بـ ${gap.toFixed(1)}% — فجوة مرتفعة، الشراء الآن مكلف وقد تنكمش الفجوة لاحقاً` }); }
+    else if (gap > 1.5) { score -= 4;  signals.push({ t:"neg", txt:`فجوة محلية متوسطة ${gap.toFixed(1)}% — أعلى قليلاً من المعتاد (0–1.5%)` }); }
+    else if (gap >= -1) { score += 4;  signals.push({ t:"pos", txt:`فجوة طبيعية ${gap.toFixed(1)}% — السعر المحلي متّسق مع العالمي` }); }
+    else                { score += 15; signals.push({ t:"pos", txt:`الذهب المحلي أرخص من العالمي بـ ${Math.abs(gap).toFixed(1)}% — خصم نادر قد يكون فرصة` }); }
+  } else {
+    signals.push({ t:"neu", txt:"تعذّر قياس الفجوة المحلية — أدخل سعر الصاغة يدوياً من تبويب الأسعار لتحليل أدق" });
+  }
+
+  // 2) مقارنة بمتوسط 90 يوم (مرجع يحدده المستخدم)
+  const vs90 = ((k21 - state.refs.ma90) / state.refs.ma90) * 100;
+  if (vs90 > 8)       { score -= 15; signals.push({ t:"neg", txt:`أعلى من متوسط 90 يوم المرجعي بـ ${vs90.toFixed(1)}% — ممتد صعودياً` }); }
+  else if (vs90 < -5) { score += 15; signals.push({ t:"pos", txt:`أقل من متوسط 90 يوم المرجعي بـ ${Math.abs(vs90).toFixed(1)}% — تصحيح قد يكون فرصة` }); }
+  else                { signals.push({ t:"neu", txt:`قريب من متوسط 90 يوم المرجعي (${vs90>=0?"+":""}${vs90.toFixed(1)}%)` }); }
+
+  // 3) مقارنة بمتوسط 30 يوم
+  const vs30 = ((k21 - state.refs.ma30) / state.refs.ma30) * 100;
+  if (vs30 > 4)       { score -= 8;  signals.push({ t:"neg", txt:`أعلى من متوسط 30 يوم بـ ${vs30.toFixed(1)}% — احذر مطاردة الصعود` }); }
+  else if (vs30 < -3) { score += 10; signals.push({ t:"pos", txt:`أقل من متوسط 30 يوم بـ ${Math.abs(vs30).toFixed(1)}% — تراجع قصير المدى` }); }
+  else                { signals.push({ t:"neu", txt:`متوازن مع متوسط 30 يوم (${vs30>=0?"+":""}${vs30.toFixed(1)}%)` }); }
+
+  // 4) الزخم خلال الجلسة (من البيانات الحية الفعلية)
+  if (state.history.length >= 10) {
+    const h = state.history, ch = (h[h.length-1].v / h[0].v - 1) * 100;
+    if (ch > 1)       { score -= 5; signals.push({ t:"neg", txt:`صعود سريع ${ch.toFixed(2)}% منذ فتح الصفحة — انتظر هدوء الحركة` }); }
+    else if (ch < -1) { score += 5; signals.push({ t:"pos", txt:`هبوط ${Math.abs(ch).toFixed(2)}% منذ فتح الصفحة — نقطة دخول جزئية محتملة` }); }
+    else              { signals.push({ t:"neu", txt:`حركة الجلسة هادئة (${ch>=0?"+":""}${ch.toFixed(2)}%)` }); }
+  }
+
+  // 5) منطقة الأسعار التاريخية
+  if (state.ounce > MARKET.highZoneOunce) {
+    score -= 3;
+    signals.push({ t:"neg", txt:`الأوقية فوق ${MARKET.highZoneOunce.toLocaleString("en-US")}$ — مستويات تاريخية مرتفعة يصاحبها تقلب أعلى` });
+  }
+
+  score = Math.max(5, Math.min(95, score));
+  let verdict, color, advice;
+  if (score >= 62)      { verdict="مناسب للشراء";   color="buy";     advice="المؤشرات تميل للشراء، لكن التزم بالتدرّج ولا تتجاوز النسبة المخصصة للذهب في مدخراتك."; }
+  else if (score >= 42) { verdict="اشترِ بالتدرّج"; color="neutral"; advice="إشارات مختلطة. قسّم المبلغ على دفعات متساوية (شهرية) لتقليل مخاطر التوقيت."; }
+  else                  { verdict="الانتظار أحكم";  color="wait";    advice="السعر مرتفع نسبياً أو الفجوة المحلية كبيرة. ادخل بجزء صغير فقط واحتفظ بالباقي سيولة."; }
+
+  return { score, verdict, color, advice, signals };
+}
+
+// ════════════════════════════════════════════════════
+//  API — Claude (السعر المحلي) + gold-api.com (الأوقية)
+//  ملاحظة: طلب Claude يعمل داخل Claude فقط؛ في المتصفح العادي
+//  يتم تجاهله تلقائياً ويُستخدم السعر اليدوي أو التقديري.
+// ════════════════════════════════════════════════════
+async function fetchLocalViaClaude() {
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        tools: [{ type: "web_search_20250305", name: "web_search" }],
+        messages: [{ role: "user", content:
+`ابحث عن سعر الذهب اليوم في مصر الآن (سعر البيع عند الصاغة). أعطني فقط هذا الـJSON بدون أي نص آخر:
+{"k21":NNNN,"k24":NNNN,"k18":NNNN,"ounce_usd":NNNN}
+الأرقام بالجنيه المصري للجرام، والأوقية بالدولار.` }]
+      })
+    });
+    if (!res.ok) throw new Error("Claude " + res.status);
+    const data = await res.json();
+    const txt = (data.content || []).filter(b => b.type === "text").map(b => b.text).join("");
+    const m = txt.match(/\{[^{}]+\}/);
+    if (!m) throw new Error("no JSON");
+    const d = JSON.parse(m[0]);
+    const k21 = Number(d.k21);
+    // فحص منطقي: السعر يجب أن يكون ضمن ±15% من السعر النظري
+    const t = theoK21();
+    if (!(k21 > 0) || Math.abs(k21 / t - 1) > 0.15) throw new Error("price out of range");
+    state.claude = { k21, k24: Number(d.k24) || null, k18: Number(d.k18) || null, ts: Date.now() };
+    if (Number(d.ounce_usd) > 1000 && !state.ounceLive) state.ounce = Number(d.ounce_usd);
+    return true;
+  } catch(e) { return false; }
+}
+
+// ════════════════════════════════════════════════════
+//  مصادر السعر المحلي — iSagha · Gold Bullion · Gold Era · eDahab · Masrawy
+//  القراءة عبر وسطاء CORS عامة (بدون مفاتيح) ثم استخراج سعر ع21
+//  والنتيجة النهائية = الوسيط الحسابي للمصادر الناجحة بعد استبعاد الشاذ
+// ════════════════════════════════════════════════════
+const TA3WEEM_21 = "https://ta3weem.com/en/gold-prices/GOLD21K";
+const GOLD_ERA_URL = "https://gold-era.eg/ar/%D8%B3%D8%B9%D8%B1-%D8%A7%D9%84%D8%B0%D9%87%D8%A8/";
+const GOLD_SOURCES = [
+  { id: "isagha",      name: "iSagha",       link: "https://market.isagha.com/prices",
+    tries: [{ url: "https://market.isagha.com/prices" }] },
+  { id: "goldbullion", name: "Gold Bullion", link: "https://goldbullioneg.com/%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%B0%D9%87%D8%A8/",
+    tries: [{ url: "https://goldbullioneg.com/%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%B0%D9%87%D8%A8/" },
+            { url: TA3WEEM_21, label: /Gold\s*Bullion/i }] },
+  { id: "goldera",     name: "Gold Era",     link: GOLD_ERA_URL,
+    // الصفحة بتحمّل الأسعار بالـJavaScript → قارئ يشغّل الصفحة أولاً، ثم جدول Ta3weem
+    tries: [{ url: GOLD_ERA_URL, proxies: ["jina-reader"] },
+            { url: TA3WEEM_21, label: /Gold\s*Era/i }] },
+  { id: "edahab",      name: "eDahab",       link: "https://edahabapp.com/",
+    tries: [{ url: "https://edahabapp.com/" },
+            { url: TA3WEEM_21, label: /eDahab/i }] },
+  { id: "masrawy",     name: "Masrawy",      link: "https://www.masrawy.com/gold",
+    tries: [{ url: "https://www.masrawy.com/gold" }] },
+];
+
+const CORS_PROXIES = [
+  { name: "allorigins",     wrap: u => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u) },
+  { name: "allorigins-get", wrap: u => "https://api.allorigins.win/get?url=" + encodeURIComponent(u), json: "contents" },
+  { name: "codetabs",       wrap: u => "https://api.codetabs.com/v1/proxy/?quest=" + encodeURIComponent(u) },
+  { name: "corsproxy.io",   wrap: u => "https://corsproxy.io/?url=" + encodeURIComponent(u) },
+  { name: "thingproxy",     wrap: u => "https://thingproxy.freeboard.io/fetch/" + u },
+  { name: "jina-reader",    wrap: u => "https://r.jina.ai/" + u },   // بيشغّل الصفحة — مفيد لصفحات JS
+];
+
+// سجل التشخيص لكل مصدر
+function diag(srcName, proxy, msg, ok) {
+  (state.diag[srcName] = state.diag[srcName] || []).push({ proxy, msg, ok });
+}
+
+async function fetchOnce(proxy, url) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 12000);
+  try {
+    const r = await fetch(proxy.wrap(url), { signal: ctrl.signal });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    let txt = await r.text();
+    if (proxy.json) { try { txt = JSON.parse(txt)[proxy.json] || ""; } catch (e) { throw new Error("رد غير صالح"); } }
+    if (!txt || txt.length < 300) throw new Error("رد فارغ");
+    return txt;
+  } catch (e) {
+    throw new Error(e.name === "AbortError" ? "مهلة 12ث" : (e.message === "Failed to fetch" ? "محجوب/شبكة" : e.message));
+  } finally { clearTimeout(timer); }
+}
+
+// كل الوسطاء بالتوازي — أول وسيط يرجّع صفحة نقدر نطلّع منها السعر فعلاً هو اللي يكسب
+async function fetchAndExtract(srcName, url, label, onlyProxies) {
+  const list = onlyProxies ? CORS_PROXIES.filter(p => onlyProxies.includes(p.name)) : CORS_PROXIES;
+  const attempts = list.map(p => fetchOnce(p, url).then(txt => {
+    const r = extract21(txt, label);
+    if (!r) { diag(srcName, p.name, "الصفحة وصلت لكن السعر مش موجود فيها (" + Math.round(txt.length / 1024) + "KB)", false); throw new Error("no price"); }
+    diag(srcName, p.name, "✓ " + r.sell + (r.buy ? " / " + r.buy : "") + " · " + r.method, true);
+    return { ...r, proxy: p.name };
+  }, err => { diag(srcName, p.name, err.message, false); throw err; }));
+  try { return await Promise.any(attempts); } catch (e) { return null; }
+}
+
+// تنظيف النص: إزالة الوسوم، توحيد الأرقام الهندية، إزالة فواصل الآلاف
+function normalizeText(raw) {
+  return raw
+    .replace(/<script(?![^>]*ld\+json)[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&#160;/g, " ")
+    .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d))
+    .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+    .replace(/٫/g, ".")
+    .replace(/(\d)[,٬](?=\d{3}(?!\d))/g, "$1")
+    .replace(/\s+/g, " ");
+}
+
+function priceRange() {
+  const t = theoK21();
+  return state.ounceLive ? [t * 0.90, t * 1.12] : [t * 0.80, t * 1.25];
+}
+
+// استخراج سعر ع21 (بيع + شراء) من نص الصفحة
+function extract21(raw, label) {
+  const [lo, hi] = priceRange();
+  const inRange = v => v >= lo && v <= hi;
+
+  // 1) بيانات منظمة JSON-LD (مثل مصراوي)
+  if (!label) {
+    const j = raw.match(/عيار\s*21[^{}]{0,120}?"price"\s*:\s*"?(\d{3,6}(?:\.\d+)?)/);
+    if (j && inRange(+j[1])) return { sell: +j[1], buy: null, method: "JSON-LD" };
+  }
+
+  // 2) نافذة نصية بعد "عيار 21" (أو اسم المصدر في الجداول المجمّعة)
+  const txt = normalizeText(raw);
+  const anchor = label || /عيار\s*21(?!\d)|\b21\s*K\b|21K(?!\d)|21\s*Karat/gi;
+  const re = new RegExp(anchor.source, "gi");
+  const votes = {};
+  let m;
+  while ((m = re.exec(txt)) !== null) {
+    const win = txt.slice(m.index + m[0].length, m.index + m[0].length + 220);
+    // أول رقمين مختلفين ضمن النطاق (تجاهل تكرار نفس الرقم في العنوان والجدول)
+    const nums = [...new Set((win.match(/\d+(?:\.\d+)?/g) || []).map(Number).filter(inRange))].slice(0, 2);
+    if (!nums.length) continue;
+    const sell = Math.max(...nums), buy = nums.length > 1 ? Math.min(...nums) : null;
+    if (buy && (sell - buy) / sell > 0.03) continue;   // فرق غير منطقي
+    const key = sell + "|" + (buy || "");
+    votes[key] = (votes[key] || 0) + (buy ? 1.5 : 1);   // نفضّل القراءة اللي فيها بيع وشراء
+  }
+  const best = Object.entries(votes).sort((a, b) => b[1] - a[1])[0];
+  if (!best) return null;
+  const [s, b] = best[0].split("|");
+  return { sell: +s, buy: b ? +b : null, method: label ? "Ta3weem" : "نص الصفحة" };
+}
+
+async function fetchOneSource(src) {
+  for (const t of src.tries) {
+    const label = t.label ? (t.label.source.includes("Era") ? "Ta3weem" : "Ta3weem") : null;
+    const r = await fetchAndExtract(src.name + (t.label ? " (Ta3weem)" : ""), t.url, t.label, t.proxies);
+    if (r) return { ...r, ok: true, via: label || "الموقع مباشرة" };
+  }
+  return { ok: false };
+}
+
+function median(arr) {
+  const a = [...arr].sort((x, y) => x - y), n = a.length;
+  return n ? (n % 2 ? a[(n - 1) / 2] : (a[n / 2 - 1] + a[n / 2]) / 2) : null;
+}
+
+async function fetchMultiSource() {
+  state.diag = {};
+  const results = await Promise.all(GOLD_SOURCES.map(async s => ({ src: s, r: await fetchOneSource(s) })));
+  const now = Date.now();
+  results.forEach(({ src, r }) => { state.srcStatus[src.id] = { ...r, ts: now }; });
+
+  const ok = results.filter(x => x.r.ok);
+  if (!ok.length) return false;
+  const med = median(ok.map(x => x.r.sell));
+  // استبعاد أي مصدر يبعد أكثر من 2% عن الوسيط
+  ok.forEach(x => { x.r.outlier = Math.abs(x.r.sell / med - 1) > 0.02; state.srcStatus[x.src.id].outlier = x.r.outlier; });
+  const good = ok.filter(x => !x.r.outlier);
+  const sell = median(good.map(x => x.r.sell));
+  const buys = good.map(x => x.r.buy).filter(Boolean);
+  const buy = buys.length ? median(buys) : null;
+  state.multi = { k21: sell, buy, count: good.length, total: GOLD_SOURCES.length, ts: now };
+  return true;
+}
+
+// نسبة فرق البيع/الشراء الفعلية من المصادر (أو المعتاد 0.45%)
+function spreadRatio() {
+  const m = state.multi;
+  if (m && m.buy && m.k21 > m.buy) return (m.k21 - m.buy) / m.k21;
+  return 0.0045;
+}
+
+function renderSources() {
+  const body = document.getElementById("src-body");
+  if (!body) return;
+  const med = state.multi ? state.multi.k21 : null;
+  body.innerHTML = GOLD_SOURCES.map(s => {
+    const st = state.srcStatus[s.id];
+    let sell = "—", buy = "—", dev = "—", status = '<span style="color:var(--text3)">⏳</span>';
+    if (st) {
+      if (st.ok) {
+        sell = fmtN(st.sell);
+        buy = st.buy ? fmtN(st.buy) : "—";
+        if (med) {
+          const d = (st.sell / med - 1) * 100;
+          dev = `<span style="color:${Math.abs(d) > 2 ? 'var(--red)' : 'var(--text2)'}">${d >= 0 ? "+" : ""}${d.toFixed(2)}%</span>`;
+        }
+        status = st.outlier
+          ? '<span title="مستبعد — بعيد عن باقي المصادر" style="color:var(--amber)">⚠️ شاذ</span>'
+          : `<span title="${st.method} · ${st.via}" style="color:var(--green)">✅</span>`;
+      } else {
+        status = '<span title="تعذّرت القراءة" style="color:var(--red)">❌</span>';
+      }
+    }
+    return `<tr>
+      <td><a href="${s.link}" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:none;font-weight:700">${s.name}</a></td>
+      <td class="sell-val">${sell}</td><td class="buy-val">${buy}</td>
+      <td class="spread-val">${dev}</td><td style="text-align:center">${status}</td></tr>`;
+  }).join("");
+
+  const sum = document.getElementById("src-summary");
+  if (sum) {
+    if (state.multi) {
+      const age = Math.round((Date.now() - state.multi.ts) / 60000);
+      sum.innerHTML = `الوسيط: <b style="color:var(--gold2)">${fmtN(state.multi.k21)} ج</b>` +
+        (state.multi.buy ? ` · شراء ${fmtN(state.multi.buy)} ج` : "") +
+        ` · من ${state.multi.count} مصادر من ${state.multi.total} · منذ ${age} دقيقة`;
+    } else {
+      sum.textContent = Object.keys(state.srcStatus).length
+        ? "تعذّرت قراءة كل المصادر حالياً — التطبيق يستخدم السعر اليدوي أو التقديري"
+        : "جارٍ قراءة المصادر...";
+    }
+  }
+}
+
+function renderDiag() {
+  const box = document.getElementById("diag-log");
+  if (box) {
+    const names = Object.keys(state.diag);
+    box.innerHTML = names.length ? names.map(n =>
+      `<div style="color:var(--gold2);font-weight:700;margin-top:6px;">${n}</div>` +
+      state.diag[n].map(d => `<div style="color:${d.ok ? 'var(--green)' : 'var(--text3)'}">&nbsp;&nbsp;${d.proxy}: ${d.msg}</div>`).join("")
+    ).join("") : "لم تتم محاولة بعد";
+  }
+  const env = document.getElementById("env-warn");
+  if (!env) return;
+  const allFailed = Object.keys(state.srcStatus).length && !Object.values(state.srcStatus).some(x => x.ok);
+  let inFrame = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
+  if (allFailed && state.netOK === false) {
+    env.style.display = "block";
+    env.innerHTML = "⛔ <b>البيئة اللي فاتح فيها الملف بتمنع أي اتصال بالإنترنت</b> — حتى سعر الأوقية مش بيوصل." +
+      (inFrame ? "<br>غالباً أنت فاتحه جوه معاينة Claude. <b>نزّل الملف وافتحه في كروم مباشرة</b> (دبل كليك على الملف)." :
+                 "<br>اتأكد من الإنترنت، أو إن مفيش إضافة حظر (Ad-blocker) أو VPN بيمنع الطلبات.");
+  } else if (allFailed) {
+    env.style.display = "block";
+    env.innerHTML = "⚠️ <b>الإنترنت شغال لكن كل وسطاء القراءة فشلوا</b> — افتح سجل التشخيص تحت وابعتلي صورة منه." +
+      "<br>لحد ما نحلها: اكتب سعر الصاغة يدوياً في الكارت اللي تحت.";
+  } else {
+    env.style.display = "none";
+  }
+}
+
+async function refreshSources() {
+  const btn = document.getElementById("src-btn");
+  if (btn) { btn.disabled = true; btn.textContent = "⏳ جارٍ القراءة..."; }
+  await fetchLocal();
+  renderAll();
+  if (btn) { btn.disabled = false; btn.textContent = "↻ تحديث المصادر"; }
+}
+
+async function fetchOunce() {
+  try {
+    const r = await fetch("https://api.gold-api.com/price/XAU", { headers:{ Accept:"application/json" } });
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    const p = Number(d && d.price);
+    if (!(p > 0)) throw new Error("bad data");
+    state.ounce = p;
+    state.ounceLive = true;
+    state.netOK = true;
+    return true;
+  } catch(e) {
+    state.ounceLive = false;
+    if (state.netOK !== true) state.netOK = false;
+    return false;
+  }
+}
+
+function updateSourceLabel() {
+  const p = prices();
+  state.apiError = !state.ounceLive && p.src === "estimate";
+  if (p.src === "multi")        state.source = "متوسط " + state.multi.count + " مصادر مصرية";
+  else if (p.src === "manual")  state.source = "سعر صاغة يدوي";
+  else if (p.src === "claude")  state.source = "سعر مصري مباشر";
+  else if (state.ounceLive)     state.source = "تقديري من العالمي";
+  else                          state.source = "محاكاة";
+}
+
+async function fetchGold() {
+  const ok = await fetchOunce();
+  if (!ok) simTick();
+  updateSourceLabel();
+  return ok;
+}
+
+// يُستدعى كل 5 دقائق فقط (لتقليل الطلبات)
+async function fetchLocal() {
+  let ok = await fetchMultiSource();
+  if (!ok) ok = await fetchLocalViaClaude();
+  updateSourceLabel();
+  return ok;
+}
+
+function simTick() {
+  const drift = (Math.random() - 0.5) * 0.004;
+  state.ounce = Math.max(3000, Math.min(6000, state.ounce * (1 + drift)));
+}
+
+async function fetchFx() {
+  try {
+    const r = await fetch("https://open.er-api.com/v6/latest/USD", { headers:{ Accept:"application/json" } });
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    const rates = d && d.rates;
+    const egp = Number(rates && rates.EGP);
+    if (!Number.isFinite(egp) || egp <= 0) throw new Error("no EGP");
+
+    if (!state.sliderOverride) state.usd = egp;
+    state.fxLive = true;
+
+    const toEGP = code => {
+      const x = Number(rates[code]);
+      return (Number.isFinite(x) && x > 0) ? egp / x : null;
+    };
+    state.currencies = [
+      { code:"USD", name:"دولار أمريكي",    flag:"🇺🇸", egp: egp },
+      { code:"EUR", name:"يورو",             flag:"🇪🇺", egp: toEGP("EUR") },
+      { code:"GBP", name:"جنيه إسترليني",   flag:"🇬🇧", egp: toEGP("GBP") },
+      { code:"SAR", name:"ريال سعودي",       flag:"🇸🇦", egp: toEGP("SAR") },
+      { code:"AED", name:"درهم إماراتي",    flag:"🇦🇪", egp: toEGP("AED") },
+      { code:"KWD", name:"دينار كويتي",     flag:"🇰🇼", egp: toEGP("KWD") },
+      { code:"CNY", name:"يوان صيني",       flag:"🇨🇳", egp: toEGP("CNY") },
+      { code:"TRY", name:"ليرة تركية",      flag:"🇹🇷", egp: toEGP("TRY") },
+    ].filter(c => Number.isFinite(c.egp));
+
+    checkUsdAlerts(egp);
+    return true;
+  } catch(e) {
+    state.fxLive = false;
+    return false;
+  }
+}
+
+// ════════════════════════════════════════════════════
+//  ALERTS
+// ════════════════════════════════════════════════════
+function saveGoldAlerts() { store.setItem("gt_gold", JSON.stringify(state.goldAlerts)); }
+function saveUsdAlerts()  { store.setItem("gt_usd",  JSON.stringify(state.usdAlerts)); }
+
+function checkGoldAlerts(k21) {
+  let changed = false;
+  state.goldAlerts = state.goldAlerts.map(a => {
+    if (a.triggered) return a;
+    const hit = (a.dir==="high" && k21 >= a.value) || (a.dir==="low" && k21 <= a.value);
+    if (hit) {
+      changed = true;
+      pushNotif("gold", a.dir==="high"?"up":"down",
+        "تنبيه الذهب! 🥇",
+        `عيار 21 ${a.dir==="high"?"تجاوز":"نزل تحت"} ${a.value.toFixed(0)} ج — السعر الآن ${k21.toFixed(0)} ج`);
+      return { ...a, triggered: true };
+    }
+    return a;
+  });
+  if (changed) { saveGoldAlerts(); renderAlerts(); }
+}
+
+function checkUsdAlerts(usd) {
+  if (state.prevUsd === null) { state.prevUsd = usd; return; }
+  if (Math.abs(usd - state.prevUsd) < 0.001) return;
+  let changed = false;
+  state.usdAlerts = state.usdAlerts.map(a => {
+    if (a.triggered) return a;
+    const hit = (a.dir==="high" && usd >= a.value) || (a.dir==="low" && usd <= a.value);
+    if (hit) {
+      changed = true;
+      pushNotif("usd", a.dir==="high"?"up":"down",
+        "تنبيه الدولار! 💵",
+        `الدولار ${a.dir==="high"?"تجاوز":"نزل تحت"} ${a.value.toFixed(2)} ج — السعر الآن ${usd.toFixed(2)} ج`);
+      return { ...a, triggered: true };
+    }
+    return a;
+  });
+  if (changed) { saveUsdAlerts(); renderAlerts(); }
+  state.prevUsd = usd;
+}
+
+function pushNotif(type, dir, title, body) {
+  state.notifLog.unshift({ id: Date.now()+Math.random(), type, dir, title, body, time: new Date() });
+  if (state.notifLog.length > 20) state.notifLog.length = 20;
+  if (state.notifGranted) {
+    try { new Notification(title, { body, icon:"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪙</text></svg>" }); } catch(e) {}
+  }
+  renderNotifLog();
+}
+
+async function requestPush() {
+  if (!("Notification" in window)) return;
+  const perm = await Notification.requestPermission();
+  state.notifGranted = perm === "granted";
+  document.getElementById("push-banner").style.display = state.notifGranted ? "none" : "flex";
+}
+
+// ════════════════════════════════════════════════════
+//  RENDER
+// ════════════════════════════════════════════════════
+function fmtEGP(n) { return Math.round(n).toLocaleString("en-US"); }
+function fmtUSD(n) { return n.toLocaleString("en-US", { maximumFractionDigits: 0 }); }
+
+let prevRenderedK21 = null;
+
+function renderAll() {
+  const p = prices();
+  const k21 = p.k21;
+  const now = new Date();
+
+  // ── hero ──
+  const heroEl = document.getElementById("hero-price");
+  const valEl  = document.getElementById("hero-val");
+  const arrowEl= document.getElementById("hero-arrow");
+
+  valEl.textContent = fmtEGP(k21);
+
+  if (prevRenderedK21 !== null && Math.abs(k21 - prevRenderedK21) > 0.5) {
+    const up = k21 > prevRenderedK21;
+    heroEl.className = "hero-price " + (up ? "up" : "down") + " pop";
+    arrowEl.textContent = up ? "▲" : "▼";
+    setTimeout(() => { heroEl.className = "hero-price"; arrowEl.textContent = ""; }, 900);
+
+    // check gold alerts
+    checkGoldAlerts(k21);
+  }
+  prevRenderedK21 = k21;
+
+  // الرسم البياني يتابع السعر العالمي المحوّل (يتحرك مع الأوقية والدولار)
+  const theo = theoK21();
+  const last = state.history[state.history.length - 1];
+  if (!last || Math.abs(theo - last.v) > 0.01) {
+    state.history.push({ t: Date.now(), v: theo });
+    if (state.history.length > 60) state.history.shift();
+    renderChart();
+  }
+
+  // ── meta ──
+  document.getElementById("hero-meta").textContent =
+    "آخر تحديث: " + now.toLocaleTimeString("en-US") + " · الأوقية كل 30 ثانية · السعر المحلي كل 5 دقائق";
+  document.getElementById("api-warn").style.display = state.apiError ? "block" : "none";
+
+  // ── status ──
+  const dot = document.getElementById("status-dot");
+  const txt = document.getElementById("status-text");
+  const isLive = p.real || state.ounceLive;
+  dot.className = "status-dot" + (isLive ? " live" : "");
+  txt.textContent = state.source;
+
+  // ── price cells ──
+  document.getElementById("p-k24").textContent    = fmtEGP(p.k24);
+  document.getElementById("p-k21").textContent    = fmtEGP(p.k21);
+  document.getElementById("p-k18").textContent    = fmtEGP(p.k18);
+  document.getElementById("p-pound").textContent  = fmtEGP(p.pound);
+
+  // ── market info ──
+  const ounceEl = document.getElementById("i-ounce");
+  ounceEl.textContent = "$" + fmtUSD(state.ounce);
+  ounceEl.style.color = state.ounceLive ? "var(--green)" : "var(--amber)";
+  const usdEl = document.getElementById("i-usd");
+  usdEl.textContent = state.usd.toFixed(2) + " ج";
+  usdEl.style.color = state.fxLive ? "var(--green)" : "var(--text)";
+  const theoEl = document.getElementById("i-theo");
+  if (theoEl) theoEl.textContent = fmtEGP(theoK21()) + " ج";
+  const gapEl = document.getElementById("i-gap");
+  if (gapEl) {
+    if (p.real) {
+      const g = localGapPct();
+      gapEl.textContent = (g >= 0 ? "+" : "") + g.toFixed(2) + "%";
+      gapEl.style.color = g > 4 ? "var(--red)" : g > 1.5 ? "var(--amber)" : "var(--green)";
+    } else {
+      gapEl.textContent = "غير متاح";
+      gapEl.style.color = "var(--text3)";
+    }
+  }
+
+  const shEl = document.getElementById("source-hint");
+  if (shEl) {
+    const ageMin = s => Math.round((Date.now() - s) / 60000);
+    let local;
+    if (p.src === "multi")       local = "🟢 السعر المحلي: وسيط " + state.multi.count + " مصادر (iSagha · Gold Bullion · Gold Era · eDahab · Masrawy) — منذ " + ageMin(state.multi.ts) + " دقيقة";
+    else if (p.src === "manual") local = "🟢 السعر المحلي: يدوي من الصاغة (منذ " + ageMin(state.manual.ts) + " دقيقة)";
+    else if (p.src === "claude") local = "🟢 السعر المحلي: مباشر من مواقع الصاغة المصرية";
+    else                         local = "🟡 السعر المحلي: تقديري = العالمي × الدولار (المصادر متعذّرة حالياً) — أدخل سعر الصاغة يدوياً للدقة";
+    shEl.innerHTML = local +
+      "<br>" + (state.ounceLive ? "🟢 الأوقية مباشرة من gold-api.com" : "🟡 الأوقية: آخر قيمة معروفة") +
+      " · " + (state.fxLive ? "🟢 الدولار مباشر (سعر السوق المتوسط)" : "🟡 الدولار افتراضي");
+  }
+
+  const manualStatus = document.getElementById("manual-status");
+  if (manualStatus) {
+    manualStatus.textContent = manualValid()
+      ? "✅ مفعّل: " + fmtEGP(state.manual.k21) + " ج لعيار 21 — ينتهي بعد " +
+        Math.max(0, Math.round(MARKET.manualTTLHours - (Date.now() - state.manual.ts) / 3600e3)) + " ساعة"
+      : "غير مفعّل — التطبيق يستخدم " + (state.multi ? "وسيط المصادر" : state.claude ? "السعر المباشر" : "السعر التقديري");
+  }
+
+  // ── currencies ──
+  renderCurrencies();
+  renderBuySell(p);
+  renderWorldTicker();
+  renderSaghaDollar();
+  renderPortfolio();
+  renderSources();
+  renderDiag();
+
+  // ── analysis ──
+  renderAnalysis(k21);
+
+  // ── alert hints ──
+  document.getElementById("alert-k21-hint").textContent = fmtEGP(k21);
+  document.getElementById("alert-usd-hint").textContent = state.usd.toFixed(2);
+}
+
+function renderCurrencies() {
+  const wrap = document.getElementById("currencies-wrap");
+  const st = document.getElementById("fx-status");
+  if (!state.currencies.length) {
+    wrap.innerHTML = '<div class="empty">جارٍ جلب أسعار الصرف...</div>';
+    st.textContent = "—";
+    return;
+  }
+  st.textContent = state.fxLive ? "🟢 حي" : "🟡 افتراضي";
+  wrap.innerHTML = state.currencies.map(c => `
+    <div class="currency-row">
+      <div class="currency-left">
+        <span class="currency-flag">${c.flag}</span>
+        <div>
+          <div class="currency-name">${c.name}</div>
+          <div class="currency-code">${c.code}</div>
+        </div>
+      </div>
+      <div style="text-align:left">
+        <div class="currency-val">${c.egp.toFixed(2)}</div>
+        <div class="currency-unit">ج.م</div>
+      </div>
+    </div>`).join("");
+}
+
+function renderAnalysis(k21) {
+  const a = analyzeMarket(k21);
+  const colorMap = { buy:"var(--green)", neutral:"var(--amber)", wait:"var(--red)" };
+  const c = colorMap[a.color];
+
+  document.getElementById("verdict-card").style.borderColor = c;
+  document.getElementById("verdict-text").style.color = c;
+  document.getElementById("verdict-text").textContent = a.verdict;
+  document.getElementById("verdict-advice").textContent = a.advice;
+
+  document.getElementById("gauge-fill").style.width  = a.score + "%";
+  document.getElementById("gauge-fill").style.background = c;
+  document.getElementById("gauge-needle").style.right = a.score + "%";
+
+  document.getElementById("signals-wrap").innerHTML = a.signals.map(s => `
+    <div class="signal" style="border-right-color:${s.t==="pos"?"var(--green)":s.t==="neg"?"var(--red)":"#4a5568"}">
+      <span class="signal-icon" style="color:${s.t==="pos"?"var(--green)":s.t==="neg"?"var(--red)":"var(--text2)"}">
+        ${s.t==="pos"?"▲":s.t==="neg"?"▼":"●"}
+      </span>
+      ${s.txt}
+    </div>`).join("");
+}
+
+function renderChart() {
+  const data = state.history;
+  const empty = document.getElementById("chart-empty");
+  const svg   = document.getElementById("chart-svg");
+  const cnt   = document.getElementById("chart-count");
+  cnt.textContent = data.length + " نقطة";
+
+  if (data.length < 2) {
+    empty.style.display = "block"; svg.style.display = "none"; return;
+  }
+  empty.style.display = "none"; svg.style.display = "block";
+
+  const W=400, H=110, P=8;
+  const vals = data.map(d=>d.v);
+  const min  = Math.min(...vals), max = Math.max(...vals);
+  const range = max - min || 1;
+  const pts   = data.map((d,i) => [
+    P + (i/(data.length-1))*(W-2*P),
+    H - P - ((d.v-min)/range)*(H-2*P),
+  ]);
+  const line  = pts.map((p,i)=>`${i===0?"M":"L"} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" ");
+  const area  = `${line} L ${pts.at(-1)[0].toFixed(1)} ${H-P} L ${pts[0][0].toFixed(1)} ${H-P} Z`;
+  const rising= vals.at(-1) >= vals[0];
+  const color = rising ? "#22c55e" : "#ef4444";
+  const last  = pts.at(-1);
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${color}" stop-opacity=".3"/>
+        <stop offset="1" stop-color="${color}" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="${area}" fill="url(#g)"/>
+    <path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${last[0]}" cy="${last[1]}" r="4" fill="${color}"/>
+    <circle cx="${last[0]}" cy="${last[1]}" r="7" fill="${color}" opacity=".3">
+      <animate attributeName="r" values="5;10;5" dur="1.5s" repeatCount="indefinite"/>
+    </circle>`;
+}
+
+function renderAlerts() {
+  const goldList = document.getElementById("gold-alerts-list");
+  const goldCard = document.getElementById("gold-alerts-card");
+  if (state.goldAlerts.length) {
+    goldCard.style.display = "block";
+    goldList.innerHTML = state.goldAlerts.map(a => `
+      <div class="alert-item">
+        <span class="alert-arrow" style="color:${a.dir==="high"?"var(--green)":"var(--red)"}">${a.dir==="high"?"▲":"▼"}</span>
+        <span class="alert-label">${a.dir==="high"?"تجاوز":"نزول تحت"} ${a.value.toFixed(0)} ج</span>
+        ${a.triggered?'<span class="alert-triggered">تم ✓</span>':""}
+        <button class="del-btn" onclick="removeGoldAlert(${a.id})">✕</button>
+      </div>`).join("");
+  } else goldCard.style.display = "none";
+
+  const usdList = document.getElementById("usd-alerts-list");
+  const usdCard = document.getElementById("usd-alerts-card");
+  if (state.usdAlerts.length) {
+    usdCard.style.display = "block";
+    usdList.innerHTML = state.usdAlerts.map(a => `
+      <div class="alert-item">
+        <span class="alert-arrow" style="color:${a.dir==="high"?"var(--green)":"var(--red)"}">${a.dir==="high"?"▲":"▼"}</span>
+        <span class="alert-label">${a.dir==="high"?"تجاوز":"نزول تحت"} ${a.value.toFixed(2)} ج</span>
+        ${a.triggered?'<span class="alert-triggered">تم ✓</span>':""}
+        <button class="del-btn" onclick="removeUsdAlert(${a.id})">✕</button>
+      </div>`).join("");
+  } else usdCard.style.display = "none";
+
+  // tab badge
+  const active =
+    state.goldAlerts.filter(a=>!a.triggered).length +
+    state.usdAlerts.filter(a=>!a.triggered).length;
+  const tabBtn = document.getElementById("tab-alerts");
+  const badge  = tabBtn.querySelector(".tab-badge");
+  if (active > 0) {
+    if (!badge) tabBtn.insertAdjacentHTML("beforeend",`<span class="tab-badge">${active}</span>`);
+    else badge.textContent = active;
+  } else if (badge) badge.remove();
+}
+
+function renderNotifLog() {
+  const el = document.getElementById("notif-log");
+  if (!state.notifLog.length) {
+    el.innerHTML = '<div class="empty">لا توجد إشعارات بعد</div>'; return;
+  }
+  const colorMap = { up:"var(--green)", down:"var(--red)", info:"var(--blue)" };
+  el.innerHTML = state.notifLog.map(n => `
+    <div class="notif-item" style="border-right-color:${colorMap[n.dir]||"var(--blue)"}">
+      <div class="notif-title">${n.title}</div>
+      <div class="notif-body">${n.body}</div>
+      <div class="notif-time">${n.time.toLocaleTimeString("en-US")}</div>
+    </div>`).join("");
+}
+
+// ════════════════════════════════════════════════════
+//  ACTIONS
+// ════════════════════════════════════════════════════
+
+function renderBuySell(p) {
+  function goldRow(idBuy, idSell, idSp, mid) {
+    const buy  = mid * (1 - GOLD_SPREAD.buyDiscPct);
+    const sell = mid * (1 + GOLD_SPREAD.sellPremPct);
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set(idBuy,  Math.round(buy).toLocaleString("en-US") + " ج");
+    set(idSell, Math.round(sell).toLocaleString("en-US") + " ج");
+    set(idSp,   Math.round(sell - buy) + " ج");
+  }
+  goldRow("bs-k24-buy",   "bs-k24-sell",   "bs-k24-sp",   p.k24);
+  goldRow("bs-k21-buy",   "bs-k21-sell",   "bs-k21-sp",   p.k21);
+  goldRow("bs-k18-buy",   "bs-k18-sell",   "bs-k18-sp",   p.k18);
+  goldRow("bs-pound-buy", "bs-pound-sell", "bs-pound-sp", p.pound);
+
+  const tbody = document.getElementById("fx-bs-body");
+  if (!tbody || !state.currencies.length) return;
+  tbody.innerHTML = state.currencies.map(c => {
+    const sp = (FX_SPREADS[c.code] || { spreadPct: 0.003 }).spreadPct;
+    const buy = c.egp * (1 - sp), sell = c.egp * (1 + sp);
+    return `<tr>
+      <td style="color:var(--text);font-weight:700">
+        ${c.flag} ${c.name}<br>
+        <span style="font-size:9px;color:var(--text3);font-family:'Space Mono',monospace">${c.code}</span>
+      </td>
+      <td class="buy-val">${buy.toFixed(2)} ج</td>
+      <td class="sell-val">${sell.toFixed(2)} ج</td>
+      <td class="spread-val">${(sell - buy).toFixed(2)} ج</td>
+    </tr>`;
+  }).join("");
+}
+
+function renderWorldTicker() {
+  const p = prices();
+  const gramUSD21 = (state.ounce / MARKET.gramsPerOunce) * MARKET.k21;
+  const sagha = saghaDollar();
+  const diff  = sagha - state.usd;
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set("wt-ounce",     state.ounce.toLocaleString("en-US", { maximumFractionDigits: 0 }));
+  set("wt-gram",      gramUSD21.toFixed(2));
+  set("wt-bank-usd",  state.usd.toFixed(2));
+  set("wt-sagha-usd", p.real ? sagha.toFixed(2) : "≈" + sagha.toFixed(2));
+  const diffEl = document.getElementById("wt-diff");
+  if (diffEl) {
+    diffEl.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2);
+    diffEl.style.color = diff > 2 ? "var(--red)" : diff < -0.5 ? "var(--green)" : "var(--amber)";
+  }
+}
+
+function renderSaghaDollar() {
+  const p = prices();
+  const sagha = saghaDollar();
+  const bank  = state.usd;
+  const diff  = sagha - bank;
+  const pct   = bank > 0 ? (diff / bank) * 100 : 0;
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set("sg-bank",  bank.toFixed(2) + " ج");
+  set("sg-sagha", sagha.toFixed(2) + " ج");
+
+  const diffVal = document.getElementById("sg-diff-val");
+  const diffLbl = document.getElementById("sg-diff-label");
+  if (diffVal) {
+    diffVal.textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2) + " ج (" + (pct >= 0 ? "+" : "") + pct.toFixed(2) + "%)";
+    diffVal.style.color = pct > 4 ? "var(--red)" : pct > 1.5 ? "var(--amber)" : "var(--green)";
+  }
+  if (diffLbl) {
+    if (!p.real)       diffLbl.textContent = "ℹ️ تقديري — أدخل سعر الصاغة يدوياً لحساب الفجوة الحقيقية";
+    else if (pct > 4)  diffLbl.textContent = "⚠️ فجوة مرتفعة — الذهب المحلي يسعّر دولاراً أعلى كثيراً من البنك (توقعات تحوط أو شح معروض)";
+    else if (pct > 1.5) diffLbl.textContent = "📈 فجوة متوسطة — علاوة أعلى قليلاً من المعتاد";
+    else if (pct >= -1) diffLbl.textContent = "➡️ فجوة طبيعية — السعر المحلي متّسق مع العالمي";
+    else               diffLbl.textContent = "💡 خصم — الذهب المحلي أرخص من العالمي (ضعف طلب أو زيادة معروض)";
+  }
+}
+
+function addGoldAlert(dir) {
+  const val = parseFloat(document.getElementById(dir==="high"?"gold-high":"gold-low").value);
+  if (!val || val <= 0) return;
+  state.goldAlerts.push({ id: Date.now(), dir, value: val, triggered: false });
+  saveGoldAlerts();
+  document.getElementById(dir==="high"?"gold-high":"gold-low").value = "";
+  pushNotif("gold","info","تم ضبط تنبيه الذهب ✅",
+    `سننبهك عندما ${dir==="high"?"يتجاوز":"ينزل تحت"} عيار 21 سعر ${val.toFixed(0)} ج`);
+  renderAlerts();
+}
+function removeGoldAlert(id) {
+  state.goldAlerts = state.goldAlerts.filter(a=>a.id!==id);
+  saveGoldAlerts(); renderAlerts();
+}
+
+function addUsdAlert(dir) {
+  const val = parseFloat(document.getElementById(dir==="high"?"usd-high":"usd-low").value);
+  if (!val || val <= 0) return;
+  state.usdAlerts.push({ id: Date.now(), dir, value: val, triggered: false });
+  saveUsdAlerts();
+  document.getElementById(dir==="high"?"usd-high":"usd-low").value = "";
+  pushNotif("usd","info","تم ضبط تنبيه الدولار ✅",
+    `سننبهك عندما ${dir==="high"?"يتجاوز":"ينزل تحت"} الدولار ${val.toFixed(2)} ج`);
+  renderAlerts();
+}
+function removeUsdAlert(id) {
+  state.usdAlerts = state.usdAlerts.filter(a=>a.id!==id);
+  saveUsdAlerts(); renderAlerts();
+}
+
+async function manualRefresh() {
+  const btn = document.getElementById("refresh-btn");
+  const status = document.getElementById("refresh-status");
+  if (btn) { btn.disabled = true; btn.textContent = "⏳ جارٍ التحديث..."; }
+  if (status) status.textContent = "";
+  await fetchFx();
+  const [okOunce, okLocal] = await Promise.all([fetchGold(), fetchLocal()]);
+  renderAll();
+  if (btn) { btn.disabled = false; btn.textContent = "⚡ تحديث الآن"; }
+  if (status) {
+    const t = new Date().toLocaleTimeString("en-US");
+    status.textContent = okLocal ? "✅ تم تحديث السعر المحلي المباشر — " + t
+      : okOunce ? "✅ تم تحديث الأوقية — السعر المحلي " + (manualValid() ? "يدوي" : "تقديري") + " — " + t
+      : "⚠️ تعذّر الاتصال — يعمل بآخر أسعار معروفة";
+    status.style.color = (okLocal || okOunce) ? "var(--green)" : "var(--amber)";
+  }
+}
+
+// ─── السعر اليدوي من الصاغة ───
+function applyManualPrice() {
+  const v = parseFloat(document.getElementById("manual-k21").value);
+  const t = theoK21();
+  if (!(v > 0)) return;
+  if (Math.abs(v / t - 1) > 0.2 && !confirm("السعر بعيد عن السعر العالمي المحوّل بأكثر من 20%. متأكد؟")) return;
+  state.manual = { k21: v, ts: Date.now() };
+  store.setItem("gt_manual", JSON.stringify(state.manual));
+  document.getElementById("manual-k21").value = "";
+  updateSourceLabel();
+  renderAll();
+}
+function clearManualPrice() {
+  state.manual = null;
+  store.removeItem("gt_manual");
+  updateSourceLabel();
+  renderAll();
+}
+
+// ─── مراجع التحليل (متوسط 30 و90 يوم) ───
+function saveRefs() {
+  const a = parseFloat(document.getElementById("ref-ma30").value);
+  const b = parseFloat(document.getElementById("ref-ma90").value);
+  if (a > 0) state.refs.ma30 = a;
+  if (b > 0) state.refs.ma90 = b;
+  store.setItem("gt_refs_v2", JSON.stringify(state.refs));
+  renderAll();
+}
+
+function onSliderChange(v) {
+  state.usd = parseFloat(v);
+  state.sliderOverride = true;
+  document.getElementById("slider-val").textContent = parseFloat(v).toFixed(1) + " ج";
+  renderAll();
+}
+
+async function resetFx() {
+  state.sliderOverride = false;
+  await fetchFx();
+  document.getElementById("usd-slider").value = state.usd.toFixed(1);
+  document.getElementById("slider-val").textContent = state.usd.toFixed(1) + " ج";
+  renderAll();
+}
+
+// ════════════════════════════════════════════════════
+//  TOOLS — الحاسبات والمحفظة
+// ════════════════════════════════════════════════════
+
+function fmtN(n) { return Math.round(n).toLocaleString("en-US"); }
+function num(id) { const v = parseFloat(document.getElementById(id)?.value); return Number.isFinite(v) ? v : 0; }
+
+function calcBuy() {
+  const budget = num("calc-budget");
+  const karat  = document.getElementById("calc-karat").value;
+  const box    = document.getElementById("calc-buy-result");
+  if (budget <= 0) { box.style.display = "none"; return; }
+
+  const p = prices();
+  const map = {
+    "21":    { price: p.k21,   name: "جرام ع21", grams: 1 },
+    "24":    { price: p.k24,   name: "جرام ع24", grams: 1 },
+    "18":    { price: p.k18,   name: "جرام ع18", grams: 1 },
+    "pound": { price: p.pound, name: "جنيه ذهب", grams: 8 },
+  };
+  const u = map[karat];
+  const sellPrice = u.price * (1 + GOLD_SPREAD.sellPremPct);   // تشتري بسعر البيع
+  const buyBack   = u.price * (1 - GOLD_SPREAD.buyDiscPct);    // تبيع بسعر الشراء
+  let making = num("calc-making") * u.grams;
+  if (document.getElementById("calc-vat").checked) making *= 1.14;
+  const unitCost = sellPrice + making;
+  const qty = budget / unitCost;
+  const shownQty = karat === "pound" ? Math.floor(qty) : qty;
+  const spent = shownQty * unitCost;
+  const sellNow = shownQty * buyBack;
+  const breakeven = (unitCost / buyBack - 1) * 100;
+
+  document.getElementById("calc-buy-grams").textContent =
+    (karat === "pound" ? shownQty : shownQty.toFixed(2)) + " " + u.name;
+  document.getElementById("calc-unit-cost").textContent = fmtN(unitCost) + " ج";
+  document.getElementById("calc-sell-now").textContent =
+    fmtN(sellNow) + " ج (خسارة " + fmtN(spent - sellNow) + " ج)";
+  document.getElementById("calc-breakeven").textContent = "+" + breakeven.toFixed(2) + "%";
+  box.style.display = "block";
+}
+
+function calcDCA() {
+  const amt = num("dca-amount");
+  const n = parseInt(document.getElementById("dca-n").value);
+  const every = parseInt(document.getElementById("dca-every").value);
+  const out = document.getElementById("dca-result");
+  if (amt <= 0) { out.innerHTML = ""; return; }
+  const per = amt / n;
+  const p = prices();
+  let rows = "";
+  for (let i = 0; i < n; i++) {
+    const d = new Date(Date.now() + i * every * 86400e3);
+    rows += `<tr><td>${i + 1}</td><td>${d.toLocaleDateString("en-GB")}</td><td>${fmtN(per)} ج</td><td>≈ ${(per / (p.k21 * (1 + GOLD_SPREAD.sellPremPct))).toFixed(2)} جم</td></tr>`;
+  }
+  out.innerHTML = `<table class="mini-table">
+    <tr><th>#</th><th>التاريخ</th><th>المبلغ</th><th>ع21 بسعر اليوم</th></tr>${rows}</table>
+    <div class="source-hint" style="margin-top:8px;">الكمية الفعلية هتختلف حسب سعر يوم الشراء — وده بالظبط فايدة التدرّج: بتشتري أكتر لما السعر ينزل وأقل لما يطلع.</div>`;
+}
+
+function calcZakat() {
+  const g21 = num("zakat-g21"), g24 = num("zakat-g24"), g18 = num("zakat-g18");
+  const cash = num("zakat-cash");
+  const jewelry = document.getElementById("zakat-jewelry").checked;
+  const box = document.getElementById("zakat-result");
+  if (g21 + g24 + g18 + cash <= 0) { box.style.display = "none"; return; }
+
+  const p = prices();
+  // تحويل كل الذهب لما يعادل ع21 حسب النقاء
+  const eq21 = g21 + g24 * (24 / 21) + g18 * (18 / 21);
+  const goldVal = jewelry ? 0 : eq21 * p.k21;
+  const total = goldVal + cash;
+  const nisabVal = 85 * p.k21;
+  const reached = total >= nisabVal;
+  const due = reached ? total * 0.025 : 0;
+
+  document.getElementById("zakat-eq").textContent = eq21.toFixed(2) + " جم";
+  document.getElementById("zakat-value").textContent = fmtN(total) + " ج";
+  document.getElementById("zakat-nisab-val").textContent = fmtN(nisabVal) + " ج";
+  const nisabEl = document.getElementById("zakat-nisab");
+  nisabEl.textContent = reached ? "✅ نعم" : "❌ لا";
+  nisabEl.style.color = reached ? "var(--green)" : "var(--text2)";
+  document.getElementById("zakat-due").textContent = reached ? fmtN(due) + " ج" : "لا زكاة واجبة";
+  document.getElementById("zakat-note").innerHTML = jewelry
+    ? "رأي جمهور الفقهاء ودار الإفتاء المصرية: لا زكاة على حُلي المرأة المعدّ للزينة المعتادة، أما ما زاد عن العرف أو اقتُني للادخار فتجب فيه. تم استبعاد الذهب من الحساب."
+    : "يرى بعض العلماء أن النصاب 85 جرام ذهب خالص (ع24) — قيمته الآن " + fmtN(85 * p.k24) + " ج. للفتوى الشخصية راجع دار الإفتاء.";
+  box.style.display = "block";
+}
+
+function calcCompare() {
+  const amt = num("cmp-amount"), yrs = num("cmp-years");
+  const cd = num("cmp-cd") / 100, gold = num("cmp-gold") / 100, infl = num("cmp-infl") / 100;
+  const out = document.getElementById("cmp-result");
+  if (amt <= 0 || yrs <= 0) { out.innerHTML = ""; return; }
+  // الشهادة: عائد بسيط يُصرف دورياً (الأشهر في مصر) — الذهب: نمو مركّب ناقص تكلفة فرق البيع والشراء
+  const cdEnd = amt * (1 + cd * yrs);
+  const roundTrip = (1 - GOLD_SPREAD.buyDiscPct) / (1 + GOLD_SPREAD.sellPremPct);
+  const goldEnd = amt * Math.pow(1 + gold, yrs) * roundTrip;
+  const real = v => infl > 0 ? v / Math.pow(1 + infl, yrs) : null;
+  const row = (name, v) => {
+    const r = real(v);
+    return `<tr><td style="font-family:'Tajawal'">${name}</td><td>${fmtN(v)} ج</td><td style="color:${v >= amt ? 'var(--green)' : 'var(--red)'}">${v >= amt ? "+" : ""}${(((v / amt) - 1) * 100).toFixed(1)}%</td><td>${r !== null ? fmtN(r) + " ج" : "—"}</td></tr>`;
+  };
+  const winner = cdEnd > goldEnd ? "الشهادة" : "الذهب";
+  out.innerHTML = `<table class="mini-table">
+    <tr><th>الأداة</th><th>القيمة النهائية</th><th>العائد</th><th>بالقوة الشرائية الحالية</th></tr>
+    ${row("🏦 الشهادة", cdEnd)}${row("🥇 الذهب", goldEnd)}</table>
+    <div class="source-hint" style="margin-top:8px;">وفق افتراضاتك: <b>${winner}</b> أعلى بفارق ${fmtN(Math.abs(cdEnd - goldEnd))} ج.
+    الشهادة: عائد مضمون بالجنيه لكن معرّض لخطر تراجع العملة. الذهب: يحمي من تراجع الجنيه لكن بدون عائد دوري ومعرّض لتقلبات السعر العالمي. كثير من المخططين الماليين يوزّعون بين الاتنين بدل الاختيار الكامل.</div>`;
+}
+
+// ─── محفظة ذهبي ───
+let holdings = JSON.parse(store.getItem("gt_holdings") || "[]");
+
+function addHolding() {
+  const grams = parseFloat(document.getElementById("pf-grams").value);
+  const price = parseFloat(document.getElementById("pf-price").value);
+  const karat = document.getElementById("pf-karat").value;
+  if (!grams || !price || grams <= 0 || price <= 0) return;
+  holdings.push({ id: Date.now(), grams, price, karat });
+  store.setItem("gt_holdings", JSON.stringify(holdings));
+  document.getElementById("pf-grams").value = "";
+  document.getElementById("pf-price").value = "";
+  renderPortfolio();
+}
+
+function removeHolding(id) {
+  holdings = holdings.filter(h => h.id !== id);
+  store.setItem("gt_holdings", JSON.stringify(holdings));
+  renderPortfolio();
+}
+
+function renderPortfolio() {
+  const list = document.getElementById("pf-list");
+  const summary = document.getElementById("pf-summary");
+  if (!list) return;
+
+  if (!holdings.length) {
+    list.innerHTML = '<div class="empty" style="padding:16px;">لا توجد مشتريات مسجلة — أضف أول شراء</div>';
+    summary.style.display = "none";
+    return;
+  }
+
+  const p = prices();
+  const nowPrice = { "21": p.k21, "24": p.k24, "18": p.k18 };
+
+  let invested = 0, current = 0;
+  list.innerHTML = holdings.map(h => {
+    const cost = h.grams * h.price;
+    const val  = h.grams * (nowPrice[h.karat] || p.k21);
+    const pl   = val - cost;
+    invested += cost; current += val;
+    return `<div class="alert-item">
+      <span style="font-size:13px;color:var(--gold2);font-weight:700;">ع${h.karat}</span>
+      <span class="alert-label">${h.grams} جرام × ${h.price.toLocaleString("en-US")} ج</span>
+      <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:${pl >= 0 ? 'var(--green)' : 'var(--red)'}">${pl >= 0 ? '+' : ''}${Math.round(pl).toLocaleString("en-US")}</span>
+      <button class="del-btn" onclick="removeHolding(${h.id})">✕</button>
+    </div>`;
+  }).join("");
+
+  const totalPl = current - invested;
+  const plPct = invested > 0 ? (totalPl / invested * 100) : 0;
+  document.getElementById("pf-invested").textContent = Math.round(invested).toLocaleString("en-US") + " ج";
+  document.getElementById("pf-current").textContent  = Math.round(current).toLocaleString("en-US") + " ج";
+  const plEl = document.getElementById("pf-pl");
+  plEl.textContent = (totalPl >= 0 ? "+" : "") + Math.round(totalPl).toLocaleString("en-US") +
+    " ج (" + (plPct >= 0 ? "+" : "") + plPct.toFixed(1) + "%)";
+  plEl.style.color = totalPl >= 0 ? "var(--green)" : "var(--red)";
+  summary.style.display = "block";
+}
+
+function convKarat() {
+  const grams = parseFloat(document.getElementById("conv-grams").value);
+  const from  = document.getElementById("conv-from").value;
+  const box   = document.getElementById("conv-result");
+  if (!grams || grams <= 0) { box.style.display = "none"; return; }
+
+  const purity = { "24": 0.999, "21": 0.875, "18": 0.750 };
+  const pureGold = grams * purity[from];
+
+  box.innerHTML =
+    "الذهب الخالص: <b style='color:var(--gold2)'>" + pureGold.toFixed(2) + " جرام</b><br>" +
+    "يعادل ع24: <b>" + (pureGold / 0.999).toFixed(2) + " جرام</b> · " +
+    "ع21: <b>" + (pureGold / 0.875).toFixed(2) + " جرام</b> · " +
+    "ع18: <b>" + (pureGold / 0.750).toFixed(2) + " جرام</b>";
+  box.style.display = "block";
+}
+
+// ── TABS ──
+function goTab(id) {
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+  document.getElementById("sec-"+id).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+
+// ════════════════════════════════════════════════════
+//  INIT + INTERVALS
+// ════════════════════════════════════════════════════
+async function init() {
+  if ("Notification" in window && Notification.permission === "granted") {
+    state.notifGranted = true;
+    document.getElementById("push-banner").style.display = "none";
+  }
+  const r30 = document.getElementById("ref-ma30"), r90 = document.getElementById("ref-ma90");
+  if (r30) r30.value = state.refs.ma30;
+  if (r90) r90.value = state.refs.ma90;
+
+  // عرض فوري بالقيم الافتراضية
+  updateSourceLabel();
+  renderAll();
+  renderAlerts();
+  renderNotifLog();
+
+  // الدولار أولاً (لأن التقدير والفجوة يعتمدان عليه) ثم الذهب
+  await fetchFx();
+  await fetchGold();
+  state.loaded = true;
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("usd-slider").value = state.usd.toFixed(1);
+  document.getElementById("slider-val").textContent = state.usd.toFixed(1) + " ج";
+  renderAll();
+
+  // السعر المحلي المباشر (في الخلفية)
+  fetchLocal().then(renderAll);
+
+  setInterval(async () => { await fetchGold();  renderAll(); }, 30000);    // الأوقية كل 30 ثانية
+  setInterval(async () => { await fetchLocal(); renderAll(); }, 300000);   // المحلي كل 5 دقائق
+  setInterval(async () => { await fetchFx();    renderAll(); }, 600000);   // العملات كل 10 دقائق
+}
+
+init();
+</script>
+</body>
+</html>

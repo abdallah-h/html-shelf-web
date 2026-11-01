@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل النية — نوايا الأعمال</title>
+<link href="shelf-vendor:/fonts/ac0b1921c4e3.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1208;--gold:#c8922a;--gold-l:#e8b84b;--gold-p:#fdf3dc;
+  --teal:#1d6a72;--teal-l:#2a9aa6;--teal-p:#e8f6f7;--teal-d:#155259;
+  --cream:#faf6ee;--cream-d:#f0e8d5;--border:#ddd0b3;
+  --text:#2d2010;--soft:#6b5a3a;--white:#fff;
+  --shadow:0 4px 24px rgba(26,18,8,.10);--shadow-lg:0 12px 48px rgba(26,18,8,.18);
+  --r:14px;--r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ─ BG ─ */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 70% 50% at 85% 5%,rgba(200,146,42,.07) 0%,transparent 65%),
+             radial-gradient(ellipse 60% 70% at 5% 95%,rgba(29,106,114,.07) 0%,transparent 65%);}
+
+/* ─ TOPBAR ─ */
+header{position:fixed;top:0;right:0;left:0;z-index:100;height:60px;
+  background:rgba(250,246,238,.97);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:14px;padding:0 20px;}
+.logo{font-family:'Amiri',serif;font-size:1.3rem;font-weight:700;color:var(--teal);white-space:nowrap;letter-spacing:.02em}
+.logo span{color:var(--gold)}
+.search-wrap{flex:1;max-width:400px;position:relative}
+.search-wrap input{width:100%;padding:8px 42px 8px 16px;border:1.5px solid var(--border);
+  border-radius:40px;background:var(--white);font-family:'Cairo',sans-serif;
+  font-size:.88rem;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s}
+.search-wrap input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(29,106,114,.1)}
+.search-wrap input::placeholder{color:var(--soft)}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--soft);font-size:.95rem;pointer-events:none}
+.clear-btn{position:absolute;left:36px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--soft);cursor:pointer;font-size:.85rem;display:none}
+.menu-btn{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--teal);padding:4px}
+.header-actions{display:flex;align-items:center;gap:8px;margin-right:auto}
+
+/* ─ PROGRESS ─ */
+.progress-bar{position:fixed;top:60px;right:0;left:0;height:2px;background:var(--gold);
+  z-index:90;transform-origin:right;transform:scaleX(0);transition:transform .1s}
+
+/* ─ LAYOUT ─ */
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:49}
+.sidebar-overlay.open{display:block}
+.app{display:flex;min-height:100vh;padding-top:60px;position:relative;z-index:1}
+
+/* ─ SIDEBAR ─ */
+.sidebar{width:268px;flex-shrink:0;position:fixed;top:60px;right:0;bottom:0;
+  overflow-y:auto;background:var(--white);border-left:1px solid var(--border);
+  padding:12px 0;z-index:50;transition:transform .3s ease}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.sidebar-section-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--soft);padding:14px 18px 6px;opacity:.7}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 18px;cursor:pointer;
+  transition:background .15s,color .15s;font-size:.85rem;color:var(--soft);
+  border-right:3px solid transparent;text-align:right;line-height:1.3}
+.nav-item:hover{background:var(--cream);color:var(--teal)}
+.nav-item.active{background:linear-gradient(90deg,var(--teal-p),rgba(232,246,247,.3));
+  color:var(--teal);border-right-color:var(--teal);font-weight:600}
+.nav-item .ne{font-size:.95rem;flex-shrink:0;width:22px;text-align:center}
+.nav-item .nl{flex:1}
+.nav-item .nc{font-size:.68rem;background:var(--cream-d);color:var(--soft);
+  padding:1px 7px;border-radius:20px;flex-shrink:0;font-weight:600}
+.nav-item.active .nc{background:var(--teal);color:#fff}
+
+/* ─ MAIN ─ */
+main{flex:1;margin-right:268px;padding:28px 36px 80px;min-width:0}
+
+/* ─ HERO ─ */
+.hero{text-align:center;padding:48px 20px 40px;max-width:680px;margin:0 auto 36px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;border-radius:28px;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(200,146,42,.07),transparent)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;
+  letter-spacing:.12em;color:var(--gold);border:1.5px solid var(--gold-l);
+  background:rgba(200,146,42,.08);padding:4px 14px;border-radius:40px;margin-bottom:18px;text-transform:uppercase}
+.hero h1{font-family:'Amiri',serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;
+  color:var(--ink);line-height:1.2;margin-bottom:14px}
+.hero h1 em{color:var(--teal);font-style:normal}
+.hero-hadith{font-family:'Scheherazade New',serif;font-size:1.2rem;color:var(--gold);
+  font-weight:700;border:1px solid rgba(200,146,42,.3);
+  background:linear-gradient(135deg,rgba(253,243,220,.9),rgba(250,246,238,.9));
+  border-radius:var(--r);padding:14px 24px;margin:18px 0 8px;position:relative}
+.hero-hadith::before,.hero-hadith::after{content:'❧';color:var(--gold-l);margin:0 6px;opacity:.6}
+.hero-source{font-size:.78rem;color:var(--soft);font-style:italic}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:24px;flex-wrap:wrap}
+.stat-num{font-family:'Amiri',serif;font-size:2rem;font-weight:700;color:var(--teal);display:block;line-height:1}
+.stat-label{font-size:.78rem;color:var(--soft);margin-top:3px}
+
+/* ─ QUICK ACCESS GRID ─ */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:32px}
+.quick-card{background:var(--white);border:1.5px solid var(--cream-d);border-radius:var(--r-sm);
+  padding:14px 12px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.quick-card::after{content:'';position:absolute;inset:0;background:var(--teal);opacity:0;transition:opacity .2s}
+.quick-card:hover{border-color:var(--teal-l);box-shadow:var(--shadow);transform:translateY(-2px)}
+.quick-card:hover::after{opacity:.04}
+.quick-card-emoji{font-size:1.6rem;display:block;margin-bottom:6px}
+.quick-card-title{font-size:.78rem;font-weight:600;color:var(--text);line-height:1.3}
+.quick-card-count{font-size:.7rem;color:var(--soft);margin-top:3px}
+
+/* ─ PAGES ─ */
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ─ PAGE HEADER ─ */
+.page-header{display:flex;align-items:flex-start;gap:18px;margin-bottom:28px;
+  padding-bottom:20px;border-bottom:2px solid var(--cream-d)}
+.page-emoji-wrap{width:66px;height:66px;flex-shrink:0;border-radius:var(--r);
+  background:linear-gradient(135deg,var(--teal-p),rgba(232,246,247,.5));
+  border:1.5px solid rgba(29,106,114,.15);
+  display:flex;align-items:center;justify-content:center;font-size:2rem}
+.page-title-block h2{font-family:'Amiri',serif;font-size:1.75rem;font-weight:700;color:var(--ink);margin-bottom:5px}
+.page-title-block p{font-size:.87rem;color:var(--soft);line-height:1.7;max-width:520px}
+.page-meta{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
+.page-meta-tag{font-size:.72rem;background:var(--cream-d);color:var(--soft);
+  padding:3px 10px;border-radius:20px;font-weight:600}
+.page-meta-tag.teal{background:var(--teal-p);color:var(--teal)}
+
+/* ─ HADITH CARD ─ */
+.hadith-card{background:linear-gradient(135deg,#fdf6e8,#faf0d5);border:1.5px solid rgba(200,146,42,.3);
+  border-radius:var(--r);padding:18px 24px;margin-bottom:24px;text-align:center;position:relative;overflow:hidden}
+.hadith-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;
+  background:radial-gradient(circle,rgba(200,146,42,.12) 0%,transparent 70%);pointer-events:none}
+.hadith-text{font-family:'Scheherazade New',serif;font-size:1.15rem;font-weight:700;
+  color:var(--gold);line-height:1.9;margin-bottom:6px}
+.hadith-text::before{content:'«'}
+.hadith-text::after{content:'»'}
+.hadith-source{font-size:.75rem;color:var(--soft);font-style:italic}
+
+/* ─ INFO BOX ─ */
+.info-box{background:var(--teal-p);border:1.5px solid rgba(29,106,114,.2);
+  border-radius:var(--r-sm);padding:14px 18px;margin-bottom:20px;
+  font-size:.88rem;line-height:1.8;color:var(--teal)}
+.info-box strong{color:var(--ink)}
+
+/* ─ GROUP ─ */
+.niyyah-group{margin-bottom:28px}
+.group-header{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;padding-bottom:9px;border-bottom:1.5px solid var(--teal-p)}
+.group-title{display:flex;align-items:center;gap:9px;font-size:1rem;font-weight:700;color:var(--teal)}
+.group-count{font-size:.72rem;background:var(--teal-p);color:var(--teal);
+  padding:2px 9px;border-radius:20px;font-weight:600}
+
+/* ─ GRID ─ */
+.niyyah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
+
+/* ─ CARD ─ */
+.niyyah-card{background:var(--white);border:1.5px solid var(--cream-d);border-radius:var(--r-sm);
+  padding:13px 16px 13px 12px;display:flex;align-items:flex-start;gap:11px;
+  cursor:pointer;transition:border-color .2s,box-shadow .18s,transform .15s;
+  position:relative;overflow:hidden;user-select:none}
+.niyyah-card::before{content:'';position:absolute;top:0;right:0;bottom:0;width:3px;
+  background:var(--teal);transform:scaleY(0);transition:transform .2s;transform-origin:bottom}
+.niyyah-card:hover{border-color:var(--teal-l);box-shadow:0 3px 16px rgba(29,106,114,.12);transform:translateY(-1px)}
+.niyyah-card:hover::before{transform:scaleY(1)}
+.niyyah-card.saved{border-color:rgba(200,146,42,.5);background:rgba(253,243,220,.4)}
+.niyyah-card.saved::before{background:var(--gold);transform:scaleY(1)}
+.niyyah-card:active{transform:scale(.98)}
+.card-icon{width:30px;height:30px;flex-shrink:0;border-radius:7px;background:var(--teal-p);
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;
+  color:var(--teal);font-weight:700;margin-top:2px;font-family:'Cairo',sans-serif;transition:background .2s}
+.saved .card-icon{background:rgba(200,146,42,.15);color:var(--gold)}
+.card-text{font-size:.88rem;line-height:1.7;color:var(--text);flex:1}
+.card-star{position:absolute;left:8px;top:8px;font-size:.85rem;opacity:0;
+  transition:opacity .2s;cursor:pointer;color:var(--gold)}
+.niyyah-card:hover .card-star,.niyyah-card.saved .card-star{opacity:1}
+
+/* ─ TOAST ─ */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;padding:9px 20px;border-radius:40px;
+  font-size:.82rem;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:500;
+  display:flex;align-items:center;gap:8px;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ─ SAVED BTN ─ */
+.saved-btn{position:fixed;bottom:24px;left:24px;background:linear-gradient(135deg,var(--gold),#b8801f);
+  color:#fff;border:none;border-radius:40px;padding:11px 20px;font-family:'Cairo',sans-serif;
+  font-size:.87rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(200,146,42,.4);
+  transition:transform .2s,box-shadow .2s;display:flex;align-items:center;gap:8px;z-index:200}
+.saved-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,146,42,.45)}
+.saved-count{background:rgba(255,255,255,.25);border-radius:20px;padding:1px 8px;
+  font-size:.78rem;font-weight:900;min-width:20px;text-align:center}
+
+/* ─ SAVED PANEL ─ */
+.saved-panel{position:fixed;inset:0;z-index:300;display:none}
+.saved-panel.open{display:flex}
+.saved-backdrop{position:absolute;inset:0;background:rgba(26,18,8,.55);backdrop-filter:blur(5px)}
+.saved-drawer{position:absolute;left:0;top:0;bottom:0;width:min(460px,100vw);
+  background:var(--white);padding:0;overflow:hidden;box-shadow:8px 0 40px rgba(0,0,0,.2);
+  animation:slideIn .3s ease;display:flex;flex-direction:column}
+@keyframes slideIn{from{transform:translateX(-100%)}to{transform:none}}
+.drawer-header{padding:22px 24px 16px;border-bottom:1px solid var(--cream-d);flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-p),var(--cream))}
+.drawer-header h3{font-family:'Amiri',serif;font-size:1.35rem;color:var(--ink);
+  display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.drawer-header p{font-size:.8rem;color:var(--soft)}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 20px}
+.drawer-body::-webkit-scrollbar{width:3px}
+.drawer-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.drawer-footer{padding:14px 20px;border-top:1px solid var(--cream-d);flex-shrink:0;display:flex;gap:8px}
+.saved-item{background:var(--gold-p);border:1px solid rgba(200,146,42,.25);
+  border-radius:var(--r-sm);padding:11px 14px;margin-bottom:9px;
+  font-size:.86rem;line-height:1.65;display:flex;align-items:flex-start;gap:9px}
+.saved-item-icon{color:var(--gold);flex-shrink:0;margin-top:2px;font-size:.9rem}
+.saved-item-text{flex:1;color:var(--text)}
+.saved-remove{cursor:pointer;color:#c0392b;font-size:.85rem;opacity:.5;
+  flex-shrink:0;transition:opacity .15s;padding:2px 4px}
+.saved-remove:hover{opacity:1}
+.saved-empty{text-align:center;padding:48px 20px;color:var(--soft)}
+.saved-empty-icon{font-size:2.5rem;margin-bottom:10px;display:block}
+.print-btn{flex:1;padding:11px;background:var(--teal);color:#fff;border:none;
+  border-radius:var(--r-sm);font-family:'Cairo',sans-serif;font-size:.87rem;
+  font-weight:700;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.print-btn:hover{background:var(--teal-l)}
+.clear-all-btn{padding:11px 16px;background:none;border:1.5px solid #e74c3c;color:#e74c3c;
+  border-radius:var(--r-sm);font-family:'Cairo',sans-serif;font-size:.85rem;
+  font-weight:600;cursor:pointer;transition:all .2s}
+.clear-all-btn:hover{background:#e74c3c;color:#fff}
+
+/* ─ SEARCH RESULTS ─ */
+.search-results{display:none}
+.search-results.active{display:block}
+.search-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.search-header h2{font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink)}
+.search-count{font-size:.8rem;color:var(--soft);background:var(--cream-d);
+  padding:3px 12px;border-radius:20px;font-weight:600}
+.search-result-item{background:var(--white);border:1.5px solid var(--cream-d);
+  border-radius:var(--r-sm);padding:13px 16px;margin-bottom:9px;cursor:pointer;
+  transition:border-color .2s,box-shadow .2s;display:flex;align-items:flex-start;gap:12px}
+.search-result-item:hover{border-color:var(--teal);box-shadow:var(--shadow)}
+.search-result-left{width:32px;height:32px;flex-shrink:0;background:var(--teal-p);
+  border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.search-result-body{flex:1}
+.search-result-cat{font-size:.72rem;color:var(--soft);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.search-result-text{font-size:.88rem;line-height:1.65;color:var(--text)}
+mark{background:rgba(200,146,42,.25);color:inherit;border-radius:3px;padding:0 2px}
+.search-no-results{text-align:center;padding:60px 20px;color:var(--soft)}
+
+/* ─ TABLE ─ */
+.data-table{width:100%;border-collapse:collapse;margin-bottom:22px;font-size:.86rem;border-radius:var(--r-sm);overflow:hidden}
+.data-table th{background:var(--teal);color:#fff;padding:10px 14px;text-align:right;font-weight:600}
+.data-table td{padding:9px 14px;border-bottom:1px solid var(--cream-d);text-align:right;vertical-align:top;line-height:1.6}
+.data-table tr:nth-child(even) td{background:var(--cream)}
+.data-table tr:hover td{background:var(--teal-p)}
+
+/* ─ SCROLL TOP ─ */
+.scroll-top{position:fixed;bottom:24px;right:24px;width:42px;height:42px;
+  background:var(--teal);color:#fff;border:none;border-radius:50%;font-size:1rem;
+  cursor:pointer;box-shadow:var(--shadow);transition:opacity .3s,transform .2s;
+  opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;z-index:100}
+.scroll-top.visible{opacity:1;pointer-events:auto}
+.scroll-top:hover{transform:translateY(-2px)}
+
+/* ─ RESPONSIVE ─ */
+@media(max-width:900px){
+  .sidebar{transform:translateX(100%);box-shadow:var(--shadow-lg)}
+  .sidebar.open{transform:none}
+  main{margin-right:0;padding:20px 16px 80px}
+  .menu-btn{display:block}
+  .niyyah-grid{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .progress-bar{right:0}
+}
+@media(max-width:600px){
+  .hero h1{font-size:1.9rem}
+  .hero-stats{gap:18px}
+  .page-header{flex-direction:column}
+  .header-actions{gap:5px}
+}
+
+/* ─ DARK MODE ─ */
+[data-theme="dark"] {
+  --ink:#f0e8d5;--gold:#e8b84b;--gold-l:#c8922a;--gold-p:rgba(200,146,42,.12);
+  --teal:#4db8c2;--teal-l:#2a9aa6;--teal-p:rgba(29,106,114,.2);--teal-d:#1d6a72;
+  --cream:#1a1612;--cream-d:#242018;--border:#3a3020;
+  --text:#e8dcc8;--soft:#9a8a6a;--white:#201c16;
+  --shadow:0 4px 24px rgba(0,0,0,.35);--shadow-lg:0 12px 48px rgba(0,0,0,.5);
+}
+[data-theme="dark"] body::before{
+  background:radial-gradient(ellipse 70% 50% at 85% 5%,rgba(200,146,42,.05) 0%,transparent 65%),
+             radial-gradient(ellipse 60% 70% at 5% 95%,rgba(29,106,114,.05) 0%,transparent 65%);
+}
+[data-theme="dark"] header{background:rgba(26,22,18,.97)}
+[data-theme="dark"] .hadith-card{background:linear-gradient(135deg,#2a2318,#221f15)}
+[data-theme="dark"] .data-table th{background:#155259}
+[data-theme="dark"] .data-table tr:nth-child(even) td{background:#1e1a14}
+[data-theme="dark"] .search-wrap input{background:#2a2318;border-color:#3a3020}
+[data-theme="dark"] .quick-card{background:#201c16}
+[data-theme="dark"] .niyyah-card{background:#201c16}
+[data-theme="dark"] .niyyah-card.saved{background:rgba(200,146,42,.1)}
+[data-theme="dark"] .sidebar{background:#1a1612}
+[data-theme="dark"] .saved-drawer{background:#1a1612}
+[data-theme="dark"] .drawer-header{background:linear-gradient(135deg,#2a2318,#1a1612)}
+[data-theme="dark"] .saved-item{background:rgba(200,146,42,.1);border-color:rgba(200,146,42,.2)}
+[data-theme="dark"] .info-box{background:rgba(29,106,114,.15)}
+[data-theme="dark"] .page-emoji-wrap{background:rgba(29,106,114,.2)}
+[data-theme="dark"] .hero-hadith{background:linear-gradient(135deg,rgba(42,35,24,.9),rgba(26,22,18,.9))}
+[data-theme="dark"] .print-overlay-inner{background:#1a1612;color:#e8dcc8}
+
+/* ─ FILTER TAGS ─ */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--cream-d)}
+.filter-tag{padding:5px 14px;border-radius:40px;border:1.5px solid var(--border);
+  background:var(--white);color:var(--soft);font-size:.78rem;font-weight:600;
+  cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-tag:hover{border-color:var(--teal);color:var(--teal)}
+.filter-tag.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.filter-tag.gold.active{background:var(--gold);border-color:var(--gold);color:#fff}
+[data-theme="dark"] .filter-tag{background:var(--white);border-color:var(--border)}
+
+/* ─ SHARE BTN ─ */
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;
+  border:1.5px solid var(--border);border-radius:40px;background:var(--white);
+  color:var(--soft);font-size:.78rem;font-weight:600;cursor:pointer;
+  transition:all .2s;font-family:'Cairo',sans-serif}
+.share-btn:hover{border-color:var(--teal-l);color:var(--teal)}
+
+/* ─ DARK TOGGLE ─ */
+.theme-toggle{background:none;border:1.5px solid var(--border);border-radius:40px;
+  padding:5px 12px;cursor:pointer;font-size:.85rem;color:var(--soft);
+  transition:all .2s;font-family:'Cairo',sans-serif;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ─ PRINT OVERLAY ─ */
+#printOverlay{position:fixed;inset:0;z-index:9999;background:var(--white);overflow-y:auto;
+  font-family:'Cairo',sans-serif;direction:rtl;padding:0;}
+.print-overlay-inner{max-width:600px;margin:0 auto;padding:32px 24px 60px}
+
+@media print{
+  header,.sidebar,.saved-btn,.saved-panel,.scroll-top{display:none!important}
+  main{margin:0;padding:20px}
+  .niyyah-card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<header>
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="logo">دليل <span>النية</span></div>
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="ابحث عن نية..." oninput="handleSearch(this.value)">
+    <span class="search-icon">🔍</span>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="الوضع الليلى">🌙</button>
+</header>
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">الأبواب</div>
+  <div id="navItems"></div>
+</nav>
+<div class="app">
+  <main id="mainContent">
+    <div class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-badge">✦ الدليل الشامل الكامل ✦</div>
+        <h1>النية فى <em>الإسلام</em></h1>
+        <div class="hero-hadith">إنما الأعمال بالنيات وإنما لكل امرئ ما نوى</div>
+        <div class="hero-source">حديث عمر بن الخطاب رضى الله عنه — متفق عليه</div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num" id="totalSections">٠</span><div class="stat-label">باباً</div></div>
+          <div class="stat"><span class="stat-num" id="totalNiyyat">٠</span><div class="stat-label">نية شرعية</div></div>
+          <div class="stat"><span class="stat-num" id="savedCount2">٠</span><div class="stat-label">نياتى المحفوظة</div></div>
+        </div>
+      </div>
+      <div class="info-box">
+        <strong>كيف تستخدم هذا الدليل؟</strong><br>
+        تصفّح الأبواب من القائمة الجانبية أو استخدم البحث. اضغط على أى نية ⭐ لحفظها — يمكنك مراجعة نياتك المحفوظة وطباعتها.
+      </div>
+      <div class="filter-bar" id="filterBar">
+  <span style="font-size:.78rem;font-weight:700;color:var(--soft);align-self:center;">تصفية:</span>
+  <span class="filter-tag active" onclick="filterSections('all',this)">الكل</span>
+  <span class="filter-tag" onclick="filterSections('ibadaat',this)">🕌 عبادات</span>
+  <span class="filter-tag" onclick="filterSections('daily',this)">☀️ يومى</span>
+  <span class="filter-tag" onclick="filterSections('family',this)">👨‍👩‍👧 أسرة</span>
+  <span class="filter-tag" onclick="filterSections('akhlaq',this)">🌺 أخلاق</span>
+  <span class="filter-tag gold" onclick="filterSections('saved_only',this)">⭐ محفوظة</span>
+</div>
+<div class="quick-grid" id="quickGrid"></div>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-header">
+        <h2>نتائج البحث</h2>
+        <span class="search-count" id="searchCount"></span>
+      </div>
+      <div id="searchResultsList"></div>
+    </div>
+    <div id="dynamicPages"></div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<button class="saved-btn" onclick="openSaved()">
+  ⭐ نياتى <span class="saved-count" id="savedCount">٠</span>
+</button>
+<div class="saved-panel" id="savedPanel">
+  <div class="saved-backdrop" onclick="closeSaved()"></div>
+  <div class="saved-drawer">
+    <div class="drawer-header">
+      <h3>⭐ نياتى المحفوظة</h3>
+      <p id="savedSubtitle">اضغط على نية لحفظها</p>
+      <button class="share-btn" onclick="shareSaved()" style="margin-top:8px">📤 مشاركة النيات</button>
+    </div>
+    <div class="drawer-body" id="savedList"></div>
+    <div class="drawer-footer">
+      <button class="print-btn" onclick="printSaved()">🖨️ طباعة</button>
+      <button class="clear-all-btn" onclick="clearAll()">🗑️ مسح الكل</button>
+    </div>
+  </div>
+</div>
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</button>
+<script>
+
+const DATA = [
+  {
+    id: 'ibadaat', emoji: '🕌', title: 'العبادات الكبرى',
+    desc: 'نوايا الصلاة والقرآن والصيام والزكاة والحج والذكر',
+    groups: [
+      { title: 'الصلاة', emoji: '🕌', items: [
+        'أصلى لله وحده مخلصاً له الدين لا أُرائى ولا أُسمع أحداً',
+        'أطيع أمر الله امتثالاً لقوله: ﴿وأقيموا الصلاة وآتوا الزكاة﴾',
+        'أتقرب إلى الله بهذه الصلاة راجياً قبولها وغفران ذنوبى',
+        'أجاهد نفسى على الخشوع والحضور مع الله فى كل ركعة',
+        'أحافظ على الصلاة فى وقتها حفاظاً على عهدى مع الله',
+        'أنوى بالصلاة تكفير الذنوب الصغيرة بين الصلوات',
+        'أنوى الاقتداء بالنبى ﷺ فى كل حركة وسكنة وقراءة',
+        'أنوى بسنن الصلاة بناء بيت فى الجنة',
+        'أنوى بصلاة الضحى شكراً لله على نعمة اليوم الجديد',
+        'أنوى التهجد والمناجاة فى الثلث الأخير من الليل',
+        'أنوى أن تكون صلاتى رادعةً لى عن الفحشاء والمنكر',
+        'أنوى حسن الوضوء لأنال ثواب المتطهرين',
+        'أنوى انتظار الصلاة بعد الصلاة لأنال أجر المرابطين',
+        'أنوى السير إلى المسجد لتُكتب لى بكل خطوة حسنة',
+      ]},
+      { title: 'قراءة القرآن الكريم', emoji: '📖', items: [
+        'أقرأ القرآن ابتغاء مرضاة الله وطلب الأجر والثواب',
+        'أتلو القرآن شفاءً لقلبى ونوراً فى حياتى وقبرى',
+        'أنوى بالقرآن أن يشفع لى يوم القيامة',
+        'أداوم على ورد يومى من القرآن حفظاً لعهدى مع الله',
+        'أتدبر الآيات وأتفكر فى معانيها لا مجرد التلاوة',
+        'أتعلم أحكام التجويد لأتلو القرآن حق تلاوته',
+        'أنوى حفظ ما تيسر من القرآن ليكون نوراً فى صدرى',
+        'أنوى تعليم أولادى القرآن ليكونوا من أهله',
+        'أنوى بالختمة أن تكون رحمةً لوالدىّ ولى',
+        'أنوى الإنصات للقرآن عند سماعه رحمةً ورجاءً',
+      ]},
+      { title: 'الذكر والدعاء والاستغفار', emoji: '📿', items: [
+        'أذكر الله ليطمئن قلبى ويزداد إيمانى ويقينى',
+        'أنوى بأذكار الصباح تحصين يومى وأهلى من كل شر',
+        'أنوى بأذكار المساء ختم يومى على طاعة الله',
+        'أنوى بالاستغفار محو الذنوب وتفريج الكروب وسعة الرزق',
+        'أدعو الله لنفسى ولوالدىّ ولأهلى ولعامة المسلمين',
+        'أنوى بالصلاة على النبى ﷺ التقرب إلى الله ونيل شفاعته',
+        'أنوى أن يكون لسانى رطباً بذكر الله فى كل حال',
+        'أنوى قول بسم الله فى كل عمل حتى يُبارك الله فيه',
+        'أنوى الدعاء للغائبين دون علمهم إخلاصاً تاماً',
+      ]},
+      { title: 'الصيام', emoji: '🌙', items: [
+        'أصوم فريضة رمضان إيماناً واحتساباً لغفران ذنوبى',
+        'أنوى بصيام رمضان دخول الجنة من باب الريان',
+        'أصوم الاثنين والخميس اتباعاً لسنة النبى ﷺ',
+        'أصوم ثلاثة أيام البيض كل شهر كصائم الدهر',
+        'أصوم ستاً من شوال لأنال أجر صيام العام',
+        'أصوم يوم عرفة لتكفير ذنوب سنتين',
+        'أصوم يوم عاشوراء لتكفير ذنوب السنة',
+        'أنوى بالصيام تزكية نفسى وكسر الشهوات',
+        'أنوى إطعام الصائمين وتفطيرهم لأنال مثل أجرهم',
+        'أنوى حفظ لسانى وجوارحى عن المعاصى فى الصيام',
+      ]},
+      { title: 'الزكاة والصدقة والإنفاق', emoji: '💰', items: [
+        'أُخرج الزكاة طاعةً لله وتطهيراً لمالى ونفسى',
+        'أتصدق سراً لأحفظ نيتى من الرياء',
+        'أنوى بصدقتى دفع البلاء وشفاء المريض',
+        'أنوى الصدقة الجارية التى تنفعنى بعد موتى',
+        'أنوى بإطعام الجار والضيف نشر محبة الإسلام',
+        'أنوى أن تكون كل كلمة طيبة صدقةً عن نفسى',
+        'أنوى الإنفاق على أهلى محتسباً فريضةً وصدقة',
+        'أنوى التصدق بما أحب لا بما أكره امتثالاً للآية',
+      ]},
+      { title: 'الحج والعمرة', emoji: '🕋', items: [
+        'أنوى الحج أداءً للفريضة وامتثالاً لأمر الله',
+        'أنوى بالعمرة تكفير ما بينها وبين العمرة السابقة',
+        'أنوى أن أعود من الحج نقياً كيوم ولدتنى أمى',
+        'أنوى بالحج التعرف على إخوانى المسلمين من العالم',
+        'أنوى بزيارة المسجد النبوى الصلاة على النبى ﷺ',
+        'أنوى بالطواف والسعى ذكر الله وخشوع القلب',
+        'أنوى بالدعاء فى المواطن المشرفة أن يُستجاب',
+      ]},
+      { title: 'المسجد والجماعة والاعتكاف', emoji: '🕌', items: [
+        'أذهب للمسجد لصلاة الجماعة طلباً للأجر المضاعف بسبع وعشرين درجة',
+        'أنوى عمارة بيت الله بحضورى وذكرى وتلاوتى',
+        'أتعلم فى حلقات العلم بالمسجد طلباً للفقه فى الدين',
+        'أنوى الاعتكاف تفريغاً لقلبى لله وقطعاً للشواغل',
+        'أنوى تنظيف المسجد وترتيبه إجلالاً لبيوت الله',
+        'أنوى إحياء سنة تحية المسجد بركعتين قبل الجلوس',
+      ]},
+    ]
+  },
+  {
+    id: 'daily', emoji: '☀️', title: 'الأعمال اليومية',
+    desc: 'من الصحو حتى النوم — كل يوم يمكن أن يكون عبادة',
+    groups: [
+      { title: 'بداية اليوم والصحو', emoji: '☀️', items: [
+        'أنوى أن يكون يومى كله لله طاعةً وخدمةً وعبادةً',
+        'أنوى أن أُدخل السرور على كل من أقابله اليوم',
+        'أنوى أن أُجاهد نفسى عن كل معصية فى هذا اليوم',
+        'أنوى أن أكون اليوم أفضل مما كنت بالأمس',
+        'أنوى بالتبكير بعد الفجر طلباً لبركة الصباح',
+        'أنوى إدخال فائدة دينية أو نافعة لمن حولى اليوم',
+        'أنوى أن يكون آخر يومى مع الله لا مع الشواغل',
+      ]},
+      { title: 'الطهارة والوضوء والغسل', emoji: '💧', items: [
+        'أتوضأ طهارةً لله وتقرباً إليه لا مجرد عادة',
+        'أنوى بإسباغ الوضوء تكفير الخطايا من الجوارح',
+        'أنوى المحافظة على الوضوء طوال اليوم ما أمكن',
+        'أنوى بالغسل الواجب الطهارة الكاملة وامتثال أمر الله',
+        'أنوى بنظافة جسدى إكراماً للملائكة الكاتبين',
+        'أنوى بالتسوك اتباعاً للسنة ومرضاةً للرب',
+        'أنوى الاستحضار عند الوضوء لتشهد لى أعضاؤى',
+      ]},
+      { title: 'الأكل والشرب والضيافة', emoji: '🍽️', items: [
+        'آكل لأتقوى على طاعة الله لا لمجرد الشهوة',
+        'أنوى شكر الله على نعمة الطعام والشراب الحلال',
+        'أنوى عدم الإسراف فى الطعام طاعةً لنهى الله',
+        'أشارك أهلى وضيفى الطعام ابتغاء الكرم والضيافة',
+        'أنوى البسملة أول الأكل والحمدلة آخره',
+        'أنوى إطعام الجائع والمحتاج محتسباً أجره',
+        'أنوى عدم العيب فى الطعام اقتداءً بالنبى ﷺ',
+      ]},
+      { title: 'النوم والراحة والقيلولة', emoji: '🌙', items: [
+        'أنام لأريح جسدى كى أقوم على طاعة الله',
+        'أنوى القيام لصلاة الفجر فى وقتها',
+        'أنوى بنومى على طهارة أن يتوفانى الله عليها',
+        'أنوى قراءة أذكار النوم اقتداءً بالنبى ﷺ',
+        'أنوى النوم باكراً لأستيقظ لصلاة الفجر نشيطاً',
+        'أنوى النوم على الشق الأيمن كما علّمنا النبى ﷺ',
+        'أنوى بالقيلولة اتباع السنة وتجديد النشاط',
+      ]},
+      { title: 'محاسبة النفس فى المساء', emoji: '🌆', items: [
+        'أنوى محاسبة نفسى على ما فات من اليوم قبل النوم',
+        'أنوى الاستغفار عن كل ذنب وقعت فيه اليوم',
+        'أنوى شكر الله على كل نعمة أنعم بها اليوم',
+        'أنوى تجديد العهد مع الله على الطاعة فى الغد',
+        'أنوى كتابة نعم الله علىّ اليوم لأزداد شكراً',
+        'أنوى أن يكون آخر كلامى كل ليلة ذكراً لله',
+      ]},
+    ]
+  },
+  {
+    id: 'family', emoji: '👨‍👩‍👧', title: 'الأسرة والعلاقات',
+    desc: 'الزوجية والأبناء وبر الوالدين وصلة الرحم والجيران',
+    groups: [
+      { title: 'الزواج والحياة الزوجية', emoji: '💑', items: [
+        'أُحسن معاملة زوجتى امتثالاً: خيركم خيركم لأهله',
+        'أنوى بالاهتمام بزوجتى وأولادى أداءً للأمانة',
+        'أنوى بإدخال السرور على أهلى عبادةً لا مجاملة',
+        'أنوى حفظ أسرار أهلى وعدم نشرها بين الناس',
+        'أنوى إكرام ضيف أهلى كإكرامى أنا ضيفاً',
+        'أنوى أن يكون بيتى بيتاً يُذكر فيه الله',
+        'أنوى الصبر على أهلى طلب ما عند الله من الثواب',
+        'أنوى العفو عن زلات أهلى ما يُعفى الله به عنى',
+      ]},
+      { title: 'الجماع الحلال بين الزوجين', emoji: '💞', items: [
+        'أنوى إعفاف نفسى وزوجتى وصون كلينا عن الحرام فيكون جماعى صدقةً وعبادةً',
+        'أنوى طلب الذرية الصالحة التى تعبد الله وتدعو لى بعد موتى',
+        'أنوى إدخال السرور والبهجة على زوجتى فحقها واجب وإسعادها طاعة',
+        'أنوى أداء حق الزوجية الذى أوجبه الله علىّ',
+        'أنوى بالجماع الحلال سد باب المعصية على نفسى وزوجتى',
+        'أنوى تكثير أمة النبى ﷺ',
+        'أنوى تعميق الألفة والمودة بين الزوجين',
+        'أنوى الاستعانة على العبادة بصفاء القلب بعده',
+        'أقرأ الدعاء المأثور: بسم الله، اللهم جنّبنا الشيطان وجنّب الشيطان ما رزقتنا',
+      ]},
+      { title: 'تربية الأبناء', emoji: '👶', items: [
+        'أنوى تربية أولادى على دين الله وحسن الأخلاق',
+        'أنوى إعداد جيل صالح يخدم دينه وأمته',
+        'أنوى تعليم أولادى القرآن فيكون صدقتى الجارية',
+        'أنوى باللعب مع أولادى بناء علاقة متينة',
+        'أنوى أن أكون قدوةً لأولادى لا واعظاً فقط',
+        'أنوى الدعاء لأولادى بالصلاح فى كل صلاة',
+      ]},
+      { title: 'بر الوالدين وصلة الرحم', emoji: '🤲', items: [
+        'أبر والدىّ طلباً لرضا الله ورضاهما وجنته',
+        'أخدم والدىّ بيدى ومالى ووقتى احتساباً للأجر',
+        'أصل رحمى طلباً للبركة فى العمر والرزق',
+        'أزور أقاربى رغم المشقة لأن الواصل من يصل حين تُقطع',
+        'أنوى الدعاء لوالدىّ الأحياء والأموات فى كل صلاة',
+        'أُكرم صديق والدى وجيرانه بعد موتهم إحياءً لبرهما',
+        'أنوى التواضع للوالدين والاستئذان منهما',
+      ]},
+      { title: 'معاملة الجيران والناس', emoji: '🤝', items: [
+        'أنوى بحسن الخلق أن أُدرك درجة الصائم القائم كما وعد النبى ﷺ',
+        'أنوى السلام على الناس إحياءً للسنة ونشراً للمحبة',
+        'أغفر وأعفو عمن أخطأ فى حقى ابتغاء عفو الله',
+        'أنوى بالابتسامة فى وجه أخى صدقةً وسنةً',
+        'أنوى إزالة الأذى عن الطريق صدقةً',
+        'أنوى عيادة المريض وتعزية المصاب وتهنئة الفرحان',
+        'أنوى الإصلاح بين المتخاصمين بالعدل والحكمة',
+      ]},
+    ]
+  },
+  {
+    id: 'work', emoji: '💼', title: 'العمل والتعلم',
+    desc: 'الوظيفة والمهنة والدراسة وطلب العلم والإنتاج',
+    groups: [
+      { title: 'العمل والوظيفة والمهنة', emoji: '💼', items: [
+        'أعمل لأكفل نفسى وأهلى فريضة النفقة الواجبة',
+        'أعمل لأستغنى عن الناس وأصون كرامتى',
+        'أُؤدى عملى بأمانة وإتقان فالله يحب المتقن',
+        'أنوى عدم الإضرار بأحد فى عملى',
+        'أنوى نشر الأخلاق الإسلامية بين زملائى بالقدوة',
+        'أنوى أن يكون عملى خدمةً للناس لا مجرد المال',
+        'أنوى التطوير المستمر لأكون الأكفأ والأنفع',
+        'أنوى أن يكون رزقى مصدر خير لأهلى',
+      ]},
+      { title: 'المذاكرة وطلب العلم', emoji: '📚', items: [
+        'أطلب العلم لأعمل به لا للشهرة أو التباهى',
+        'أتعلم لأنفع نفسى وأهلى والمسلمين من حولى',
+        'أنوى بعلمى إعلاء كلمة الله والدفاع عن دينى',
+        'أتعلم لأستغنى عن الناس وأتحمل المسؤولية',
+        'أنوى تعليم غيرى مما تعلمت فالدال على الخير كفاعله',
+        'أنوى بالنجاح إدخال السرور على قلوب والدىّ',
+        'أنوى بحفظ العلم كتابةً أن يبقى أثرى بعد موتى',
+      ]},
+      { title: 'نوايا المعلم والمدرب', emoji: '🎓', items: [
+        'أُعلّم لوجه الله لأن من دل على خير فله مثل أجر فاعله',
+        'أنوى بتعليمى صدقةً جاريةً تنفعنى بعد موتى',
+        'أنوى تربية أجيال تنفع أمتها وتخدم دينها',
+        'أنوى الصبر على المتعلمين كما صبر علىّ أساتذتى',
+        'أنوى إرشاد طلابى للأخلاق لا العلم وحده',
+        'أنوى الدعاء لكل طالب بالتوفيق والنجاح',
+        'أنوى ألا أُهين طالباً أمام زملائه مهما كان تقصيره',
+      ]},
+      { title: 'التجارة والمعاملات المالية', emoji: '🤝', items: [
+        'أتاجر لأنال رزقاً حلالاً وأنفق منه فى الخير',
+        'أنوى الصدق فى البيع والشراء وعدم الغش',
+        'أنوى الوفاء بالعقود والاتفاقيات',
+        'أنوى التيسير على المشترى ومن فى عسرة',
+        'أنوى إعطاء العامل أجره قبل أن يجف عرقه',
+        'أنوى تجنب الربا والمعاملات المحرمة',
+      ]},
+    ]
+  },
+  {
+    id: 'health', emoji: '🏥', title: 'الصحة والجسم',
+    desc: 'الرياضة والتداوى والنظافة والعناية بالجسم',
+    groups: [
+      { title: 'الرياضة والنشاط البدنى', emoji: '🏃', items: [
+        'أمارس الرياضة حفاظاً على صحة جسدى الذى هو أمانة من الله',
+        'أتقوى بالرياضة على العبادة والصوم والحج',
+        'أنوى أن تكون صحتى عوناً فى خدمة دينى وأهلى',
+        'أتعلم الرمى والسباحة والرياضة النافعة لحث النبى ﷺ على القوة والرمى',
+        'أنوى ضبط وقت الرياضة ألا أُسرف على حساب العبادة',
+        'أنوى بقوتى البدنية أن أكون سداً فى وجه الباطل',
+      ]},
+      { title: 'الصحة والتداوى والعلاج', emoji: '🏥', items: [
+        'أتداوى لأن الله ما أنزل داءً إلا أنزل له دواءً',
+        'أنوى بعلاج مرضى الرجوع للطاعة والعبادة بنشاط',
+        'أنوى احتساب المرض كفارةً لذنوبى وتطهيراً لى',
+        'أنوى الصبر على المرض طلباً لدرجة الصابرين',
+        'أنوى عيادة المرضى ابتغاء وجه الله',
+        'أنوى الامتناع عن كل ما يضر صحتى طاعةً لله',
+      ]},
+      { title: 'نوايا الطبيب والممرض', emoji: '👨‍⚕️', items: [
+        'أُعالج المرضى قربةً لله — من أحيا نفساً فكأنما أحيا الناس جميعاً',
+        'أنوى بعلمى الطبى خدمة خلق الله',
+        'أنوى معاملة كل مريض بالرحمة والكرامة',
+        'أنوى الأمانة والدقة فى عملى لأن الطب أمانة',
+        'أنوى الدعاء لكل مريض بالشفاء',
+        'أنوى ألا أُفرّق فى العلاج بين غنى وفقير',
+      ]},
+      { title: 'النظافة الشخصية والمظهر', emoji: '🪥', items: [
+        'أعتنى بنظافتى لأن الطهور شطر الإيمان والله جميل يحب الجمال',
+        'أنوى بلبس الثياب النظيفة احتراماً لنعمة الله',
+        'أنوى التعطر اتباعاً لسنة النبى ﷺ',
+        'أنوى قص الأظافر وإزالة الشعر إحياءً لسنن الفطرة',
+        'أنوى بنظافة بيتى تعظيماً للنعم',
+      ]},
+    ]
+  },
+  {
+    id: 'tazkiya', emoji: '🌿', title: 'تزكية النفس',
+    desc: 'التوبة والاستغفار والزهد والأخلاق العالية',
+    groups: [
+      { title: 'التوبة والرجوع إلى الله', emoji: '🌿', items: [
+        'أتوب إلى الله توبةً نصوحاً خالصةً لا أعود بعدها للذنب',
+        'أنوى الندم الصادق على كل معصية مضت',
+        'أنوى الإقلاع الفورى عن الذنب ولا أؤجل التوبة',
+        'أنوى استغلال حياتى قبل مماتى فالتوبة تُغلق بالموت',
+        'أنوى رد المظالم إلى أصحابها لتكتمل توبتى',
+        'أنوى الإكثار من الاستغفار لتكفير ما لم أتذكره',
+        'أنوى ألا أيأس من رحمة الله مهما عظمت ذنوبى',
+      ]},
+      { title: 'مجاهدة النفس والهوى', emoji: '⚔️', items: [
+        'أجاهد نفسى على الطاعة فالمجاهد من جاهد نفسه فى طاعة الله',
+        'أنوى مخالفة هوى نفسى فيما يُغضب الله',
+        'أنوى ترك الشبهات خوفاً من الوقوع فى المحرمات',
+        'أنوى محاسبة نفسى يومياً قبل أن تُحاسَب',
+        'أنوى كسر شهوة النفس بالصيام والذكر والعبادة',
+      ]},
+      { title: 'الزهد والقناعة والورع', emoji: '💎', items: [
+        'أزهد فى الدنيا فمن كانت الآخرة همّه جعل الله غناه فى قلبه',
+        'أنوى القناعة بما رزقنى الله طلباً للغنى الحقيقى',
+        'أنوى الورع عن الشبهات فمن اتقى الشبهات استبرأ لدينه وعرضه',
+        'أنوى عدم الحسد على ما أعطى الله الناس',
+        'أنوى الاكتفاء بالكفاف لأن الدنيا متاع الغرور',
+      ]},
+      { title: 'التواضع وترك الكبر', emoji: '🌺', items: [
+        'أتواضع لله فيرفعنى ولا أتكبر فيضعنى',
+        'أنوى الجلوس مع الفقراء والمساكين',
+        'أنوى ترك التفاخر بالنسب أو المال أو العلم',
+        'أنوى أن يكون خمولى فى الدنيا سبباً فى رفعى عند الله',
+        'أنوى احتمال الإهانة بصبر واحتساب',
+      ]},
+      { title: 'الصبر والشكر والتوكل', emoji: '🌸', items: [
+        'أصبر على البلاء صبراً جميلاً لأن الله مع الصابرين',
+        'أشكر الله فى السراء والضراء لقوله تعالى: لئن شكرتم لأزيدنكم',
+        'أنوى عدّ نعم الله علىّ يومياً لأزداد شكراً',
+        'أتوكل على الله بعد الأخذ بالأسباب',
+        'أنوى ترك الشكوى إلى الناس والإكثار من الشكوى لله',
+      ]},
+    ]
+  },
+  {
+    id: 'night', emoji: '🌙', title: 'قيام الليل والنوافل',
+    desc: 'التهجد والسنن الرواتب والاستخارة والعشر الأخيرة',
+    groups: [
+      { title: 'قيام الليل والتهجد', emoji: '🌙', items: [
+        'أقوم الليل فهو دأب الصالحين قبلنا وقربة إلى الله',
+        'أنوى بقيامى فى الثلث الأخير إجابةً لنداء الله',
+        'أنوى التهجد لأكون مع عباد الرحمن الذين يبيتون سجداً وقياماً',
+        'أنوى الدعاء لنفسى وأهلى والمسلمين فى وقت الإجابة',
+        'أنوى الوتر ختماً لصلاة الليل اقتداءً بالنبى ﷺ',
+        'أنوى إيقاظ أهلى للقيام إحياءً للسنة وتشريكاً فى الأجر',
+      ]},
+      { title: 'السنن الرواتب والنوافل', emoji: '✨', items: [
+        'أحافظ على سنة الفجر لأنها خير من الدنيا وما فيها',
+        'أنوى بالسنن الرواتب بناء بيت فى الجنة',
+        'أنوى صلاة الضحى شكراً على صدقة كل مفصل',
+        'أنوى بالنوافل سد ثغرات الفرائض يوم القيامة',
+        'أنوى صلاة الاستخارة عند كل أمر أتردد فيه',
+        'أنوى صلاة الحاجة والتوبة والشكر لله',
+      ]},
+      { title: 'الاستخارة والتوكل', emoji: '🤲', items: [
+        'أستخير الله فى كل أمر أتردد فيه تسليماً لعلمه المحيط',
+        'أنوى بعد الاستخارة الرضا بما يُقدّره الله لى',
+        'أتوكل على الله حق التوكل مع الأخذ بالأسباب',
+        'أنوى حسن الظن بالله فيما يختاره لى وإن بدا مراً',
+        'أنوى أن أستخير قبل الزواج والسفر والعمل وكل أمر ذى بال',
+        'أنوى ألا أستعجل ظهور نتيجة الاستخارة بل أمضى وأتوكل',
+      ]},
+      { title: 'العشر الأخيرة وليلة القدر', emoji: '🌟', items: [
+        'أنوى الاجتهاد فى العشر الأخيرة كما اجتهد النبى ﷺ',
+        'أنوى الاعتكاف تفرغاً كاملاً لله',
+        'أنوى إحياء كل ليلة من العشر رجاءً لليلة القدر',
+        'أنوى بليلة القدر ما هو خير من عبادة ألف شهر',
+        'أنوى دعاء: اللهم إنك عفو تحب العفو فاعف عنى',
+        'أنوى إيقاظ أهلى للقيام فى العشر',
+        'أنوى الإكثار من الصدقة لمضاعفة ثوابها',
+      ]},
+    ]
+  },
+  {
+    id: 'woman', emoji: '🧕', title: 'نوايا المرأة المسلمة',
+    desc: 'الحجاب والعفة والحمل والولادة وتدبير البيت',
+    groups: [
+      { title: 'الحجاب والعفة والحياء', emoji: '🧕', items: [
+        'أتحجب طاعةً لله لا خوفاً من أحد ولا عادةً',
+        'أنوى بحجابى الفخر بهويتى المسلمة أمام العالم',
+        'أنوى بالحياء حفظ نفسى وصون عرضى',
+        'أنوى أن يكون حجابى دعوةً صامتة لكل من يرانى',
+        'أنوى صون لسانى وعينى عن كل محرم',
+      ]},
+      { title: 'الحمل والولادة والرضاعة', emoji: '🤱', items: [
+        'أحتمل مشقة الحمل محتسبةً الأجر لكل ألم وتعب',
+        'أنوى بالحمل أن أكون سبباً فى إنجاب مؤمن يعبد الله',
+        'أنوى الدعاء لجنينى بالصلاح والهداية منذ الحمل',
+        'أنوى بآلام الوضع احتساب الأجر كل ألم كفارة ورفعة',
+        'أرضع طفلى حباً وطاعةً وإحياءً لسنة الفطرة',
+        'أنوى بصبرى على طفلى أن يكون كل ليلة ساهرة فى ميزانى',
+      ]},
+      { title: 'تدبير البيت وخدمة الأسرة', emoji: '🏠', items: [
+        'أخدم بيتى وأُدبّر شؤونه محتسبةً أجر الأمانة',
+        'أنوى بطهى الطعام لأسرتى أن يكون صدقةً وعبادةً',
+        'أنوى بنظافة البيت إكراماً لنعمة الله',
+        'أنوى تربية أولادى على الدين والأخلاق',
+        'أنوى الدعاء لزوجى وأولادى فى الغيب',
+      ]},
+    ]
+  },
+  {
+    id: 'social', emoji: '🌍', title: 'الدعوة والمجتمع',
+    desc: 'الدعوة وخدمة الوطن والمسلم فى بيئة غير مسلمة',
+    groups: [
+      { title: 'الدعوة إلى الله والنصيحة', emoji: '🤝', items: [
+        'أنصح الناس حباً فيهم وشفقةً لا تعالياً',
+        'أُعين المحتاج ابتغاء وجه الله لا المدح والثناء',
+        'أنوى أن أكون سبباً فى هداية ولو نفر واحد',
+        'أنوى بالأمر بالمعروف والنهى عن المنكر حفظ المجتمع',
+        'أنوى الدعوة بالحكمة والموعظة الحسنة لا بالإكراه',
+        'أنوى بحسن خُلقى وصدقى دعوةً صامتة لدينى',
+        'أنوى تشجيع الشباب على الخير وإعانتهم على الاستقامة',
+      ]},
+      { title: 'خدمة الوطن والمجتمع', emoji: '🌍', items: [
+        'أخدم وطنى لأن إصلاحه إصلاح لمجتمع المسلمين',
+        'أنوى بعملى التطوعى وضع الأثر الصالح فى الأرض',
+        'أنوى الحفاظ على المال العام كحفاظى على مالى',
+        'أنوى المشاركة فى الأعمال الخيرية الجماعية',
+        'أنوى دفع الظلم والمطالبة بالحق بالطرق المشروعة',
+      ]},
+      { title: 'المسلم فى البيئة غير الإسلامية', emoji: '🕊️', items: [
+        'أنوى أن يكون خُلقى وتعاملى دعوةً صامتة للإسلام',
+        'أنوى إظهار التسامح والتعاون مع الجيران من غير المسلمين',
+        'أنوى الحفاظ على هويتى الإسلامية دون مهادنة فى الثوابت',
+        'أنوى الدعاء لجيرانى من غير المسلمين بالهداية',
+        'أنوى المشاركة فى الأعمال الخيرية المشتركة',
+      ]},
+    ]
+  },
+  {
+    id: 'crisis', emoji: '🏥', title: 'الابتلاء والمصائب',
+    desc: 'المرض والفقد والغضب والرضا بالقضاء والقدر',
+    groups: [
+      { title: 'المرض والألم والابتلاء', emoji: '🏥', items: [
+        'أحتسب مرضى عند الله طلباً لتكفير الذنوب',
+        'أنوى الصبر على البلاء لأنال درجة الصابرين',
+        'أنوى أن يكون ألمى كفارةً لما سبق من ذنوبى',
+        'أتداوى احتجاجاً لا يأساً فالتداوى سنة وطاعة',
+        'أنوى الصبر دون تشكٍّ للناس حفاظاً على حسن الظن بالله',
+      ]},
+      { title: 'الفقد والحزن والمصيبة', emoji: '💔', items: [
+        'أنوى الصبر على فقد من أحب احتساباً للأجر',
+        'أنوى بقول إنا لله وإنا إليه راجعون الاستسلام لقضاء الله',
+        'أنوى بالدعاء للمتوفى إطالةً لأثره',
+        'أنوى الصدقة وإهداء ثوابها للمتوفى',
+        'أنوى عزاء أهل المتوفى وتخفيف حزنهم',
+      ]},
+      { title: 'الغضب والخلاف والعفو', emoji: '😰', items: [
+        'أنوى كظم غيظى ابتغاء وصف الله للمتقين',
+        'أنوى العفو عن من ظلمنى ابتغاء أجر العافين',
+        'أنوى الحلم والأناة فهما خصلتان يحبهما الله كما قال النبى ﷺ',
+        'أنوى التماس العذر لأخى قبل إساءة الظن به',
+        'أنوى الدعاء لمن أغضبنى بالهداية والخير',
+      ]},
+    ]
+  },
+  {
+    id: 'tech', emoji: '📱', title: 'التقنية والإبداع',
+    desc: 'الإنترنت والتواصل الاجتماعى والفنون المباحة',
+    groups: [
+      { title: 'استخدام التقنية والإنترنت', emoji: '📱', items: [
+        'أستخدم هاتفى وسيلةً لطاعة الله ونشر الخير',
+        'أنوى بمشاركة الفوائد الدعوة بالحكمة',
+        'أنوى الإمساك عن نشر الشائعات والأكاذيب',
+        'أنوى بمتابعة العلماء أن أكون معهم فى الآخرة',
+        'أنوى ضبط وقتى على التقنية حتى لا تسرق عمرى',
+        'أنوى توظيف مهاراتى التقنية فى خدمة الإسلام',
+        'أنوى حماية أهلى وأولادى من المحتوى الضار',
+      ]},
+      { title: 'الكتابة والتأليف ونشر المحتوى', emoji: '✍️', items: [
+        'أكتب وأُؤلف لنشر الحق والخير',
+        'أنوى بكتاباتى صدقةً جاريةً بعد موتى',
+        'أنوى الأمانة العلمية فى النقل والاستشهاد',
+        'أنوى توظيف منصاتى لنشر العلم النافع',
+        'أنوى الرد على الشبهات بالحكمة والدليل',
+      ]},
+      { title: 'الفنون والإبداع المباح', emoji: '🎨', items: [
+        'أُبدع لنشر الجمال الذى أحبه الله',
+        'أنوى توظيف موهبتى فى خدمة الإسلام والمسلمين',
+        'أنوى بالتصميم والفن تقديم صورة مشرقة عن المسلم',
+        'أنوى الابتعاد عن كل إبداع فيه معصية أو فحش',
+        'أنوى بتحسين صوتى بالقرآن التقرب إلى الله',
+      ]},
+    ]
+  },
+  {
+    id: 'special', emoji: '⭐', title: 'مواضع وأحوال خاصة',
+    desc: 'أذكار الأوقات الفاضلة والمناسبات والسفر والانتظار',
+    groups: [
+      { title: 'السفر والتنقل', emoji: '✈️', items: [
+        'أسافر لأتأمل فى آيات الله فى الأرض',
+        'أزور الأقارب والأصدقاء فى سفرى صلةً للرحم',
+        'أنوى أن أكون سفيراً للإسلام بأخلاقى أينما كنت',
+        'أنوى المحافظة على الصلاة وأذكار السفر',
+        'أنوى الاستفادة من وقت السفر بالذكر والقرآن',
+      ]},
+      { title: 'أوقات الانتظار وقيادة السيارة', emoji: '🚗', items: [
+        'أقود سيارتى بأمانة حفاظاً على روحى وأرواح الناس',
+        'أنوى بالالتزام بقواعد المرور طاعةً لأولى الأمر',
+        'أنوى استثمار وقت الانتظار بالذكر والتسبيح',
+        'أنوى الصبر فى الازدحام دون غضب وسب',
+        'أنوى إزالة الأذى عن الطريق ولو كان غصناً',
+      ]},
+      { title: 'الأوقات الفاضلة والأذكار الخاصة', emoji: '🌟', items: [
+        'أنوى الدعاء آخر ساعة من يوم الجمعة رجاءً للإجابة',
+        'أنوى الدعاء بين الأذان والإقامة',
+        'أنوى الدعاء عند السجود لأقرب ما يكون العبد',
+        'أنوى الدعاء عند رؤية المطر وهو وقت الإجابة',
+      ]},
+      { title: 'المناسبات والأفراح والأتراح', emoji: '🎉', items: [
+        'أحضر أفراح إخوانى تهنئةً وصلةً للرحم',
+        'أنوى بتهنئة الفرحان الدعاء له بالبركة',
+        'أحضر العزاء وأُعزّى أهل الميت',
+        'أنوى الصلاة على الميت وتشييع جنازته',
+        'أنوى ألا أُقاطع مناسبة مسلم إلا لعذر شرعى',
+      ]},
+      { title: 'نوايا الشباب والطلاب', emoji: '💪', items: [
+        'أنوى حفظ عينى وسمعى ولسانى من كل فتنة',
+        'أنوى اختيار الأصدقاء الصالحين الذين يُذكّرونى بالله',
+        'أنوى توظيف شبابى وطاقتى فى الخير',
+        'أنوى الاستعانة بالصوم على كسر شهوة الشباب',
+        'أنوى أن أكون من السبعة الذين يُظلهم الله: الشاب الذى نشأ فى طاعة الله',
+      ]},
+      { title: 'نوايا كبار السن والشيخوخة', emoji: '👴', items: [
+        'أنوى استثمار ما تبقى من عمرى فى الطاعة',
+        'أنوى المداومة على الطاعات وإن ضعفت',
+        'أنوى نقل علمى وتجربتى للأجيال الأصغر',
+        'أنوى الاستعداد للقاء الله بكثرة الذكر والاستغفار',
+        'أنوى الرضا بما قسمه الله وعدم التشكى',
+      ]},
+    ]
+  },
+  {
+    id: 'knowledge', emoji: '📖', title: 'علم النية',
+    desc: 'تعريف النية وأحكامها وحكم الرياء وفضل الإخلاص',
+    groups: [
+      { title: 'تعريف النية وأقسامها', emoji: '📖', items: [] }
+    ],
+    isKnowledge: true
+  },
+
+  // ══ جنازة ══
+  {
+    id: 'janaza', emoji: '🕊️', title: 'الجنازة وأحكام الموت',
+    desc: 'غسل الميت والصلاة عليه وتشييعه والدعاء له',
+    groups: [
+      { title: 'غسل الميت وتكفينه', emoji: '🕊️', items: [
+        'أغسّل الميت تأدية لفرض الكفاية وإكراماً لأخى المسلم',
+        'أنوى بتكفين الميت تجهيزه للقاء الله بأحسن هيئة',
+        'أنوى بالإسراع فى الدفن امتثالاً لأمر النبى ﷺ',
+        'أنوى حفظ كرامة الميت وعدم ذكر عيوبه بعد وفاته',
+        'أنوى بخدمة أهل الميت وإطعامهم تخفيفاً عنهم',
+      ]},
+      { title: 'الصلاة على الميت وتشييعه', emoji: '🤲', items: [
+        'أنوى الصلاة على الميت لأنال قيراطاً من الأجر',
+        'أنوى تشييع الجنازة حتى الدفن لأنال قيراطين',
+        'أنوى الدعاء للميت فى الصلاة عليه بصدق وإخلاص',
+        'أنوى المشى خلف الجنازة تذكراً للموت واستعداداً له',
+        'أنوى حضور الدفن إكراماً للميت ومواساةً لأهله',
+        'أنوى أن يذكّرنى كل جنازة أراها بحتمية لقاء الله',
+      ]},
+      { title: 'الدعاء للميت وإهداء الثواب', emoji: '📿', items: [
+        'أنوى الدعاء للمتوفى فى كل صلاة لأن الولد الصالح يدعو لوالديه فينفعهما بعد موتهما',
+        'أنوى الصدقة عن روح المتوفى إيصالاً للثواب',
+        'أنوى قراءة القرآن والدعاء للوالدين بعدها، وإهداء ثوابها على قول من أجازه من العلماء',
+        'أنوى الاستغفار للمسلمين الأموات عموماً',
+        'أنوى زيارة القبور للاتعاظ والدعاء لا للتبرك بها',
+        'أنوى بزيارة القبور تجديد اليقين بالآخرة',
+      ]},
+    ]
+  },
+  {
+    id: 'fawait', emoji: '⏪', title: 'قضاء الفوائت والكفارات',
+    desc: 'قضاء الصلوات والصيام الفائتة والكفارات',
+    groups: [
+      { title: 'قضاء الصلوات الفائتة', emoji: '🕌', items: [
+        'أقضى الصلوات الفائتة تبرئةً لذمتى وأداءً لحق الله',
+        'أنوى المداومة على القضاء حتى لا يتراكم علىّ',
+        'أنوى عدم التهاون فى الفوائت فهى دَين فى ذمتى',
+        'أنوى التوبة من كل صلاة ضيّعتها فى الماضى',
+        'أنوى البدء بالأقدم فالأقدم فى القضاء',
+      ]},
+      { title: 'قضاء صيام رمضان', emoji: '🌙', items: [
+        'أقضى ما فاتنى من رمضان تبرئةً للذمة قبل رمضان التالى',
+        'أنوى الإسراع فى قضاء الأيام الفائتة خروجاً من العهدة',
+        'أنوى إطعام مسكين عن كل يوم أخّرت قضاءه بلا عذر حتى دخل رمضان التالى، على قول الجمهور',
+        'أنوى صوم القضاء بنية صادقة كأنى أصوم رمضان',
+        'أنوى تبييت النية من الليل لأن صوم الفرض لا يصح بنية النهار',
+        'أنوى قضاء ما على والدىّ من صيام إن كان عليهما شىء',
+      ]},
+      { title: 'الكفارات والنذور', emoji: '📜', items: [
+        'أُخرج الكفارة امتثالاً لأمر الله وتطهيراً لنفسى',
+        'أنوى الوفاء بالنذر لأن الله أثنى على الموفين بنذورهم',
+        'أنوى بإطعام المساكين فى الكفارة نيل الأجرين معاً',
+        'أنوى توزيع الكفارة على أشد المحتاجين فقراً',
+        'أنوى ألا أُماطل فى إخراج الكفارة فتبقى فى ذمتى',
+        'أنوى تعلم أحكام الكفارات حتى أُؤديها على وجهها الصحيح',
+      ]},
+    ]
+  },
+  {
+    id: 'lisan', emoji: '👄', title: 'حفظ اللسان والصدق',
+    desc: 'نوايا الصدق والأمانة فى الكلام وترك الغيبة والنميمة',
+    groups: [
+      { title: 'الصدق والأمانة فى الكلام', emoji: '✅', items: [
+        'أنوى الصدق فى كل قول لأن الصدق يهدى للبر والبر يهدى للجنة',
+        'أنوى أن يكون كلامى موزوناً لا أقول إلا ما ينفع',
+        'أنوى الوفاء بالوعد لأن خُلف الوعد من علامات المنافق',
+        'أنوى التثبت من الخبر قبل نشره',
+        'أنوى قول الحق وإن كان مراً فالصدق أمانة',
+        'أنوى ألا أُجامل على حساب الحقيقة مجاملةً تضر',
+      ]},
+      { title: 'ترك الغيبة والنميمة والكذب', emoji: '🤐', items: [
+        'أنوى حفظ لسانى عن الغيبة لأنها أكل لحم الأخ ميتاً',
+        'أنوى ترك النميمة لأنها تُفسد المجتمع وتُذهب الأجر',
+        'أنوى الصمت حين لا أملك ما أقوله نافعاً',
+        'أنوى عدم إعادة ما سمعته عن الناس فى غيبتهم',
+        'أنوى الدفاع عن عرض أخى المسلم إذا اغتيب أمامى',
+        'أنوى ألا أُصغى للغيبة حتى وإن لم أشارك فيها',
+        'أنوى أن يكون مجلسى خالياً من كل ما يُغضب الله',
+      ]},
+      { title: 'حفظ اللسان عموماً', emoji: '🌿', items: [
+        'أنوى أن يكون لسانى رطباً بذكر الله لا بذكر الناس',
+        'أنوى أن لا يُؤذى أحد من لسانى أبداً',
+        'أنوى ترك المزاح المفرط الذى يُميت القلب',
+        'أنوى عدم السخرية من أحد فى خَلقه أو خُلقه',
+        'أنوى إصلاح لسانى فالمسلم من سلم المسلمون من لسانه ويده',
+      ]},
+    ]
+  },
+  {
+    id: 'ramadan', emoji: '🌙', title: 'نوايا رمضان اليومية',
+    desc: 'نوايا يومية لاستثمار كل لحظة فى شهر رمضان المبارك',
+    groups: [
+      { title: 'السحور والإفطار', emoji: '🌅', items: [
+        'أتسحر اتباعاً للسنة لأن فى السحور بركة',
+        'أنوى بالسحور الاستعانة على الصيام بالقوة',
+        'أنوى بالإفطار شكر الله على إتمام يوم الصيام',
+        'أنوى تعجيل الفطر اتباعاً لسنة النبى ﷺ',
+        'أنوى تفطير الصائمين لأنال مثل أجرهم دون أن ينقص من أجرهم شىء',
+        'أنوى الإكثار من الدعاء وأنا صائم فدعوة الصائم مستجابة',
+      ]},
+      { title: 'استثمار نهار رمضان', emoji: '☀️', items: [
+        'أنوى ألا يمر يوم من رمضان دون ختم جزء من القرآن',
+        'أنوى إطعام الناس وإدخال السرور عليهم فى رمضان',
+        'أنوى التوبة الصادقة فى هذا الشهر المبارك',
+        'أنوى حفظ لسانى وجوارحى مضاعفاً فى رمضان',
+        'أنوى صلة الرحم وزيارة الأهل فى رمضان',
+      ]},
+      { title: 'استثمار ليالى رمضان', emoji: '🌃', items: [
+        'أنوى قيام كل ليلة من رمضان إيماناً واحتساباً',
+        'أنوى أن أختم القرآن مرة على الأقل فى رمضان',
+        'أنوى الإكثار من الصدقة فى رمضان اقتداءً بالنبى ﷺ',
+        'أنوى أن تكون كل ليلة من رمضان أحسن من التى قبلها',
+        'أنوى استشعار رقابة الله فى كل لحظة من رمضان',
+      ]},
+    ]
+  },
+  {
+    id: 'professions', emoji: '🔨', title: 'نوايا المهن والحرف الخاصة',
+    desc: 'نوايا الموظف الحكومى والإعلامى والحرفى والمزارع والمهاجر',
+    groups: [
+      { title: 'الموظف الحكومى والقاضى', emoji: '⚖️', items: [
+        'أؤدى وظيفتى الحكومية خدمةً للناس لا كسباً للمال فحسب',
+        'أنوى العدل التام فى عملى دون محاباة أو تمييز',
+        'أنوى حفظ المال العام كحفاظى على مالى الخاص',
+        'أنوى ألا أقبل رشوة أو مكافأة محرمة مهما كان ثمنها',
+        'أنوى إنجاز أعمال الناس فى وقتها دون تسويف',
+        'أنوى بالقضاء العادل بين الناس نيل أجر العادلين',
+        'أنوى ألا أتخذ منصبى وسيلةً للتكبر أو الظلم',
+      ]},
+      { title: 'الإعلامى والصحفى', emoji: '📺', items: [
+        'أنوى بعملى الإعلامى نشر الحق وتصحيح المفاهيم الخاطئة',
+        'أنوى الأمانة فى نقل الأخبار وعدم التحريف',
+        'أنوى التثبت من كل خبر قبل نشره صوناً للأعراض',
+        'أنوى ألا أنشر ما يُفسد الأخلاق أو يُشيع الفاحشة',
+        'أنوى الدفاع عن المظلومين وإيصال أصواتهم',
+      ]},
+      { title: 'الحرفى وصاحب المهنة اليدوية', emoji: '🔨', items: [
+        'أنوى الإتقان فى حرفتى لأن الله يحب إذا عمل أحدكم عملاً أن يتقنه',
+        'أنوى بمهارتى اليدوية خدمة الناس لا استغلالهم',
+        'أنوى الأمانة فى العمل وعدم الغش فى الصنعة',
+        'أنوى تعليم الشباب مهنتى لينتفع بها المجتمع',
+        'أنوى شكر الله على الموهبة والمهارة التى أعطانى',
+      ]},
+      { title: 'الفلاح والمزارع', emoji: '🌾', items: [
+        'أزرع لأُطعم الناس فما من مسلم يغرس غرساً فيأكل منه إنسان أو طير إلا كان له به صدقة',
+        'أنوى بالزراعة إحياء الأرض وأداء الأمانة فيها',
+        'أنوى بكل ثمرة يأكل منها إنسان أو حيوان أن تكون لى صدقة',
+        'أنوى المحافظة على الأرض والماء أمانةً للأجيال القادمة',
+        'أنوى التوكل على الله فى المحاصيل مع الأخذ بالأسباب',
+      ]},
+      { title: 'المهاجر والغريب عن وطنه', emoji: '🧳', items: [
+        'أنوى بغربتى صون دينى وكرامتى إن كانت هجرتى لله',
+        'أنوى الحفاظ على هويتى الإسلامية فى بلاد الغربة',
+        'أنوى الإسهام فى نشر الإسلام بأخلاقى مع من حولى',
+        'أنوى الدعاء لوطنى وأهلى كل يوم وإن بَعُدت الديار',
+        'أنوى العودة لأهلى ووطنى حاملاً الخير والعلم والبركة',
+        'أنوى الصبر على وحشة الغربة احتساباً وتوكلاً على الله',
+      ]},
+      { title: 'الطالب المبتعث فى الخارج', emoji: '🎓', items: [
+        'أنوى بابتعاثى اكتساب علم أخدم به أمتى ووطنى',
+        'أنوى أن تكون غربتى للعلم حافزاً لا فرصةً للانحلال',
+        'أنوى المحافظة على صلاتى ودينى وسط أى بيئة',
+        'أنوى إثبات أن المسلم يتفوق علمياً دون أن يفرط فى دينه',
+        'أنوى الدعاء لوالدىّ ووطنى ومن أنفق علىّ',
+        'أنوى العودة بما ينفع لا بما يُفسد',
+      ]},
+    ]
+  },
+  {
+    id: 'nafs', emoji: '🧠', title: 'الأزمات النفسية والروحية',
+    desc: 'نوايا من يعانى الوسواس أو الكسل أو الأزمة الإيمانية',
+    groups: [
+      { title: 'مجاهدة الوسواس القهرى', emoji: '🌀', items: [
+        'أنوى دفع الوسواس بالاستعاذة والإعراض لا بالاسترسال',
+        'أنوى إتمام العبادة رغم الوسواس لأن مقاومته عبادة',
+        'أنوى ألا أعيد الوضوء أو الصلاة من الوسواس وحده',
+        'أنوى بالإصرار على العبادة رغم الشك كسراً للوسواس',
+        'أنوى أن أرى الوسواس دليلاً على إيمانى لا على فساده',
+      ]},
+      { title: 'مجاهدة الكسل والتسويف', emoji: '⚡', items: [
+        'أنوى مقاومة الكسل ابتداءً من الدقيقة الأولى لا من الغد',
+        'أنوى كسر حاجز التسويف بالبدء ولو بخطوة صغيرة',
+        'أنوى الاستعاذة بالله من الكسل كما علّمنا النبى ﷺ',
+        'أنوى تذكر الموت وقصر العمر كلما دعتنى نفسى للتسويف',
+        'أنوى مساءلة نفسى ماذا عملت اليوم قبل النوم',
+      ]},
+      { title: 'الأزمة الإيمانية والشك', emoji: '🌤️', items: [
+        'أنوى البحث عن الحق بنية صادقة لا للجدل والمراء',
+        'أنوى طلب العلم من العلماء الثقات',
+        'أنوى أن يكون شكى مرحلة نحو يقين أعمق',
+        'أنوى الدعاء: اللهم أرنى الحق حقاً وارزقنى اتباعه',
+        'أنوى ألا أهجر العبادة لمجرد وجود تساؤلات',
+      ]},
+      { title: 'طلب الثبات على الدين', emoji: '🏔️', items: [
+        'أنوى المداومة على طاعة واحدة ثابتة تُثبّت قدمى',
+        'أنوى مصاحبة الأخيار الذين يُعينونى على الثبات',
+        'أنوى دعاء: يا مقلب القلوب ثبّت قلبى على دينك',
+        'أنوى تجديد الإيمان بتجديد الأعمال الصالحة',
+        'أنوى البُعد عن كل ما يُضعف الإيمان من بيئات ورفقاء',
+        'أنوى قراءة سير الصالحين لأستمد منهم الثبات والعزيمة',
+      ]},
+    ]
+  },
+  {
+    id: 'workrels', emoji: '🤝', title: 'علاقات العمل والصداقة',
+    desc: 'صاحب العمل والموظف والصديق والمُصلح بين الناس',
+    groups: [
+      { title: 'نوايا صاحب العمل مع موظفيه', emoji: '👔', items: [
+        'أنوى العدل بين موظفىّ دون محاباة لقريب أو ذى منفعة',
+        'أنوى إعطاء كل ذى حق حقه من الأجر والتقدير',
+        'أنوى أن أكون سبباً فى استقرار أسر موظفىّ',
+        'أنوى تعليم موظفىّ وتطويرهم لا استغلال جهدهم فقط',
+        'أنوى أن يكون بيئة عملى مشجعةً على الأخلاق الفاضلة',
+        'أنوى إعطاء الأجر كاملاً دون تأخير أو بخس',
+      ]},
+      { title: 'نوايا الموظف مع مديره وزملائه', emoji: '👥', items: [
+        'أنوى طاعة مديرى فى المعروف وفاءً بعقد العمل فالمسلمون على شروطهم',
+        'أنوى النصيحة الصادقة لمديرى إن رأيت خطأً بالحكمة',
+        'أنوى عدم الغيبة فى مديرى وزملائى خارج العمل',
+        'أنوى التعاون مع زملائى لإنجاز الأعمال دون أنانية',
+        'أنوى نشر روح التعاون والمحبة فى بيئة العمل',
+      ]},
+      { title: 'نوايا الصداقة والرفقة الصالحة', emoji: '👬', items: [
+        'أختار صديقى الصالح الذى يُذكّرنى بالله ويُعيننى عليه',
+        'أنوى أن أكون صديقاً يُحب لأخيه ما يُحب لنفسه',
+        'أنوى النصيحة لصديقى حتى وإن كانت مُرّة',
+        'أنوى الدعاء لأصدقائى فى الغيب لأنال الملَك يقول ولك مثله',
+        'أنوى المساعدة الفعلية لصديقى وقت ضيقه لا وقت سعته',
+        'أنوى ألا أهجر صديقى المسلم فوق ثلاث ليالٍ',
+        'أنوى أن تكون صداقتى فى الله لتدوم فى الدنيا والآخرة',
+      ]},
+      { title: 'نوايا المُصلح بين المتخاصمين', emoji: '🕊️', items: [
+        'أنوى الإصلاح بين الناس ابتغاء وجه الله لا ليُقال',
+        'أنوى العدل والحياد دون الانحياز لأحد الطرفين',
+        'أنوى كتمان ما اطّلعت عليه من أسرار الأطراف',
+        'أنوى الصدق فى الإصلاح فلا أكذب لمصلحة مؤقتة',
+        'أنوى طلب العون من الله قبل كل جلسة إصلاح',
+        'أنوى ألا أيأس من الإصلاح مهما طال الخلاف',
+      ]},
+    ]
+  },
+  {
+    id: 'haya', emoji: '🌸', title: 'الحياء والعفة والعدل',
+    desc: 'نوايا الحياء والعفة عموماً والعدل فى الحكم بين الناس',
+    groups: [
+      { title: 'الحياء والعفة', emoji: '🌸', items: [
+        'أنوى الحياء لأن لكل دين خُلقاً وخُلق الإسلام الحياء',
+        'أنوى حفظ بصرى عن كل محرم ابتغاء ما هو خير وأبقى',
+        'أنوى العفة عن كل ما يُخدش الشرف والكرامة',
+        'أنوى التحصن بالزواج الحلال عن كل حرام',
+        'أنوى صون نفسى وأسرتى من مسببات الفتنة',
+        'أنوى أن يكون حيائى من الله أعظم من حيائى من الناس',
+        'أنوى ألا أُقدم على ما يخجلنى أمام الناس لأن الله أحق أن يُستحيا منه',
+      ]},
+      { title: 'العدل فى الحكم بين الناس', emoji: '⚖️', items: [
+        'أنوى العدل فى كل حكم أحكم به على الناس',
+        'أنوى ألا تأخذنى العواطف عن قول الحق ولو على نفسى',
+        'أنوى التثبت والتحقق قبل إصدار أى حكم على أحد',
+        'أنوى أن أحكم بما أُنزل الله لا بالهوى والمحاباة',
+        'أنوى ألا أُصدر حكماً على غائب استمعت لطرف واحد فقط',
+        'أنوى الاعتراف بالخطأ إذا تبيّن لى الحق بعد حكم خاطئ',
+      ]},
+    ]
+  },
+
+
+  // ══ شكر ونعمة ══
+  {
+    id: 'shukr', emoji: '🌟', title: 'الشكر واستحضار النعمة',
+    desc: 'نوايا شكر الله على النعم الظاهرة والباطنة والتحدث بها',
+    groups: [
+      { title: 'شكر النعم الظاهرة', emoji: '🌟', items: [
+        'أنوى شكر الله على نعمة الإسلام وهى أعظم النعم',
+        'أنوى شكر الله على نعمة العقل والصحة والعافية',
+        'أنوى شكر الله على نعمة الأمن والاستقرار',
+        'أنوى شكر الله على نعمة الأهل والأصحاب',
+        'أنوى شكر الله على نعمة الطعام والشراب بعد كل وجبة',
+        'أنوى عد نعم الله علىّ يومياً لأزداد شكراً وتواضعاً',
+        'أنوى التحدث بنعم الله تحدثاً لا فخراً لأن التحدث بها شكر',
+      ]},
+      { title: 'شكر النعم الباطنة', emoji: '💎', items: [
+        'أنوى شكر الله على نعمة الإيمان بأداء ما يوجبه',
+        'أنوى شكر الله على هداية قلبى لطريق الحق',
+        'أنوى شكر الله على كل بلاء رُفع عنى وأنا لا أعلم',
+        'أنوى شكر الله على كل ذنب عُفى عنه دون أن أُحاسَب',
+        'أنوى شكر الله على فرصة التوبة وأبواب الرحمة المفتوحة',
+      ]},
+    ]
+  },
+
+  // ══ طلب الرزق ══
+  {
+    id: 'rizq', emoji: '🌿', title: 'طلب الرزق وبركته',
+    desc: 'نوايا السعى فى طلب الرزق الحلال وطلب البركة فيه',
+    groups: [
+      { title: 'السعى فى طلب الرزق', emoji: '🌿', items: [
+        'أسعى فى الرزق توكلاً على الله مع الأخذ بالأسباب',
+        'أنوى أن يكون سعيى فى الرزق من الحلال الطيب',
+        'أنوى بالتبكير فى طلب الرزق الاقتداء بمن بورك لهم فى بكورهم',
+        'أنوى ألا يمنعنى طلب الرزق عن ذكر الله وأداء الفرائض',
+        'أنوى بطلب الرزق الغنى عن الناس وصون ماء الوجه',
+        'أنوى أن يكون رزقى وسيلةً للخير لا غايةً فى ذاته',
+      ]},
+      { title: 'طلب البركة فى الرزق', emoji: '✨', items: [
+        'أنوى البسملة فى بداية كل عمل لأبارك فيه',
+        'أنوى الصدقة من مالى لأن الصدقة لا تنقص المال',
+        'أنوى صلة الرحم لأن فيها بركة فى الرزق وزيادة فى العمر',
+        'أنوى الاستغفار الدائم لأنه يفتح أبواب الرزق',
+        'أنوى التوكل على الله رزقاً كما يتوكل عليه الطير',
+        'أنوى الإنفاق دون خوف من الفقر إيماناً بوعد الله',
+      ]},
+    ]
+  },
+
+  // ══ الوالدان بعد الوفاة ══
+  {
+    id: 'parents_after', emoji: '🤍', title: 'بر الوالدين بعد وفاتهم',
+    desc: 'نوايا استمرار بر الوالدين وخدمتهم بعد انتقالهم إلى الآخرة',
+    groups: [
+      { title: 'الدعاء والاستغفار للوالدين المتوفَّيْن', emoji: '🤍', items: [
+        'أنوى الدعاء لوالدىّ المتوفَّيْن فى كل صلاة: ربِّ اغفر لى ولوالدىّ',
+        'أنوى الاستغفار لهما فى أوقات الإجابة ويوم الجمعة',
+        'أنوى الصدقة الجارية عنهما بمشاريع مستمرة',
+        'أنوى بناء مسجد أو حفر بئر أو طبع مصحف باسمهما',
+        'أنوى قراءة القرآن والدعاء لهما بعدها، وإهداء ثوابها على قول من أجازه',
+        'أنوى أن تكون كل طاعةً أؤديها هديةً لروحيهما',
+      ]},
+      { title: 'إكرام صديق الوالدين وأهلهما', emoji: '💙', items: [
+        'أنوى صلة أصدقاء والدىّ وأقاربهما إحياءً لبرهما بعد موتهما',
+        'أنوى إكرام كل من أحبّهما أو خدمهما فى حياتهما',
+        'أنوى الدعاء لمن أحسن إلى والدىّ جزاءً لإحسانه',
+        'أنوى الوفاء بكل عهد قطعه والدىّ مع الناس من بعدهما',
+        'أنوى إنفاذ وصية والدىّ وتنفيذ ما أوصيا به',
+        'أنوى زيارة قبر والدىّ للدعاء لهما والاتعاظ',
+      ]},
+      { title: 'الحج والعمرة والصيام عنهما', emoji: '🕋', items: [
+        'أنوى الحج عن والدىّ إن لم يحجا فى حياتهما',
+        'أنوى العمرة عن روحيهما ابتغاء رفعة درجاتهما',
+        'أنوى صيام ما عليهما من نذر أو قضاء',
+        'أنوى إخراج زكاة أو صدقة عنهما كل عام',
+        'أنوى أن أجعل لهما نصيباً من كل عمل صالح أعمله',
+      ]},
+      { title: 'استمرار البر بالعمل', emoji: '🌿', items: [
+        'أنوى أن يكون صلاحى بنفسه براً بهما فالولد من كسبهما',
+        'أنوى ألا أفعل ما يجلب لهما سوء الذكر بين الناس',
+        'أنوى صلة رحمهما التى لا تُوصل إلا بهما',
+        'أنوى قضاء ديونهما إن كان عليهما دين',
+        'أنوى تعليم أولادى بر الوالدين ليبروا بى كما بررت بوالدىّ',
+      ]},
+    ]
+  },
+
+  // ══ العلاقة مع الله ══
+  {
+    id: 'allah_relation', emoji: '💚', title: 'تجديد العلاقة مع الله',
+    desc: 'نوايا تجديد الإيمان والمحبة والخوف والرجاء والإنابة',
+    groups: [
+      { title: 'المحبة والشوق إلى الله', emoji: '💚', items: [
+        'أنوى بكل عبادة أن أتقرب بها إلى من أحب',
+        'أنوى استحضار محبة الله فى كل سجدة وركوع',
+        'أنوى أن يكون شوقى للقاء الله أعظم من شوقى لكل شىء',
+        'أنوى أن أُحب لله وأُبغض لله وأُعطى لله وأمنع لله',
+        'أنوى قراءة أسماء الله الحسنى وتدبر معانيها لأزداد محبةً',
+      ]},
+      { title: 'الخوف والرجاء والإنابة', emoji: '🌅', items: [
+        'أنوى الجمع بين الخوف من الله والرجاء فيه دون إفراط',
+        'أنوى الإنابة إلى الله فى كل أمر صغير وكبير',
+        'أنوى أن يكون خوفى من الله باعثاً للطاعة لا للقنوط',
+        'أنوى أن يكون رجائى فى الله محركاً للعمل لا للكسل',
+        'أنوى أن أعود إلى الله سريعاً كلما ابتعدت',
+      ]},
+      { title: 'المراقبة والإحسان', emoji: '👁️', items: [
+        'أنوى استحضار مراقبة الله فى كل لحظة وكل خلوة',
+        'أنوى أن أعبد الله كأنى أراه فإن لم أكن أراه فإنه يرانى',
+        'أنوى الإحسان فى كل عمل حتى أبلغ درجة المحسنين',
+        'أنوى أن يكون ظاهرى وباطنى واحداً لا منافقة',
+        'أنوى ألا أفعل فى السر ما يستحيينى أن يُرى فى العلن',
+      ]},
+    ]
+  },
+
+  // ══ الوقت ══
+  {
+    id: 'time', emoji: '⏳', title: 'إدارة الوقت واستثماره',
+    desc: 'نوايا استثمار الوقت والمحافظة على العمر من الضياع',
+    groups: [
+      { title: 'المحافظة على الوقت', emoji: '⏳', items: [
+        'أنوى أن أُحاسب نفسى على كل ساعة تمضى',
+        'أنوى ترك كل ما لا يُفيدنى فى دنيا أو آخرة',
+        'أنوى تنظيم يومى بحيث يكون لكل عبادة وقتها',
+        'أنوى ألا أسرق وقت فريضة لمصلحة دنيوية',
+        'أنوى استثمار أوقات الانتظار فى الذكر والقراءة',
+        'أنوى تقليل وقت النوم الزائد عن الحاجة لأنى سأُسأل عن عمرى فيم أفنيته',
+      ]},
+      { title: 'استثمار أوقات الفراغ', emoji: '🎯', items: [
+        'أنوى أن يكون فراغى فرصةً للتعلم والعبادة لا للكسل',
+        'أنوى توظيف الإجازة فى تجديد العلاقة مع الله والأسرة',
+        'أنوى الاستفادة من وقت ما بعد العشاء قبل النوم',
+        'أنوى ألا أُهدر وقتى فيما لا يبقى أثره فى الدنيا ولا الآخرة',
+        'أنوى التخطيط لأسبوعى بحيث لا يكون فيه وقت ضائع',
+      ]},
+      { title: 'ترتيب الأولويات', emoji: '📋', items: [
+        'أنوى تقديم الفرائض على النوافل والواجب على المستحب',
+        'أنوى تقديم ما لا يقبل التأجيل على ما يقبله',
+        'أنوى ألا أنشغل بالمهم عن الأهم',
+        'أنوى تخصيص وقت ثابت يومياً للقرآن والذكر',
+        'أنوى ألا يطغى عملى على حق أهلى ولا حق ربى',
+      ]},
+      { title: 'بركة الوقت', emoji: '✨', items: [
+        'أنوى طلب البركة فى وقتى بالاستغفار والطاعة',
+        'أنوى التبكير فى أعمالى فالبركة فى البكور',
+        'أنوى ألا أُضيّع وقتاً فى معصية فتُنزع منه البركة',
+        'أنوى استثمار الأوقات الفاضلة فى مضاعفة الأجر',
+        'أنوى أن أُحاسب على عمرى فيم أفنيته قبل أن أُسأل',
+      ]},
+    ]
+  },
+
+  // ══ القدوة والأثر ══
+  {
+    id: 'legacy', emoji: '🌱', title: 'الأثر والقدوة والصدقة الجارية',
+    desc: 'نوايا ترك الأثر الصالح والصدقة الجارية بعد الموت',
+    groups: [
+      { title: 'الصدقة الجارية والعلم النافع', emoji: '🌱', items: [
+        'أنوى بكل علم أُعلّمه صدقةً جاريةً تنفعنى بعد موتى',
+        'أنوى بكتاباتى ومؤلفاتى أثراً يبقى ويُقرأ من بعدى',
+        'أنوى تأسيس مشروع خيرى أو وقف يستمر بعد رحيلى',
+        'أنوى بتربية أولادى الصالحين صدقةً جاريةً بدعائهم لى',
+        'أنوى بناء أو المساهمة فى بناء مسجد أو مدرسة أو بئر',
+        'أنوى أن يكون كل خير فعلته سبباً فى خير متسلسل من بعدى',
+      ]},
+      { title: 'القدوة والتأثير الإيجابى', emoji: '💫', items: [
+        'أنوى أن يكون سلوكى قدوةً حسنةً لمن يرانى',
+        'أنوى أن أُلهم من حولى على الخير بلا وعظ وإرشاد',
+        'أنوى أن يُقتدى بى فى الطاعة لا فى المعصية',
+        'أنوى أن تكون بسمتى وكلمتى الطيبة بذرة خير فى يوم ما',
+        'أنوى أن أترك الدنيا أفضل مما وجدتها بالعلم والعمل',
+      ]},
+      { title: 'الولد الصالح', emoji: '👨‍👦', items: [
+        'أنوى تربية ولد صالح يدعو لى بعد موتى',
+        'أنوى غرس حب الله ورسوله فى قلوب أولادى',
+        'أنوى تعليم أولادى ما ينفعهم فى دينهم ودنياهم',
+        'أنوى أن أكون قدوةً لأولادى فيرثوا عنى الصلاح',
+        'أنوى الدعاء لأولادى بالهداية والصلاح دائماً',
+      ]},
+      { title: 'أثر لا ينقطع', emoji: '♾️', items: [
+        'أنوى أن أدل على خير فيجرى لى أجر كل من عمل به',
+        'أنوى نشر سنة حسنة يعمل بها الناس من بعدى',
+        'أنوى المساهمة فى كل مشروع نفعه ممتد',
+        'أنوى ألا أسن سنة سيئة يحمل وزرها من بعدى',
+        'أنوى أن يكون ذكرى بين الناس ذكراً حسناً يُدعى لى به',
+      ]},
+    ]
+  },
+
+  // ══ حقوق الحيوان ══
+  {
+    id: 'animals', emoji: '🐾', title: 'الرحمة بالحيوان وحقوقه',
+    desc: 'نوايا الرفق بالحيوان والرحمة بجميع المخلوقات',
+    groups: [
+      { title: 'الرحمة بالحيوان وإطعامه', emoji: '🐾', items: [
+        'أنوى بإطعام الحيوان الجائع نيل الأجر فى كل كبد رطبة',
+        'أنوى إزالة الأذى عن طريق الحيوان كما أُزيله عن طريق الناس',
+        'أنوى الرفق بالحيوان عند الذبح امتثالاً لأمر النبى ﷺ بإحسان القِتلة',
+        'أنوى ألا أُحمّل الدابة ما لا تُطيق امتثالاً لقوله ﷺ: اتقوا الله فى هذه البهائم',
+        'أنوى أن تكون رحمتى بالمخلوقات شاملةً لكل ما أسبغ الله عليه الحياة',
+      ]},
+      { title: 'حسن تربية الحيوان والعناية به', emoji: '🐈', items: [
+        'أنوى العناية بما أملك من حيوان فإن المرأة دخلت النار فى هرة حبستها',
+        'أنوى توفير الماء والطعام لحيوانى فى وقته دون تأخير',
+        'أنوى ألا أُفرّق بين الأم وصغيرها من الحيوان',
+        'أنوى ألا أتخذ الحيوان غرضاً للتسلية أو الإيذاء',
+        'أنوى تعليم أولادى الرفق بالحيوان منذ صغرهم',
+        'أنوى علاج حيوانى المريض ولا أتركه يتألم',
+      ]},
+      { title: 'رحمة عامة بالمخلوقات', emoji: '🌍', items: [
+        'أنوى سقيا الطير والقطط فى الحر الشديد ابتغاء الأجر',
+        'أنوى ألا أقتل حيواناً إلا لضرورة شرعية',
+        'أنوى الرفق حتى بالحشرات فلا أُعذبها بالنار',
+        'أنوى أن تكون رحمتى بالخلق مرآةً لرحمة الله بى',
+        'أنوى الدعوة للرفق بالحيوان وتذكير من يُسىء إليه',
+        'أنوى إغاثة كل ملهوف من الخلق إنساناً كان أو حيواناً',
+      ]},
+    ]
+  },
+
+  // ══ نيات الصلاة المفصلة ══
+  {
+    id: 'salah_detail', emoji: '🕌', title: 'نوايا مفصلة لكل صلاة',
+    desc: 'نيات خاصة لكل فريضة على حدة من فجر حتى عشاء',
+    groups: [
+      { title: 'صلاة الفجر', emoji: '🌅', items: [
+        'أنوى صلاة الفجر شاهدةً تشهد لى بأنى كنت مع المؤمنين',
+        'أنوى بالمحافظة على الفجر جماعةً الخروج من النفاق',
+        'أنوى استقبال يومى بالصلاة والذكر لأبدأ من نور',
+        'أنوى بقيام الفجر بعد نوم أن أكون من الذاكرين الله كثيراً',
+        'أنوى أن أبقى فى مصلاى بعد الفجر حتى تطلع الشمس',
+        'أنوى أن يكون الفجر ميزان استقامتى مع الله',
+      ]},
+      { title: 'صلاة الظهر', emoji: '☀️', items: [
+        'أنوى صلاة الظهر فى وسط يومى استراحةً مع الله',
+        'أنوى بالمحافظة على الظهر جماعةً نيل فضل الجماعة',
+        'أنوى أن تكون صلاة الظهر فاصلاً بين نصفى اليوم',
+        'أنوى قطع انشغالى بالدنيا وقت الظهر تلبيةً لنداء الله',
+        'أنوى أن أُصلى الظهر بخشوع رغم زحام العمل',
+      ]},
+      { title: 'صلاة العصر', emoji: '🌤️', items: [
+        'أنوى المحافظة على العصر مع الفجر فمن صلى البردين دخل الجنة',
+        'أنوى أن أُنهى أعمال يومى قبل العصر لأتفرغ لله',
+        'أنوى بصلاة العصر مراجعة ما مضى من يومى',
+        'أنوى ألا أُفرّط فى العصر فمن فاتته فكأنما وُتر أهله وماله',
+        'أنوى أن تشهد لى ملائكة الليل والنهار عند صلاة العصر',
+      ]},
+      { title: 'صلاة المغرب', emoji: '🌆', items: [
+        'أنوى صلاة المغرب شاكراً لله على نعم النهار المنصرم',
+        'أنوى بسنة المغرب البعدية إتمام الثنتى عشرة ركعة التى يُبنى بها بيت فى الجنة',
+        'أنوى الجلوس بعد المغرب للذكر حتى العشاء',
+        'أنوى المبادرة بصلاة المغرب أول وقتها',
+        'أنوى استقبال الليل بذكر الله وأذكار المساء',
+      ]},
+      { title: 'صلاة العشاء', emoji: '🌙', items: [
+        'أنوى صلاة العشاء لأن من صلى العشاء فى جماعة فكأنما قام نصف الليل',
+        'أنوى تأخير النوم قليلاً بعد العشاء للذكر والقراءة',
+        'أنوى ختم يومى بالعشاء على وضوء استعداداً لمن يتوفاه الله',
+        'أنوى ألا أسهر بعد العشاء فيما لا ينفع',
+        'أنوى أن يكون الوتر خاتمة عملى فى الليل',
+      ]},
+    ]
+  },
+
+  // ══ الابتداء بالخير ══
+  {
+    id: 'beginning', emoji: '🚀', title: 'نوايا الابتداء بالأعمال',
+    desc: 'نوايا خاصة بلحظة البدء فى أى عمل جديد',
+    groups: [
+      { title: 'البدء بالبسملة والنية', emoji: '🚀', items: [
+        'أقول بسم الله فى أول كل عمل لأبارك فيه وأطرد الشيطان',
+        'أنوى تجديد النية دائماً فإنما الأعمال بالنيات',
+        'أنوى البدء بالأهم قبل المهم فى تنظيم أولوياتى',
+        'أنوى الاستعانة بالله قبل الشروع فى أى أمر مهما كان صغيراً',
+        'أنوى بالتخطيط المسبق تحقيق أكبر قدر من الخير',
+      ]},
+      { title: 'نوايا بداية المشاريع والأعمال الكبيرة', emoji: '🏗️', items: [
+        'أنوى بكل مشروع أبدأه أن يكون لله ولخدمة الناس',
+        'أنوى الاستخارة قبل كل أمر عظيم وتفويض النتيجة لله',
+        'أنوى مشاورة أهل الخبرة والرأى امتثالاً لقوله تعالى وشاورهم فى الأمر',
+        'أنوى ألا أُحجم عن الخير خوفاً من الفشل فالتوكل على الله',
+        'أنوى أن يكون نجاح مشروعى عوناً لى على مزيد من الخير',
+      ]},
+      { title: 'بداية جديدة وتوبة', emoji: '🌄', items: [
+        'أنوى أن أبدأ صفحة جديدة مع الله من هذه اللحظة',
+        'أنوى ألا أُؤجل التوبة انتظاراً لمناسبة أو موسم',
+        'أنوى ألا يُثبطنى ماضىَّ عن بداية صالحة اليوم',
+        'أنوى أن أبدأ صغيراً وأداوم فأحب الأعمال أدومها',
+        'أنوى ألا أستحقر عملاً صغيراً فقد يكون سبب نجاتى',
+      ]},
+      { title: 'العزيمة والإصرار', emoji: '💪', items: [
+        'أنوى العزم الصادق لا مجرد التمنى والأمانى',
+        'أنوى ألا أنكص عن عزمى عند أول عقبة',
+        'أنوى الاستعانة بالله على ما عزمت عليه',
+        'أنوى أن أُتم ما بدأت فإتمام العمل من تمام النية',
+        'أنوى تجديد عزيمتى كلما فترت همتى',
+      ]},
+    ]
+  },
+
+  // ══ أضحية وعقيقة ══
+  {
+    id: 'adha', emoji: '🐑', title: 'الأضحية والعقيقة',
+    desc: 'نوايا الأضحية فى العيد والعقيقة عن المولود',
+    groups: [
+      { title: 'نوايا الأضحية', emoji: '🐑', items: [
+        'أُضحى تعظيماً لشعيرة الله وإحياءً لسنة سيدنا إبراهيم عليه السلام',
+        'أنوى بالأضحية شكر الله على نعمة المال والصحة والعيد',
+        'أنوى إطعام الفقراء والمساكين ابتغاء الأجر لا السمعة',
+        'أنوى التسمية والتكبير عند الذبح امتثالاً لأمر الله',
+        'أنوى إشراك أهلى وأولادى فى ثواب الأضحية',
+        'أنوى توزيع الأضحية أثلاثاً على أهلى وجيرانى والفقراء',
+        'أنوى التقرب إلى الله بإراقة الدم يوم النحر فهو من أحب الأعمال يومئذ',
+        'أنوى الإمساك عن الأخذ من شعرى وظفرى عشرة ذى الحجة تعبداً لله',
+      ]},
+      { title: 'نوايا العقيقة عن المولود', emoji: '👶', items: [
+        'أعقّ عن مولودى شكراً لله على نعمة الذرية الصالحة',
+        'أنوى بالعقيقة إحياء السنة فكل غلام مرتهن بعقيقته',
+        'أنوى إطعام الأقارب والجيران والفقراء يوم العقيقة',
+        'أنوى التسمية الحسنة للمولود التى تكون دعاءً له طول عمره',
+        'أنوى بتحنيك المولود اقتداءً بسنة النبى ﷺ',
+        'أنوى الدعاء للمولود أن يكون صالحاً نافعاً لدينه وأمته',
+      ]},
+    ]
+  },
+
+  // ══ صلوات خاصة ══
+  {
+    id: 'special_salah', emoji: '🌧️', title: 'الصلوات الخاصة',
+    desc: 'نوايا صلاة الاستسقاء والكسوف والجمعة والعيدين',
+    groups: [
+      { title: 'صلاة الاستسقاء وطلب الغيث', emoji: '🌧️', items: [
+        'أنوى صلاة الاستسقاء افتقاراً لله وإقراراً بأن المطر بيده وحده',
+        'أنوى الخروج للاستسقاء متذللاً خاشعاً لا متعالياً',
+        'أنوى بطلب المطر رحمةً بالناس والحيوان والأرض',
+        'أنوى التوبة الصادقة قبل الاستسقاء لأن المعاصى تحبس القطر',
+        'أنوى الخروج مع المسلمين للاستسقاء اتباعاً للسنة',
+      ]},
+      { title: 'صلاة الكسوف والخسوف', emoji: '🌑', items: [
+        'أنوى صلاة الكسوف امتثالاً لأمر النبى ﷺ وتخوفاً من آيات الله',
+        'أنوى بالصلاة عند الكسوف تجديد اليقين بعظمة الله وقدرته',
+        'أنوى الإكثار من الذكر والاستغفار عند الكسوف',
+        'أنوى أن تكون آيات الله فى الكون تذكيراً بيوم القيامة',
+        'أنوى الصدقة والعتق عند الكسوف كما أمر النبى ﷺ',
+        'أنوى إطالة الركوع والسجود فى صلاة الكسوف تعظيماً',
+      ]},
+      { title: 'صلاة الجمعة', emoji: '🕌', items: [
+        'أنوى التبكير إلى الجمعة طلباً لدرجات التبكير',
+        'أنوى الغسل والتطيب والتهيؤ تعظيماً لشعيرة الجمعة',
+        'أنوى الإنصات للخطبة امتثالاً لأمر النبى ﷺ',
+        'أنوى الإكثار من الصلاة على النبى ﷺ يوم الجمعة',
+        'أنوى الدعاء فى الساعة الأخيرة رجاءً لوقت الإجابة',
+        'أنوى قراءة سورة الكهف يوم الجمعة نوراً بين الجمعتين',
+      ]},
+      { title: 'صلاة العيدين', emoji: '🎉', items: [
+        'أنوى صلاة العيد شكراً لله على إتمام العبادة',
+        'أنوى التكبير بين يدى العيد إحياءً لشعيرة الله',
+        'أنوى إدخال الفرح على أهلى وأولادى يوم العيد',
+        'أنوى صلة الأرحام وزيارة الأقارب فى أيام العيد',
+        'أنوى التصدق على الفقراء يوم العيد لأشركهم فى الفرحة',
+      ]},
+    ]
+  },
+
+  // ══ جهاد ودفاع ══
+  {
+    id: 'jihad', emoji: '🛡️', title: 'الجهاد والدفاع',
+    desc: 'نوايا الجهاد بأنواعه والدفاع عن النفس والأهل والدين',
+    groups: [
+      { title: 'جهاد النفس', emoji: '⚔️', items: [
+        'أنوى بمجاهدة نفسى على العبادة أن أكون من المجاهدين',
+        'أنوى أن يكون جهادى لنفسى أشد من جهادى لعدوى',
+        'أنوى ترك الشهوات المحرمة جهاداً فى سبيل الله',
+        'أنوى الصبر على أذى الناس جهاداً فى ضبط النفس',
+        'أنوى بالدعوة إلى الله وتحمل أذاها جهاداً بالكلمة',
+      ]},
+      { title: 'الدفاع عن النفس والأهل', emoji: '🛡️', items: [
+        'أنوى حماية أهلى ودارى وعرضى طاعةً لله ودفعاً للضرر',
+        'أنوى بالقوة والتحصين أن تكون وسيلةً للسلم لا الحرب',
+        'أنوى ألا أبدأ بالأذى وأن يكون دفاعى بالقدر الضرورى',
+        'أنوى حفظ حق الضعيف والمظلوم من بطش الظالم',
+        'أنوى إعداد ما أستطيع من قوة ردعاً للعدوان لا ابتداءً به',
+        'أنوى تعليم أهلى ما يحفظ به أنفسهم عند الخطر',
+      ]},
+      { title: 'الجهاد بالمال والعلم والكلمة', emoji: '📢', items: [
+        'أنوى بإنفاق مالى فى دعم المظلومين جهاداً بالمال',
+        'أنوى بنشر العلم والحق جهاداً بالقلم والكلمة',
+        'أنوى بالدفاع عن الإسلام أمام الشبهات جهاداً بالحجة',
+        'أنوى بدعم أسر المحتاجين مشاركةً فى نصرة المظلوم',
+        'أنوى أن يكون صوتى للحق حتى وإن كان وحيداً',
+      ]},
+    ]
+  },
+
+  // ══ أخلاق متخصصة ══
+  {
+    id: 'akhlaq', emoji: '🌺', title: 'الأخلاق المتخصصة',
+    desc: 'نوايا ضبط الغضب وترك الحسد والإيثار والتفاؤل',
+    groups: [
+      { title: 'ضبط الغضب والحلم', emoji: '🌊', items: [
+        'أنوى كظم غيظى ابتغاء وصف المتقين الكاظمين الغيظ',
+        'أنوى السكوت عند الغضب لقوله ﷺ: إذا غضب أحدكم فليسكت',
+        'أنوى تغيير وضعى عند الغضب — قياماً أجلس وجلوساً أضطجع',
+        'أنوى الاستعاذة بالله من الشيطان الرجيم عند الغضب كما أرشد النبى ﷺ',
+        'أنوى ألا أتخذ قراراً مصيرياً وأنا غاضب',
+        'أنوى أن يكون حلمى دليلاً على قوتى لا ضعفى',
+        'أنوى الدعاء لمن أغضبنى بالهداية بدلاً من الانتقام',
+      ]},
+      { title: 'ترك الحسد والحقد', emoji: '💚', items: [
+        'أنوى ترك الحسد لأنه داء الأمم قبلنا كما حذّر النبى ﷺ',
+        'أنوى الغبطة الصحية — أن أتمنى مثل ما عند الناس لا زواله',
+        'أنوى الدعاء لمن أحسده بالمزيد والبركة لأداوى قلبى',
+        'أنوى ألا أُطيل النظر فيما أعطى الله الناس فيُمرض قلبى',
+        'أنوى ترك الحقد والضغينة لأنها تُحرق القلب لا غيرى',
+        'أنوى مصافحة من أحقد عليه وتجديد المحبة معه',
+      ]},
+      { title: 'الإيثار وتقديم الغير', emoji: '🤲', items: [
+        'أنوى الإيثار بما أحتاجه لأبلغ درجة الأنصار المؤثرين على أنفسهم',
+        'أنوى تقديم الغير فى المجالس والطعام والفضل',
+        'أنوى مساعدة من يحتاج حتى قبل أن يطلب',
+        'أنوى أن أُفرح غيرى ولو على حساب فرحتى',
+        'أنوى ألا أذكر معروفى الذى صنعته لأحد أمام الناس',
+      ]},
+      { title: 'الأمل والتفاؤل وحسن الظن', emoji: '🌅', items: [
+        'أنوى حسن الظن بالله دائماً لأن الله عند ظن عبده به',
+        'أنوى التفاؤل والتيمن بالخير اقتداءً بالنبى ﷺ',
+        'أنوى ألا أتشاءم أو أنشر اليأس بين الناس',
+        'أنوى أن يكون أملى فى الله وقوداً لسعيى وعملى',
+        'أنوى الابتسامة فى وجه القادم حتى وأنا أعانى فى الداخل',
+        'أنوى أن أرى الجانب المضىء فى كل ابتلاء',
+      ]},
+    ]
+  },
+
+  // ══ أحوال خاصة جداً ══
+  {
+    id: 'special_states', emoji: '🤍', title: 'أحوال حياتية خاصة',
+    desc: 'نوايا المريض النفسى والسجين والأرمل والمديون والفقير',
+    groups: [
+      { title: 'نوايا من يعانى القلق والاكتئاب', emoji: '🌤️', items: [
+        'أنوى الصبر على القلق والاكتئاب احتساباً لأنه ابتلاء يُكفّر الذنوب',
+        'أنوى طلب العلاج دون خجل لأن التداوى سنة ولا يُنافى التوكل',
+        'أنوى أن أُقاوم وساوس القلق بذكر الله فإنه الأنجع دواءً',
+        'أنوى عدم العزلة التامة بل أبقى متصلاً بمن يُحبنى',
+        'أنوى ألا أُحمّل نفسى فوق طاقتها لأن الله لا يكلف نفساً إلا وسعها',
+        'أنوى طلب مساعدة متخصص دون أن أرى ذلك نقصاً فى إيمانى',
+        'أنوى الاستمرار فى الطاعة رغم الألم لأن الصبر يبنى الشخصية',
+      ]},
+      { title: 'نوايا السجين والمظلوم', emoji: '🕊️', items: [
+        'أنوى استثمار وقت السجن فى التعلم والقرآن والذكر',
+        'أنوى الصبر على الظلم احتساباً لأن الله لا يُضيع حق مظلوم',
+        'أنوى عدم حمل الحقد على ظالمى وتفويض أمره لله',
+        'أنوى أن تكون محنتى سبباً فى تعمق إيمانى وإصلاح نفسى',
+        'أنوى الدعاء لمن ظلمنى بالهداية لا الانتقام',
+        'أنوى أن أخرج من محنتى أقوى إيماناً وأنقى قلباً',
+      ]},
+      { title: 'نوايا الأرمل والأرملة بعد الفقد', emoji: '🤍', items: [
+        'أنوى الصبر على فقد شريك العمر احتساباً للأجر الجسيم',
+        'أنوى الاستمرار فى تربية أبنائى أمانةً لروح من فقدت',
+        'أنوى الدعاء للمتوفى فى كل صلاة إحياءً للعهد بيننا',
+        'أنوى ألا أُضيّع نفسى فى الحزن بل أستمر فى العطاء',
+        'أنوى أن يكون صبرى قدوةً لأبنائى على الإيمان بالقضاء',
+        'أنوى الصدقة الجارية عن روح شريكى كل فترة',
+      ]},
+      { title: 'نوايا من يعانى من الفقر والضائقة المالية', emoji: '🌿', items: [
+        'أنوى الصبر على الضائقة المالية لأن الفقر الصابر عنده أجر عظيم',
+        'أنوى ألا يدفعنى الفقر إلى الحرام مهما كانت الضغوط',
+        'أنوى القناعة بالحلال ولو كان قليلاً فهو أبرك من كثير الحرام',
+        'أنوى السعى الحثيث فى طلب الرزق الحلال مع التوكل الكامل',
+        'أنوى الاستغفار الكثير لأن الاستغفار يفتح أبواب الرزق',
+        'أنوى ألا أكسر كرامتى بالسؤال إلا عند الضرورة القصوى',
+        'أنوى التصدق ولو بالقليل لأن الصدقة تجلب البركة حتى للفقير',
+      ]},
+    ]
+  },
+
+  // ══ القيادة والإدارة ══
+  {
+    id: 'leadership', emoji: '👑', title: 'نوايا المدير والقائد',
+    desc: 'نوايا القيادة والمسؤولية وخدمة من تحت يدك',
+    groups: [
+      { title: 'نوايا القائد والمدير', emoji: '👑', items: [
+        'أنوى أن أكون قائداً خادماً لمن أقود لا سيداً متسلطاً',
+        'أنوى العدل بين من تحت يدى دون محاباة',
+        'أنوى الاستشارة ولا أستبد بالرأى لقوله تعالى: وأمرهم شورى بينهم',
+        'أنوى أن أتحمل المسؤولية ولا أُلقيها على غيرى عند الخطأ',
+        'أنوى أن يكون سعيى لخير الجماعة قبل خيرى الشخصى',
+        'أنوى الاعتراف بأخطائى أمام فريقى لأكون قدوةً صادقة',
+        'أنوى أن يحبنى من أقودهم لعدلى وإخلاصى لا لمنصبى',
+        'أنوى أن أُحاسَب أمام الله عن كل من أمّنتهم علىّ',
+      ]},
+      { title: 'نوايا الوالى والمسؤول العام', emoji: '⚖️', items: [
+        'أنوى بمنصبى خدمة الناس جميعاً لا فئة بعينها',
+        'أنوى أن لا أنام مرتاحاً وبين رعيتى محتاج لم أقضِ حاجته',
+        'أنوى سماع المظالم مباشرةً دون حجب أو وسطاء',
+        'أنوى أن تكون قوانينى عادلةً يسرى عليها الضعيف والقوى',
+        'أنوى تذكر قول النبى ﷺ: كلكم راعٍ وكلكم مسؤول عن رعيته',
+      ]},
+    ]
+  },
+
+  // ══ التعامل مع المخالف ══
+  {
+    id: 'opponent', emoji: '🕊️', title: 'التعامل مع المخالف والعدو',
+    desc: 'نوايا التعامل مع المخالف فى الرأى والدين والعدو',
+    groups: [
+      { title: 'نوايا التعامل مع المخالف فى الرأى', emoji: '💬', items: [
+        'أنوى الحوار مع المخالف طلباً للحق لا للغلبة والجدل',
+        'أنوى الإنصات الكامل لرأى المخالف قبل الرد عليه',
+        'أنوى ألا أسىء الظن بالمخالف ما أمكن إحسان الظن',
+        'أنوى أن يكون ردى علمياً هادئاً لا عاطفياً حاداً',
+        'أنوى القبول بالحق ولو جاء من خصمى فالحق أحق أن يتبع',
+        'أنوى عدم الخلط بين شخص المخالف ورأيه الذى أخالفه',
+      ]},
+      { title: 'نوايا التعامل مع العدو', emoji: '🕊️', items: [
+        'أنوى أن تكون معاملتى للعدو بالعدل حتى لا أظلمه',
+        'أنوى الدعاء لعدوى بالهداية لأن ذلك أعظم انتقام',
+        'أنوى ألا أتمنى لأحد شراً فى قلبى حتى وإن آذانى',
+        'أنوى حفظ كرامة عدوى حين أقدر على إهانته لأن الكرم مع القدرة فضيلة',
+        'أنوى السلام والمصالحة متى كان ذلك ممكناً',
+      ]},
+      { title: 'نوايا الولاء والبراء', emoji: '💚', items: [
+        'أنوى محبة المؤمنين لإيمانهم لا لمصلحة دنيوية',
+        'أنوى البراءة من المعاصى والكفر لا من أصحابها البشر',
+        'أنوى الدعوة لمن أخطأ بالحكمة لا بالنفرة والعداء',
+        'أنوى أن تكون محبتى وبغضى لله لا للهوى',
+        'أنوى ألا أُوالى على معصية ولو كان الموالى قريباً',
+        'أنوى أن أُفرّق بين البراءة من الفعل والرحمة بالفاعل',
+      ]},
+    ]
+  },
+
+  // ══ الزيارات والعلاقة التربوية ══
+  {
+    id: 'visits', emoji: '🏡', title: 'الزيارات والعلاقة التربوية',
+    desc: 'نوايا الزيارات الاجتماعية والعلاقة بين الشيخ والمريد',
+    groups: [
+      { title: 'نوايا الزيارات الاجتماعية', emoji: '🏡', items: [
+        'أنوى زيارة أخى المسلم فى الله رجاء أن يحبنى الله كما أحببته فيه',
+        'أنوى بالزيارة إدخال السرور والأنس لا الثقل والحرج',
+        'أنوى التخفيف فى الزيارة وعدم إطالتها فوق المعتاد',
+        'أنوى حمل الهدية فى الزيارة لتُنمى المحبة',
+        'أنوى صيانة أسرار البيت الذى أزوره وعدم نشرها',
+        'أنوى أن تكون زيارتى سبباً للخير لا مجلساً للغيبة',
+        'أنوى الدعاء لأهل البيت الذى أزوره قبل مغادرتى',
+      ]},
+      { title: 'نوايا العلاقة التربوية بين الشيخ والمريد', emoji: '🎓', items: [
+        'أنوى طلب العلم من شيخى خالصاً لله لا ليُقال',
+        'أنوى التواضع لشيخى واحترامه حتى أنتفع بعلمه',
+        'أنوى ألا أُقدم رأيى على رأى شيخى دون حجة',
+        'أنوى الدعاء لشيخى بالمزيد والبركة فى علمه وعمره',
+        'أنوى تطبيق ما أتعلمه قبل الانتقال إلى غيره',
+        'أنوى نشر علم شيخى بعد وفاته إحياءً لأثره',
+      ]},
+      { title: 'نوايا الشيخ والمربى مع طلابه', emoji: '🌿', items: [
+        'أنوى التربية على العمل قبل تعليم العلم',
+        'أنوى أن أكون نموذجاً يُقتدى به قبل أن أكون واعظاً',
+        'أنوى الصبر على بطء المريد وتفاوت أحواله',
+        'أنوى الدعاء لكل طالب بعينه فى الغيب',
+        'أنوى أن يكون هدفى من التربية خدمة الله لا خدمة نفسى',
+        'أنوى ألا أُثقل المريد بما لا يُطيق فالشريعة يُسر',
+      ]},
+    ]
+  },
+
+  // ══ الدعاء وآدابه ══
+  {
+    id: 'dua', emoji: '🤲', title: 'الدعاء وآدابه',
+    desc: 'نوايا الدعاء المستجاب وآدابه وأوقات الإجابة',
+    groups: [
+      { title: 'آداب الدعاء', emoji: '🤲', items: [
+        'أنوى استحضار القلب فى الدعاء لا مجرد تحريك اللسان',
+        'أنوى البدء بحمد الله والصلاة على النبى ﷺ قبل الدعاء',
+        'أنوى الدعاء بيقين الإجابة لا بقلب غافل لاهٍ',
+        'أنوى الإلحاح فى الدعاء وعدم الاستعجال فى الإجابة',
+        'أنوى رفع يدىّ فى الدعاء تأدباً واقتداءً بالسنة',
+        'أنوى الدعاء بأسماء الله الحسنى المناسبة لحاجتى',
+        'أنوى ختم الدعاء بالصلاة على النبى ﷺ والحمد لله',
+      ]},
+      { title: 'أوقات إجابة الدعاء', emoji: '⏰', items: [
+        'أنوى تحرى الثلث الأخير من الليل للدعاء',
+        'أنوى الدعاء بين الأذان والإقامة فإنه لا يُرد',
+        'أنوى الدعاء فى السجود لأنه أقرب موضع من الله',
+        'أنوى الدعاء ساعة الإجابة يوم الجمعة',
+        'أنوى الدعاء عند نزول المطر وفى السفر',
+        'أنوى الدعاء وأنا صائم فدعوة الصائم مستجابة',
+      ]},
+      { title: 'ما أدعو به', emoji: '💫', items: [
+        'أنوى الدعاء لنفسى ولوالدىّ وأهلى والمسلمين',
+        'أنوى الدعاء للمظلومين والمستضعفين فى كل مكان',
+        'أنوى الدعاء بالثبات على الدين وحسن الخاتمة',
+        'أنوى الدعاء بالعفو والعافية فى الدنيا والآخرة',
+        'أنوى الدعاء لمن أحسن إلىّ ولمن أساء جزاءً وعفواً',
+        'أنوى الدعاء بجوامع الكلم كما علّمنا النبى ﷺ',
+      ]},
+    ]
+  },
+
+  // ══ حفظ الجوارح ══
+  {
+    id: 'jawarih', emoji: '🫰', title: 'حفظ الجوارح',
+    desc: 'نوايا حفظ العين والأذن واللسان واليد والقدم من الحرام',
+    groups: [
+      { title: 'حفظ البصر', emoji: '👁️', items: [
+        'أنوى غض بصرى عن المحرمات ابتغاء نور القلب',
+        'أنوى صرف نظرى فوراً عند وقوعه على حرام',
+        'أنوى استخدام عينى فيما يُرضى الله من قراءة وتدبر',
+        'أنوى النظر فى خلق الله للاعتبار والتفكر',
+        'أنوى ألا أُطيل النظر لما عند الناس فيمرض قلبى بالحسد',
+      ]},
+      { title: 'حفظ السمع', emoji: '👂', items: [
+        'أنوى حفظ سمعى عن الغيبة والنميمة وقول الزور',
+        'أنوى الإنصات للقرآن والعلم النافع',
+        'أنوى الابتعاد عن سماع كل ما يُغضب الله',
+        'أنوى ألا أُصغى لما يُفسد قلبى أو يُوهن إيمانى',
+        'أنوى أن أسمع القول فأتبع أحسنه',
+        'أنوى الإنصات لمن يحدثنى احتراماً له وأدباً معه',
+      ]},
+      { title: 'حفظ اليد والقدم', emoji: '✋', items: [
+        'أنوى أن تكون يدى للخير والبناء لا للأذى والهدم',
+        'أنوى ألا أمد يدى لحرام أو أكتب باطلاً',
+        'أنوى أن تمشى قدماى إلى المساجد ومجالس العلم',
+        'أنوى ألا أسعى بقدمى إلى معصية أو مكان سوء',
+        'أنوى إزالة الأذى عن الطريق بيدى صدقةً',
+      ]},
+    ]
+  },
+
+  // ══ التوكل والأسباب ══
+  {
+    id: 'tawakkul', emoji: '🌾', title: 'التوكل والأخذ بالأسباب',
+    desc: 'نوايا التوكل الحقيقى مع الأخذ بالأسباب المشروعة',
+    groups: [
+      { title: 'حقيقة التوكل', emoji: '🌾', items: [
+        'أنوى التوكل على الله وحده مع بذل الأسباب كاملة',
+        'أنوى أن يكون قلبى معلقاً بالله لا بالأسباب',
+        'أنوى الثقة بأن ما قدّره الله هو الخير وإن لم أفهمه',
+        'أنوى ألا أعتمد على قوتى أو مالى أو جاهى بل على الله',
+        'أنوى الرضا بنتيجة سعيى بعد بذل الجهد والدعاء',
+      ]},
+      { title: 'الأخذ بالأسباب', emoji: '⚙️', items: [
+        'أنوى الأخذ بالأسباب طاعةً لله لا اعتماداً عليها',
+        'أنوى الإتقان فى الأسباب لأن الله كتب الإحسان',
+        'أنوى الجمع بين اعقلها وتوكل كما علّم النبى ﷺ',
+        'أنوى ألا أترك السبب بحجة التوكل فذاك عجز',
+        'أنوى ألا أعتمد على السبب وأنسى مسبب الأسباب',
+      ]},
+      { title: 'التوكل عند الشدائد', emoji: '🌊', items: [
+        'أنوى قول حسبنا الله ونعم الوكيل عند كل شدة',
+        'أنوى تفويض أمرى لله عند انسداد الطرق أمامى',
+        'أنوى ألا أطرق باب مخلوق قبل أن أطرق باب الخالق',
+        'أنوى اليقين بأن مع العسر يسراً مهما طال الليل',
+        'أنوى الصبر ريثما يأتى فرج الله فى وقته لا وقتى',
+      ]},
+      { title: 'ثمار التوكل', emoji: '🌳', items: [
+        'أنوى أن يورثنى التوكل راحة القلب وسكون النفس',
+        'أنوى التحرر من الخوف من المستقبل بالتوكل',
+        'أنوى ألا أحسد أحداً لأن الأرزاق مقسومة بيد الله',
+        'أنوى الرضا بقسمة الله لى فى الرزق والعمر والولد',
+        'أنوى أن أكون كالطير تغدو خماصاً وتروح بطاناً',
+      ]},
+    ]
+  },
+
+  // ══ الصبر ══
+  {
+    id: 'sabr', emoji: '🕯️', title: 'الصبر بأنواعه',
+    desc: 'نوايا الصبر على الطاعة وعن المعصية وعلى الأقدار',
+    groups: [
+      { title: 'الصبر على الطاعة', emoji: '🕯️', items: [
+        'أنوى الصبر على أداء العبادات رغم مشقتها',
+        'أنوى المداومة على الطاعة وإن قلّت خير من المنقطعة',
+        'أنوى الصبر على مجالسة الصالحين ولزوم مجالس العلم',
+        'أنوى الصبر على تربية نفسى على الأخلاق الحسنة',
+        'أنوى مجاهدة الكسل والفتور فى العبادة',
+      ]},
+      { title: 'الصبر عن المعصية', emoji: '🚫', items: [
+        'أنوى الصبر عن الشهوات المحرمة ابتغاء ما عند الله',
+        'أنوى ترك المعصية خوفاً من الله لا خوفاً من الناس',
+        'أنوى الفرار من مواطن الفتنة قبل الوقوع فيها',
+        'أنوى استحضار مراقبة الله عند كل باب للمعصية',
+        'أنوى أن يكون تركى للحرام أحلى من لذته المؤقتة',
+      ]},
+      { title: 'الصبر على الأقدار', emoji: '🌧️', items: [
+        'أنوى الصبر على البلاء دون تسخط أو جزع',
+        'أنوى احتساب المصائب عند الله لتكفير الذنوب',
+        'أنوى ضبط اللسان عند المصيبة فلا أقول إلا خيراً',
+        'أنوى أن يكون صبرى عند الصدمة الأولى فذاك الصبر الحقيقى',
+        'أنوى تذكر أن مع العسر يسراً وأن الفرج قريب',
+      ]},
+    ]
+  },
+
+  // ══ المسافر وأحكامه ══
+  {
+    id: 'traveler', emoji: '🧳', title: 'المسافر وأحكامه',
+    desc: 'نوايا المسافر فى صلاته وصيامه وآدابه فى السفر',
+    groups: [
+      { title: 'عبادات المسافر', emoji: '🧳', items: [
+        'أنوى قصر الصلاة فى السفر أخذاً برخصة الله',
+        'أنوى الجمع بين الصلاتين عند الحاجة تيسيراً',
+        'أنوى المحافظة على الصلاة فى وقتها رغم مشقة السفر',
+        'أنوى الإكثار من الدعاء فى السفر فدعوة المسافر مستجابة',
+        'أنوى الأخذ برخص الله فى الفطر إن شق الصيام',
+      ]},
+      { title: 'آداب السفر', emoji: '🗺️', items: [
+        'أنوى قراءة أذكار السفر عند الركوب والنزول',
+        'أنوى حسن الصحبة والتخفيف على رفقائى فى السفر',
+        'أنوى أن أكون سفيراً لأخلاق الإسلام أينما ذهبت',
+        'أنوى تفقد أحوال المسلمين فى البلاد التى أزورها',
+        'أنوى العودة إلى أهلى سالماً حاملاً الخير والنفع',
+      ]},
+      { title: 'قبل السفر وبعده', emoji: '🚉', items: [
+        'أنوى الاستخارة قبل السفر وتفويض الأمر لله',
+        'أنوى إبراء ذمتى ورد الحقوق قبل سفرى',
+        'أنوى توديع أهلى وطلب دعائهم لى بالسلامة',
+        'أنوى البدء بالمسجد عند العودة فأصلى فيه ركعتين كما كان النبى ﷺ يفعل',
+        'أنوى شكر الله بالسجود عند وصولى سالماً',
+      ]},
+      { title: 'أخلاق المسافر', emoji: '🤝', items: [
+        'أنوى خدمة رفقائى فى السفر والتخفيف عنهم ابتغاء الأجر',
+        'أنوى الصبر على مشقة السفر فهو قطعة من العذاب',
+        'أنوى الإحسان لمن ألقاه فى طريقى من الغرباء',
+        'أنوى ألا أُؤذى أحداً بمتاعى أو صوتى فى وسائل النقل',
+        'أنوى حمل هدية لأهلى عند عودتى إدخالاً للسرور',
+      ]},
+    ]
+  },
+
+  // ══ التعامل مع النعم والابتلاء ══
+  {
+    id: 'niam', emoji: '🎁', title: 'النعم والابتلاءات',
+    desc: 'نوايا شكر النعم والتعامل الصحيح مع الابتلاءات',
+    groups: [
+      { title: 'التعامل مع النعم', emoji: '🎁', items: [
+        'أنوى شكر النعمة بالقلب واللسان والجوارح',
+        'أنوى استخدام كل نعمة فيما يُرضى المنعم سبحانه',
+        'أنوى ألا أبطر بالنعمة أو أتكبر بها على الناس',
+        'أنوى التحدث بنعمة الله شكراً لا فخراً',
+        'أنوى الإنفاق من النعم على المحتاجين',
+        'أنوى ألا تُلهينى النعم عن ذكر المنعم',
+      ]},
+      { title: 'التعامل مع الابتلاء', emoji: '⚖️', items: [
+        'أنوى أن أرى فى الابتلاء رحمةً خفيةً ورفعةً لدرجاتى',
+        'أنوى الصبر والرضا لأن الله إذا أحب قوماً ابتلاهم',
+        'أنوى أن يكون الابتلاء سبباً لتقربى من الله لا بُعدى',
+        'أنوى محاسبة نفسى عند الابتلاء وتصحيح مسارى',
+        'أنوى حسن الظن بالله فى كل ما يقدّره علىّ',
+        'أنوى أن أخرج من الابتلاء أقوى إيماناً وأنقى قلباً',
+      ]},
+    ]
+  },
+
+  // ══ الأطفال والناشئة ══
+  {
+    id: 'children', emoji: '🧒', title: 'نوايا الأطفال والناشئة',
+    desc: 'نوايا يعلّمها الآباء لأطفالهم لتنشئة صالحة',
+    groups: [
+      { title: 'نوايا يتعلمها الطفل', emoji: '🧒', items: [
+        'أنوى طاعة الله لأنه خلقنى وأنعم علىّ',
+        'أنوى بر والدىّ لأن رضاهما من رضا الله',
+        'أنوى الصلاة حباً لله لا خوفاً من العقاب فقط',
+        'أنوى مساعدة إخوتى وأصدقائى ابتغاء محبة الله',
+        'أنوى قول الصدق دائماً لأن الله يحب الصادقين',
+        'أنوى المحافظة على نظافتى لأن الله جميل يحب الجمال',
+      ]},
+      { title: 'نوايا تربوية للناشئة', emoji: '🌱', items: [
+        'أنوى حفظ القرآن ليكون نوراً فى حياتى كلها',
+        'أنوى الاجتهاد فى دراستى لأنفع أمتى مستقبلاً',
+        'أنوى اختيار الأصدقاء الصالحين الذين يعينوننى على الخير',
+        'أنوى تجنب ما يُغضب الله فى ألعابى وأوقات فراغى',
+        'أنوى أن أكون قدوةً صالحةً لإخوتى الأصغر منى',
+        'أنوى بناء علاقة قوية بالله منذ صغرى',
+      ]},
+    ]
+  }
+];
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let saved = [];
+let currentPage = 'home';
+
+async function loadSavedAndHighlight() {
+  try {
+    if (window.storage) {
+      const result = await window.storage.get('niyyah_saved');
+      if (result && result.value) saved = JSON.parse(result.value);
+    }
+  } catch (e) { saved = []; }
+  saved.forEach(id => {
+    const card = document.getElementById('card-' + id);
+    if (card) {
+      card.classList.add('saved');
+      const icon = card.querySelector('.card-icon');
+      const star = card.querySelector('.card-star');
+      if (icon) icon.textContent = '⭐';
+      if (star) star.textContent = '⭐';
+    }
+  });
+  updateSavedUI();
+}
+
+async function persistSaved() {
+  try {
+    if (window.storage) await window.storage.set('niyyah_saved', JSON.stringify(saved));
+  } catch(e) {}
+}
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Build UI immediately — don't block on async storage
+  buildNav();
+  buildPages();
+  buildQuickGrid();
+  updateProgress();
+  window.addEventListener('scroll', () => {
+    updateProgress();
+    const st = document.getElementById('scrollTop');
+    if (st) st.classList.toggle('visible', window.scrollY > 300);
+  });
+  const total = DATA.filter(s => !s.isKnowledge).reduce((a, s) => a + s.groups.reduce((b, g) => b + g.items.length, 0), 0);
+  const tn = document.getElementById('totalNiyyat');
+  const ts = document.getElementById('totalSections');
+  if (tn) tn.textContent = toArabicNum(total) + '+';
+  if (ts) ts.textContent = toArabicNum(DATA.length);
+  // Load saved state & theme after UI is ready
+  loadSavedAndHighlight();
+  loadTheme();
+});
+
+function buildQuickGrid() {
+  const grid = document.getElementById('quickGrid');
+  if (!grid) return;
+  grid.innerHTML = DATA.filter(s => !s.isKnowledge).map(sec => {
+    const count = sec.groups.reduce((a,g) => a + g.items.length, 0);
+    return `<div class="quick-card" data-secid="${sec.id}" onclick="goPage('${sec.id}')">
+      <span class="quick-card-emoji">${sec.emoji}</span>
+      <div class="quick-card-title">${sec.title}</div>
+      <div class="quick-card-count">${toArabicNum(count)} نية</div>
+    </div>`;
+  }).join('');
+}
+
+function buildNav() {
+  const nav = document.getElementById('navItems');
+  const homeItem = `<div class="nav-item active" data-page="home" onclick="goPage('home')">
+    <span class="ne">🏠</span>
+    <span class="nl">الرئيسية</span>
+  </div>`;
+  nav.innerHTML = homeItem;
+  DATA.forEach(sec => {
+    const count = sec.isKnowledge ? '' : sec.groups.reduce((a,g) => a + g.items.length, 0);
+    nav.innerHTML += `<div class="nav-item" data-page="${sec.id}" onclick="goPage('${sec.id}')">
+      <span class="ne">${sec.emoji}</span>
+      <span class="nl">${sec.title}</span>
+      ${count ? `<span class="nc">${toArabicNum(count)}</span>` : ''}
+    </div>`;
+  });
+}
+
+function buildPages() {
+  const container = document.getElementById('dynamicPages');
+  const html = DATA.map(sec => sec.isKnowledge ? buildKnowledgePage(sec) : buildSectionPage(sec)).join('');
+  container.innerHTML = html;
+}
+
+function buildSectionPage(sec) {
+  const total = sec.groups.reduce((a,g) => a + g.items.length, 0);
+  let html = `<div class="page" id="page-${sec.id}">
+    <div class="page-header">
+      <div class="page-emoji-wrap">${sec.emoji}</div>
+      <div class="page-title-block">
+        <h2>${sec.title}</h2>
+        <p>${sec.desc} — <strong>${toArabicNum(total)} نية</strong></p>
+      </div>
+    </div>`;
+
+  sec.groups.forEach((group, gi) => {
+    html += `<div class="niyyah-group">
+      <div class="group-header"><div class="group-title"><span>${group.emoji}</span>${group.title}</div><span class="group-count">${toArabicNum(group.items.length)} نية</span></div>
+      <div class="niyyah-grid">`;
+    group.items.forEach((item, ii) => {
+      const id = `${sec.id}_${gi}_${ii}`;
+      const isSaved = saved.includes(id);
+      html += `<div class="niyyah-card ${isSaved ? 'saved' : ''}" id="card-${id}" onclick="toggleSave('${id}', this)">
+        <div class="card-icon">${isSaved ? '⭐' : 'ن'}</div>
+        <div class="card-text">${item}</div>
+        <span class="card-star" title="حفظ النية">${isSaved ? '⭐' : '☆'}</span>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  html += `</div>`;
+  return html;
+}
+
+function buildKnowledgePage(sec) {
+  return `<div class="page" id="page-${sec.id}">
+    <div class="page-header">
+      <div class="page-emoji-wrap">${sec.emoji}</div>
+      <div class="page-title-block">
+        <h2>علم النية — الأحكام والتعريفات</h2>
+        <p>كل ما تحتاج معرفته عن النية فى الإسلام من تعريف وأحكام وفضل وحكم الرياء</p>
+      </div>
+    </div>
+
+    <div class="hadith-card">
+      <div class="hadith-text">إنما الأعمال بالنيات وإنما لكل امرئ ما نوى</div>
+      <div class="hadith-source">حديث عمر بن الخطاب رضى الله عنه — متفق عليه — أحد أسس الإسلام</div>
+    </div>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">تعريف النية</h2>
+    <div class="info-box">
+      <strong>النية لغةً:</strong> القصد والعزم على الشىء.<br><br>
+      <strong>النية اصطلاحاً:</strong> قصد القلب نحو الفعل ابتغاءً لما يُرضى الله تعالى.<br><br>
+      <strong>محلها:</strong> القلب لا اللسان — فلا يُشترط التلفظ بها باتفاق. واختلف الفقهاء فى استحباب التلفظ سراً؛ فاستحبه بعض الشافعية والحنابلة عوناً للقلب، ومنعه آخرون لعدم ثبوته عن النبى ﷺ، واتفقوا على أن الجهر بها غير مشروع.<br><br>
+      قال الإمام الشافعى عن حديث النية: <em>هو ثلث العلم، ويدخل فى سبعين باباً من الفقه.</em>
+    </div>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">وظائف النية الثلاث</h2>
+    <table class="data-table">
+      <tr><th>الوظيفة</th><th>المعنى</th><th>المثال</th></tr>
+      <tr><td>الإخلاص</td><td>العمل لوجه الله وحده</td><td>الصلاة لله لا ليراه الناس</td></tr>
+      <tr><td>التمييز</td><td>تفريق العبادات عن بعضها</td><td>تمييز الظهر عن العصر</td></tr>
+      <tr><td>الجزاء</td><td>تحديد الأجر والثواب</td><td>نية الخير تُكتب حسنة</td></tr>
+    </table>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">حكم العمل إذا خالطه الرياء</h2>
+    <table class="data-table">
+      <tr><th>الحالة</th><th>الحكم</th></tr>
+      <tr><td>رياء خالص من البداية</td><td>العمل باطل ومحبط قطعاً</td></tr>
+      <tr><td>رياء طارئ مع المجاهدة</td><td>العمل صحيح وأجره تام</td></tr>
+      <tr><td>رياء طارئ مع الاسترسال</td><td>يفسد العمل عند الجمهور</td></tr>
+      <tr><td>نية الله غالبة مع شائبة</td><td>يُرجى القبول مع النقص</td></tr>
+    </table>
+
+    <table class="data-table">
+      <tr><th>المصطلح</th><th>المعنى</th><th>الأثر</th></tr>
+      <tr><td>الرياء</td><td>العمل ليراه الناس</td><td>يُحبط العمل</td></tr>
+      <tr><td>السمعة</td><td>العمل ليسمع به الناس</td><td>نفس حكم الرياء</td></tr>
+      <tr><td>العجب</td><td>الزهو بالعمل بعد أدائه</td><td>يُنقص الأجر، وقد يُحبطه إن استحكم فى القلب</td></tr>
+    </table>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">فضل النية الصالحة</h2>
+    <div class="hadith-card">
+      <div class="hadith-text">إن بالمدينة أقواماً ما سرتم مسيراً ولا قطعتم وادياً إلا كانوا معكم، حبسهم العذر</div>
+      <div class="hadith-source">رواه البخارى — نالوا أجر الغزاة بنيتهم وهم فى بيوتهم</div>
+    </div>
+    <div class="info-box" style="margin-top:16px;">
+      • نية الخير تُكتب حسنة كاملة حتى لو لم يُنفَّذ العمل<br>
+      • من نوى الخير صادقاً وعجز عنه كان أجره كأجر العامل — «فهو بنيته فأجرهما سواء» (الترمذى)<br>
+      • الأعمال المباحة تنقلب بالنية إلى عبادات وطاعات<br>
+      • حسن النية يُضاعف الثواب على العمل الواحد بتعدد مقاصده
+    </div>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">أدلة أخرى صحيحة فى فضل النية</h2>
+    <table class="data-table">
+      <tr><th>الحديث</th><th>المصدر</th></tr>
+      <tr><td>من سأل الله الشهادة بصدق بلّغه الله منازل الشهداء وإن مات على فراشه</td><td>مسلم</td></tr>
+      <tr><td>إذا مرض العبد أو سافر كُتب له مثل ما كان يعمل مقيماً صحيحاً</td><td>البخارى</td></tr>
+      <tr><td>من أتى فراشه وهو ينوى أن يقوم يصلى من الليل فغلبته عيناه كُتب له ما نوى وكان نومه صدقة</td><td>النسائى وابن ماجه — صحيح</td></tr>
+      <tr><td>إنك لن تُنفق نفقةً تبتغى بها وجه الله إلا أُجرت عليها حتى ما تجعل فى فِى امرأتك</td><td>متفق عليه</td></tr>
+      <tr><td>إن الله لا ينظر إلى صوركم وأموالكم ولكن ينظر إلى قلوبكم وأعمالكم</td><td>مسلم</td></tr>
+    </table>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">تعدد النيات فى العمل الواحد</h2>
+    <div class="info-box">
+      العمل الواحد يتضاعف أجره بتعدد النيات الصالحة فيه. <strong>مثال — الذهاب إلى المسجد:</strong><br>
+      • أداء الفريضة جماعةً &nbsp;• عمارة بيت الله &nbsp;• انتظار الصلاة بعد الصلاة<br>
+      • لقاء الإخوان والسلام عليهم &nbsp;• الاعتكاف ولو لحظات &nbsp;• تحية المسجد<br>
+      • كف البصر والجوارح عن المعاصى ما دمت فيه &nbsp;• تعلم مسألة أو سماع موعظة<br>
+      <strong>والقاعدة:</strong> قبل أى عمل اسأل نفسك: ماذا يمكن أن أنوى بهذا أيضاً؟
+    </div>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">مراتب الناس فى النية</h2>
+    <table class="data-table">
+      <tr><th>المرتبة</th><th>الوصف</th></tr>
+      <tr><td>نية عادة</td><td>يعمل المباح بلا قصد — لا أجر ولا وزر</td></tr>
+      <tr><td>نية خوف</td><td>يعبد الله خوفاً من عقابه — عبادة صحيحة مأجورة</td></tr>
+      <tr><td>نية رجاء</td><td>يعبد الله طمعاً فى ثوابه وجنته — صحيحة مأجورة</td></tr>
+      <tr><td>نية محبة وإجلال</td><td>يعبد الله لأنه أهل للعبادة مع الخوف والرجاء — أعلى المراتب</td></tr>
+    </table>
+
+    <h2 style="font-family:'Amiri',serif;font-size:1.4rem;color:var(--ink);margin:24px 0 12px;">كيف تجدد النية عملياً</h2>
+    <div class="info-box">
+      • <strong>توقف ثانية</strong> قبل أى عمل واسأل: لمن أعمل هذا؟<br>
+      • <strong>صياغة يومية:</strong> بعد الفجر قل فى قلبك: أنوى أن يكون يومى كله لله<br>
+      • <strong>عند الفتور:</strong> جدد النية ولا تترك العمل خوفاً من الرياء — فترك العمل لأجل الناس رياء أيضاً كما قال الفضيل بن عياض<br>
+      • <strong>المحاسبة:</strong> قبل النوم راجع نياتك فى أعمال اليوم واستغفر لما شابها
+    </div>
+
+    <div class="hadith-card">
+      <div class="hadith-text">إن الله كتب الحسنات والسيئات فمن همّ بحسنة فلم يعملها كتبها الله عنده حسنةً كاملةً</div>
+      <div class="hadith-source">متفق عليه</div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════
+function goPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('searchResults').classList.remove('active');
+  document.getElementById('searchInput').value = '';
+
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  const navItem = document.querySelector(`[data-page="${id}"]`);
+  if (navItem) navItem.classList.add('active');
+  currentPage = id;
+  closeSidebar();
+  window.scrollTo(0, 0);
+}
+
+// ═══════════════════════════════════════
+// SEARCH
+// ═══════════════════════════════════════
+function handleSearch(query) {
+  const q = query.trim();
+  const resultsDiv = document.getElementById('searchResults');
+  const listDiv = document.getElementById('searchResultsList');
+
+  if (!q) {
+    resultsDiv.classList.remove('active');
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + currentPage).classList.add('active');
+    return;
+  }
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  resultsDiv.classList.add('active');
+
+  const results = [];
+  DATA.forEach(sec => {
+    if (sec.isKnowledge) return;
+    sec.groups.forEach((group, gi) => {
+      group.items.forEach((item, ii) => {
+        if (item.includes(q)) {
+          results.push({ item, sec, group, id: `${sec.id}_${gi}_${ii}` });
+        }
+      });
+    });
+  });
+
+  if (results.length === 0) {
+    listDiv.innerHTML = `<div class="search-no-results">
+      <div style="font-size:3rem;margin-bottom:12px;">🔍</div>
+      <div>لا توجد نتائج لـ "<strong>${q}</strong>"</div>
+    </div>`;
+  } else {
+    listDiv.innerHTML = results.map(r => {
+      const highlighted = r.item.replace(new RegExp(q, 'g'), `<mark>${q}</mark>`);
+      return `<div class="search-result-item" onclick="goPage('${r.sec.id}')">
+        <div class="search-result-cat">${r.sec.emoji} ${r.sec.title} › ${r.group.emoji} ${r.group.title}</div>
+        <div class="search-result-text">${highlighted}</div>
+      </div>`;
+    }).join('');
+  }
+}
+
+// ═══════════════════════════════════════
+// SAVE
+// ═══════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function clearAll() {
+  if (!confirm('مسح كل النيات المحفوظة؟')) return;
+  saved.forEach(id => {
+    const card = document.getElementById('card-' + id);
+    if (card) {
+      card.classList.remove('saved');
+      card.querySelector('.card-icon').textContent = 'ن';
+      card.querySelector('.card-star').textContent = '☆';
+    }
+  });
+  saved = [];
+  persistSaved();
+  updateSavedUI();
+  renderSavedList();
+}
+
+function toggleSave(id, card) {
+  const idx = saved.indexOf(id);
+  if (idx === -1) {
+    saved.push(id);
+    card.classList.add('saved');
+    card.querySelector('.card-icon').textContent = '⭐';
+    card.querySelector('.card-star').textContent = '⭐';
+    showToast('⭐ تم حفظ النية');
+  } else {
+    saved.splice(idx, 1);
+    card.classList.remove('saved');
+    card.querySelector('.card-icon').textContent = 'ن';
+    card.querySelector('.card-star').textContent = '☆';
+    showToast('تم إزالة النية');
+  }
+  persistSaved();
+  updateSavedUI();
+}
+
+function updateSavedUI() {
+  const n = saved.length;
+  const ar = toArabicNum(n);
+  document.getElementById('savedCount').textContent = ar;
+  document.getElementById('savedCount2').textContent = ar;
+  document.getElementById('savedSubtitle').textContent = saved.length === 0 ? 'اضغط على نية لحفظها' : `${ar} نية محفوظة`;
+}
+
+function openSaved() {
+  const panel = document.getElementById('savedPanel');
+  panel.classList.add('open');
+  renderSavedList();
+}
+
+function closeSaved() {
+  document.getElementById('savedPanel').classList.remove('open');
+}
+
+function renderSavedList() {
+  const list = document.getElementById('savedList');
+  if (saved.length === 0) {
+    list.innerHTML = `<div class="saved-empty">
+      <span class="saved-empty-icon">⭐</span>
+      اضغط على أى نية لحفظها هنا
+    </div>`;
+    return;
+  }
+  list.innerHTML = saved.map(id => {
+    const text = getNiyyahText(id);
+    return text ? `<div class="saved-item">
+      <span class="saved-item-icon">⭐</span>
+      <span class="saved-item-text">${text}</span>
+      <span class="saved-remove" onclick="removeSaved('${id}')">✕</span>
+    </div>` : '';
+  }).join('');
+}
+
+function removeSaved(id) {
+  saved = saved.filter(s => s !== id);
+  persistSaved();
+  updateSavedUI();
+  const card = document.getElementById('card-' + id);
+  if (card) {
+    card.classList.remove('saved');
+    card.querySelector('.card-icon').textContent = 'ن';
+    card.querySelector('.card-star').textContent = '☆';
+    showToast('تم إزالة النية');
+  }
+  renderSavedList();
+}
+
+function getNiyyahText(id) {
+  const parts = id.split('_');
+  const secId = parts[0];
+  const gi = parseInt(parts[1]);
+  const ii = parseInt(parts[2]);
+  const sec = DATA.find(s => s.id === secId);
+  if (!sec || !sec.groups[gi] || !sec.groups[gi].items[ii]) return null;
+  return sec.groups[gi].items[ii];
+}
+
+function printSaved() {
+  const items = saved.map(id => getNiyyahText(id)).filter(Boolean);
+  if (items.length === 0) { showToast('لا توجد نيات محفوظة'); return; }
+
+  // Build a print overlay inside the same page (window.open not supported here)
+  const existing = document.getElementById('printOverlay');
+  if (existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'printOverlay';
+  overlay.style.cssText = `
+    position:fixed;inset:0;z-index:9999;background:#fff;overflow-y:auto;
+    font-family:'Cairo',sans-serif;direction:rtl;padding:32px 24px 60px;
+  `;
+  overlay.innerHTML = `
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;border-bottom:2px solid #ddd0b3;padding-bottom:16px;">
+        <button onclick="document.getElementById('printOverlay').remove()"
+          style="background:#e74c3c;color:#fff;border:none;border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:700;">
+          ✕ إغلاق
+        </button>
+        <button onclick="window.print()"
+          style="background:#1d6a72;color:#fff;border:none;border-radius:8px;padding:8px 18px;cursor:pointer;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:700;">
+          🖨️ طباعة
+        </button>
+      </div>
+      <h1 style="font-family:'Amiri',serif;color:#1d6a72;text-align:center;font-size:2rem;margin-bottom:6px;">نياتى</h1>
+      <p style="text-align:center;color:#6b5a3a;margin-bottom:8px;font-style:italic;">بسم الله الرحمن الرحيم</p>
+      <p style="text-align:center;color:#c8922a;font-weight:700;font-family:'Scheherazade New',serif;font-size:1.1rem;margin-bottom:28px;">
+        «إنما الأعمال بالنيات وإنما لكل امرئ ما نوى»
+      </p>
+      ${items.map((t,i) => `
+        <div style="background:#fdf3dc;border-right:4px solid #c8922a;padding:13px 16px;
+          margin-bottom:10px;border-radius:8px;line-height:1.75;font-size:.92rem;
+          display:flex;align-items:flex-start;gap:10px;">
+          <span style="color:#c8922a;flex-shrink:0;margin-top:2px;">⭐</span>
+          <span>${t}</span>
+        </div>`).join('')}
+      <p style="text-align:center;color:#aaa;font-size:.75rem;margin-top:28px;">
+        دليل النية — ${toArabicNum(items.length)} نية محفوظة
+      </p>
+    </div>
+  `;
+
+  // Print CSS — hide everything else when printing
+  const style = document.createElement('style');
+  style.id = 'printStyle';
+  style.textContent = `
+    @media print {
+      body > *:not(#printOverlay) { display: none !important; }
+      #printOverlay { position:static !important; padding:0 !important; }
+      #printOverlay button { display:none !important; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  document.body.appendChild(overlay);
+  overlay.scrollTop = 0;
+}
+
+// ═══════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('open');
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function updateProgress() {
+  const el = document.getElementById('progressBar');
+  const doc = document.documentElement;
+  const pct = doc.scrollTop / (doc.scrollHeight - doc.clientHeight);
+  el.style.transform = `scaleX(${pct})`;
+}
+function toArabicNum(n) {
+  return String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+
+
+// ─ DARK MODE ─
+function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = isDark ? '🌙' : '☀️';
+  try { window.storage.set('niyyah_theme', isDark ? 'light' : 'dark'); } catch(e) {}
+}
+
+async function loadTheme() {
+  try {
+    const r = await window.storage.get('niyyah_theme');
+    if (r && r.value === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      const btn = document.getElementById('themeBtn');
+      if (btn) btn.textContent = '☀️';
+    }
+  } catch(e) {}
+}
+
+// ─ FILTER ─
+const SECTION_CATEGORIES = {
+  ibadaat: ['ibadaat','night','adha','special_salah','janaza','fawait','ramadan','dua','tawakkul','traveler'],
+  daily:   ['daily','time','beginning','rizq','jawarih'],
+  family:  ['family','woman','parents_after','workrels','visits','children'],
+  akhlaq:  ['tazkiya','akhlaq','lisan','haya','nafs','special_states','sabr','niam'],
+};
+
+function filterSections(cat, el) {
+  document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const cards = document.querySelectorAll('#quickGrid .quick-card');
+  if (cat === 'all') {
+    cards.forEach(c => c.style.display = '');
+    return;
+  }
+  if (cat === 'saved_only') {
+    cards.forEach(c => {
+      const id = c.getAttribute('data-secid');
+      const hasSaved = saved.some(s => s.startsWith(id + '_'));
+      c.style.display = hasSaved ? '' : 'none';
+    });
+    return;
+  }
+  const allowed = SECTION_CATEGORIES[cat] || [];
+  cards.forEach(c => {
+    const id = c.getAttribute('data-secid');
+    c.style.display = allowed.includes(id) ? '' : 'none';
+  });
+}
+
+// ─ SHARE ─
+async function shareSaved() {
+  const items = saved.map(id => getNiyyahText(id)).filter(Boolean);
+  if (items.length === 0) { showToast('لا توجد نيات لمشاركتها'); return; }
+  const text = 'نياتى من دليل النية:\n\n' + items.map((t,i) => (i+1) + '. ' + t).join('\n') + '\n\n«إنما الأعمال بالنيات»';
+  try {
+    if (navigator.share) {
+      await navigator.share({ title: 'نياتى', text });
+      showToast('✅ تمت المشاركة');
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      showToast('✅ تم النسخ — الصقها أينما تشاء');
+    } else {
+      showToast('المشاركة غير مدعومة فى هذا المتصفح');
+    }
+  } catch(e) {
+    showToast('تعذرت المشاركة');
+  }
+}
+
+</script>
+</body>
+</html>

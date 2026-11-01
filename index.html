@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!-- minimum-scale=1: a page wider than the phone must never zoom the whole WebView out -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1">
+<meta name="theme-color" content="#1B1F3B">
+<title>رفّ المشاريع</title>
+<link rel="icon" href="icons/icon-96.png">
+<style>
+  :root{--accent:#E0A458;--night:#1B1F3B;--bg:#F4F2EC;--card:#fff;--ink:#23243A;--muted:#7F7B70;--line:#E6E1D5;
+    --sat:var(--safe-area-inset-top,env(safe-area-inset-top,0px));--sab:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px))}
+  @media (prefers-color-scheme:dark){:root{--bg:#12131D;--card:#1D1F2D;--ink:#ECE9E1;--muted:#9B978C;--line:#2B2E40}}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+  body{font-family:system-ui,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .grid>*,.row>*{min-width:0}
+  header{background:radial-gradient(120% 140% at 100% 0%,#3A3F7A 0%,var(--night) 60%);color:#fff;padding:calc(20px + var(--sat)) 18px 22px;border-radius:0 0 26px 26px}
+  header{position:relative}
+  .cloudBtn{position:absolute;top:calc(16px + var(--sat));inset-inline-end:14px;border:0;border-radius:99px;padding:7px 12px;font:inherit;font-size:13px;background:rgba(255,255,255,.14);color:#fff}
+  .cloudBtn.err{background:#D9534F}
+  #cloudBody p{margin:4px 8px 12px;color:var(--muted);font-size:14px}
+  #cloudBody .btn{display:block;width:100%;text-align:center;margin-top:8px}
+  header h1{margin:0;font-size:24px}header .sub{opacity:.75;font-size:14px;margin-top:2px}
+  /* search + category chips stay on screen while the grid scrolls */
+  /* stuck under the status bar; once the header has scrolled away a strip in the page colour sits behind the status bar */
+  body::before{content:"";position:fixed;top:0;left:0;right:0;height:var(--sat);background:var(--bg);z-index:41;opacity:0;transition:opacity .15s}
+  body.scrolled::before{opacity:1}
+  .bar{position:sticky;top:var(--sat);z-index:40;background:var(--bg);padding:10px 14px 6px}
+  .search input{width:100%;font:inherit;border:1px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card);color:var(--ink);outline:none}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:5px 13px}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#1B1F3B;font-weight:600}
+  .fav{position:absolute;top:8px;inset-inline-start:10px;font-size:16px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+  .proj.arc{opacity:.85}.proj.arc .cover{filter:grayscale(.55)}
+  .sec{grid-column:1/-1;margin:6px 4px 0;font-size:14px;color:var(--muted);font-weight:600}
+  .listbar{grid-column:1/-1;display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 6px 6px 12px}
+  .listbar b{flex:1;min-width:0;padding-inline-start:6px}.listbar button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--ink);padding:6px 8px;border-radius:10px}
+  .chip.new{border-style:dashed;color:var(--muted)}
+  .lists{padding:0 6px 8px}.sheet-card .lists button{padding:10px}
+  .sheet-card{max-height:85vh;overflow-y:auto}
+  .emojis{display:flex;flex-wrap:wrap;gap:4px;padding:4px 6px 8px}
+  .sheet-card .emojis button{display:inline-block;width:auto;font-size:24px;padding:6px 8px}
+  main{padding:8px 14px calc(96px + var(--sab))}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .proj{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .12s}
+  .proj:active{transform:scale(.97)}
+  .cover{height:96px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative}
+  .cover .tag{position:absolute;bottom:8px;inset-inline-start:8px;font-size:11px;background:rgba(0,0,0,.28);color:#fff;padding:2px 8px;border-radius:99px}
+  .info{padding:10px 12px 12px}
+  .info b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px;line-height:1.35}
+  .info small{color:var(--muted);font-size:12px;display:block;margin-top:4px}
+  .more{position:absolute;top:6px;inset-inline-end:6px;width:32px;height:32px;border:0;border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:18px;line-height:1}
+  .empty{text-align:center;color:var(--muted);padding:50px 20px}
+  .restore{grid-column:1/-1;text-align:center}.restore button{font:inherit;border:0;background:transparent;color:var(--muted);text-decoration:underline;padding:10px}
+  .fab{position:fixed;inset-inline-start:18px;bottom:calc(20px + var(--sab));z-index:50;border:0;border-radius:18px;padding:14px 20px;font:inherit;font-weight:700;background:var(--accent);color:#1B1F3B;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .btn{font:inherit;border:0;border-radius:12px;padding:11px 18px;background:var(--accent);color:#1B1F3B;font-weight:600;cursor:pointer}
+  /* viewer: the bar slides away while reading (scrolling down) and comes back on scrolling up */
+  #viewer{position:fixed;inset:0;z-index:100;background:var(--bg);--vbh:calc(52px + var(--sat))}
+  #viewer.hidden{display:none}
+  .vbar{position:absolute;top:0;left:0;right:0;z-index:2;height:var(--vbh);box-sizing:border-box;background:var(--night);color:#fff;padding:calc(6px + var(--sat)) 8px 6px;display:flex;align-items:center;gap:6px;transition:transform .2s}
+  #viewer.full .vbar{transform:translateY(-100%)}
+  .vbar button{border:0;background:transparent;color:#fff;font-size:22px;width:40px;height:40px;border-radius:50%}
+  .vbar span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+  #frame{position:absolute;left:0;right:0;top:var(--vbh);bottom:var(--sab);width:100%;height:calc(100% - var(--vbh) - var(--sab));border:0;background:#fff;transition:top .2s,height .2s}
+  #viewer.full #frame{top:var(--sat);height:calc(100% - var(--sat) - var(--sab))}
+  .search{display:flex;gap:8px}.search input{flex:1;min-width:0}
+  .sortBtn{flex:none;font:inherit;font-size:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;width:46px}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;padding:0 6px 10px}.sheet-card .opts button{width:auto;display:inline-block;border:1px solid var(--line);border-radius:99px;padding:8px 14px}
+  .sheet-card .opts button.on{background:var(--accent);border-color:var(--accent);color:#1B1F3B;font-weight:600}
+  .sheet-card h4{margin:6px 8px;font-size:13px;color:var(--muted)}
+  /* compact list view */
+  .grid.list{grid-template-columns:1fr;gap:8px}
+  .grid.list .proj{flex-direction:row;min-height:68px;border-radius:16px}
+  .grid.list .cover{width:68px;height:auto;min-height:68px;flex:none;font-size:30px}
+  .grid.list .cover .tag{display:none}
+  .grid.list .info{flex:1;min-width:0;align-self:center;padding:8px 12px;padding-inline-end:44px}
+  .grid.list .more{top:50%;transform:translateY(-50%);background:transparent;color:var(--muted)}
+  .grid.list .fav{top:4px;inset-inline-start:4px;font-size:13px}
+  .grid.list .sec,.grid.list .listbar,.grid.list .restore,.grid.list .empty{grid-column:1/-1}
+  .sheet{position:fixed;inset:0;z-index:150;background:rgba(10,12,24,.5);display:flex;align-items:flex-end}
+  .sheet.hidden,.cloudBtn.hidden,.dlg-btns .btn.hidden,#dlgTitle.hidden,.lists.hidden,.emojis.hidden,.sheet-card button.hidden,.dlg.hidden,.toast.hidden,#dlgInput.hidden{display:none}
+  .sheet-card{width:100%;background:var(--card);border-radius:22px 22px 0 0;padding:16px 14px calc(16px + var(--sab))}
+  .sheet-card h3{margin:4px 6px 10px;font-size:16px}
+  .sheet-card button{display:block;width:100%;text-align:start;font:inherit;border:0;background:transparent;color:var(--ink);padding:13px 10px;border-radius:12px}
+  .sheet-card button.danger{color:#D9534F}
+  /* in-app dialog (never focus() its buttons) */
+  .dlg{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(10,12,24,.55)}
+  .dlg-card{width:100%;max-width:360px;background:var(--card);border-radius:22px;padding:22px 20px 16px;text-align:center}
+  .dlg-card p{color:var(--muted);margin:0 0 16px}.dlg-btns{display:flex;gap:10px}.dlg-btns .btn{flex:1}
+  .dlg-btns .ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  #dlgInput{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-bottom:14px}
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + var(--sab));background:#23243A;color:#fff;padding:10px 16px;border-radius:12px;z-index:300;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 رفّ المشاريع</h1>
+  <button class="cloudBtn hidden" id="cloudBtn">☁️ حفظ في جوجل</button>
+  <div class="sub" id="count"></div>
+</header>
+<div class="bar"><div class="search"><input id="q" type="search" placeholder="🔍 ابحث في مشاريعك…" autocomplete="off"><button class="sortBtn" id="sortBtn" aria-label="ترتيب وعرض">⇅</button></div><div class="chips" id="chips"></div></div>
+<main><div class="grid" id="grid"></div></main>
+<button class="fab" id="addBtn">＋ إضافة مشروع</button>
+<input type="file" id="file" accept=".html,.htm,text/html" multiple hidden>
+<input type="file" id="fileUpd" accept=".html,.htm,text/html" hidden>
+
+<div id="viewer" class="hidden">
+  <div class="vbar"><button id="vBack" aria-label="رجوع">→</button><span id="vTitle"></span><button id="vReload" aria-label="إعادة تحميل">⟳</button></div>
+  <iframe id="frame" title="project" allow="camera; microphone; clipboard-read; clipboard-write; fullscreen; autoplay"></iframe>
+</div>
+
+<div class="sheet hidden" id="sheet"><div class="sheet-card">
+  <h3 id="shTitle"></h3>
+  <button id="shOpen">▶️ فتح</button>
+  <button id="shShare">📤 مشاركة</button>
+  <button id="shFav"></button>
+  <button id="shLists">📂 إضافة لقائمة…</button>
+  <div class="lists hidden" id="shListsBox"></div>
+  <button id="shIcon">🎨 تغيير الأيقونة</button>
+  <div class="emojis hidden" id="shEmojis"></div>
+  <button id="shTag">🏷️ تغيير التصنيف</button>
+  <button id="shUpdate">🔄 تحديث بنسخة أحدث</button>
+  <button id="shVersions"></button>
+  <button id="shReset">↩️ رجوع للنسخة الأصلية</button>
+  <button id="shRename">✏️ إعادة تسمية</button>
+  <button id="shPin">📌 إضافة للشاشة الرئيسية</button>
+  <button id="shArchive">🗄️ نقل للأرشيف</button>
+</div></div>
+
+<div class="sheet hidden" id="sortSheet"><div class="sheet-card">
+  <h3>⇅ ترتيب وعرض</h3>
+  <h4>الترتيب (المفضلة دايمًا الأول)</h4><div class="opts" id="sortOpts"></div>
+  <h4>العرض</h4><div class="opts" id="viewOpts"></div>
+</div></div>
+
+<div class="sheet hidden" id="arcSheet"><div class="sheet-card">
+  <h3 id="arTitle"></h3>
+  <button id="arOpen">▶️ فتح</button>
+  <button id="arRestore"></button>
+  <button id="arShare">📤 مشاركة</button>
+  <button id="arDelete" class="danger">🗑️ حذف نهائي</button>
+</div></div>
+
+<div class="sheet hidden" id="cloudSheet"><div class="sheet-card"><h3>☁️ النسخ الاحتياطي على Google Drive</h3><div id="cloudBody"></div></div></div>
+
+<div class="dlg hidden" id="dlg" role="dialog" aria-modal="true">
+  <div class="dlg-card"><div id="dlgIc" style="font-size:28px"></div><h3 id="dlgTitle" style="margin:6px 0"></h3><p id="dlgBody"></p>
+    <input id="dlgInput" class="hidden">
+    <div class="dlg-btns"><button class="btn ghost" id="dlgNo"></button><button class="btn" id="dlgOk"></button></div></div>
+</div>
+<div class="toast hidden" id="toast"></div>
+
+<script src="projects/projects.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ===== built-in projects (shipped in www/projects) ===== */
+const BUILTIN=window.SHELF_PROJECTS||[];   // www/projects/projects.js, generated by npm run projects
+
+/* ===== settings (localStorage): hidden built-ins, renames ===== */
+const LS="shelf:v1";
+/* archived: {id: when} (archive instead of delete) · gone: built-ins deleted from the archive · lists: [{id,name,items:[id]}] */
+const META0=()=>({hidden:[],gone:[],archived:{},lists:[],names:{},icons:{},tags:{},fav:[],opened:{},dataT:{},
+  pos:{},openCount:{},sort:"recent",view:"grid",setT:0});
+// what "shelf settings" means for the Drive backup (js/cloud.js) — the rest is per-phone (positions, open times…)
+const SETTINGS_KEYS=["archived","gone","lists","names","icons","tags","fav","sort","view"];
+const settingsOf=m=>{const o={};SETTINGS_KEYS.forEach(k=>o[k]=m[k]);return o;};
+let settingsSig=null;
+function loadMeta(){let m;try{m=Object.assign(META0(),JSON.parse(localStorage.getItem(LS)||"{}"));}catch(e){m=META0();}
+  // before 1.3 "removed" built-ins were hidden → they are archived now
+  if(m.hidden.length){m.hidden.forEach(id=>{if(!m.archived[id])m.archived[id]=Date.now();});m.hidden=[];}
+  return m;}
+function saveMeta(){
+  const sig=JSON.stringify(settingsOf(meta));
+  if(sig!==settingsSig){if(settingsSig!==null){meta.setT=Date.now();if(window.ShelfCloud)ShelfCloud.changed();}settingsSig=sig;}
+  try{localStorage.setItem(LS,JSON.stringify(meta));}catch(e){}}
+let meta=loadMeta();settingsSig=JSON.stringify(settingsOf(meta));
+const NATIVE=!!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform());
+
+/* ===== user-added files (IndexedDB — files can be several MB) ===== */
+let dbP=null;
+function db(){if(!dbP)dbP=new Promise((res,rej)=>{const r=indexedDB.open("shelf",1);
+  r.onupgradeneeded=()=>r.result.createObjectStore("files",{keyPath:"id"});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});return dbP;}
+async function tx(mode,fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction("files",mode);
+  const r=fn(t.objectStore("files"));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error);});}
+const allFiles=()=>tx("readonly",s=>s.getAll()).catch(()=>[]);
+const getFile=id=>tx("readonly",s=>s.get(id));
+const putFile=f=>tx("readwrite",s=>s.put(f));
+const delFile=id=>tx("readwrite",s=>s.delete(id));
+
+/* ===== looks: stable colour + icon per title ===== */
+const PALETTE=[["#5B6CFF","#8E5BFF"],["#FF7A59","#FFB347"],["#1FB58F","#3AD6C5"],["#E0457B","#FF8FB1"],["#2E86DE","#54C0FF"],["#7D5BA6","#C38DF0"],["#D49A2A","#F2CC60"],["#3B4A6B","#6E83B0"]];
+const ICONS=["📘","🧩","🎯","💡","🗂️","🚀","🎨","🧭","📊","🛠️"];
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return Math.abs(h);}
+const fmtSize=b=>b>1048576?(b/1048576).toFixed(1)+" م.ب":Math.max(1,Math.round(b/1024))+" ك.ب";
+
+let items=[],archivedItems=[],versions=[],allProjects=[];
+const isArc=id=>!!meta.archived[id];
+const vidFor=(pid,t)=>"v:"+pid.replace(/:/g,"_")+"_"+t;   // old versions live in the same IndexedDB store
+async function load(){
+  const all=await allFiles(),user=all.filter(f=>f.id.startsWith("u:")),upd={};
+  all.forEach(f=>{if(f.id.startsWith("b:"))upd[f.id]=f;});
+  allProjects=BUILTIN.filter(b=>!meta.gone.includes(b.id)).map(b=>({...b,builtin:true,updated:upd[b.id]?upd[b.id].added:0}))
+    .concat(user.sort((a,b)=>b.added-a.added).map(f=>({id:f.id,title:f.title,size:f.size,added:f.added,updated:f.updatedAt||0,tag:"مُضاف"})));
+  allProjects.forEach((it,i)=>{it.order=i;if(meta.names[it.id])it.title=meta.names[it.id];if(meta.icons[it.id])it.icon=meta.icons[it.id];if(meta.tags[it.id])it.tag=meta.tags[it.id];});
+  const known=new Set(allProjects.map(p=>p.id));
+  versions=all.filter(f=>f.id.startsWith("v:")&&known.has(f.pid)).map(f=>({id:f.id,pid:f.pid,title:f.title,size:f.size,added:f.added}))
+    .sort((a,b)=>b.added-a.added);
+  items=allProjects.filter(p=>!isArc(p.id));
+  archivedItems=allProjects.filter(p=>isArc(p.id)).sort((a,b)=>meta.archived[b.id]-meta.archived[a.id]);
+  // favourites first, then most recently opened, then shelf order
+  const fav=id=>meta.fav.includes(id)?1:0;
+  const by={recent:(a,b)=>(meta.opened[b.id]||0)-(meta.opened[a.id]||0),name:(a,b)=>a.title.localeCompare(b.title,"ar"),
+    added:(a,b)=>(b.added||0)-(a.added||0),count:(a,b)=>(meta.openCount[b.id]||0)-(meta.openCount[a.id]||0)}[meta.sort]||(()=>0);
+  items.sort((a,b)=>fav(b.id)-fav(a.id)||by(a,b)||a.order-b.order);
+  render();
+}
+const proj=id=>allProjects.find(x=>x.id===id);
+const fmtDate=t=>new Date(t).toLocaleDateString("ar-EG");
+function card(it,o){const h=hash(it.title),c=PALETTE[h%PALETTE.length],ic=it.icon||ICONS[h%ICONS.length];
+  return `<div class="proj${o.arc?" arc":""}" ${o.attr}><div class="cover" style="background:linear-gradient(135deg,${c[0]},${c[1]})">${ic}<span class="tag">${esc(o.tag!=null?o.tag:it.tag||"")}</span></div>
+    <button class="more" ${o.more} aria-label="خيارات">⋮</button>${!o.arc&&meta.fav.includes(it.id)?'<span class="fav">⭐</span>':""}
+    <div class="info"><b>${esc(it.title)}</b><small>${esc(o.sub)}</small></div></div>`;}
+function render(){
+  const q=$("q").value.trim().toLowerCase();
+  const match=it=>!q||it.title.toLowerCase().includes(q)||(it.tag||"").toLowerCase().includes(q);
+  const tags=[...new Set(items.map(i=>i.tag).filter(Boolean))];
+  const arcN=archivedItems.length+versions.length;
+  const ok=chip==="*"||(chip==="fav"&&meta.fav.length)||(chip==="arc"&&arcN)||
+    (chip.startsWith("l:")&&meta.lists.some(l=>"l:"+l.id===chip))||(chip.startsWith("t:")&&tags.includes(chip.slice(2)));
+  if(!ok)chip="*";
+  $("chips").innerHTML=[["*","الكل"]].concat(meta.fav.length?[["fav","⭐ المفضلة"]]:[],
+      meta.lists.map(l=>["l:"+l.id,"📂 "+l.name]),tags.map(t=>["t:"+t,t]),arcN?[["arc","🗄️ الأرشيف ("+arcN+")"]]:[],[["newlist","＋ قائمة جديدة"]])
+    .map(([k,l])=>`<button class="chip${k===chip?" on":""}${k==="newlist"?" new":""}" data-chip="${esc(k)}">${esc(l)}</button>`).join("");
+  $("count").textContent=items.length+" مشروع على الرفّ";
+  $("grid").classList.toggle("list",meta.view==="list");
+  const gone=meta.gone.length?`<div class="restore"><button data-restore>♻️ ترجيع ${meta.gone.length} مشروع مدمج اتمسح</button></div>`:"";
+  let html="";
+  if(chip==="arc"){
+    const a=archivedItems.filter(match),v=versions.filter(x=>match(x)||match(proj(x.pid)||{title:"",tag:""}));
+    if(a.length)html+=`<div class="sec">🗄️ مشاريع في الأرشيف</div>`+a.map(it=>card(it,{arc:1,attr:`data-arc="${esc(it.id)}"`,more:`data-arcmore="${esc(it.id)}"`,
+      sub:"اتأرشف "+fmtDate(meta.archived[it.id])})).join("");
+    if(v.length)html+=`<div class="sec">🕘 نسخ قديمة</div>`+v.map(x=>{const p=proj(x.pid);return card({...p,title:p.title},{arc:1,attr:`data-ver="${esc(x.id)}"`,
+      more:`data-vermore="${esc(x.id)}"`,tag:"نسخة قديمة",sub:"لحد "+fmtDate(x.added)+" · "+fmtSize(x.size||0)});}).join("");
+    $("grid").innerHTML=html||`<div class="empty" style="grid-column:1/-1">مفيش نتايج 🔍</div>`;return;
+  }
+  const L=chip.startsWith("l:")?meta.lists.find(l=>"l:"+l.id===chip):null;
+  if(L)html+=`<div class="listbar"><b>📂 ${esc(L.name)} · ${L.items.filter(id=>items.some(i=>i.id===id)).length}</b><button data-lrename>✏️ اسم</button><button data-ldelete>🗑️ حذف القائمة</button></div>`;
+  const list=items.filter(it=>(chip==="*"||(chip==="fav"?meta.fav.includes(it.id):L?L.items.includes(it.id):it.tag===chip.slice(2)))&&match(it));
+  if(!list.length)html+=`<div class="empty" style="grid-column:1/-1">${L&&!q?"القائمة فاضية — من ⋮ في أي مشروع اختار «إضافة لقائمة»":items.length?"مفيش نتايج 🔍":"الرفّ فاضي — اضغط «إضافة مشروع» واختار ملف HTML 📂"}</div>`;
+  html+=list.map(it=>card(it,{attr:`data-id="${esc(it.id)}"`,more:`data-more="${esc(it.id)}"`,
+    sub:it.updated?"🔄 اتحدّث "+fmtDate(it.updated):it.builtin?"مدمج في التطبيق":fmtSize(it.size||0)+" · "+fmtDate(it.added)})).join("");
+  $("grid").innerHTML=html+(chip==="*"?gone:"");
+}
+let chip="*";
+window.addEventListener("scroll",()=>document.body.classList.toggle("scrolled",scrollY>60),{passive:true});
+$("q").oninput=render;
+$("chips").onclick=async e=>{const c=e.target.closest("[data-chip]");if(!c)return;
+  if(c.dataset.chip==="newlist"){const l=await newList();if(l){chip="l:"+l.id;render();}return;}
+  chip=c.dataset.chip;render();scrollTo({top:0});};
+async function newList(){const v=await mzConfirm({icon:"📂",title:"قائمة جديدة",body:"مثلاً: أقراها الأسبوع ده، شغل، للأولاد",ok:"إنشاء",input:""});
+  if(typeof v!=="string"||!v.trim())return null;const l={id:Date.now().toString(36),name:v.trim().slice(0,30),items:[]};
+  meta.lists.push(l);saveMeta();return l;}
+$("grid").onclick=async e=>{
+  if(e.target.closest("[data-restore]")){if(await mzConfirm({icon:"♻️",title:"ترجيع المشاريع المدمجة اللي اتمسحت؟",ok:"ترجيع"})){meta.gone=[];saveMeta();load();}return;}
+  const L=meta.lists.find(l=>"l:"+l.id===chip);
+  if(L&&e.target.closest("[data-lrename]")){const v=await mzConfirm({icon:"✏️",title:"اسم القائمة",ok:"حفظ",input:L.name});
+    if(typeof v==="string"&&v.trim()){L.name=v.trim().slice(0,30);saveMeta();render();}return;}
+  if(L&&e.target.closest("[data-ldelete]")){if(await mzConfirm({icon:"🗑️",title:"حذف قائمة «"+L.name+"»؟",body:"المشاريع نفسها مش هتتمسح.",ok:"حذف"})){
+    meta.lists=meta.lists.filter(x=>x!==L);chip="*";saveMeta();render();}return;}
+  let m=e.target.closest("[data-more]");if(m){openSheet(m.dataset.more);return;}
+  m=e.target.closest("[data-arcmore],[data-vermore]");if(m){openArcSheet(m.dataset.arcmore||m.dataset.vermore);return;}
+  const p=e.target.closest(".proj");if(!p)return;
+  if(p.dataset.id)openProject(p.dataset.id);else openArcSheet(p.dataset.arc||p.dataset.ver);};
+let pressT=null;
+$("grid").addEventListener("touchstart",e=>{const p=e.target.closest(".proj[data-id]");if(!p)return;pressT=setTimeout(()=>{pressT=null;openSheet(p.dataset.id);},550);},{passive:true});
+["touchend","touchmove","touchcancel"].forEach(ev=>$("grid").addEventListener(ev,()=>{if(pressT){clearTimeout(pressT);pressT=null;}},{passive:true}));
+$("grid").addEventListener("contextmenu",e=>e.preventDefault());
+
+/* ===== sort + view ===== */
+const SORTS=[["recent","🕘 آخر فتح"],["name","🔤 الاسم"],["added","🆕 آخر إضافة"],["count","🔥 الأكثر فتحًا"]],VIEWS=[["grid","▦ كروت"],["list","☰ قائمة"]];
+function renderSortSheet(){
+  $("sortOpts").innerHTML=SORTS.map(([k,l])=>`<button data-sort="${k}" class="${meta.sort===k?"on":""}">${l}</button>`).join("");
+  $("viewOpts").innerHTML=VIEWS.map(([k,l])=>`<button data-view="${k}" class="${meta.view===k?"on":""}">${l}</button>`).join("");}
+$("sortBtn").onclick=()=>{renderSortSheet();$("sortSheet").classList.remove("hidden");};
+$("sortSheet").onclick=async e=>{if(e.target.id==="sortSheet"){$("sortSheet").classList.add("hidden");return;}
+  const b=e.target.closest("[data-sort],[data-view]");if(!b)return;
+  if(b.dataset.sort)meta.sort=b.dataset.sort;else meta.view=b.dataset.view;saveMeta();renderSortSheet();await load();};
+
+/* html of a project (newer version / added file in IndexedDB, else the copy shipped in the app) or of an old version */
+async function htmlOf(id){
+  try{const f=await getFile(id);if(f)return f.html;}catch(e){}
+  const it=proj(id);if(it&&it.builtin){try{return await (await fetch("projects/"+it.file)).text();}catch(e){}}
+  return null;}
+
+/* ===== viewer ===== */
+let blobUrl=null,viewing=null;
+async function openProject(id){
+  const ver=id.startsWith("v:")?versions.find(v=>v.id===id):null;
+  const it=ver?{...proj(ver.pid),id,title:proj(ver.pid).title+" — نسخة "+fmtDate(ver.added)}:proj(id);if(!it)return;
+  const html=await htmlOf(id);
+  if(html==null){toast("الملف مش موجود");return;}
+  if(blobUrl)URL.revokeObjectURL(blobUrl);
+  blobUrl=URL.createObjectURL(new Blob([withShim(html,id)],{type:"text/html;charset=utf-8"}));const src=blobUrl;
+  if(!ver){meta.opened[id]=Date.now();meta.openCount[id]=(meta.openCount[id]||0)+1;saveMeta();}
+  // reopen where you left off: the project's own #page (hash-routed projects) + scroll position
+  const pos=!ver&&meta.pos[id]||{};
+  $("frame").onload=()=>{if(pos.y)setTimeout(()=>{try{$("frame").contentWindow.scrollTo(0,pos.y);}catch(e){}},350);};
+  $("viewer").classList.remove("full");
+  viewing=it;$("vTitle").textContent=it.title;$("frame").src=src+(pos.h||"");$("viewer").classList.remove("hidden");
+}
+/* Injected first into every project page:
+   1) its own localStorage: keys are stored as "p:<project id>:<key>", so two projects (or the shelf itself) never
+      overwrite each other's saved progress;
+   2) web links / window.open → the phone's browser (inside the viewer they'd replace the project). */
+function shimFor(id){return `<script>(function(){var ID=${JSON.stringify(id)},P="p:"+ID+":",N=${NATIVE?1:0};
+var W=function(){try{parent.shelfChanged(ID);}catch(e){}};
+try{var real=window.localStorage;
+var put=function(k,v){k=P+String(k);v=String(v);if(real.getItem(k)!==v){real.setItem(k,v);W();}};
+var del=function(k){k=P+String(k);if(real.getItem(k)!==null){real.removeItem(k);W();}};
+function ks(){var a=[];for(var i=0;i<real.length;i++){var k=real.key(i);if(k&&k.indexOf(P)===0)a.push(k.slice(P.length));}return a;}
+var api={getItem:function(k){return real.getItem(P+k);},setItem:function(k,v){put(k,v);},
+ removeItem:function(k){del(k);},clear:function(){ks().forEach(del);},
+ key:function(i){var a=ks();return i<a.length?a[i]:null;},get length(){return ks().length;}};
+var px=new Proxy(api,{get:function(t,k){if(k in t)return t[k];if(typeof k==="symbol")return undefined;var v=real.getItem(P+k);return v===null?undefined:v;},
+ set:function(t,k,v){put(k,v);return true;},deleteProperty:function(t,k){del(k);return true;},
+ has:function(t,k){return (k in t)||real.getItem(P+String(k))!==null;},ownKeys:function(){return ks();},
+ getOwnPropertyDescriptor:function(t,k){var v=real.getItem(P+String(k));return v===null?undefined:{value:v,enumerable:true,configurable:true,writable:true};}});
+Object.defineProperty(window,"localStorage",{configurable:true,get:function(){return px;}});}catch(e){}
+var isFile=function(a){var h=a.getAttribute("href")||"";return a.hasAttribute("download")||/^(blob|data):/i.test(h);};
+var save=function(href,name){fetch(href).then(function(r){return r.blob();}).then(function(b){var fr=new FileReader();
+ fr.onload=function(){try{parent.shelfSaveFile(name||"file",String(fr.result).split(",")[1]||"",b.type||"application/octet-stream");}catch(e){}};fr.readAsDataURL(b);});};
+if(N){
+ document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");
+  if(a&&isFile(a)){e.preventDefault();e.stopImmediatePropagation();save(a.href,a.getAttribute("download"));}},true);
+ var ac=HTMLAnchorElement.prototype.click;
+ HTMLAnchorElement.prototype.click=function(){if(isFile(this)){save(this.href,this.getAttribute("download"));return;}return ac.call(this);};
+ window.print=function(){try{parent.shelfPrint(document);}catch(e){}};
+}
+window.alert=function(m){try{parent.shelfAlert(String(m==null?"":m));}catch(e){}};
+var depth=0,goingBack=false,ps=history.pushState;
+history.pushState=function(){depth++;return ps.apply(history,arguments);};
+addEventListener("hashchange",function(){if(goingBack){goingBack=false;return;}depth++;});
+window.__shelfBack=function(){if(depth>0){depth--;goingBack=true;history.back();setTimeout(function(){goingBack=false;},600);return true;}return false;};
+document.addEventListener("scroll",function(e){var t=e.target===document?document.scrollingElement:e.target;if(!t||t.scrollTop==null)return;
+ var y=t.scrollTop,d=y-(t.__sy||0);t.__sy=y;if(Math.abs(d)<10)return;try{parent.shelfScroll(d>0&&y>80?1:-1);}catch(x){}},true);
+var ext=function(u){try{parent.shelfExternal(u);}catch(e){}};
+var isExt=function(u){return /^(https?:|mailto:|tel:|whatsapp:|geo:|market:|intent:)/i.test(u)&&!/^https?:[/][/]localhost([/]|:|$)/i.test(u);};
+document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");
+ if(a&&isExt(a.href)){e.preventDefault();e.stopPropagation();ext(a.href);}},true);
+var wo=window.open;window.open=function(u){if(u&&isExt(String(u))){ext(String(u));return null;}
+ if(N&&u&&/^(blob|data):/i.test(String(u))){save(String(u),"file");return null;}return wo.apply(window,arguments);};
+})();<\/script>`;}
+function withShim(html,id){const sh=shimFor(id);
+  // libraries + fonts bundled for offline use (scripts/update-projects.mjs) → this app's own address
+  html=html.split("shelf-vendor:/").join(new URL("vendor/",location.href).href);
+  for(const re of [/<head(\s[^>]*)?>/i,/<html(\s[^>]*)?>/i,/<!doctype[^>]*>/i]){const m=html.match(re);if(m)return html.slice(0,m.index+m[0].length)+sh+html.slice(m.index+m[0].length);}
+  return sh+html;}
+window.shelfExternal=u=>{const SI=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.ShareImport;
+  if(SI)SI.openUrl({url:u}).catch(()=>toast("مفيش تطبيق يفتح الرابط ده"));else window.open(u,"_blank");};
+function closeViewer(){
+  if(viewing&&!viewing.id.startsWith("v:"))try{const w=$("frame").contentWindow,y=w.scrollY||(w.document.scrollingElement||{}).scrollTop||0;
+    meta.pos[viewing.id]={y:Math.round(y),h:w.location.hash||""};saveMeta();}catch(e){}
+  $("frame").onload=null;$("viewer").classList.remove("full");
+  $("viewer").classList.add("hidden");$("frame").src="about:blank";viewing=null;
+  if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null;}}
+$("vBack").onclick=closeViewer;
+window.shelfScroll=dir=>{if(viewing)$("viewer").classList.toggle("full",dir>0);};
+window.shelfAlert=m=>mzConfirm({icon:"💬",title:"",body:m,ok:"تمام",alert:true});
+window.shelfSaveFile=async(name,b64,mime)=>{const SI=shareImport();if(!SI)return;
+  try{const r=await SI.saveFile({name,base64:b64,mime});
+    if(r&&r.uri&&await mzConfirm({icon:"✅",title:"اتحفظ الملف",body:r.path,ok:"فتح",cancel:"تمام"}))SI.openSaved({uri:r.uri,mime}).catch(()=>toast("مفيش تطبيق يفتح الملف ده"));}
+  catch(e){toast("تعذّر حفظ الملف");}};
+/* print: a snapshot of the page as it looks now (typed values + canvas charts kept, scripts dropped) → Android print */
+window.shelfPrint=async doc=>{const SI=shareImport();if(!SI||!viewing)return;
+  try{const c=doc.documentElement.cloneNode(true),src=doc.querySelectorAll("canvas"),dst=c.querySelectorAll("canvas");
+    dst.forEach((cv,i)=>{try{const img=doc.createElement("img");img.src=src[i].toDataURL();img.style.cssText=src[i].style.cssText;img.width=src[i].width;cv.replaceWith(img);}catch(e){}});
+    const sv=doc.querySelectorAll("input,textarea,select"),dv=c.querySelectorAll("input,textarea,select");
+    dv.forEach((el,i)=>{const o=sv[i];if(!o)return;if(o.type==="checkbox"||o.type==="radio"){if(o.checked)el.setAttribute("checked","");}
+      else if(el.tagName==="TEXTAREA")el.textContent=o.value;else if(el.tagName==="SELECT"){const op=el.options[o.selectedIndex];if(op)op.setAttribute("selected","");}else el.setAttribute("value",o.value);});
+    c.querySelectorAll("script").forEach(x=>x.remove());
+    await SI.print({html:"<!doctype html>"+c.outerHTML,name:viewing.title});}
+  catch(e){toast("تعذّرت الطباعة");}};
+$("vReload").onclick=()=>{try{$("frame").contentWindow.location.reload();}catch(e){}};
+
+/* ===== add ===== */
+$("addBtn").onclick=()=>$("file").click();
+$("file").onchange=async e=>{
+  const files=[...e.target.files];e.target.value="";
+  const list=[];for(const f of files){try{list.push({name:f.name,size:f.size,html:await f.text()});}catch(err){toast("تعذّر قراءة "+f.name);}}
+  await importFiles(list);
+};
+/* files from the picker or from Android "Open with / Share" → shelf. Same title + size = same project → ask to replace */
+function titleOf(html,name){const m=html.match(/<title[^>]*>([^<]*)<\/title>/i);
+  const t=m&&m[1].replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").trim();
+  return t||String(name||"مشروع").replace(/\.x?html?$/i,"").replace(/[-_]+/g," ");}
+/* store a newer version of an existing project — same id, so name/icon/favourite/saved data all stay */
+const MAX_VERSIONS=10;
+async function saveVersion(id,html,name,size){
+  const old=await getFile(id).catch(()=>null);const now=Date.now();
+  // the version being replaced → archive (restorable); newest MAX_VERSIONS per project are kept
+  const curHtml=old?old.html:await htmlOf(id);
+  if(curHtml!=null){
+    try{await putFile({id:vidFor(id,now),pid:id,title:old?old.title:(proj(id)||{}).title,html:curHtml,size:old?old.size:curHtml.length,added:now});}catch(e){}
+    const mine=(await allFiles()).filter(f=>f.id.startsWith("v:")&&f.pid===id).sort((a,b)=>b.added-a.added);
+    for(const f of mine.slice(MAX_VERSIONS))await delFile(f.id);
+  }
+  const rec=id.startsWith("b:")?{id,title:titleOf(html,name),html,size,added:now}
+    :{id,title:titleOf(html,name),html,size,added:old?old.added:now,updatedAt:now};
+  try{await putFile(rec);return true;}catch(e){toast("تعذّر حفظ "+name+" — المساحة ممتلئة؟");return false;}}
+async function importFiles(list){
+  let n=0,last=null;const user=await allFiles();
+  for(const f of list){
+    if(!/<(html|body|head|div|p|script|!doctype)/i.test(f.html)){toast("«"+f.name+"» مش ملف HTML");continue;}
+    const title=titleOf(f.html,f.name),size=f.size||f.html.length;
+    const norm=t=>String(t||"").trim().toLowerCase();
+    const dup=user.find(u=>u.id.startsWith("u:")&&norm(u.title)===norm(title))||
+      BUILTIN.find(b=>!meta.gone.includes(b.id)&&(norm(b.title)===norm(title)||norm(b.srcTitle)===norm(title)));
+    let id="u:"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+    if(dup){const v=await mzConfirm({icon:"🔄",title:"«"+(meta.names[dup.id]||dup.title)+"» موجود بالفعل",body:"تحدّثه بالنسخة دي؟ النسخة الحالية هتروح الأرشيف، وبياناتك جوّه المشروع هتفضل زي ما هي.",ok:"تحديث",cancel:"إضافة كنسخة جديدة"});
+      if(v)id=dup.id;}
+    if(dup&&id===dup.id){if(await saveVersion(id,f.html,f.name,size)){n++;last=id;}continue;}
+    try{await putFile({id,title,html:f.html,size,added:Date.now()});n++;last=id;}catch(err){toast("تعذّر حفظ "+f.name+" — المساحة ممتلئة؟");}
+  }
+  if(n&&window.ShelfCloud)ShelfCloud.changed();
+  if(n){toast(n===1?"تمام ✅":`تمام — ${n} ملفات ✅`);chip="*";$("q").value="";await load();}
+  return last;
+}
+
+/* ===== actions sheet (shelf) ===== */
+let sheetId=null;
+const EMOJIS=["📘","📗","📕","📖","🧠","🌱","🎯","💡","🚀","🎨","🧩","🗂️","📊","🛠️","💻","🧪","🕌","🏋️","🚗","💰","🍳","✈️","🎮","🎵","🌍","📦","🕵️","⭐"];
+function openSheet(id){const it=proj(id);if(!it)return;sheetId=id;$("shTitle").textContent=it.title;
+  $("shPin").classList.toggle("hidden",!NATIVE);
+  $("shReset").classList.toggle("hidden",!(it.builtin&&it.updated));
+  const nv=versions.filter(v=>v.pid===id).length;$("shVersions").textContent="🕘 النسخ القديمة ("+nv+")";$("shVersions").classList.toggle("hidden",!nv);
+  $("shFav").textContent=meta.fav.includes(id)?"☆ إزالة من المفضلة":"⭐ إضافة للمفضلة";
+  $("shEmojis").classList.add("hidden");$("shListsBox").classList.add("hidden");$("sheet").classList.remove("hidden");}
+function closeSheet(){$("sheet").classList.add("hidden");sheetId=null;}
+$("sheet").onclick=e=>{if(e.target.id==="sheet")closeSheet();};
+$("shOpen").onclick=()=>{const id=sheetId;closeSheet();openProject(id);};
+$("shShare").onclick=()=>{const id=sheetId;closeSheet();shareProject(id);};
+$("shFav").onclick=async()=>{const id=sheetId;closeSheet();const i=meta.fav.indexOf(id);if(i<0)meta.fav.push(id);else meta.fav.splice(i,1);saveMeta();await load();};
+function renderListsBox(){const id=sheetId;
+  $("shListsBox").innerHTML=meta.lists.map(l=>`<button data-l="${esc(l.id)}">${l.items.includes(id)?"✅":"⬜"} ${esc(l.name)}</button>`).join("")+`<button data-lnew>＋ قائمة جديدة</button>`;}
+$("shLists").onclick=()=>{renderListsBox();$("shListsBox").classList.toggle("hidden");};
+$("shListsBox").onclick=async e=>{const id=sheetId;const b=e.target.closest("[data-l],[data-lnew]");if(!b)return;
+  let L=b.dataset.l?meta.lists.find(l=>l.id===b.dataset.l):null;
+  if(!L){$("sheet").classList.add("hidden");L=await newList();sheetId=id;$("sheet").classList.remove("hidden");if(!L)return;L.items.push(id);}
+  else{const i=L.items.indexOf(id);if(i<0)L.items.push(id);else L.items.splice(i,1);}
+  saveMeta();renderListsBox();render();toast((L.items.includes(id)?"اتضاف لـ":"اتشال من ")+"«"+L.name+"»");};
+$("shIcon").onclick=()=>{const el=$("shEmojis");el.innerHTML=EMOJIS.map(e=>`<button data-emoji="${e}">${e}</button>`).join("");el.classList.toggle("hidden");};
+$("shEmojis").onclick=async e=>{const b=e.target.closest("[data-emoji]");if(!b)return;const id=sheetId;closeSheet();meta.icons[id]=b.dataset.emoji;saveMeta();await load();};
+$("shTag").onclick=async()=>{const id=sheetId,it=proj(id);closeSheet();
+  const v=await mzConfirm({icon:"🏷️",title:"التصنيف",body:"مثلاً: كتب، تعليم، شغل",ok:"حفظ",input:it.tag||""});
+  if(typeof v==="string"&&v.trim()){meta.tags[id]=v.trim().slice(0,20);saveMeta();await load();}};
+let updId=null;
+$("shUpdate").onclick=()=>{updId=sheetId;closeSheet();$("fileUpd").click();};
+$("fileUpd").onchange=async e=>{const f=e.target.files[0];e.target.value="";const id=updId;updId=null;if(!f||!id)return;
+  const html=await f.text();if(!/<(html|body|head|div|p|script|!doctype)/i.test(html)){toast("ده مش ملف HTML");return;}
+  if(await saveVersion(id,html,f.name,f.size)){toast("اتحدّث ✅ — النسخة القديمة في الأرشيف");await load();if(window.ShelfCloud)ShelfCloud.changed();}};
+$("shVersions").onclick=()=>{const it=proj(sheetId);closeSheet();chip="arc";$("q").value=it.title;render();scrollTo({top:0});};
+$("shReset").onclick=async()=>{const id=sheetId;closeSheet();
+  if(!await mzConfirm({icon:"↩️",title:"ترجع للنسخة الأصلية؟",body:"النسخة الحالية هتروح الأرشيف.",ok:"رجوع"}))return;
+  const cur=await getFile(id);if(cur){await putFile({id:vidFor(id,Date.now()),pid:id,title:cur.title,html:cur.html,size:cur.size,added:Date.now()});await delFile(id);}
+  await load();toast("رجع للأصل");};
+$("shRename").onclick=async()=>{const id=sheetId,it=proj(id);closeSheet();
+  const v=await mzConfirm({icon:"✏️",title:"اسم جديد",ok:"حفظ",input:it.title});
+  if(typeof v==="string"&&v.trim()){meta.names[id]=v.trim();saveMeta();await load();}};
+$("shPin").onclick=async()=>{const id=sheetId,it=proj(id);closeSheet();const h=hash(it.title);
+  try{await shareImport().pinShortcut({id,label:it.title,emoji:it.icon||ICONS[h%ICONS.length],color:PALETTE[h%PALETTE.length][0]});toast("📌 أكّد الإضافة من الرسالة اللي ظهرت");}
+  catch(e){toast("الموبايل ده مش بيسمح بإضافة اختصارات");}};
+$("shArchive").onclick=async()=>{const id=sheetId;closeSheet();meta.archived[id]=Date.now();saveMeta();await load();toast("🗄️ اتنقل للأرشيف");};
+
+/* ===== archive sheet: archived projects + old versions ===== */
+let arcId=null;
+function openArcSheet(id){arcId=id;const v=id.startsWith("v:")?versions.find(x=>x.id===id):null,it=v?proj(v.pid):proj(id);if(!it)return;
+  $("arTitle").textContent=v?it.title+" — نسخة لحد "+fmtDate(v.added):it.title;
+  $("arRestore").textContent=v?"♻️ استرجاع النسخة دي (الحالية تروح الأرشيف)":"♻️ استرجاع للرفّ";
+  $("arcSheet").classList.remove("hidden");}
+function closeArcSheet(){$("arcSheet").classList.add("hidden");arcId=null;}
+$("arcSheet").onclick=e=>{if(e.target.id==="arcSheet")closeArcSheet();};
+$("arOpen").onclick=()=>{const id=arcId;closeArcSheet();openProject(id);};
+$("arShare").onclick=()=>{const id=arcId;closeArcSheet();shareProject(id);};
+$("arRestore").onclick=async()=>{const id=arcId;closeArcSheet();
+  if(id.startsWith("v:")){const v=await getFile(id);if(!v)return;
+    if(await saveVersion(v.pid,v.html,v.title,v.size)){await delFile(id);delete meta.archived[v.pid];saveMeta();await load();toast("♻️ النسخة دي رجعت هي الحالية");if(window.ShelfCloud)ShelfCloud.changed();}}
+  else{delete meta.archived[id];saveMeta();await load();toast("♻️ رجع للرفّ");}};
+$("arDelete").onclick=async()=>{const id=arcId;closeArcSheet();
+  if(id.startsWith("v:")){if(await mzConfirm({icon:"🗑️",title:"حذف النسخة دي نهائيًا؟",ok:"حذف"})){await delFile(id);await load();toast("اتمسحت");}return;}
+  const it=proj(id);
+  if(!await mzConfirm({icon:"🗑️",title:"حذف «"+it.title+"» نهائيًا؟",body:"هيتمسح هو ونسخه القديمة وبياناته — من الموبايل ومن Google Drive.",ok:"حذف نهائي"}))return;
+  await delFile(id).catch(()=>{});
+  for(const v of versions.filter(v=>v.pid===id))await delFile(v.id);
+  Object.keys(localStorage).filter(k=>k.startsWith("p:"+id+":")).forEach(k=>localStorage.removeItem(k));
+  if(it.builtin)meta.gone.push(id);
+  for(const k of ["names","icons","tags","opened","dataT","archived"])delete meta[k][id];
+  meta.fav=meta.fav.filter(x=>x!==id);meta.lists.forEach(l=>{l.items=l.items.filter(x=>x!==id);});
+  saveMeta();if(window.ShelfCloud)ShelfCloud.removed(id);await load();toast("اتمسح نهائيًا");};
+
+/* ===== share a project / an old version as an .html file ===== */
+async function shareProject(id){
+  const v=id.startsWith("v:")?versions.find(x=>x.id===id):null,it=v?proj(v.pid):proj(id);
+  const html=await htmlOf(id);if(html==null){toast("الملف مش موجود");return;}
+  const name=String(it.title).replace(/[\\/:*?"<>|]+/g," ").trim().slice(0,80)+".html";
+  const SI=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.ShareImport;
+  try{
+    if(SI){await SI.shareFile({name,content:html});return;}
+    const file=new File([html],name,{type:"text/html"});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:it.title});return;}
+    const a=document.createElement("a");a.href=URL.createObjectURL(file);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+  }catch(e){if(!/abort|cancel/i.test(String(e)))toast("تعذّرت المشاركة");}}
+
+let toastT=null;
+function toast(t){$("toast").textContent=t;$("toast").classList.remove("hidden");clearTimeout(toastT);toastT=setTimeout(()=>$("toast").classList.add("hidden"),2200);}
+
+/* ===== in-app confirm → Promise<boolean | string (when o.input given)>; Back closes it ===== */
+let dlgResolve=null;
+function mzConfirm(o){const el=$("dlg");if(dlgResolve)closeDialog(false);
+  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+  $("dlgIc").textContent=o.icon||"❓";$("dlgTitle").textContent=o.title||"";
+  $("dlgBody").textContent=o.body||"";$("dlgOk").textContent=o.ok||"تمام";$("dlgNo").textContent=o.cancel||"إلغاء";
+  $("dlgNo").classList.toggle("hidden",!!o.alert);$("dlgTitle").classList.toggle("hidden",!o.title);
+  const inp=$("dlgInput");if(o.input!=null){inp.value=o.input;inp.classList.remove("hidden");}else inp.classList.add("hidden");
+  el.classList.remove("hidden");return new Promise(r=>{dlgResolve=r;});}
+function closeDialog(v){$("dlg").classList.add("hidden");const r=dlgResolve;dlgResolve=null;
+  if(v&&!$("dlgInput").classList.contains("hidden"))v=$("dlgInput").value;if(r)r(v);}
+$("dlgOk").onclick=()=>closeDialog(true);
+$("dlgNo").onclick=()=>closeDialog(false);
+
+/* ===== Back: dialog → sheet → viewer → (native.js asks to exit) ===== */
+function goBack(){
+  if(dlgResolve){closeDialog(false);return true;}
+  if(sheetId){closeSheet();return true;}
+  if(arcId){closeArcSheet();return true;}
+  if(!$("sortSheet").classList.contains("hidden")){$("sortSheet").classList.add("hidden");return true;}
+  if(!$("cloudSheet").classList.contains("hidden")){$("cloudSheet").classList.add("hidden");return true;}
+  if(viewing){try{if($("frame").contentWindow.__shelfBack())return true;}catch(e){}closeViewer();return true;}
+  if(chip!=="*"||$("q").value){chip="*";$("q").value="";render();scrollTo({top:0});return true;}
+  return false;}
+
+/* ===== Google Drive backup (js/cloud.js) ===== */
+let metaT=null;
+window.shelfChanged=id=>{if(id.startsWith("v:"))return;  // an old version opened for a look: not backed up
+  meta.dataT[id]=Date.now();clearTimeout(metaT);metaT=setTimeout(saveMeta,400);if(window.ShelfCloud)ShelfCloud.changed();};
+window.ShelfHost={
+  dataPids(){const s=new Set();for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);const m=k&&k.match(/^p:([^:]+:[^:]+):/);if(m&&!m[1].startsWith("v:"))s.add(m[1]);}return [...s];},
+  localData(pid){const P="p:"+pid+":",keys={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(P))keys[k.slice(P.length)]=localStorage.getItem(k);}
+    return {keys,t:meta.dataT[pid]||0};},
+  applyData(pid,keys,t){const P="p:"+pid+":";Object.keys(localStorage).filter(k=>k.startsWith(P)).forEach(k=>localStorage.removeItem(k));
+    for(const k in keys)try{localStorage.setItem(P+k,keys[k]);}catch(e){}
+    meta.dataT[pid]=t;saveMeta();if(viewing&&viewing.id===pid)openProject(pid);},
+  stampData(pid,t){meta.dataT[pid]=t;saveMeta();},
+  title(pid){const it=proj(pid)||BUILTIN.find(x=>x.id===pid);return it?(meta.names[pid]||it.title):pid;},
+  userFiles:async()=>(await allFiles()).filter(f=>f.id.startsWith("u:")),
+  async addUserFile(rec){await putFile(rec);await load();},
+  wasRemoved:pid=>!!(window.ShelfCloud&&ShelfCloud._state().pendingDel.includes(pid)),
+  hasProject:pid=>!!proj(pid),
+  settings:()=>({t:meta.setT||0,data:settingsOf(meta)}),
+  async applySettings(data,t){SETTINGS_KEYS.forEach(k=>{if(data[k]!==undefined)meta[k]=data[k];});meta.setT=t;
+    settingsSig=JSON.stringify(settingsOf(meta));try{localStorage.setItem(LS,JSON.stringify(meta));}catch(e){}await load();},
+  versionList:async()=>(await allFiles()).filter(f=>f.id.startsWith("v:")).map(f=>({id:f.id,pid:f.pid,title:f.title,added:f.added,html:f.html})),
+  async addVersion(rec){await putFile(rec);await load();}
+};
+const fmtAgo=t=>{if(!t)return "لسه";const m=Math.round((Date.now()-t)/60000);return m<1?"دلوقتي":m<60?"من "+m+" دقيقة":new Date(t).toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});};
+function cloudUI(){const C=window.ShelfCloud;if(!C||!C.available)return;const i=C.info(),b=$("cloudBtn");b.classList.remove("hidden");
+  b.classList.toggle("err",i.state==="error"&&i.signedIn);
+  b.textContent=!i.signedIn?"☁️ حفظ في جوجل":i.state==="syncing"?"☁️ بيحفظ…":i.state==="error"?"☁️ فيه مشكلة":"☁️ محفوظ";
+  const body=$("cloudBody");
+  body.innerHTML=!i.signedIn?`<p>سجّل دخول بحساب جوجل، وكل مشروع هيتحفظ لوحده في فولدر «رفّ المشاريع — نسخ احتياطية» على Google Drive: اللي بتكتبه أو بتعلّمه جوّه أي مشروع، والمشاريع اللي ضفتها. ونفس الحساب على الموبايل والكمبيوتر بيشوف نفس البيانات. لو غيّرت الجهاز أو مسحت التطبيق، سجّل دخول تاني وكل حاجة ترجع.</p>
+      <button class="btn" data-c="in">تسجيل الدخول بجوجل</button>`
+    :`<p>الحساب: <b>${esc(i.email)}</b><br>آخر حفظ: ${esc(fmtAgo(i.lastSync))}${i.state==="error"?"<br>⚠️ "+esc(cloudErr(i.error)):""}</p>
+      <button class="btn" data-c="sync">${i.state==="syncing"?"بيحفظ…":"🔄 احفظ دلوقتي"}</button>
+      <button class="btn ghost" data-c="out" style="background:transparent;color:var(--ink);border:1px solid var(--line)">تسجيل خروج</button>`;}
+function cloudErr(e){return /needs-consent/.test(e)?(window.ShelfCloud&&ShelfCloud.web?"إذن جوجل بيخلص كل ساعة على المتصفح — اضغط «احفظ دلوقتي» يكمّل":"محتاج تسمح للتطبيق تاني — اضغط احفظ دلوقتي"):/account-mismatch/.test(e)?"الحساب على الموبايل اتغيّر — سجّل خروج ودخول":
+  /Failed to fetch|NetworkError|network/i.test(e)?"مفيش نت — هيحفظ لوحده لما النت يرجع":/403/.test(e)?"Google Drive مش متفعّل للتطبيق (إعداد Google Cloud)":/10:|DEVELOPER_ERROR|authorize-failed/.test(e)?"تسجيل الدخول مش متجهّز لنسخة التطبيق دي (إعداد Google Cloud)":e;}
+$("cloudBtn").onclick=()=>{cloudUI();$("cloudSheet").classList.remove("hidden");};
+$("cloudSheet").onclick=async e=>{if(e.target.id==="cloudSheet"){$("cloudSheet").classList.add("hidden");return;}
+  const c=e.target.closest("[data-c]");if(!c)return;const C=window.ShelfCloud;
+  if(c.dataset.c==="in"){if(await C.signIn())toast("اتسجّل الدخول ✅ — بيحفظ مشاريعك");}
+  else if(c.dataset.c==="sync"){if(C.info().state==="error"&&/needs-consent/.test(C.info().error))await C.reauth();else C.sync();}
+  else if(c.dataset.c==="out"){if(await mzConfirm({icon:"☁️",title:"تسجيل خروج؟",body:"بياناتك هتفضل على الموبايل وعلى Google Drive، بس مش هيتحفظ جديد.",ok:"خروج"})){C.signOut();toast("اتسجّل الخروج");}}
+  cloudUI();};
+
+// computer: Esc = Back
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!e.defaultPrevented)goBack();});
+window.MZApp={back:goBack,confirm:mzConfirm,alerts:()=>[]};
+// ask Android not to evict IndexedDB (the user's added files) when storage runs low
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist();}catch(e){}
+/* Android "Open with / Share → رفّ المشاريع" (ShareImportPlugin.java) */
+const shareImport=()=>window.Capacitor&&Capacitor.Plugins?Capacitor.Plugins.ShareImport:null;
+async function takeShared(){const SI=shareImport();if(!SI)return;
+  try{const r=await SI.take();
+    if(r.files&&r.files.length){closeViewer();const id=await importFiles(r.files);if(id&&r.files.length===1)openProject(id);}
+    else if(r.open&&proj(r.open)){if(viewing)closeViewer();openProject(r.open);}}catch(e){}}  // home-screen shortcut
+load().then(()=>{takeShared();const SI=shareImport();if(SI)SI.addListener("shared",takeShared);});
+</script>
+<script src="js/native.js"></script>
+<script src="js/web-config.js"></script>
+<script src="js/cloud.js"></script>
+<script>if(window.ShelfCloud){ShelfCloud.onChange(cloudUI);cloudUI();}</script>
+</body>
+</html>

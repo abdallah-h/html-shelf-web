@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الدليل الشامل لحُسن التصرّف — للرجل العاقل</title>
+<style>
+:root{
+  --deep:#0a221f;--ink:#0f312d;--ink2:#16433d;--body-2:#3a4a44;
+  --paper:#f3ecdd;--paper2:#eae0cc;--paper3:#e0d3ba;
+  --brass:#b6863a;--brass-soft:#d6b367;--brass-deep:#8c6526;
+  --calm:#2c7a68;--warn:#bb7b2c;--alert:#a8442d;--muted:#6f6450;
+  --line:rgba(15,49,45,.14);--line-d:rgba(214,179,103,.18);
+  --shadow:0 14px 40px -22px rgba(10,34,31,.55);
+}
+body.dark{
+  --paper:#0e1f1c;--paper2:#16302b;--paper3:#1d3a34;
+  --ink:#ece3d0;--ink2:#dcd0b6;--body-2:#bcae93;--muted:#9c8f74;
+  --brass-deep:#d6b367;--line:rgba(214,179,103,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;background:var(--paper);color:var(--ink);
+  line-height:1.85;display:flex;min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::selection{background:var(--brass-soft);color:var(--deep)}
+
+.nav{width:316px;flex-shrink:0;
+  background:radial-gradient(120% 60% at 100% 0%, rgba(182,134,58,.16), transparent 60%),
+    linear-gradient(180deg,var(--ink2,#16433d) 0%, var(--deep) 100%);
+  color:var(--paper);height:100vh;position:sticky;top:0;display:flex;flex-direction:column;border-left:1px solid rgba(0,0,0,.3)}
+body.dark .nav{background:radial-gradient(120% 60% at 100% 0%, rgba(182,134,58,.14), transparent 60%),linear-gradient(180deg,#0c2420,#06120f)}
+.brand{padding:26px 26px 16px;border-bottom:1px solid var(--line-d)}
+.brand .eyebrow{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.68rem;color:var(--brass-soft);margin-bottom:8px;display:block}
+.brand h1{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-weight:700;font-size:1.5rem;line-height:1.35;color:#f3ecdd}
+.brand h1 span{color:var(--brass-soft)}
+.brand .sub{font-size:.78rem;color:rgba(243,236,221,.6);margin-top:9px;line-height:1.6}
+.search{padding:14px 22px 8px}
+.search input{width:100%;background:rgba(243,236,221,.06);border:1px solid var(--line-d);color:#f3ecdd;
+  font-family:inherit;font-size:.85rem;padding:10px 14px;border-radius:11px;outline:none;transition:.2s}
+.search input::placeholder{color:rgba(243,236,221,.4)}
+.search input:focus{border-color:var(--brass);background:rgba(243,236,221,.09)}
+.tools{display:flex;gap:8px;padding:0 22px 12px}
+.tool-btn{flex:1;background:rgba(243,236,221,.06);border:1px solid var(--line-d);color:#f3ecdd;font-family:inherit;
+  font-size:.78rem;padding:9px;border-radius:10px;cursor:pointer;transition:.18s;display:flex;align-items:center;justify-content:center;gap:6px}
+.tool-btn:hover{background:rgba(243,236,221,.12);border-color:var(--brass)}
+.tool-btn svg{width:15px;height:15px}
+.tool-btn.fs{flex:0 0 42px;font-size:.95rem;font-weight:600}
+.links{flex:1;overflow-y:auto;padding:4px 14px 26px;scrollbar-width:thin;scrollbar-color:var(--brass-deep) transparent}
+.links::-webkit-scrollbar{width:7px}.links::-webkit-scrollbar-thumb{background:var(--brass-deep);border-radius:9px}
+.nav-group{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.65rem;color:var(--brass-soft);
+  opacity:.62;padding:15px 13px 6px;margin-top:6px;border-top:1px solid var(--line-d)}
+.nav-group.first{border-top:none;margin-top:0}.nav-group.hidden{display:none}
+.nav-link{display:flex;align-items:center;gap:12px;width:100%;text-align:right;background:none;border:none;cursor:pointer;
+  color:rgba(243,236,221,.78);font-family:inherit;font-size:.87rem;padding:9px 13px;border-radius:11px;transition:.18s;line-height:1.4;border:1px solid transparent}
+.nav-link .num{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.72rem;color:var(--brass-soft);min-width:26px;opacity:.7;transition:.18s}
+.nav-link:hover{background:rgba(243,236,221,.05);color:#fff}
+.nav-link.active{background:linear-gradient(90deg,rgba(182,134,58,.22),rgba(182,134,58,.05));color:#fff;border-color:var(--line-d)}
+.nav-link.active .num{opacity:1}.nav-link.hidden{display:none}
+
+main{flex:1;min-width:0;position:relative}
+.scroll{max-width:880px;margin:0 auto;padding:52px 46px 110px}
+.view{display:none;animation:rise .5s cubic-bezier(.2,.7,.2,1)}
+.view.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.72rem;color:var(--brass-deep);margin-bottom:13px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--line);max-width:90px}
+h2.title{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-weight:700;font-size:2rem;line-height:1.25;color:var(--ink);margin-bottom:6px}
+.lead{font-size:1.04rem;color:var(--body-2);margin:13px 0 28px;max-width:62ch}
+
+.hero{background:radial-gradient(130% 80% at 100% 0%, rgba(182,134,58,.14), transparent 55%),linear-gradient(160deg,#0f312d 0%, var(--deep) 100%);
+  color:#f3ecdd;border-radius:22px;padding:44px 40px;margin-bottom:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0L60 30 30 60 0 30z' fill='none' stroke='%23d6b367' stroke-opacity='.05'/%3E%3C/svg%3E");opacity:.6;pointer-events:none}
+.hero .eyebrow{color:var(--brass-soft)}.hero .eyebrow::after{background:var(--line-d)}
+.hero h2{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:2.1rem;color:#fff;line-height:1.25;margin-bottom:13px;position:relative}
+.hero p{color:rgba(243,236,221,.82);max-width:60ch;position:relative;font-size:1.04rem}
+
+h3{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-weight:700;font-size:1.25rem;color:var(--ink2);margin:34px 0 4px;display:flex;align-items:center;gap:11px}
+h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--brass);flex-shrink:0}
+p{margin:12px 0;max-width:64ch}
+strong{color:var(--brass-deep);font-weight:600}
+
+.card{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:21px 23px;margin:16px 0;transition:.22s;position:relative}
+.card:hover{transform:translateX(-4px);box-shadow:0 10px 30px -20px rgba(10,34,31,.4);border-color:rgba(182,134,58,.4)}
+.card h4{font-weight:600;font-size:1.1rem;color:var(--ink);margin-bottom:5px}
+.card p{margin:7px 0;max-width:none}.card p:last-child{margin-bottom:0}
+
+.rule{position:relative;background:linear-gradient(120deg,#0f312d,#16433d);color:#f3ecdd;border-radius:16px;padding:24px 28px;margin:26px 0;border-right:5px solid var(--brass-soft);box-shadow:var(--shadow);overflow:hidden}
+.rule::before{content:"القاعدة";position:absolute;top:18px;left:24px;font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.68rem;color:var(--brass-soft);opacity:.85}
+.rule p{color:#f3ecdd;max-width:none;margin:0;font-size:1.06rem}.rule strong{color:var(--brass-soft)}
+
+.quote{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:1.1rem;line-height:1.9;color:var(--ink2);border-right:3px solid var(--brass);padding:8px 22px;margin:22px 0;background:rgba(182,134,58,.06);border-radius:0 12px 12px 0}
+.quote span{display:block;font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.82rem;color:var(--muted);margin-top:8px}
+
+ol.steps{list-style:none;counter-reset:s;margin:16px 0;padding:0}
+ol.steps li{counter-increment:s;position:relative;padding:10px 46px 10px 0;margin:6px 0;border-bottom:1px dashed var(--line)}
+ol.steps li:last-child{border-bottom:none}
+ol.steps li::before{content:counter(s,arabic-indic);position:absolute;right:0;top:8px;width:32px;height:32px;border-radius:50%;background:var(--ink2);color:var(--brass-soft);font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.9rem;display:grid;place-items:center}
+body.dark ol.steps li::before{background:#0c2420}
+ul.plain{list-style:none;margin:14px 0;padding:0}
+ul.plain li{position:relative;padding:7px 24px 7px 0}
+ul.plain li::before{content:"";position:absolute;right:4px;top:18px;width:8px;height:8px;border-radius:2px;background:var(--brass);transform:rotate(45deg)}
+
+.levels{display:flex;gap:10px;margin:18px 0 4px;flex-wrap:wrap}
+.lvl{flex:1;min-width:150px;border-radius:13px;padding:14px 16px;color:#fff;font-size:.9rem}
+.lvl b{display:block;font-size:1rem;margin-bottom:3px}
+.lvl.l1{background:linear-gradient(135deg,#2c7a68,#1f5749)}.lvl.l2{background:linear-gradient(135deg,#bb7b2c,#965f1f)}.lvl.l3{background:linear-gradient(135deg,#a8442d,#7e3120)}
+
+.emergency{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap}
+.emergency .e{flex:1;min-width:150px;background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.emergency .e .n{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:1.9rem;color:var(--alert);font-weight:700;line-height:1.2}
+.emergency .e .l{font-size:.85rem;color:var(--body-2)}
+
+.tablewrap{overflow-x:auto;margin:22px 0;border-radius:14px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.95rem;background:var(--paper2)}
+th,td{text-align:right;padding:14px 18px;border-bottom:1px solid var(--line)}
+th{background:var(--ink2);color:var(--brass-soft);font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-weight:600;font-size:.85rem}
+body.dark th{background:#0c2420}
+tr:last-child td{border-bottom:none}
+td:first-child{font-weight:500;color:var(--ink)}td:last-child{color:var(--body-2)}
+tbody tr:hover{background:rgba(182,134,58,.06)}
+
+.note{background:rgba(187,123,44,.1);border:1px solid rgba(187,123,44,.25);border-radius:13px;padding:16px 20px;margin:22px 0;font-size:.92rem;color:#6e4a16}
+.note b{color:var(--warn)}
+body.dark .note{background:rgba(187,123,44,.14);border-color:rgba(214,179,103,.25);color:#e0c48a}
+.summary li{font-size:1.02rem}
+.topbar{display:none}.overlay{display:none}
+.foot{margin-top:44px;padding-top:24px;border-top:1px solid var(--line);text-align:center;font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:1.05rem;color:var(--muted)}
+
+@media(max-width:900px){
+  body{flex-direction:column}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;position:sticky;top:0;z-index:40;background:var(--ink2);color:#f3ecdd;padding:13px 18px;border-bottom:1px solid var(--line-d)}
+  body.dark .topbar{background:#0c2420}
+  .topbar .t-title{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-weight:700;font-size:1.2rem;color:#fff}
+  .topbar .t-title span{color:var(--brass-soft)}
+  .top-actions{display:flex;gap:8px}
+  .menu-btn{background:rgba(243,236,221,.08);border:1px solid var(--line-d);color:#f3ecdd;width:42px;height:42px;border-radius:11px;cursor:pointer;display:grid;place-items:center}
+  .menu-btn svg{width:20px;height:20px}
+  .nav{position:fixed;top:0;right:0;height:100vh;z-index:60;width:300px;max-width:86vw;transform:translateX(105%);transition:transform .3s cubic-bezier(.2,.7,.2,1);box-shadow:-20px 0 50px -20px rgba(0,0,0,.5)}
+  .nav.open{transform:none}
+  .overlay{display:block;position:fixed;inset:0;background:rgba(10,34,31,.55);z-index:55;opacity:0;visibility:hidden;transition:.3s}
+  .overlay.show{opacity:1;visibility:visible}
+  .scroll{padding:30px 20px 80px}
+  h2.title{font-size:1.8rem}.hero{padding:30px 22px}.hero h2{font-size:1.9rem}.brand h1{font-size:1.55rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* الفهرس المرئي */
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:8px}
+.index-card{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:18px 20px;transition:.2s}
+.index-card:hover{border-color:rgba(182,134,58,.4);box-shadow:0 10px 30px -22px rgba(10,34,31,.4)}
+.index-card h4{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.76rem;color:var(--brass-deep);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.index-link{display:block;width:100%;text-align:right;background:none;border:none;cursor:pointer;color:var(--ink);font-family:inherit;font-size:.92rem;padding:6px 0;transition:.15s;line-height:1.5}
+.index-link:hover{color:var(--brass-deep);padding-right:7px}
+.nav-link.home{color:var(--brass-soft);font-weight:500}
+.nav-link.home .num{display:grid;place-items:center}
+.nav-link.home svg{width:16px;height:16px}
+.home-actions{margin:22px 0 8px;display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--ink2);color:#f3ecdd;border:none;border-radius:12px;padding:12px 22px;font-family:inherit;font-size:.95rem;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:.2s}
+.btn-primary:hover{background:var(--brass-deep)}
+.btn-primary svg{width:17px;height:17px}
+.tool-btn.wide{flex:1 1 100%}
+
+/* جُمَل جاهزة */
+.says{margin:14px 0 4px;padding:14px 16px;background:rgba(44,122,104,.08);border:1px solid rgba(44,122,104,.22);border-radius:12px}
+.says .lbl{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.66rem;color:var(--calm);margin-bottom:8px;display:block}
+body.dark .says{background:rgba(44,122,104,.14);border-color:rgba(90,180,155,.3)}
+body.dark .says .lbl{color:#6ec2a9}
+.says .s{display:block;padding:5px 0;font-size:.95rem;color:var(--ink);position:relative;padding-right:20px;line-height:1.7}
+.says .s::before{content:"❝";position:absolute;right:0;top:4px;color:var(--calm);font-size:.9rem}
+.avoid{margin:12px 0 4px;padding:12px 16px;background:rgba(168,68,45,.07);border:1px solid rgba(168,68,45,.2);border-radius:12px;font-size:.92rem;color:var(--body-2)}
+.avoid b{color:var(--alert);font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.66rem;display:block;margin-bottom:5px}
+body.dark .avoid{background:rgba(168,68,45,.13);border-color:rgba(200,110,85,.28)}
+body.dark .avoid b{color:#e08a70}
+
+/* التنقل بين الأقسام */
+.pager{display:flex;gap:12px;justify-content:space-between;align-items:stretch;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+.pager button{flex:1;background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:14px 18px;
+  font-family:inherit;cursor:pointer;text-align:right;transition:.2s;color:var(--ink);display:flex;align-items:center;gap:12px;min-width:0}
+.pager button:hover:not(:disabled){border-color:rgba(182,134,58,.5);transform:translateY(-2px);box-shadow:0 10px 26px -20px rgba(10,34,31,.5)}
+.pager button:disabled{opacity:.35;cursor:default}
+.pager .dir{font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.68rem;color:var(--brass-deep);display:block;margin-bottom:2px}
+.pager .ttl{font-size:.95rem;font-weight:500;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .arw{font-size:1.3rem;color:var(--brass);flex-shrink:0}
+.pager .next{flex-direction:row-reverse;text-align:left}
+.pager .txt{min-width:0;flex:1}
+
+/* وضع الطباعة */
+@media print{
+  html{font-size:12pt}
+  body{background:#fff!important;color:#1a1a1a!important;display:block!important}
+  .nav,.topbar,.overlay,.home-actions,#s-home,.pager{display:none!important}
+  main{display:block!important}
+  .scroll{max-width:none!important;margin:0!important;padding:0!important}
+  .view{display:block!important;page-break-before:always;animation:none!important}
+  #s-base{page-break-before:avoid!important}
+  .eyebrow{color:#8c6526!important}
+  h2.title,.hero h2,h3,.card h4,td:first-child{color:#111!important}
+  .lead,p,td:last-child,ul.plain li,ol.steps li{color:#222!important}
+  .hero{background:#fff!important;border:2px solid #b6863a!important;box-shadow:none!important;border-radius:8px;padding:18px!important;margin-bottom:16px!important}
+  .hero h2,.hero p,.hero .eyebrow{color:#111!important}
+  .rule{background:#faf6ec!important;border:1px solid #b6863a!important;border-right:4px solid #b6863a!important;box-shadow:none!important}
+  .rule p,.rule strong{color:#111!important}.rule::before{color:#8c6526!important}
+  .card{background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important;break-inside:avoid;page-break-inside:avoid}
+  .quote{background:#f5f0e4!important;color:#222!important}.quote span{color:#555!important}
+  table{background:#fff!important}th{background:#eee!important;color:#111!important}
+  .lvl{color:#111!important;background:#f0ece0!important;border:1px solid #999!important}
+  .emergency .e{background:#fff!important;border:1px solid #999!important}.emergency .e .n{color:#a8442d!important}
+  ol.steps li::before{background:#16433d!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .foot{color:#555!important}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="t-title">الدليل <span>الشامل</span><span id="curTitle" style="display:block;font-family:"Segoe UI", Tahoma, Arial, system-ui, -apple-system, sans-serif;font-size:.72rem;font-weight:400;color:rgba(243,236,221,.6);margin-top:1px"></span></div>
+  <div class="top-actions">
+    <button class="menu-btn" id="darkBtnM" aria-label="الوضع الليلي">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="القائمة">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<aside class="nav" id="nav">
+  <div class="brand">
+    <span class="eyebrow">للرجل العاقل · حِلم وحزم وخُلق</span>
+    <h1>الدليل <span>الشامل</span> لحُسن التصرّف</h1>
+    <div class="sub">من المواقف اليومية إلى الهَدْي النبوي — قوّتك في هدوئك، وكرامتك في خُلقك.</div>
+  </div>
+  <div class="search"><input id="search" type="text" placeholder="ابحث عن موقف أو قسم…" aria-label="بحث" /></div>
+  <div class="tools">
+    <button class="tool-btn" id="darkBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <span id="darkLbl">وضع ليلي</span>
+    </button>
+    <button class="tool-btn fs" id="fsDown" aria-label="تصغير الخط">A−</button>
+    <button class="tool-btn fs" id="fsUp" aria-label="تكبير الخط">A+</button>
+    <button class="tool-btn wide" id="printBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+      <span>اطبع الدليل</span>
+    </button>
+  </div>
+  <nav class="links" id="links"></nav>
+</aside>
+
+<main><div class="scroll">
+
+<!-- ===== الفهرس / الرئيسية ===== -->
+<section class="view active" id="s-home">
+  <div class="hero">
+    <span class="eyebrow">دليل شامل · أكثر من ٥٠ موضوع</span>
+    <h2>دليلك الكامل لحُسن التصرّف</h2>
+    <p>من مواقف الشارع والمعاكسات، للبيت والعلاقات والشغل والمال، وصولاً للهَدْي النبوي والآداب. اختار الموضوع اللي محتاجه من الفهرس تحت، أو دوّر باستخدام البحث في القايمة.</p>
+  </div>
+  <div class="home-actions">
+    <button class="btn-primary" id="printBtnHome">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+      <span>اطبع الدليل كامل</span>
+    </button>
+  </div>
+  <div class="index-grid" id="indexGrid"></div>
+</section>
+
+<!-- ===== الأساس والسلامة ===== -->
+<section class="view" id="s-base" data-group="الأساس والسلامة" data-title="الأساس العقلي" data-key="مبادئ هدوء غضب نفس خطر سلامة">
+  <div class="hero">
+    <span class="eyebrow">المبدأ قبل الموقف</span>
+    <h2>أقوى راجل هو اللي بيتحكّم في نفسه</h2>
+    <p>كل تصرّف حكيم بيبدأ من راسك قبل ما يبدأ من إيدك أو لسانك. لو ضبطت المبادئ دي، أغلب المواقف هتتحل لوحدها — والباقي هتعرف تتعامل معاه وانت رابط الجأش.</p>
+  </div>
+  <h3><span class="dot"></span>١. سلامتك وسلامة أهلك فوق أي اعتبار</h3>
+  <p>أهم من «حقّك» في اللحظة، وأهم من إنك «تورّيه». الراجل اللي بيرجّع بيته بأمان هو اللي كسب.</p>
+  <h3><span class="dot"></span>٢. التحكّم في النفس هو القوة</h3>
+  <div class="quote">«لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ»<span>متفق عليه</span></div>
+  <h3><span class="dot"></span>٣. ثانية واحدة بتفرّق</h3>
+  <p>قبل أي رد: نفس عميق، عُدّ لتلاتة، واسأل: <strong>«إيه أحسن نتيجة ممكنة هنا؟»</strong>.</p>
+  <h3><span class="dot"></span>٤. مش كل معركة تستاهل</h3>
+  <p>اعرف الفرق بين الموقف اللي لازم تقف فيه، واللي أحسن حاجة فيه إنك تعدّيه.</p>
+  <h3><span class="dot"></span>٥. قيّم الخطر في تلات ثواني</h3>
+  <ul class="plain"><li>هو لوحده ولا معاه ناس؟</li><li>في حاجة في إيده؟</li><li>المكان فيه ناس وكاميرات؟</li><li>مخرجك فين؟</li></ul>
+</section>
+
+<section class="view" id="s-quickref" data-group="الأساس والسلامة" data-title="كارت الطوارئ السريع" data-key="طوارئ سريع نجدة رقم شرطة إسعاف لحظة شدة">
+  <span class="eyebrow">للحظة الشدّة · اقرأه دلوقتي</span>
+  <h2 class="title">كارت الطوارئ السريع</h2>
+  <p class="lead">لو حصل موقف مفاجئ، مفيش وقت تفكير طويل. دي أهم ٦ حاجات تفتكرها في ثواني.</p>
+  <ol class="steps">
+    <li><strong>سلامتك وأهلك الأول</strong> — أي حاجة تانية بعد كده.</li>
+    <li><strong>نفس عميق قبل أي رد</strong> — متنفعلش، الانفعال أول خسارة.</li>
+    <li><strong>قيّم بسرعة:</strong> لوحده ولا كتير؟ في سلاح؟ مخرجك فين؟</li>
+    <li><strong>مجموعة أو سلاح → انسحب فوراً</strong> — مفيش بطولة هنا.</li>
+    <li><strong>صوّر ووثّق</strong> — الكاميرا أقوى من القبضة.</li>
+    <li><strong>مع أهلك → ابعدهم قبل أي حاجة</strong>، وانت بينهم وبين الخطر.</li>
+  </ol>
+  <div class="emergency">
+    <div class="e"><div class="n">١٢٢</div><div class="l">الشرطة / النجدة</div></div>
+    <div class="e"><div class="n">١٢٣</div><div class="l">الإسعاف</div></div>
+    <div class="e"><div class="n">١٨٠</div><div class="l">المطافئ / الحماية المدنية</div></div>
+    <div class="e"><div class="n">١٢٨</div><div class="l">نجدة المرور</div></div>
+  </div>
+  <p style="text-align:center;color:var(--muted);font-size:.9rem;margin-top:-8px">وكمان: نجدة الطفل <strong>١٦٠٠٠</strong> · شكاوى العنف ضد المرأة <strong>١٥١١٥</strong> · طوارئ الغاز <strong>١٢٩</strong> · الكهرباء <strong>١٢١</strong> · شرطة السياحة <strong>١٢٦</strong></p>
+  <div class="rule"><p>لما تتصل، اتكلم بهدوء وبوضوح: <strong>مكانك بالظبط، إيه اللي بيحصل، عدد الناس</strong>. الهدوء بيخلّي المساعدة توصلك أسرع.</p></div>
+</section>
+
+<section class="view" id="s-safety" data-group="الأساس والسلامة" data-title="قواعد السلامة الذهبية" data-key="لغة جسد مسافة توثيق تصوير أرقام طوارئ مخرج">
+  <span class="eyebrow">احفظها كويس</span>
+  <h2 class="title">قواعد ذهبية للسلامة</h2>
+  <p class="lead">قواعد عامة بتشتغل في أي موقف، تخلّيك جاهز قبل ما تحتاجها.</p>
+  <ul class="plain">
+    <li><strong>لغة جسدك بتتكلّم قبلك:</strong> وقفة معتدلة، نظرة ثابتة، صوت هادي.</li>
+    <li><strong>خلّي مسافة ذراع</strong> بينك وبين أي حد متوتّر.</li>
+    <li><strong>إيديك مرئية ومش مقفولة.</strong></li>
+    <li><strong>اعرف مخارجك</strong> في أي مكان.</li>
+    <li><strong>التوثيق سلاح:</strong> كاميرا شغّالة بتخلّي ناس كتير تتراجع. بس <strong>صوّر من مسافة</strong> ومتحطّش الموبايل في وشه — التصوير الاستفزازي ممكن يصعّد الموقف. ولو في خطر حقيقي، سلامتك قبل التصوير.</li>
+    <li><strong>اقف في النور ووسط الناس:</strong> المكان المزدحم والمضاء والقريب من محل أو أمن أأمن دايماً من الشارع الجانبي الفاضي.</li>
+    <li><strong>ثق في إحساسك:</strong> لو حسّيت إن في حاجة غلط (حد بيتبعك، مكان مش مريح) متكابرش — غيّر طريقك فوراً. الحدس غالباً بيلقط إشارات قبل عقلك.</li>
+  </ul>
+  <div class="rule"><p>الهدوء بيرعب المستفِز أكتر من الصُّراخ، وبيخلّيك متحكّم في الموقف بدل ما الموقف يتحكّم فيك.</p></div>
+</section>
+
+<!-- ===== الشارع والمعاكسات ===== -->
+<section class="view" id="s-daily" data-group="الشارع والمعاكسات" data-title="مواقف يومية" data-key="زحمة طابور سواق بياع وزن جار دوشة حادثة زميل تدخين">
+  <span class="eyebrow">الشارع والمواصلات والبيع</span>
+  <h2 class="title">مواقف يومية عادية</h2>
+  <p class="lead">المواقف اللي بتقابلك كل يوم — والرد الصح اللي بيوفّر عليك مزاجك ووقتك.</p>
+  <div class="card"><h4>حد زقّك في الزحمة</h4><p>غالباً مش مقصود. متردّش بزقّة. متعمّد؟ بهدوء: <strong>«خليك واخد بالك، الزحمة على الكل»</strong>.</p></div>
+  <div class="card"><h4>خناقة على الدور</h4><p><strong>«لو سمحت يا فندم، الدور ورا»</strong>. الدور قصير؟ عدّيها.</p></div>
+  <div class="card"><h4>سواق بيتجادل في السعر</h4><p>اتفق <strong>قبل</strong> ما تركب. خلاف؟ سعر معقول وانزل بهدوء. هدّد؟ صوّره.</p></div>
+  <div class="card"><h4>بياع بيغش في الوزن أو الفكة</h4><p><strong>«ممكن نراجع الفكة؟»</strong>. أصرّ؟ ماتشتريش منه تاني ومتدخلش في صياح.</p></div>
+  <div class="card"><h4>جار بيعمل دوشة</h4><p>ابدأ بالباب: <strong>«معلش يا جاري، الأطفال بيناموا، ممكن نوطّي؟»</strong>.</p></div>
+  <div class="card"><h4>خبطة عربية بسيطة</h4><p><strong>«حضرتك تمام؟ في حد اتأذى؟»</strong>. صوّر. إصابة أو خلاف؟ المرور يحرّر.</p></div>
+  <div class="card"><h4>زميل بيستفزّك</h4><p><strong>«مش هكمّل النقاش بالطريقة دي، لما تهدا نتكلم»</strong>.</p></div>
+  <div class="card"><h4>حد بيدخّن جنب أطفالك</h4><p><strong>«في أطفال هنا، ممكن تبعد؟»</strong>. رفض؟ انتقل انت بأطفالك.</p></div>
+
+  <h3><span class="dot"></span>مواقف الخدمة والشرا</h3>
+
+  <div class="card"><h4>خدمة وحشة في مطعم أو كافيه</h4>
+    <p>متعصّبش على الويتر — غالباً مش هو السبب. اطلب بهدوء وحدّد المشكلة بوضوح، ولو ماتحلّتش اطلب المسؤول.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">لو سمحت، الطلب بقاله ٤٠ دقيقة، ممكن تشوفلي هو فين؟</span>
+      <span class="s">الأكل جه بارد، ممكن يتسخّن أو نغيّره؟ شكراً.</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>الصوت العالي قدام الزباين، أو التقليل من الويتر. اللي بياخد حقّه بهدوء بياخده كامل وبكرامة.</div>
+  </div>
+
+  <div class="card"><h4>بياع بيضغط عليك تشتري</h4>
+    <p>مش لازم تبرّر ولا تخترع أعذار. الرفض المهذّب الواضح بينهي الموضوع أسرع من المجاملة.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">شكراً، بس مش محتاجه دلوقتي.</span>
+      <span class="s">هفكّر وأرجعلك، متشكّر.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>عامل أو صنايعي بيطلب زيادة عن المتفق</h4>
+    <p>الاتفاق المكتوب أو الواضح من الأول بيمنع أغلب ده. حصل؟ ذكّره بالاتفاق بهدوء، ولو الشغل فعلاً زاد، قدّر الزيادة بالعدل.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">احنا اتفقنا على كذا، لو في شغل زيادة قولّي هو إيه ونتفق عليه.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>انتظار طويل في مستشفى أو مصلحة</h4>
+    <p>الصبر هنا هو المهارة. اسأل بأدب عن التقدير الزمني وارجع تستنى — العصبية مش بتقدّم دورك.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">لو سمحت، تقريباً فاضل قد إيه على دوري؟ عشان أرتّب نفسي.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>حد بيزمّر وراك بعصبية</h4>
+    <p>متردّش بزمّور ولا بإشارة. لو انت غلطان، صحّح بهدوء. لو مش غلطان، تجاهل تماماً — الرد بيشعل موقف مالوش داعي وانت في عربية.</p>
+  </div>
+
+  <div class="card"><h4>حد بيطلب منك سُلفة وانت مش قادر</h4>
+    <p>الرفض بوضوح ولطف أحسن من وعد مش هتقدر تنفّذه. الوعد المكسور بيضيّع الصداقة أكتر من الرفض الصريح.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">والله يا صاحبي ظروفي مش مسمحالي دلوقتي، ونفسي أساعدك. لو في حاجة تانية أقدر أعملهالك قولّي.</span>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="s-annoying" data-group="الشارع والمعاكسات" data-title="البايخين والمستفزّين" data-key="تريقة مجموعة شباب سكران متسول تصوير تجاهل">
+  <span class="eyebrow">ناس بتدوّر على رد فعل</span>
+  <h2 class="title">التعامل مع البايخين والمستفزّين</h2>
+  <p class="lead">القاعدة الأم: ماتديهومش الرد اللي هما عايزينه.</p>
+  <div class="card"><h4>حد بيتريّق وانت ماشي</h4><p><strong>التجاهل التام + الثقة في المشية</strong>. التريقة بتموت لما ماتلاقيش جمهور.</p></div>
+  <div class="card"><h4>مجموعة شباب بيعملوا مشاكل</h4><p>مع المجموعة، <strong>الانسحاب هو البطولة</strong>. حسّيت بخطر؟ اتصل بالنجدة وانت ماشي.</p></div>
+  <div class="card"><h4>حد سكران أو مش متّزن</h4><p>المنطق مش هيشتغل. ابعد بهدوء. بيعمل خطر؟ النجدة الحل.</p></div>
+  <div class="card"><h4>متسوّل بيلحّ بعنف</h4><p>مسكك؟ <strong>«سيب إيدي لو سمحت»</strong> بصوت يسمعه اللي حواليك.</p></div>
+  <div class="card"><h4>حد بيصوّر أهلك</h4><p>رفض يمسح؟ صوّره انت، نادي ناس، اطلب أمن المكان.</p></div>
+
+  <h3><span class="dot"></span>الاستفزاز الاجتماعي (اللي مش في الشارع)</h3>
+
+  <div class="card"><h4>حد بيحرجك بـ«نكتة» قدام الناس</h4>
+    <p>ده أذى ملفوف في ضحك. أقوى رد هو ابتسامة هادية وجملة قصيرة بتوقّفه من غير ما تعمل مشهد.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">حلوة، بس أنا مش بحب النوع ده من الهزار.</span>
+      <span class="s">خلاص كفاية كده. (بابتسامة وتغيير الموضوع فوراً)</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>الرد بنكتة أقسى — بتدخل معاه في سباق انت مش عايزه، والناس هتفتكر آخر واحد اتكلم.</div>
+  </div>
+
+  <div class="card"><h4>حد بيسأل أسئلة شخصية محرجة</h4>
+    <p>(بتكسب كام؟ ليه لسه ما خلّفتش؟ بتصرف كام على كذا؟) — مش مضطر تجاوب. الرد المهذّب المُبهم بيقفل الموضوع من غير خصومة.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">الحمد لله، ماشي الحال.</span>
+      <span class="s">دي حاجة بحب أخلّيها لنفسي، متزعلش مني.</span>
+      <span class="s">ربنا يكرمنا جميعاً. (وتحوّل السؤال ليه: وحضرتك أخبارك إيه؟)</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>حد بيتريّق على شكلك أو لبسك أو لهجتك</h4>
+    <p>ثقتك في نفسك هي الرد. اللي واثق مش بيهتز من كلمة، واللي بيهتز بيدّي المستفِز اللي هو عايزه بالظبط.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أيوة، وأنا مبسوط كده. (بابتسامة وتكمّل كلامك عادي)</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>قريب أو جار بيتطفّل على حياتك</h4>
+    <p>الحدود بتتحط بلطف وتكرار، مش بانفجار مرة واحدة. كرّر نفس الرد الهادي وهيفهم.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">ربنا يخليك، الأمور تمام والحمد لله.</span>
+      <span class="s">لما يبقى في جديد هبقى أقولك إن شاء الله.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>حد بيرفع صوته عليك</h4>
+    <p>القاعدة: <strong>كل ما هو علّى، انت وطّي</strong>. صوتك الواطي بيجبره يوطّي عشان يسمعك، وبيخلّي الناس في صفّك.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا سامعك، بس مش هنوصل لحاجة بالصوت العالي. اتكلم وأنا هسمعك.</span>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="s-harass" data-group="الشارع والمعاكسات" data-title="المعاكسات والتحرّش" data-key="معاكسة تحرّش زوجة أطفال لوحدك لمس دفاع حماية بنت">
+  <span class="eyebrow">الجزء الأهم · ثلاث حالات</span>
+  <h2 class="title">المعاكسات والتحرّش</h2>
+  <p class="lead">تصرّفك بيختلف جذرياً حسب إنت لوحدك ولا معاك أهلك. المبدأ الثابت: السلامة الأول، والتوثيق سلاحك، والقانون في ضهرك.</p>
+  <div class="levels">
+    <div class="lvl l1"><b>وانت لوحدك</b>حرية أكبر للانسحاب</div>
+    <div class="lvl l2"><b>ومعاك زوجتك</b>احمِها قبل ما تنتقم</div>
+    <div class="lvl l3"><b>ومعاك أطفالك</b>انت قدوة وعينهم عليك</div>
+  </div>
+  <h3><span class="dot"></span>وانت لوحدك</h3>
+  <div class="card"><h4>كلمة استفزاز وانت ماشي</h4><p>تجاهل تام وكمّل. ده مش جُبن، ده ذكاء.</p></div>
+  <div class="card"><h4>حد سدّ طريقك</h4><p>خطوة لجنب وكمّل. لحقك؟ روح لمكان فيه ناس فوراً.</p></div>
+  <div class="card"><h4>حد لمسك أو دفعك</h4><p>حقّك تدفع الأذى — تبعده وتاخد مسافة وتبلّغ، مش تبدأ معركة.</p></div>
+  <h3><span class="dot"></span>ومعاك زوجتك</h3>
+  <p>القرار الغلط ممكن يأذيها هي قبلك. لو اتمسكت أو انضربت، مين هيحميها؟</p>
+  <div class="card"><h4>حد علّق على زوجتك</h4><p>انت بينها وبينه. غالباً <strong>التجاهل والمشي بثقة أقوى رد</strong>. لازم؟ <strong>«احترم نفسك»</strong> وكمّل.</p></div>
+  <div class="card"><h4>حد بيتبعكم</h4><p>غيّروا اتجاهكم، ادخلوا محل، صوّره واتصل بالنجدة من مكان آمن.</p></div>
+  <div class="card" style="border-color:rgba(168,68,45,.4)"><h4>تحرّش جسدي — أخطر موقف</h4>
+    <ol class="steps">
+      <li><strong>بينه وبينها فوراً</strong> — جسمك حاجز.</li>
+      <li><strong>صوت عالي:</strong> «في تحرّش! امسكوه!» — الجمهور بيشلّه.</li>
+      <li><strong>عطّله</strong> لحد ما الناس تتجمّع والشرطة تيجي.</li>
+      <li><strong>بلّغ (١٢٢)</strong> وخلّي شهود.</li>
+    </ol></div>
+  <div class="rule"><p>أقوى انتقام إنه يتحاسب رسمياً، مش إنك تتحوّل لمتّهم في قضية ضرب. دافع بقدر الاعتداء.</p></div>
+  <h3><span class="dot"></span>ومعاك أطفالك</h3>
+  <div class="card"><h4>مشكلة وانت ماشي مع ولادك</h4><p>أولويتك: <strong>تبعدهم عن الخطر</strong>. خد إيديهم، حوّل اتجاهك.</p></div>
+  <div class="card"><h4>حد آذى ابنك</h4><p>حُط ابنك في ضهرك: <strong>«ده طفل، اتكلم معايا أنا»</strong>.</p></div>
+
+  <h3><span class="dot"></span>مواقف إضافية مهمة</h3>
+
+  <div class="card"><h4>تحرّش في المواصلات (زحمة مترو أو أتوبيس)</h4>
+    <p>الزحمة بيستغلّها المتحرش عشان «يبان مش مقصود». لو شفت الموقف: اتدخّل بصوت واضح — الفضح العلني هو أقوى سلاح هنا لأن مفيش مهرب.</p>
+    <div class="says"><span class="lbl">قول كده بصوت مسموع</span>
+      <span class="s">ابعد إيدك! الأخت بتقولك ابعد.</span>
+      <span class="s">يا جماعة، الراجل ده بيتحرش. حد يوقفه لحد المحطة الجاية.</span>
+    </div>
+    <p>في المترو، عربية الستات وأمن المحطة موجودين — التسليم للأمن أفضل من الخناقة جوّه العربية.</p>
+  </div>
+
+  <div class="card"><h4>حد بيعاكس أختك أو بنتك أو والدتك</h4>
+    <p>نفس قواعد «ومعاك زوجتك» بالظبط: تقف بينهم، تبعدها، وتحكم بالخطر مش بالغضب. الفرق الوحيد إن الغضب هنا بيكون أشد — فخلّي بالك من نفسك أكتر.</p>
+    <div class="rule"><p>لو بنتك أو أختك حكتلك عن مضايقة حصلت وانت مش موجود: <strong>أول رد فعل منك بيحدّد هتحكيلك تاني ولا لأ</strong>. اسمعها من غير لوم («انتي كنتي لابسة إيه؟» بتقفل الباب للأبد)، طمّنها إنها مش غلطانة، وبعدين اتصرّفوا سوا.</p></div>
+  </div>
+
+  <div class="card"><h4>حد بيتابع أهلك أو بيقف قدام البيت</h4>
+    <p>ده تصعيد جدّي مش موقف عابر. متواجهوش لوحدك في الفاضي.</p>
+    <ol class="steps">
+      <li><strong>وثّق</strong> — صوّر، سجّل التواريخ والأوقات.</li>
+      <li><strong>خلّي شهود</strong> — البواب، الجيران، كاميرات العمارة.</li>
+      <li><strong>بلاغ رسمي</strong> في قسم الشرطة بالتوثيق اللي معاك.</li>
+      <li><strong>غيّر روتين أهلك</strong> مؤقتاً وخلّي حد معاهم لحد ما يتحل.</li>
+    </ol>
+  </div>
+
+  <div class="card"><h4>ابتزاز إلكتروني لحد من أهلك</h4>
+    <p><strong>القاعدة الأهم: متدفعش، ومتستسلمش، وبلّغ فوراً.</strong> الدفع بيزوّد الابتزاز مش بينهيه.</p>
+    <p>وثّق كل المحادثات، ومتحذفش حاجة، وبلّغ مباحث الإنترنت. والأهم: طمّن اللي بيتبتز إنك في ضهره وإنه مش هيتلام — الخوف من رد فعل الأهل هو اللي بيخلّي الضحية تسكت وتدفع.</p>
+  </div>
+</section>
+
+<section class="view" id="s-balance" data-group="الشارع والمعاكسات" data-title="ميزان: تنسحب أم تواجه؟" data-key="ميزان انسحاب مواجهة قرار خطر سلاح">
+  <span class="eyebrow">القرار الصعب</span>
+  <h2 class="title">متى تنسحب ومتى تواجه؟</h2>
+  <p class="lead">مش كل موقف ليه نفس الرد. ده الميزان اللي بيوريك مكانك من كل موقف.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>الموقف</th><th>التصرّف الأمثل</th></tr></thead>
+    <tbody>
+      <tr><td>كلمة أو تريقة وانت ماشي</td><td>تجاهل واكمل</td></tr>
+      <tr><td>استفزاز لفظي ومعاك أهلك</td><td>حزم هادي + مشي بثقة</td></tr>
+      <tr><td>مجموعة ضدك وانت لوحدك</td><td>انسحاب فوري — عقل مش جُبن</td></tr>
+      <tr><td>اعتداء جسدي مباشر</td><td>دفاع بقدر الخطر + صراخ + بلاغ</td></tr>
+      <tr><td>أي موقف فيه سلاح</td><td>انسحاب فوري + نجدة</td></tr>
+      <tr><td>سكران أو مختلّ</td><td>ابعد — المنطق مش هيشتغل</td></tr>
+    </tbody>
+  </table></div>
+  <div class="rule"><p>اسأل نفسك: <strong>«هل أقدر أطلع من الموقف ده بسلامتي وسلامة أهلي من غير عنف؟»</strong> — لو آه، ده دايماً الأذكى.</p></div>
+</section>
+
+<!-- ===== مواقف الحياة ===== -->
+<section class="view" id="s-work" data-group="مواقف الحياة" data-title="مواقف الشغل" data-key="مدير زميل ترقية زيادة مقابلة عمل رفض مهمة">
+  <span class="eyebrow">احترافية تكسب احترام</span>
+  <h2 class="title">مواقف الشغل</h2>
+  <p class="lead">في الشغل، الهدوء والاحترافية بيبنوا سُمعة بتفتحلك أبواب.</p>
+  <div class="card"><h4>مدير ظالم أو بيقلّل من شأنك</h4><p>اطلب اجتماع على انفراد، اعرض نقطتك بحقائق. الظلم المتكرّر؟ التوثيق المكتوب حصنك.</p></div>
+  <div class="card"><h4>زميل بياخد مجهودك</h4><p>خلّي شغلك موثّق باسمك من الأول. اعرض تفاصيلك بثقة من غير ما تتّهم.</p></div>
+  <div class="card"><h4>طلب زيادة أو ترقية</h4><p>اطلبها بإنجازات مش باحتياجات. جهّز قايمة بأثرك، واختار التوقيت الصح.</p></div>
+  <div class="card"><h4>مقابلة عمل</h4><p>تعالى بدري، صافح بثقة، نظرة في العين، وردّ بهدوء.</p></div>
+  <div class="card"><h4>تقول «لأ» لمهمة مش من شغلك</h4><p><strong>«أنا مشغول بـ… ممكن نرتّب أولوياتي مع حضرتك؟»</strong>.</p></div>
+
+  <h3><span class="dot"></span>مواقف أصعب</h3>
+
+  <div class="card"><h4>غلطت غلطة كبيرة في الشغل</h4>
+    <p>التستّر بيكبّر الغلطة عشرة أضعاف. الاعتراف السريع مع حل مقترح بيحوّلك من «اللي غلط» لـ«اللي بيتصرّف».</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">في غلطة حصلت مني في كذا، وأنا مسؤول عنها. ده اللي عملته لتداركها، وده اللي محتاج قرار من حضرتك.</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>الأعذار والتبريرات قبل الاعتراف، وإلقاء اللوم على غيرك. المدير بيقيس رد فعلك أكتر من الغلطة نفسها.</div>
+  </div>
+
+  <div class="card"><h4>زميل كسول بيحمّلك شغله</h4>
+    <p>متشتكيش من أول مرة، ومتسكتش لغاية ما تنفجر. حدّد الحدود بلطف من البداية، وخلّي التوزيع مكتوب لو أمكن.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا عندي كذا وكذا النهارده، الجزء ده أفضل يبقى معاك عشان نلحق الاتنين.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>زميل بينمّ عليك عند المدير</h4>
+    <p>متدخلش في حرب نميمة مضادة — هتخسر حتى لو كسبت. خلّي شغلك موثّق ونضيف، وتعامل مع المدير مباشرة بالحقائق.</p>
+    <div class="says"><span class="lbl">قول كده للمدير</span>
+      <span class="s">وصلني إن في لبس حصل في موضوع كذا، حبيت أوضّحه لحضرتك بالتفاصيل عشان الصورة تبقى كاملة.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>الاستقالة والخروج المحترم</h4>
+    <p>الدنيا صغيرة والسمعة بتفضل. سلّم شغلك كامل، وادّي مهلة كافية، وامشي بكلمة طيبة مهما كانت ظروفك وحشة.</p>
+    <div class="avoid"><b>تجنّب</b>«الاستقالة الانتقامية» — إنك تفضح أو تسيب الشغل مبعثر. أسوأ يوم في شغلك القديم ممكن يقفل باب في شغلك الجاي.</div>
+  </div>
+
+  <div class="card"><h4>نقد من مديرك</h4>
+    <p>اسمع للآخر من غير مقاطعة، اسأل عن التفاصيل، واشكره. النقد اللي بتستقبله كويس بيتحوّل لمكسب.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">شكراً على الملاحظة. ممكن مثال محدّد عشان أظبط الموضوع من المرة الجاية؟</span>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="s-family" data-group="مواقف الحياة" data-title="عائلية وزوجية" data-key="زوجة خلاف حماة عائلة أطفال بيت توفيق">
+  <span class="eyebrow">أقرب الناس · أصعب المواقف</span>
+  <h2 class="title">مواقف عائلية وزوجية</h2>
+  <p class="lead">البيت مش ساحة انتصارات. الكسب فيه إن الكل يكون مبسوط.</p>
+  <div class="card"><h4>خلاف مع زوجتك</h4><p>الهدف فهم مش انتصار. اسمع لحد الآخر، وأجّل النقاش وانتوا متوترين، ومتجيبش سيرته قدام الأهل.</p></div>
+  <div class="card"><h4>الحموات والعائلة الممتدة</h4><p>كن جسر مش حكَم. احترم أهلها زي أهلك، ومتنقلش الكلام بينهم.</p></div>
+  <div class="card"><h4>الخلاف قدام الأطفال</h4><p>أي خلاف يتحلّ بعيد عنهم، وخلّي آخره صلح قدامهم.</p></div>
+  <div class="card"><h4>التوفيق بين بيتك وأهلك</h4><p>برّ الوالدين وحق بيتك الاتنين واجب — بالعدل مش بالانحياز.</p></div>
+
+  <h3><span class="dot"></span>مواقف بتحصل كتير</h3>
+
+  <div class="card"><h4>زوجتك زعلانة وساكتة</h4>
+    <p>السكوت غالباً معناه «حاسة إنك مش واخد بالك» مش «سيبني». الاقتراب بلطف بيفتح الباب، والضغط بيقفله.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">حاسس إن في حاجة مضايقاك. أنا مستعد أسمع دلوقتي أو لما تكوني جاهزة، زي ما تحبي.</span>
+      <span class="s">مش عايز أحلّها دلوقتي، عايز أفهم بس.</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>«مالك؟ ولا حاجة؟ خلاص يبقى مفيش مشكلة» — ده بينهي الكلام مش بيحلّه.</div>
+  </div>
+
+  <div class="card"><h4>خلاف على الفلوس في البيت</h4>
+    <p>معظم خلافات الفلوس أصلها غياب خطة واضحة، مش بُخل ولا إسراف. اقعدوا مرة واحدة وحطّوا أرقام بدل ما تتخانقوا كل شهر.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">تعالي نقعد نكتب دخلنا ومصاريفنا سوا، ونتفق على خطة تريّح الاتنين.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>أهلك بيتدخّلوا في تربية ولادك أو في بيتك</h4>
+    <p>ده موقف بيحتاج منك انت تحمي بيتك بلطف — ومسؤوليتك انت مش مسؤولية مراتك. اتكلم مع أهلك بنفسك بأدب وحزم.</p>
+    <div class="says"><span class="lbl">قول لأهلك</span>
+      <span class="s">يا حاجة، ربنا يخليكي، رأيك يهمّني جداً وهاخد بيه. بس القرار في الآخر بينّا احنا الاتنين، وده اللي هيريّح الكل.</span>
+    </div>
+    <div class="rule"><p>القاعدة الذهبية في العلاقة مع الأهل: <strong>كل واحد يتكلّم مع أهله هو</strong>. لما تدافع عن مراتك عند أهلك، وهي تدافع عنك عند أهلها، البيت بيثبت.</p></div>
+  </div>
+
+  <div class="card"><h4>نسيت مناسبة مهمة (عيد جواز، عيد ميلاد)</h4>
+    <p>الاعتذار الصادق من غير أعذار، والتعويض بفعل مش بكلام. والأهم إنك تحطها في تقويم موبايلك عشان ماتتكررش.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا نسيت، ومليش عذر. آسف بجد، ومش هعوّضها بكلام — هعوّضها بحاجة تفرّحك.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>قدّام أهلك أو أصحابك</h4>
+    <p>متنقدش مراتك ولا تتريّق عليها قدام حد أبداً، حتى لو «هزار». الاحترام العلني بيبني ثقة بتفضل في البيت، والإحراج العلني جرح بيفضل سنين.</p>
+  </div>
+</section>
+
+<section class="view" id="s-money" data-group="مواقف الحياة" data-title="المواقف المالية" data-key="فلوس دين مماطلة إقراض نصب احتيال فاتورة حق">
+  <span class="eyebrow">الفلوس بتكسر علاقات</span>
+  <h2 class="title">المواقف المالية</h2>
+  <p class="lead">أغلب الخصومات بتبدأ من فلوس. الوضوح بيحمي علاقاتك وجيبك.</p>
+  <div class="card"><h4>حد مدين لك وبيماطل</h4><p>ذكّره بلطف: <strong>«افتكرت إن في حساب بينا، نظبّطه إمتى؟»</strong>.</p></div>
+  <div class="card"><h4>إقراض الأهل والأصحاب</h4><p>متقرّضش مبلغ هتزعل لو ماجاش. الدَّين الكبير: الكتابة بتحفظ الود.</p></div>
+  <div class="card"><h4>نصب أو احتيال</h4><p>حسّيت بريبة؟ اوقف ومتدفعش تحت ضغط الوقت. وثّق وبلّغ.</p></div>
+  <div class="card"><h4>فاتورة غلط</h4><p><strong>«ممكن نراجع الفاتورة سوا؟»</strong>. غالباً غلط غير مقصود.</p></div>
+  <div class="card"><h4>حد بيطلب منك تضمنه أو توقّع له</h4>
+    <p>الضمان دَين في رقبتك فعلياً. متوقّعش على حاجة انت مش مستعد تدفعها بنفسك لو الطرف التاني اختفى.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">والله أنا مبدأياً مش بضمن حد، مش لعدم ثقة فيك، بس ده مبدأ ماشي عليه مع الكل.</span>
+    </div>
+  </div>
+  <div class="card"><h4>شراكة مع صاحب أو قريب</h4>
+    <p>الشراكة بتفشل من غياب الورق مش من غياب الثقة. اكتبوا كل حاجة من البداية: نسب، مسؤوليات، وإزاي تتفكّ الشراكة لو حصل خلاف — وانتوا لسه متفقين.</p>
+  </div>
+  <div class="card"><h4>ضغط اجتماعي على الصرف</h4>
+    <p>مش لازم تجاري حد في مستوى صرف مش قدّك. الرفض الهادي أرخص كتير من دَين بتشيله شهور.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">المرة دي هعتذر، ميزانيتي مش مسمحالي. نعملها المرة الجاية إن شاء الله.</span>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="s-spending" data-group="مواقف الحياة" data-title="الإنفاق والادخار والصدقة" data-key="مال إنفاق ادخار صدقة تبذير إسراف قناعة ميزانية">
+  <span class="eyebrow">بركة في الاعتدال</span>
+  <h2 class="title">الإنفاق والادخار والصدقة</h2>
+  <p class="lead">إدارة مالك بحكمة جزء من حُسن التصرّف — لا بخل يخنق، ولا إسراف يضيّع.</p>
+  <div class="quote">«وَلَا تَجْعَلْ يَدَكَ مَغْلُولَةً إِلَىٰ عُنُقِكَ وَلَا تَبْسُطْهَا كُلَّ الْبَسْطِ»<span>سورة الإسراء — الاعتدال بين البخل والتبذير</span></div>
+  <div class="card"><h4>الادخار للأزمات</h4><p>خلّي عندك احتياطي للوقت الصعب. التخطيط المالي طمأنينة لك ولأهلك.</p></div>
+  <div class="card"><h4>البُعد عن الإسراف والدَّين</h4><p>اشترِ على قدرك، وابعد عن الدَّين إلا لضرورة. القناعة غنى لا يفنى.</p></div>
+  <div class="card"><h4>الصدقة</h4><p>«ما نقصت صدقة من مال». العطاء بيبارك في اللي معاك، وبيربّي في قلبك الرحمة.</p></div>
+</section>
+
+<section class="view" id="s-online" data-group="مواقف الحياة" data-title="السوشيال ميديا والأونلاين" data-key="فيسبوك كومنت تنمّر نصب إلكتروني خصوصية صور بيانات">
+  <span class="eyebrow">حياتك على النت برضه مسؤوليتك</span>
+  <h2 class="title">السوشيال ميديا والأونلاين</h2>
+  <p class="lead">نفس مبادئ الشارع: التجاهل قوة، والتوثيق حماية.</p>
+  <div class="card"><h4>خناقات الكومنتات</h4><p>تجاهل، أو احذف، أو block. وقتك أغلى من نقاش على بوست.</p></div>
+  <div class="card"><h4>تنمّر إلكتروني</h4><p>screenshot، بلّغ المنصّة، block. تهديد أو ابتزاز؟ بلاغ لمباحث الإنترنت.</p></div>
+  <div class="card"><h4>نصب وروابط مشبوهة</h4><p>ماتدخلش بياناتك في أي رابط. البنك مابيطلبش رقمك السري.</p></div>
+  <div class="card"><h4>حماية صور أهلك</h4><p>قلّل نشر صور ولادك ومراتك، واضبط الخصوصية. متنشرش مكانك لايف.</p></div>
+  <div class="card"><h4>علامات النصب اللي لازم توقفك</h4>
+    <ul class="plain">
+      <li><strong>استعجال مصطنع</strong> — «العرض ينتهي خلال ساعة»، «حوّل دلوقتي».</li>
+      <li><strong>مكسب مبالغ فيه</strong> — أي حاجة عائدها خيالي هي نصب لحد ما يثبت العكس.</li>
+      <li><strong>طلب بياناتك</strong> — كود الـOTP أو الرقم السري، مهما قال إنه من البنك.</li>
+      <li><strong>الدفع مقدّم لحد مش معروف</strong> — خصوصاً على أرقام محافظ شخصية.</li>
+      <li><strong>الضغط عشان ماتستشيرش حد</strong> — «متقولش لحد».</li>
+    </ul>
+    <div class="rule"><p>القاعدة: <strong>أي حاجة بتضغط عليك تستعجل، اعتبرها نصب لحد ما تتأكد</strong>. النصّاب أكتر سلاح عنده هو إنه ما يديكش وقت تفكّر.</p></div>
+  </div>
+  <div class="card"><h4>حسابك اتخترق أو اتسرق</h4>
+    <p>غيّر الباسورد فوراً من جهاز نضيف، فعّل التحقق بخطوتين، وبلّغ أهلك وأصحابك إن الحساب مخترق عشان محدش يترد عليه. وبلّغ المنصّة ومباحث الإنترنت.</p>
+  </div>
+  <div class="card"><h4>قبل ما تنشر أي حاجة</h4>
+    <p>اسأل نفسك ٣ أسئلة: هل ده صح ومتأكد منه؟ هل ينفع حد؟ وهل هرتاح لو ابني أو مديري شافه بعد ١٠ سنين؟ اللي بينزل النت بيفضل.</p>
+  </div>
+</section>
+
+<section class="view" id="s-authority" data-group="مواقف الحياة" data-title="السلطة والبيروقراطية" data-key="شرطة كمين مأمورية موظف حكومي رشوة أوراق حقوق">
+  <span class="eyebrow">اهدا واعرف حقّك</span>
+  <h2 class="title">التعامل مع السلطة والبيروقراطية</h2>
+  <p class="lead">الهدوء والاحترام والأوراق الجاهزة أسرع طريق تخلّص بيه.</p>
+  <div class="card"><h4>كمين أو مأمورية شرطة</h4><p>اهدا، أوراقك جاهزة، إيديك مرئية، ردّ باحترام.</p></div>
+  <div class="card"><h4>موظف بيعطّلك</h4><p>اسأل بوضوح عن المطلوب. تعنّت؟ تصعيد مهذّب أو شكوى رسمية.</p></div>
+  <div class="card"><h4>ضغط لدفع رشوة</h4><p><strong>«هكمّل بالأوراق والإجراءات الرسمية»</strong>.</p></div>
+  <div class="card"><h4>استخراج أوراق</h4><p>اعرف المطلوب قبل ما تروح، روح بدري، وخلّي صبرك أطول من الزحمة.</p></div>
+  <div class="card"><h4>جُمَل بتفتح أبواب مقفولة</h4>
+    <p>الاحترام والتودّد مع الموظف بيخلّصوا شغلك أسرع من أي تعنّت. الناس بتساعد اللي بيحترمها.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">صباح الخير يا فندم، أنا محتاج مساعدتك في ورقة كذا، إيه المطلوب مني بالظبط؟</span>
+      <span class="s">أنا آسف على التعب معاك، بس عايز أعملها صح من أول مرة.</span>
+      <span class="s">لو الورقة دي ناقصة، فيه بديل ليها؟ أو أعملها منين؟</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>«أنا أعرف حقّي» و«هشتكيك» من أول لحظة — دي بتقفل الأبواب. خلّي التصعيد آخر خطوة مش أولها.</div>
+  </div>
+  <div class="card"><h4>لو اتعرضت لتعنّت حقيقي</h4>
+    <p>التصعيد يكون مرتّب ومكتوب: اطلب اسم الموظف والمسؤول الأعلى، قدّم شكوى رسمية بالتاريخ والتفاصيل، واحتفظ برقم الشكوى. الورق أقوى من الصوت.</p>
+  </div>
+</section>
+
+<section class="view" id="s-driving" data-group="مواقف الحياة" data-title="القيادة والسواقة" data-key="عربية طريق قطع road rage حادثة سواق متهور عيلة">
+  <span class="eyebrow">العربية مش حلبة</span>
+  <h2 class="title">القيادة والسواقة</h2>
+  <p class="lead">على الطريق، الانفعال بيتحوّل لخطر على حياتك وحياة اللي معاك.</p>
+  <div class="card"><h4>حد قطع عليك الطريق</h4><p>سيبه يعدّي. أي رد فعل غاضب وانت بتسوق بيعرّضك لخطر حقيقي.</p></div>
+  <div class="card"><h4>سواق نازل يتخانق</h4><p>متنزلش. اقفل الشبابيك والأبواب وكمّل. بيتهجّم؟ صوّره واتصل بالنجدة.</p></div>
+  <div class="card"><h4>حادثة ومعاك العيلة</h4><p>اطمّن على اللي معاك، أمّن العربية، صوّر، وخلّي المرور يحرّر.</p></div>
+  <div class="card"><h4>سواق متهوّر جنبك</h4><p>ابعد عنه وسيبه يعدّي. خلّي مسافة أمان وركّز في طريقك.</p></div>
+</section>
+
+<section class="view" id="s-emergency" data-group="مواقف الحياة" data-title="الطوارئ والإسعاف" data-key="إسعاف حادثة وقع نزيف طوارئ مساعدة">
+  <span class="eyebrow">لحظة بتفرق</span>
+  <h2 class="title">الطوارئ والإسعاف</h2>
+  <p class="lead">معرفة بسيطة وهدوء ممكن ينقذوا حياة. المطلوب تتصرّف صح لحد ما المختص يوصل.</p>
+  <div class="card"><h4>حد وقع أو حادثة قدامك</h4>
+    <ol class="steps">
+      <li><strong>أمّن المكان</strong> — اتأكد مفيش خطر عليك.</li>
+      <li><strong>اتصل بالإسعاف ١٢٣</strong> وقول المكان بدقّة.</li>
+      <li><strong>متحرّكش مصاب</strong> فيه اشتباه إصابة رقبة أو ضهر إلا لخطر مباشر.</li>
+      <li><strong>وقّف النزيف</strong> بالضغط المباشر بقماشة نضيفة.</li>
+    </ol></div>
+
+  <h3><span class="dot"></span>حالات شائعة وإزاي تتصرّف</h3>
+
+  <div class="card"><h4>اختناق بأكل أو حاجة في الزور</h4>
+    <p>لو بيكحّ بقوة، سيبه يكحّ — الكحّة أقوى من أي تدخّل. لو <strong>مش قادر يتكلّم ولا يتنفّس</strong>:</p>
+    <ol class="steps">
+      <li><strong>٥ ضربات بين الكتفين</strong> بكعب إيدك وهو مايل لقدّام.</li>
+      <li><strong>٥ ضغطات على أعلى البطن</strong> (تحت القفص الصدري) من وراه بإيديك متشابكة، لجوه ولفوق.</li>
+      <li>كرّر بالتبادل لحد ما تخرج، واتصل بالإسعاف لو ماخرجتش.</li>
+    </ol>
+    <div class="avoid"><b>تجنّب</b>تدخل صوابعك في بقّه على أعمى — ممكن تدفع الحاجة لجوه أكتر. وللرضيع أقل من سنة الطريقة مختلفة (ضربات على الضهر وهو على ذراعك مايل لتحت، وضغطات بصوابعك على الصدر) — متستخدمش ضغطات البطن مع الرضّع.</div>
+  </div>
+
+  <div class="card"><h4>حروق</h4>
+    <p><strong>ميّه فاترة جارية على الحرق من ١٠ لـ٢٠ دقيقة</strong>، وشيل أي خاتم أو ساعة قبل ما المكان يتورّم. غطّيه بقماشة نضيفة أو غلاف بلاستيك نضيف (سيلوفان) من غير ما تلفّه بضغط.</p>
+    <div class="avoid"><b>تجنّب</b>الثلج، أو معجون الأسنان، أو الزبدة، أو الطماطم — دي بتزوّد الأذى وبتزوّد فرص العدوى. ومتفقعش الفقاقيع. الحروق الكبيرة أو في الوش واليدين أو للأطفال → مستشفى فوراً.</div>
+  </div>
+
+  <div class="card"><h4>نزيف قوي</h4>
+    <p>ضغط مباشر ومستمر بقماشة نضيفة على مكان الجرح، وارفع الطرف المصاب فوق مستوى القلب لو أمكن. القماشة اتشرّبت؟ <strong>حُط واحدة فوقها ومتشلهاش</strong> — شيلها بيفتح الجرح تاني.</p>
+  </div>
+
+  <div class="card"><h4>إغماء</h4>
+    <p>نيّمه على ضهره وارفع رجليه شوية، وفكّ أي حاجة ضيقة على رقبته، وخلّي الهوا يوصله. رجع لوعيه؟ سيبه قاعد شوية قبل ما يقوم. ما رجعش خلال دقيقة أو اتنين → إسعاف.</p>
+  </div>
+
+  <div class="card"><h4>اشتباه أزمة قلبية</h4>
+    <p>العلامات: ألم أو ضغط في الصدر ممكن ينتشر للدراع الشمال أو الفك، عرق بارد، غثيان، وضيق نفس.</p>
+    <ol class="steps">
+      <li><strong>اتصل بالإسعاف ١٢٣ فوراً</strong> — الوقت هنا هو كل حاجة.</li>
+      <li><strong>قعّده مرتاح</strong> (نص قاعد) وفكّ الحزام والياقة.</li>
+      <li><strong>طمّنه وخلّيه هادي</strong>، ومتخلّيهوش يتحرّك أو يمشي.</li>
+      <li>لو عنده <strong>دوا موصوف له من دكتوره</strong> لحالة قلبه، ساعده ياخده.</li>
+    </ol>
+    <div class="avoid"><b>تجنّب</b>إنك تودّيه بعربيتك بدل الإسعاف لو الحالة شديدة — الإسعاف فيه إمكانيات بتبدأ العلاج في الطريق.</div>
+  </div>
+
+  <div class="card"><h4>تشنّج (صرع)</h4>
+    <p>ابعد أي حاجة صلبة حواليه، وحُط حاجة طرية تحت راسه، وسيبه يخلّص. بعد ما يهدا، نيّمه على جنبه.</p>
+    <div class="avoid"><b>تجنّب</b>إنك تمسكه بالعافية أو تحط حاجة في بقّه — دي خرافة خطيرة بتكسر أسنان وتأذي. لو التشنّج زاد عن ٥ دقايق أو اتكرّر → إسعاف.</div>
+  </div>
+
+  <div class="card"><h4>كسر أو التواء</h4>
+    <p>ثبّت الطرف زي ما هو ومتحاولش ترجّعه لمكانه. كمادات باردة على المكان، ومستشفى. الكسر المفتوح: غطّيه بقماشة نضيفة من غير ضغط على العضمة.</p>
+  </div>
+
+  <div class="card"><h4>ضربة شمس أو إجهاد حراري</h4>
+    <p>انقله لمكان ضلّ وبارد، شيل الزيادة من هدومه، برّده بميّه فاترة ومروحة، وادّيه ميّه يشرب لو واعي. لو مش واعي أو بيهذي أو جلده جاف وسخن جداً → <strong>ده طارئ، إسعاف فوراً</strong>.</p>
+  </div>
+
+  <h3><span class="dot"></span>أخطر ٤ مواقف في البيت والشارع</h3>
+
+  <div class="card" style="border-color:rgba(168,68,45,.4)"><h4>شخص فاقد الوعي ومش بيتنفّس — الإنعاش القلبي</h4>
+    <p>دي أهم مهارة ممكن تتعلّمها في حياتك. كل دقيقة تأخير بتقلّل فرصة النجاة.</p>
+    <ol class="steps">
+      <li><strong>اتأكد:</strong> نادي عليه بصوت عالي وهزّ كتفه. مش بيرد ومش بيتنفّس طبيعي؟</li>
+      <li><strong>اتصل بـ١٢٣ فوراً</strong> وشغّل السبيكر — أو خلّي حد تاني يتصل وانت تبدأ.</li>
+      <li><strong>كعب إيدك في نص الصدر</strong>، والإيد التانية فوقها، ودراعك مفرود.</li>
+      <li><strong>اضغط بقوة وبسرعة:</strong> عمق ٥–٦ سم، بمعدّل ١٠٠–١٢٠ ضغطة في الدقيقة (على إيقاع أغنية سريعة)، وسيب الصدر يرجع كامل بين كل ضغطة.</li>
+      <li><strong>متوقّفش</strong> لحد ما الإسعاف يوصل أو يبدأ يتنفّس. لو تعبت، بدّل مع حد.</li>
+    </ol>
+    <div class="avoid"><b>مهم</b>الضغط القوي ممكن يكسر ضلع — ده مقبول، لأن البديل الموت. للأطفال والرضّع الطريقة والقوة مختلفين — وده بالذات سبب قوي تاخد كورس معتمد.</div>
+  </div>
+
+  <div class="card"><h4>ريحة غاز في البيت</h4>
+    <ol class="steps">
+      <li><strong>متلمسش أي مفتاح كهربا</strong> — لا تولّع ولا تطفي نور، ولا ولّاعة، ولا جرس.</li>
+      <li><strong>اقفل محبس الغاز أو الأنبوبة.</strong></li>
+      <li><strong>افتح الشبابيك والأبواب</strong> وطلّع أهلك برّه.</li>
+      <li><strong>اتصل بطوارئ الغاز ١٢٩ من برّه البيت</strong> مش من جوّه.</li>
+    </ol>
+  </div>
+
+  <div class="card"><h4>حد اتكهرب</h4>
+    <p><strong>متلمسوش وهو لسه ماسك التيار</strong> — هتتكهرب معاه. اقطع الكهربا من المفتاح العمومي، أو ابعده بحاجة خشب أو بلاستيك ناشفة وانت واقف على أرض ناشفة. بعدها: اتأكد من التنفّس، وابدأ إنعاش لو لزم، واتصل بـ١٢٣. حتى لو بان كويس، لازم يتكشف عليه — الكهربا ممكن تأثّر على القلب بعدين.</p>
+  </div>
+
+  <div class="card"><h4>حريق في البيت</h4>
+    <ul class="plain">
+      <li><strong>الناس الأول، الحاجات أبداً</strong> — طلّع الكل ومترجعش تجيب حاجة.</li>
+      <li><strong>الدخان أخطر من النار</strong> — انزل واطي وازحف لو المكان مليان دخان.</li>
+      <li><strong>قبل ما تفتح باب</strong> المس الأُكرة بضهر إيدك — لو سخنة متفتحش.</li>
+      <li><strong>زيت مولّع في الطاسة:</strong> <strong>أبداً مش ميّه</strong> — الميّه بتفجّر الزيت. اقفل البوتاجاز وغطّيها بغطا أو فوطة مبلولة مش بتقطّر.</li>
+      <li>اتصل بالمطافئ <strong>١٨٠</strong>.</li>
+    </ul>
+    <div class="rule"><p>استثمار صغير بينقذ عيلة: <strong>طفّاية حريق في المطبخ وكاشف دخان في الطُّرقة</strong>، وعلّم أهلك مكانهم واستخدامهم.</p></div>
+  </div>
+
+  <div class="note"><b>مهم جداً:</b> ده توعية عامة للمساعدة لحد ما المختص يوصل، ومش بديل عن التدريب ولا عن الطبيب. لو تقدر، خد <strong>كورس إسعافات أولية معتمد</strong> (الهلال الأحمر المصري بيقدّم دورات) — خصوصاً ولك أطفال. والقاعدة الذهبية: <strong>لو مش متأكد من تصرّف، متعملوش</strong> — الاتصال بالإسعاف والطمأنة أأمن من تدخّل غلط.</div>
+</section>
+
+<!-- ===== البيت والعلاقات ===== -->
+<section class="view" id="s-marriage" data-group="البيت والعلاقات" data-title="الزواج واختيار الشريك" data-key="زواج خطوبة اختيار زوجة شريك دين خلق مهر استخارة">
+  <span class="eyebrow">قرار العمر</span>
+  <h2 class="title">الزواج واختيار شريكة الحياة</h2>
+  <p class="lead">أهم قرار بعد دينك. أساسه الدين والخُلق والتوافق، مش المظهر بس.</p>
+  <div class="quote">«تُنكَح المرأة لأربع: لمالها ولحسبها ولجمالها ولدينها، فاظفر بذات الدين تَرِبَت يداك»<span>متفق عليه</span></div>
+  <div class="card"><h4>أساس الاختيار</h4><p>الدين والخُلق أول حاجة، بعدها التوافق في القيم والطموح وطريقة الحياة. الجمال نعمة، لكنه مش الأساس اللي بيدوم.</p></div>
+  <div class="card"><h4>آداب الخطوبة</h4><p>جدية وصدق، احترام الحدود الشرعية وعدم الخلوة، والوضوح من الأول في توقّعاتكم. الفترة دي للتعارف مش للعلاقة قبل أوانها.</p></div>
+  <div class="card"><h4>الاستشارة والاستخارة</h4><p>استشير أهل الخبرة والثقة، واستخر ربك، واسأل عن أخلاقها وأهلها. القرار بعقل وقلب مطمئن.</p></div>
+  <div class="card"><h4>التيسير</h4><p>«خير النكاح أيسره». ابعد عن المغالاة والتكلّف اللي بيتعب الطرفين قبل ما يبدأوا.</p></div>
+</section>
+
+<section class="view" id="s-parenting" data-group="البيت والعلاقات" data-title="تربية الأولاد" data-key="تربية أطفال أولاد قدوة عدل حنان حزم دعاء صلاة">
+  <span class="eyebrow">أمانة في رقبتك</span>
+  <h2 class="title">تربية الأولاد</h2>
+  <p class="lead">ولادك بيتعلّموا منك قبل ما يسمعوا منك. التربية بالقدوة أبلغ من أي كلام.</p>
+  <div class="quote">«كلكم راعٍ وكلكم مسؤول عن رعيته… والرجل راعٍ في أهله ومسؤول عن رعيته»<span>متفق عليه</span></div>
+  <div class="card"><h4>القدوة قبل الكلام</h4><p>لو عايزهم صادقين هادئين محترمين، كن انت كده قدامهم. بيقلّدوا أفعالك مش نصايحك.</p></div>
+  <div class="card"><h4>حنان وحزم مع بعض</h4><p>حب بلا تدليل، وحزم بلا قسوة. القرب منهم بيخلّيهم يسمعوا كلامك عن حب مش عن خوف.</p></div>
+  <div class="card"><h4>العدل بينهم</h4><p>«اعدلوا بين أولادكم». التفرقة بتزرع الغيرة والكراهية. عاملهم بالقسط في الحب والعطاء.</p></div>
+  <div class="card"><h4>الوقت أهم من الهدايا</h4><p>وجودك معاهم، لعبك وكلامك، بيبني شخصيتهم أكتر من أي حاجة بتشتريها.</p></div>
+  <div class="card"><h4>التربية بالحوار لا الإهانة</h4><p>صحّح الغلط بهدوء وافهام، وابعد عن الضرب المهين والشتيمة. وادعِ لهم دايماً — دعوة الأب مستجابة.</p></div>
+
+  <h3><span class="dot"></span>مواقف بتقابلك مع ولادك</h3>
+
+  <div class="card"><h4>طفلك بيعيّط أو بيزعّق في مكان عام</h4>
+    <p>الإحراج قدام الناس بيخلّي الأب يتصرّف بعصبية عشان «الناس». تجاهل الناس وركّز على ابنك. انزل لمستوى عينيه واتكلم بصوت واطي — الهدوء بيهدّيه أسرع من الزعيق.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا شايف إنك متضايق. تعالى نبعد شوية ونتكلم، وبعدين نرجع.</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>الزعيق أو الضرب عشان الناس بتبصّ — ده بيعلّمه إن الإحراج أهم منه، وبيكبّر المشكلة.</div>
+  </div>
+
+  <div class="card"><h4>طفلك كدب عليك</h4>
+    <p>الطفل بيكدب غالباً خوفاً من العقاب. لو خوّفته أكتر، هيكدب أحسن. ركّز على إنك تخلّي الصدق آمن.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا زعلان إنك ما قلتليش الحقيقة أكتر من الحاجة نفسها. لو قلتلي الصح دايماً، هنحلّها سوا مهما كانت.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>ابنك المراهق بيرفض كلامك</h4>
+    <p>المراهق بيدوّر على احترام واستقلال. الأوامر بتزوّد العناد، والحوار والخيارات بيكسبوه. حافظ على قنوات الكلام مفتوحة مهما اختلفتوا.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا عايز أفهم وجهة نظرك الأول. قولّي انت شايف إيه؟</span>
+      <span class="s">أنا واثق فيك، وعايز أطمّن بس. اتفقنا على إيه؟</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>ابنك اتضرب من طفل تاني</h4>
+    <p>متتدخّلش بعنف مع طفل — ده أسوأ اللي ممكن تعمله. اطمّن ابنك الأول، وبعدين اتعامل مع أهل الطفل التاني بهدوء وكرجّالة.</p>
+    <div class="says"><span class="lbl">قول لأهله</span>
+      <span class="s">لو سمحت، حصلت مشكلة بين الأولاد. تعالى نحلّها احنا الكبار بهدوء.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>ابنك شافك في موقف صعب في الشارع</h4>
+    <p>اتكلم معاه بعدها في الطريق. الموقف ده فرصة تربية ذهبية — اشرحله ليه اخترت الهدوء أو الانسحاب، عشان ما يفهمهاش خوف.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">شوفت الراجل ده؟ أنا كنت أقدر أرد، بس أهم حاجة عندي إنك ترجع البيت بأمان. القوة إنك تختار، مش إنك تتخانق.</span>
+    </div>
+  </div>
+
+  <div class="card"><h4>ابنك عايز حاجة مش قادر تشتريها</h4>
+    <p>الصدق المبسّط أحسن من الوعد الكاذب أو الزعيق. الأطفال بيستوعبوا أكتر مما نتخيّل لما نكلّمهم باحترام.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">دي غالية على ميزانيتنا دلوقتي. تعالى نحطّها في خطة ونجمّعلها، أو نشوف حاجة قريبة منها.</span>
+    </div>
+  </div>
+  <h3><span class="dot"></span>أمان الأطفال</h3>
+
+  <div class="card"><h4>طفلك تاه منك في زحمة</h4>
+    <p>الوقاية أهم من التصرّف. قبل أي خروجة في مكان زحمة:</p>
+    <ul class="plain">
+      <li>حفّظه <strong>رقم موبايلك</strong>، أو اكتبه على ورقة في جيبه أو على سوار في إيده.</li>
+      <li>اتفقوا على <strong>نقطة تجمّع</strong> واضحة («لو تهت، اقف جنب البوابة الكبيرة»).</li>
+      <li>علّمه: <strong>لو تاه يقف مكانه ميتحرّكش</strong>، ويطلب مساعدة من أمن المكان أو ست معاها أطفال.</li>
+      <li>صوّره بموبايلك أول الخروجة — عشان يبقى معاك شكل هدومه بالظبط.</li>
+    </ul>
+    <p>لو تاه فعلاً: ارجع لآخر مكان شوفته فيه، وبلّغ أمن المكان <strong>فوراً</strong> (الأماكن الكبيرة عندها نظام لقفل البوابات)، واتصل بـ١٢٢ لو مالقيتهوش خلال دقايق.</p>
+  </div>
+
+  <div class="card"><h4>حماية طفلك من التحرّش (التوعية الوقائية)</h4>
+    <p>الحماية الحقيقية بتبدأ من الكلام البسيط المناسب لسنّه، مش من الخوف:</p>
+    <ul class="plain">
+      <li><strong>«جسمك ملكك»</strong> — ومحدش من حقّه يلمس أماكنه الخاصة أو يطلب منه يلمس حد، حتى لو قريب أو معروف.</li>
+      <li><strong>مفيش أسرار بينّا</strong> — علّمه الفرق بين «المفاجأة» الحلوة و«السر» اللي يخوّفه أو يضايقه، وإن أي سر بيضايقه لازم يقوله لك.</li>
+      <li><strong>حدّد معاه الكبار اللي يثق فيهم</strong> ويروحلهم لو حصل حاجة.</li>
+      <li><strong>لو حكالك حاجة: صدّقه وخلّيك هادي</strong> — رد فعلك الغاضب أو المكذّب بيخلّيه يسكت المرة الجاية. قوله: «شكراً إنك قلتلي، انت مش غلطان، وأنا هتصرّف».</li>
+      <li><strong>انتبه للتغيّرات المفاجئة:</strong> خوف من شخص أو مكان معيّن، انطواء، كوابيس، أو رجوع لسلوكيات أصغر من سنّه.</li>
+    </ul>
+    <p>للاستشارة أو البلاغ: <strong>نجدة الطفل ١٦٠٠٠</strong>.</p>
+  </div>
+
+</section>
+
+<section class="view" id="s-friends" data-group="البيت والعلاقات" data-title="اختيار الأصحاب" data-key="صحبة أصحاب صديق جليس صالح خليل وفاء نصيحة">
+  <span class="eyebrow">المرء على دين خليله</span>
+  <h2 class="title">اختيار الأصحاب والصحبة</h2>
+  <p class="lead">صحبتك بتشكّلك من غير ما تحس. اختار اللي بيرفعوك مش اللي بيجرّوك لتحت.</p>
+  <div class="quote">«مثل الجليس الصالح والسوء كحامل المسك ونافخ الكير…»<span>متفق عليه — صاحب الخير يفيدك ولو بريحته، وصاحب السوء يؤذيك ولو لم تقصد</span></div>
+  <div class="card"><h4>معيار الصاحب</h4><p>«المرء على دين خليله، فلينظر أحدكم من يخالل». الصاحب الكويس بيقرّبك من الخير ويذكّرك بيه.</p></div>
+  <div class="card"><h4>الوفاء والنصيحة</h4><p>الصاحب الحقيقي بيقولك الحق بلطف، وبيقف معاك في الضيق. «المؤمن مرآة أخيه».</p></div>
+  <div class="card"><h4>ابتعد بهدوء عن صحبة السوء</h4><p>مش لازم خصومة — بس قلّل، وابعد عن اللي بيجرّك لحاجة بتندم عليها.</p></div>
+</section>
+
+<section class="view" id="s-leadership" data-group="البيت والعلاقات" data-title="القيادة والمسؤولية" data-key="قيادة مسؤولية راعٍ رب أسرة عدل شورى خدمة">
+  <span class="eyebrow">كلكم راعٍ</span>
+  <h2 class="title">القيادة والمسؤولية</h2>
+  <p class="lead">انت مسؤول عن أسرتك وعن كل من تحت يدك. القيادة الحقيقية خدمة وعدل، مش تسلّط.</p>
+  <div class="quote">«كلكم راعٍ وكلكم مسؤول عن رعيته»<span>متفق عليه</span></div>
+  <div class="card"><h4>القدوة والعدل</h4><p>اللي بيقود بيتقاد بأفعاله. كن عادلاً، صادقاً، وثابتاً — الناس بتثق في اللي بيعمل اللي بيقوله.</p></div>
+  <div class="card"><h4>الشورى</h4><p>«وشاورهم في الأمر». استشر أهلك ومن حولك، فالرأي الواحد ممكن يغلط، والمشورة بركة.</p></div>
+  <div class="card"><h4>الرفق في القيادة</h4><p>«ما كان الرفق في شيء إلا زانه». الحزم بالعدل، واللين في التعامل — كده بتُحَبّ وبتُطاع عن قناعة.</p></div>
+</section>
+
+<section class="view" id="s-reconcile" data-group="البيت والعلاقات" data-title="إصلاح ذات البين" data-key="صلح إصلاح خصام شجار وساطة بين الناس">
+  <span class="eyebrow">أفضل من النافلة</span>
+  <h2 class="title">إصلاح ذات البين</h2>
+  <p class="lead">إنك تصالح بين متخاصمين من أعظم الأعمال — والكلمة الطيبة في وقتها بتطفي نار.</p>
+  <div class="quote">«ألا أخبركم بأفضل من درجة الصيام والصلاة والصدقة؟ … إصلاح ذات البين، فإن فساد ذات البين هي الحالقة»<span>رواه أبو داود والترمذي</span></div>
+  <div class="card"><h4>الحياد ونقل الخير</h4><p>متنقلش الكلام اللي بيزوّد النار. الموفّق بينهم اللي بينقل الطيب ويخفي الوحش — «ليس الكاذب الذي يُصلح بين الناس فيقول خيراً».</p></div>
+  <div class="card"><h4>الكلمة الطيبة في وقتها</h4><p>اختار التوقيت الهادي، وذكّر كل طرف بحُسن الآخر، وافتح باب الصلح من غير ما تحرج حد.</p></div>
+</section>
+
+<!-- ===== مواقف ومناسبات ===== -->
+<section class="view" id="s-illness" data-group="مواقف ومناسبات" data-title="المرض وزيارة المريض" data-key="مرض ابتلاء صبر عيادة مريض مستشفى">
+  <span class="eyebrow">الصبر والرحمة</span>
+  <h2 class="title">المرض والابتلاء وزيارة المريض</h2>
+  <p class="lead">الابتلاء جزء من الحياة، والمؤمن بيقابله بصبر — وبيقف جنب اللي ابتلاهم ربنا.</p>
+  <div class="quote">«عَجَباً لأمر المؤمن، إن أمره كله له خير… إن أصابته سرّاء شكر، وإن أصابته ضرّاء صبر»<span>رواه مسلم</span></div>
+  <div class="card"><h4>عيادة المريض</h4><p>خفّف الزيارة، طمّنه وفرّحه، وادعُ له، ومتطوّلش عليه لو تعبان.</p></div>
+  <div class="card"><h4>مريض في بيتك</h4><p>صبر ورحمة وخدمة بنفس راضية. وش بشوش بيخفّف نص التعب.</p></div>
+  <div class="card"><h4>ابتلاؤك انت</h4><p>الصبر والأخذ بالأسباب والدعاء. ما يصيب المسلم من تعب إلا كفّر الله به من خطاياه.</p></div>
+</section>
+
+<section class="view" id="s-condolence" data-group="مواقف ومناسبات" data-title="العزاء والفقد" data-key="عزاء موت وفاة تعزية جنازة صبر">
+  <span class="eyebrow">وقفة في الشدّة</span>
+  <h2 class="title">آداب العزاء والفقد</h2>
+  <p class="lead">في العزاء، حضورك الصادق وكلمتك القليلة أهم من أي كلام كتير.</p>
+  <div class="quote">«إن لله ما أخذ وله ما أعطى، وكلٌّ عنده بأجل مسمّى»<span>متفق عليه</span></div>
+  <div class="card"><h4>كلمة التعزية</h4><p>بسيطة وصادقة: «البقاء لله، عظّم الله أجرك». مش وقت تفاصيل ولا أسئلة كتير.</p></div>
+  <div class="card"><h4>الوقوف العملي</h4><p>ساعد في الترتيبات وجهّز الطعام لأهل الميت، وخفّف الحِمل عنهم.</p></div>
+  <div class="card"><h4>الصبر لا الجزع</h4><p>الدمعة رحمة، لكن البُعد عن النواح والتسخّط. الصبر عند الصدمة الأولى.</p></div>
+</section>
+
+<section class="view" id="s-occasions" data-group="مواقف ومناسبات" data-title="المناسبات والأفراح" data-key="فرح مناسبة هدية مولود تهنئة احتفال إسراف">
+  <span class="eyebrow">افرح بفرح الناس</span>
+  <h2 class="title">آداب المناسبات والأفراح</h2>
+  <p class="lead">مشاركة الناس أفراحهم بتقوّي القلوب، بشرط البُعد عن التفاخر والإسراف.</p>
+  <div class="card"><h4>التهنئة والحضور</h4><p>هنّي بصدق واحضر لو اتدعيت. حضورك بيفرحهم أكتر من أي هدية.</p></div>
+  <div class="card"><h4>الهدية</h4><p>«تهادوا تحابّوا». بسيطة على قدرك، وادعُ بالبركة عشان متحسدش.</p></div>
+  <div class="card"><h4>البُعد عن الإسراف</h4><p>الفرح مش في كتر الصرف ولا المباهاة. خير المناسبات أيسرها.</p></div>
+  <div class="card"><h4>لو مش قادر تجامل مادياً</h4>
+    <p>حضورك ودعوتك وكلمتك الطيبة هدية. متستلفش عشان تجامل — ده بيأذيك وما حدش طلبه منك.</p>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">مبروك من قلبي، ربنا يتمّم بخير ويبارك لكم.</span></div>
+  </div>
+  <div class="card"><h4>في العزومات</h4><p>التزم بالميعاد، ومتقعدش لوقت متأخر يرهق أصحاب البيت، وقول كلمة شكر قبل ما تمشي.</p></div>
+</section>
+
+<section class="view" id="s-subordinates" data-group="مواقف ومناسبات" data-title="من تحت يدك" data-key="عامل موظف خدمة أجير سائق رفق إحسان">
+  <span class="eyebrow">قوّتك في إحسانك للأضعف</span>
+  <h2 class="title">التعامل مع من هم تحت يدك</h2>
+  <p class="lead">معاملتك للي محتاجك وما يقدرش يردّ عليك هي اللي بتقيس أخلاقك الحقيقية.</p>
+  <div class="quote">«إخوانكم خوَلُكم… فمن كان أخوه تحت يده فليطعمه مما يأكل، وليلبسه مما يلبس، ولا تكلّفوهم ما يغلبهم»<span>متفق عليه</span></div>
+  <div class="card"><h4>الأجر قبل أن يجفّ العرق</h4><p>«أعطوا الأجير أجره قبل أن يجفّ عرقه». المماطلة في حق العامل ظلم.</p></div>
+  <div class="card"><h4>الرفق وعدم التكليف فوق الطاقة</h4><p>اطلب باحترام، وراعِ ظروفه. اللي بيرفق بالضعيف بيرفق بيه ربنا.</p></div>
+</section>
+
+<section class="view" id="s-elders" data-group="مواقف ومناسبات" data-title="توقير كبار السن" data-key="كبار سن توقير احترام والدين بر شيوخ">
+  <span class="eyebrow">احترام بيرجعلك</span>
+  <h2 class="title">توقير كبار السن</h2>
+  <p class="lead">اللي بيوقّر الكبير بيتوقّر لما يكبر.</p>
+  <div class="quote">«ليس منا من لم يرحم صغيرنا ويوقّر كبيرنا»<span>رواه الترمذي وأحمد</span></div>
+  <div class="card"><h4>في الطريق والمجلس</h4><p>قدّمه، ساعده، واسمع لكلامه. صبرك على بطئه من تمام الأدب.</p></div>
+  <div class="card"><h4>برّ الوالدين</h4><p>خفض الجناح والكلمة اللينة وعدم التضجّر — «ولا تقل لهما أفٍّ».</p></div>
+  <div class="card"><h4>لما يتكرّر كلامه أو ينسى</h4>
+    <p>اسمع كأنك بتسمعها لأول مرة، ومتصحّحوش قدام الناس. صبرك عليه صدقة، ويوم ما تكبر هتفتكر ده.</p>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">اتفضل يا حاج، أنا سامعك.</span><span class="s">ربنا يخليك لينا، كلامك دايماً بينفعنا.</span></div>
+  </div>
+  <div class="card"><h4>مساعدة عملية</h4><p>اسأل عن احتياجاته من غير ما ينكسر خاطره: «رايح السوق، أجيبلك حاجة؟» أحسن من «محتاج مساعدة؟».</p></div>
+</section>
+
+<section class="view" id="s-trade" data-group="مواقف ومناسبات" data-title="التجارة والكسب" data-key="تجارة بيع كسب حلال غش صدق ميزان">
+  <span class="eyebrow">بركة في الصدق</span>
+  <h2 class="title">آداب التجارة والكسب</h2>
+  <p class="lead">الكسب الحلال والصدق في البيع بيجيبوا بركة أبقى من أي ربح بالغش.</p>
+  <div class="quote">«مَن غشّنا فليس منّا»<span>رواه مسلم</span></div>
+  <div class="card"><h4>الصدق في العيب</h4><p>«البيّعان بالخيار ما لم يتفرّقا، فإن صدقا وبيّنا بُورك لهما في بيعهما».</p></div>
+  <div class="card"><h4>السماحة والوفاء</h4><p>«رحم الله رجلاً سمحاً إذا باع وإذا اشترى». أوفِ الكيل والميزان.</p></div>
+  <div class="card"><h4>الوضوح في الاتفاق</h4><p>اكتب السعر والمواصفات والمواعيد. الاتفاق المكتوب مش قلة ثقة، ده حفظ للود وللحق.</p></div>
+  <div class="card"><h4>لو العميل مش راضي</h4>
+    <p>اسمع شكواه للآخر واعرض حل. سمعتك أغلى من صفقة واحدة.</p>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">أنا آسف إن الحاجة ما عجبتكش. تحب نستبدلها ولا أرجّعلك فلوسك؟</span></div>
+  </div>
+</section>
+
+<!-- ===== آداب وتعاملات ===== -->
+<section class="view" id="s-gossip" data-group="آداب وتعاملات" data-title="النميمة والشائعات" data-key="غيبة نميمة شائعة كلام نقل تثبّت ستر">
+  <span class="eyebrow">احفظ لسانك</span>
+  <h2 class="title">التعامل مع النميمة والشائعات</h2>
+  <p class="lead">اللي بينقل لك بينقل عنك. حفظ اللسان من أعظم ما يحفظ كرامتك.</p>
+  <div class="quote">«لا يدخل الجنة قتّات»<span>متفق عليه — القتّات هو النمّام</span></div>
+  <div class="card"><h4>الغيبة</h4><p>«ذِكرك أخاك بما يكره». اقطع مجلس الغيبة بلطف أو غيّر الكلام.</p></div>
+  <div class="card"><h4>التثبّت قبل النقل</h4><p>«كفى بالمرء كذباً أن يحدّث بكل ما سمع». الشائعة بتموت لما ما تلاقيش ناقل.</p></div>
+  <div class="card"><h4>سَتر الناس</h4><p>«من ستر مسلماً ستره الله». الستر بيرجعلك ستراً وقت ضعفك.</p></div>
+  <div class="card"><h4>إزاي تقطع مجلس غيبة بلطف</h4>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">يمكن يكون له عذر ما نعرفوش.</span><span class="s">خلونا نسيب الموضوع ده، حرام في حقه.</span><span class="s">(وغيّر الموضوع فوراً بسؤال عن حاجة تانية)</span></div>
+  </div>
+  <div class="card"><h4>لو حد نقلك كلام وحش عنك</h4>
+    <p>متندفعش وتصدّق أو تواجه. اسأل نفسك: مين مصلحته إني أزعل؟ وارجع للمصدر مباشرة لو الموضوع يستاهل.</p>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">وصلني كلام وحبيت أسمع منك مباشرة قبل ما أحكم.</span></div>
+  </div>
+</section>
+
+<section class="view" id="s-appearance" data-group="آداب وتعاملات" data-title="المظهر والنظافة" data-key="نظافة هندام مظهر رائحة جمال هيئة">
+  <span class="eyebrow">جمال بلا تكبّر</span>
+  <h2 class="title">المظهر والنظافة</h2>
+  <p class="lead">نظافتك وهندامك احترام لنفسك وللناس، من غير إسراف ولا خُيلاء.</p>
+  <div class="quote">«إن الله جميل يحبّ الجمال»<span>رواه مسلم</span></div>
+  <div class="card"><h4>النظافة شطر الإيمان</h4><p>نظافة البدن والثوب والرائحة الطيبة من تمام الأدب مع الناس.</p></div>
+  <div class="card"><h4>الهندام المناسب</h4><p>لبس نظيف لائق بالمكان من غير مبالغة. المظهر المرتّب بيفتح القلوب قبل الكلام.</p></div>
+  <div class="card"><h4>اللبس حسب المكان</h4><p>لبس الشغل غير الفرح غير البيت. اللي بيلبس مناسب للمكان بيوصّل احترام للناس اللي فيه.</p></div>
+  <div class="card"><h4>تفاصيل صغيرة بتفرق</h4><p>الأظافر مقصوصة، الحذاء نضيف، الهدوم مكوية، ورائحة طيبة من غير مبالغة تخنق اللي جنبك.</p></div>
+</section>
+
+<section class="view" id="s-time" data-group="آداب وتعاملات" data-title="الوقت والمواعيد" data-key="وقت موعد التزام تنظيم تسويف فراغ">
+  <span class="eyebrow">الوقت أمانة</span>
+  <h2 class="title">إدارة الوقت والمواعيد</h2>
+  <p class="lead">الالتزام بالميعاد علامة احترام ومصداقية.</p>
+  <div class="quote">«نعمتان مغبونٌ فيهما كثيرٌ من الناس: الصحة والفراغ»<span>رواه البخاري</span></div>
+  <div class="card"><h4>الالتزام بالميعاد</h4><p>الميعاد وعد، وإخلافه ضعف أمانة. تعالى في وقتك واعتذر بصدق لو اتأخرت.</p></div>
+  <div class="card"><h4>محاربة التسويف</h4><p>ابدأ بأهم حاجة، وقسّم الكبير لخطوات.</p></div>
+  <div class="card"><h4>لو هتتأخر عن ميعاد</h4>
+    <p>بلّغ قبل الميعاد مش بعده، وادّي وقت وصول حقيقي مش متفائل. التأخير مع إخطار مقبول، والتأخير بصمت مش مقبول.</p>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">أنا متأخر ١٥ دقيقة، آسف على التعطيل. تحب تستنى ولا نأجّل؟</span></div>
+  </div>
+  <div class="card"><h4>قاعدة اليوم الناجح</h4><p>حدّد ٣ حاجات بس مهمة كل يوم واعملهم الأول. قايمة طويلة بتضيّع، وتلاتة بيتنفّذوا.</p></div>
+</section>
+
+<section class="view" id="s-phone" data-group="آداب وتعاملات" data-title="آداب الهاتف والرسائل" data-key="موبايل هاتف رسائل اتصال واتساب تطفّل">
+  <span class="eyebrow">أدبك على الشاشة كمان</span>
+  <h2 class="title">آداب الهاتف والرسائل</h2>
+  <p class="lead">نفس أدب المواجهة لازم يفضل موجود ورا الشاشة.</p>
+  <div class="card"><h4>وقت الاتصال</h4><p>احترم أوقات الناس، وابدأ بالسلام: «ينفع أكلمك دلوقتي؟».</p></div>
+  <div class="card"><h4>الرسائل</h4><p>متنقلش رسائل خاصة، ومتنشرش محادثات الناس. اللي يتبعت بيمثّلك.</p></div>
+  <div class="card"><h4>وسط الناس</h4><p>متنشغلش بالموبايل واللي قدامك بيكلمك — ده بيجرح من غير ما تحس.</p></div>
+  <div class="card"><h4>الرد على مكالمة وانت مشغول</h4>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">أنا في اجتماع دلوقتي، أكلّمك بعد ساعة يناسبك؟</span></div>
+    <p>الرد المختصر الصريح أحسن من إنك تسيبه من غير رد أو تتكلم وانت مش مركّز.</p>
+  </div>
+  <div class="card"><h4>الجروبات العائلية والشغل</h4><p>متبعتش رسايل منقولة من غير ما تتأكد منها، ومتملاش الجروب بحاجات مالهاش لازمة. واحترم أوقات النوم.</p></div>
+  <div class="card"><h4>الرسائل الصوتية</h4><p>خليها قصيرة وفي الموضوع. الرسالة الطويلة بتحمّل اللي قدامك عبء وقت مش مستعد له.</p></div>
+</section>
+
+<section class="view" id="s-gratitude" data-group="آداب وتعاملات" data-title="الشكر وحسن الظن بالله" data-key="شكر نعمة قناعة رضا حسن ظن دعاء شدة">
+  <span class="eyebrow">قلب راضي</span>
+  <h2 class="title">الشكر وحسن الظن بالله</h2>
+  <p class="lead">اللي بيشكر بيزيد، واللي بيحسن ظنه بربه بيلاقي فَرَجه أقرب.</p>
+  <div class="quote">«من لا يشكر الناس لا يشكر الله»<span>رواه الترمذي وأبو داود</span></div>
+  <div class="card"><h4>شكر الناس والنِّعم</h4><p>اشكر كل من أحسن إليك. والقناعة كنز.</p></div>
+  <div class="card"><h4>حسن الظن وقت الشدّة</h4><p>«أنا عند ظنّ عبدي بي». ادعُ وخُد بالأسباب وثِق إن بعد العسر يسراً.</p></div>
+  <div class="card"><h4>عادة الشكر اليومية</h4><p>قبل ما تنام، افتكر ٣ نعم عندك النهارده. العادة دي بتغيّر نظرتك للدنيا خلال أسابيع.</p></div>
+  <div class="card"><h4>لما تقارن نفسك بغيرك</h4>
+    <p>«انظروا إلى من هو أسفل منكم ولا تنظروا إلى من هو فوقكم». المقارنة لفوق بتقتل الرضا، ولتحت بتولّد الشكر.</p>
+  </div>
+</section>
+
+<section class="view" id="s-eq" data-group="آداب وتعاملات" data-title="الذكاء العاطفي" data-key="قراءة ناس لغة جسد إصغاء اعتذار احترام نبرة">
+  <span class="eyebrow">مهارة بتتعلّم</span>
+  <h2 class="title">الذكاء العاطفي</h2>
+  <p class="lead">إنك تفهم الناس وتفهم نفسك أهم من إنك تكون الأذكى في الأوضة.</p>
+  <div class="card"><h4>اقرا الناس قبل ما ترد</h4><p>راقب نبرة الصوت ولغة الجسد. أحياناً اللي قدامك متوتّر لسبب مالكش دعوة بيه.</p></div>
+  <div class="card"><h4>فن الإصغاء</h4><p>اسمع عشان تفهم، مش عشان ترد.</p></div>
+  <div class="card"><h4>الاعتذار الصح</h4><p>«أنا غلطت، آسف» من غير «بس». الاعتذار بيرفع قدرك.</p></div>
+  <div class="card"><h4>نبرة صوتك</h4><p>الطريقة بتجرح أكتر من الكلام. الهدوء بيهدّي الموقف كله.</p></div>
+  <div class="card"><h4>إزاي تهدّي حد غضبان</h4>
+    <p>الغضبان مش محتاج حلول، محتاج يحس إنك فاهمه. الاعتراف بمشاعره بينزع فتيل الموقف أسرع من أي منطق.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا شايف إنك متضايق، ومن حقك. قولّي حصل إيه بالظبط.</span>
+      <span class="s">معاك حق تزعل. تعالى نشوف نعمل إيه.</span>
+    </div>
+    <div class="avoid"><b>تجنّب</b>«اهدا» و«مفيش داعي للعصبية» — دي بتزوّد الغضب لأنها بتقول له إن إحساسه غلط.</div>
+  </div>
+  <div class="card"><h4>تقول رأي مخالف من غير خصومة</h4>
+    <p>ابدأ بنقطة اتفاق، وبعدين اعرض اختلافك كإضافة مش كتصحيح.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">أنا متفق معاك في كذا، وشايف كمان إن فيه زاوية تانية ممكن نفكر فيها.</span>
+      <span class="s">ممكن أكون أنا اللي فاهم غلط، بس اللي وصلني هو كذا.</span>
+    </div>
+  </div>
+  <div class="card"><h4>تستقبل مدح أو شكر</h4>
+    <p>لا تتكبّر ولا تقلّل من نفسك. الشكر البسيط والتواضع بيخلّوك محبوب.</p>
+    <div class="says"><span class="lbl">قول كده</span>
+      <span class="s">ربنا يكرمك، ده من ذوقك.</span>
+      <span class="s">الحمد لله، وأنا سعيد إنها عجبتك.</span>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="s-host" data-group="آداب وتعاملات" data-title="الضيافة والزيارات" data-key="ضيف مضيف كرم زيارة هدية موعد استئذان">
+  <span class="eyebrow">كرم بلا تكلّف</span>
+  <h2 class="title">آداب الضيافة والزيارات</h2>
+  <p class="lead">الكرم خُلق أصيل، والذوق إنك تكرم على قدرك.</p>
+  <div class="card"><h4>لمّا تكون مضيف</h4><p>وش بشوش، وقدّم اللي تقدر عليه من غير تكلّف. الكرم في البِشر مش في كتر الأكل.</p></div>
+  <div class="card"><h4>لمّا تكون ضيف</h4><p>التزم بالميعاد، ومتطوّلش، وخُد إذن قبل الزيارة.</p></div>
+  <div class="card"><h4>حدود الزيارة</h4><p>احترم خصوصية البيت، متفتّشش، ومتعلّقش على حاجاتهم.</p></div>
+  <div class="card"><h4>لو جالك ضيف فجأة</h4>
+    <p>البشاشة أهم من الاستعداد. قدّم المتاح من غير اعتذار كتير — الاعتذار المبالغ فيه بيحرج ضيفك.</p>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">نوّرت البيت، اقعد وأنا أجيب اللي موجود.</span></div>
+  </div>
+  <div class="card"><h4>لو اتدعيت وما تقدرش تروح</h4>
+    <div class="says"><span class="lbl">قول كده</span><span class="s">شرف ليا دعوتك، بس عندي ارتباط. ربنا يبارك لكم، ونعوّضها قريب.</span></div>
+    <p>الاعتذار المبكر أحسن من الوعد والغياب.</p>
+  </div>
+</section>
+
+<section class="view" id="s-stress" data-group="آداب وتعاملات" data-title="الضغط والغضب" data-key="غضب ضغط توتر قلق راحة نفسية دعم مشاعر">
+  <span class="eyebrow">قوّتك من الداخل</span>
+  <h2 class="title">إدارة الضغط والغضب</h2>
+  <p class="lead">حُسن التصرّف بيبدأ من راجل مرتاح من جوّه.</p>
+  <div class="card"><h4>إدارة الغضب اليومي</h4><p>أول علامة: قف، خد نفس عميق، واشرب ميه. القرار وانت غضبان بتندم عليه.</p></div>
+  <div class="card"><h4>متشيلش لوحدك</h4><p>اتكلم مع حد بتثق فيه. مشاركة الهمّ بتخفّف نص الحمل.</p></div>
+  <div class="card"><h4>اعتنِ بجسمك</h4><p>النوم الكفاية والحركة بيفرقوا في أعصابك أكتر ما تتخيّل.</p></div>
+  <div class="note">لو حاسس بضغط أو حزن مستمر وتقيل وبيأثّر على حياتك، طلب المساعدة من متخصص أو طبيب خطوة قوية بياخدها العقلاء، مش حاجة تستحي منها. الخط الساخن للصحة النفسية (وزارة الصحة): <strong>٠٨٠٠٨٨٨٠٧٠٠</strong>.</div>
+  <h3><span class="dot"></span>بروتوكول الغضب: ٦٠ ثانية</h3>
+  <p>لما تحس إن الدم طالع لدماغك، نفّذ الخطوات دي بالترتيب — مصمّمة تكسر موجة الغضب قبل ما تتصرّف بحاجة تندم عليها.</p>
+  <ol class="steps">
+    <li><strong>اسكت.</strong> أول جملة في الغضب هي أخطر جملة. مش هتقول حاجة دلوقتي.</li>
+    <li><strong>نفس عميق من بطنك ×٣</strong> — شهيق ٤ ثواني، حبس ٤، زفير ٦.</li>
+    <li><strong>غيّر وضعك</strong> — لو واقف اقعد، لو قاعد قوم أو اتحرّك خطوتين.</li>
+    <li><strong>ميّه</strong> — رشفة ميّه بتقطع الموجة فعلياً.</li>
+    <li><strong>اسأل نفسك:</strong> «هفتكر ده بعد أسبوع؟ وإيه أحسن نتيجة ممكنة؟»</li>
+    <li><strong>لو لسه مولّع، أجّل.</strong> «هنكمّل بعدين» جملة كاملة ومحترمة.</li>
+  </ol>
+  <div class="says"><span class="lbl">قول كده وانت بتأجّل</span>
+    <span class="s">أنا متضايق دلوقتي ومش عايز أقول حاجة أندم عليها. نكمّل بعد شوية.</span>
+    <span class="s">محتاج دقيقة أهدا فيها، وهرجعلك.</span>
+  </div>
+  <div class="avoid"><b>تجنّب</b>إنك ترد على رسالة أو تليفون وانت في قمة الغضب. اكتب اللي في نفسك في الملاحظات ومتبعتوش — واقراه بعد ساعة، غالباً هتحذفه.</div>
+</section>
+
+<section class="view" id="s-health" data-group="آداب وتعاملات" data-title="الصحة والعادات اليومية" data-key="صحة رياضة نوم أكل جسم عادات لياقة">
+  <span class="eyebrow">جسمك أمانة</span>
+  <h2 class="title">الصحة والعادات اليومية</h2>
+  <p class="lead">صحتك أساس كل حاجة تانية — راجل صحته كويسة بيتحكّم في أعصابه ويقوم بمسؤولياته أحسن.</p>
+  <div class="quote">«وإن لجسدك عليك حقاً»<span>رواه البخاري — جسمك أمانة، له حق عليك</span></div>
+  <div class="card"><h4>الاعتدال في الأكل</h4><p>«ما ملأ آدميٌّ وعاءً شراً من بطن». كُل باعتدال، ثلث للطعام وثلث للشراب وثلث للنفَس. الأكل الصحي طاقة ومزاج أحسن.</p></div>
+  <div class="card"><h4>الحركة والرياضة</h4><p>حرّك جسمك كل يوم ولو مشي بسيط. الرياضة بتصفّي مزاجك وبتفضّي التوتر، وبتخلّيك أقوى في مواجهة ضغوط يومك.</p></div>
+  <div class="card"><h4>النوم والراحة</h4><p>النوم الكافي مش رفاهية — قلّته بتأثّر على أعصابك وقراراتك. رتّب نومك وابعد عن السهر اللي مالوش لازمة.</p></div>
+  <div class="card"><h4>عادات صغيرة ثابتة</h4><p>العبرة بالاستمرار مش بالكتير المتقطّع — «أحبّ الأعمال إلى الله أدومها وإن قلّ». عادة بسيطة كل يوم بتبني صحة بتدوم.</p></div>
+</section>
+
+<section class="view" id="s-growth" data-group="آداب وتعاملات" data-title="الفشل والطموح وتطوير النفس" data-key="فشل طموح تطوير نفس نجاح محاسبة توكل">
+  <span class="eyebrow">اطلب الأحسن</span>
+  <h2 class="title">الفشل والطموح وتطوير النفس</h2>
+  <p class="lead">الفشل خطوة مش نهاية، والطموح بالأخذ بالأسباب مع التوكل على الله.</p>
+  <div class="quote">«المؤمن القوي خير وأحبّ إلى الله من المؤمن الضعيف… احرص على ما ينفعك واستعن بالله ولا تعجز»<span>رواه مسلم</span></div>
+  <div class="card"><h4>الفشل درس</h4><p>كل تجربة فيها عبرة. متوقّفش عند الكبوة، قوم واتعلّم منها وكمّل.</p></div>
+  <div class="card"><h4>الطموح مع التوكل</h4><p>خطّط، اشتغل، خُد بالأسباب، وبعدها توكّل وارضَ بقَدَر ربك.</p></div>
+  <div class="card"><h4>محاسبة النفس</h4><p>قِف مع نفسك كل فترة: إيه اللي اتحسّن؟ إيه اللي محتاج يتظبط؟ التطوّر بيبدأ من الصدق مع النفس.</p></div>
+</section>
+
+<section class="view" id="s-tolerance" data-group="آداب وتعاملات" data-title="التعامل مع المختلف معاك" data-key="اختلاف رأي دين حوار تسامح بر عدل مختلف">
+  <span class="eyebrow">أدب الاختلاف</span>
+  <h2 class="title">التعامل مع المختلف معاك</h2>
+  <p class="lead">الناس مش هتتفق معاك في كل حاجة، والرُّقي إنك تختلف من غير ما تخاصم.</p>
+  <div class="quote">«لَا يَنْهَاكُمُ اللَّهُ عَنِ الَّذِينَ لَمْ يُقَاتِلُوكُمْ فِي الدِّينِ… أَن تَبَرُّوهُمْ وَتُقْسِطُوا إِلَيْهِمْ»<span>سورة الممتحنة — البر والعدل مع المسالم المختلف</span></div>
+  <div class="card"><h4>اختلاف الرأي طبيعي</h4><p>ناقش الفكرة من غير ما تهاجم صاحبها. الهدف توصل لحق، مش تكسب خناقة.</p></div>
+  <div class="card"><h4>الحوار بالحكمة لا الفرض</h4><p>«ادفع بالتي هي أحسن». اللي بيُقنع باللين والعلم بيكسب القلب قبل العقل.</p></div>
+  <div class="card"><h4>البر بالمسالم</h4><p>اعدِل وأحسِن لكل إنسان مسالم مهما اختلف معاك. حسن الجوار والمعاملة دعوة بالأخلاق.</p></div>
+</section>
+
+<section class="view" id="s-adab" data-group="آداب وتعاملات" data-title="الآداب العامة في التعامل" data-key="كظم غيظ مجلس أمر بالمعروف حسن ظن خلق">
+  <span class="eyebrow">خُلق قبل أي شيء</span>
+  <h2 class="title">الآداب العامة في التعامل</h2>
+  <p class="lead">أخلاقك هي اللي بتسبقك وبتفضل بعدك.</p>
+  <div class="quote">«وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ ۗ وَاللَّهُ يُحِبُّ الْمُحْسِنِينَ»<span>سورة آل عمران</span></div>
+  <h3><span class="dot"></span>آداب الكلام</h3>
+  <p>قول خير أو اسكت، وابعد عن الغيبة. الكلمة الطيبة صدقة.</p>
+  <h3><span class="dot"></span>الأمر بالمعروف بلطف</h3>
+  <p>انصح على انفراد وبلين — <strong>«ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ»</strong>.</p>
+  <h3><span class="dot"></span>حُسن الظن</h3>
+  <p>التمس لأخيك عذراً — «اجتنبوا كثيراً من الظن إن بعض الظن إثم».</p>
+</section>
+
+<!-- ===== الهَدْي النبوي ===== -->
+<section class="view" id="s-sunnah-people" data-group="الهَدْي النبوي ﷺ" data-title="هديه ﷺ مع الناس" data-key="رفق تواضع بشر تبسم خلق نبي سنة">
+  <span class="eyebrow">على خُطى النبي ﷺ</span>
+  <h2 class="title">هديه ﷺ في التعامل مع الناس</h2>
+  <p class="lead">كان ﷺ أحسن الناس خُلقاً، وبأخلاقه دخل الناس في دينه.</p>
+  <div class="quote">«إنما بُعثت لأتمّم مكارم الأخلاق»<span>رواه أحمد والبخاري في الأدب المفرد</span></div>
+  <div class="card"><h4>الرفق في كل شيء</h4><p>«إن الرفق لا يكون في شيء إلا زانه، ولا يُنزع من شيء إلا شانه».</p></div>
+  <div class="card"><h4>البِشر والتبسّم</h4><p>«تبسّمك في وجه أخيك صدقة». كان ﷺ دائم البِشر.</p></div>
+  <div class="card"><h4>حُسن الخُلق</h4><p>«أكمل المؤمنين إيماناً أحسنهم خلقاً». و«خالق الناس بخلق حسن».</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">ابتسم في وش أول ٣ ناس تقابلهم؛ اتكلم مع البواب أو عامل النضافة باسمه وبأدب؛ ولو حد غلط في حقك النهارده، جرّب تعدّيها بالرفق مرة واحدة وشوف الفرق.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-family" data-group="الهَدْي النبوي ﷺ" data-title="هديه ﷺ مع الأهل" data-key="أهل زوجة أطفال رحمة بيت خيركم لأهله نبي">
+  <span class="eyebrow">رحمة في البيت</span>
+  <h2 class="title">هديه ﷺ مع الأهل والأولاد</h2>
+  <p class="lead">كان ﷺ في بيته ليّناً رحيماً، يعين أهله ويلاعب أطفاله.</p>
+  <div class="quote">«خيركم خيركم لأهله، وأنا خيركم لأهلي»<span>رواه الترمذي</span></div>
+  <div class="card"><h4>المعاونة في البيت</h4><p>كان ﷺ «في مهنة أهله». خدمة بيتك سُنّة مش نقص.</p></div>
+  <div class="card"><h4>الرحمة بالأطفال</h4><p>كان يقبّلهم ويحملهم، وقال: «من لا يَرحم لا يُرحم».</p></div>
+  <div class="card"><h4>اللطف مع الزوجة</h4><p>«استوصوا بالنساء خيراً». و«لا يَفرَك مؤمن مؤمنة».</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">ادخل البيت بسلام وابتسامة؛ اعمل حاجة واحدة بإيدك في البيت من غير ما حد يطلب؛ واقعد مع ولادك ١٥ دقيقة والموبايل بعيد.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-anger" data-group="الهَدْي النبوي ﷺ" data-title="هديه ﷺ في الغضب" data-key="غضب خصومة لا تغضب صبر وضوء سكوت نبي">
+  <span class="eyebrow">قوّة الحِلم</span>
+  <h2 class="title">هديه ﷺ في الغضب والخصومة</h2>
+  <p class="lead">السيطرة على الغضب هي عين القوة، وترك الخصومة كسب.</p>
+  <div class="quote">جاء رجل فقال: أوصني. قال: «لا تغضب»، فردّد مراراً، قال: «لا تغضب»<span>رواه البخاري</span></div>
+  <div class="card"><h4>علاج الغضب</h4><p>الاستعاذة بالله، تغيير الحال (لو واقف اقعد)، والوضوء يطفي الغضب.</p></div>
+  <div class="card"><h4>ترك الخصومة</h4><p>«أنا زعيم ببيت في ربض الجنة لمن ترك المراء وإن كان محقاً».</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">أول مرة تحس بغضب النهارده: اسكت، غيّر وضعك، واشرب ميّه قبل ما ترد. ولو في نقاش انت صح فيه بس مالوش لازمة، جرّب تسيبه.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-speech" data-group="الهَدْي النبوي ﷺ" data-title="هديه ﷺ في الكلام والصمت" data-key="كلام صمت لسان صدق كلمة طيبة نبي سنة">
+  <span class="eyebrow">سلامة اللسان</span>
+  <h2 class="title">هديه ﷺ في الكلام والصمت</h2>
+  <p class="lead">اللسان أكبر مدخل للخير وللشر، والنبي ﷺ ربط النجاة بحفظه.</p>
+  <div class="quote">«من كان يؤمن بالله واليوم الآخر فليقل خيراً أو ليصمت»<span>متفق عليه</span></div>
+  <div class="card"><h4>الصدق طريق البِر</h4><p>«عليكم بالصدق، فإن الصدق يهدي إلى البِر».</p></div>
+  <div class="card"><h4>الكلمة الطيبة</h4><p>«الكلمة الطيبة صدقة».</p></div>
+  <div class="card"><h4>قلّة فضول الكلام</h4><p>«كفى بالمرء كذباً أن يحدّث بكل ما سمع».</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">قبل أي كلام عن حد غايب، اسأل: لو كان سامعني هيزعل؟ لو أيوة اسكت. وقول كلمة تشجيع صادقة لحد واحد النهارده.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-neighbor" data-group="الهَدْي النبوي ﷺ" data-title="هديه ﷺ مع الجار والضيف" data-key="جار ضيف مسافر إكرام سفر حق وصية نبي">
+  <span class="eyebrow">حق القريب والغريب</span>
+  <h2 class="title">هديه ﷺ مع الجار والضيف والمسافر</h2>
+  <p class="lead">جعل النبي ﷺ إكرام الجار والضيف من علامات الإيمان.</p>
+  <div class="quote">«…فليكرم جاره، …فليكرم ضيفه»<span>متفق عليه</span></div>
+  <div class="card"><h4>حق الجار</h4><p>«ما زال جبريل يوصيني بالجار حتى ظننت أنه سيُورّثه».</p></div>
+  <div class="card"><h4>إكرام الضيف</h4><p>حسن الاستقبال من غير تكلّف، والضيف ما يثقّلش على مضيفه.</p></div>
+  <div class="card"><h4>المسافر</h4><p>«السفر قطعة من العذاب». عجّل بالرجوع لأهلك، وراعِ رفيق السفر.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">سلّم على جارك بالاسم؛ ابعتله من أكل بيتك؛ واتأكد إن مفيش حاجة منك بتضايقه (صوت، عربية، زبالة).</span></div>
+</section>
+
+<section class="view" id="s-sunnah-ihsan" data-group="الهَدْي النبوي ﷺ" data-title="دفع الإساءة بالإحسان" data-key="إحسان عفو صلة قطيعة إساءة بالتي هي أحسن">
+  <span class="eyebrow">أعلى المراتب</span>
+  <h2 class="title">دفع الإساءة بالإحسان</h2>
+  <p class="lead">الرد على السيئة بالحسنة بيحوّل عدوّك لصديق.</p>
+  <div class="quote">«ادْفَعْ بِالَّتِي هِيَ أَحْسَنُ فَإِذَا الَّذِي بَيْنَكَ وَبَيْنَهُ عَدَاوَةٌ كَأَنَّهُ وَلِيٌّ حَمِيمٌ»<span>سورة فُصِّلت</span></div>
+  <div class="card"><h4>صلة من قطعك</h4><p>«ليس الواصل بالمُكافئ، ولكن الواصل الذي إذا قُطِعت رحمه وصلها».</p></div>
+  <div class="card"><h4>العفو عند المقدرة</h4><p>«وما زاد الله عبداً بعفوٍ إلا عزّاً». العفو وانت قادر قوّة مش ضعف.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">فكّر في حد قاطعك أو أساء ليك، وابعتله رسالة سلام أو اتصل بيه من غير ما تستنى منه خطوة.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-truth" data-group="الهَدْي النبوي ﷺ" data-title="الصدق والأمانة والوفاء" data-key="صدق أمانة وفاء عهد وعد نفاق نبي">
+  <span class="eyebrow">أساس الثقة</span>
+  <h2 class="title">الصدق والأمانة والوفاء</h2>
+  <p class="lead">الصفات اللي بتخلّي الناس تثق فيك وتعتمد عليك.</p>
+  <div class="quote">«آية المنافق ثلاث: إذا حدّث كذب، وإذا وعد أخلف، وإذا اؤتمن خان»<span>متفق عليه</span></div>
+  <div class="card"><h4>أداء الأمانة</h4><p>«أدِّ الأمانة إلى من ائتمنك». الأمانة في المال والكلام والأسرار.</p></div>
+  <div class="card"><h4>الوفاء بالعهد</h4><p>«وأوفوا بالعهد إن العهد كان مسؤولاً». وعدك دَين عليك.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">راجع وعودك الصغيرة: وعدت مين بحاجة وما نفّذتهاش؟ نفّذها أو اعتذر عنها بصراحة النهارده.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-mercy" data-group="الهَدْي النبوي ﷺ" data-title="الرحمة والرفق بالحيوان" data-key="رحمة عفو حلم رفق حيوان ضعيف نبي">
+  <span class="eyebrow">رحمة بكل مخلوق</span>
+  <h2 class="title">الرحمة والعفو والرفق بالحيوان</h2>
+  <p class="lead">رحمته ﷺ وسعت الناس والحيوان، والجزاء من جنس العمل.</p>
+  <div class="quote">«الرّاحمون يرحمهم الرحمن، ارحموا مَن في الأرض يرحمكم مَن في السماء»<span>رواه الترمذي وأبو داود</span></div>
+  <div class="card"><h4>الرفق بالحيوان</h4><p>«في كل كبدٍ رطبةٍ أجر». وغُفر لرجل سقى كلباً عطشاناً.</p></div>
+  <div class="card"><h4>الحِلم والعفو</h4><p>كان ﷺ ما ينتقم لنفسه قط. عفوك عمّن ظلمك بيرفعك.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">حُط ميّه لقطة أو عصفور؛ وسامح حد النهارده كنت ناوي تحاسبه، وانت قادر عليه.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-road" data-group="الهَدْي النبوي ﷺ" data-title="آداب الطريق" data-key="طريق غض بصر كف أذى رد سلام إماطة أذى نبي">
+  <span class="eyebrow">حق الطريق</span>
+  <h2 class="title">هديه ﷺ في آداب الطريق</h2>
+  <p class="lead">حتى الطريق ليه آداب تخلّي الشارع آمن ومريح للكل.</p>
+  <div class="quote">«فأعطوا الطريق حقّه: غضّ البصر، وكفّ الأذى، وردّ السلام، والأمر بالمعروف والنهي عن المنكر»<span>متفق عليه</span></div>
+  <div class="card"><h4>غضّ البصر</h4><p>«قل للمؤمنين يغضّوا من أبصارهم». احترام وعفّة وراحة لقلبك.</p></div>
+  <div class="card"><h4>إماطة الأذى</h4><p>«وأدناها إماطة الأذى عن الطريق». تشيل حاجة بتأذي الناس = إيمان.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">شيل حاجة بتأذي الناس من الطريق؛ ردّ السلام على اللي يسلّم عليك؛ واغضض بصرك في الشارع النهارده بوعي.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-daily" data-group="الهَدْي النبوي ﷺ" data-title="آداب الطعام والنوم" data-key="طعام أكل تسمية استئذان نوم أذكار يمين نبي">
+  <span class="eyebrow">سُنن في يومك</span>
+  <h2 class="title">آداب يومية من السنة</h2>
+  <p class="lead">سُنن صغيرة في يومك بتحوّل العادة لعبادة.</p>
+  <div class="card"><h4>آداب الطعام</h4><p>«سمِّ الله، وكُل بيمينك، وكُل مما يليك». وكان ﷺ «لا يعيب طعاماً قط».</p></div>
+  <div class="card"><h4>الاستئذان</h4><p>«الاستئذان ثلاث، فإن أُذِن لك وإلا فارجع». وغضّ البصر عند الدخول.</p></div>
+  <div class="card"><h4>النوم والاستيقاظ</h4><p>الوضوء والأذكار: «باسمك اللهم أموت وأحيا». وحمد الله عند الاستيقاظ.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">سمّي قبل الأكل وكُل بيمينك؛ استأذن قبل ما تدخل على حد حتى في بيتك؛ وقول أذكار النوم قبل ما تنام.</span></div>
+</section>
+
+<section class="view" id="s-sunnah-salam" data-group="الهَدْي النبوي ﷺ" data-title="السلام والمصافحة والمجلس" data-key="سلام مصافحة مجلس هجر تحاب توسعة نبي">
+  <span class="eyebrow">ألفة بين القلوب</span>
+  <h2 class="title">هديه ﷺ في السلام والمجلس</h2>
+  <p class="lead">السلام والمصافحة وحُسن المجلس بيزرعوا المحبة.</p>
+  <div class="quote">«أفشوا السلام بينكم تحابّوا»<span>رواه مسلم</span></div>
+  <div class="card"><h4>المصافحة</h4><p>«ما من مسلمَين يلتقيان فيتصافحان إلا غُفر لهما قبل أن يفترقا».</p></div>
+  <div class="card"><h4>آداب المجلس</h4><p>وسّع لإخوانك، ولا تُقِم رجلاً من مكانه لتجلس فيه.</p></div>
+  <div class="card"><h4>لا هجر فوق ثلاث</h4><p>«وخيرهما الذي يبدأ بالسلام». بادر بالصلح.</p></div>
+  <div class="says"><span class="lbl">طبّقها النهارده</span><span class="s">ابدأ بالسلام مع كل من تقابله؛ وصافح بحرارة؛ ولو في حد مخاصمك أكتر من ٣ أيام، ابدأه بالسلام النهارده.</span></div>
+</section>
+
+<!-- ===== العبادة والروح ===== -->
+<section class="view" id="s-mosque" data-group="العبادة والروح" data-title="آداب المسجد والجماعة" data-key="مسجد جماعة جمعة صلاة سكينة خطبة إنصات">
+  <span class="eyebrow">بيوت الله</span>
+  <h2 class="title">آداب المسجد والجماعة والجُمعة</h2>
+  <p class="lead">المسجد بيت الله، وله آداب بتزيد أجرك وبتخلّي راحتك وراحة اللي حواليك.</p>
+  <div class="quote">«صلاة الجماعة تفضل صلاة الفذّ بسبعٍ وعشرين درجة»<span>متفق عليه</span></div>
+  <div class="card"><h4>السكينة والوقار</h4><p>«إذا أتيتم الصلاة فامشوا وعليكم السكينة». تعالى بدري وبهدوء من غير استعجال ولا زحمة.</p></div>
+  <div class="card"><h4>النظافة والطِّيب</h4><p>خصوصاً يوم الجمعة: الغسل والنظافة والرائحة الطيبة. وابعد عن الروائح اللي بتأذي المصلين.</p></div>
+  <div class="card"><h4>عدم إيذاء المصلين</h4><p>اقفل الموبايل أو خلّيه صامت، سوّي الصف، وابعد عن أي حاجة بتشوّش على خشوع الناس.</p></div>
+  <div class="card"><h4>الإنصات للخطبة</h4><p>«إذا قلت لصاحبك: أنصت، يوم الجمعة والإمام يخطب، فقد لغوت». الإنصات جزء من أدب الجمعة.</p></div>
+</section>
+
+<section class="view" id="s-repentance" data-group="العبادة والروح" data-title="محاسبة النفس والتوبة" data-key="توبة استغفار محاسبة نفس ندم رحمة قنوط">
+  <span class="eyebrow">صفاء القلب</span>
+  <h2 class="title">محاسبة النفس والتوبة والاستغفار</h2>
+  <p class="lead">الراجل اللي بيحاسب نفسه بيتطوّر، واللي بيرجع لربه بيرتاح قلبه مهما غلط.</p>
+  <div class="quote">«كل ابن آدم خطّاء، وخير الخطّائين التوّابون»<span>رواه الترمذي وابن ماجه</span></div>
+  <div class="card"><h4>محاسبة النفس</h4><p>قِف مع نفسك كل يوم: عملت إيه؟ غلطت في إيه؟ «حاسِبوا أنفسكم قبل أن تُحاسَبوا» (من قول عمر بن الخطاب رضي الله عنه). المحاسبة بتبني وعي ورجولة.</p></div>
+  <div class="card"><h4>التوبة الصادقة</h4><p>ندم على الغلط، إقلاع عنه فوراً، وعزم إنك ماترجعش. التوبة بتفتح صفحة جديدة في أي وقت.</p></div>
+  <div class="card"><h4>الاستغفار وأثره</h4><p>«فَقُلْتُ اسْتَغْفِرُوا رَبَّكُمْ إِنَّهُ كَانَ غَفَّارًا ۝ يُرْسِلِ السَّمَاءَ عَلَيْكُم مِّدْرَارًا ۝ وَيُمْدِدْكُم بِأَمْوَالٍ وَبَنِينَ» (سورة نوح). كلمة بتفرّج كرب وبتجيب رزق.</p></div>
+  <div class="card"><h4>لا تيأس من رحمة الله</h4><p>«لا تقنطوا من رحمة الله». مهما كان غلطك، باب ربنا مفتوح، واليأس مش من صفات المؤمن.</p></div>
+</section>
+
+<!-- ===== مرجع ===== -->
+<section class="view" id="s-law" data-group="مرجع" data-title="الجانب القانوني" data-key="دفاع شرعي قانون بلاغ تحرّش تصوير اعتداء حق">
+  <span class="eyebrow">تعرفه عشان مايتقلبش عليك</span>
+  <h2 class="title">الجانب القانوني</h2>
+  <p class="lead">معرفة حقّك القانوني بتخلّيك تتصرّف بثقة، وتحميك من إنك تتحوّل من مظلوم لمتّهم.</p>
+  <ul class="plain">
+    <li><strong>الدفاع الشرعي عن النفس والمال والعرض حق مكفول</strong> — بقدر الخطر وفي وقته.</li>
+    <li><strong>لو بدأت انت الضرب، ممكن تتقلب لمتّهم</strong> — الكلام مش بيبرّر الضرب.</li>
+    <li><strong>التحرّش جريمة في القانون المصري</strong> والتوثيق بيقوّي موقفك.</li>
+    <li><strong>التصوير من غير إذن</strong> ممكن يبقى عليه مساءلة.</li>
+    <li><strong>البلاغ الهادي المرتّب بيتاخد بجدية أكتر.</strong></li>
+  </ul>
+  <h3><span class="dot"></span>عقوبة التحرّش بالتفصيل</h3>
+  <p>شدّد القانون رقم ١٤١ لسنة ٢٠٢١ عقوبات التحرّش، وحوّله في صوره الأشد من جنحة لجناية. معرفتك بده بتطمّن أهلك إن البلاغ له قيمة حقيقية:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>الفعل</th><th>العقوبة</th></tr></thead>
+    <tbody>
+      <tr><td>التعرّض للغير بإيحاءات أو تلميحات جنسية بالقول أو الإشارة أو الفعل، في مكان عام أو خاص أو عبر وسائل التواصل (م ٣٠٦ مكرر أ)</td><td>حبس من سنتين لـ٤ سنين، وغرامة من ١٠٠ لـ٢٠٠ ألف جنيه أو إحداهما</td></tr>
+      <tr><td>تكرار الفعل بالملاحقة والتتبّع</td><td>حبس من ٣ لـ٥ سنين، وغرامة من ٢٠٠ لـ٣٠٠ ألف جنيه أو إحداهما</td></tr>
+      <tr><td>التحرّش بقصد منفعة ذات طبيعة جنسية (م ٣٠٦ مكرر ب)</td><td>جناية — سجن لا يقل عن ٥ سنين</td></tr>
+      <tr><td>نفس الجريمة من شخصين فأكتر، أو مع حمل سلاح، أو من صاحب سلطة على الضحية</td><td>سجن لا يقل عن ٧ سنين</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3><span class="dot"></span>إزاي تعمل محضر صح</h3>
+  <ol class="steps">
+    <li><strong>روح قسم الشرطة التابع لمكان الواقعة</strong> واطلب تحرير محضر رسمي.</li>
+    <li><strong>احكي بالترتيب:</strong> التاريخ، الساعة، المكان بالظبط، أوصاف الشخص، اللي حصل كلمة كلمة، وأسماء الشهود.</li>
+    <li><strong>قدّم دليلك:</strong> الفيديو أو الصور أو الرسائل — وقول إن عندك نسخة.</li>
+    <li><strong>لو في أي إصابة: تقرير طبي من مستشفى حكومي</strong> بأسرع وقت — ده من أقوى الأدلة، والإصابات البسيطة بتختفي بسرعة.</li>
+    <li><strong>خد رقم المحضر</strong> واحتفظ بيه — بيه تتابع مع النيابة.</li>
+    <li><strong>اقرا أقوالك كويس قبل ما توقّع</strong>، ومتوقّعش على حاجة مش فاهمها أو مش مطابقة للي قلته.</li>
+  </ol>
+  <div class="rule"><p>وللمرأة بشكل خاص: مكتب شكاوى المجلس القومي للمرأة <strong>١٥١١٥</strong> بيقدّم مشورة قانونية ونفسية ويساعد في الإجراءات.</p></div>
+
+  <div class="note"><b>ملحوظة:</b> ده توضيح عام مش استشارة قانونية، والعقوبات المذكورة حسب تعديل ٢٠٢١ وممكن تتعدّل. لو في موقف جدّي، استشير محامي — التفاصيل بتفرق.</div>
+</section>
+
+<section class="view" id="s-mistakes" data-group="مرجع" data-title="الأخطاء الشائعة" data-key="أخطاء غلط تهور تهديد جدال انفعال">
+  <span class="eyebrow">احذر منها</span>
+  <h2 class="title">الأخطاء الشائعة اللي بتورّط الراجل</h2>
+  <p class="lead">معرفة الغلط بتحميك منه.</p>
+  <ol class="steps">
+    <li><strong>الرد على كل كلمة في الشارع.</strong></li>
+    <li><strong>إثبات «الرجولة» بالخناقة قدام الأهل.</strong></li>
+    <li><strong>الانفعال قبل تقييم الخطر.</strong></li>
+    <li><strong>الدخول في خناقة مع مجموعة.</strong></li>
+    <li><strong>نسيان التوثيق</strong> — الموبايل أقوى من القبضة.</li>
+    <li><strong>التهديد الفاضي</strong> — بيخلّيك انت البادي.</li>
+    <li><strong>الجدال مع اللي مش عاقل.</strong></li>
+    <li><strong>نشر فيديو الحادثة أو الضحية على السوشيال قبل البلاغ</strong> — بيأذي الضحية وسمعتها، وممكن يعرّضك انت للمساءلة. الفيديو مكانه النيابة مش الفيسبوك.</li>
+    <li><strong>التصالح أو التوقيع على ورقة وانت متوتّر</strong> — أو قبل ما تعمل تقرير طبي. خد وقتك واستشير.</li>
+    <li><strong>الوقوف تتفرّج أو تصوّر بدل ما تساعد</strong> — لو مش قادر تتدخّل، على الأقل اتصل بالنجدة أو الإسعاف.</li>
+    <li><strong>إنك تاخد حقّك بإيدك بعد ما الموقف خلص</strong> — ده بيحوّلك من مجني عليه لمتّهم، وبيضيّع حقّك الأصلي.</li>
+  </ol>
+</section>
+
+<section class="view" id="s-summary" data-group="مرجع" data-title="الخلاصة" data-key="خلاصة ملخص قواعد نهاية">
+  <span class="eyebrow">في سطور</span>
+  <h2 class="title">خلاصة الدليل</h2>
+  <p class="lead">لو هتفتكر حاجة واحدة من الدليل كله، خلّيها الحاجات دي.</p>
+  <ul class="plain summary">
+    <li>سلامتك وسلامة أهلك فوق أي اعتبار تاني.</li>
+    <li>أقوى راجل هو اللي بيتحكّم في نفسه.</li>
+    <li>قبل أي رد: نفس عميق، قيّم الخطر، اسأل «إيه أحسن نتيجة؟».</li>
+    <li>التجاهل والمشي بثقة سلاحك في أغلب المعاكسات.</li>
+    <li>التوثيق والقانون أقوى وأأمن من القبضة.</li>
+    <li>مع أهلك: انت بينهم وبين الخطر، وأولويتك تبعدهم لا تنتقم.</li>
+    <li>قدام ولادك: انت بتربّيهم بتصرّفك، مش بكلامك.</li>
+    <li>خُلقك هو اللي بيسبقك وبيفضل بعدك — «أحاسنكم أخلاقاً».</li>
+  </ul>
+  <div class="rule"><p>الكرامة الحقيقية مش في إنك تكسب خناقة — في إنك تحمي اللي بتحبهم بخُلق وحكمة، وترجّعهم البيت بأمان.</p></div>
+  <div class="foot">دليل عام للاسترشاد · اقتصرنا على الأحاديث الصحيحة والحسنة قدر الإمكان، ونسبنا الأقوال المأثورة لقائليها، وللدقة الكاملة في الألفاظ والتخريج يُرجَع لأهل العلم · ربنا يحفظك ويحفظ أهلك</div>
+</section>
+
+</div></main>
+
+<script>
+const allSections = [...document.querySelectorAll('.view')];
+const sections = allSections.filter(s=>s.dataset.group);
+const linksWrap = document.getElementById('links');
+const nav = document.getElementById('nav');
+const overlay = document.getElementById('overlay');
+const menuBtn = document.getElementById('menuBtn');
+const search = document.getElementById('search');
+const ar = n => n.toLocaleString('ar-EG',{minimumIntegerDigits:2});
+
+// زر الفهرس / الرئيسية
+const homeBtn = document.createElement('button');
+homeBtn.className = 'nav-link home active';
+homeBtn.dataset.target = 's-home';
+homeBtn.dataset.search = 'الرئيسية فهرس بداية';
+homeBtn.innerHTML = '<span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></span><span>الفهرس / الرئيسية</span>';
+homeBtn.addEventListener('click',()=>show('s-home'));
+linksWrap.appendChild(homeBtn);
+
+let lastGroup = null, first = true;
+sections.forEach((sec,i)=>{
+  if(sec.dataset.group !== lastGroup){
+    const g = document.createElement('div');
+    g.className = 'nav-group' + (first?' first':'');
+    g.textContent = sec.dataset.group;
+    linksWrap.appendChild(g);
+    lastGroup = sec.dataset.group; first = false;
+  }
+  const btn = document.createElement('button');
+  btn.className = 'nav-link';
+  btn.dataset.target = sec.id;
+  btn.dataset.search = (sec.dataset.title+' '+(sec.dataset.key||'')+' '+sec.dataset.group).toLowerCase();
+  btn.innerHTML = `<span class="num">${ar(i+1)}</span><span>${sec.dataset.title}</span>`;
+  btn.addEventListener('click',()=>show(sec.id));
+  linksWrap.appendChild(btn);
+});
+const links = [...document.querySelectorAll('.nav-link')];
+const groups = [...document.querySelectorAll('.nav-group')];
+
+// بناء الفهرس المرئي
+const grid = document.getElementById('indexGrid');
+if(grid){
+  const byGroup = {};
+  sections.forEach(s=>{ (byGroup[s.dataset.group] = byGroup[s.dataset.group] || []).push(s); });
+  Object.keys(byGroup).forEach(group=>{
+    const card = document.createElement('div'); card.className = 'index-card';
+    const h = document.createElement('h4'); h.textContent = group; card.appendChild(h);
+    byGroup[group].forEach(s=>{
+      const a = document.createElement('button'); a.className = 'index-link';
+      a.textContent = s.dataset.title;
+      a.addEventListener('click',()=>show(s.id));
+      card.appendChild(a);
+    });
+    grid.appendChild(card);
+  });
+}
+
+// بناء أزرار السابق/التالي في كل قسم
+sections.forEach((sec,i)=>{
+  const prev = sections[i-1], next = sections[i+1];
+  const pager = document.createElement('div');
+  pager.className = 'pager';
+  pager.innerHTML = `
+    <button class="prev" ${prev?`data-go="${prev.id}"`:'disabled'}>
+      <span class="arw">→</span>
+      <span class="txt"><span class="dir">السابق</span><span class="ttl">${prev?prev.dataset.title:'—'}</span></span>
+    </button>
+    <button class="next" ${next?`data-go="${next.id}"`:'disabled'}>
+      <span class="arw">←</span>
+      <span class="txt"><span class="dir">التالي</span><span class="ttl">${next?next.dataset.title:'—'}</span></span>
+    </button>`;
+  pager.querySelectorAll('button[data-go]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.go)));
+  sec.appendChild(pager);
+});
+
+const curTitle = document.getElementById('curTitle');
+
+function show(id, push=true){
+  allSections.forEach(s=>s.classList.toggle('active', s.id===id));
+  links.forEach(l=>{
+    const on = l.dataset.target===id;
+    l.classList.toggle('active', on);
+    if(on) l.setAttribute('aria-current','true'); else l.removeAttribute('aria-current');
+  });
+  const sec = document.getElementById(id);
+  if(curTitle) curTitle.textContent = (sec && sec.dataset.title) ? sec.dataset.title : '';
+  if(push && location.hash.slice(1) !== id){ try{ history.pushState(null,'','#'+id); }catch(e){} }
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeDrawer();
+}
+
+// روابط قابلة للمشاركة + زر الرجوع في المتصفح
+function fromHash(push){
+  const id = location.hash.slice(1);
+  if(id && document.getElementById(id) && document.getElementById(id).classList.contains('view')) show(id,push);
+  else show('s-home',push);
+}
+window.addEventListener('hashchange',()=>fromHash(false));
+if(location.hash) fromHash(false); else if(curTitle) curTitle.textContent='';
+
+// البحث: في العناوين والكلمات المفتاحية وكمان في نص المحتوى
+sections.forEach(sec=>{
+  const clone = sec.cloneNode(true);
+  clone.querySelectorAll('.pager').forEach(p=>p.remove());
+  sec._text = (clone.textContent||'').replace(/\s+/g,' ').toLowerCase();
+});
+const secById = {}; sections.forEach(s=>secById[s.id]=s);
+search.addEventListener('input',e=>{
+  const q = e.target.value.trim().toLowerCase();
+  links.forEach(l=>{
+    if(!q){ l.classList.remove('hidden'); return; }
+    const sec = secById[l.dataset.target];
+    const hit = l.dataset.search.includes(q) || (sec && sec._text.includes(q));
+    l.classList.toggle('hidden', !hit);
+  });
+  groups.forEach(g=> g.classList.toggle('hidden', !!q));
+});
+
+// طباعة
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+const printHome = document.getElementById('printBtnHome');
+if(printHome) printHome.addEventListener('click',()=>window.print());
+
+function openDrawer(){nav.classList.add('open');overlay.classList.add('show')}
+function closeDrawer(){nav.classList.remove('open');overlay.classList.remove('show')}
+menuBtn.addEventListener('click',openDrawer);
+overlay.addEventListener('click',closeDrawer);
+
+// الوضع الليلي
+const darkLbl = document.getElementById('darkLbl');
+function toggleDark(){
+  const on = document.body.classList.toggle('dark');
+  darkLbl.textContent = on ? 'وضع نهاري' : 'وضع ليلي';
+}
+document.getElementById('darkBtn').addEventListener('click',toggleDark);
+document.getElementById('darkBtnM').addEventListener('click',toggleDark);
+
+// حجم الخط
+let fs = 16; const root = document.documentElement;
+function setFs(v){ fs = Math.max(14, Math.min(20, v)); root.style.fontSize = fs+'px'; }
+document.getElementById('fsUp').addEventListener('click',()=>setFs(fs+1));
+document.getElementById('fsDown').addEventListener('click',()=>setFs(fs-1));
+</script>
+</body>
+</html>
