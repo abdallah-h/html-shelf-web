@@ -254,7 +254,7 @@ function render(){
   const list=items.filter(it=>(chip==="*"||(chip==="fav"?meta.fav.includes(it.id):L?L.items.includes(it.id):it.tag===chip.slice(2)))&&match(it));
   if(!list.length)html+=`<div class="empty" style="grid-column:1/-1">${L&&!q?"القائمة فاضية — من ⋮ في أي مشروع اختار «إضافة لقائمة»":items.length?"مفيش نتايج 🔍":"الرفّ فاضي — اضغط «إضافة مشروع» واختار ملف HTML 📂"}</div>`;
   html+=list.map(it=>card(it,{attr:`data-id="${esc(it.id)}"`,more:`data-more="${esc(it.id)}"`,
-    sub:it.updated?"🔄 اتحدّث "+fmtDate(it.updated):it.builtin?"مدمج في التطبيق":fmtSize(it.size||0)+" · "+fmtDate(it.added)})).join("");
+    sub:it.updated?"🔄 اتحدّث "+fmtDate(it.updated):it.site?"🌐 موقع مدمج":it.builtin?"مدمج في التطبيق":fmtSize(it.size||0)+" · "+fmtDate(it.added)})).join("");
   $("grid").innerHTML=html+(chip==="*"?gone:"");
 }
 let chip="*";
@@ -306,10 +306,13 @@ let blobUrl=null,viewing=null;
 async function openProject(id){
   const ver=id.startsWith("v:")?versions.find(v=>v.id===id):null;
   const it=ver?{...proj(ver.pid),id,title:proj(ver.pid).title+" — نسخة "+fmtDate(ver.added)}:proj(id);if(!it)return;
-  const html=await htmlOf(id);
-  if(html==null){toast("الملف مش موجود");return;}
-  if(blobUrl)URL.revokeObjectURL(blobUrl);
-  blobUrl=URL.createObjectURL(new Blob([withShim(html,id)],{type:"text/html;charset=utf-8"}));const src=blobUrl;
+  let src;
+  if(it.site&&!ver)src=it.site;   // its pages ask parent.shelfShimFor() for the injected script (scripts/update-projects.mjs)
+  else{const html=await htmlOf(id);
+    if(html==null){toast("الملف مش موجود");return;}
+    if(blobUrl)URL.revokeObjectURL(blobUrl);
+    blobUrl=URL.createObjectURL(new Blob([withShim(html,id)],{type:"text/html;charset=utf-8"}));src=blobUrl;}
+  siteDepth=0;siteBack=false;
   if(!ver){meta.opened[id]=Date.now();meta.openCount[id]=(meta.openCount[id]||0)+1;saveMeta();}
   // reopen where you left off: the project's own #page (hash-routed projects) + scroll position
   const pos=!ver&&meta.pos[id]||{};
@@ -365,7 +368,9 @@ window.__shelfBack=function(){if(depth>0){depth--;goingBack=true;history.back();
 document.addEventListener("scroll",function(e){var t=e.target===document?document.scrollingElement:e.target;if(!t||t.scrollTop==null)return;
  var y=t.scrollTop,d=y-(t.__sy||0);t.__sy=y;if(Math.abs(d)<10)return;try{parent.shelfScroll(d>0&&y>80?1:-1);}catch(x){}},true);
 var ext=function(u){try{parent.shelfExternal(u);}catch(e){}};
-var isExt=function(u){return /^(https?:|mailto:|tel:|whatsapp:|geo:|market:|intent:)/i.test(u)&&!/^https?:[/][/]localhost([/]|:|$)/i.test(u);};
+var isExt=function(u){if(!/^(https?:|mailto:|tel:|whatsapp:|geo:|market:|intent:)/i.test(u))return false;
+ try{return new URL(u,location.href).origin!==location.origin;}catch(e){return true;}};
+try{if(navigator.serviceWorker)navigator.serviceWorker.register=function(){return new Promise(function(){});};}catch(e){} // projects don't install offline caches
 document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");
  if(a&&isExt(a.href)){e.preventDefault();e.stopPropagation();ext(a.href);}},true);
 var wo=window.open;window.open=function(u){if(u&&isExt(String(u))){ext(String(u));return null;}
@@ -378,6 +383,10 @@ function withShim(html,id){const sh=shimFor(id);
   return sh+html;}
 window.shelfExternal=u=>{const SI=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.ShareImport;
   if(SI)SI.openUrl({url:u}).catch(()=>toast("مفيش تطبيق يفتح الرابط ده"));else window.open(u,"_blank");};
+window.shelfShimFor=()=>viewing?shimFor(viewing.id):"";
+/* Back across the pages of a website project: every page load inside the frame is one step */
+let siteDepth=0,siteBack=false;
+$("frame").addEventListener("load",()=>{if(!viewing||!viewing.site)return;if(siteBack){siteBack=false;siteDepth=Math.max(1,siteDepth-1);}else siteDepth++;});
 function closeViewer(){
   if(viewing&&!viewing.id.startsWith("v:"))try{const w=$("frame").contentWindow,y=w.scrollY||(w.document.scrollingElement||{}).scrollTop||0;
     meta.pos[viewing.id]={y:Math.round(y),h:w.location.hash||""};saveMeta();}catch(e){}
@@ -452,6 +461,7 @@ let sheetId=null;
 const EMOJIS=["📘","📗","📕","📖","🧠","🌱","🎯","💡","🚀","🎨","🧩","🗂️","📊","🛠️","💻","🧪","🕌","🏋️","🚗","💰","🍳","✈️","🎮","🎵","🌍","📦","🕵️","⭐"];
 function openSheet(id){const it=proj(id);if(!it)return;sheetId=id;$("shTitle").textContent=it.title;
   $("shPin").classList.toggle("hidden",!NATIVE);
+  ["shUpdate","shShare"].forEach(b=>$(b).classList.toggle("hidden",!!it.site));
   $("shReset").classList.toggle("hidden",!(it.builtin&&it.updated));
   const nv=versions.filter(v=>v.pid===id).length;$("shVersions").textContent="🕘 النسخ القديمة ("+nv+")";$("shVersions").classList.toggle("hidden",!nv);
   $("shFav").textContent=meta.fav.includes(id)?"☆ إزالة من المفضلة":"⭐ إضافة للمفضلة";
@@ -555,7 +565,9 @@ function goBack(){
   if(arcId){closeArcSheet();return true;}
   if(!$("sortSheet").classList.contains("hidden")){$("sortSheet").classList.add("hidden");return true;}
   if(!$("cloudSheet").classList.contains("hidden")){$("cloudSheet").classList.add("hidden");return true;}
-  if(viewing){try{if($("frame").contentWindow.__shelfBack())return true;}catch(e){}closeViewer();return true;}
+  if(viewing){try{if($("frame").contentWindow.__shelfBack())return true;}catch(e){}
+    if(viewing.site&&siteDepth>1){siteBack=true;try{$("frame").contentWindow.history.back();return true;}catch(e){}}
+    closeViewer();return true;}
   if(chip!=="*"||$("q").value){chip="*";$("q").value="";render();scrollTo({top:0});return true;}
   return false;}
 

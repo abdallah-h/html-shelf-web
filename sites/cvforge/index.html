@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>try{if(parent!==window&&parent.shelfShimFor)document.write(parent.shelfShimFor());}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Free CV Builder — Create &amp; Download Your Resume as PDF, Word &amp; Text | CV Forge</title>
+<meta name="description" content="Build a professional CV free — no signup. 10 themes, live preview, PDF, Word & ATS text export, Arabic RTL. Your data never leaves your device.">
+<meta name="keywords" content="free cv builder, resume builder, cv maker, pdf resume, word cv, ats resume, arabic cv builder, no signup cv, free resume maker">
+<meta name="author" content="CV Forge">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yourdomain.com/">
+<!-- Open Graph (Facebook / LinkedIn / WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com/">
+<meta property="og:title" content="Free CV Builder — No Signup, PDF &amp; Word Export">
+<meta property="og:description" content="Create a professional CV in minutes. 10 themes, live preview, PDF/Word/ATS export, Arabic RTL support. Free forever, your data stays on your device.">
+<meta property="og:image" content="https://yourdomain.com/og-image.png">
+<meta property="og:locale" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free CV Builder — No Signup, PDF &amp; Word Export">
+<meta name="twitter:description" content="Create a professional CV in minutes. 10 themes, PDF/Word/ATS export, Arabic RTL support. Free forever.">
+<meta name="twitter:image" content="https://yourdomain.com/og-image.png">
+<!-- Favicon (inline — no extra file needed) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="theme-color" content="#0f0f13">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CV Forge">
+<!-- ▼ PASTE YOUR GOOGLE ANALYTICS / ADSENSE <script> TAGS HERE (after approval) ▼ -->
+<!-- ▲ ─────────────────────────────────────────────────────────────────────── ▲ -->
+<!-- Structured data for Google rich results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CV Forge — Free CV Builder",
+  "url": "https://yourdomain.com/",
+  "description": "Free online CV and resume builder with 10 professional themes, live preview, and PDF, Word and ATS text export. No signup required. Supports Arabic RTL.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "featureList": ["10 professional CV themes","PDF export","Word export","ATS plain-text export","Arabic RTL support","Live preview","No signup","Works offline after first load"]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is this CV builder really free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. CV Forge is 100% free with no signup, no watermark and no paywall on downloads. The site is supported by unobtrusive ads."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my personal data safe?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Your CV never leaves your device. Everything you type is stored only in your own browser, and nothing is uploaded to our servers."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Are the CVs ATS-friendly?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The Traditional and Minimal themes use a clean single-column layout that applicant tracking systems read easily, and you can also download an ATS plain-text version."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I save my CV as a PDF?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tap Download, choose PDF, then in the print dialog select “Save as PDF” as the destination and A4 as the paper size."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I create a CV in Arabic?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Open Colors & Fonts and set Text Direction to Right-to-Left. The preview and the PDF export both switch to a right-to-left layout."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will my CV be saved if I close the page?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Your CV auto-saves in your browser every 30 seconds. To move it to another device, use Backup to download a file and restore it there."
+   }
+  }
+ ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="../../vendor/fonts/d62be60a81a1.css" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f0f13;--surface:#18181f;--surface2:#1e1e28;--border:#2a2a38;
+  --accent:#7c6af7;--accent2:#f7a26a;--text:#e8e8f0;--muted:#7a7a90;
+  --danger:#e05c5c;--green:#52d68a;--radius:10px;
+  --topbar-h:56px;--tabs-h:48px;--cv-accent:#2c3e6b;
+}
+html{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);height:100%;overflow:hidden;width:100vw;max-width:100vw}
+:root{--mode-h:0px}
+#tabbar{top:calc(var(--topbar-h) + var(--mode-h)) !important}
+#editor-panel,#preview-panel{top:calc(var(--topbar-h) + var(--mode-h) + var(--tabs-h)) !important}
+@media(min-width:960px){#editor-panel,#preview-panel{top:calc(var(--topbar-h) + var(--mode-h)) !important}}
+/* smooth dark/light transition */
+body,#editor-panel,#preview-panel,.sec-card,.iblock,.modal-box,#topbar,#tabbar{transition:background .25s,color .25s,border-color .25s}
+
+/* ── TOPBAR ── */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--topbar-h);background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 8px;gap:5px;flex-wrap:nowrap;overflow:hidden}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:var(--accent);white-space:nowrap;flex-shrink:1;overflow:hidden;min-width:0}
+.spacer{flex:1;min-width:4px}
+.tbtn{border:none;cursor:pointer;border-radius:6px;padding:6px 10px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;white-space:nowrap;flex-shrink:0;transition:opacity .15s;display:inline-flex;align-items:center;gap:3px}
+.tbtn:active{opacity:.7}
+.tbtn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.tbtn-ghost:not(:disabled):hover{color:var(--text);border-color:var(--muted)}
+.tbtn-ghost:disabled{opacity:.3;cursor:not-allowed}
+.tbtn-pdf{background:#e8f0fe;color:#1a56db;border:none}
+.tbtn-word{background:var(--accent2);color:#1a0800;border:none}
+.tbtn-txt{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.tbtn-save{background:var(--accent);color:#fff;border:none}
+.tbtn-share{background:var(--surface2);color:var(--green);border:1px solid var(--green)}
+.tbtn-download{background:var(--green);color:#062;border:none;font-weight:700;font-size:12px;padding:7px 12px}
+.dl-opt{display:flex;align-items:center;gap:12px;width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:border-color .15s}
+.dl-opt:active,.dl-opt:hover{border-color:var(--accent)}
+.dl-opt-t{font-size:14px;font-weight:600;color:var(--text)}
+.dl-opt-s{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+
+/* ── TABBAR ── */
+#tabbar{position:fixed;top:var(--topbar-h);left:0;right:0;z-index:290;height:var(--tabs-h);background:var(--surface);border-bottom:1px solid var(--border);display:flex}
+.tab-btn{flex:1;border:none;cursor:pointer;background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:5px;border-bottom:2px solid transparent;transition:all .2s}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ── PANELS ── */
+#editor-panel,#preview-panel{position:fixed;top:calc(var(--topbar-h) + var(--tabs-h));left:0;width:100%;bottom:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+#editor-panel{background:var(--bg);padding:12px;display:flex;flex-direction:column;gap:10px}
+#preview-panel{background:#22222e;display:flex;flex-direction:column;align-items:center;padding:16px 8px 32px}
+.panel-hidden{display:none !important}
+@media(min-width:960px){
+  #tabbar{display:none !important}
+  #editor-panel,#preview-panel{top:var(--topbar-h) !important;display:flex !important}
+  #editor-panel{left:0;width:400px;border-right:1px solid var(--border)}
+  #preview-panel{left:400px;width:calc(100% - 400px)}
+}
+
+/* ── SECTION CARDS ── */
+.sec-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;flex-shrink:0}
+.sec-head{padding:11px 14px;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;font-size:13px;font-weight:500;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.sec-head:active{background:rgba(255,255,255,.04)}
+.sec-icon{font-size:15px;flex-shrink:0}
+.sec-title-text{flex:1}
+.chev{color:var(--muted);font-size:11px;transition:transform .25s;flex-shrink:0}
+.sec-head.open .chev{transform:rotate(180deg)}
+.sec-body{padding:13px 14px;border-top:1px solid var(--border);display:none;flex-direction:column;gap:9px}
+.sec-body.open{display:flex}
+
+/* ── FORMS ── */
+.fg{display:flex;flex-direction:column;gap:4px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+label{font-size:11px;color:var(--muted);font-weight:500}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+  width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:7px;
+  color:var(--text);padding:8px 10px;font-family:'DM Sans',sans-serif;font-size:13px;
+  outline:none;transition:border-color .15s;-webkit-appearance:none}
+input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+/* 16px on phones stops iOS Safari from auto-zooming into fields */
+@media(max-width:959px){input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{font-size:16px}}
+/* Visible keyboard focus for accessibility */
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+textarea{resize:vertical;min-height:70px;line-height:1.5}
+input[type=color]{width:32px;height:28px;padding:2px;border:1px solid var(--border);border-radius:6px;background:var(--surface2);cursor:pointer}
+input[type=range]{width:100%;accent-color:var(--accent)}
+input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+
+/* ── ITEM BLOCKS ── */
+.iblock{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px;position:relative}
+.iblock-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:6px}
+.iblock-label{font-size:11.5px;font-weight:600;color:var(--accent)}
+.iblock-actions{display:flex;align-items:center;gap:2px}
+.icon-btn{background:none;border:none;cursor:pointer;padding:3px 5px;border-radius:4px;font-size:13px;color:var(--muted);transition:color .15s;-webkit-tap-highlight-color:transparent}
+.icon-btn:hover{color:var(--text)}
+.icon-btn.danger:hover{color:var(--danger)}
+.drag-item-handle{cursor:grab;font-size:16px;color:var(--border);padding:0 4px;touch-action:none;user-select:none}
+.drag-item-handle:active{cursor:grabbing;color:var(--muted)}
+.iblock.dragging-item{opacity:.4;border-style:dashed;border-color:var(--accent)}
+.iblock.drop-target-item{border-color:var(--accent);background:rgba(124,106,247,.06)}
+.add-btn{background:transparent;border:1px dashed var(--border);color:var(--muted);border-radius:7px;padding:8px;font-size:12px;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.add-btn:active{border-color:var(--accent);color:var(--accent)}
+
+/* ── SKILL TAGS ── */
+.tags-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px;min-height:10px}
+.skill-tag{background:rgba(124,106,247,.14);border:1px solid rgba(124,106,247,.3);border-radius:20px;padding:3px 9px;font-size:11.5px;display:flex;align-items:center;gap:3px}
+.del-tag{cursor:pointer;color:var(--muted);font-size:9px;flex-shrink:0}
+.tag-input-row{display:flex;gap:6px}
+.tag-input-row input{flex:1;font-size:12px}
+.tag-add-btn{padding:0 12px;background:var(--accent);color:#fff;border:none;border-radius:7px;cursor:pointer;font-size:16px}
+
+/* ── THEME GRID ── */
+.theme-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.theme-card{border-radius:7px;border:2px solid var(--border);cursor:pointer;overflow:hidden;aspect-ratio:.7;position:relative;-webkit-tap-highlight-color:transparent;transition:border-color .15s}
+.theme-card.active{border-color:var(--accent)}
+.theme-card span{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:9px;padding:3px;background:rgba(0,0,0,.7);color:#fff}
+.mini-original{background:linear-gradient(180deg,#fff 100%)}
+.mini-classic{background:linear-gradient(180deg,#1a2742 38%,#fff 38%)}
+.mini-modern{background:linear-gradient(90deg,#7c6af7 5px,#fff 5px)}
+.mini-executive{background:#fff;border-top:3px solid #1c1c1c !important}
+.mini-tech{background:#0d1117}
+.mini-creative{background:linear-gradient(135deg,#f7a26a,#f06060 50%,#fff 50%)}
+.mini-clean{background:linear-gradient(90deg,#2c3e6b 30%,#fff 30%)}
+.mini-minimal{background:#fff}
+.mini-elegant{background:linear-gradient(180deg,#8B6914 35%,#fff 35%)}
+.mini-nordic{background:linear-gradient(180deg,#2d6a4f 35%,#f8f9fa 35%)}
+
+/* ── COLOR SWATCHES ── */
+.swatch-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.swatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .15s;flex-shrink:0}
+.swatch.active{border-color:var(--accent) !important;transform:scale(1.15)}
+
+/* ── FONT GRID ── */
+.font-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.font-card{border:2px solid var(--border);border-radius:8px;padding:7px 9px;cursor:pointer;transition:border-color .15s;-webkit-tap-highlight-color:transparent}
+.font-card.active{border-color:var(--accent)}
+.font-name{font-size:10px;color:var(--muted);margin-bottom:1px}
+.font-sample{font-size:13px;font-weight:600;color:var(--text)}
+
+/* ── PHOTO ── */
+.photo-area{display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px}
+.photo-thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;display:none}
+.photo-placeholder{width:60px;height:60px;border-radius:50%;background:var(--surface2);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;flex-shrink:0}
+.photo-btns{display:flex;flex-direction:column;gap:5px;flex:1}
+.photo-btn{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:11px;cursor:pointer;color:var(--text);font-family:'DM Sans',sans-serif;text-align:center}
+
+/* ── SECTION ORDER ── */
+.sec-order-list{display:flex;flex-direction:column;gap:4px}
+.sec-row{display:flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;transition:border-color .15s}
+.sec-row.dragging{opacity:.4;border-style:dashed}
+.sec-row.drag-over{border-color:var(--accent);background:rgba(124,106,247,.07)}
+.sec-drag{cursor:grab;color:var(--muted);font-size:16px;padding:0 2px;touch-action:none;user-select:none;flex-shrink:0}
+.sec-drag:active{cursor:grabbing}
+.sec-row-label{flex:1;font-size:12.5px;font-weight:500;min-width:0}
+.sec-name-inp{flex:1;font-size:12px;padding:3px 7px;background:var(--surface2);border:1px solid var(--accent);border-radius:5px;color:var(--text);outline:none}
+.add-sec-btn{display:flex;align-items:center;gap:8px;background:transparent;border:1px dashed var(--border);color:var(--muted);border-radius:var(--radius);padding:9px 13px;font-size:12px;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif}
+.add-sec-btn:active{border-color:var(--accent);color:var(--accent)}
+
+/* ── COMPLETENESS ── */
+.score-bar-wrap{background:var(--surface2);border-radius:6px;overflow:hidden;height:7px}
+.score-bar{height:7px;border-radius:6px;transition:width .5s,background .5s}
+.score-label{font-size:11px;color:var(--muted);margin-top:4px}
+.score-tips{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+.score-tips span{color:var(--danger)}
+
+/* ── PAGE OVERFLOW ── */
+.page-indicator{display:flex;align-items:center;gap:6px;font-size:11px;padding:6px 10px;border-radius:6px;margin-top:2px}
+.page-indicator.ok{background:rgba(82,214,138,.1);color:var(--green);border:1px solid rgba(82,214,138,.2)}
+.page-indicator.warn{background:rgba(247,162,106,.1);color:var(--accent2);border:1px solid rgba(247,162,106,.2)}
+.page-indicator.over{background:rgba(224,92,92,.1);color:var(--danger);border:1px solid rgba(224,92,92,.2)}
+
+/* ── PROFILES ── */
+.profile-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.profile-chip{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:11.5px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:border-color .15s}
+.profile-chip.active-chip{border-color:var(--accent);color:var(--accent)}
+.chip-del{color:var(--danger);font-size:9px;cursor:pointer;flex-shrink:0}
+
+/* ── HISTORY BTNS ── */
+.hist-btn{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:5px 9px;font-size:12px;cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all .15s}
+.hist-btn:disabled{opacity:.3;cursor:not-allowed}
+.hist-btn:not(:disabled):hover{border-color:var(--accent);color:var(--text)}
+
+/* ── MODALS ── */
+.modal-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.65);align-items:flex-end;justify-content:center}
+.modal-bg.show{display:flex}
+.modal-box{background:var(--surface);border-radius:16px 16px 0 0;padding:22px 18px;width:100%;max-width:520px;max-height:85vh;overflow-y:auto}
+.modal-box h4{font-size:14px;font-weight:600;margin-bottom:13px}
+.modal-btns{display:flex;gap:8px;margin-top:10px}
+.modal-btns button{flex:1;padding:10px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.mbtn-cancel{background:var(--surface2);color:var(--muted)}
+.mbtn-ok{background:var(--accent);color:#fff}
+.mbtn-danger{background:var(--danger);color:#fff}
+
+/* ── LOADING OVERLAY ── */
+#dl-ov{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.8);align-items:center;justify-content:center}
+#dl-ov.show{display:flex}
+.dl-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 36px;text-align:center;min-width:220px}
+.dl-box h3{font-size:14px;margin-bottom:4px}
+.dl-box p{font-size:11.5px;color:var(--muted)}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── CV PREVIEW WRAPPER ── */
+#cv-scale-wrap{width:100%;display:flex;justify-content:center;align-items:flex-start}
+#cv-wrap{width:794px;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.5);position:relative;--cv-line:1;--cv-page-margin:68px}
+/* Line spacing multiplier on body text */
+#cv-wrap .cv-jdesc,#cv-wrap .cv-summary-text,#cv-wrap .cv-summary,#cv-wrap p,#cv-wrap .cv-skill-block,#cv-wrap .cv-edu,#cv-wrap .cv-proj,#cv-wrap .cv-jdesc li{line-height:calc(1.55 * var(--cv-line)) !important}
+@media(max-width:959px){
+  #cv-scale-wrap{justify-content:center;position:relative}
+}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 18px;font-size:13px;z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.ok{border-color:var(--green);color:var(--green)}
+#toast.err{border-color:var(--danger);color:var(--danger)}
+
+/* ── SHARE LINK BOX ── */
+.share-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;gap:6px;align-items:center}
+.share-box input{flex:1;font-size:11px;background:transparent;border:none;color:var(--muted);outline:none}
+.share-copy-btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif}
+
+/* ── DATE PICKER ── */
+.date-pick{display:flex;gap:4px}
+.date-pick select{flex:1;font-size:12px;padding:7px 6px}
+
+/* ── PAGE BREAK GUIDE ── */
+.page-break-line{position:absolute;left:0;right:0;border-top:2px dashed #e05c5c;pointer-events:none;z-index:5}
+.page-break-line::after{content:'Page break';position:absolute;right:6px;top:-9px;background:#e05c5c;color:#fff;font-size:8px;padding:1px 6px;border-radius:3px;font-family:'DM Sans',sans-serif;font-weight:600}
+
+/* ── RTL ── */
+.cv-rtl{direction:rtl;text-align:right}
+.cv-rtl .cv-contacts,.cv-rtl .cv-cols{direction:rtl}
+.cv-rtl .cv-jmeta,.cv-rtl .cv-job-header{flex-direction:row-reverse}
+.cv-rtl .cv-jdesc ul,.cv-rtl .cv-summary-text ul{padding-right:16px;padding-left:0}
+
+/* ── REFERENCES ── */
+.ref-block{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px}
+
+/* ── TEMPLATE SUGGESTIONS ── */
+.tmpl-chip{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:5px 9px;font-size:11px;cursor:pointer;margin:2px;transition:all .15s}
+.tmpl-chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── kbd ── */
+kbd{font-family:monospace}
+
+/* ═══════════════════════════════════════════════════════════
+   CV THEMES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ORIGINAL */
+.t-original{font-family:'Times New Roman',serif;color:#000;background:#fff}
+.t-original .cv-head{background:#fff;padding:24px 48px 8px;text-align:center}
+.t-original .cv-head-text{width:100%}
+.t-original .cv-photo{display:none}
+.t-original .cv-name{font-size:20px;font-weight:700;color:#000;text-align:center;letter-spacing:.5px}
+.t-original .cv-role{display:none}
+.t-original .cv-contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:5px}
+.t-original .cv-c{font-size:11px;color:#000}
+.t-original .cv-c::before{content:'• '}
+.t-original .cv-c:first-child::before{content:''}
+.t-original .cv-cols{padding:4px 48px 24px;display:block}
+.t-original .cv-main-col{width:100%}
+.t-original .cv-side-col{display:none}
+.t-original .cv-sec{margin-bottom:12px}
+.t-original .cv-stitle{font-size:11.5px;font-weight:700;color:#000;text-transform:uppercase;letter-spacing:.5px;border-bottom:1.5px solid #000;padding-bottom:2px;margin-bottom:7px;margin-top:10px}
+.t-original .cv-summary-text{font-size:11px;line-height:1.65}
+.t-original .cv-summary-text ul{padding-left:16px}
+.t-original .cv-summary-text li{margin-bottom:2px}
+.t-original .cv-job{margin-bottom:10px}
+.t-original .cv-job-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:2px}
+.t-original .cv-jtitle{font-weight:700;font-size:11px;color:#000}
+.t-original .cv-jdate{font-size:10.5px;color:#000;white-space:nowrap}
+.t-original .cv-jorg{font-size:10.5px;color:#000;font-style:italic;margin-bottom:3px}
+.t-original .cv-jmeta{display:none}
+.t-original .cv-jdesc{font-size:10.5px;line-height:1.6}
+.t-original .cv-jdesc ul{padding-left:16px;list-style:disc}
+.t-original .cv-jdesc li{margin-bottom:1px}
+.t-original .cv-skill-block{margin-bottom:5px;font-size:10.5px;line-height:1.6}
+.t-original .cv-skill-cat{font-weight:700}
+.t-original .cv-pills{display:none}
+.t-original .cv-edu{margin-bottom:7px;font-size:10.5px;line-height:1.6}
+.t-original .cv-edu-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1px}
+.t-original .cv-edeg{font-weight:700;font-size:11px}
+.t-original .cv-edate{font-size:10.5px;white-space:nowrap}
+.t-original .cv-esch{font-size:10.5px;font-style:italic}
+.t-original .cv-egrade{font-size:10.5px}
+.t-original .cv-eproj{font-size:10.5px}
+.t-original .cv-edt{display:none}
+.t-original .cv-cert{font-size:10.5px;padding:1px 0}
+.t-original .cv-cert::before{content:'• '}
+.t-original .cv-soft-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px 14px;font-size:10.5px}
+.t-original .cv-soft-item::before{content:'• '}
+.t-original .cv-proj{margin-bottom:8px;font-size:10.5px;line-height:1.6}
+.t-original .cv-proj-name{font-weight:700;font-size:11px}
+.t-original .cv-proj-line{margin-bottom:1px}
+.t-original .cv-proj-line b{font-weight:600}
+
+/* CLASSIC */
+.t-classic{font-family:var(--cvf,'Lato'),sans-serif;color:#222}
+.t-classic .cv-head{background:var(--cv-accent);color:#fff;padding:26px 38px 20px;display:flex;gap:16px;align-items:flex-start}
+.t-classic .cv-head-text{flex:1}
+.t-classic .cv-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3);flex-shrink:0}
+.t-classic .cv-name{font-size:24px;font-weight:700}
+.t-classic .cv-role{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
+.t-classic .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:9px}
+.t-classic .cv-c{font-size:10.5px;color:rgba(255,255,255,.82)}
+.t-classic .cv-cols{padding:22px 38px;display:grid;grid-template-columns:1fr 190px;gap:30px}
+.t-classic .cv-stitle{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cv-accent);border-bottom:2px solid var(--cv-accent);padding-bottom:4px;margin-bottom:10px}
+.t-classic .cv-sec{margin-bottom:18px}
+.t-classic .cv-job{margin-bottom:12px}
+.t-classic .cv-jtitle{font-weight:700;font-size:12.5px}
+.t-classic .cv-jmeta{font-size:10.5px;color:#555;margin:2px 0 4px;display:flex;flex-wrap:wrap;gap:8px}
+.t-classic .cv-jdesc{font-size:11px;line-height:1.6;color:#333}
+.t-classic .cv-jdesc ul{padding-left:14px}
+.t-classic .cv-jdesc li{margin-bottom:2px}
+.t-classic .cv-pills{display:flex;flex-wrap:wrap;gap:4px}
+.t-classic .cv-pill{background:#e8edf5;border-radius:3px;padding:1px 7px;font-size:10px;color:var(--cv-accent)}
+.t-classic .cv-edu{margin-bottom:8px}
+.t-classic .cv-edeg{font-weight:600;font-size:11.5px}
+.t-classic .cv-esch{font-size:10.5px;color:#555}
+.t-classic .cv-edt{font-size:10px;color:#888}
+.t-classic .cv-cert{font-size:11px;padding:3px 0;border-bottom:1px solid #eee}
+
+/* MODERN */
+.t-modern{font-family:var(--cvf,'DM Sans'),sans-serif;color:#1a1a2e;padding:36px}
+.t-modern .cv-head{border-left:4px solid var(--cv-accent);padding-left:14px;margin-bottom:26px;display:flex;gap:14px;align-items:flex-start}
+.t-modern .cv-head-text{flex:1}
+.t-modern .cv-photo{width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.t-modern .cv-name{font-size:28px;font-weight:600;color:#1a1a2e}
+.t-modern .cv-role{font-size:12px;color:var(--cv-accent);font-weight:500;margin-top:2px}
+.t-modern .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:6px}
+.t-modern .cv-c{font-size:10.5px;color:#555}
+.t-modern .cv-cols{display:grid;grid-template-columns:1fr 180px;gap:34px}
+.t-modern .cv-stitle{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cv-accent);margin-bottom:11px}
+.t-modern .cv-sec{margin-bottom:22px}
+.t-modern .cv-job{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #eee}
+.t-modern .cv-job:last-child{border-bottom:none}
+.t-modern .cv-jtitle{font-weight:600;font-size:12.5px}
+.t-modern .cv-jmeta{font-size:10.5px;color:#888;margin:2px 0 6px;display:flex;flex-wrap:wrap;gap:8px}
+.t-modern .cv-jdesc{font-size:11px;line-height:1.65;color:#444}
+.t-modern .cv-jdesc ul{padding-left:14px}
+.t-modern .cv-jdesc li{margin-bottom:2px}
+.t-modern .cv-pills{display:flex;flex-wrap:wrap;gap:4px}
+.t-modern .cv-pill{background:#f0eeff;border-radius:20px;padding:2px 9px;font-size:10px;color:var(--cv-accent);font-weight:500}
+.t-modern .cv-edu{margin-bottom:10px}
+.t-modern .cv-edeg{font-weight:600;font-size:11.5px}
+.t-modern .cv-esch{font-size:10.5px;color:#666}
+.t-modern .cv-edt{font-size:10px;color:#aaa}
+.t-modern .cv-cert{font-size:11px;padding:3px 0;color:#444}
+
+/* EXECUTIVE */
+.t-executive{font-family:var(--cvf,'Cormorant Garamond'),serif;color:#1c1c1c}
+.t-executive .cv-head{padding:36px 46px 22px;border-bottom:2px solid var(--cv-accent);display:flex;gap:18px;align-items:flex-start}
+.t-executive .cv-head-text{flex:1}
+.t-executive .cv-photo{width:68px;height:68px;border-radius:4px;object-fit:cover;flex-shrink:0}
+.t-executive .cv-name{font-size:34px;font-weight:700;letter-spacing:-.5px}
+.t-executive .cv-role{font-size:14px;color:#666;font-style:italic;margin-top:4px}
+.t-executive .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px}
+.t-executive .cv-c{font-size:11.5px;color:#444}
+.t-executive .cv-cols{padding:24px 46px;display:grid;grid-template-columns:1fr 185px;gap:38px}
+.t-executive .cv-stitle{font-size:15px;font-weight:600;color:var(--cv-accent);margin-bottom:11px;border-bottom:1px solid #ddd;padding-bottom:4px}
+.t-executive .cv-sec{margin-bottom:20px}
+.t-executive .cv-job{margin-bottom:15px}
+.t-executive .cv-jtitle{font-weight:600;font-size:13.5px}
+.t-executive .cv-jmeta{font-size:11.5px;color:#666;font-style:italic;margin:2px 0 6px;display:flex;gap:10px}
+.t-executive .cv-jdesc{font-size:12px;line-height:1.7;color:#333}
+.t-executive .cv-jdesc ul{padding-left:16px}
+.t-executive .cv-jdesc li{margin-bottom:2px}
+.t-executive .cv-pills{display:flex;flex-direction:column;gap:3px}
+.t-executive .cv-pill{font-size:11.5px;color:#333;padding:1px 0;border-bottom:1px dotted #ccc}
+.t-executive .cv-edu{margin-bottom:11px}
+.t-executive .cv-edeg{font-weight:600;font-size:13px}
+.t-executive .cv-esch{font-size:11px;color:#555;font-style:italic}
+.t-executive .cv-edt{font-size:10.5px;color:#888}
+.t-executive .cv-cert{font-size:11.5px;padding:3px 0;border-bottom:1px dotted #ddd}
+
+/* TECH */
+.t-tech{font-family:var(--cvf,'Space Mono'),monospace;background:#0d1117;color:#e6edf3}
+.t-tech .cv-head{background:#161b22;padding:26px 34px 20px;border-bottom:1px solid #30363d;display:flex;gap:14px;align-items:flex-start}
+.t-tech .cv-head-text{flex:1}
+.t-tech .cv-photo{width:56px;height:56px;border-radius:4px;object-fit:cover;border:1px solid #30363d;flex-shrink:0}
+.t-tech .cv-name{font-size:20px;font-weight:700;color:var(--cv-accent)}
+.t-tech .cv-role{font-size:10px;color:#7d8590;margin-top:4px}
+.t-tech .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:10px}
+.t-tech .cv-c{font-size:9.5px;color:#7d8590}
+.t-tech .cv-cols{padding:20px 34px;display:grid;grid-template-columns:1fr 175px;gap:26px}
+.t-tech .cv-stitle{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--cv-accent);margin-bottom:9px;border-bottom:1px solid #21262d;padding-bottom:4px}
+.t-tech .cv-sec{margin-bottom:18px}
+.t-tech .cv-job{margin-bottom:13px;padding-left:9px;border-left:2px solid #21262d}
+.t-tech .cv-jtitle{font-weight:700;font-size:11.5px;color:#e6edf3}
+.t-tech .cv-jmeta{font-size:9.5px;color:#7d8590;margin:2px 0 5px;display:flex;gap:8px}
+.t-tech .cv-jdesc{font-size:10px;line-height:1.65;color:#8b949e}
+.t-tech .cv-jdesc ul{padding-left:12px}
+.t-tech .cv-jdesc li{margin-bottom:2px}
+.t-tech .cv-pills{display:flex;flex-wrap:wrap;gap:3px}
+.t-tech .cv-pill{background:#21262d;border:1px solid #30363d;border-radius:3px;padding:1px 6px;font-size:9px;color:var(--cv-accent)}
+.t-tech .cv-edu{margin-bottom:9px}
+.t-tech .cv-edeg{font-weight:700;font-size:11px;color:#e6edf3}
+.t-tech .cv-esch{font-size:9.5px;color:#7d8590}
+.t-tech .cv-edt{font-size:9px;color:#484f58}
+.t-tech .cv-cert{font-size:10px;padding:2px 0;color:#8b949e;border-bottom:1px solid #21262d}
+
+/* CREATIVE */
+.t-creative{font-family:var(--cvf,'Playfair Display'),serif;color:#1a0a00}
+.t-creative .cv-head{background:linear-gradient(135deg,var(--cv-accent) 0%,#f06060 100%);color:#fff;padding:28px 38px 22px;display:flex;gap:14px;align-items:flex-start}
+.t-creative .cv-head-text{flex:1}
+.t-creative .cv-photo{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.t-creative .cv-name{font-size:28px;font-weight:700}
+.t-creative .cv-role{font-size:12.5px;color:rgba(255,255,255,.82);font-style:italic;margin-top:3px}
+.t-creative .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:9px}
+.t-creative .cv-c{font-size:10.5px;color:rgba(255,255,255,.85)}
+.t-creative .cv-cols{padding:26px 38px;display:grid;grid-template-columns:1fr 188px;gap:32px}
+.t-creative .cv-stitle{font-size:14px;font-weight:700;color:#f06060;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.t-creative .cv-stitle::after{content:'';flex:1;height:1px;background:#f5e5d5}
+.t-creative .cv-sec{margin-bottom:20px}
+.t-creative .cv-job{margin-bottom:13px}
+.t-creative .cv-jtitle{font-weight:700;font-size:13px;color:#1a0a00}
+.t-creative .cv-jmeta{font-size:10.5px;color:#b06030;font-style:italic;margin:2px 0 5px;display:flex;gap:8px}
+.t-creative .cv-jdesc{font-family:'Lato',sans-serif;font-size:11px;line-height:1.65;color:#3a2010}
+.t-creative .cv-jdesc ul{padding-left:14px}
+.t-creative .cv-jdesc li{margin-bottom:2px}
+.t-creative .cv-pills{display:flex;flex-wrap:wrap;gap:4px}
+.t-creative .cv-pill{background:#fff0e8;border:1px solid #f7a26a;border-radius:3px;padding:1px 7px;font-family:'Lato',sans-serif;font-size:9.5px;color:#c05020}
+.t-creative .cv-edu{margin-bottom:10px}
+.t-creative .cv-edeg{font-weight:700;font-size:12px}
+.t-creative .cv-esch{font-family:'Lato',sans-serif;font-size:10.5px;color:#664422}
+.t-creative .cv-edt{font-family:'Lato',sans-serif;font-size:10px;color:#998877}
+.t-creative .cv-cert{font-family:'Lato',sans-serif;font-size:10.5px;padding:2px 0;border-bottom:1px solid #f5e5d5}
+
+/* CLEAN */
+.t-clean{font-family:var(--cvf,'DM Sans'),sans-serif;color:#2d2d2d;display:grid;grid-template-columns:195px 1fr;min-height:100%}
+.t-clean .cv-head{display:none}
+.t-clean .cv-cols{display:contents}
+.t-clean .cv-sidebar{background:var(--cv-accent);color:#fff;padding:26px 16px}
+.t-clean .cv-main{padding:26px 26px}
+.t-clean .cv-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3);margin-bottom:10px;display:block}
+.t-clean .cv-cname{font-size:18px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:3px}
+.t-clean .cv-crole{font-size:10.5px;color:rgba(255,255,255,.6);margin-bottom:16px}
+.t-clean .cv-ccontacts{display:flex;flex-direction:column;gap:5px}
+.t-clean .cv-c{font-size:10px;color:rgba(255,255,255,.72)}
+.t-clean .cv-sstitle{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:4px;margin:16px 0 8px;font-weight:700}
+.t-clean .cv-spill{background:rgba(255,255,255,.1);border-radius:3px;padding:2px 5px;font-size:9.5px;color:rgba(255,255,255,.82)}
+.t-clean .cv-spills{display:flex;flex-wrap:wrap;gap:3px}
+.t-clean .cv-sedu{margin-bottom:9px}
+.t-clean .cv-edeg{font-weight:600;font-size:11px;color:#fff}
+.t-clean .cv-esch{font-size:10px;color:rgba(255,255,255,.6)}
+.t-clean .cv-edt{font-size:9.5px;color:rgba(255,255,255,.35)}
+.t-clean .cv-scert{font-size:10px;color:rgba(255,255,255,.72);padding:2px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.t-clean .cv-summary{font-size:11.5px;line-height:1.7;color:#444;background:#f5f7fb;padding:10px;border-radius:5px;border-left:3px solid var(--cv-accent);margin-bottom:18px}
+.t-clean .cv-stitle{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--cv-accent);border-bottom:2px solid var(--cv-accent);padding-bottom:4px;margin-bottom:11px;font-weight:700}
+.t-clean .cv-sec{margin-bottom:18px}
+.t-clean .cv-job{margin-bottom:12px}
+.t-clean .cv-jtitle{font-weight:600;font-size:12px}
+.t-clean .cv-jmeta{font-size:10.5px;color:#888;margin:2px 0 5px;display:flex;gap:8px}
+.t-clean .cv-jdesc{font-size:11px;line-height:1.65;color:#444}
+.t-clean .cv-jdesc ul{padding-left:14px}
+.t-clean .cv-jdesc li{margin-bottom:2px}
+
+/* MINIMAL */
+.t-minimal{font-family:var(--cvf,'DM Sans'),sans-serif;color:#111;padding:40px 48px}
+.t-minimal .cv-head{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #111;display:flex;gap:16px;align-items:flex-start}
+.t-minimal .cv-head-text{flex:1}
+.t-minimal .cv-photo{width:60px;height:60px;border-radius:4px;object-fit:cover;flex-shrink:0}
+.t-minimal .cv-name{font-size:28px;font-weight:600;letter-spacing:-1px}
+.t-minimal .cv-role{font-size:12px;color:#888;margin-top:3px}
+.t-minimal .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px}
+.t-minimal .cv-c{font-size:10.5px;color:#666}
+.t-minimal .cv-cols{display:grid;grid-template-columns:1fr 165px;gap:40px}
+.t-minimal .cv-stitle{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cv-accent);margin-bottom:11px}
+.t-minimal .cv-sec{margin-bottom:22px}
+.t-minimal .cv-job{margin-bottom:15px}
+.t-minimal .cv-jtitle{font-weight:600;font-size:12.5px}
+.t-minimal .cv-jmeta{font-size:10.5px;color:#999;margin:2px 0 5px;display:flex;gap:12px}
+.t-minimal .cv-jdesc{font-size:11px;line-height:1.7;color:#444}
+.t-minimal .cv-jdesc ul{padding-left:15px}
+.t-minimal .cv-jdesc li{margin-bottom:2px}
+.t-minimal .cv-pills{display:flex;flex-wrap:wrap;gap:4px}
+.t-minimal .cv-pill{background:#f4f4f4;border-radius:3px;padding:1px 8px;font-size:10px;color:#333}
+.t-minimal .cv-edu{margin-bottom:10px}
+.t-minimal .cv-edeg{font-weight:600;font-size:12px}
+.t-minimal .cv-esch{font-size:10.5px;color:#666}
+.t-minimal .cv-edt{font-size:10px;color:#aaa}
+.t-minimal .cv-cert{font-size:11px;padding:3px 0;color:#444;border-bottom:1px solid #eee}
+
+/* ELEGANT */
+.t-elegant{font-family:var(--cvf,'Merriweather'),serif;color:#1a1200}
+.t-elegant .cv-head{background:linear-gradient(135deg,#4a3000,var(--cv-accent));color:#fff;padding:28px 42px 22px;display:flex;gap:16px;align-items:flex-start}
+.t-elegant .cv-head-text{flex:1}
+.t-elegant .cv-photo{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,224,130,.35);flex-shrink:0}
+.t-elegant .cv-name{font-size:26px;font-weight:700;color:#ffe082}
+.t-elegant .cv-role{font-size:11px;color:rgba(255,224,130,.75);font-style:italic;margin-top:4px}
+.t-elegant .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:11px}
+.t-elegant .cv-c{font-size:10px;color:rgba(255,224,130,.8)}
+.t-elegant .cv-cols{padding:22px 42px;display:grid;grid-template-columns:1fr 185px;gap:34px}
+.t-elegant .cv-stitle{font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cv-accent);border-bottom:1px solid #c9a84c;padding-bottom:4px;margin-bottom:10px}
+.t-elegant .cv-sec{margin-bottom:18px}
+.t-elegant .cv-job{margin-bottom:13px}
+.t-elegant .cv-jtitle{font-weight:700;font-size:12px;color:#4a3000}
+.t-elegant .cv-jmeta{font-size:10px;color:var(--cv-accent);font-style:italic;margin:2px 0 5px;display:flex;gap:10px}
+.t-elegant .cv-jdesc{font-size:10.5px;line-height:1.7;color:#333}
+.t-elegant .cv-jdesc ul{padding-left:14px}
+.t-elegant .cv-jdesc li{margin-bottom:2px}
+.t-elegant .cv-pills{display:flex;flex-wrap:wrap;gap:4px}
+.t-elegant .cv-pill{background:#fff8e1;border:1px solid #c9a84c;border-radius:3px;padding:1px 7px;font-size:9.5px;color:#6b4c00}
+.t-elegant .cv-edu{margin-bottom:10px}
+.t-elegant .cv-edeg{font-weight:700;font-size:11.5px;color:#4a3000}
+.t-elegant .cv-esch{font-size:10.5px;color:#666;font-style:italic}
+.t-elegant .cv-edt{font-size:10px;color:#aaa}
+.t-elegant .cv-cert{font-size:10.5px;padding:3px 0;border-bottom:1px solid #e8d8a0;color:#444}
+
+/* NORDIC */
+.t-nordic{font-family:var(--cvf,'Raleway'),sans-serif;color:#1a2a1a}
+.t-nordic .cv-head{background:var(--cv-accent);color:#fff;padding:26px 38px 20px;display:flex;gap:14px;align-items:flex-start}
+.t-nordic .cv-head-text{flex:1}
+.t-nordic .cv-photo{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.28);flex-shrink:0}
+.t-nordic .cv-name{font-size:24px;font-weight:700;color:#fff}
+.t-nordic .cv-role{font-size:11.5px;color:rgba(255,255,255,.75);margin-top:3px}
+.t-nordic .cv-contacts{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:9px}
+.t-nordic .cv-c{font-size:10px;color:rgba(255,255,255,.8)}
+.t-nordic .cv-cols{padding:22px 38px;display:grid;grid-template-columns:1fr 185px;gap:30px}
+.t-nordic .cv-stitle{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cv-accent);border-left:3px solid var(--cv-accent);padding-left:6px;margin-bottom:10px}
+.t-nordic .cv-sec{margin-bottom:18px}
+.t-nordic .cv-job{margin-bottom:12px}
+.t-nordic .cv-jtitle{font-weight:700;font-size:12px}
+.t-nordic .cv-jmeta{font-size:10px;color:var(--cv-accent);margin:2px 0 5px;display:flex;gap:10px}
+.t-nordic .cv-jdesc{font-size:11px;line-height:1.65;color:#333}
+.t-nordic .cv-jdesc ul{padding-left:14px}
+.t-nordic .cv-jdesc li{margin-bottom:2px}
+.t-nordic .cv-pills{display:flex;flex-wrap:wrap;gap:4px}
+.t-nordic .cv-pill{background:#e8f5e9;border-radius:4px;padding:1px 8px;font-size:10px;color:var(--cv-accent)}
+.t-nordic .cv-edu{margin-bottom:10px}
+.t-nordic .cv-edeg{font-weight:700;font-size:12px}
+.t-nordic .cv-esch{font-size:10.5px;color:#555}
+.t-nordic .cv-edt{font-size:10px;color:#888}
+.t-nordic .cv-cert{font-size:11px;padding:2px 0;border-bottom:1px solid #c8e6c9;color:#333}
+</style>
+</head>
+<body>
+<h1 class="sr-only">Free CV Builder — Create a Professional Resume Online and Download as PDF or Word</h1>
+<noscript><div style="position:fixed;inset:0;z-index:9999;background:#0f0f13;color:#e8e8f0;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;font-family:sans-serif"><div><h2>JavaScript is required</h2><p>CV Forge runs entirely in your browser. Please enable JavaScript to build your CV.</p></div></div></noscript>
+
+<!-- OVERLAYS -->
+<!-- ONBOARDING MODAL -->
+<div class="modal-bg" id="m-onboard">
+  <div class="modal-box" style="max-width:480px">
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:36px;margin-bottom:8px">⚡</div>
+      <h4 style="font-size:18px;margin-bottom:6px">Welcome to CV Forge Pro</h4>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.6">The complete CV builder — edit, preview, and export your professional CV in seconds.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">✏️</span>
+        <div><b>Edit tab</b> — Fill in your personal info, jobs, skills, and more. Changes appear in real time.</div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">👁</span>
+        <div><b>Preview tab</b> — See your full CV. Switch between 10 themes, change colors and fonts.</div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">📥</span>
+        <div><b>PDF / Word / TXT</b> — Download your CV in any format. PDF for applying, Word to edit further, TXT for ATS systems.</div>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:12px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">💾</span>
+        <div><b>Auto-saves every 30 seconds</b> to your browser. Save named profiles for different job types.</div>
+      </div>
+    </div>
+    <button class="mbtn-ok" style="width:100%;padding:12px;font-size:14px" onclick="closeOnboarding()">🚀 Get Started</button>
+  </div>
+</div>
+
+<!-- PRINT HELP MODAL -->
+<div class="modal-bg" id="m-printhelp">
+  <div class="modal-box">
+    <h4>📄 How to Save as PDF</h4>
+    <div style="font-size:12.5px;color:var(--muted);line-height:1.8;margin-bottom:12px">
+      <b style="color:var(--text)">1.</b> Click the <b style="color:var(--text)">PDF</b> button — a new window opens with your CV.<br>
+      <b style="color:var(--text)">2.</b> Your device's print dialog appears automatically.<br>
+      <b style="color:var(--text)">3.</b> Change <b style="color:var(--text)">Destination</b> to <b style="color:var(--text)">"Save as PDF"</b>.<br>
+      <b style="color:var(--text)">4.</b> Set <b style="color:var(--text)">Paper size</b> to <b style="color:var(--text)">A4</b>.<br>
+      <b style="color:var(--text)">5.</b> Set margins to <b style="color:var(--text)">None</b> or <b style="color:var(--text)">Default</b>.<br>
+      <b style="color:var(--text)">6.</b> Click <b style="color:var(--text)">Save</b>.
+    </div>
+    <p style="font-size:11px;color:var(--muted)">⚠️ If a pop-up blocker prevents the window, allow pop-ups for this page in your browser settings.</p>
+    <div class="modal-btns"><button class="mbtn-ok" onclick="closeModal('m-printhelp');downloadPDF()">📄 Open PDF Now</button><button class="mbtn-cancel" onclick="closeModal('m-printhelp')">Close</button></div>
+  </div>
+</div>
+
+<div id="dl-ov"><div class="dl-box"><div class="spinner"></div><h3 id="dl-t">Processing…</h3><p id="dl-s">Please wait</p></div></div>
+<div id="toast"></div>
+
+<!-- JSON BACKUP MODAL -->
+<div class="modal-bg" id="m-json">
+  <div class="modal-box">
+    <h4>💾 Backup &amp; Restore</h4>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5">Download your full CV (including photo) as a JSON file you can keep as a backup or move to another device.</p>
+    <button class="tbtn tbtn-save" style="width:100%;justify-content:center;padding:11px;margin-bottom:8px" onclick="exportJSON()">⬇️ Download JSON Backup</button>
+    <div class="fg"><label>Restore from a JSON backup file</label>
+      <input type="file" id="json-input" accept=".json,application/json" onchange="importJSON(this)" style="font-size:12px">
+    </div>
+    <div class="modal-btns"><button class="mbtn-cancel" onclick="closeModal('m-json')">Close</button></div>
+  </div>
+</div>
+
+<!-- DATE PICK MODAL -->
+<div class="modal-bg" id="m-datepick">
+  <div class="modal-box" style="max-width:340px"><h4>📅 Pick Date</h4>
+    <div id="dp-body"></div>
+    <div class="modal-btns" style="margin-top:10px"><button class="mbtn-cancel" onclick="closeModal('m-datepick')">Cancel</button></div>
+  </div>
+</div>
+
+<!-- ADD SECTION MODAL -->
+<div class="modal-bg" id="m-addsec">
+  <div class="modal-box"><h4>➕ Add Custom Section</h4>
+    <div class="fg"><label>Section Title</label><input type="text" id="new-sec-name" placeholder="e.g. Volunteer Work, Awards, Publications"></div>
+    <div class="modal-btns"><button class="mbtn-cancel" onclick="closeModal('m-addsec')">Cancel</button><button class="mbtn-ok" onclick="confirmAddSec()">Add</button></div>
+  </div>
+</div>
+
+<!-- SAVE PROFILE MODAL -->
+<div class="modal-bg" id="m-profile">
+  <div class="modal-box"><h4>💾 Save As Profile</h4>
+    <div class="fg"><label>Profile Name</label><input type="text" id="new-profile-name" placeholder="e.g. Frontend Role, Management Role"></div>
+    <div class="modal-btns"><button class="mbtn-cancel" onclick="closeModal('m-profile')">Cancel</button><button class="mbtn-ok" onclick="confirmSaveProfile()">Save</button></div>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-bg" id="m-share">
+  <div class="modal-box"><h4>🔗 Share Your CV</h4>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Your CV data is encoded into a URL. Anyone with this link can view and download your CV.</p>
+    <div class="share-box"><input type="text" id="share-url" readonly><button class="share-copy-btn" onclick="copyShareUrl()">Copy</button></div>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px">⚠️ Link contains all your CV data. Only share with trusted people.</p>
+    <div class="modal-btns"><button class="mbtn-cancel" onclick="closeModal('m-share')">Close</button></div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <div class="logo">⚡ CV FORGE</div>
+  <div class="spacer"></div>
+  <button class="tbtn tbtn-ghost hist-btn" id="undo-btn" onclick="undo()" title="Undo" aria-label="Undo" disabled style="font-size:15px;padding:6px 9px">↩</button>
+  <button class="tbtn tbtn-ghost hist-btn" id="redo-btn" onclick="redo()" title="Redo" aria-label="Redo" disabled style="font-size:15px;padding:6px 9px">↪</button>
+  <button class="tbtn tbtn-download" onclick="openDownloadMenu()" title="Download CV" aria-label="Download CV">⬇️ Download</button>
+  <button class="tbtn tbtn-ghost" onclick="openMoreMenu()" title="More options" aria-label="More options" style="font-size:18px;padding:5px 10px">⋯</button>
+</div>
+
+<!-- DOWNLOAD MENU MODAL -->
+<div class="modal-bg" id="m-download">
+  <div class="modal-box">
+    <h4>⬇️ Download Your CV</h4>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.5">Choose a format to save or share your CV:</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button class="dl-opt" onclick="closeModal('m-download');printHelp()">
+        <span style="font-size:24px">📄</span>
+        <div><div class="dl-opt-t">PDF</div><div class="dl-opt-s">Best for applying — opens print dialog, choose "Save as PDF"</div></div>
+      </button>
+      <button class="dl-opt" onclick="closeModal('m-download');downloadWord()">
+        <span style="font-size:24px">📝</span>
+        <div><div class="dl-opt-t">Word (.docx)</div><div class="dl-opt-s">Editable document you can open in Microsoft Word or Google Docs</div></div>
+      </button>
+      <button class="dl-opt" onclick="closeModal('m-download');downloadTXT()">
+        <span style="font-size:24px">📋</span>
+        <div><div class="dl-opt-t">Plain Text (ATS)</div><div class="dl-opt-s">Simple text format that applicant tracking systems read perfectly</div></div>
+      </button>
+      <button class="dl-opt" onclick="closeModal('m-download');generateShareLink()">
+        <span style="font-size:24px">🔗</span>
+        <div><div class="dl-opt-t">Share Link</div><div class="dl-opt-s">Get a URL anyone can open to view your CV</div></div>
+      </button>
+    </div>
+    <div class="modal-btns"><button class="mbtn-cancel" onclick="closeModal('m-download')">Cancel</button></div>
+  </div>
+</div>
+
+<!-- MORE MENU MODAL -->
+<div class="modal-bg" id="m-more">
+  <div class="modal-box">
+    <h4>⋯ More Options</h4>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button class="dl-opt" onclick="closeModal('m-more');toggleDarkMode()"><span style="font-size:20px" id="more-dark-icon">☀️</span><div><div class="dl-opt-t">Toggle Dark / Light Mode</div></div></button>
+      <button class="dl-opt" onclick="closeModal('m-more');openModal('m-json')"><span style="font-size:20px">💾</span><div><div class="dl-opt-t">Backup / Restore</div><div class="dl-opt-s">Save or load a JSON backup file</div></div></button>
+      <button class="dl-opt" onclick="closeModal('m-more');resetCV()"><span style="font-size:20px">↺</span><div><div class="dl-opt-t">Load Sample CV</div><div class="dl-opt-s">See an example of a complete CV</div></div></button>
+      <a class="dl-opt" href="blog/index.html" style="text-decoration:none"><span style="font-size:20px">📚</span><div><div class="dl-opt-t">CV Writing Guides</div><div class="dl-opt-s">Tips on summaries, bullet points, ATS and more</div></div></a>
+      <button class="dl-opt" onclick="closeModal('m-more');blankCV()"><span style="font-size:20px">📄</span><div><div class="dl-opt-t">Start Blank CV</div><div class="dl-opt-s">Clear the sample and write your own</div></div></button>
+    </div>
+    <div class="modal-btns"><button class="mbtn-cancel" onclick="closeModal('m-more')">Close</button></div>
+  </div>
+</div>
+
+<!-- TABBAR (mobile) -->
+<div id="tabbar">
+  <button class="tab-btn active" id="tab-edit" onclick="switchTab('edit')">✏️ Edit</button>
+  <button class="tab-btn" id="tab-prev" onclick="switchTab('preview')">👁 Preview</button>
+</div>
+
+<!-- EDITOR -->
+<div id="editor-panel">
+
+  <!-- CV Score -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">📊</span><span class="sec-title-text">CV Score</span><span class="chev">▼</span></div>
+    <div class="sec-body open">
+      <div class="score-bar-wrap"><div class="score-bar" id="score-bar" style="width:0%"></div></div>
+      <div class="score-label" id="score-label">Calculating…</div>
+      <div class="score-tips" id="score-tips"></div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap" id="score-badges"></div>
+      <div class="page-indicator ok" id="page-ind">📄 Estimating page count…</div>
+    </div>
+  </div>
+
+  <!-- Profiles -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">🗂</span><span class="sec-title-text">CV Profiles</span><span class="chev">▼</span></div>
+    <div class="sec-body open">
+      <p style="font-size:11.5px;color:var(--muted)">Save different versions for different roles</p>
+      <div class="profile-chips" id="profile-chips"></div>
+      <div style="display:flex;gap:6px">
+        <button class="tbtn tbtn-save" style="flex:1;justify-content:center" onclick="openModal('m-profile')">💾 Save Current</button>
+        <button class="tbtn tbtn-ghost" style="flex:1;justify-content:center" onclick="loadAutoSave()">🔄 Restore Saved</button>
+      </div>
+      <p style="font-size:10.5px;color:var(--muted)">✅ Auto-saves every 30s to browser storage</p>
+    </div>
+  </div>
+
+  <!-- Theme -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">🎨</span><span class="sec-title-text">Design Theme</span><span class="chev">▼</span></div>
+    <div class="sec-body open">
+      <div class="theme-grid">
+        <div class="theme-card mini-original active" data-theme="original" onclick="setTheme('original',this)"><span>Traditional</span></div>
+        <div class="theme-card mini-classic" data-theme="classic" onclick="setTheme('classic',this)"><span>Classic</span></div>
+        <div class="theme-card mini-modern" data-theme="modern" onclick="setTheme('modern',this)"><span>Modern</span></div>
+        <div class="theme-card mini-executive" data-theme="executive" onclick="setTheme('executive',this)"><span>Executive</span></div>
+        <div class="theme-card mini-tech" data-theme="tech" onclick="setTheme('tech',this)"><span>Tech</span></div>
+        <div class="theme-card mini-creative" data-theme="creative" onclick="setTheme('creative',this)"><span>Creative</span></div>
+        <div class="theme-card mini-clean" data-theme="clean" onclick="setTheme('clean',this)"><span>Clean</span></div>
+        <div class="theme-card mini-minimal" data-theme="minimal" onclick="setTheme('minimal',this)"><span>Minimal</span></div>
+        <div class="theme-card mini-elegant" data-theme="elegant" onclick="setTheme('elegant',this)"><span>Elegant</span></div>
+        <div class="theme-card mini-nordic" data-theme="nordic" onclick="setTheme('nordic',this)"><span>Nordic</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Colors & Fonts -->
+  <div class="sec-card">
+    <div class="sec-head" onclick="toggleSec(this)"><span class="sec-icon">🖌</span><span class="sec-title-text">Colors &amp; Fonts</span><span class="chev">▼</span></div>
+    <div class="sec-body">
+      <div class="fg">
+        <label>Accent / Header Color</label>
+        <div class="swatch-row" id="swatch-row">
+          <div class="swatch active" style="background:#2c3e6b" data-color="#2c3e6b" onclick="setAccent('#2c3e6b',this)"></div>
+          <div class="swatch" style="background:#1a2742" data-color="#1a2742" onclick="setAccent('#1a2742',this)"></div>
+          <div class="swatch" style="background:#7c6af7" data-color="#7c6af7" onclick="setAccent('#7c6af7',this)"></div>
+          <div class="swatch" style="background:#c0392b" data-color="#c0392b" onclick="setAccent('#c0392b',this)"></div>
+          <div class="swatch" style="background:#2d6a4f" data-color="#2d6a4f" onclick="setAccent('#2d6a4f',this)"></div>
+          <div class="swatch" style="background:#8B6914" data-color="#8B6914" onclick="setAccent('#8B6914',this)"></div>
+          <div class="swatch" style="background:#1a3a4a" data-color="#1a3a4a" onclick="setAccent('#1a3a4a',this)"></div>
+          <div class="swatch" style="background:#4a1a4a" data-color="#4a1a4a" onclick="setAccent('#4a1a4a',this)"></div>
+          <div class="swatch" style="background:#2a2a2a" data-color="#2a2a2a" onclick="setAccent('#2a2a2a',this)"></div>
+          <input type="color" id="custom-color" value="#2c3e6b" oninput="setAccent(this.value,null)" title="Custom color">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Font Family</label>
+        <div class="font-grid" id="font-grid">
+          <div class="font-card active" data-font="inherit" onclick="setFont('inherit',this)"><div class="font-name">Theme Default</div><div class="font-sample">Aa</div></div>
+          <div class="font-card" data-font="'Lato',sans-serif" onclick="setFont(&quot;'Lato',sans-serif&quot;,this)"><div class="font-name">Lato</div><div class="font-sample" style="font-family:'Lato',sans-serif">Aa</div></div>
+          <div class="font-card" data-font="'Inter',sans-serif" onclick="setFont(&quot;'Inter',sans-serif&quot;,this)"><div class="font-name">Inter</div><div class="font-sample" style="font-family:'Inter',sans-serif">Aa</div></div>
+          <div class="font-card" data-font="'Roboto',sans-serif" onclick="setFont(&quot;'Roboto',sans-serif&quot;,this)"><div class="font-name">Roboto</div><div class="font-sample" style="font-family:'Roboto',sans-serif">Aa</div></div>
+          <div class="font-card" data-font="'Open Sans',sans-serif" onclick="setFont(&quot;'Open Sans',sans-serif&quot;,this)"><div class="font-name">Open Sans</div><div class="font-sample" style="font-family:'Open Sans',sans-serif">Aa</div></div>
+          <div class="font-card" data-font="'Merriweather',serif" onclick="setFont(&quot;'Merriweather',serif&quot;,this)"><div class="font-name">Merriweather</div><div class="font-sample" style="font-family:'Merriweather',serif">Aa</div></div>
+          <div class="font-card" data-font="'Cormorant Garamond',serif" onclick="setFont(&quot;'Cormorant Garamond',serif&quot;,this)"><div class="font-name">Cormorant</div><div class="font-sample" style="font-family:'Cormorant Garamond',serif">Aa</div></div>
+          <div class="font-card" data-font="'Raleway',sans-serif" onclick="setFont(&quot;'Raleway',sans-serif&quot;,this)"><div class="font-name">Raleway</div><div class="font-sample" style="font-family:'Raleway',sans-serif">Aa</div></div>
+        </div>
+      </div>
+      <div class="fg" style="flex-direction:row;align-items:center;gap:8px">
+        <input type="checkbox" id="show-qr" onchange="render()">
+        <label for="show-qr" style="font-size:12px;cursor:pointer">Show QR code in header (links to GitHub/LinkedIn)</label>
+      </div>
+      <div class="fg">
+        <label>Text Direction (for Arabic / RTL languages)</label>
+        <select id="cv-dir" onchange="setDir(this.value)">
+          <option value="ltr">Left-to-Right (English)</option>
+          <option value="rtl">Right-to-Left (Arabic / العربية)</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Page Margins: <span id="margin-val" style="color:var(--accent);font-weight:600">18mm</span></label>
+        <input type="range" id="margin-slider" min="8" max="30" step="1" value="18" oninput="setMargin(this.value)">
+        <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted)"><span>Tight (8mm)</span><span>Spacious (30mm)</span></div>
+      </div>
+      <div class="fg">
+        <label>Line Spacing: <span id="spacing-val" style="color:var(--accent);font-weight:600">Normal</span></label>
+        <input type="range" id="spacing-slider" min="0.85" max="1.4" step="0.05" value="1" oninput="setSpacing(this.value)">
+        <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted)"><span>Compact</span><span>Relaxed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Order -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">↕️</span><span class="sec-title-text">Section Order &amp; Visibility</span><span class="chev">▼</span></div>
+    <div class="sec-body open">
+      <p style="font-size:11px;color:var(--muted)">⠿ drag · 👁 show/hide · ✎ rename · ✕ delete custom</p>
+      <div class="sec-order-list" id="sec-order-list"></div>
+      <button class="add-sec-btn" onclick="openModal('m-addsec')">➕ Add Custom Section</button>
+    </div>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">👤</span><span class="sec-title-text">Personal Info</span><span class="chev">▼</span></div>
+    <div class="sec-body open">
+      <div class="photo-area">
+        <img id="photo-preview" class="photo-thumb" src="" alt="">
+        <div id="photo-placeholder" class="photo-placeholder" onclick="document.getElementById('photo-input').click()">📷</div>
+        <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="handlePhoto(this)">
+        <div class="photo-btns">
+          <button class="photo-btn" onclick="document.getElementById('photo-input').click()">📷 Upload Photo</button>
+          <button class="photo-btn" onclick="removePhoto()" style="color:var(--danger)">✕ Remove</button>
+        </div>
+      </div>
+      <div class="fg"><label>Full Name</label><input type="text" id="f-name" value="Alex Morgan" oninput="live()"></div>
+      <div class="fg"><label>Job Title / Tagline</label><input type="text" id="f-tagline" value="Senior Software Engineer" oninput="live()"></div>
+      <div class="fr">
+        <div class="fg"><label>Phone</label><input type="tel" id="f-phone" value="+1 (555) 010-2030" oninput="live()"></div>
+        <div class="fg"><label>Email</label><input type="email" id="f-email" value="alex.morgan@example.com" oninput="live()"></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Location</label><input type="text" id="f-location" value="Austin, TX" oninput="live()"></div>
+        <div class="fg"><label>GitHub username</label><input type="text" id="f-github" value="alex-morgan" oninput="live()"></div>
+      </div>
+      <div class="fg"><label>LinkedIn URL</label><input type="url" id="f-linkedin" value="" placeholder="https://linkedin.com/in/…" oninput="live()"></div>
+      <div class="fg"><label>Portfolio URL</label><input type="url" id="f-portfolio" value="" placeholder="https://…" oninput="live()"></div>
+      <div class="fg">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <label>Career Summary / Objective</label>
+          <span id="summary-wc" style="font-size:10px;color:var(--muted)">0 words</span>
+        </div>
+        <textarea spellcheck="true" id="f-summary" oninput="live();updateWC()">Software engineer with 7+ years of experience building fast, reliable web applications. Skilled in JavaScript, TypeScript and cloud services, with a track record of improving performance, automating workflows and leading small teams to ship on time.</textarea>
+        <div id="summary-hint" style="font-size:10.5px;color:var(--muted);margin-top:3px">💡 Aim for 30–60 words. Use first person and strong action words.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">💼</span><span class="sec-title-text">Work Experience</span><span class="chev">▼</span></div>
+    <div class="sec-body open" id="jobs-wrap"></div>
+  </div>
+
+  <!-- Education -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">🎓</span><span class="sec-title-text">Education</span><span class="chev">▼</span></div>
+    <div class="sec-body open" id="edu-wrap"></div>
+  </div>
+
+  <!-- Skills -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">⚙️</span><span class="sec-title-text">Skills</span><span class="chev">▼</span></div>
+    <div class="sec-body open" id="skills-wrap">
+      <div id="skill-cats"></div>
+      <button class="add-btn" onclick="addSkillCat()">+ Add Category</button>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">🏆</span><span class="sec-title-text">Certifications</span><span class="chev">▼</span></div>
+    <div class="sec-body open" id="cert-wrap"></div>
+  </div>
+
+  <!-- Languages -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">🌍</span><span class="sec-title-text">Languages</span><span class="chev">▼</span></div>
+    <div class="sec-body open" id="lang-wrap"></div>
+  </div>
+
+  <!-- Projects -->
+  <div class="sec-card">
+    <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">🚀</span><span class="sec-title-text">Projects</span><span class="chev">▼</span></div>
+    <div class="sec-body open" id="proj-wrap"></div>
+  </div>
+
+  <div id="custom-editors"></div>
+
+  <!-- References -->
+  <div class="sec-card">
+    <div class="sec-head" onclick="toggleSec(this)"><span class="sec-icon">📇</span><span class="sec-title-text">References</span><span class="chev">▼</span></div>
+    <div class="sec-body" id="ref-wrap">
+      <div class="fg" style="flex-direction:row;align-items:center;gap:8px">
+        <input type="checkbox" id="ref-on-request" onchange="toggleRefRequest()">
+        <label for="ref-on-request" style="font-size:12px;cursor:pointer">Show "References available on request"</label>
+      </div>
+      <div id="ref-list"></div>
+    </div>
+  </div>
+
+  <div class="sec-card">
+    <div class="sec-head" onclick="toggleSec(this)"><span class="sec-icon">&#x2328;</span><span class="sec-title-text">Shortcuts &amp; Tips</span><span class="chev">&#9660;</span></div>
+    <div class="sec-body" style="gap:6px">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:11.5px;align-items:center">
+        <code style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:10px">Ctrl+Z</code><span style="color:var(--muted)">Undo last change</span>
+        <code style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:10px">Ctrl+Y</code><span style="color:var(--muted)">Redo</span>
+        <code style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:10px">Ctrl+Shift+Z</code><span style="color:var(--muted)">Redo (Mac)</span>
+      </div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.65;margin-top:2px">
+        <b style="color:var(--text)">Mobile:</b> Use &#x283F; handles to drag items. Tap &#10002; to rename sections. Tap &#128065; to hide/show sections.
+      </div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.65">
+        <b style="color:var(--text)">PDF tip:</b> In the print dialog, set paper size to A4 and destination to Save as PDF.
+      </div>
+      <button onclick="localStorage.removeItem('cvf_onboarded');checkOnboarding()" class="add-btn">&#128218; Show Welcome Guide</button>
+    </div>
+  </div>
+
+  <!-- FAQ (matches FAQPage structured data in <head>) -->
+  <div class="sec-card">
+    <div class="sec-head" onclick="toggleSec(this)"><span class="sec-icon">❓</span><span class="sec-title-text">Frequently Asked Questions</span><span class="chev">▼</span></div>
+    <div class="sec-body" style="gap:6px">
+      <details style="border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:var(--bg)"><summary style="cursor:pointer;font-size:12.5px;font-weight:600">Is this CV builder really free?</summary><p style="font-size:12px;color:var(--muted);line-height:1.65;margin-top:6px">Yes. CV Forge is 100% free with no signup, no watermark and no paywall on downloads. The site is supported by unobtrusive ads.</p></details>
+      <details style="border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:var(--bg)"><summary style="cursor:pointer;font-size:12.5px;font-weight:600">Is my personal data safe?</summary><p style="font-size:12px;color:var(--muted);line-height:1.65;margin-top:6px">Your CV never leaves your device. Everything you type is stored only in your own browser, and nothing is uploaded to our servers.</p></details>
+      <details style="border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:var(--bg)"><summary style="cursor:pointer;font-size:12.5px;font-weight:600">Are the CVs ATS-friendly?</summary><p style="font-size:12px;color:var(--muted);line-height:1.65;margin-top:6px">Yes. The Traditional and Minimal themes use a clean single-column layout that applicant tracking systems read easily, and you can also download an ATS plain-text version.</p></details>
+      <details style="border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:var(--bg)"><summary style="cursor:pointer;font-size:12.5px;font-weight:600">How do I save my CV as a PDF?</summary><p style="font-size:12px;color:var(--muted);line-height:1.65;margin-top:6px">Tap Download, choose PDF, then in the print dialog select “Save as PDF” as the destination and A4 as the paper size.</p></details>
+      <details style="border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:var(--bg)"><summary style="cursor:pointer;font-size:12.5px;font-weight:600">Can I create a CV in Arabic?</summary><p style="font-size:12px;color:var(--muted);line-height:1.65;margin-top:6px">Yes. Open Colors & Fonts and set Text Direction to Right-to-Left. The preview and the PDF export both switch to a right-to-left layout.</p></details>
+      <details style="border:1px solid var(--border);border-radius:8px;padding:9px 11px;background:var(--bg)"><summary style="cursor:pointer;font-size:12.5px;font-weight:600">Will my CV be saved if I close the page?</summary><p style="font-size:12px;color:var(--muted);line-height:1.65;margin-top:6px">Yes. Your CV auto-saves in your browser every 30 seconds. To move it to another device, use Backup to download a file and restore it there.</p></details>
+    </div>
+  </div>
+
+  <!-- SEO / info footer (crawlable content + required page links) -->
+  <div class="sec-card" style="margin-bottom:20px">
+    <div class="sec-head" onclick="toggleSec(this)"><span class="sec-icon">ℹ️</span><span class="sec-title-text">About This Tool</span><span class="chev">▼</span></div>
+    <div class="sec-body" style="gap:8px">
+      <p style="font-size:12px;color:var(--muted);line-height:1.7">CV Forge is a <b style="color:var(--text)">100% free CV builder</b> — no signup, no watermark, no hidden paywall. Create a professional resume with 10 designer themes, adjust colors, fonts, margins and section order, then download as <b style="color:var(--text)">PDF, Word (.docx) or ATS-friendly plain text</b>. Full Arabic right-to-left support included.</p>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7">New to CV writing? Read how to write a <a href="blog/cv-professional-summary-examples.html" style="color:var(--accent)">professional summary</a>, <a href="blog/cv-bullet-points-action-verbs.html" style="color:var(--accent)">achievement bullet points</a>, an <a href="blog/ats-friendly-cv.html" style="color:var(--accent)">ATS-friendly CV</a>, or <a href="blog/arabic-cv-guide.html" style="color:var(--accent)">a CV in Arabic</a>.</p>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7">🔒 <b style="color:var(--text)">Your privacy is built-in:</b> everything you type stays in your own browser. Your CV is never uploaded to any server.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px">
+        <a href="blog/index.html" style="color:var(--accent)">📚 CV Writing Guides</a>
+        <a href="about.html" style="color:var(--accent)">About</a>
+        <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a>
+        <a href="terms.html" style="color:var(--accent)">Terms of Use</a>
+        <a href="contact.html" style="color:var(--accent)">Contact</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /editor-panel -->
+
+<!-- PREVIEW -->
+<div id="preview-panel" style="display:none">
+  <div id="cv-scale-wrap"><div id="cv-wrap" class="t-original"></div></div>
+</div>
+
+<script>
+'use strict';
+/* ═══════ DATA ═══════ */
+let nid = 500;
+const DEFAULT_D = {
+  theme:"original", accent:"#2c3e6b", font:"inherit", photo:"", showQR:false, dir:"ltr",
+  refOnRequest:true, references:[], pageMargin:18, lineSpacing:1,
+  sections:[
+    {id:"summary",  label:"Professional Summary", visible:true},
+    {id:"jobs",     label:"Work Experience",      visible:true},
+    {id:"skills",   label:"Technical Skills",     visible:true},
+    {id:"certs",    label:"Certifications",       visible:true},
+    {id:"custom_softskills", label:"Soft Skills", visible:true},
+    {id:"edu",      label:"Education",            visible:true},
+    {id:"projects", label:"Projects",             visible:true},
+    {id:"langs",    label:"Languages",            visible:true},
+    {id:"references", label:"References",         visible:true},
+  ],
+  jobs:[
+    {id:1,title:"Senior Software Engineer",org:"Northwind Technologies",start:"Mar. 2022",end:"Present",
+     bullets:"Led a team of 5 engineers delivering a customer portal used by 40,000+ monthly users.\nCut page load times by 45% by introducing caching and lazy loading.\nDesigned REST APIs that integrated three internal systems, removing 20 hours of manual work per week.\nMentored junior developers and introduced code reviews, reducing production bugs by 30%."},
+    {id:2,title:"Software Engineer",org:"Bluepeak Solutions",start:"Jun. 2019",end:"Feb. 2022",
+     bullets:"Built and maintained full-stack web applications for 12 enterprise clients.\nAutomated deployment pipelines, shortening release cycles from two weeks to two days.\nWrote unit and integration tests, raising test coverage from 40% to 85%."},
+    {id:3,title:"Junior Developer",org:"Brightline Digital",start:"Jul. 2017",end:"May 2019",
+     bullets:"Developed responsive websites and internal dashboards in JavaScript and SQL.\nResolved 300+ support tickets while maintaining a 98% customer satisfaction score."},
+  ],
+  edu:[{id:1,degree:"Bachelor of Science in Computer Science",school:"State University",start:"Sep. 2013",end:"Jun. 2017",grade:"First Class Honours",project:"Real-time Class Scheduling System"}],
+  skillCats:[
+    {id:1,name:"Programming Languages",skills:["JavaScript","TypeScript","Python","C#"]},
+    {id:2,name:"Frameworks & Web",skills:["React","Node.js","ASP.NET Core","REST APIs","HTML","CSS"]},
+    {id:3,name:"Databases",skills:["PostgreSQL","MySQL","MongoDB"]},
+    {id:4,name:"Tools & Practices",skills:["Git","Docker","CI/CD","Agile / Scrum"]},
+  ],
+  certs:[{id:1,name:"AWS Certified Developer – Associate"},{id:2,name:"Professional Scrum Master I (PSM I)"}],
+  langs:[{id:1,lang:"English",level:"Native"},{id:2,lang:"Spanish",level:"Professional working proficiency"}],
+  projects:[
+    {id:1,name:"Budget Tracker App",desc:"Personal finance web app with charts, recurring expenses and CSV export.",tech:"React, Node.js, PostgreSQL",github:"budget-tracker"},
+    {id:2,name:"Open-Source Contributions",desc:"Contributed bug fixes and documentation to popular JavaScript libraries.",tech:"JavaScript, TypeScript",github:"alex-morgan"},
+  ],
+  custom:{
+    "custom_softskills":{label:"Soft Skills",items:[
+      {id:901,content:"Clear communicator with technical and non-technical teams"},
+      {id:902,content:"Strong problem-solving and analytical thinking"},
+      {id:903,content:"Leadership and mentoring"},
+      {id:904,content:"Fast learner who adapts quickly to new technologies"},
+    ]}
+  }
+};
+const DEFAULT_PERSONAL={
+  name:"Alex Morgan", tagline:"Senior Software Engineer", phone:"+1 (555) 010-2030",
+  email:"alex.morgan@example.com", location:"Austin, TX", github:"alex-morgan",
+  linkedin:"", portfolio:"",
+  summary:"Software engineer with 7+ years of experience building fast, reliable web applications. Skilled in JavaScript, TypeScript and cloud services, with a track record of improving performance, automating workflows and leading small teams to ship on time."
+};
+let D = JSON.parse(JSON.stringify(DEFAULT_D));
+
+/* ═══════ HELPERS ═══════ */
+const gv = id => (document.getElementById(id)||{}).value||'';
+const esc = s => String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+// Safe JS-string argument inside an HTML attribute, e.g. onclick="fn(${jsArg(x)})"
+const jsArg = s => esc(JSON.stringify(String(s??'')));
+
+/* ═══════ DATA SANITIZER — every external data source passes through this ═══════
+   Protects against XSS from crafted share links / backup files: whitelists enums,
+   forces numeric ids, validates colors & photo data URIs, caps string lengths. */
+const THEMES=['original','classic','modern','executive','tech','creative','clean','minimal','elegant','nordic'];
+const FONTS=["inherit","'Lato',sans-serif","'Inter',sans-serif","'Roboto',sans-serif","'Open Sans',sans-serif","'Merriweather',serif","'Cormorant Garamond',serif","'Raleway',sans-serif"];
+const BUILTIN_SECS=['summary','jobs','skills','certs','edu','projects','langs','references'];
+function sanitizeD(raw){
+  const S=(v,max=5000)=>String(v??'').slice(0,max);
+  const arr=v=>Array.isArray(v)?v.slice(0,100):[];
+  let maxId=0;
+  const ID=v=>{const n=Math.floor(Number(v));const ok=Number.isFinite(n)&&n>0&&n<1e9;const id=ok?n:0;if(id>maxId)maxId=id;return id;};
+  const fixIds=list=>{list.forEach(o=>{if(!o.id)o.id=++maxId;});return list;};
+  const r=(raw&&typeof raw==='object')?raw:{};
+  const out={
+    theme:THEMES.includes(r.theme)?r.theme:'original',
+    accent:/^#[0-9a-fA-F]{3,8}$/.test(r.accent)?r.accent:'#2c3e6b',
+    font:FONTS.includes(r.font)?r.font:'inherit',
+    photo:(typeof r.photo==='string'&&/^data:image\/[a-z0-9.+-]+;base64,[A-Za-z0-9+\/=]+$/.test(r.photo))?r.photo:'',
+    showQR:!!r.showQR,
+    dir:r.dir==='rtl'?'rtl':'ltr',
+    refOnRequest:!!r.refOnRequest,
+    pageMargin:Math.min(30,Math.max(8,Number(r.pageMargin)||18)),
+    lineSpacing:Math.min(1.4,Math.max(0.85,Number(r.lineSpacing)||1)),
+    jobs:arr(r.jobs).map(j=>({id:ID(j&&j.id),title:S(j&&j.title,300),org:S(j&&j.org,300),start:S(j&&j.start,40),end:S(j&&j.end,40),bullets:S(j&&j.bullets)})),
+    edu:arr(r.edu).map(e=>({id:ID(e&&e.id),degree:S(e&&e.degree,300),school:S(e&&e.school,300),start:S(e&&e.start,40),end:S(e&&e.end,40),grade:S(e&&e.grade,100),project:S(e&&e.project,300)})),
+    skillCats:arr(r.skillCats).map(c=>({id:ID(c&&c.id),name:S(c&&c.name,100),skills:arr(c&&c.skills).map(s=>S(s,100))})),
+    certs:arr(r.certs).map(c=>({id:ID(c&&c.id),name:S(c&&c.name,300)})),
+    langs:arr(r.langs).map(l=>({id:ID(l&&l.id),lang:S(l&&l.lang,100),level:S(l&&l.level,100)})),
+    projects:arr(r.projects).map(p=>({id:ID(p&&p.id),name:S(p&&p.name,300),desc:S(p&&p.desc,2000),tech:S(p&&p.tech,500),github:S(p&&p.github,200)})),
+    references:arr(r.references).map(x=>({id:ID(x&&x.id),name:S(x&&x.name,200),title:S(x&&x.title,200),company:S(x&&x.company,200),email:S(x&&x.email,200),phone:S(x&&x.phone,100)})),
+    custom:{},
+    sections:[]
+  };
+  if(r.custom&&typeof r.custom==='object'){
+    Object.keys(r.custom).slice(0,30).forEach(k=>{
+      if(!/^custom_[A-Za-z0-9_]{1,40}$/.test(k))return;
+      const cs=r.custom[k]||{};
+      out.custom[k]={label:S(cs.label,100),items:arr(cs.items).map(i=>({id:ID(i&&i.id),content:S(i&&i.content,2000)}))};
+    });
+  }
+  const seen=new Set();
+  arr(r.sections).forEach(s=>{
+    if(!s||seen.has(s.id))return;
+    if(!(BUILTIN_SECS.includes(s.id)||out.custom[s.id]))return;
+    seen.add(s.id);
+    out.sections.push({id:s.id,label:S(s.label,100)||s.id,visible:s.visible!==false});
+  });
+  // Any custom section missing from the order list gets appended
+  Object.keys(out.custom).forEach(k=>{if(!seen.has(k))out.sections.push({id:k,label:out.custom[k].label||'Custom',visible:true});});
+  if(!out.sections.length)out.sections=JSON.parse(JSON.stringify(DEFAULT_D.sections));
+  // Assign ids to items whose id was missing/invalid, then make sure new ids won't collide
+  [out.jobs,out.edu,out.skillCats,out.certs,out.langs,out.projects,out.references].forEach(fixIds);
+  Object.values(out.custom).forEach(cs=>fixIds(cs.items));
+  if(typeof nid==='number'&&maxId>=nid)nid=maxId+1;
+  return out;
+}
+function sanitizePersonal(p){
+  const o={};const keys=['name','tagline','phone','email','location','github','linkedin','portfolio','summary'];
+  keys.forEach(k=>{if(p&&p[k]!==undefined)o[k]=String(p[k]).slice(0,k==='summary'?3000:300);});
+  return o;
+}
+const xmle = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+const bl2h = txt => {
+  const lines=(txt||'').split('\n').map(l=>l.trim()).filter(Boolean);
+  return lines.length?'<ul>'+lines.map(l=>`<li>${esc(l)}</li>`).join('')+'</ul>':'';
+};
+const toast = (msg,type='ok') => {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='show '+(type==='err'?'err':'ok');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.className='',2500);
+};
+const showDL = (title,sub) => {
+  document.getElementById('dl-t').textContent=title;
+  document.getElementById('dl-s').textContent=sub;
+  document.getElementById('dl-ov').classList.add('show');
+};
+const hideDL = () => document.getElementById('dl-ov').classList.remove('show');
+
+/* ═══════ DATE QUICK-PICK ═══════ */
+const MONTHS=['Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'];
+let _datePickTarget=null;
+function openDatePick(kind,id,field){
+  _datePickTarget={kind,id,field};
+  const now=new Date().getFullYear();
+  let yrs='';
+  for(let y=now+1;y>=1980;y--)yrs+=`<option value="${y}">${y}</option>`;
+  let mos=MONTHS.map(m=>`<option value="${m}">${m}</option>`).join('');
+  const html=`<div style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;gap:8px">
+      <select id="dp-month" style="flex:1">${mos}</select>
+      <select id="dp-year" style="flex:1">${yrs}</select>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="mbtn-cancel" style="flex:1;padding:8px;border:none;border-radius:7px;cursor:pointer;font-family:inherit;font-weight:600" onclick="applyDatePick('present')">Set "Present"</button>
+      <button class="mbtn-ok" style="flex:1;padding:8px;border:none;border-radius:7px;cursor:pointer;font-family:inherit;font-weight:600;background:var(--accent);color:#fff" onclick="applyDatePick('date')">Apply</button>
+    </div>
+  </div>`;
+  document.getElementById('dp-body').innerHTML=html;
+  document.getElementById('m-datepick').classList.add('show');
+}
+function applyDatePick(type){
+  let val='Present';
+  if(type==='date'){
+    const m=document.getElementById('dp-month').value;
+    const y=document.getElementById('dp-year').value;
+    val=`${m} ${y}`;
+  }
+  const{kind,id,field}=_datePickTarget||{};
+  if(kind==='job')upJ(id,field,val);
+  else if(kind==='edu')upE(id,field,val);
+  closeModal('m-datepick');
+  if(kind==='job')renderJobs();else if(kind==='edu')renderEdu();
+}
+
+/* ═══════ UNDO/REDO ═══════ */
+let hist=[], hIdx=-1, _suppH=false, _dbTimer=null;
+function snap(){
+  try{
+    if(_suppH)return;
+    const s=JSON.stringify({D, personal:getPersonal()});
+    if(hist[hIdx]===s)return;
+    hist=hist.slice(0,hIdx+1); hist.push(s);
+    if(hist.length>40)hist=hist.slice(-40);
+    hIdx=hist.length-1; updHist();
+  }catch(e){}
+}
+function undo(){if(hIdx>0){hIdx--;restoreH(hist[hIdx]);}}
+function redo(){if(hIdx<hist.length-1){hIdx++;restoreH(hist[hIdx]);}}
+function restoreH(s){
+  try{
+    _suppH=true;
+    const sv=JSON.parse(s); D=sv.D; setPersonal(sv.personal);
+    rebuildEditors(); applyStyle(); render(); updateScore();
+    _suppH=false; updHist();
+  }catch(e){_suppH=false;}
+}
+function updHist(){
+  document.getElementById('undo-btn').disabled=hIdx<=0;
+  document.getElementById('redo-btn').disabled=hIdx>=hist.length-1;
+}
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&e.key==='z'){e.preventDefault();undo();}
+  if((e.ctrlKey||e.metaKey)&&(e.key==='y'||(e.shiftKey&&e.key==='z'))){e.preventDefault();redo();}
+});
+
+/* ═══════ TABS ═══════ */
+function switchTab(tab){
+  const ep=document.getElementById('editor-panel'),pp=document.getElementById('preview-panel');
+  // On desktop (wide screens) BOTH panels always show side-by-side — never hide either
+  if(window.innerWidth>=960){
+    ep.style.display='flex'; pp.style.display='flex';
+    render();
+    setTimeout(()=>{drawPageBreaks();scalePreview();},100);
+    return;
+  }
+  if(tab==='edit'){
+    ep.style.display='flex'; pp.style.display='none';
+    document.getElementById('tab-edit').classList.add('active');
+    document.getElementById('tab-prev').classList.remove('active');
+  } else {
+    render();
+    pp.style.display='flex'; ep.style.display='none';
+    document.getElementById('tab-prev').classList.add('active');
+    document.getElementById('tab-edit').classList.remove('active');
+    setTimeout(()=>{drawPageBreaks();scalePreview();},100);
+    setTimeout(scalePreview,400);
+  }
+}
+function toggleSec(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open');}
+
+/* ═══════ THEME / COLOR / FONT ═══════ */
+function setTheme(t,el){
+  D.theme=t;
+  document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  applyStyle(); render(); snap(); autoSave();
+}
+function setAccent(c,el){
+  D.accent=c;
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+  if(el)el.classList.add('active');
+  else{const m=document.querySelector(`.swatch[data-color="${c}"]`);if(m)m.classList.add('active');}
+  document.getElementById('custom-color').value=c;
+  applyStyle(); render(); snap(); autoSave();
+}
+function setFont(f,el){
+  D.font=f;
+  document.querySelectorAll('.font-card').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  applyStyle(); render(); snap(); autoSave();
+}
+function applyStyle(){
+  const r=document.documentElement;
+  r.style.setProperty('--cv-accent',D.accent);
+  r.style.setProperty('--cvf',D.font==='inherit'?'':D.font);
+  const cc=document.getElementById('custom-color'); if(cc)cc.value=D.accent;
+  const q=document.getElementById('show-qr'); if(q)q.checked=D.showQR;
+  const dir=document.getElementById('cv-dir'); if(dir)dir.value=D.dir||'ltr';
+  const ror=document.getElementById('ref-on-request'); if(ror)ror.checked=!!D.refOnRequest;
+}
+
+/* ═══════ PHOTO ═══════ */
+function handlePhoto(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    D.photo=e.target.result;
+    const pr=document.getElementById('photo-preview');
+    const pl=document.getElementById('photo-placeholder');
+    pr.src=D.photo; pr.style.display='block'; pl.style.display='none';
+    render(); snap(); autoSave();
+  };
+  r.readAsDataURL(f);
+}
+function removePhoto(){
+  D.photo='';
+  document.getElementById('photo-preview').style.display='none';
+  document.getElementById('photo-placeholder').style.display='flex';
+  render(); snap(); autoSave();
+}
+const photoTag=(cls)=>D.photo?`<img class="${cls}" src="${D.photo}" alt="photo">`:'';
+
+/* ═══════ QR ═══════ */
+function qrUrl(){
+  const li=gv('f-linkedin'),po=gv('f-portfolio'),gh=gv('f-github');
+  const target=li||po||(gh?`https://github.com/${gh}`:'');
+  return target?`<img src="https://api.qrserver.com/v1/create-qr-code/?size=58x58&data=${encodeURIComponent(target)}" width="58" height="58" style="border-radius:4px" alt="QR">`:'';
+}
+
+/* ═══════ PERSONAL ═══════ */
+function getPersonal(){
+  return{name:gv('f-name'),tagline:gv('f-tagline'),phone:gv('f-phone'),email:gv('f-email'),
+    location:gv('f-location'),github:gv('f-github'),linkedin:gv('f-linkedin'),portfolio:gv('f-portfolio'),summary:gv('f-summary')};
+}
+function setPersonal(p){
+  const m={name:'f-name',tagline:'f-tagline',phone:'f-phone',email:'f-email',
+    location:'f-location',github:'f-github',linkedin:'f-linkedin',portfolio:'f-portfolio',summary:'f-summary'};
+  Object.entries(m).forEach(([k,id])=>{const el=document.getElementById(id);if(el&&p[k]!==undefined)el.value=p[k];});
+}
+
+/* ═══════ LIVE UPDATE ═══════ */
+function live(){
+  render(); updateScore();
+  clearTimeout(_dbTimer);
+  _dbTimer=setTimeout(()=>{snap();autoSave();},800);
+}
+
+/* ═══════ SCORE + PAGE ESTIMATE ═══════ */
+function updateScore(){
+  try{
+    const checks=[
+      {k:'Name',ok:!!gv('f-name')},
+      {k:'Job title',ok:!!gv('f-tagline')},
+      {k:'Email',ok:!!gv('f-email')},
+      {k:'Phone',ok:!!gv('f-phone')},
+      {k:'Location',ok:!!gv('f-location')},
+      {k:'Summary',ok:!!gv('f-summary')},
+      {k:'GitHub or LinkedIn',ok:!!(gv('f-github')||gv('f-linkedin'))},
+      {k:'Work experience',ok:D.jobs.length>0},
+      {k:'Education',ok:D.edu.length>0},
+      {k:'Skills',ok:D.skillCats.some(c=>c.skills.length>0)},
+      {k:'Certifications',ok:D.certs.length>0},
+      {k:'Photo',ok:!!D.photo},
+    ];
+    const done=checks.filter(c=>c.ok).length;
+    const pct=Math.round(done/checks.length*100);
+    const bar=document.getElementById('score-bar');
+    bar.style.width=pct+'%';
+    bar.style.background=pct<50?'#e05c5c':pct<80?'#f7a26a':'#52d68a';
+    document.getElementById('score-label').textContent=`${pct}% complete — ${done}/${checks.length} fields filled`;
+    const missing=checks.filter(c=>!c.ok).map(c=>`<span>• ${c.k}</span>`);
+    document.getElementById('score-tips').innerHTML=missing.length?`Missing: ${missing.slice(0,5).join(' ')}${missing.length>5?` +${missing.length-5} more`:''}`:' ✅ All key fields complete!';
+    // Page estimate
+    const wrap=document.getElementById('cv-wrap');
+    if(wrap&&wrap.offsetHeight>0){
+      const pages=Math.ceil(wrap.offsetHeight/1123);
+      const ind=document.getElementById('page-ind');
+      if(pages===1){ind.className='page-indicator ok';ind.textContent='📄 1 page — perfect!';}
+      else if(pages===2){ind.className='page-indicator warn';ind.textContent=`📄 ~${pages} pages — consider trimming`;}
+      else{ind.className='page-indicator over';ind.textContent=`📄 ~${pages} pages — too long, consider cutting`;}
+    }
+    // Section badges
+    const badges=document.getElementById('score-badges');
+    if(badges){
+      const sectionChecks=[
+        {k:'📝 Summary',ok:!!gv('f-summary')},
+        {k:'💼 Experience',ok:D.jobs.length>0},
+        {k:'🎓 Education',ok:D.edu.length>0},
+        {k:'⚙️ Skills',ok:D.skillCats.some(c=>c.skills.length>0)},
+        {k:'📷 Photo',ok:!!D.photo},
+        {k:'🔗 Links',ok:!!(gv('f-github')||gv('f-linkedin'))},
+      ];
+      badges.innerHTML=sectionChecks.map(s=>`<span style="font-size:10px;padding:2px 8px;border-radius:12px;background:${s.ok?'rgba(82,214,138,.15)':'rgba(224,92,92,.12)'};color:${s.ok?'var(--green)':'var(--muted)'};border:1px solid ${s.ok?'rgba(82,214,138,.3)':'var(--border)'}">${s.k} ${s.ok?'✓':'○'}</span>`).join('');
+    }
+  }catch(e){}
+}
+
+/* ═══════ SECTION ORDER + DRAG ═══════ */
+function renderSecOrder(){
+  const list=document.getElementById('sec-order-list');
+  list.innerHTML=D.sections.map(s=>`
+    <div class="sec-row" data-id="${s.id}" draggable="true">
+      <span class="sec-drag">⠿</span>
+      <span class="sec-row-label" id="srl-${s.id}">${esc(s.label)}</span>
+      <button class="icon-btn" onclick="renameSecRow('${s.id}')" title="Rename">✎</button>
+      <button class="icon-btn" onclick="toggleSecVis('${s.id}')" title="Toggle">${s.visible?'👁':'🚫'}</button>
+      ${s.id.startsWith('custom_')?`<button class="icon-btn danger" onclick="deleteCustomSec('${s.id}')">✕</button>`:''}
+    </div>`).join('');
+  initSecDrag(list);
+}
+function toggleSecVis(id){const s=D.sections.find(x=>x.id===id);if(s){s.visible=!s.visible;renderSecOrder();render();snap();autoSave();}}
+function renameSecRow(id){
+  const s=D.sections.find(x=>x.id===id);if(!s)return;
+  const el=document.getElementById('srl-'+id);
+  const inp=document.createElement('input');inp.className='sec-name-inp';inp.value=s.label;
+  inp.onblur=()=>{s.label=inp.value||s.label;renderSecOrder();render();snap();autoSave();};
+  inp.onkeydown=e=>{if(e.key==='Enter')inp.blur();};
+  el.replaceWith(inp);inp.focus();inp.select();
+}
+let _dSrcId=null,_dTgtId=null;
+function initSecDrag(list){
+  list.querySelectorAll('.sec-row').forEach(row=>{
+    row.addEventListener('dragstart',e=>{_dSrcId=row.dataset.id;row.classList.add('dragging');e.dataTransfer.effectAllowed='move';});
+    row.addEventListener('dragend',()=>row.classList.remove('dragging'));
+    row.addEventListener('dragover',e=>{e.preventDefault();list.querySelectorAll('.sec-row').forEach(r=>r.classList.remove('drag-over'));row.classList.add('drag-over');});
+    row.addEventListener('dragleave',e=>{if(!row.contains(e.relatedTarget))row.classList.remove('drag-over');});
+    row.addEventListener('drop',e=>{
+      e.preventDefault();row.classList.remove('drag-over');
+      if(_dSrcId&&_dSrcId!==row.dataset.id)doReorderSec(_dSrcId,row.dataset.id);
+      _dSrcId=null;
+    });
+    const handle=row.querySelector('.sec-drag');
+    let _tTgt=null;
+    handle.addEventListener('touchstart',e=>{_dSrcId=row.dataset.id;row.classList.add('dragging');e.preventDefault();},{passive:false});
+    handle.addEventListener('touchmove',e=>{
+      e.preventDefault();const t=e.touches[0];
+      list.querySelectorAll('.sec-row:not(.dragging)').forEach(el=>{
+        const r=el.getBoundingClientRect();
+        if(t.clientY>r.top&&t.clientY<r.bottom){el.classList.add('drag-over');_tTgt=el.dataset.id;}
+        else el.classList.remove('drag-over');
+      });
+    },{passive:false});
+    handle.addEventListener('touchend',()=>{
+      row.classList.remove('dragging');
+      list.querySelectorAll('.sec-row').forEach(el=>el.classList.remove('drag-over'));
+      if(_dSrcId&&_tTgt&&_dSrcId!==_tTgt)doReorderSec(_dSrcId,_tTgt);
+      _dSrcId=null;_tTgt=null;
+    });
+  });
+}
+function doReorderSec(from,to){
+  const fi=D.sections.findIndex(x=>x.id===from),ti=D.sections.findIndex(x=>x.id===to);
+  if(fi<0||ti<0)return;
+  const[m]=D.sections.splice(fi,1);D.sections.splice(ti,0,m);
+  renderSecOrder();render();snap();autoSave();
+}
+
+/* ═══════ CUSTOM SECTIONS ═══════ */
+function openModal(id){document.getElementById(id).classList.add('show');const i=document.querySelector(`#${id} input[type=text]:not([readonly])`);if(i){i.value='';setTimeout(()=>i.focus(),100);}}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+function confirmAddSec(){
+  const name=document.getElementById('new-sec-name').value.trim();if(!name)return;
+  const id='custom_'+Date.now();
+  D.custom[id]={label:name,items:[{id:++nid,content:''}]};
+  D.sections.push({id,label:name,visible:true});
+  closeModal('m-addsec');renderSecOrder();renderCustomEditors();render();snap();autoSave();
+}
+function deleteCustomSec(id){
+  if(!confirm('Delete this section?'))return;
+  D.sections=D.sections.filter(s=>s.id!==id);
+  delete D.custom[id];
+  renderSecOrder();renderCustomEditors();render();snap();autoSave();
+}
+function renderCustomEditors(){
+  document.getElementById('custom-editors').innerHTML=Object.entries(D.custom).map(([id,sec])=>`
+    <div class="sec-card">
+      <div class="sec-head open" onclick="toggleSec(this)"><span class="sec-icon">📝</span><span class="sec-title-text">${esc(sec.label)}</span><span class="chev">▼</span></div>
+      <div class="sec-body open">
+        ${sec.items.map((item,i)=>`
+          <div class="iblock">
+            <div class="iblock-head"><span class="iblock-label">Item ${i+1}</span>
+              <div class="iblock-actions"><button class="icon-btn danger" onclick="delCustomItem('${id}',${item.id})">✕</button></div>
+            </div>
+            <textarea spellcheck="true" oninput="upCustom('${id}',${item.id},this.value)" style="min-height:52px">${esc(item.content)}</textarea>
+          </div>`).join('')}
+        <button class="add-btn" onclick="addCustomItem('${id}')">+ Add Item</button>
+      </div>
+    </div>`).join('');
+}
+function upCustom(sid,iid,v){const s=D.custom[sid];if(s){const i=s.items.find(x=>x.id===iid);if(i){i.content=v;render();}}}
+function delCustomItem(sid,iid){const s=D.custom[sid];if(s){s.items=s.items.filter(x=>x.id!==iid);renderCustomEditors();render();}}
+function addCustomItem(sid){const s=D.custom[sid];if(s){s.items.push({id:++nid,content:''});renderCustomEditors();render();}}
+
+/* ═══════ ITEM DRAG (jobs, edu, projects) ═══════ */
+function initItemDrag(containerId, arr, reRender){
+  const c=document.getElementById(containerId);if(!c)return;
+  let src=null,tgt=null;
+  c.querySelectorAll('.iblock').forEach(el=>{
+    const h=el.querySelector('.drag-item-handle');
+    if(!h)return;
+    const id=parseInt(el.dataset.id);
+    h.addEventListener('mousedown',()=>{el.setAttribute('draggable','true');});
+    el.addEventListener('dragstart',e=>{src=id;el.classList.add('dragging-item');e.dataTransfer.effectAllowed='move';});
+    el.addEventListener('dragend',()=>{el.classList.remove('dragging-item');el.setAttribute('draggable','false');});
+    el.addEventListener('dragover',e=>{e.preventDefault();c.querySelectorAll('.iblock').forEach(x=>x.classList.remove('drop-target-item'));el.classList.add('drop-target-item');tgt=id;});
+    el.addEventListener('drop',e=>{
+      e.preventDefault();el.classList.remove('drop-target-item');
+      if(src&&tgt&&src!==tgt){
+        const si=arr.findIndex(x=>x.id===src),ti=arr.findIndex(x=>x.id===tgt);
+        if(si>=0&&ti>=0){const[m]=arr.splice(si,1);arr.splice(ti,0,m);}
+        reRender();render();snap();autoSave();
+      }
+      src=null;tgt=null;
+    });
+    // Touch drag for items
+    let touchTgt=null;
+    h.addEventListener('touchstart',e=>{src=id;el.classList.add('dragging-item');e.preventDefault();},{passive:false});
+    h.addEventListener('touchmove',e=>{
+      e.preventDefault();const t=e.touches[0];
+      c.querySelectorAll('.iblock:not(.dragging-item)').forEach(x=>{
+        const r=x.getBoundingClientRect();
+        if(t.clientY>r.top&&t.clientY<r.bottom){x.classList.add('drop-target-item');touchTgt=parseInt(x.dataset.id);}
+        else x.classList.remove('drop-target-item');
+      });
+    },{passive:false});
+    h.addEventListener('touchend',()=>{
+      el.classList.remove('dragging-item');
+      c.querySelectorAll('.iblock').forEach(x=>x.classList.remove('drop-target-item'));
+      if(src&&touchTgt&&src!==touchTgt){
+        const si=arr.findIndex(x=>x.id===src),ti=arr.findIndex(x=>x.id===touchTgt);
+        if(si>=0&&ti>=0){const[m]=arr.splice(si,1);arr.splice(ti,0,m);}
+        reRender();render();snap();autoSave();
+      }
+      src=null;touchTgt=null;
+    });
+  });
+}
+
+/* ═══════ JOBS EDITOR ═══════ */
+function renderJobs(){
+  document.getElementById('jobs-wrap').innerHTML=D.jobs.map((j,i)=>`
+    <div class="iblock" data-id="${j.id}">
+      <div class="iblock-head">
+        <span class="drag-item-handle" title="Drag to reorder">⠿</span>
+        <span class="iblock-label">Position ${i+1}</span>
+        <div class="iblock-actions">
+          <button class="icon-btn" title="Bullet templates" onclick="suggestBullets(${j.id})">💡</button>
+          <button class="icon-btn" title="Duplicate" onclick="dupJob(${j.id})">⧉</button>
+          <button class="icon-btn danger" onclick="delJob(${j.id})">✕</button>
+        </div>
+      </div>
+      <div class="fg" style="margin-bottom:7px"><label>Job Title</label><input type="text" value="${esc(j.title)}" oninput="upJ(${j.id},'title',this.value)"></div>
+      <div class="fg" style="margin-bottom:7px"><label>Organization</label><input type="text" value="${esc(j.org)}" oninput="upJ(${j.id},'org',this.value)"></div>
+      <div class="fr" style="margin-bottom:7px">
+        <div class="fg"><label>From 📅</label><div style="display:flex;gap:4px"><input type="text" value="${esc(j.start)}" oninput="upJ(${j.id},'start',this.value)" style="flex:1"><button class="icon-btn" onclick="openDatePick('job',${j.id},'start')" title="Pick date">📅</button></div></div>
+        <div class="fg"><label>To 📅</label><div style="display:flex;gap:4px"><input type="text" value="${esc(j.end)}" oninput="upJ(${j.id},'end',this.value)" style="flex:1"><button class="icon-btn" onclick="openDatePick('job',${j.id},'end')" title="Pick date">📅</button></div></div>
+      </div>
+      <div class="fg"><label>Responsibilities (one per line)</label><textarea spellcheck="true" oninput="upJ(${j.id},'bullets',this.value)">${esc(j.bullets)}</textarea></div>
+    </div>`).join('')+`<button class="add-btn" onclick="addJob()">+ Add Position</button>`;
+  initItemDrag('jobs-wrap',D.jobs,renderJobs);
+}
+function upJ(id,f,v){const j=D.jobs.find(x=>x.id===id);if(j){j[f]=v;render();clearTimeout(_dbTimer);_dbTimer=setTimeout(()=>{snap();autoSave();},800);}}
+function delJob(id){D.jobs=D.jobs.filter(x=>x.id!==id);renderJobs();render();snap();autoSave();}
+function dupJob(id){const j=D.jobs.find(x=>x.id===id);if(j){const c=JSON.parse(JSON.stringify(j));c.id=++nid;const idx=D.jobs.indexOf(j);D.jobs.splice(idx+1,0,c);renderJobs();render();snap();autoSave();}}
+function addJob(){D.jobs.push({id:++nid,title:'Job Title',org:'Company',start:'',end:'Present',bullets:''});renderJobs();render();snap();autoSave();}
+
+/* ═══════ EDU EDITOR ═══════ */
+function renderEdu(){
+  document.getElementById('edu-wrap').innerHTML=D.edu.map((e,i)=>`
+    <div class="iblock" data-id="${e.id}">
+      <div class="iblock-head">
+        <span class="drag-item-handle">⠿</span>
+        <span class="iblock-label">Degree ${i+1}</span>
+        <div class="iblock-actions"><button class="icon-btn danger" onclick="delEdu(${e.id})">✕</button></div>
+      </div>
+      <div class="fg" style="margin-bottom:7px"><label>Degree / Field</label><input type="text" value="${esc(e.degree)}" oninput="upE(${e.id},'degree',this.value)"></div>
+      <div class="fg" style="margin-bottom:7px"><label>School / University</label><input type="text" value="${esc(e.school)}" oninput="upE(${e.id},'school',this.value)"></div>
+      <div class="fr" style="margin-bottom:7px">
+        <div class="fg"><label>From 📅</label><div style="display:flex;gap:4px"><input type="text" value="${esc(e.start)}" oninput="upE(${e.id},'start',this.value)" style="flex:1"><button class="icon-btn" onclick="openDatePick('edu',${e.id},'start')" title="Pick date">📅</button></div></div>
+        <div class="fg"><label>To 📅</label><div style="display:flex;gap:4px"><input type="text" value="${esc(e.end)}" oninput="upE(${e.id},'end',this.value)" style="flex:1"><button class="icon-btn" onclick="openDatePick('edu',${e.id},'end')" title="Pick date">📅</button></div></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Grade</label><input type="text" value="${esc(e.grade||'')}" oninput="upE(${e.id},'grade',this.value)"></div>
+        <div class="fg"><label>Grad. Project</label><input type="text" value="${esc(e.project||'')}" oninput="upE(${e.id},'project',this.value)"></div>
+      </div>
+    </div>`).join('')+`<button class="add-btn" onclick="addEdu()">+ Add Education</button>`;
+  initItemDrag('edu-wrap',D.edu,renderEdu);
+}
+function upE(id,f,v){const e=D.edu.find(x=>x.id===id);if(e){e[f]=v;render();clearTimeout(_dbTimer);_dbTimer=setTimeout(()=>{snap();autoSave();},800);}}
+function delEdu(id){D.edu=D.edu.filter(x=>x.id!==id);renderEdu();render();snap();autoSave();}
+function addEdu(){D.edu.push({id:++nid,degree:'',school:'',start:'',end:'',grade:'',project:''});renderEdu();render();snap();autoSave();}
+
+/* ═══════ SKILLS EDITOR ═══════ */
+function renderSkills(){
+  document.getElementById('skill-cats').innerHTML=D.skillCats.map(cat=>`
+    <div class="iblock" style="margin-bottom:9px">
+      <div class="iblock-head">
+        <input type="text" value="${esc(cat.name)}" oninput="upCatN(${cat.id},this.value)"
+          style="background:transparent;border:none;color:var(--accent);font-size:12px;font-weight:600;padding:0;outline:none;flex:1;min-width:0">
+        <div class="iblock-actions"><button class="icon-btn danger" onclick="delCat(${cat.id})">✕</button></div>
+      </div>
+      <div class="tags-wrap">${cat.skills.map(s=>`<span class="skill-tag">${esc(s)}<span class="del-tag" onclick="delSkill(this,${cat.id})">✕</span></span>`).join('')}</div>
+      <div class="tag-input-row">
+        <input type="text" placeholder="Add skill…" id="si-${cat.id}" onkeydown="if(event.key==='Enter'){event.preventDefault();addSkill(${cat.id})}">
+        <button class="tag-add-btn" onclick="addSkill(${cat.id})">+</button>
+      </div>
+    </div>`).join('');
+}
+function upCatN(id,v){const c=D.skillCats.find(x=>x.id===id);if(c){c.name=v;render();}}
+function delCat(id){D.skillCats=D.skillCats.filter(x=>x.id!==id);renderSkills();render();snap();autoSave();}
+function addSkillCat(){D.skillCats.push({id:++nid,name:'New Category',skills:[]});renderSkills();render();snap();autoSave();}
+function addSkill(catId){
+  const inp=document.getElementById('si-'+catId);const v=(inp.value||'').trim();if(!v)return;
+  const cat=D.skillCats.find(x=>x.id===catId);
+  if(cat){cat.skills.push(v);inp.value='';renderSkills();render();snap();autoSave();}
+}
+function delSkill(el,catId){
+  const txt=el.parentElement.textContent.replace('✕','').trim();
+  const cat=D.skillCats.find(x=>x.id===catId);
+  if(cat){cat.skills=cat.skills.filter(s=>s!==txt);renderSkills();render();snap();autoSave();}
+}
+
+/* ═══════ CERTS / LANGS / PROJECTS ═══════ */
+function renderCerts(){
+  document.getElementById('cert-wrap').innerHTML=D.certs.map(c=>`
+    <div class="iblock" style="margin-bottom:5px"><div style="display:flex;gap:7px;align-items:center">
+      <input type="text" value="${esc(c.name)}" oninput="upCert(${c.id},this.value)" style="flex:1">
+      <button class="icon-btn danger" onclick="delCert(${c.id})">✕</button>
+    </div></div>`).join('')+`<button class="add-btn" onclick="addCert()">+ Add</button>`;
+}
+function upCert(id,v){const c=D.certs.find(x=>x.id===id);if(c){c.name=v;render();}}
+function delCert(id){D.certs=D.certs.filter(x=>x.id!==id);renderCerts();render();snap();autoSave();}
+function addCert(){D.certs.push({id:++nid,name:''});renderCerts();render();snap();autoSave();}
+
+function renderLangs(){
+  document.getElementById('lang-wrap').innerHTML=D.langs.map(l=>`
+    <div class="iblock" style="margin-bottom:5px"><div style="display:flex;gap:7px;align-items:center">
+      <input type="text" value="${esc(l.lang)}" oninput="upLang(${l.id},'lang',this.value)" placeholder="Language" style="flex:1">
+      <input type="text" value="${esc(l.level)}" oninput="upLang(${l.id},'level',this.value)" placeholder="Level" style="flex:1">
+      <button class="icon-btn danger" onclick="delLang(${l.id})">✕</button>
+    </div></div>`).join('')+`<button class="add-btn" onclick="addLang()">+ Add</button>`;
+}
+function upLang(id,f,v){const l=D.langs.find(x=>x.id===id);if(l){l[f]=v;render();}}
+function delLang(id){D.langs=D.langs.filter(x=>x.id!==id);renderLangs();render();snap();autoSave();}
+function addLang(){D.langs.push({id:++nid,lang:'',level:''});renderLangs();render();snap();autoSave();}
+
+function renderProjs(){
+  document.getElementById('proj-wrap').innerHTML=D.projects.map((p,i)=>`
+    <div class="iblock" data-id="${p.id}">
+      <div class="iblock-head">
+        <span class="drag-item-handle">⠿</span>
+        <span class="iblock-label">Project ${i+1}</span>
+        <div class="iblock-actions">
+          <button class="icon-btn" title="Duplicate" onclick="dupProj(${p.id})">⧉</button>
+          <button class="icon-btn danger" onclick="delProj(${p.id})">✕</button>
+        </div>
+      </div>
+      <div class="fg" style="margin-bottom:6px"><label>Project Name</label><input type="text" value="${esc(p.name)}" oninput="upP(${p.id},'name',this.value)"></div>
+      <div class="fg" style="margin-bottom:6px"><label>Description</label><textarea spellcheck="true" style="min-height:52px" oninput="upP(${p.id},'desc',this.value)">${esc(p.desc)}</textarea></div>
+      <div class="fg" style="margin-bottom:6px"><label>Technologies</label><input type="text" value="${esc(p.tech)}" oninput="upP(${p.id},'tech',this.value)"></div>
+      <div class="fg"><label>GitHub repo name</label><input type="text" value="${esc(p.github||'')}" oninput="upP(${p.id},'github',this.value)"></div>
+    </div>`).join('')+`<button class="add-btn" onclick="addProj()">+ Add Project</button>`;
+  initItemDrag('proj-wrap',D.projects,renderProjs);
+}
+function upP(id,f,v){const p=D.projects.find(x=>x.id===id);if(p){p[f]=v;render();}}
+function delProj(id){D.projects=D.projects.filter(x=>x.id!==id);renderProjs();render();snap();autoSave();}
+function dupProj(id){const p=D.projects.find(x=>x.id===id);if(p){const c=JSON.parse(JSON.stringify(p));c.id=++nid;const idx=D.projects.indexOf(p);D.projects.splice(idx+1,0,c);renderProjs();render();snap();autoSave();}}
+function addProj(){D.projects.push({id:++nid,name:'',desc:'',tech:'',github:''});renderProjs();render();snap();autoSave();}
+
+/* ═══════ CV RENDER ═══════ */
+function secHtml(sid,t){
+  const summary=gv('f-summary');
+  const sec=D.sections.find(x=>x.id===sid)||{label:sid};
+  const label=esc(sec.label);
+  const isO=t==='original';
+
+  const jH=isO
+    ?D.jobs.map(j=>`<div class="cv-job"><div class="cv-job-header"><span class="cv-jtitle">Job Title: ${esc(j.title)}</span><span class="cv-jdate">${esc([j.start,j.end].filter(Boolean).join(' – '))}</span></div><div class="cv-jorg">Organization: ${esc(j.org)}</div><div class="cv-jdesc">${bl2h(j.bullets)}</div></div>`).join('')
+    :D.jobs.map(j=>`<div class="cv-job"><div class="cv-jtitle">${esc(j.title)}</div><div class="cv-jmeta"><span>${esc(j.org)}</span><span>${esc([j.start,j.end].filter(Boolean).join(' – '))}</span></div><div class="cv-jdesc">${bl2h(j.bullets)}</div></div>`).join('');
+
+  const eH=isO
+    ?D.edu.map(e=>`<div class="cv-edu"><div class="cv-edu-row"><span class="cv-edeg">Degree : ${esc(e.degree)}</span><span class="cv-edate">${esc([e.start,e.end].filter(Boolean).join(' – '))}</span></div><div class="cv-esch">University : ${esc(e.school)}</div>${e.grade?`<div class="cv-egrade">Grade : ${esc(e.grade)}</div>`:''} ${e.project?`<div class="cv-eproj">Graduation Project : ${esc(e.project)}</div>`:''}</div>`).join('')
+    :D.edu.map(e=>`<div class="cv-edu"><div class="cv-edeg">${esc(e.degree)}</div><div class="cv-esch">${esc(e.school)}</div><div class="cv-edt">${esc([e.start,e.end].filter(Boolean).join(' – '))}${e.grade?' · '+esc(e.grade):''}</div>${e.project?`<div class="cv-edt" style="font-style:italic">Project: ${esc(e.project)}</div>`:''}</div>`).join('');
+
+  const skH=isO
+    ?`<div class="cv-sec"><div class="cv-stitle">Technical Skills</div>`+D.skillCats.map(c=>`<div class="cv-skill-block"><span class="cv-skill-cat">• ${esc(c.name)}:</span> ${esc(c.skills.join(', '))}.</div>`).join('')+`</div>`
+    :D.skillCats.map(c=>`<div class="cv-sec"><div class="cv-stitle">${esc(c.name)}</div><div class="cv-pills">${c.skills.map(s=>`<span class="cv-pill">${esc(s)}</span>`).join('')}</div></div>`).join('');
+
+  const ceH=D.certs.map(c=>`<div class="cv-cert">${esc(c.name)}</div>`).join('');
+  const laH=D.langs.map(l=>`<div class="cv-cert">${esc(l.lang)}${l.level?' : '+esc(l.level):''}</div>`).join('');
+  const prH=isO
+    ?D.projects.map(p=>`<div class="cv-proj"><div class="cv-proj-name">${esc(p.name)}</div><div class="cv-proj-line"><b>Description:</b> ${esc(p.desc)}</div><div class="cv-proj-line"><b>Technologies:</b> ${esc(p.tech)}</div>${p.github?`<div class="cv-proj-line"><b>GitHub:</b> ${esc(p.github)}</div>`:''}</div>`).join('')
+    :D.projects.map(p=>`<div class="cv-job"><div class="cv-jtitle">${esc(p.name)}</div><div class="cv-jmeta">${esc(p.tech)}</div><div class="cv-jdesc">${esc(p.desc)}${p.github?` <em>(GitHub: ${esc(p.github)})</em>`:''}</div></div>`).join('');
+
+  switch(sid){
+    case 'summary':
+      if(!summary)return'';
+      return isO
+        ?`<div class="cv-sec"><div class="cv-stitle">${label}</div><div class="cv-summary-text"><ul><li>${esc(summary)}</li></ul></div></div>`
+        :`<div class="cv-sec"><div class="cv-stitle">${label}</div><p style="font-size:11px;line-height:1.7">${esc(summary)}</p></div>`;
+    case 'jobs':    return D.jobs.length?`<div class="cv-sec"><div class="cv-stitle">${label}</div>${jH}</div>`:'';
+    case 'edu':     return D.edu.length?`<div class="cv-sec"><div class="cv-stitle">${label}</div>${eH}</div>`:'';
+    case 'skills':  return skH;
+    case 'certs':   return D.certs.length?`<div class="cv-sec"><div class="cv-stitle">${label}</div>${ceH}</div>`:'';
+    case 'langs':   return D.langs.length?`<div class="cv-sec"><div class="cv-stitle">${label}</div>${laH}</div>`:'';
+    case 'projects':return D.projects.length?`<div class="cv-sec"><div class="cv-stitle">${label}</div>${prH}</div>`:'';
+    case 'references':{
+      if(D.refOnRequest&&!D.references.length)return`<div class="cv-sec"><div class="cv-stitle">${label}</div><div style="font-size:11px;font-style:italic">References available upon request.</div></div>`;
+      if(!D.references.length)return'';
+      const rH=D.references.map(r=>`<div class="cv-edu"><div class="cv-edeg">${esc(r.name)}</div><div class="cv-esch">${esc([r.title,r.company].filter(Boolean).join(', '))}</div><div class="cv-edt">${esc([r.email,r.phone].filter(Boolean).join(' · '))}</div></div>`).join('');
+      return`<div class="cv-sec"><div class="cv-stitle">${label}</div>${rH}</div>`;
+    }
+    default:
+      if(sid.startsWith('custom_')){
+        const cs=D.custom[sid];if(!cs)return'';
+        if(sid==='custom_softskills'&&isO){
+          return`<div class="cv-sec"><div class="cv-stitle">${esc(cs.label)}</div><div class="cv-soft-grid">${cs.items.map(i=>`<div class="cv-soft-item">${esc(i.content)}</div>`).join('')}</div></div>`;
+        }
+        return`<div class="cv-sec"><div class="cv-stitle">${esc(cs.label)}</div>${cs.items.map(i=>`<div style="font-size:11px;line-height:1.7;margin-bottom:5px">${esc(i.content)}</div>`).join('')}</div>`;
+      }
+      return'';
+  }
+}
+
+function buildCvHtml(t,name,role,contacts,summary,visSecs){
+  const isO=t==='original';
+  if(isO){
+    const cOrig=[
+      gv('f-phone')&&`Mobile : ${gv('f-phone')}`,
+      gv('f-email')&&`E-mail : ${gv('f-email')}`,
+      gv('f-location')&&`Address : ${gv('f-location')}`,
+      gv('f-github')&&`GitHub : ${gv('f-github')}`,
+      gv('f-linkedin')&&`LinkedIn : ${gv('f-linkedin')}`,
+    ].filter(Boolean);
+    const allS=visSecs.map(s=>secHtml(s.id,t)).join('');
+    return`<div class="cv-head"><div class="cv-head-text"><div class="cv-name">${esc(name)}</div><div class="cv-contacts">${cOrig.map(c=>`<span class="cv-c">${esc(c)}</span>`).join('')}</div></div></div><div class="cv-cols"><div class="cv-main-col">${allS}</div><div class="cv-side-col"></div></div>`;
+  }
+  if(t==='clean'){
+    const sSkH=D.skillCats.map(c=>`<div><div class="cv-sstitle">${esc(c.name)}</div><div class="cv-spills">${c.skills.map(s=>`<span class="cv-spill">${esc(s)}</span>`).join('')}</div></div>`).join('');
+    const sEH=D.edu.map(e=>`<div class="cv-sedu"><div class="cv-edeg">${esc(e.degree)}</div><div class="cv-esch">${esc(e.school)}</div><div class="cv-edt">${esc([e.start,e.end].filter(Boolean).join(' – '))}${e.grade?' · '+esc(e.grade):''}</div></div>`).join('');
+    const mH=visSecs.filter(s=>!['edu','certs','langs','skills'].includes(s.id)).map(s=>secHtml(s.id,t)).join('');
+    const vis=id=>visSecs.find(s=>s.id===id);
+    return`<div class="cv-sidebar">${D.photo?`<img class="cv-photo" src="${D.photo}" alt="">`:''}
+      <div class="cv-cname">${esc(name)}</div><div class="cv-crole">${esc(role)}</div>
+      <div class="cv-ccontacts">${contacts.map(c=>`<div class="cv-c">${esc(c)}</div>`).join('')}</div>
+      ${vis('skills')?sSkH:''}
+      ${vis('edu')&&D.edu.length?`<div class="cv-sstitle">Education</div>${sEH}`:''}
+      ${vis('certs')&&D.certs.length?`<div class="cv-sstitle">Certifications</div>${D.certs.map(c=>`<div class="cv-scert">${esc(c.name)}</div>`).join('')}`:''}
+      ${vis('langs')&&D.langs.length?`<div class="cv-sstitle">Languages</div>${D.langs.map(l=>`<div class="cv-scert">${esc(l.lang)}${l.level?' : '+esc(l.level):''}</div>`).join('')}`:''}
+      ${D.showQR?qrUrl():''}
+    </div><div class="cv-main">
+      ${summary&&visSecs.find(s=>s.id==='summary')?`<div class="cv-summary">${esc(summary)}</div>`:''}
+      ${mH}
+    </div>`;
+  }
+  // Standard two-column
+  const sideIds=['edu','certs','langs'];
+  const mainH=visSecs.filter(s=>!sideIds.includes(s.id)).map(s=>secHtml(s.id,t)).join('');
+  const sideH=visSecs.filter(s=>sideIds.includes(s.id)).map(s=>secHtml(s.id,t)).join('');
+  const cH=contacts.map(c=>`<span class="cv-c">${esc(c)}</span>`).join('');
+  return`<div class="cv-head"><div class="cv-head-text"><div class="cv-name">${esc(name)}</div><div class="cv-role">${esc(role)}</div><div class="cv-contacts">${cH}</div>${D.showQR?qrUrl():''}</div>${photoTag('cv-photo')}</div><div class="cv-cols"><div class="cv-main-col">${mainH}</div><div class="cv-side-col">${sideH}</div></div>`;
+}
+
+function render(){
+  const t=D.theme;
+  const name=gv('f-name'),role=gv('f-tagline'),summary=gv('f-summary');
+  const contacts=[gv('f-phone'),gv('f-email'),gv('f-location'),gv('f-github')&&`github.com/${gv('f-github')}`,gv('f-linkedin')||gv('f-portfolio')].filter(Boolean);
+  const visSecs=D.sections.filter(s=>s.visible);
+  const wrap=document.getElementById('cv-wrap');
+  if(!wrap)return;
+  wrap.className='t-'+t+(D.dir==='rtl'?' cv-rtl':'');
+  wrap.innerHTML=buildCvHtml(t,name,role,contacts,summary,visSecs);
+  wrap.style.setProperty('--cvf',D.font==='inherit'?'':D.font);
+  wrap.setAttribute('dir',D.dir||'ltr');
+  applyMarginSpacing();
+  // Multiple passes to catch font/image loading on mobile
+  const _refit=()=>{drawPageBreaks();if(window.innerWidth<960)scalePreview();updateScore();};
+  setTimeout(_refit,60);
+  setTimeout(_refit,300);
+  setTimeout(_refit,700);
+}
+
+/* ═══════ SHARE LINK ═══════ */
+function generateShareLink(){
+  try{
+    const data={D,personal:getPersonal()};
+    // Remove photo from share (too large)
+    const shareD=JSON.parse(JSON.stringify(data));
+    shareD.D.photo='';
+    const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(shareD))));
+    // '#' fragment is never sent to the server — keeps the CV private to whoever holds the link
+    const url=window.location.href.split('#')[0].split('?')[0]+'#cv='+encoded;
+    document.getElementById('share-url').value=url;
+    openModal('m-share');
+  }catch(e){toast('CV data too large to share as URL','err');}
+}
+function copyShareUrl(){
+  const url=document.getElementById('share-url').value;
+  navigator.clipboard.writeText(url).then(()=>toast('Link copied!')).catch(()=>{
+    document.getElementById('share-url').select();document.execCommand('copy');toast('Link copied!');
+  });
+}
+let _viewingShared=false;
+function loadFromUrl(){
+  try{
+    let cv='';
+    if(location.hash.startsWith('#cv='))cv=location.hash.slice(4);
+    else cv=new URLSearchParams(location.search).get('cv')||''; // legacy links
+    if(!cv)return false;
+    const data=JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(cv)))));
+    if(!data||!data.D)return false;
+    D=sanitizeD(data.D);
+    if(data.personal)setPersonal(sanitizePersonal(data.personal));
+    // Pause auto-save so opening someone else's link never overwrites the visitor's own CV
+    _viewingShared=true;
+    try{history.replaceState(null,'',location.pathname);}catch(e){}
+    return true;
+  }catch(e){return false;}
+}
+
+/* ═══════ PDF DOWNLOAD ═══════ */
+function downloadPDF(){
+  showDL('Preparing PDF…','A print dialog will open — choose Save as PDF');
+  const t=D.theme;
+  const name=gv('f-name'),role=gv('f-tagline'),summary=gv('f-summary');
+  const contacts=[gv('f-phone'),gv('f-email'),gv('f-location'),gv('f-github')&&`github.com/${gv('f-github')}`,gv('f-linkedin')||gv('f-portfolio')].filter(Boolean);
+  const visSecs=D.sections.filter(s=>s.visible);
+  const cvHTML=buildCvHtml(t,name,role,contacts,summary,visSecs);
+  const accentCSS=`--cv-accent:${D.accent};--cvf:${D.font==='inherit'?'':D.font};`;
+  const allStyles=Array.from(document.styleSheets).map(ss=>{try{return Array.from(ss.cssRules).map(r=>r.cssText).join('\n')}catch(e){return''}}).join('\n');
+  
+  const w=window.open('','_blank','width=850,height=1100');
+  if(!w){hideDL();toast('Pop-up blocked — allow pop-ups and retry','err');return;}
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(name)} — CV</title>
+  <link href="../../vendor/fonts/f541e697fc1c.css" rel="stylesheet">
+  <style>
+  :root{${accentCSS}}
+  ${allStyles}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{display:block}
+  #cv-wrap{width:210mm;min-height:auto;height:auto;margin:0 auto;box-shadow:none;transform:none !important;overflow:visible}
+  #cv-wrap *{transform:none !important}
+  .cv-sec{page-break-inside:avoid;break-inside:avoid}
+  .cv-job{page-break-inside:avoid;break-inside:avoid}
+  .cv-edu{page-break-inside:avoid;break-inside:avoid}
+  .cv-proj{page-break-inside:avoid;break-inside:avoid}
+  .cv-stitle{page-break-after:avoid;break-after:avoid}
+  .t-clean{display:grid !important;grid-template-columns:195px 1fr !important}
+  /* Adjustable page margin — controls top/bottom space so text isn't cramped at page edges */
+  @page{size:A4 portrait;margin:${D.pageMargin||18}mm ${Math.max(0,(D.pageMargin||18)-10)}mm}
+  @media print{
+    html,body{width:auto;margin:0;padding:0;height:auto;overflow:visible}
+    #cv-wrap{width:100%;height:auto;overflow:visible;page-break-inside:auto;break-inside:auto}
+  }
+  #cv-wrap .cv-jdesc,#cv-wrap .cv-summary-text,#cv-wrap p,#cv-wrap .cv-edu,#cv-wrap .cv-proj{line-height:calc(1.55 * ${D.lineSpacing||1})}
+  .cv-rtl{direction:rtl;text-align:right}
+  </style></head><body><div id="cv-wrap" class="t-${t}${D.dir==='rtl'?' cv-rtl':''}" dir="${D.dir||'ltr'}" style="--cv-accent:${D.accent};--cvf:${D.font==='inherit'?'':D.font}">${cvHTML}</div>
+  <script>window.onload=function(){setTimeout(function(){window.print();},800);}<\/script>
+  </body></html>`);
+  w.document.close();
+  setTimeout(hideDL,1000);
+}
+
+/* ═══════ TXT DOWNLOAD ═══════ */
+function downloadTXT(){
+  const name=gv('f-name'),role=gv('f-tagline'),phone=gv('f-phone'),email=gv('f-email'),loc=gv('f-location'),gh=gv('f-github'),li=gv('f-linkedin'),summary=gv('f-summary');
+  let t=`${name}\n${role}\n${[phone,email,loc,gh&&'github.com/'+gh,li].filter(Boolean).join(' | ')}\n${'='.repeat(65)}\n`;
+  D.sections.filter(s=>s.visible).forEach(sec=>{
+    if(sec.id==='summary'&&summary){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n${summary}\n`;}
+    else if(sec.id==='jobs'&&D.jobs.length){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n`;D.jobs.forEach(j=>{t+=`${j.title} | ${j.org} | ${[j.start,j.end].filter(Boolean).join(' - ')}\n`;j.bullets.split('\n').filter(Boolean).forEach(b=>t+=`  • ${b}\n`);t+='\n';});}
+    else if(sec.id==='edu'&&D.edu.length){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n`;D.edu.forEach(e=>{t+=`${e.degree} | ${e.school} | ${[e.start,e.end].filter(Boolean).join(' - ')}${e.grade?' | '+e.grade:''}\n${e.project?'Project: '+e.project+'\n':''}\n`;});}
+    else if(sec.id==='skills'&&D.skillCats.length){t+=`\n${'SKILLS'}\n${'-'.repeat(30)}\n`;D.skillCats.forEach(c=>t+=`${c.name}: ${c.skills.join(', ')}\n`);}
+    else if(sec.id==='certs'&&D.certs.length){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n`;D.certs.forEach(c=>t+=`• ${c.name}\n`);}
+    else if(sec.id==='langs'&&D.langs.length){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n`;D.langs.forEach(l=>t+=`${l.lang}${l.level?' : '+l.level:''}\n`);}
+    else if(sec.id==='projects'&&D.projects.length){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n`;D.projects.forEach(p=>{t+=`${p.name}\nTech: ${p.tech}\n${p.desc}\n${p.github?'GitHub: '+p.github+'\n':''}\n`;});}
+    else if(sec.id==='references'){
+      if(D.refOnRequest&&!D.references.length)t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\nReferences available upon request.\n`;
+      else if(D.references.length){t+=`\n${sec.label.toUpperCase()}\n${'-'.repeat(30)}\n`;D.references.forEach(r=>t+=`${r.name} | ${[r.title,r.company].filter(Boolean).join(', ')} | ${[r.email,r.phone].filter(Boolean).join(' · ')}\n`);}
+    }
+    else if(sec.id.startsWith('custom_')){const cs=D.custom[sec.id];if(cs&&cs.items.length){t+=`\n${cs.label.toUpperCase()}\n${'-'.repeat(30)}\n`;cs.items.forEach(i=>t+=`${i.content}\n`);}}
+  });
+  const blob=new Blob([t],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=(gv('f-name')||'CV').replace(/\s+/g,'_')+'_ATS.txt';a.click();
+  toast('ATS text downloaded!');
+}
+
+/* ═══════ WORD DOWNLOAD ═══════ */
+function downloadWord(){
+  showDL('Building Word file…','Packaging your .docx');
+  const name=gv('f-name'),role=gv('f-tagline'),phone=gv('f-phone'),email=gv('f-email'),loc=gv('f-location'),gh=gv('f-github'),li=gv('f-linkedin'),summary=gv('f-summary');
+  const contacts=[phone,email,loc,gh&&`github.com/${gh}`,li].filter(Boolean);
+  const acc=D.accent.replace('#','');
+  const ST=t=>`<w:p><w:pPr><w:spacing w:before="200" w:after="80"/><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="1" w:color="${acc}"/></w:pBdr></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="24"/><w:color w:val="${acc}"/><w:caps/></w:rPr><w:t>${xmle(t)}</w:t></w:r></w:p>`;
+  const _ls=Math.round(240*(D.lineSpacing||1)); // Word line spacing: 240 = single
+  const BP=(t,sz=20)=>`<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr><w:spacing w:before="0" w:after="14" w:line="${_ls}" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:sz w:val="${sz}"/></w:rPr><w:t>${xmle(t)}</w:t></w:r></w:p>`;
+  const TX=(t,sz=20,bold=false,italic=false,color='')=>`<w:p><w:pPr><w:spacing w:before="0" w:after="14" w:line="${_ls}" w:lineRule="auto"/></w:pPr><w:r><w:rPr>${bold?'<w:b/>':''}${italic?'<w:i/>':''}${color?`<w:color w:val="${color}"/>`:''}${sz!==20?`<w:sz w:val="${sz}"/>`:''}${sz!==20?`<w:szCs w:val="${sz}"/>`:''}  </w:rPr><w:t xml:space="preserve">${xmle(t)}</w:t></w:r></w:p>`;
+  
+  let secX='';
+  D.sections.filter(s=>s.visible).forEach(sec=>{
+    if(sec.id==='summary'&&summary) secX+=ST(sec.label)+TX(summary);
+    else if(sec.id==='jobs'&&D.jobs.length){
+      secX+=ST(sec.label);
+      D.jobs.forEach(j=>{
+        secX+=TX(`${j.title}  |  ${j.org}  |  ${[j.start,j.end].filter(Boolean).join(' – ')}`,22,true,false,acc);
+        j.bullets.split('\n').filter(Boolean).forEach(b=>secX+=BP(b));
+        secX+=`<w:p><w:pPr><w:spacing w:before="0" w:after="60"/></w:pPr></w:p>`;
+      });
+    }
+    else if(sec.id==='edu'&&D.edu.length){
+      secX+=ST(sec.label);
+      D.edu.forEach(e=>{
+        secX+=TX(`${e.degree}`,22,true)+TX(`${e.school}${e.grade?' · '+e.grade:''}  ${[e.start,e.end].filter(Boolean).join(' – ')}`,20,false,true,'555555');
+        if(e.project)secX+=TX('Graduation Project: '+e.project,19,false,false,'666666');
+        secX+=`<w:p><w:pPr><w:spacing w:before="0" w:after="40"/></w:pPr></w:p>`;
+      });
+    }
+    else if(sec.id==='skills'&&D.skillCats.length){
+      secX+=ST(sec.label);
+      D.skillCats.forEach(c=>secX+=`<w:p><w:pPr><w:spacing w:before="0" w:after="14"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="20"/></w:rPr><w:t>${xmle('• '+c.name+': ')}</w:t></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>${xmle(c.skills.join(', '))}</w:t></w:r></w:p>`);
+    }
+    else if(sec.id==='certs'&&D.certs.length){secX+=ST(sec.label);D.certs.forEach(c=>secX+=BP(c.name));}
+    else if(sec.id==='langs'&&D.langs.length){secX+=ST(sec.label);D.langs.forEach(l=>secX+=TX(`${l.lang}${l.level?' : '+l.level:''}`));}
+    else if(sec.id==='projects'&&D.projects.length){
+      secX+=ST(sec.label);
+      D.projects.forEach(p=>{
+        secX+=TX(p.name,22,true,false,acc);
+        secX+=TX('Description: '+p.desc);
+        secX+=TX('Technologies: '+p.tech,20,false,true,'555555');
+        if(p.github)secX+=TX('GitHub: '+p.github,19,false,false,'666666');
+        secX+=`<w:p><w:pPr><w:spacing w:before="0" w:after="40"/></w:pPr></w:p>`;
+      });
+    }
+    else if(sec.id==='references'){
+      if(D.refOnRequest&&!D.references.length){secX+=ST(sec.label);secX+=TX('References available upon request.',20,false,true);}
+      else if(D.references.length){secX+=ST(sec.label);D.references.forEach(r=>{secX+=TX(r.name,22,true);secX+=TX([r.title,r.company].filter(Boolean).join(', '),20,false,true,'555555');secX+=TX([r.email,r.phone].filter(Boolean).join(' · '),19,false,false,'666666');secX+=`<w:p><w:pPr><w:spacing w:before="0" w:after="40"/></w:pPr></w:p>`;});}
+    }
+    else if(sec.id.startsWith('custom_')){
+      const cs=D.custom[sec.id];
+      if(cs&&cs.items.length){secX+=ST(cs.label);cs.items.forEach(i=>secX+=TX(i.content));}
+    }
+  });
+
+  const docXml=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>
+  <w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="40"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="52"/><w:szCs w:val="52"/></w:rPr><w:t>${xmle(name)}</w:t></w:r></w:p>
+  <w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="40"/></w:pPr><w:r><w:rPr><w:color w:val="444444"/><w:sz w:val="22"/></w:rPr><w:t>${xmle(role)}</w:t></w:r></w:p>
+  <w:p><w:pPr><w:jc w:val="center"/><w:spacing w:before="0" w:after="160"/><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="1" w:color="${acc}"/></w:pBdr></w:pPr><w:r><w:rPr><w:color w:val="555555"/><w:sz w:val="19"/></w:rPr><w:t>${xmle(contacts.join('   |   '))}</w:t></w:r></w:p>
+  ${secX}
+  <w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="${Math.round((D.pageMargin||18)*56.7)}" w:right="${Math.round(Math.max(8,(D.pageMargin||18)-10)*56.7+567)}" w:bottom="${Math.round((D.pageMargin||18)*56.7)}" w:left="${Math.round(Math.max(8,(D.pageMargin||18)-10)*56.7+567)}"/></w:sectPr>
+  </w:body></w:document>`;
+  const numbering=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:numbering xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:abstractNum w:abstractNumId="0"><w:lvl w:ilvl="0"><w:start w:val="1"/><w:numFmt w:val="bullet"/><w:lvlText w:val="•"/><w:lvlJc w:val="left"/><w:pPr><w:ind w:left="360" w:hanging="360"/></w:pPr></w:lvl></w:abstractNum><w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num></w:numbering>`;
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="22"/></w:rPr></w:rPrDefault></w:docDefaults></w:styles>`;
+  const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering" Target="numbering.xml"/></Relationships>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml"/></Types>`;
+  const rootRels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
+  
+  function buildZip(){
+    const zip=new JSZip();
+    zip.file('[Content_Types].xml',ct);zip.file('_rels/.rels',rootRels);
+    zip.file('word/document.xml',docXml);zip.file('word/styles.xml',styles);
+    zip.file('word/numbering.xml',numbering);zip.file('word/_rels/document.xml.rels',rels);
+    zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})
+      .then(blob=>{
+        const url=URL.createObjectURL(blob);const a=document.createElement('a');
+        a.href=url;a.download=(gv('f-name')||'CV').replace(/\s+/g,'_')+'_CV.docx';
+        a.click();URL.revokeObjectURL(url);hideDL();toast('Word file downloaded!');
+      });
+  }
+  if(window.JSZip)buildZip();
+  else{const s=document.createElement('script');s.src='../../vendor/cdnjs/jszip/3.10.1/jszip.min.js';s.onload=buildZip;document.head.appendChild(s);}
+}
+
+/* ═══════ PROFILES / LOCAL STORAGE ═══════ */
+let profiles={};
+function autoSave(){if(_viewingShared)return;try{localStorage.setItem('cvf_auto',JSON.stringify({D,personal:getPersonal()}));}catch(e){}}
+function loadAutoSave(){
+  try{
+    const raw=localStorage.getItem('cvf_auto');if(!raw){toast('No saved data found','err');return;}
+    const sv=JSON.parse(raw);
+    if(sv&&sv.D&&Array.isArray(sv.D.jobs)&&sv.D.jobs.length>0){
+      D=sanitizeD(sv.D);if(sv.personal)setPersonal(sanitizePersonal(sv.personal));
+      _viewingShared=false;
+      rebuildEditors();applyStyle();render();updateScore();toast('Restored from auto-save!');
+    }else{toast('Saved data appears empty','err');}
+  }catch(e){toast('Could not load saved data','err');}
+}
+function confirmSaveProfile(){
+  const name=document.getElementById('new-profile-name').value.trim();if(!name)return;
+  profiles[name]={D:JSON.parse(JSON.stringify(D)),personal:getPersonal()};
+  try{localStorage.setItem('cvf_profiles',JSON.stringify(profiles));}catch(e){}
+  closeModal('m-profile');renderProfileChips();toast(`Profile "${name}" saved!`);
+  if(_viewingShared){_viewingShared=false;autoSave();}
+}
+function loadProfile(name){
+  const p=profiles[name];if(!p)return;
+  D=sanitizeD(JSON.parse(JSON.stringify(p.D)));setPersonal(sanitizePersonal(p.personal));
+  _viewingShared=false;
+  rebuildEditors();applyStyle();render();updateScore();snap();toast(`Loaded: ${name}`);
+}
+function delProfile(name){
+  if(!confirm(`Delete profile "${name}"?`))return;
+  delete profiles[name];
+  try{localStorage.setItem('cvf_profiles',JSON.stringify(profiles));}catch(e){}
+  renderProfileChips();
+}
+function renderProfileChips(){
+  document.getElementById('profile-chips').innerHTML=Object.keys(profiles).map(n=>`
+    <div class="profile-chip" onclick="loadProfile(${jsArg(n)})">
+      <span>${esc(n)}</span>
+      <span class="chip-del" onclick="event.stopPropagation();delProfile(${jsArg(n)})">✕</span>
+    </div>`).join('');
+}
+function loadProfiles(){
+  try{const raw=localStorage.getItem('cvf_profiles');if(raw)profiles=JSON.parse(raw);}catch(e){}
+  renderProfileChips();
+}
+
+/* ═══════ REBUILD ALL EDITORS ═══════ */
+function rebuildEditors(){
+  renderJobs();renderEdu();renderSkills();renderCerts();renderLangs();renderProjs();
+  renderSecOrder();renderCustomEditors();
+  try{renderRefs();}catch(e){}
+  // Sync UI state
+  document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));
+  const tc=document.querySelector(`.theme-card[data-theme="${D.theme}"]`);if(tc)tc.classList.add('active');
+  document.querySelectorAll('.swatch').forEach(s=>{s.classList.remove('active');if(s.dataset.color===D.accent)s.classList.add('active');});
+  document.getElementById('custom-color').value=D.accent;
+  document.querySelectorAll('.font-card').forEach(c=>{c.classList.remove('active');if(c.dataset.font===D.font)c.classList.add('active');});
+  if(D.photo){document.getElementById('photo-preview').src=D.photo;document.getElementById('photo-preview').style.display='block';document.getElementById('photo-placeholder').style.display='none';}
+  else{document.getElementById('photo-preview').style.display='none';document.getElementById('photo-placeholder').style.display='flex';}
+  // Sync margin/spacing sliders
+  const ms=document.getElementById('margin-slider'); if(ms){ms.value=D.pageMargin||18;document.getElementById('margin-val').textContent=(D.pageMargin||18)+'mm';}
+  const ss=document.getElementById('spacing-slider'); if(ss){ss.value=D.lineSpacing||1;}
+  const dr=document.getElementById('cv-dir'); if(dr)dr.value=D.dir||'ltr';
+}
+
+/* ═══════ PAGE BREAK GUIDES ═══════ */
+function getContentHeight(){
+  const wrap=document.getElementById('cv-wrap');
+  if(!wrap)return 0;
+  const lines=wrap.querySelectorAll('.page-break-line');
+  lines.forEach(l=>l.style.display='none');
+  // Temporarily clear zoom/transform to measure TRUE unscaled content height
+  const savedZoom=wrap.style.zoom;
+  const savedT=wrap.style.transform;
+  wrap.style.zoom='';
+  wrap.style.transform='none';
+  void wrap.offsetHeight;
+  let h=Math.max(wrap.offsetHeight,wrap.scrollHeight);
+  wrap.style.zoom=savedZoom;
+  wrap.style.transform=savedT;
+  lines.forEach(l=>l.style.display='');
+  return h;
+}
+function drawPageBreaks(){
+  try{
+    const wrap=document.getElementById('cv-wrap');
+    if(!wrap)return;
+    wrap.querySelectorAll('.page-break-line').forEach(l=>l.remove());
+    // A4 full page = 1123px tall at 794px width. Subtract top+bottom margins
+    // because @page margin reduces the usable content height per printed page.
+    const fullPage=Math.round(794*297/210); // ≈1123
+    const marginPx=Math.round((D.pageMargin||18)*3.781); // mm → px
+    const usable=fullPage-(marginPx*2); // top + bottom margin removed per page
+    const total=getContentHeight();
+    // Content begins after the top padding; each page holds `usable` px of content
+    let y=marginPx+usable;
+    while(y<total-20){
+      const line=document.createElement('div');
+      line.className='page-break-line';
+      line.style.top=y+'px';
+      wrap.appendChild(line);
+      y+=usable;
+    }
+  }catch(e){}
+}
+
+/* ═══════ SCALE PREVIEW ═══════ */
+window.scalePreview=function(){
+  const wrap=document.getElementById('cv-wrap'),sw=document.getElementById('cv-scale-wrap');
+  if(!wrap||!sw)return;
+  // Always clear any leftover transform from older versions
+  wrap.style.transform='none';
+  sw.style.height='';sw.style.minHeight='';sw.style.overflow='';
+  if(window.innerWidth<960){
+    const avail=window.innerWidth-16;
+    const scale=Math.min(1,avail/794);
+    // CSS zoom resizes the actual layout box: background and height follow automatically.
+    // No manual height math needed — the white box always covers all content.
+    wrap.style.zoom=scale;
+    // Fallback for browsers without zoom support (rare on mobile)
+    if(!('zoom' in wrap.style)||wrap.style.zoom===''){
+      wrap.style.transform='scale('+scale+')';
+      wrap.style.transformOrigin='top left';
+      const realH=getContentHeight();
+      sw.style.height=Math.ceil(realH*scale)+30+'px';
+      sw.style.overflow='hidden';
+    }
+  }else{
+    wrap.style.zoom='';
+  }
+};
+window.addEventListener('resize',()=>{
+  // When resizing to desktop, force both panels visible
+  if(window.innerWidth>=960){
+    const ep=document.getElementById('editor-panel'),pp=document.getElementById('preview-panel');
+    if(ep)ep.style.display='flex';
+    if(pp)pp.style.display='flex';
+  }
+  scalePreview();updateScore();
+});
+
+/* ═══════ INIT ═══════ */
+function init(){
+  // Try load from URL first
+  const fromUrl=loadFromUrl();
+  if(!fromUrl){
+    // Try auto-save restore (only if valid)
+    try{
+      const raw=localStorage.getItem('cvf_auto');
+      if(raw){const sv=JSON.parse(raw);
+        if(sv&&sv.D&&Array.isArray(sv.D.jobs)){D=sanitizeD(sv.D);if(sv.personal)setPersonal(sanitizePersonal(sv.personal));}
+      }
+    }catch(e){}
+  }
+  // Migrate older saved data — ensure new fields exist
+  if(D.dir===undefined)D.dir='ltr';
+  if(D.refOnRequest===undefined)D.refOnRequest=false;
+  if(!Array.isArray(D.references))D.references=[];
+  if(D.pageMargin===undefined)D.pageMargin=18;
+  if(D.lineSpacing===undefined)D.lineSpacing=1;
+  if(!D.sections.find(s=>s.id==='references'))D.sections.push({id:'references',label:'References',visible:false});
+  try{loadProfiles();}catch(e){}
+  try{rebuildEditors();}catch(e){console.error('rebuildEditors',e);}
+  try{applyStyle();}catch(e){}
+  try{render();}catch(e){console.error('render',e);}
+  try{updateScore();}catch(e){}
+  try{snap();updHist();}catch(e){}
+  try{setInterval(autoSave,30000);}catch(e){}
+
+  // Panel visibility
+  if(window.innerWidth<960){
+    document.getElementById('editor-panel').style.display='flex';
+    document.getElementById('preview-panel').style.display='none';
+  }else{
+    document.getElementById('editor-panel').style.display='flex';
+    document.getElementById('preview-panel').style.display='flex';
+    setTimeout(scalePreview,100);
+  }
+  
+  if(fromUrl)setTimeout(()=>toast('Viewing a shared CV — auto-save paused so your own CV stays safe'),600);
+  try{updateWC();}catch(e){}
+  try{checkOnboarding();}catch(e){}
+  // Refit once web fonts finish loading (fixes mis-measured height on first load)
+  try{
+    if(document.fonts&&document.fonts.ready){
+      document.fonts.ready.then(()=>{drawPageBreaks();if(window.innerWidth<960)scalePreview();});
+    }
+  }catch(e){}
+}
+/* ═══════ WORD COUNT ═══════ */
+function updateWC(){
+  const txt=gv('f-summary');
+  const wc=txt.trim()?txt.trim().split(/\s+/).length:0;
+  const el=document.getElementById('summary-wc');
+  const hint=document.getElementById('summary-hint');
+  if(!el)return;
+  el.textContent=wc+' words';
+  el.style.color=wc<20?'var(--danger)':wc>80?'var(--accent2)':'var(--green)';
+  if(hint){
+    if(wc<20&&wc>0)hint.textContent='💡 Too short — aim for 30–60 words.';
+    else if(wc>80)hint.textContent='⚠️ A bit long — consider trimming to under 60 words.';
+    else if(wc>=30)hint.textContent='✅ Good length!';
+    else hint.textContent='💡 Aim for 30–60 words. Use strong action words.';
+  }
+}
+
+/* ═══════ DARK/LIGHT MODE ═══════ */
+let _darkMode=true;
+function toggleDarkMode(){
+  _darkMode=!_darkMode;
+  const r=document.documentElement;
+  if(_darkMode){
+    r.style.setProperty('--bg','#0f0f13');
+    r.style.setProperty('--surface','#18181f');
+    r.style.setProperty('--surface2','#1e1e28');
+    r.style.setProperty('--border','#2a2a38');
+    r.style.setProperty('--text','#e8e8f0');
+    r.style.setProperty('--muted','#7a7a90');
+    document.getElementById('dark-toggle').textContent='☀️';
+  }else{
+    r.style.setProperty('--bg','#f0f0f5');
+    r.style.setProperty('--surface','#ffffff');
+    r.style.setProperty('--surface2','#f5f5fa');
+    r.style.setProperty('--border','#d0d0e0');
+    r.style.setProperty('--text','#1a1a2e');
+    r.style.setProperty('--muted','#6a6a80');
+    document.getElementById('dark-toggle').textContent='🌙';
+  }
+}
+
+/* ═══════ ONBOARDING ═══════ */
+function checkOnboarding(){
+  try{
+    if(!localStorage.getItem('cvf_onboarded')){
+      document.getElementById('m-onboard').classList.add('show');
+    }
+  }catch(e){}
+}
+function closeOnboarding(){
+  try{localStorage.setItem('cvf_onboarded','1');}catch(e){}
+  closeModal('m-onboard');
+}
+
+/* ═══════ RESET CV ═══════ */
+function resetCV(){
+  if(!confirm('Reset to default CV data? All unsaved changes will be lost.'))return;
+  D=JSON.parse(JSON.stringify(DEFAULT_D));setPersonal(DEFAULT_PERSONAL);_viewingShared=false;
+  rebuildEditors();applyStyle();render();updateScore();updateWC();snap();autoSave();
+  toast('Sample CV restored');
+}
+function blankCV(){
+  if(!confirm('Clear everything and start with a blank CV?'))return;
+  const keepStyle={theme:D.theme,accent:D.accent,font:D.font,pageMargin:D.pageMargin,lineSpacing:D.lineSpacing,dir:D.dir};
+  D=Object.assign(JSON.parse(JSON.stringify(DEFAULT_D)),keepStyle,{
+    jobs:[{id:++nid,title:'',org:'',start:'',end:'Present',bullets:''}],
+    edu:[{id:++nid,degree:'',school:'',start:'',end:'',grade:'',project:''}],
+    skillCats:[{id:++nid,name:'Skills',skills:[]}],
+    certs:[],langs:[],projects:[],references:[],refOnRequest:false,
+    custom:{custom_softskills:{label:'Soft Skills',items:[]}}
+  });
+  setPersonal({name:'',tagline:'',phone:'',email:'',location:'',github:'',linkedin:'',portfolio:'',summary:''});
+  _viewingShared=false;
+  rebuildEditors();applyStyle();render();updateScore();updateWC();snap();autoSave();
+  toast('Blank CV ready — start typing!');
+}
+
+/* ═══════ EXPORT ALL (ZIP with PDF instructions + Word + TXT) ═══════ */
+function printHelp(){
+  const m=document.getElementById('m-printhelp');
+  if(m)m.classList.add('show');
+}
+
+/* ═══════ TEXT DIRECTION (RTL) ═══════ */
+function setDir(d){
+  D.dir=d; render(); snap(); autoSave();
+}
+
+/* ═══════ MARGINS & SPACING ═══════ */
+function setMargin(v){
+  D.pageMargin=parseInt(v);
+  const lbl=document.getElementById('margin-val'); if(lbl)lbl.textContent=v+'mm';
+  applyMarginSpacing(); render();
+  clearTimeout(_dbTimer);_dbTimer=setTimeout(()=>{snap();autoSave();},600);
+}
+function setSpacing(v){
+  D.lineSpacing=parseFloat(v);
+  const names={'0.85':'Compact','0.9':'Compact','0.95':'Snug','1':'Normal','1.05':'Normal','1.1':'Comfortable','1.15':'Comfortable','1.2':'Relaxed','1.25':'Relaxed','1.3':'Loose','1.35':'Loose','1.4':'Spacious'};
+  const lbl=document.getElementById('spacing-val'); if(lbl)lbl.textContent=names[String(v)]||'Custom';
+  applyMarginSpacing(); render();
+  clearTimeout(_dbTimer);_dbTimer=setTimeout(()=>{snap();autoSave();},600);
+}
+function applyMarginSpacing(){
+  const wrap=document.getElementById('cv-wrap');
+  if(!wrap)return;
+  wrap.style.setProperty('--cv-line',(D.lineSpacing||1));
+  // Show margin live in the preview: vertical padding on the page box.
+  // (Horizontal padding stays theme-controlled to keep colored headers full-bleed.)
+  const px=Math.round((D.pageMargin||18)*3.781);
+  wrap.style.paddingTop=px+'px';
+  wrap.style.paddingBottom=px+'px';
+}
+
+/* ═══════ REFERENCES ═══════ */
+function toggleRefRequest(){
+  D.refOnRequest=document.getElementById('ref-on-request').checked;
+  if(D.refOnRequest){
+    const s=D.sections.find(x=>x.id==='references'); if(s)s.visible=true;
+  }
+  renderSecOrder(); render(); snap(); autoSave();
+}
+function renderRefs(){
+  const wrap=document.getElementById('ref-list');
+  if(!wrap)return;
+  wrap.innerHTML=D.references.map((r,i)=>`
+    <div class="ref-block" style="margin-bottom:8px">
+      <div class="iblock-head"><span class="iblock-label">Reference ${i+1}</span>
+        <div class="iblock-actions"><button class="icon-btn danger" onclick="delRef(${r.id})">✕</button></div></div>
+      <div class="fg" style="margin-bottom:6px"><label>Name</label><input type="text" value="${esc(r.name)}" oninput="upRef(${r.id},'name',this.value)"></div>
+      <div class="fr" style="margin-bottom:6px">
+        <div class="fg"><label>Title</label><input type="text" value="${esc(r.title||'')}" oninput="upRef(${r.id},'title',this.value)"></div>
+        <div class="fg"><label>Company</label><input type="text" value="${esc(r.company||'')}" oninput="upRef(${r.id},'company',this.value)"></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Email</label><input type="text" value="${esc(r.email||'')}" oninput="upRef(${r.id},'email',this.value)"></div>
+        <div class="fg"><label>Phone</label><input type="text" value="${esc(r.phone||'')}" oninput="upRef(${r.id},'phone',this.value)"></div>
+      </div>
+    </div>`).join('')+`<button class="add-btn" onclick="addRef()">+ Add Reference</button>`;
+}
+function upRef(id,f,v){const r=D.references.find(x=>x.id===id);if(r){r[f]=v;render();}}
+function delRef(id){D.references=D.references.filter(x=>x.id!==id);renderRefs();render();snap();autoSave();}
+function addRef(){D.references.push({id:++nid,name:'',title:'',company:'',email:'',phone:''});renderRefs();render();snap();autoSave();}
+
+/* ═══════ JSON BACKUP / RESTORE ═══════ */
+function exportJSON(){
+  const data=JSON.stringify({D,personal:getPersonal(),_v:1},null,2);
+  const blob=new Blob([data],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=(gv('f-name')||'CV').replace(/\s+/g,'_')+'_backup.json';a.click();
+  toast('Backup downloaded!');
+}
+function importJSON(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      const sv=JSON.parse(e.target.result);
+      if(sv&&sv.D){D=sanitizeD(sv.D);if(sv.personal)setPersonal(sanitizePersonal(sv.personal));_viewingShared=false;
+        rebuildEditors();applyStyle();render();updateScore();snap();autoSave();
+        closeModal('m-json');toast('Backup restored!');}
+      else toast('Invalid backup file','err');
+    }catch(err){toast('Could not read file','err');}
+  };
+  r.readAsText(f);
+}
+
+/* ═══════ TEMPLATE SUGGESTIONS ═══════ */
+const BULLET_TEMPLATES={
+  'developer':['Developed and maintained scalable web applications serving X users','Collaborated with cross-functional teams to deliver features on schedule','Reduced load times by X% through code optimization','Wrote unit and integration tests achieving X% coverage','Mentored junior developers and conducted code reviews'],
+  'manager':['Led a team of X people to deliver projects on time and under budget','Defined product strategy and roadmap aligned with business goals','Improved team productivity by X% through process improvements','Managed stakeholder relationships across X departments','Drove revenue growth of X% year over year'],
+  'designer':['Designed user-centered interfaces for web and mobile platforms','Conducted user research and usability testing with X participants','Created and maintained design systems and component libraries','Increased user engagement by X% through redesign','Collaborated with developers to ensure pixel-perfect implementation'],
+  'sales':['Exceeded sales targets by X% for X consecutive quarters','Built and managed a pipeline of X qualified leads','Negotiated and closed deals worth $X in total','Developed relationships with X key accounts','Reduced churn by X% through proactive account management'],
+  'analyst':['Analyzed large datasets to identify trends and actionable insights','Built dashboards and reports used by X stakeholders','Improved forecast accuracy by X% using statistical models','Automated reporting processes saving X hours weekly','Presented findings to executive leadership']
+};
+function suggestBullets(jobId){
+  const j=D.jobs.find(x=>x.id===jobId);if(!j)return;
+  const title=(j.title||'').toLowerCase();
+  let key='developer';
+  if(title.includes('manager')||title.includes('lead')||title.includes('head'))key='manager';
+  else if(title.includes('design'))key='designer';
+  else if(title.includes('sales')||title.includes('account'))key='sales';
+  else if(title.includes('analyst')||title.includes('data'))key='analyst';
+  const tips=BULLET_TEMPLATES[key];
+  const chosen=prompt('Suggested bullet points for "'+j.title+'":\n\n'+tips.map((t,i)=>(i+1)+'. '+t).join('\n')+'\n\nEnter numbers to add (e.g. 1,3,5) or cancel:');
+  if(!chosen)return;
+  const nums=chosen.split(',').map(n=>parseInt(n.trim())-1).filter(n=>n>=0&&n<tips.length);
+  if(nums.length){
+    const add=nums.map(n=>tips[n]).join('\n');
+    j.bullets=(j.bullets?j.bullets+'\n':'')+add;
+    renderJobs();render();snap();autoSave();
+    toast('Added '+nums.length+' suggestions');
+  }
+}
+
+/* ═══════ DOWNLOAD / MORE MENUS ═══════ */
+function openDownloadMenu(){
+  openModal('m-download');
+}
+function openMoreMenu(){
+  const ic=document.getElementById('more-dark-icon');
+  if(ic)ic.textContent=_darkMode?'☀️':'🌙';
+  openModal('m-more');
+}
+
+try{init();}catch(e){console.error('init failed:',e);}
+/* Offline support + installable app — only on a real website (https or localhost), never file:// or content:// */
+if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});
+}
+</script>
+</body>
+</html>

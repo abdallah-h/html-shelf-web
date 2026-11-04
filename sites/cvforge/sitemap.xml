@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://yourdomain.com/</loc><lastmod>2026-10-01</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://yourdomain.com/blog/</loc><lastmod>2026-10-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yourdomain.com/blog/cv-with-no-experience.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/blog/cv-vs-resume.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/blog/ats-friendly-cv.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/blog/cv-bullet-points-action-verbs.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/blog/cv-professional-summary-examples.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/blog/arabic-cv-guide.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yourdomain.com/about.html</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://yourdomain.com/privacy.html</loc><lastmod>2026-10-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://yourdomain.com/terms.html</loc><lastmod>2026-10-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://yourdomain.com/contact.html</loc><lastmod>2026-10-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

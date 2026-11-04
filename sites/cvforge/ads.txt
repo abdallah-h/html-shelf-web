@@ -1,0 +1,4 @@
+# ads.txt — REQUIRED by Google AdSense, otherwise ad revenue is limited.
+# After AdSense approves you, replace the line below with the exact line
+# shown in AdSense → Sites → ads.txt (your real publisher ID), then redeploy.
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

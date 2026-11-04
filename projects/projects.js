@@ -311,5 +311,13 @@ window.SHELF_PROJECTS=[
   "srcTitle": "مكتبة قراءة البشر — 36 كتاب تفاعلي",
   "icon": "🕵️",
   "tag": "كتب"
+ },
+ {
+  "id": "b:cvforge",
+  "site": "sites/cvforge/index.html",
+  "title": "Free CV Builder",
+  "srcTitle": "Free CV Builder — Create & Download Your Resume as PDF, Word & Text | CV Forge",
+  "icon": "📄",
+  "tag": "شغل"
  }
 ];

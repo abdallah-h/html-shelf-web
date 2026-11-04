@@ -1,0 +1,17 @@
+{
+  "name": "CV Forge — Free CV Builder",
+  "short_name": "CV Forge",
+  "description": "Build a professional CV for free. 10 themes, PDF, Word and ATS text export, Arabic RTL support. Works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f0f13",
+  "theme_color": "#0f0f13",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
