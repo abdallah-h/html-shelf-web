@@ -61,7 +61,7 @@
   #viewer.full .vbar{transform:translateY(-100%)}
   .vbar button{border:0;background:transparent;color:#fff;font-size:22px;width:40px;height:40px;border-radius:50%}
   .vbar span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
-  #frame{position:absolute;left:0;right:0;top:var(--vbh);bottom:var(--sab);width:100%;height:calc(100% - var(--vbh) - var(--sab));border:0;background:#fff;transition:top .2s,height .2s}
+  #frame{position:absolute;left:0;right:0;top:var(--vbh);bottom:var(--sab);width:100%;height:calc(100% - var(--vbh) - var(--sab));border:0;background:#fff}
   #viewer.full #frame{top:var(--sat);height:calc(100% - var(--sat) - var(--sab))}
   .search{display:flex;gap:8px}.search input{flex:1;min-width:0}
   .sortBtn{flex:none;font:inherit;font-size:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;width:46px}
@@ -131,6 +131,8 @@
   <h3>⇅ ترتيب وعرض</h3>
   <h4>الترتيب (المفضلة دايمًا الأول)</h4><div class="opts" id="sortOpts"></div>
   <h4>العرض</h4><div class="opts" id="viewOpts"></div>
+  <h4>⚡ توفير المعالج (للجهاز ده بس)</h4><div class="opts" id="liteOpts"></div>
+  <p style="margin:0 8px 8px;font-size:13px;color:var(--muted)">بيوقّف الحركات اللي بتلف على طول وتأثيرات الزجاج المغبّش جوّه المشاريع — المحتوى زي ما هو، والجهاز يشتغل أخف.</p>
 </div></div>
 
 <div class="sheet hidden" id="arcSheet"><div class="sheet-card">
@@ -162,7 +164,9 @@ const BUILTIN=window.SHELF_PROJECTS||[];   // www/projects/projects.js, generate
 const LS="shelf:v1";
 /* archived: {id: when} (archive instead of delete) · gone: built-ins deleted from the archive · lists: [{id,name,items:[id]}] */
 const META0=()=>({hidden:[],gone:[],archived:{},lists:[],names:{},icons:{},tags:{},fav:[],opened:{},dataT:{},
-  pos:{},openCount:{},sort:"recent",view:"grid",setT:0});
+  pos:{},openCount:{},sort:"recent",view:"grid",setT:0,
+  lite:null});   // lite: null = automatic (on in a browser, off in the Android app)
+const liteOn=()=>meta.lite==null?!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform()):!!meta.lite;
 // what "shelf settings" means for the Drive backup (js/cloud.js) — the rest is per-phone (positions, open times…)
 const SETTINGS_KEYS=["archived","gone","lists","names","icons","tags","fav","sort","view"];
 const settingsOf=m=>{const o={};SETTINGS_KEYS.forEach(k=>o[k]=m[k]);return o;};
@@ -282,9 +286,12 @@ $("grid").addEventListener("contextmenu",e=>e.preventDefault());
 const SORTS=[["recent","🕘 آخر فتح"],["name","🔤 الاسم"],["added","🆕 آخر إضافة"],["count","🔥 الأكثر فتحًا"]],VIEWS=[["grid","▦ كروت"],["list","☰ قائمة"]];
 function renderSortSheet(){
   $("sortOpts").innerHTML=SORTS.map(([k,l])=>`<button data-sort="${k}" class="${meta.sort===k?"on":""}">${l}</button>`).join("");
-  $("viewOpts").innerHTML=VIEWS.map(([k,l])=>`<button data-view="${k}" class="${meta.view===k?"on":""}">${l}</button>`).join("");}
+  $("viewOpts").innerHTML=VIEWS.map(([k,l])=>`<button data-view="${k}" class="${meta.view===k?"on":""}">${l}</button>`).join("");
+  $("liteOpts").innerHTML=[["1","⚡ شغّال"],["0","✨ كل التأثيرات"]].map(([k,l])=>`<button data-lite="${k}" class="${liteOn()===(k==="1")?"on":""}">${l}</button>`).join("");}
 $("sortBtn").onclick=()=>{renderSortSheet();$("sortSheet").classList.remove("hidden");};
 $("sortSheet").onclick=async e=>{if(e.target.id==="sortSheet"){$("sortSheet").classList.add("hidden");return;}
+  const lb=e.target.closest("[data-lite]");
+  if(lb){meta.lite=lb.dataset.lite==="1";saveMeta();renderSortSheet();toast("هيتطبّق على المشاريع اللي هتفتحها");return;}
   const b=e.target.closest("[data-sort],[data-view]");if(!b)return;
   if(b.dataset.sort)meta.sort=b.dataset.sort;else meta.view=b.dataset.view;saveMeta();renderSortSheet();await load();};
 
@@ -314,7 +321,19 @@ async function openProject(id){
    1) its own localStorage: keys are stored as "p:<project id>:<key>", so two projects (or the shelf itself) never
       overwrite each other's saved progress;
    2) web links / window.open → the phone's browser (inside the viewer they'd replace the project). */
-function shimFor(id){return `<script>(function(){var ID=${JSON.stringify(id)},P="p:"+ID+":",N=${NATIVE?1:0};
+function shimFor(id){return `<script>(function(){var ID=${JSON.stringify(id)},P="p:"+ID+":",N=${NATIVE?1:0},LITE=${liteOn()?1:0};
+/* power saving: animations set to repeat forever play twice and stop; glass (backdrop blur) panels get no blur.
+   Both made the browser repaint big areas of the screen all the time on a computer. */
+if(LITE){try{var ls0=document.createElement("style");
+ ls0.textContent="*,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}";
+ document.documentElement.appendChild(ls0);
+ var tame=function(el){try{(el&&el.getAnimations?el.getAnimations():document.getAnimations()).forEach(function(a){var t=a.effect&&a.effect.getTiming();
+  if(t&&t.iterations===Infinity)a.effect.updateTiming({iterations:2});});}catch(e){}};
+ document.addEventListener("animationstart",function(e){tame(e.target);},true);
+ var an=Element.prototype.animate;   // animations started from JavaScript (el.animate) fire no animationstart
+ Element.prototype.animate=function(k,o){if(o&&typeof o==="object"&&o.iterations===Infinity){var c={};for(var x in o)c[x]=o[x];c.iterations=2;o=c;}return an.call(this,k,o);};
+ // animationstart can be skipped (e.g. a page opened in the background) — sweep a few times after load as well
+ addEventListener("load",function(){tame();setTimeout(tame,1000);setTimeout(tame,4000);});}catch(e){}}
 var W=function(){try{parent.shelfChanged(ID);}catch(e){}};
 try{var real=window.localStorage;
 var put=function(k,v){k=P+String(k);v=String(v);if(real.getItem(k)!==v){real.setItem(k,v);W();}};
