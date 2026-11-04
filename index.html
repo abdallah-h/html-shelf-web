@@ -7,6 +7,8 @@
 <meta name="theme-color" content="#1B1F3B">
 <title>رفّ المشاريع</title>
 <link rel="icon" href="icons/icon-96.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <style>
   :root{--accent:#E0A458;--night:#1B1F3B;--bg:#F4F2EC;--card:#fff;--ink:#23243A;--muted:#7F7B70;--line:#E6E1D5;
     --sat:var(--safe-area-inset-top,env(safe-area-inset-top,0px));--sab:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px))}
@@ -30,6 +32,11 @@
   .chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
   .chip{flex:none;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:5px 13px}
   .chip.on{background:var(--accent);border-color:var(--accent);color:#1B1F3B;font-weight:600}
+  .netb{position:absolute;bottom:8px;inset-inline-end:8px;font-size:12px;background:rgba(0,0,0,.28);color:#fff;padding:2px 7px;border-radius:99px}
+  .prog{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(0,0,0,.18)}.prog i{display:block;height:100%;background:#fff;opacity:.9}
+  .info small.hit{color:var(--ink);opacity:.8}.info small.hit mark{background:var(--accent);color:#1B1F3B;border-radius:4px;padding:0 2px}
+  .stat{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line);font-size:14px}.stat b{white-space:nowrap}
+  .changes{margin:0 8px 8px;padding-inline-start:20px;font-size:14px;line-height:1.7}
   .fav{position:absolute;top:8px;inset-inline-start:10px;font-size:16px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
   .proj.arc{opacity:.85}.proj.arc .cover{filter:grayscale(.55)}
   .sec{grid-column:1/-1;margin:6px 4px 0;font-size:14px;color:var(--muted);font-weight:600}
@@ -72,7 +79,7 @@
   .grid.list{grid-template-columns:1fr;gap:8px}
   .grid.list .proj{flex-direction:row;min-height:68px;border-radius:16px}
   .grid.list .cover{width:68px;height:auto;min-height:68px;flex:none;font-size:30px}
-  .grid.list .cover .tag{display:none}
+  .grid.list .cover .tag,.grid.list .netb{display:none}
   .grid.list .info{flex:1;min-width:0;align-self:center;padding:8px 12px;padding-inline-end:44px}
   .grid.list .more{top:50%;transform:translateY(-50%);background:transparent;color:var(--muted)}
   .grid.list .fav{top:4px;inset-inline-start:4px;font-size:13px}
@@ -133,7 +140,10 @@
   <h4>العرض</h4><div class="opts" id="viewOpts"></div>
   <h4>⚡ توفير المعالج (للجهاز ده بس)</h4><div class="opts" id="liteOpts"></div>
   <p style="margin:0 8px 8px;font-size:13px;color:var(--muted)">بيوقّف الحركات اللي بتلف على طول وتأثيرات الزجاج المغبّش جوّه المشاريع — المحتوى زي ما هو، والجهاز يشتغل أخف.</p>
+  <button id="infoBtn" class="btn ghost" style="display:block;width:100%;margin-top:6px;background:transparent;color:var(--ink);border:1px solid var(--line)">🗂️ التخزين وحول التطبيق</button>
 </div></div>
+
+<div class="sheet hidden" id="infoSheet"><div class="sheet-card"><h3>🗂️ التخزين وحول التطبيق</h3><div id="infoBody"></div></div></div>
 
 <div class="sheet hidden" id="arcSheet"><div class="sheet-card">
   <h3 id="arTitle"></h3>
@@ -153,6 +163,7 @@
 <div class="toast hidden" id="toast"></div>
 
 <script src="projects/projects.js"></script>
+<script src="js/version.js"></script>
 <script>
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -184,26 +195,32 @@ const NATIVE=!!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNative
 
 /* ===== user-added files (IndexedDB — files can be several MB) ===== */
 let dbP=null;
-function db(){if(!dbP)dbP=new Promise((res,rej)=>{const r=indexedDB.open("shelf",1);
-  r.onupgradeneeded=()=>r.result.createObjectStore("files",{keyPath:"id"});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});return dbP;}
-async function tx(mode,fn){const d=await db();return new Promise((res,rej)=>{const t=d.transaction("files",mode);
-  const r=fn(t.objectStore("files"));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error);});}
-const allFiles=()=>tx("readonly",s=>s.getAll()).catch(()=>[]);
+const infoOf=f=>({id:f.id,pid:f.pid,title:f.title,size:f.size||(f.html||"").length,added:f.added,updatedAt:f.updatedAt});
+function db(){if(!dbP)dbP=new Promise((res,rej)=>{const r=indexedDB.open("shelf",2);
+  r.onupgradeneeded=()=>{const d=r.result,t=r.transaction;
+    if(!d.objectStoreNames.contains("files"))d.createObjectStore("files",{keyPath:"id"});
+    if(!d.objectStoreNames.contains("info")){const info=d.createObjectStore("info",{keyPath:"id"});   // v1 → v2: index existing files once
+      t.objectStore("files").openCursor().onsuccess=e=>{const c=e.target.result;if(c){info.put(infoOf(c.value));c.continue();}};}};
+  r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});return dbP;}
+async function tx(mode,fn,stores){const d=await db();stores=stores||["files"];return new Promise((res,rej)=>{const t=d.transaction(stores,mode);
+  const r=fn(...stores.map(n=>t.objectStore(n)));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error);});}
+const allFiles=()=>tx("readonly",s=>s.getAll()).catch(()=>[]);            // full records (HTML) — avoid
+const allInfo=()=>tx("readonly",s=>s.getAll(),["info"]).catch(()=>[]);    // light: id, pid, title, size, dates
 const getFile=id=>tx("readonly",s=>s.get(id));
-const putFile=f=>tx("readwrite",s=>s.put(f));
-const delFile=id=>tx("readwrite",s=>s.delete(id));
+const putFile=f=>tx("readwrite",(fs,is)=>{fs.put(f);is.put(infoOf(f));},["files","info"]);
+const delFile=id=>tx("readwrite",(fs,is)=>{fs.delete(id);is.delete(id);},["files","info"]);
 
 /* ===== looks: stable colour + icon per title ===== */
 const PALETTE=[["#5B6CFF","#8E5BFF"],["#FF7A59","#FFB347"],["#1FB58F","#3AD6C5"],["#E0457B","#FF8FB1"],["#2E86DE","#54C0FF"],["#7D5BA6","#C38DF0"],["#D49A2A","#F2CC60"],["#3B4A6B","#6E83B0"]];
 const ICONS=["📘","🧩","🎯","💡","🗂️","🚀","🎨","🧭","📊","🛠️"];
 function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return Math.abs(h);}
-const fmtSize=b=>b>1048576?(b/1048576).toFixed(1)+" م.ب":Math.max(1,Math.round(b/1024))+" ك.ب";
+const fmtSize=b=>!b?"0":b>1048576?(b/1048576).toFixed(1)+" م.ب":Math.max(1,Math.round(b/1024))+" ك.ب";
 
 let items=[],archivedItems=[],versions=[],allProjects=[];
 const isArc=id=>!!meta.archived[id];
 const vidFor=(pid,t)=>"v:"+pid.replace(/:/g,"_")+"_"+t;   // old versions live in the same IndexedDB store
 async function load(){
-  const all=await allFiles(),user=all.filter(f=>f.id.startsWith("u:")),upd={};
+  const all=await allInfo(),user=all.filter(f=>f.id.startsWith("u:")),upd={};
   all.forEach(f=>{if(f.id.startsWith("b:"))upd[f.id]=f;});
   allProjects=BUILTIN.filter(b=>!meta.gone.includes(b.id)).map(b=>({...b,builtin:true,updated:upd[b.id]?upd[b.id].added:0}))
     .concat(user.sort((a,b)=>b.added-a.added).map(f=>({id:f.id,title:f.title,size:f.size,added:f.added,updated:f.updatedAt||0,tag:"مُضاف"})));
@@ -222,13 +239,19 @@ async function load(){
 }
 const proj=id=>allProjects.find(x=>x.id===id);
 const fmtDate=t=>new Date(t).toLocaleDateString("ar-EG");
+const NET={photos:"🌐 صور من النت",live:"🌐 بيانات مباشرة"};
 function card(it,o){const h=hash(it.title),c=PALETTE[h%PALETTE.length],ic=it.icon||ICONS[h%ICONS.length];
-  return `<div class="proj${o.arc?" arc":""}" ${o.attr}><div class="cover" style="background:linear-gradient(135deg,${c[0]},${c[1]})">${ic}<span class="tag">${esc(o.tag!=null?o.tag:it.tag||"")}</span></div>
+  const p=!o.arc&&meta.pos[it.id]&&meta.pos[it.id].p;
+  return `<div class="proj${o.arc?" arc":""}" ${o.attr}><div class="cover" style="background:linear-gradient(135deg,${c[0]},${c[1]})">${ic}<span class="tag">${esc(o.tag!=null?o.tag:it.tag||"")}</span>${it.net?`<span class="netb" title="محتاج إنترنت لجزء منه">${NET[it.net]||"🌐"}</span>`:""}${p>.02?`<span class="prog" title="وصلت ${Math.round(p*100)}٪"><i style="width:${Math.round(p*100)}%"></i></span>`:""}</div>
     <button class="more" ${o.more} aria-label="خيارات">⋮</button>${!o.arc&&meta.fav.includes(it.id)?'<span class="fav">⭐</span>':""}
-    <div class="info"><b>${esc(it.title)}</b><small>${esc(o.sub)}</small></div></div>`;}
+    <div class="info"><b>${esc(it.title)}</b>${o.hit?`<small class="hit">🔎 ${o.hit}</small>`:`<small>${esc(o.sub)}</small>`}</div></div>`;}
 function render(){
   const q=$("q").value.trim().toLowerCase();
-  const match=it=>!q||it.title.toLowerCase().includes(q)||(it.tag||"").toLowerCase().includes(q);
+  const titleMatch=it=>!q||it.title.toLowerCase().includes(q)||(it.tag||"").toLowerCase().includes(q);
+  // content search (2+ letters): built-in text from projects/search.json, added / updated projects from their HTML
+  if(q.length>=2&&!searchReady)loadSearch();
+  const hits={};
+  const match=it=>{if(titleMatch(it))return true;if(q.length<2||!searchReady)return false;const sn=snippet(it.id,q);if(sn){hits[it.id]=sn;return true;}return false;};
   const tags=[...new Set(items.map(i=>i.tag).filter(Boolean))];
   const arcN=archivedItems.length+versions.length;
   const ok=chip==="*"||(chip==="fav"&&meta.fav.length)||(chip==="arc"&&arcN)||
@@ -253,10 +276,21 @@ function render(){
   if(L)html+=`<div class="listbar"><b>📂 ${esc(L.name)} · ${L.items.filter(id=>items.some(i=>i.id===id)).length}</b><button data-lrename>✏️ اسم</button><button data-ldelete>🗑️ حذف القائمة</button></div>`;
   const list=items.filter(it=>(chip==="*"||(chip==="fav"?meta.fav.includes(it.id):L?L.items.includes(it.id):it.tag===chip.slice(2)))&&match(it));
   if(!list.length)html+=`<div class="empty" style="grid-column:1/-1">${L&&!q?"القائمة فاضية — من ⋮ في أي مشروع اختار «إضافة لقائمة»":items.length?"مفيش نتايج 🔍":"الرفّ فاضي — اضغط «إضافة مشروع» واختار ملف HTML 📂"}</div>`;
-  html+=list.map(it=>card(it,{attr:`data-id="${esc(it.id)}"`,more:`data-more="${esc(it.id)}"`,
+  html+=list.map(it=>card(it,{attr:`data-id="${esc(it.id)}"`,more:`data-more="${esc(it.id)}"`,hit:hits[it.id],
     sub:it.updated?"🔄 اتحدّث "+fmtDate(it.updated):it.site?"🌐 موقع مدمج":it.builtin?"مدمج في التطبيق":fmtSize(it.size||0)+" · "+fmtDate(it.added)})).join("");
   $("grid").innerHTML=html+(chip==="*"?gone:"");
 }
+/* text per project for content search */
+let searchReady=false,searchLoading=false;const searchText={};
+const plainText=h=>String(h).replace(/<(script|style|svg|template)[\s\S]*?<\/\1>/gi," ").replace(/<!--[\s\S]*?-->/g," ").replace(/<[^>]+>/g," ")
+  .replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&#x?[0-9a-f]+;/gi," ").replace(/\s+/g," ");
+async function loadSearch(){if(searchLoading)return;searchLoading=true;
+  try{Object.assign(searchText,await (await fetch("projects/search.json")).json());}catch(e){}
+  for(const f of await allInfo())if(f.id.startsWith("u:")||f.id.startsWith("b:")){try{searchText[f.id]=plainText((await getFile(f.id)).html);}catch(e){}}
+  searchReady=true;render();}
+function snippet(id,q){const t=searchText[id];if(!t)return "";const i=t.toLowerCase().indexOf(q);if(i<0)return "";
+  const a=Math.max(0,i-30),b=Math.min(t.length,i+q.length+40);
+  return (a?"…":"")+esc(t.slice(a,i))+"<mark>"+esc(t.slice(i,i+q.length))+"</mark>"+esc(t.slice(i+q.length,b))+(b<t.length?"…":"");}
 let chip="*";
 window.addEventListener("scroll",()=>document.body.classList.toggle("scrolled",scrollY>60),{passive:true});
 $("q").oninput=render;
@@ -276,7 +310,8 @@ $("grid").onclick=async e=>{
   let m=e.target.closest("[data-more]");if(m){openSheet(m.dataset.more);return;}
   m=e.target.closest("[data-arcmore],[data-vermore]");if(m){openArcSheet(m.dataset.arcmore||m.dataset.vermore);return;}
   const p=e.target.closest(".proj");if(!p)return;
-  if(p.dataset.id)openProject(p.dataset.id);else openArcSheet(p.dataset.arc||p.dataset.ver);};
+  if(p.dataset.id){const q=$("q").value.trim();openProject(p.dataset.id).then(()=>{
+    if(q.length>=2&&p.querySelector(".hit"))$("frame").addEventListener("load",()=>setTimeout(()=>{try{$("frame").contentWindow.find(q);}catch(e){}},500),{once:true});});}else openArcSheet(p.dataset.arc||p.dataset.ver);};
 let pressT=null;
 $("grid").addEventListener("touchstart",e=>{const p=e.target.closest(".proj[data-id]");if(!p)return;pressT=setTimeout(()=>{pressT=null;openSheet(p.dataset.id);},550);},{passive:true});
 ["touchend","touchmove","touchcancel"].forEach(ev=>$("grid").addEventListener(ev,()=>{if(pressT){clearTimeout(pressT);pressT=null;}},{passive:true}));
@@ -324,7 +359,11 @@ async function openProject(id){
    1) its own localStorage: keys are stored as "p:<project id>:<key>", so two projects (or the shelf itself) never
       overwrite each other's saved progress;
    2) web links / window.open → the phone's browser (inside the viewer they'd replace the project). */
-function shimFor(id){return `<script>(function(){var ID=${JSON.stringify(id)},P="p:"+ID+":",N=${NATIVE?1:0},LITE=${liteOn()?1:0};
+const PROJECT_CSS={
+  "b:hardware":"html,body{overflow-x:clip}",                                   // page scrolled 1,707px sideways on a phone
+  "b:accounting":".topbar{gap:8px;padding-inline:10px}.topbar>*{min-width:0}html,body{overflow-x:clip}"  // PDF button off screen
+};
+function shimFor(id){return `<script>(function(){${PROJECT_CSS[id]?`try{var fx=document.createElement("style");fx.textContent=${JSON.stringify(PROJECT_CSS[id])};document.documentElement.appendChild(fx);}catch(e){}`:""}var ID=${JSON.stringify(id)},P="p:"+ID+":",N=${NATIVE?1:0},LITE=${liteOn()?1:0};
 /* power saving: animations set to repeat forever play twice and stop; glass (backdrop blur) panels get no blur.
    Both made the browser repaint big areas of the screen all the time on a computer. */
 if(LITE){try{var ls0=document.createElement("style");
@@ -337,10 +376,10 @@ if(LITE){try{var ls0=document.createElement("style");
  Element.prototype.animate=function(k,o){if(o&&typeof o==="object"&&o.iterations===Infinity){var c={};for(var x in o)c[x]=o[x];c.iterations=2;o=c;}return an.call(this,k,o);};
  // animationstart can be skipped (e.g. a page opened in the background) — sweep a few times after load as well
  addEventListener("load",function(){tame();setTimeout(tame,1000);setTimeout(tame,4000);});}catch(e){}}
-var W=function(){try{parent.shelfChanged(ID);}catch(e){}};
+var W=function(k,gone){try{parent.shelfChanged(ID,k,gone);}catch(e){}};
 try{var real=window.localStorage;
-var put=function(k,v){k=P+String(k);v=String(v);if(real.getItem(k)!==v){real.setItem(k,v);W();}};
-var del=function(k){k=P+String(k);if(real.getItem(k)!==null){real.removeItem(k);W();}};
+var put=function(k,v){var kk=P+String(k);v=String(v);if(real.getItem(kk)!==v){real.setItem(kk,v);W(String(k));}};
+var del=function(k){var kk=P+String(k);if(real.getItem(kk)!==null){real.removeItem(kk);W(String(k),1);}};
 function ks(){var a=[];for(var i=0;i<real.length;i++){var k=real.key(i);if(k&&k.indexOf(P)===0)a.push(k.slice(P.length));}return a;}
 var api={getItem:function(k){return real.getItem(P+k);},setItem:function(k,v){put(k,v);},
  removeItem:function(k){del(k);},clear:function(){ks().forEach(del);},
@@ -389,9 +428,11 @@ let siteDepth=0,siteBack=false;
 $("frame").addEventListener("load",()=>{if(!viewing||!viewing.site)return;if(siteBack){siteBack=false;siteDepth=Math.max(1,siteDepth-1);}else siteDepth++;});
 function closeViewer(){
   if(viewing&&!viewing.id.startsWith("v:"))try{const w=$("frame").contentWindow,y=w.scrollY||(w.document.scrollingElement||{}).scrollTop||0;
-    meta.pos[viewing.id]={y:Math.round(y),h:w.location.hash||""};saveMeta();}catch(e){}
+    const max=Math.max(1,(w.document.scrollingElement||w.document.documentElement).scrollHeight-w.innerHeight);
+    meta.pos[viewing.id]={y:Math.round(y),h:w.location.hash||"",p:Math.min(1,Math.round(y/max*100)/100)};saveMeta();}catch(e){}
   $("frame").onload=null;$("viewer").classList.remove("full");
-  $("viewer").classList.add("hidden");$("frame").src="about:blank";viewing=null;
+  $("viewer").classList.add("hidden");$("frame").src="about:blank";const was=viewing;viewing=null;
+  if(was)render();   // the card's reading progress
   if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null;}}
 $("vBack").onclick=closeViewer;
 window.shelfScroll=dir=>{if(viewing)$("viewer").classList.toggle("full",dir>0);};
@@ -431,14 +472,14 @@ async function saveVersion(id,html,name,size){
   const curHtml=old?old.html:await htmlOf(id);
   if(curHtml!=null){
     try{await putFile({id:vidFor(id,now),pid:id,title:old?old.title:(proj(id)||{}).title,html:curHtml,size:old?old.size:curHtml.length,added:now});}catch(e){}
-    const mine=(await allFiles()).filter(f=>f.id.startsWith("v:")&&f.pid===id).sort((a,b)=>b.added-a.added);
+    const mine=(await allInfo()).filter(f=>f.id.startsWith("v:")&&f.pid===id).sort((a,b)=>b.added-a.added);
     for(const f of mine.slice(MAX_VERSIONS))await delFile(f.id);
   }
   const rec=id.startsWith("b:")?{id,title:titleOf(html,name),html,size,added:now}
     :{id,title:titleOf(html,name),html,size,added:old?old.added:now,updatedAt:now};
   try{await putFile(rec);return true;}catch(e){toast("تعذّر حفظ "+name+" — المساحة ممتلئة؟");return false;}}
 async function importFiles(list){
-  let n=0,last=null;const user=await allFiles();
+  let n=0,last=null;const user=await allInfo();
   for(const f of list){
     if(!/<(html|body|head|div|p|script|!doctype)/i.test(f.html)){toast("«"+f.name+"» مش ملف HTML");continue;}
     const title=titleOf(f.html,f.name),size=f.size||f.html.length;
@@ -563,6 +604,7 @@ function goBack(){
   if(dlgResolve){closeDialog(false);return true;}
   if(sheetId){closeSheet();return true;}
   if(arcId){closeArcSheet();return true;}
+  if(!$("infoSheet").classList.contains("hidden")){$("infoSheet").classList.add("hidden");return true;}
   if(!$("sortSheet").classList.contains("hidden")){$("sortSheet").classList.add("hidden");return true;}
   if(!$("cloudSheet").classList.contains("hidden")){$("cloudSheet").classList.add("hidden");return true;}
   if(viewing){try{if($("frame").contentWindow.__shelfBack())return true;}catch(e){}
@@ -573,18 +615,26 @@ function goBack(){
 
 /* ===== Google Drive backup (js/cloud.js) ===== */
 let metaT=null;
-window.shelfChanged=id=>{if(id.startsWith("v:"))return;  // an old version opened for a look: not backed up
-  meta.dataT[id]=Date.now();clearTimeout(metaT);metaT=setTimeout(saveMeta,400);if(window.ShelfCloud)ShelfCloud.changed();};
+/* when each saved item of each project last changed / was deleted ("shelf:keyt") — lets the backup merge two devices
+   item by item instead of the newer device overwriting the whole project */
+const KT="shelf:keyt";let keyT;try{keyT=JSON.parse(localStorage.getItem(KT)||"{}");}catch(e){keyT={};}keyT.t=keyT.t||{};keyT.d=keyT.d||{};
+let ktT=null;const saveKT=()=>{clearTimeout(ktT);ktT=setTimeout(()=>{try{localStorage.setItem(KT,JSON.stringify(keyT));}catch(e){}},400);};
+window.shelfChanged=(id,k,gone)=>{if(id.startsWith("v:"))return;  // an old version opened for a look: not backed up
+  const now=Date.now();meta.dataT[id]=now;
+  if(k!=null){const t=keyT.t[id]=keyT.t[id]||{},d=keyT.d[id]=keyT.d[id]||{};if(gone){delete t[k];d[k]=now;}else{t[k]=now;delete d[k];}saveKT();}
+  clearTimeout(metaT);metaT=setTimeout(saveMeta,400);if(window.ShelfCloud)ShelfCloud.changed();};
 window.ShelfHost={
   dataPids(){const s=new Set();for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);const m=k&&k.match(/^p:([^:]+:[^:]+):/);if(m&&!m[1].startsWith("v:"))s.add(m[1]);}return [...s];},
   localData(pid){const P="p:"+pid+":",keys={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(P))keys[k.slice(P.length)]=localStorage.getItem(k);}
-    return {keys,t:meta.dataT[pid]||0};},
-  applyData(pid,keys,t){const P="p:"+pid+":";Object.keys(localStorage).filter(k=>k.startsWith(P)).forEach(k=>localStorage.removeItem(k));
+    return {keys,t:meta.dataT[pid]||0,kt:keyT.t[pid]||{},del:keyT.d[pid]||{}};},
+  applyData(pid,keys,t,kt,del){const P="p:"+pid+":";Object.keys(localStorage).filter(k=>k.startsWith(P)).forEach(k=>localStorage.removeItem(k));
     for(const k in keys)try{localStorage.setItem(P+k,keys[k]);}catch(e){}
+    if(kt)keyT.t[pid]=kt;if(del)keyT.d[pid]=del;saveKT();
     meta.dataT[pid]=t;saveMeta();if(viewing&&viewing.id===pid)openProject(pid);},
   stampData(pid,t){meta.dataT[pid]=t;saveMeta();},
   title(pid){const it=proj(pid)||BUILTIN.find(x=>x.id===pid);return it?(meta.names[pid]||it.title):pid;},
-  userFiles:async()=>(await allFiles()).filter(f=>f.id.startsWith("u:")||f.id.startsWith("b:")),   // b: = newer version of a built-in
+  userFiles:async()=>(await allInfo()).filter(f=>f.id.startsWith("u:")||f.id.startsWith("b:")),   // b: = newer version of a built-in
+  fileHtml:async id=>{const f=await getFile(id);return f?f.html:"";},
   async dropFile(id){await delFile(id);await load();},
   async addUserFile(rec){await putFile(rec);await load();},
   wasRemoved:pid=>!!(window.ShelfCloud&&ShelfCloud._state().pendingDel.includes(pid)),
@@ -596,7 +646,7 @@ window.ShelfHost={
     return {t:meta.setT||0,data:settingsOf(meta)};},
   async applySettings(data,t){SETTINGS_KEYS.forEach(k=>{if(data[k]!==undefined)meta[k]=data[k];});meta.setT=t;
     settingsSig=JSON.stringify(settingsOf(meta));try{localStorage.setItem(LS,JSON.stringify(meta));}catch(e){}await load();},
-  versionList:async()=>(await allFiles()).filter(f=>f.id.startsWith("v:")).map(f=>({id:f.id,pid:f.pid,title:f.title,added:f.added,html:f.html})),
+  versionList:async()=>(await allInfo()).filter(f=>f.id.startsWith("v:")),
   async addVersion(rec){await putFile(rec);await load();}
 };
 const fmtAgo=t=>{if(!t)return "لسه";const m=Math.round((Date.now()-t)/60000);return m<1?"دلوقتي":m<60?"من "+m+" دقيقة":new Date(t).toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});};
@@ -621,6 +671,44 @@ $("cloudSheet").onclick=async e=>{if(e.target.id==="cloudSheet"){$("cloudSheet")
 
 // computer: Esc = Back
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!e.defaultPrevented)goBack();});
+const CHANGES=[
+  ["1.8","بحث جوّه محتوى كل المشاريع، شريط تقدّم القراءة، علامة 🌐 للمشاريع اللي محتاجة نت، شاشة التخزين، دمج البيانات بين الأجهزة عنصر بعنصر، إصلاح عرض دليل العتاد والمحاسبة على الموبايل، تصدير Word بدون نت، وتثبيت النسخة الويب كتطبيق على الكمبيوتر."],
+  ["1.7","مشاريع المواقع متعددة الصفحات — CV Forge."],
+  ["1.6","وضع توفير المعالج."],
+  ["1.5","حفظ الملفات، الطباعة، العمل بدون نت، الرجوع جوّه المشروع، القراءة بملء الشاشة، الترتيب والعرض، اختصارات الشاشة الرئيسية."],
+  ["1.3","المشاركة، الأرشيف، النسخ القديمة، القوائم."],
+  ["1.2","كل المشاريع + الحفظ في Google Drive."]];
+const VER=window.SHELF_VERSION||{name:"?",code:0};
+function changesHtml(n){return `<ul class="changes">${CHANGES.slice(0,n).map(([v,t])=>`<li><b>${v}</b> — ${esc(t)}</li>`).join("")}</ul>`;}
+async function renderInfo(){
+  const info=await allInfo(),sum=a=>a.reduce((s,f)=>s+(f.size||0),0);
+  const added=info.filter(f=>f.id.startsWith("u:")),upd=info.filter(f=>f.id.startsWith("b:")),vers=info.filter(f=>f.id.startsWith("v:"));
+  const per={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i),m=k&&k.match(/^p:([^:]+:[^:]+):/);if(m)per[m[1]]=(per[m[1]]||0)+(k.length+(localStorage.getItem(k)||"").length)*2;}
+  const dataTotal=Object.values(per).reduce((a,b)=>a+b,0),top=Object.entries(per).sort((a,b)=>b[1]-a[1]).slice(0,4);
+  let est="";try{const e=await navigator.storage.estimate();est=fmtSize(e.usage||0);}catch(e){}
+  const row=(l,v)=>`<div class="stat"><span>${l}</span><b>${v}</b></div>`;
+  $("infoBody").innerHTML=
+    row("📥 مشاريع ضفتها",added.length+" · "+fmtSize(sum(added)))+row("🔄 نسخ أحدث من المدمجة",upd.length+" · "+fmtSize(sum(upd)))+
+    row("🕘 نسخ قديمة في الأرشيف",vers.length+" · "+fmtSize(sum(vers)))+row("💾 بياناتك جوّه المشاريع",Object.keys(per).length+" مشروع · "+fmtSize(dataTotal))+
+    top.map(([id,b])=>row("　• "+esc((proj(id)||{title:id}).title),fmtSize(b))).join("")+(est?row("📦 إجمالي اللي التطبيق مستخدمه",est):"")+
+    `<button class="btn ghost" data-clean="2" style="display:block;width:100%;margin-top:10px;background:transparent;color:var(--ink);border:1px solid var(--line)">🧹 احتفظ بآخر نسختين قديمتين لكل مشروع بس</button>
+     <button class="btn ghost" data-clean="0" style="display:block;width:100%;margin-top:8px;background:transparent;color:#D9534F;border:1px solid var(--line)">🗑️ امسح كل النسخ القديمة</button>
+     <h4 style="margin:16px 8px 4px">ℹ️ حول التطبيق</h4>`+row("الإصدار",esc(VER.name)+" ("+VER.code+")"+(VER.built?" · "+VER.built:""))+row("المشاريع",allProjects.length+" ("+BUILTIN.length+" مدمج)")+
+    `<h4 style="margin:12px 8px 4px">✨ الجديد</h4>`+changesHtml(4);}
+$("infoBtn").onclick=async()=>{$("sortSheet").classList.add("hidden");await renderInfo();$("infoSheet").classList.remove("hidden");};
+$("infoSheet").onclick=async e=>{if(e.target.id==="infoSheet"){$("infoSheet").classList.add("hidden");return;}
+  const b=e.target.closest("[data-clean]");if(!b)return;const keep=+b.dataset.clean;
+  if(!await mzConfirm({icon:"🧹",title:keep?"تمسح النسخ القديمة الزيادة؟":"تمسح كل النسخ القديمة؟",body:keep?"هيفضل آخر نسختين لكل مشروع.":"مش هتقدر ترجّع أي نسخة قديمة بعد كده.",ok:"امسح"}))return;
+  const by={};for(const f of await allInfo())if(f.id.startsWith("v:"))(by[f.pid]=by[f.pid]||[]).push(f);
+  let n=0;for(const pid in by)for(const f of by[pid].sort((a,b)=>b.added-a.added).slice(keep)){await delFile(f.id);n++;}
+  await load();await renderInfo();toast("اتمسحت "+n+" نسخة");if(window.ShelfCloud)ShelfCloud.changed();};
+// "what's new" once per device after an update
+setTimeout(()=>{if(VER.name==="?"||meta.seenVer===VER.name)return;const first=!meta.seenVer;meta.seenVer=VER.name;saveMeta();
+  if(!first)mzConfirm({icon:"✨",title:"الجديد في الإصدار "+VER.name,body:CHANGES[0][0]===VER.name?CHANGES[0][1]:"تحسينات وإصلاحات.",ok:"تمام",alert:true});},1200);
+
+/* ===== web: install as an app + work offline (sw.js) — not in the Android app ===== */
+if(!NATIVE&&"serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
+
 window.MZApp={back:goBack,confirm:mzConfirm,alerts:()=>[]};
 // ask Android not to evict IndexedDB (the user's added files) when storage runs low
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist();}catch(e){}

@@ -34975,7 +34975,7 @@ async function exportSheetDocx(b){
   if(!state.items.length) return toast('ضيفى أسماء الأول');
   busy(b, true);
   try{
-    await loadScript('https://cdn.jsdelivr.net/npm/docx@9.7.1/dist/index.iife.js');
+    await loadScript('shelf-vendor:/jsdelivr/npm/docx@9.7.1/dist/index.iife.js');
     const D = window.docx;
     const twips = pageTwips();
     const mar = Math.round(state.margin * 56.7);
@@ -35177,7 +35177,7 @@ async function exportDocDocx(b){
   if(docEmpty()) return toast('اكتبى نص الأول');
   busy(b, true);
   try{
-    await loadScript('https://cdn.jsdelivr.net/npm/docx@9.7.1/dist/index.iife.js');
+    await loadScript('shelf-vendor:/jsdelivr/npm/docx@9.7.1/dist/index.iife.js');
     const D = window.docx;
     const d = new D.Document({
       numbering:{ config:[{ reference:'doc-ol', levels:[{ level:0, format:D.LevelFormat.DECIMAL, text:'%1.', alignment:D.AlignmentType.START }]}]},

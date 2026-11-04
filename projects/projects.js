@@ -110,7 +110,8 @@ window.SHELF_PROJECTS=[
   "title": "دهب تراكر",
   "srcTitle": "دهب تراكر | أسعار الذهب والعملات",
   "icon": "🪙",
-  "tag": "فلوس"
+  "tag": "فلوس",
+  "net": "live"
  },
  {
   "id": "b:hardware",
@@ -270,7 +271,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل السيارات الشامل في مصر",
   "srcTitle": "دليل السيارات الشامل في مصر — من الصفر للاحتراف",
   "icon": "🚗",
-  "tag": "حياة"
+  "tag": "حياة",
+  "net": "photos"
  },
  {
   "id": "b:marriage",

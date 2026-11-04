@@ -124,6 +124,28 @@
     var r = await drive(url, { method: fileId ? "PATCH" : "POST", headers: { "Content-Type": "multipart/related; boundary=" + b }, body: body });
     return r.id;
   }
+  /* per-item merge of one project's saved data. L / R: { keys: {k: value}, t, kt: {k: changed at}, del: {k: deleted at} }
+     (data saved before item times existed falls back to the project's time t) */
+  function merge(L, R) {
+    var keys = {}, kt = {}, del = {}, all = {};
+    var Lk = L.keys || {}, Rk = R.keys || {}, Lt = L.kt || {}, Rt = R.kt || {}, Ld = L.del || {}, Rd = R.del || {};
+    [Lk, Rk, Ld, Rd].forEach(function (o) { Object.keys(o).forEach(function (k) { all[k] = 1; }); });
+    Object.keys(all).forEach(function (k) {
+      var lv = Object.prototype.hasOwnProperty.call(Lk, k), rv = Object.prototype.hasOwnProperty.call(Rk, k);
+      var lt = lv ? Lt[k] || L.t || 0 : -1, rt = rv ? Rt[k] || R.t || 0 : -1, dt = Math.max(Ld[k] || 0, Rd[k] || 0);
+      if (dt && dt >= Math.max(lt, rt)) { del[k] = dt; return; }
+      if (lt < 0 && rt < 0) return;
+      if (lt >= rt) { keys[k] = Lk[k]; kt[k] = lt; } else { keys[k] = Rk[k]; kt[k] = rt; }
+    });
+    var same = function (a, b) { var ka = Object.keys(a), kb = Object.keys(b); return ka.length === kb.length && ka.every(function (k) { return Object.prototype.hasOwnProperty.call(b, k) && b[k] === a[k]; }); };
+    return { keys: keys, kt: kt, del: del, localChanged: !same(keys, Lk), remoteChanged: !same(keys, Rk) };
+  }
+  async function putData(fileId, p, title, t, d, fid) {
+    var body = JSON.stringify({ app: APP, pid: p, title: title, t: t, keys: d.keys, kt: d.kt || {}, del: d.del || {} });
+    var m = { name: safeName(title) + " — بيانات.json", appProperties: { app: APP, kind: "data", pid: p, t: String(t) } };
+    if (!fileId) m.parents = [fid];
+    await upload(fileId, m, body, "application/json");
+  }
   var safeName = function (s) { return String(s || "مشروع").replace(/[\\/:*?"<>|]+/g, " ").trim().slice(0, 90); };
 
   // ── one full pass ──
@@ -172,7 +194,7 @@
         delete st.up["html:" + u.id];
       } else if (!rf || t > rt) {
         await upload(rf && rf.id, rf ? { name: safeName(u.title) + ".html", appProperties: { app: APP, kind: "html", pid: u.id, t: String(t) } }
-          : { name: safeName(u.title) + ".html", parents: [fid], appProperties: { app: APP, kind: "html", pid: u.id, t: String(t) } }, u.html, "text/html");
+          : { name: safeName(u.title) + ".html", parents: [fid], appProperties: { app: APP, kind: "html", pid: u.id, t: String(t) } }, await host.fileHtml(u.id), "text/html");
         st.up["html:" + u.id] = 1;
       }
     }
@@ -206,7 +228,7 @@
       if (by["version:" + v.id]) { st.up["version:" + v.id] = 1; continue; }
       var day = new Date(v.added).toISOString().slice(0, 10);
       await upload(null, { name: safeName(v.title) + " — نسخة " + day + ".html", parents: [fid],
-        appProperties: { app: APP, kind: "version", pid: v.id, of: v.pid, t: String(v.added) } }, v.html, "text/html");
+        appProperties: { app: APP, kind: "version", pid: v.id, of: v.pid, t: String(v.added) } }, await host.fileHtml(v.id), "text/html");
       st.up["version:" + v.id] = 1;
     }
     for (var key in by) {
@@ -225,17 +247,22 @@
     Object.keys(by).forEach(function (k) { if (by[k].appProperties.kind === "data") pids[by[k].appProperties.pid] = 1; });
     for (var p in pids) {
       var mine = host.localData(p), rf2 = by["data:" + p], rt2 = rf2 ? +rf2.appProperties.t || 0 : -1;
-      var lt = mine.t || 0, has = Object.keys(mine.keys).length > 0;
-      if (rf2 && rt2 > lt) {
+      var lt = mine.t || 0, has = Object.keys(mine.keys).length > 0, seen = st.up["data:" + p] || 0, title = host.title(p), T;
+      if (rf2 && rt2 > 0 && rt2 !== seen) {
+        // Drive changed since this device last saw it (another device, or a fresh install here) → merge item by item:
+        // for each saved item the newer change wins, so using a project on two devices before they sync keeps both
         var doc = await drive(API + "/files/" + rf2.id + "?alt=media");
-        if (doc && doc.keys) { host.applyData(p, doc.keys, rt2); st.up["data:" + p] = rt2; }
-      } else if ((has || rf2) && (!rf2 || lt > rt2)) { // rf2 && !has: the project cleared all its data → Drive too
-        if (!lt) { lt = Date.now(); host.stampData(p, lt); } // data from before backups existed
-        var title = host.title(p), body = JSON.stringify({ app: APP, pid: p, title: title, t: lt, keys: mine.keys });
-        var m = { name: safeName(title) + " — بيانات.json", appProperties: { app: APP, kind: "data", pid: p, t: String(lt) } };
-        if (!rf2) m.parents = [fid];
-        await upload(rf2 && rf2.id, m, body, "application/json");
-        st.up["data:" + p] = lt;
+        if (!doc || !doc.keys) continue;
+        var mg = merge(mine, doc);
+        T = mg.remoteChanged ? Date.now() : rt2;
+        if (mg.remoteChanged) await putData(rf2.id, p, title, T, mg, fid);
+        if (mg.localChanged) host.applyData(p, mg.keys, T, mg.kt, mg.del); else host.stampData(p, T);
+        st.up["data:" + p] = T;
+      } else if ((has || rf2) && (!rf2 || lt > seen)) { // changed here only (rf2 && !has: the project cleared all its data → Drive too)
+        T = lt || Date.now();
+        if (!lt) host.stampData(p, T); // data from before backups existed
+        await putData(rf2 && rf2.id, p, title, T, mine, fid);
+        st.up["data:" + p] = T;
       }
     }
     st.lastSync = Date.now(); save();
@@ -283,7 +310,8 @@
     sync: sync,
     changed: function () { soon(4000); },            // a project saved something
     removed: function (pid) { if (st.pendingDel.indexOf(pid) < 0) st.pendingDel.push(pid); save(); soon(1500); },
-    _state: function () { return st; }
+    _state: function () { return st; },
+    _merge: merge
   };
   window.ShelfCloud = api;
 
