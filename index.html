@@ -220,7 +220,18 @@ let items=[],archivedItems=[],versions=[],allProjects=[];
 const isArc=id=>!!meta.archived[id];
 const vidFor=(pid,t)=>"v:"+pid.replace(/:/g,"_")+"_"+t;   // old versions live in the same IndexedDB store
 async function load(){
-  const all=await allInfo(),user=all.filter(f=>f.id.startsWith("u:")),upd={};
+  let all=await allInfo();
+  // a built-in shipped in a newer version than this device's own copy of it (an update made here, or one synced from
+  // another device): the shipped version wins and the device copy goes to the archive as an old version. Drive sync
+  // then removes that copy from the backup, so every device on the account ends up on the shipped version.
+  let retired=0;
+  for(const f of all.filter(f=>f.id.startsWith("b:"))){const b=BUILTIN.find(x=>x.id===f.id);
+    if(!b||!b.rev||(f.added||0)>=b.rev)continue;
+    const old=await getFile(f.id);if(!old)continue;
+    await putFile({id:vidFor(f.id,old.added||Date.now()),pid:f.id,title:old.title,html:old.html,size:old.size,added:old.added||Date.now()});
+    await delFile(f.id);retired++;}
+  if(retired){all=await allInfo();if(window.ShelfCloud)ShelfCloud.changed();setTimeout(()=>toast("📦 "+retired+" مشروع اتحدّث لنسخة التطبيق الجديدة — النسخة القديمة في الأرشيف"),900);}
+  const user=all.filter(f=>f.id.startsWith("u:")),upd={};
   all.forEach(f=>{if(f.id.startsWith("b:"))upd[f.id]=f;});
   allProjects=BUILTIN.filter(b=>!meta.gone.includes(b.id)).map(b=>({...b,builtin:true,updated:upd[b.id]?upd[b.id].added:0}))
     .concat(user.sort((a,b)=>b.added-a.added).map(f=>({id:f.id,title:f.title,size:f.size,added:f.added,updated:f.updatedAt||0,tag:"مُضاف"})));
@@ -672,6 +683,7 @@ $("cloudSheet").onclick=async e=>{if(e.target.id==="cloudSheet"){$("cloudSheet")
 // computer: Esc = Back
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!e.defaultPrevented)goBack();});
 const CHANGES=[
+  ["1.9","نسخ جديدة من «الدليل الشامل للمحاسبة» و«NetSuite TF Reference» — بتحلّ محل النسخ القديمة على كل الأجهزة، والقديمة موجودة في الأرشيف."],
   ["1.8","بحث جوّه محتوى كل المشاريع، شريط تقدّم القراءة، علامة 🌐 للمشاريع اللي محتاجة نت، شاشة التخزين، دمج البيانات بين الأجهزة عنصر بعنصر، إصلاح عرض دليل العتاد والمحاسبة على الموبايل، تصدير Word بدون نت، وتثبيت النسخة الويب كتطبيق على الكمبيوتر."],
   ["1.7","مشاريع المواقع متعددة الصفحات — CV Forge."],
   ["1.6","وضع توفير المعالج."],

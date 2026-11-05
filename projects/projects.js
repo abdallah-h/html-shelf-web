@@ -6,7 +6,8 @@ window.SHELF_PROJECTS=[
   "title": "MERN Field Manual",
   "srcTitle": "MERN Field Manual — Learning Guide & Interview Prep",
   "icon": "💻",
-  "tag": "برمجة"
+  "tag": "برمجة",
+  "rev": 1793288323542
  },
  {
   "id": "b:pmp",
@@ -14,7 +15,8 @@ window.SHELF_PROJECTS=[
   "title": "PMP Study",
   "srcTitle": "PMP Study — 2026 Exam",
   "icon": "📋",
-  "tag": "شغل"
+  "tag": "شغل",
+  "rev": 1793288659984
  },
  {
   "id": "b:dmw",
@@ -22,7 +24,8 @@ window.SHELF_PROJECTS=[
   "title": "The Digital Marketing Workbook",
   "srcTitle": "The Digital Marketing Workbook",
   "icon": "📣",
-  "tag": "بيزنس"
+  "tag": "بيزنس",
+  "rev": 1793288384474
  },
  {
   "id": "b:academy",
@@ -30,7 +33,8 @@ window.SHELF_PROJECTS=[
   "title": "أكاديمية المشروع",
   "srcTitle": "أكاديمية المشروع — الدليل الشامل من الفكرة إلى النجاح",
   "icon": "🚀",
-  "tag": "بيزنس"
+  "tag": "بيزنس",
+  "rev": 1793288616109
  },
  {
   "id": "b:accounting",
@@ -38,7 +42,8 @@ window.SHELF_PROJECTS=[
   "title": "الدليل الشامل للمحاسبة المالية والتجارية",
   "srcTitle": "الدليل الشامل للمحاسبة المالية والتجارية",
   "icon": "🧾",
-  "tag": "فلوس"
+  "tag": "فلوس",
+  "rev": 1793878913357
  },
  {
   "id": "b:trade",
@@ -46,7 +51,8 @@ window.SHELF_PROJECTS=[
   "title": "أكاديمية التجارة",
   "srcTitle": "أكاديمية التجارة — الدليل الشامل للبيع والتجارة الإلكترونية",
   "icon": "🛒",
-  "tag": "بيزنس"
+  "tag": "بيزنس",
+  "rev": 1793288484934
  },
  {
   "id": "b:tasarruf",
@@ -54,7 +60,8 @@ window.SHELF_PROJECTS=[
   "title": "الدليل الشامل لحُسن التصرّف",
   "srcTitle": "الدليل الشامل لحُسن التصرّف — للرجل العاقل",
   "icon": "🎩",
-  "tag": "مهارات"
+  "tag": "مهارات",
+  "rev": 1793288448215
  },
  {
   "id": "b:moda",
@@ -62,7 +69,8 @@ window.SHELF_PROJECTS=[
   "title": "أتيليه",
   "srcTitle": "أتيليه · الدليل الشامل للموضة والتنسيق",
   "icon": "👔",
-  "tag": "حياة"
+  "tag": "حياة",
+  "rev": 1793288299833
  },
  {
   "id": "b:borsa",
@@ -70,7 +78,8 @@ window.SHELF_PROJECTS=[
   "title": "الدليل الشامل للاستثمار في البورصة",
   "srcTitle": "الدليل الشامل للاستثمار في البورصة",
   "icon": "📈",
-  "tag": "فلوس"
+  "tag": "فلوس",
+  "rev": 1793288630262
  },
  {
   "id": "b:db",
@@ -78,7 +87,8 @@ window.SHELF_PROJECTS=[
   "title": "The Database Index",
   "srcTitle": "The Database Index — a learning guide",
   "icon": "🗄️",
-  "tag": "برمجة"
+  "tag": "برمجة",
+  "rev": 1793281578439
  },
  {
   "id": "b:diet",
@@ -86,7 +96,8 @@ window.SHELF_PROJECTS=[
   "title": "NutriPath",
   "srcTitle": "NutriPath — Low-Carb & Keto | دليل الغذاء الصحي",
   "icon": "🥗",
-  "tag": "صحة"
+  "tag": "صحة",
+  "rev": 1793288407792
  },
  {
   "id": "b:drop",
@@ -94,7 +105,8 @@ window.SHELF_PROJECTS=[
   "title": "Dropship Depot",
   "srcTitle": "Dropship Depot — The Complete Learning Guide",
   "icon": "📦",
-  "tag": "بيزنس"
+  "tag": "بيزنس",
+  "rev": 1793281584241
  },
  {
   "id": "b:firstaid",
@@ -102,7 +114,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل الإسعافات الأولية الشامل",
   "srcTitle": "دليل الإسعافات الأولية الشامل",
   "icon": "🩹",
-  "tag": "صحة"
+  "tag": "صحة",
+  "rev": 1793288087989
  },
  {
   "id": "b:gold",
@@ -111,6 +124,7 @@ window.SHELF_PROJECTS=[
   "srcTitle": "دهب تراكر | أسعار الذهب والعملات",
   "icon": "🪙",
   "tag": "فلوس",
+  "rev": 1793288546488,
   "net": "live"
  },
  {
@@ -119,7 +133,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل العتاد",
   "srcTitle": "دليل العتاد · Hardware Guide",
   "icon": "🖥️",
-  "tag": "برمجة"
+  "tag": "برمجة",
+  "rev": 1793288433680
  },
  {
   "id": "b:hr",
@@ -127,7 +142,8 @@ window.SHELF_PROJECTS=[
   "title": "أكاديمية الموارد البشرية",
   "srcTitle": "أكاديمية الموارد البشرية — مرجع تفاعلي شامل",
   "icon": "👥",
-  "tag": "شغل"
+  "tag": "شغل",
+  "rev": 1793288082406
  },
  {
   "id": "b:interview",
@@ -135,7 +151,8 @@ window.SHELF_PROJECTS=[
   "title": "دليلك الشامل عشان تنجح في أي انترفيو",
   "srcTitle": "دليلك الشامل عشان تنجح في أي انترفيو",
   "icon": "🎤",
-  "tag": "شغل"
+  "tag": "شغل",
+  "rev": 1793288333284
  },
  {
   "id": "b:mental",
@@ -143,7 +160,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل الصحة النفسية الشامل",
   "srcTitle": "دليل الصحة النفسية الشامل | تعريف الأمراض النفسية وأعراضها وعلاجها",
   "icon": "🧘",
-  "tag": "صحة"
+  "tag": "صحة",
+  "rev": 1793288564416
  },
  {
   "id": "b:nabta",
@@ -151,7 +169,8 @@ window.SHELF_PROJECTS=[
   "title": "أكاديمية نبتة",
   "srcTitle": "أكاديمية نبتة",
   "icon": "🌱",
-  "tag": "تعليم"
+  "tag": "تعليم",
+  "rev": 1793281554517
  },
  {
   "id": "b:netsuite",
@@ -159,7 +178,8 @@ window.SHELF_PROJECTS=[
   "title": "NetSuite TF Reference",
   "srcTitle": "NetSuite TF Reference — Expert Guide",
   "icon": "⚙️",
-  "tag": "برمجة"
+  "tag": "برمجة",
+  "rev": 1793878921081
  },
  {
   "id": "b:niyyah",
@@ -167,7 +187,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل النية",
   "srcTitle": "دليل النية — نوايا الأعمال",
   "icon": "🤲",
-  "tag": "دين"
+  "tag": "دين",
+  "rev": 1793288117591
  },
  {
   "id": "b:ovulation",
@@ -175,7 +196,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل الإنجاب الشامل",
   "srcTitle": "دليل الإنجاب الشامل — حاسبة التبويض والخصوبة",
   "icon": "👶",
-  "tag": "صحة"
+  "tag": "صحة",
+  "rev": 1793288231701
  },
  {
   "id": "b:selfmastery",
@@ -183,7 +205,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل شامل: الكسل والإدمان والعادات المدمرة",
   "srcTitle": "دليل شامل: الكسل والإدمان والعادات المدمرة",
   "icon": "💪",
-  "tag": "مهارات"
+  "tag": "مهارات",
+  "rev": 1793288289134
  },
  {
   "id": "b:shaghal",
@@ -191,7 +214,8 @@ window.SHELF_PROJECTS=[
   "title": "شغّل دماغك",
   "srcTitle": "شغّل دماغك",
   "icon": "🧠",
-  "tag": "ألغاز"
+  "tag": "ألغاز",
+  "rev": 1793281546175
  },
  {
   "id": "b:sheet",
@@ -199,7 +223,8 @@ window.SHELF_PROJECTS=[
   "title": "ورقة الأسماء والصور",
   "srcTitle": "ورقة الأسماء والصور",
   "icon": "🗒️",
-  "tag": "أدوات"
+  "tag": "أدوات",
+  "rev": 1793288679487
  },
  {
   "id": "b:sei",
@@ -207,7 +232,8 @@ window.SHELF_PROJECTS=[
   "title": "الذكاء الاجتماعي والعاطفي",
   "srcTitle": "الذكاء الاجتماعي والعاطفي — الدليل الكامل",
   "icon": "❤️",
-  "tag": "مهارات"
+  "tag": "مهارات",
+  "rev": 1793288253476
  },
  {
   "id": "b:systems",
@@ -215,7 +241,8 @@ window.SHELF_PROJECTS=[
   "title": "The Systems Atlas",
   "srcTitle": "The Systems Atlas — A Complete Guide to System & Software Design",
   "icon": "🗺️",
-  "tag": "برمجة"
+  "tag": "برمجة",
+  "rev": 1793288579576
  },
  {
   "id": "b:tarbiya",
@@ -223,7 +250,8 @@ window.SHELF_PROJECTS=[
   "title": "التربية بالوحيين",
   "srcTitle": "التربية بالوحيين — شرحٌ تفاعليّ واختبار",
   "icon": "📿",
-  "tag": "دين"
+  "tag": "دين",
+  "rev": 1793288205129
  },
  {
   "id": "b:pm",
@@ -231,7 +259,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل إدارة المشاريع للمطورين",
   "srcTitle": "دليل إدارة المشاريع للمطورين",
   "icon": "📊",
-  "tag": "شغل"
+  "tag": "شغل",
+  "rev": 1793288276943
  },
  {
   "id": "b:strategy",
@@ -239,7 +268,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل التخطيط الاستراتيجي للحياة",
   "srcTitle": "دليل التخطيط الاستراتيجي للحياة",
   "icon": "🎯",
-  "tag": "مهارات"
+  "tag": "مهارات",
+  "rev": 1793288122699
  },
  {
   "id": "b:freelance",
@@ -247,7 +277,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل العمل الحر",
   "srcTitle": "دليل العمل الحر",
   "icon": "🧑‍💻",
-  "tag": "شغل"
+  "tag": "شغل",
+  "rev": 1793288137097
  },
  {
   "id": "b:books",
@@ -255,7 +286,8 @@ window.SHELF_PROJECTS=[
   "title": "الدليل المرجعي الشامل",
   "srcTitle": "الدليل المرجعي الشامل — ٥٣ كتابًا",
   "icon": "📖",
-  "tag": "كتب"
+  "tag": "كتب",
+  "rev": 1793281592737
  },
  {
   "id": "b:manazil",
@@ -263,7 +295,8 @@ window.SHELF_PROJECTS=[
   "title": "منازل الحضور",
   "srcTitle": "منازل الحضور · دليل بناء الشخصية على هَدْي الإسلام",
   "icon": "🕌",
-  "tag": "دين"
+  "tag": "دين",
+  "rev": 1793288265661
  },
  {
   "id": "b:cars",
@@ -272,6 +305,7 @@ window.SHELF_PROJECTS=[
   "srcTitle": "دليل السيارات الشامل في مصر — من الصفر للاحتراف",
   "icon": "🚗",
   "tag": "حياة",
+  "rev": 1793281562580,
   "net": "photos"
  },
  {
@@ -280,7 +314,8 @@ window.SHELF_PROJECTS=[
   "title": "دليل العلاقات الزوجية الناجحة",
   "srcTitle": "دليل العلاقات الزوجية الناجحة",
   "icon": "💍",
-  "tag": "أسرة"
+  "tag": "أسرة",
+  "rev": 1793288421296
  },
  {
   "id": "b:tajer",
@@ -288,7 +323,8 @@ window.SHELF_PROJECTS=[
   "title": "دفتر التاجر",
   "srcTitle": "دفتر التاجر — مرجع البيع والشراء وسيكولوجيتهما",
   "icon": "🤝",
-  "tag": "بيزنس"
+  "tag": "بيزنس",
+  "rev": 1793288474032
  },
  {
   "id": "b:nutrition",
@@ -296,7 +332,8 @@ window.SHELF_PROJECTS=[
   "title": "المرجع التعليمي في التغذية",
   "srcTitle": "المرجع التعليمي في التغذية",
   "icon": "🍎",
-  "tag": "صحة"
+  "tag": "صحة",
+  "rev": 1793288221727
  },
  {
   "id": "b:repair",
@@ -304,7 +341,8 @@ window.SHELF_PROJECTS=[
   "title": "مرجع صيانة الأجهزة الكهربائية والبوردات",
   "srcTitle": "مرجع صيانة الأجهزة الكهربائية والبوردات",
   "icon": "🔧",
-  "tag": "أدوات"
+  "tag": "أدوات",
+  "rev": 1793288104057
  },
  {
   "id": "b:people",
@@ -312,7 +350,8 @@ window.SHELF_PROJECTS=[
   "title": "مكتبة قراءة البشر",
   "srcTitle": "مكتبة قراءة البشر — 36 كتاب تفاعلي",
   "icon": "🕵️",
-  "tag": "كتب"
+  "tag": "كتب",
+  "rev": 1793281535967
  },
  {
   "id": "b:cvforge",
